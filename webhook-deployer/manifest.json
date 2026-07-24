@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "provider_type": "webhook-deployer",
+  "access_provider_type": "webhook",
+  "display_name_key": "plugin.webhook-deployer.name",
+  "deploy_category": "other",
+  "protocol_version": 1,
+  "min_core_version": "",
+  "max_core_version": "",
+  "binary": "webhook-deployer",
+  "icon": "",
+  "sha256": ""
+}
