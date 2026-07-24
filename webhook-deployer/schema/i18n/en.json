@@ -1,0 +1,8 @@
+{
+  "plugin.webhook-deployer.name": "Webhook Deployer",
+  "plugin.webhook-deployer.deploy.method.label": "HTTP Method",
+  "plugin.webhook-deployer.deploy.method.post": "POST",
+  "plugin.webhook-deployer.deploy.method.put": "PUT",
+  "plugin.webhook-deployer.deploy.path.label": "Path",
+  "plugin.webhook-deployer.deploy.path.placeholder": "/cert"
+}

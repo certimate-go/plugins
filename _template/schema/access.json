@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "__ACCESS_TYPE__",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "exampleApiKey",
+        "valueType": "secret",
+        "labelKey": "plugin.__PLUGIN_NAME__.access.exampleApiKey.label",
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

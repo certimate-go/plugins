@@ -1,0 +1,8 @@
+{
+  "plugin.__PLUGIN_NAME__.name": "My Deployer",
+  "plugin.__PLUGIN_NAME__.deploy.exampleField.label": "Example Field",
+  "plugin.__PLUGIN_NAME__.deploy.exampleField.placeholder": "Enter value",
+  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.label": "Example Select",
+  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option1": "Option 1",
+  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option2": "Option 2"
+}

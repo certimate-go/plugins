@@ -40,21 +40,37 @@ func TestGetConfigSchema_NoAccessSchema_ReusesBuiltin(t *testing.T) {
 		t.Fatalf("plugin must NOT emit an access schema (reuses builtin webhook access), got %q", schema.AccessSchemaJSON)
 	}
 
-	var deployEnv envelope
+	var deployEnv struct {
+		SchemaVersion string `json:"schemaVersion"`
+		Provider      string `json:"provider"`
+		Category      string `json:"category"`
+		Schema        struct {
+			Columns []struct {
+				Name           string `json:"name"`
+				ValueType      string `json:"valueType"`
+				LabelKey       string `json:"labelKey,omitempty"`
+				PlaceholderKey string `json:"placeholderKey,omitempty"`
+				TooltipKey     string `json:"tooltipKey,omitempty"`
+			} `json:"columns"`
+		} `json:"schema"`
+	}
 	if err := json.Unmarshal(schema.DeploySchemaJSON, &deployEnv); err != nil {
 		t.Fatalf("deploy envelope invalid: %v", err)
 	}
-	if deployEnv.SchemaVersion != schemaVersion || deployEnv.Provider != providerType || deployEnv.Category != "deploy" {
+	if deployEnv.SchemaVersion != "form/v1" || deployEnv.Provider != "webhook-deployer" || deployEnv.Category != "deploy" {
 		t.Fatalf("deploy envelope mismatch: %+v", deployEnv)
 	}
 
-	bundles := i18nResources()
+	bundles, err := plugin.LoadI18n(schemaFS)
+	if err != nil {
+		t.Fatalf("LoadI18n: %v", err)
+	}
 	for _, locale := range []string{"zh", "en"} {
 		bundle, ok := bundles[locale]
 		if !ok {
 			t.Fatalf("missing i18n bundle for %s", locale)
 		}
-		for _, c := range deploySchemaColumns() {
+		for _, c := range deployEnv.Schema.Columns {
 			for _, key := range []string{c.LabelKey, c.PlaceholderKey} {
 				if key == "" {
 					continue
@@ -64,7 +80,7 @@ func TestGetConfigSchema_NoAccessSchema_ReusesBuiltin(t *testing.T) {
 				}
 			}
 		}
-		if bundle[displayNameKey] == "" {
+		if bundle["plugin.webhook-deployer.name"] == "" {
 			t.Fatalf("locale %s missing display name", locale)
 		}
 	}

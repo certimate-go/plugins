@@ -1,0 +1,8 @@
+{
+  "plugin.__PLUGIN_NAME__.name": "My Deployer",
+  "plugin.__PLUGIN_NAME__.deploy.exampleField.label": "示例字段",
+  "plugin.__PLUGIN_NAME__.deploy.exampleField.placeholder": "请输入",
+  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.label": "示例选项",
+  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option1": "选项1",
+  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option2": "选项2"
+}

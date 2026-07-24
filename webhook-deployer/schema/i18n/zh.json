@@ -1,0 +1,8 @@
+{
+  "plugin.webhook-deployer.name": "Webhook 部署",
+  "plugin.webhook-deployer.deploy.method.label": "HTTP 方法",
+  "plugin.webhook-deployer.deploy.method.post": "POST",
+  "plugin.webhook-deployer.deploy.method.put": "PUT",
+  "plugin.webhook-deployer.deploy.path.label": "路径",
+  "plugin.webhook-deployer.deploy.path.placeholder": "/cert"
+}

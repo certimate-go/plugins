@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "__PLUGIN_NAME__",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "exampleField",
+        "valueType": "text",
+        "labelKey": "plugin.__PLUGIN_NAME__.deploy.exampleField.label",
+        "placeholderKey": "plugin.__PLUGIN_NAME__.deploy.exampleField.placeholder",
+        "required": true
+      },
+      {
+        "name": "exampleSelect",
+        "valueType": "select",
+        "labelKey": "plugin.__PLUGIN_NAME__.deploy.exampleSelect.label",
+        "required": false,
+        "default": "option1",
+        "options": [
+          {
+            "value": "option1",
+            "labelKey": "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option1"
+          },
+          {
+            "value": "option2",
+            "labelKey": "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option2"
+          }
+        ]
+      }
+    ]
+  }
+}

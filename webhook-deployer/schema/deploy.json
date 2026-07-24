@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "webhook-deployer",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "method",
+        "valueType": "select",
+        "labelKey": "plugin.webhook-deployer.deploy.method.label",
+        "default": "POST",
+        "required": true,
+        "options": [
+          {
+            "value": "POST",
+            "labelKey": "plugin.webhook-deployer.deploy.method.post"
+          },
+          {
+            "value": "PUT",
+            "labelKey": "plugin.webhook-deployer.deploy.method.put"
+          }
+        ]
+      },
+      {
+        "name": "path",
+        "valueType": "text",
+        "labelKey": "plugin.webhook-deployer.deploy.path.label",
+        "placeholderKey": "plugin.webhook-deployer.deploy.path.placeholder"
+      }
+    ]
+  }
+}

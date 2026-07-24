@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"crypto/tls"
+	"embed"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -12,6 +13,15 @@ import (
 	"time"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
+)
+
+//go:embed schema
+var schemaFS embed.FS
+
+const (
+	providerType   = "webhook-deployer"
+	accessType     = "webhook"
+	displayNameKey = "plugin.webhook-deployer.name"
 )
 
 type webhookDeployer struct{}
@@ -27,10 +37,18 @@ func (*webhookDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error)
 }
 
 func (*webhookDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
+	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
+	i18n, err := plugin.LoadI18n(schemaFS)
+	if err != nil {
+		return nil, err
+	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchemaJSON(),
-		DeploySchemaJSON: deploySchemaJSON(),
-		I18n:             i18nResources(),
+		AccessSchemaJSON: nil, // reuses built-in webhook access type
+		DeploySchemaJSON: deploySchema,
+		I18n:             i18n,
 	}, nil
 }
 

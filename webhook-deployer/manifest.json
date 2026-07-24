@@ -8,6 +8,7 @@
   "min_core_version": "",
   "max_core_version": "",
   "binary": "webhook-deployer",
-  "icon": "",
+  "icon": "webhook.svg",
+  "priority": 100,
   "sha256": ""
 }
