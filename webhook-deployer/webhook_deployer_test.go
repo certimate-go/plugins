@@ -2,12 +2,20 @@ package main
 
 import (
 	"context"
+	"crypto/ecdsa"
+	"crypto/elliptic"
+	"crypto/rand"
+	"crypto/x509"
+	"crypto/x509/pkix"
 	"encoding/json"
+	"encoding/pem"
 	"io"
+	"math/big"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
 )
@@ -51,6 +59,8 @@ func TestGetConfigSchema_NoAccessSchema_ReusesBuiltin(t *testing.T) {
 				LabelKey       string `json:"labelKey,omitempty"`
 				PlaceholderKey string `json:"placeholderKey,omitempty"`
 				TooltipKey     string `json:"tooltipKey,omitempty"`
+				UnitKey        string `json:"unitKey,omitempty"`
+				TipsKey        string `json:"tipsKey,omitempty"`
 			} `json:"columns"`
 		} `json:"schema"`
 	}
@@ -71,7 +81,7 @@ func TestGetConfigSchema_NoAccessSchema_ReusesBuiltin(t *testing.T) {
 			t.Fatalf("missing i18n bundle for %s", locale)
 		}
 		for _, c := range deployEnv.Schema.Columns {
-			for _, key := range []string{c.LabelKey, c.PlaceholderKey} {
+			for _, key := range []string{c.LabelKey, c.PlaceholderKey, c.UnitKey, c.TooltipKey} {
 				if key == "" {
 					continue
 				}
@@ -86,17 +96,19 @@ func TestGetConfigSchema_NoAccessSchema_ReusesBuiltin(t *testing.T) {
 	}
 }
 
-func TestDeploy_UsesBuiltinWebhookAccess(t *testing.T) {
+func TestDeploy_TemplatedBodyAndAccessConfig(t *testing.T) {
+	certPEM, keyPEM := selfSignedCert(t, "example.com")
+
 	var seen struct {
-		method string
-		path   string
-		auth   string
-		body   string
+		method      string
+		auth        string
+		contentType string
+		body        string
 	}
 	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		seen.method = r.Method
-		seen.path = r.URL.Path
 		seen.auth = r.Header.Get("Authorization")
+		seen.contentType = r.Header.Get("Content-Type")
 		b, _ := io.ReadAll(r.Body)
 		seen.body = string(b)
 		w.WriteHeader(http.StatusOK)
@@ -105,31 +117,83 @@ func TestDeploy_UsesBuiltinWebhookAccess(t *testing.T) {
 
 	access, _ := json.Marshal(map[string]any{
 		"url":     srv.URL,
-		"headers": "Authorization: Bearer tok-abc\nX-Source: plugin",
+		"method":  "POST",
+		"headers": "Authorization: Bearer tok-abc",
 	})
-	extended, _ := json.Marshal(map[string]string{"method": "PUT", "path": "cert"})
+	extended, _ := json.Marshal(map[string]any{
+		"webhookData": `{"commonName":"${CERTIMATE_DEPLOYER_COMMONNAME}","cert":"${CERTIMATE_DEPLOYER_CERTIFICATE}"}`,
+		"timeout":     5,
+	})
 
 	res, err := (&webhookDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
 		AccessConfigJSON:   string(access),
 		ExtendedConfigJSON: string(extended),
-		CertificatePEM:     "CERT",
-		PrivateKeyPEM:      "KEY",
+		CertificatePEM:     certPEM,
+		PrivateKeyPEM:      keyPEM,
 	})
 	if err != nil {
 		t.Fatalf("deploy: %v", err)
 	}
-	if seen.method != http.MethodPut || seen.path != "/cert" {
-		t.Fatalf("saw %s %s", seen.method, seen.path)
+
+	if seen.method != http.MethodPost {
+		t.Fatalf("method = %q, want POST (sourced from access config)", seen.method)
+	}
+	if seen.contentType != "application/json" {
+		t.Fatalf("content-type = %q, want application/json", seen.contentType)
 	}
 	if seen.auth != "Bearer tok-abc" {
-		t.Fatalf("auth header not forwarded from builtin webhook access: %q", seen.auth)
+		t.Fatalf("Authorization not forwarded from access config: %q", seen.auth)
 	}
-	if !strings.Contains(seen.body, "CERT") {
-		t.Fatalf("cert not forwarded: %s", seen.body)
+	if strings.Contains(seen.body, "${CERTIMATE_DEPLOYER_") {
+		t.Fatalf("variable placeholder left unsubstituted: %s", seen.body)
 	}
-	var extended2 map[string]any
-	if err := json.Unmarshal([]byte(res.ExtendedDataJSON), &extended2); err != nil {
+
+	var body map[string]string
+	if err := json.Unmarshal([]byte(seen.body), &body); err != nil {
+		t.Fatalf("body not json: %v (%s)", err, seen.body)
+	}
+	if body["commonName"] != "example.com" {
+		t.Fatalf("commonName = %q, want example.com", body["commonName"])
+	}
+	if body["cert"] != certPEM {
+		t.Fatalf("${CERTIMATE_DEPLOYER_CERTIFICATE} not substituted with actual PEM")
+	}
+
+	var extendedData map[string]any
+	if err := json.Unmarshal([]byte(res.ExtendedDataJSON), &extendedData); err != nil {
 		t.Fatalf("extended data not json: %v", err)
+	}
+}
+
+func TestDeploy_DefaultBodyWhenWebhookDataEmpty(t *testing.T) {
+	certPEM, keyPEM := selfSignedCert(t, "example.com")
+
+	var body string
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		b, _ := io.ReadAll(r.Body)
+		body = string(b)
+		w.WriteHeader(http.StatusOK)
+	}))
+	defer srv.Close()
+
+	access, _ := json.Marshal(map[string]any{"url": srv.URL})
+	if _, err := (&webhookDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+		AccessConfigJSON: string(access),
+		CertificatePEM:   certPEM,
+		PrivateKeyPEM:    keyPEM,
+	}); err != nil {
+		t.Fatalf("deploy: %v", err)
+	}
+
+	var got map[string]string
+	if err := json.Unmarshal([]byte(body), &got); err != nil {
+		t.Fatalf("body not json: %v (%s)", err, body)
+	}
+	if got["name"] != "example.com" {
+		t.Fatalf("default body name = %q, want example.com (SANs)", got["name"])
+	}
+	if got["cert"] != certPEM || got["privkey"] != keyPEM {
+		t.Fatalf("default body did not embed cert/privatekey PEM")
 	}
 }
 
@@ -140,4 +204,32 @@ func TestDeploy_MissingURL(t *testing.T) {
 	if err == nil || !strings.Contains(err.Error(), "url") {
 		t.Fatalf("expected missing url error, got %v", err)
 	}
+}
+
+func selfSignedCert(t *testing.T, commonName string) (certPEM, keyPEM string) {
+	t.Helper()
+
+	priv, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
+	if err != nil {
+		t.Fatalf("generate key: %v", err)
+	}
+	tmpl := &x509.Certificate{
+		SerialNumber: big.NewInt(1),
+		Subject:      pkix.Name{CommonName: commonName},
+		DNSNames:     []string{commonName},
+		NotBefore:    time.Now().Add(-time.Hour),
+		NotAfter:     time.Now().Add(time.Hour),
+	}
+	der, err := x509.CreateCertificate(rand.Reader, tmpl, tmpl, &priv.PublicKey, priv)
+	if err != nil {
+		t.Fatalf("create certificate: %v", err)
+	}
+	certPEM = string(pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: der}))
+
+	keyDER, err := x509.MarshalECPrivateKey(priv)
+	if err != nil {
+		t.Fatalf("marshal private key: %v", err)
+	}
+	keyPEM = string(pem.EncodeToMemory(&pem.Block{Type: "EC PRIVATE KEY", Bytes: keyDER}))
+	return certPEM, keyPEM
 }

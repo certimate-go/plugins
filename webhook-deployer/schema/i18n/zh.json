@@ -1,8 +1,10 @@
 {
   "plugin.webhook-deployer.name": "Webhook 部署",
-  "plugin.webhook-deployer.deploy.method.label": "HTTP 方法",
-  "plugin.webhook-deployer.deploy.method.post": "POST",
-  "plugin.webhook-deployer.deploy.method.put": "PUT",
-  "plugin.webhook-deployer.deploy.path.label": "路径",
-  "plugin.webhook-deployer.deploy.path.placeholder": "/cert"
+  "plugin.webhook-deployer.deploy.webhook_data.label": "Webhook 回调数据（可选）",
+  "plugin.webhook-deployer.deploy.webhook_data.placeholder": "请输入 Webhook 回调数据以覆盖默认值",
+  "plugin.webhook-deployer.deploy.webhook_data.help": "提示：不填写时，将使用所选提供商授权的默认 Webhook 回调数据。",
+  "plugin.webhook-deployer.deploy.webhook_data.vartips": "支持的变量：<br><ol style=\"list-style: disc;\"><li><strong>${CERTIMATE_DEPLOYER_COMMONNAME}</strong>：<br>证书的主域名或 IP。</li><li><strong>${CERTIMATE_DEPLOYER_SUBJECTALTNAMES}</strong>：<br>证书的多域名或 IP，以半角分号隔开。</li><li><strong>${CERTIMATE_DEPLOYER_CERTIFICATE}</strong>：<br>证书文件 PEM 格式内容。</li><li><strong>${CERTIMATE_DEPLOYER_CERTIFICATE_SERVER}</strong>：<br>证书文件（仅含服务器证书）PEM 格式内容。</li><li><strong>${CERTIMATE_DEPLOYER_CERTIFICATE_INTERMEDIA}</strong>：<br>证书文件（仅含中间证书）PEM 格式内容。</li><li><strong>${CERTIMATE_DEPLOYER_PRIVATEKEY}</strong>：<br>私钥文件 PEM 格式内容。</li></ol>",
+  "plugin.webhook-deployer.deploy.timeout.label": "Webhook 超时时间（可选）",
+  "plugin.webhook-deployer.deploy.timeout.placeholder": "请输入 Webhook 超时时间",
+  "plugin.webhook-deployer.deploy.timeout.unit": "秒"
 }

@@ -1,8 +1,10 @@
 {
   "plugin.webhook-deployer.name": "Webhook Deployer",
-  "plugin.webhook-deployer.deploy.method.label": "HTTP Method",
-  "plugin.webhook-deployer.deploy.method.post": "POST",
-  "plugin.webhook-deployer.deploy.method.put": "PUT",
-  "plugin.webhook-deployer.deploy.path.label": "Path",
-  "plugin.webhook-deployer.deploy.path.placeholder": "/cert"
+  "plugin.webhook-deployer.deploy.webhook_data.label": "Webhook data (Optional)",
+  "plugin.webhook-deployer.deploy.webhook_data.placeholder": "Please enter Webhook data to override the default",
+  "plugin.webhook-deployer.deploy.webhook_data.help": "Notes: Leave it blank to use the default Webhook data provided by the selected credential.",
+  "plugin.webhook-deployer.deploy.webhook_data.vartips": "Supported variables: <br><ol style=\"list-style: disc;\"><li><strong>${CERTIMATE_DEPLOYER_COMMONNAME}</strong>: <br>The primary domain or IP address of the certificate.</li><li><strong>${CERTIMATE_DEPLOYER_SUBJECTALTNAMES}</strong>: <br>The domains or IP addresses of the certificate, separated by semicolons.</li><li><strong>${CERTIMATE_DEPLOYER_CERTIFICATE}</strong>: <br>The PEM format content of the certificate file.</li><li><strong>${CERTIMATE_DEPLOYER_CERTIFICATE_SERVER}</strong>: <br>The PEM format content of the server certificate file.</li><li><strong>${CERTIMATE_DEPLOYER_CERTIFICATE_INTERMEDIA}</strong>: <br>The PEM format content of the intermediate CA certificate file.</li><li><strong>${CERTIMATE_DEPLOYER_PRIVATEKEY}</strong>: <br>The PEM format content of the private key file.</li></ol>",
+  "plugin.webhook-deployer.deploy.timeout.label": "Webhook timeout (Optional)",
+  "plugin.webhook-deployer.deploy.timeout.placeholder": "Please enter Webhook timeout",
+  "plugin.webhook-deployer.deploy.timeout.unit": "seconds"
 }
