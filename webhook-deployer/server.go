@@ -11,6 +11,7 @@ import (
 	"encoding/pem"
 	"fmt"
 	"io"
+	"log/slog"
 	"mime"
 	"mime/multipart"
 	"net"
@@ -94,7 +95,10 @@ type extendedConfig struct {
 	Timeout     int    `json:"timeout,omitempty"`
 }
 
-func (d *webhookDeployer) Deploy(_ context.Context, req *plugin.DeployRequest) (*plugin.DeployResult, error) {
+func (d *webhookDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+	if logger == nil {
+		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
+	}
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -234,7 +238,7 @@ func (d *webhookDeployer) Deploy(_ context.Context, req *plugin.DeployRequest) (
 		body = &buf
 	}
 
-	httpReq, err := http.NewRequestWithContext(context.Background(), method, webhookURL.String(), body)
+	httpReq, err := http.NewRequestWithContext(ctx, method, webhookURL.String(), body)
 	if err != nil {
 		return nil, fmt.Errorf("build request: %w", err)
 	}
@@ -244,17 +248,20 @@ func (d *webhookDeployer) Deploy(_ context.Context, req *plugin.DeployRequest) (
 	if access.AllowInsecureConnections {
 		client.Transport = &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
 	}
+	logger.Info("webhook request ready", slog.String("method", method), slog.String("host", webhookURL.Host))
 	resp, err := client.Do(httpReq)
 	if err != nil {
+		logger.Error("webhook request failed", slog.String("method", method), slog.String("host", webhookURL.Host))
 		return nil, fmt.Errorf("webhook request failed: %w", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode >= 400 {
-		respBody, _ := io.ReadAll(io.LimitReader(resp.Body, 2048))
-		return nil, fmt.Errorf("webhook returned status %d: %s", resp.StatusCode, strings.TrimSpace(string(respBody)))
+		logger.Error("webhook returned non-success status", slog.Int("status", resp.StatusCode))
+		return nil, fmt.Errorf("webhook returned status %d", resp.StatusCode)
 	}
 
+	logger.Info("webhook responded", slog.Int("status", resp.StatusCode))
 	extendedData, _ := json.Marshal(map[string]any{"statusCode": resp.StatusCode, "target": webhookURL.String()})
 	return &plugin.DeployResult{ExtendedDataJSON: string(extendedData)}, nil
 }

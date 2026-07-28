@@ -4,6 +4,7 @@ import (
 	"context"
 	"embed"
 	"fmt"
+	"log/slog"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
 )
@@ -46,6 +47,9 @@ func (*myDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, err
 	}, nil
 }
 
-func (*myDeployer) Deploy(_ context.Context, req *plugin.DeployRequest) (*plugin.DeployResult, error) {
+func (*myDeployer) Deploy(_ context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+	if logger != nil {
+		logger.Info("template deployer invoked")
+	}
 	return nil, fmt.Errorf("not implemented: implement the Deploy method")
 }

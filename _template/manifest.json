@@ -4,7 +4,7 @@
   "access_provider_type": "__ACCESS_TYPE__",
   "display_name_key": "plugin.__PLUGIN_NAME__.name",
   "deploy_category": "other",
-  "protocol_version": 1,
+  "protocol_version": 2,
   "min_core_version": "",
   "max_core_version": "",
   "binary": "__PLUGIN_NAME__",

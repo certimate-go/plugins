@@ -84,7 +84,7 @@ func TestGetConfigSchema_I18nCoverage(t *testing.T) {
 
 func TestDeploy_ReturnsNotImplemented(t *testing.T) {
 	d := &myDeployer{}
-	_, err := d.Deploy(context.Background(), &plugin.DeployRequest{})
+	_, err := d.Deploy(context.Background(), &plugin.DeployRequest{}, nil)
 	if err == nil {
 		t.Fatal("expected not-implemented error")
 	}

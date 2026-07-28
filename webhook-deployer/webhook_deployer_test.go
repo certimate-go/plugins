@@ -10,10 +10,12 @@ import (
 	"encoding/json"
 	"encoding/pem"
 	"io"
+	"log/slog"
 	"math/big"
 	"net/http"
 	"net/http/httptest"
 	"strings"
+	"sync"
 	"testing"
 	"time"
 
@@ -98,6 +100,7 @@ func TestGetConfigSchema_NoAccessSchema_ReusesBuiltin(t *testing.T) {
 
 func TestDeploy_TemplatedBodyAndAccessConfig(t *testing.T) {
 	certPEM, keyPEM := selfSignedCert(t, "example.com")
+	cap := &logCapture{}
 
 	var seen struct {
 		method      string
@@ -130,7 +133,7 @@ func TestDeploy_TemplatedBodyAndAccessConfig(t *testing.T) {
 		ExtendedConfigJSON: string(extended),
 		CertificatePEM:     certPEM,
 		PrivateKeyPEM:      keyPEM,
-	})
+	}, slog.New(cap))
 	if err != nil {
 		t.Fatalf("deploy: %v", err)
 	}
@@ -163,6 +166,19 @@ func TestDeploy_TemplatedBodyAndAccessConfig(t *testing.T) {
 	if err := json.Unmarshal([]byte(res.ExtendedDataJSON), &extendedData); err != nil {
 		t.Fatalf("extended data not json: %v", err)
 	}
+
+	var respondedStatus string
+	for _, r := range cap.records {
+		if r.Message == "webhook responded" {
+			respondedStatus = r.Attrs["status"]
+		}
+	}
+	if respondedStatus != "200" {
+		t.Fatalf("expected 'webhook responded' log with status 200, got %+v", cap.records)
+	}
+	if leaked := cap.dump(); strings.Contains(leaked, "tok-abc") || strings.Contains(leaked, keyPEM) {
+		t.Fatalf("secret leaked into plugin logs:\n%s", leaked)
+	}
 }
 
 func TestDeploy_DefaultBodyWhenWebhookDataEmpty(t *testing.T) {
@@ -181,7 +197,7 @@ func TestDeploy_DefaultBodyWhenWebhookDataEmpty(t *testing.T) {
 		AccessConfigJSON: string(access),
 		CertificatePEM:   certPEM,
 		PrivateKeyPEM:    keyPEM,
-	}); err != nil {
+	}, nil); err != nil {
 		t.Fatalf("deploy: %v", err)
 	}
 
@@ -200,7 +216,7 @@ func TestDeploy_DefaultBodyWhenWebhookDataEmpty(t *testing.T) {
 func TestDeploy_MissingURL(t *testing.T) {
 	_, err := (&webhookDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
 		AccessConfigJSON: `{"headers":"x: y"}`,
-	})
+	}, nil)
 	if err == nil || !strings.Contains(err.Error(), "url") {
 		t.Fatalf("expected missing url error, got %v", err)
 	}
@@ -232,4 +248,49 @@ func selfSignedCert(t *testing.T, commonName string) (certPEM, keyPEM string) {
 	}
 	keyPEM = string(pem.EncodeToMemory(&pem.Block{Type: "EC PRIVATE KEY", Bytes: keyDER}))
 	return certPEM, keyPEM
+}
+
+type logCapture struct {
+	mu      sync.Mutex
+	records []logRecord
+}
+
+type logRecord struct {
+	Level   slog.Level
+	Message string
+	Attrs   map[string]string
+}
+
+func (c *logCapture) Enabled(_ context.Context, _ slog.Level) bool { return true }
+
+func (c *logCapture) Handle(_ context.Context, r slog.Record) error {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	attrs := map[string]string{}
+	r.Attrs(func(a slog.Attr) bool {
+		attrs[a.Key] = a.Value.String()
+		return true
+	})
+	c.records = append(c.records, logRecord{Level: r.Level, Message: r.Message, Attrs: attrs})
+	return nil
+}
+
+func (c *logCapture) WithAttrs(_ []slog.Attr) slog.Handler { return c }
+func (c *logCapture) WithGroup(_ string) slog.Handler      { return c }
+
+func (c *logCapture) dump() string {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	var sb strings.Builder
+	for _, r := range c.records {
+		sb.WriteString(r.Message)
+		for k, v := range r.Attrs {
+			sb.WriteString(" ")
+			sb.WriteString(k)
+			sb.WriteString("=")
+			sb.WriteString(v)
+		}
+		sb.WriteString("\n")
+	}
+	return sb.String()
 }
