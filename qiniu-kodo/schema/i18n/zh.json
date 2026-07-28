@@ -1,0 +1,14 @@
+{
+  "plugin.qiniu-kodo.name": "七牛云 - 对象存储 Kodo",
+  "plugin.qiniu-kodo.deploy.bucket.label": "七牛云对象存储桶名",
+  "plugin.qiniu-kodo.deploy.bucket.placeholder": "请输入七牛云对象存储桶名",
+  "plugin.qiniu-kodo.deploy.domain.label": "七牛云对象存储自定义域名",
+  "plugin.qiniu-kodo.deploy.domain.placeholder": "请输入七牛云对象存储自定义域名",
+  "plugin.qiniu.access.access_key.label": "七牛云 AccessKey",
+  "plugin.qiniu.access.access_key.placeholder": "请输入七牛云 AccessKey",
+  "plugin.qiniu.access.access_key.tooltip": "这是什么？请参阅 <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.access.secret_key.label": "七牛云 SecretKey",
+  "plugin.qiniu.access.secret_key.placeholder": "请输入七牛云 SecretKey",
+  "plugin.qiniu.access.secret_key.tooltip": "这是什么？请参阅 <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.name": "七牛云"
+}

@@ -1,0 +1,14 @@
+{
+  "plugin.qiniu-kodo.name": "Qiniu - Kodo",
+  "plugin.qiniu-kodo.deploy.bucket.label": "Qiniu Kodo bucket",
+  "plugin.qiniu-kodo.deploy.bucket.placeholder": "Please enter Qiniu Kodo bucket name",
+  "plugin.qiniu-kodo.deploy.domain.label": "Qiniu Kodo custom domain",
+  "plugin.qiniu-kodo.deploy.domain.placeholder": "Please enter Qiniu Kodo bucket custom domain name",
+  "plugin.qiniu.access.access_key.label": "Qiniu AccessKey",
+  "plugin.qiniu.access.access_key.placeholder": "Please enter Qiniu AccessKey",
+  "plugin.qiniu.access.access_key.tooltip": "For more information, see <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.access.secret_key.label": "Qiniu SecretKey",
+  "plugin.qiniu.access.secret_key.placeholder": "Please enter Qiniu SecretKey",
+  "plugin.qiniu.access.secret_key.tooltip": "For more information, see <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.name": "Qiniu"
+}

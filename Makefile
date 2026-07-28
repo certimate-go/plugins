@@ -1,6 +1,6 @@
 .PHONY: init build build-all test tidy clean
 
-PLUGIN := webhook-deployer
+PLUGIN := qiniu-cdn
 OUTPUT_DIR := dist
 
 init:

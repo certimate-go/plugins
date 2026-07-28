@@ -1,0 +1,24 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "qiniu-kodo",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "bucket",
+        "valueType": "text",
+        "labelKey": "plugin.qiniu-kodo.deploy.bucket.label",
+        "placeholderKey": "plugin.qiniu-kodo.deploy.bucket.placeholder",
+        "required": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.qiniu-kodo.deploy.domain.label",
+        "placeholderKey": "plugin.qiniu-kodo.deploy.domain.placeholder",
+        "required": true,
+        "validateWhen": [{ "validator": "domain" }]
+      }
+    ]
+  }
+}

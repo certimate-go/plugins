@@ -1,0 +1,18 @@
+{
+  "plugin.qiniu-pili.name": "Qiniu - Pili",
+  "plugin.qiniu-pili.deploy.hub.label": "Qiniu Pili hub",
+  "plugin.qiniu-pili.deploy.hub.placeholder": "Please enter Qiniu Pili hub name",
+  "plugin.qiniu-pili.deploy.hub.tooltip": "For more information, see <a href=\"https://portal.qiniu.com/hub\" target=\"_blank\">https://portal.qiniu.com/hub</a>",
+  "plugin.qiniu-pili.deploy.domain_match_pattern.label": "Domain match pattern",
+  "plugin.qiniu-pili.deploy.domain_match_pattern.option.exact.label": "Exact matches",
+  "plugin.qiniu-pili.deploy.domain_match_pattern.option.certsan.label": "via Certificate",
+  "plugin.qiniu-pili.deploy.domain.label": "Qiniu Pili streaming domain",
+  "plugin.qiniu-pili.deploy.domain.placeholder": "Please enter Qiniu Pili streaming domain name",
+  "plugin.qiniu.access.access_key.label": "Qiniu AccessKey",
+  "plugin.qiniu.access.access_key.placeholder": "Please enter Qiniu AccessKey",
+  "plugin.qiniu.access.access_key.tooltip": "For more information, see <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.access.secret_key.label": "Qiniu SecretKey",
+  "plugin.qiniu.access.secret_key.placeholder": "Please enter Qiniu SecretKey",
+  "plugin.qiniu.access.secret_key.tooltip": "For more information, see <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.name": "Qiniu"
+}

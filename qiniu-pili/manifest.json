@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "provider_type": "qiniu-pili",
+  "access_provider_type": "qiniu",
+  "display_name_key": "plugin.qiniu-pili.name",
+  "deploy_category": "av",
+  "protocol_version": 2,
+  "min_core_version": "",
+  "max_core_version": "",
+  "binary": "qiniu-pili",
+  "icon": "qiniu.svg",
+  "sha256": "",
+  "priority": 100,
+  "usages": ["hosting"]
+}

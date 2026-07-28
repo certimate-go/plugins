@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "qiniu",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "accessKey",
+        "valueType": "text",
+        "labelKey": "plugin.qiniu.access.access_key.label",
+        "placeholderKey": "plugin.qiniu.access.access_key.placeholder",
+        "tooltipKey": "plugin.qiniu.access.access_key.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "secretKey",
+        "valueType": "secret",
+        "labelKey": "plugin.qiniu.access.secret_key.label",
+        "placeholderKey": "plugin.qiniu.access.secret_key.placeholder",
+        "tooltipKey": "plugin.qiniu.access.secret_key.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

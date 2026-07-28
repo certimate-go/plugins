@@ -10,7 +10,7 @@ func main() {
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: map[string]githubplugin.Plugin{
-			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: &webhookDeployer{}},
+			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: &qiniuCdnDeployer{}},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})

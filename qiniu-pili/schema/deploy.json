@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "qiniu-pili",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "hub",
+        "valueType": "text",
+        "labelKey": "plugin.qiniu-pili.deploy.hub.label",
+        "placeholderKey": "plugin.qiniu-pili.deploy.hub.placeholder",
+        "tooltipKey": "plugin.qiniu-pili.deploy.hub.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.qiniu-pili.deploy.domain_match_pattern.label",
+        "default": "exact",
+        "required": true,
+        "options": [
+          { "value": "exact", "labelKey": "plugin.qiniu-pili.deploy.domain_match_pattern.option.exact.label" },
+          { "value": "certsan", "labelKey": "plugin.qiniu-pili.deploy.domain_match_pattern.option.certsan.label" }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.qiniu-pili.deploy.domain.label",
+        "placeholderKey": "plugin.qiniu-pili.deploy.domain.placeholder",
+        "dependencies": ["domainMatchPattern"],
+        "visibleWhen": [{ "field": "domainMatchPattern", "op": "notIn", "values": ["certsan"] }],
+        "requiredWhen": [{ "field": "domainMatchPattern", "op": "in", "values": ["exact"] }],
+        "validateWhen": [
+          { "field": "domainMatchPattern", "op": "in", "values": ["exact"], "validator": "domain" }
+        ]
+      }
+    ]
+  }
+}

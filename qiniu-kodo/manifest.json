@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "provider_type": "qiniu-kodo",
+  "access_provider_type": "qiniu",
+  "display_name_key": "plugin.qiniu-kodo.name",
+  "deploy_category": "storage",
+  "protocol_version": 2,
+  "min_core_version": "",
+  "max_core_version": "",
+  "binary": "qiniu-kodo",
+  "icon": "qiniu.svg",
+  "sha256": "",
+  "priority": 100,
+  "usages": ["hosting"]
+}

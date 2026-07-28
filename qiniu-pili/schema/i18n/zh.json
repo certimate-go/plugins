@@ -1,0 +1,18 @@
+{
+  "plugin.qiniu-pili.name": "七牛云 - 视频直播 Pili",
+  "plugin.qiniu-pili.deploy.hub.label": "七牛云视频直播空间名",
+  "plugin.qiniu-pili.deploy.hub.placeholder": "请输入七牛云视频直播空间名",
+  "plugin.qiniu-pili.deploy.hub.tooltip": "这是什么？请参阅 <a href=\"https://portal.qiniu.com/hub\" target=\"_blank\">https://portal.qiniu.com/hub</a>",
+  "plugin.qiniu-pili.deploy.domain_match_pattern.label": "域名匹配模式",
+  "plugin.qiniu-pili.deploy.domain_match_pattern.option.exact.label": "精确匹配",
+  "plugin.qiniu-pili.deploy.domain_match_pattern.option.certsan.label": "根据证书自动匹配",
+  "plugin.qiniu-pili.deploy.domain.label": "七牛云视频直播流域名",
+  "plugin.qiniu-pili.deploy.domain.placeholder": "请输入七牛云视频直播流域名",
+  "plugin.qiniu.access.access_key.label": "七牛云 AccessKey",
+  "plugin.qiniu.access.access_key.placeholder": "请输入七牛云 AccessKey",
+  "plugin.qiniu.access.access_key.tooltip": "这是什么？请参阅 <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.access.secret_key.label": "七牛云 SecretKey",
+  "plugin.qiniu.access.secret_key.placeholder": "请输入七牛云 SecretKey",
+  "plugin.qiniu.access.secret_key.tooltip": "这是什么？请参阅 <a href=\"https://portal.qiniu.com/\" target=\"_blank\">https://portal.qiniu.com/</a>",
+  "plugin.qiniu.name": "七牛云"
+}
