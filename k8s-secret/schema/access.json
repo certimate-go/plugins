@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "k8s",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "kubeConfig",
+        "valueType": "textarea",
+        "labelKey": "plugin.k8s.access.kubeconfig.label",
+        "placeholderKey": "plugin.k8s.access.kubeconfig.placeholder",
+        "extraKey": "plugin.k8s.access.kubeconfig.help",
+        "tooltipKey": "plugin.k8s.access.kubeconfig.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

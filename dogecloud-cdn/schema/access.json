@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "dogecloud",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "accessKey",
+        "valueType": "text",
+        "labelKey": "plugin.dogecloud.access.access_key.label",
+        "placeholderKey": "plugin.dogecloud.access.access_key.placeholder",
+        "tooltipKey": "plugin.dogecloud.access.access_key.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "secretKey",
+        "valueType": "secret",
+        "labelKey": "plugin.dogecloud.access.secret_key.label",
+        "placeholderKey": "plugin.dogecloud.access.secret_key.placeholder",
+        "tooltipKey": "plugin.dogecloud.access.secret_key.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

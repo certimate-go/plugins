@@ -1,0 +1,15 @@
+{
+  "plugin.dogecloud-cdn.name": "Doge Cloud - CDN (Content Delivery Network)",
+  "plugin.dogecloud-cdn.deploy.domain_match_pattern.label": "Domain match pattern",
+  "plugin.dogecloud-cdn.deploy.domain_match_pattern.option.exact.label": "Exact matches",
+  "plugin.dogecloud-cdn.deploy.domain_match_pattern.option.certsan.label": "via Certificate",
+  "plugin.dogecloud-cdn.deploy.domain.label": "Doge Cloud CDN domain",
+  "plugin.dogecloud-cdn.deploy.domain.placeholder": "Please enter Doge Cloud CDN domain name",
+  "plugin.dogecloud.access.access_key.label": "Doge Cloud AccessKey",
+  "plugin.dogecloud.access.access_key.placeholder": "Please enter Doge Cloud AccessKey",
+  "plugin.dogecloud.access.access_key.tooltip": "For more information, see <a href=\"https://console.dogecloud.com/\" target=\"_blank\">https://console.dogecloud.com/</a>",
+  "plugin.dogecloud.access.secret_key.label": "Doge Cloud SecretKey",
+  "plugin.dogecloud.access.secret_key.placeholder": "Please enter Doge Cloud SecretKey",
+  "plugin.dogecloud.access.secret_key.tooltip": "For more information, see <a href=\"https://console.dogecloud.com/\" target=\"_blank\">https://console.dogecloud.com/</a>",
+  "plugin.dogecloud.name": "Doge Cloud"
+}

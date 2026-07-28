@@ -1,0 +1,15 @@
+{
+  "version": "0.1.0",
+  "provider_type": "k8s-secret",
+  "access_provider_type": "k8s",
+  "display_name_key": "plugin.k8s-secret.name",
+  "deploy_category": "other",
+  "protocol_version": 2,
+  "min_core_version": "",
+  "max_core_version": "",
+  "binary": "k8s-secret",
+  "icon": "kubernetes.svg",
+  "sha256": "",
+  "priority": 100,
+  "usages": ["hosting"]
+}

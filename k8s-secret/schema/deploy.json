@@ -1,0 +1,90 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "k8s-secret",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "namespace",
+        "valueType": "text",
+        "labelKey": "plugin.k8s-secret.deploy.namespace.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.namespace.placeholder",
+        "tooltipKey": "plugin.k8s-secret.deploy.namespace.tooltip",
+        "tooltipHtml": true,
+        "default": "default",
+        "required": true
+      },
+      {
+        "name": "secretName",
+        "valueType": "text",
+        "labelKey": "plugin.k8s-secret.deploy.secret_name.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_name.placeholder",
+        "tooltipKey": "plugin.k8s-secret.deploy.secret_name.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "secretType",
+        "valueType": "text",
+        "labelKey": "plugin.k8s-secret.deploy.secret_type.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_type.placeholder",
+        "tooltipKey": "plugin.k8s-secret.deploy.secret_type.tooltip",
+        "tooltipHtml": true,
+        "default": "kubernetes.io/tls",
+        "required": true
+      },
+      {
+        "name": "secretDataKeyForKey",
+        "valueType": "text",
+        "labelKey": "plugin.k8s-secret.deploy.secret_data_key_for_key.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_data_key_for_key.placeholder",
+        "tooltipKey": "plugin.k8s-secret.deploy.secret_data_key_for_key.tooltip",
+        "tooltipHtml": true,
+        "default": "tls.key",
+        "required": true
+      },
+      {
+        "name": "secretDataKeyForCrt",
+        "valueType": "text",
+        "labelKey": "plugin.k8s-secret.deploy.secret_data_key_for_crt.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_data_key_for_crt.placeholder",
+        "tooltipKey": "plugin.k8s-secret.deploy.secret_data_key_for_crt.tooltip",
+        "tooltipHtml": true,
+        "default": "tls.crt",
+        "required": true
+      },
+      {
+        "name": "secretDataKeyForCrtOnlyServer",
+        "valueType": "text",
+        "labelKey": "plugin.k8s-secret.deploy.secret_data_key_for_servercrt.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_data_key_for_servercrt.placeholder",
+        "extraKey": "plugin.k8s-secret.deploy.secret_data_key_for_servercrt.help"
+      },
+      {
+        "name": "secretDataKeyForCrtOnlyIntermedia",
+        "valueType": "text",
+        "labelKey": "plugin.k8s-secret.deploy.secret_data_key_for_intermediacrt.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_data_key_for_intermediacrt.placeholder",
+        "extraKey": "plugin.k8s-secret.deploy.secret_data_key_for_intermediacrt.help"
+      },
+      {
+        "name": "secretAnnotations",
+        "valueType": "textarea",
+        "labelKey": "plugin.k8s-secret.deploy.secret_annotations.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_annotations.placeholder",
+        "extraKey": "plugin.k8s-secret.deploy.secret_annotations.help",
+        "tooltipKey": "plugin.k8s-secret.deploy.secret_annotations.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "secretLabels",
+        "valueType": "textarea",
+        "labelKey": "plugin.k8s-secret.deploy.secret_labels.label",
+        "placeholderKey": "plugin.k8s-secret.deploy.secret_labels.placeholder",
+        "extraKey": "plugin.k8s-secret.deploy.secret_labels.help",
+        "tooltipKey": "plugin.k8s-secret.deploy.secret_labels.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

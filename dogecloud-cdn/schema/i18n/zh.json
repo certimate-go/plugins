@@ -1,0 +1,15 @@
+{
+  "plugin.dogecloud-cdn.name": "多吉云 - 内容分发网络 CDN",
+  "plugin.dogecloud-cdn.deploy.domain_match_pattern.label": "域名匹配模式",
+  "plugin.dogecloud-cdn.deploy.domain_match_pattern.option.exact.label": "精确匹配",
+  "plugin.dogecloud-cdn.deploy.domain_match_pattern.option.certsan.label": "根据证书自动匹配",
+  "plugin.dogecloud-cdn.deploy.domain.label": "多吉云 CDN 加速域名",
+  "plugin.dogecloud-cdn.deploy.domain.placeholder": "请输入多吉云 CDN 加速域名",
+  "plugin.dogecloud.access.access_key.label": "多吉云 AccessKey",
+  "plugin.dogecloud.access.access_key.placeholder": "请输入多吉云 AccessKey",
+  "plugin.dogecloud.access.access_key.tooltip": "这是什么？请参阅 <a href=\"https://console.dogecloud.com/\" target=\"_blank\">https://console.dogecloud.com/</a>",
+  "plugin.dogecloud.access.secret_key.label": "多吉云 SecretKey",
+  "plugin.dogecloud.access.secret_key.placeholder": "请输入多吉云 SecretKey",
+  "plugin.dogecloud.access.secret_key.tooltip": "这是什么？请参阅 <a href=\"https://console.dogecloud.com/\" target=\"_blank\">https://console.dogecloud.com/</a>",
+  "plugin.dogecloud.name": "多吉云"
+}
