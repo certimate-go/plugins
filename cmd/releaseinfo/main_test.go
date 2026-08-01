@@ -27,9 +27,6 @@ func writeBinary(t *testing.T, path string, content []byte) {
 	}
 }
 
-// setUpPlugin creates a temp repo root with one plugin manifest and fake dist
-// binaries for every target, returning the root, dist dir, and a map of
-// assetKey -> expected sha256.
 func setUpPlugin(t *testing.T, manifestBody string, binaryContent []byte) (root, distDir string, expected map[string]string) {
 	t.Helper()
 	root = t.TempDir()
@@ -93,7 +90,6 @@ func TestApplyRelease_HappyPath(t *testing.T) {
 			t.Fatalf("checksums[%s]: want %s, got %v", key, want, got)
 		}
 	}
-	// Non-release fields are preserved.
 	if m["icon"] != "alpha.png" || m["priority"] != float64(50) {
 		t.Fatalf("non-release fields not preserved: %s", out)
 	}
@@ -109,7 +105,6 @@ func TestApplyRelease_Idempotent(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	// Write the first result back, then apply again on the updated manifest.
 	if err := os.WriteFile(manifest, first, 0o644); err != nil {
 		t.Fatal(err)
 	}
@@ -127,7 +122,6 @@ func TestApplyRelease_MissingBinaryErrors(t *testing.T) {
 		`{"provider_type":"alpha","version":"1.0.0"}`,
 		[]byte("x"),
 	)
-	// Remove one binary to simulate an incomplete build.
 	if err := os.Remove(filepath.Join(distDir, "alpha_linux_arm64")); err != nil {
 		t.Fatal(err)
 	}
@@ -152,7 +146,7 @@ func TestApplyRelease_MalformedManifestErrors(t *testing.T) {
 
 func TestApplyRelease_BadVersionErrors(t *testing.T) {
 	root, distDir, _ := setUpPlugin(t,
-		`{"provider_type":"alpha","version":"1.0"}`, // not full semver
+		`{"provider_type":"alpha","version":"1.0"}`,
 		[]byte("x"),
 	)
 	_, err := applyRelease(filepath.Join(root, "alpha", "manifest.json"), "alpha", "o/r", distDir)

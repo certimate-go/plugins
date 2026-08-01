@@ -1,0 +1,135 @@
+name: release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**/*.go'
+      - '**/go.mod'
+      - '**/go.sum'
+      - '**/schema/**'
+      - '**/manifest.json'
+      - 'Makefile'
+      - 'cmd/**'
+      - '.github/workflows/release.yml'
+  workflow_dispatch:
+    inputs:
+      plugins:
+        description: Comma-separated plugin dirs to force-release (optional)
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version-file: go.mod
+      - id: detect
+        name: detect changed plugins
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.after }}
+          INPUT_PLUGINS: ${{ github.event.inputs.plugins }}
+        run: |
+          set -eu
+          if [ -n "${INPUT_PLUGINS}" ]; then
+            echo "plugins=${INPUT_PLUGINS}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ -z "${BEFORE}" ] || [ "${BEFORE}" = "0000000000000000000000000000000000000000" ]; then
+            dirs=$(find . -maxdepth 2 -name manifest.json -not -path './_template/*' -exec dirname {} \; | sed 's|^\./||' | sort -u)
+          else
+            dirs=$(git diff --name-only "${BEFORE}" "${AFTER}" | grep -Eo '^[^/]+/' | sed 's|/$||' | sort -u)
+          fi
+          plugins=""
+          for d in $dirs; do
+            [ "$d" = "_template" ] && continue
+            [ ! -f "$d/manifest.json" ] && continue
+            if [ -z "$plugins" ]; then plugins="$d"; else plugins="$plugins,$d"; fi
+          done
+          echo "plugins=${plugins}" >> "$GITHUB_OUTPUT"
+      - name: release plugins
+        env:
+          PLUGINS: ${{ steps.detect.outputs.plugins }}
+          REPO: ${{ github.repository }}
+          SHA: ${{ github.sha }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.event.after }}
+          INPUT_PLUGINS: ${{ github.event.inputs.plugins }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+          if [ -z "${PLUGINS}" ]; then echo "no plugins to release"; exit 0; fi
+
+          force=0
+          [ -n "${INPUT_PLUGINS}" ] && force=1
+          zero_before=0
+          if [ -z "${BEFORE}" ] || [ "${BEFORE}" = "0000000000000000000000000000000000000000" ]; then zero_before=1; fi
+          build_affecting_re='\.go$|/(go\.mod|go\.sum)$|/schema/'
+
+          changed_index=0
+
+          for plugin in $(echo "${PLUGINS}" | tr ',' ' '); do
+            version=$(python3 -c "import json;print(json.load(open('${plugin}/manifest.json'))['version'])")
+            tag="${plugin}/v${version}"
+
+            if [ "${force}" = "1" ] || [ "${zero_before}" = "1" ]; then
+              is_ba=1
+            else
+              if git diff --name-only "${BEFORE}" "${AFTER}" | grep "^${plugin}/" | grep -Eq "${build_affecting_re}"; then
+                is_ba=1
+              else
+                is_ba=0
+              fi
+            fi
+
+            if [ "${is_ba}" = "1" ]; then
+              if gh release view "${tag}" >/dev/null 2>&1; then
+                echo "::error::${plugin}: build-affecting change but ${tag} is already released; bump version in ${plugin}/manifest.json"
+                exit 1
+              fi
+              make build-all "PLUGIN=${plugin}"
+              go run ./cmd/releaseinfo -plugin "${plugin}" -repo "${REPO}"
+              gh release create "${tag}" dist/${plugin}_* --target "${SHA}" --title "${plugin} ${version}" --notes "Automated release of ${plugin} ${version}."
+              go run ./cmd/genindex -o index.json
+              git add "${plugin}/manifest.json" index.json
+              git -c user.name='github-actions[bot]' -c user.email='github-actions[bot]@users.noreply.github.com' commit -m "chore: release ${plugin} ${version}"
+              ok=0
+              for i in 1 2 3 4 5; do
+                git fetch origin main
+                if git rebase origin/main && git push origin "HEAD:main"; then ok=1; break; fi
+                git rebase --abort 2>/dev/null || true
+                echo "push attempt ${i} failed, retrying"
+                sleep 5
+              done
+              if [ "${ok}" != "1" ]; then echo "::error::failed to push release commit for ${plugin}"; exit 1; fi
+            else
+              changed_index=1
+            fi
+          done
+
+          if [ "${changed_index}" = "1" ]; then
+            go run ./cmd/genindex -o index.json
+            git add index.json '*/manifest.json'
+            if ! git diff --cached --quiet; then
+              git -c user.name='github-actions[bot]' -c user.email='github-actions[bot]@users.noreply.github.com' commit -m "chore: regenerate plugin market index"
+              for i in 1 2 3 4 5; do
+                git fetch origin main
+                if git rebase origin/main && git push origin "HEAD:main"; then break; fi
+                git rebase --abort 2>/dev/null || true
+                sleep 5
+              done
+            fi
+          fi

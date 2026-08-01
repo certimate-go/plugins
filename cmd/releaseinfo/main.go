@@ -1,8 +1,3 @@
-// Command releaseinfo computes per-platform SHA256 checksums for a built
-// plugin's release binaries and writes a `release` block into that plugin's
-// manifest.json. genindex carries the block verbatim into index.json, giving
-// the certimate market consumer the repo/tag/assets/checksums it needs to
-// download and verify a plugin.
 package main
 
 import (
@@ -18,8 +13,6 @@ import (
 
 type target struct{ goos, goarch string }
 
-// targets is the platform matrix the consumer downloads. It must match the
-// Makefile `build-all` output naming: <plugin>_<os>_<arch> (+ .exe on windows).
 var targets = []target{
 	{"linux", "amd64"},
 	{"linux", "arm64"},
@@ -30,10 +23,7 @@ var targets = []target{
 
 var (
 	providerTypePattern = regexp.MustCompile(`^[a-z0-9][a-z0-9_.-]*$`)
-	// versionPattern mirrors what the consumer's semver parser accepts:
-	// major.minor.patch with an optional pre-release suffix (dropped at compare).
-	// No leading "v": the tag is built as <provider_type>/v<version>.
-	versionPattern = regexp.MustCompile(`^[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.]+)?$`)
+	versionPattern      = regexp.MustCompile(`^[0-9]+\.[0-9]+\.[0-9]+(-[A-Za-z0-9.]+)?$`)
 )
 
 func assetName(plugin, goos, goarch string) string {
@@ -55,8 +45,6 @@ func sha256File(path string) (string, error) {
 	return hex.EncodeToString(sum[:]), nil
 }
 
-// buildRelease reads the built binaries under distDir for plugin and returns
-// the release block (repo, tag, assets, checksums).
 func buildRelease(plugin, repo, version, distDir string) (map[string]any, error) {
 	assets := make(map[string]string, len(targets))
 	checksums := make(map[string]string, len(targets))
@@ -77,10 +65,6 @@ func buildRelease(plugin, repo, version, distDir string) (map[string]any, error)
 	}, nil
 }
 
-// applyRelease validates the plugin manifest at manifestPath, builds the
-// release block from the binaries in distDir, merges it into the manifest, and
-// returns the rendered JSON (sorted keys, two-space indent, trailing newline).
-// It does not write; callers write the bytes back.
 func applyRelease(manifestPath, plugin, repo, distDir string) ([]byte, error) {
 	data, err := os.ReadFile(manifestPath)
 	if err != nil {
@@ -90,7 +74,6 @@ func applyRelease(manifestPath, plugin, repo, distDir string) ([]byte, error) {
 	if err := json.Unmarshal(data, &m); err != nil {
 		return nil, fmt.Errorf("parse manifest %q: %w", manifestPath, err)
 	}
-
 	pt, _ := m["provider_type"].(string)
 	if !providerTypePattern.MatchString(pt) {
 		return nil, fmt.Errorf("manifest %q has invalid provider_type %q", manifestPath, pt)
@@ -102,13 +85,11 @@ func applyRelease(manifestPath, plugin, repo, distDir string) ([]byte, error) {
 	if !versionPattern.MatchString(version) {
 		return nil, fmt.Errorf("manifest %q has invalid version %q (want semver major.minor.patch)", manifestPath, version)
 	}
-
 	release, err := buildRelease(plugin, repo, version, distDir)
 	if err != nil {
 		return nil, err
 	}
 	m["release"] = release
-
 	buf, err := json.MarshalIndent(m, "", "  ")
 	if err != nil {
 		return nil, err
@@ -127,7 +108,6 @@ func main() {
 		fmt.Fprintln(os.Stderr, "usage: releaseinfo -plugin <provider_type> -repo <repo> [-dist dist] [-root .]")
 		os.Exit(2)
 	}
-
 	manifestPath := filepath.Join(*root, *plugin, "manifest.json")
 	out, err := applyRelease(manifestPath, *plugin, *repo, *distDir)
 	if err != nil {
