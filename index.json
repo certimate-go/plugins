@@ -33,7 +33,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "k8s",
@@ -68,7 +68,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "qiniu",
@@ -103,7 +103,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "qiniu",
@@ -138,7 +138,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "qiniu",
@@ -173,7 +173,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     }
   ]
 }
