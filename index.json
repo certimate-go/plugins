@@ -151,6 +151,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "qiniu-pili",
+      "release": {
+        "assets": {
+          "darwin/amd64": "qiniu-pili_darwin_amd64",
+          "darwin/arm64": "qiniu-pili_darwin_arm64",
+          "linux/amd64": "qiniu-pili_linux_amd64",
+          "linux/arm64": "qiniu-pili_linux_arm64",
+          "windows/amd64": "qiniu-pili_windows_amd64.exe"
+        },
+        "checksums": {
+          "darwin/amd64": "4d73e061c387b77015f2bc3eb5ee5f934ba5aa3b3fb1f9500c6dc0e3883cab73",
+          "darwin/arm64": "1ddd63167adc0214a7043b1833403448bf6ae1309699f6585e7efa46bfd6e8dc",
+          "linux/amd64": "59155f19c6a995a9f920708604515b50c277eb9de3fc2cac236b420a1883205e",
+          "linux/arm64": "c46ec026541435b3b14cb850f8d12a013f8949d52972628553a3e9894c593861",
+          "windows/amd64": "5858a13bed817dc564a48b0f18a025fd77235c49969484fb7bac18936136e90e"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "qiniu-pili/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
