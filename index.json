@@ -1,0 +1,89 @@
+{
+  "plugins": [
+    {
+      "access_provider_type": "dogecloud",
+      "binary": "dogecloud-cdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.dogecloud-cdn.name",
+      "icon": "dogecloud.png",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "dogecloud-cdn",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "k8s",
+      "binary": "k8s-secret",
+      "deploy_category": "other",
+      "display_name_key": "plugin.k8s-secret.name",
+      "icon": "kubernetes.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "k8s-secret",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "qiniu",
+      "binary": "qiniu-cdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.qiniu-cdn.name",
+      "icon": "qiniu.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "qiniu-cdn",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "qiniu",
+      "binary": "qiniu-kodo",
+      "deploy_category": "storage",
+      "display_name_key": "plugin.qiniu-kodo.name",
+      "icon": "qiniu.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "qiniu-kodo",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "qiniu",
+      "binary": "qiniu-pili",
+      "deploy_category": "av",
+      "display_name_key": "plugin.qiniu-pili.name",
+      "icon": "qiniu.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "qiniu-pili",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    }
+  ]
+}
