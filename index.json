@@ -116,6 +116,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "qiniu-kodo",
+      "release": {
+        "assets": {
+          "darwin/amd64": "qiniu-kodo_darwin_amd64",
+          "darwin/arm64": "qiniu-kodo_darwin_arm64",
+          "linux/amd64": "qiniu-kodo_linux_amd64",
+          "linux/arm64": "qiniu-kodo_linux_arm64",
+          "windows/amd64": "qiniu-kodo_windows_amd64.exe"
+        },
+        "checksums": {
+          "darwin/amd64": "9fc0d3691d079607bd602067e7b8d8ff7a4df752a01e0061f42edac4725ed5f8",
+          "darwin/arm64": "603a37e167c3a0a00360a643d8fb760793345e4271aee5856492d37e5835ba64",
+          "linux/amd64": "d479b6afe01fa45cb752b68eb88ea02a2637c15f8e644263c7bcf1a6e0a594af",
+          "linux/arm64": "eff40b7dbc40aeaa6aaeddc021347fae5520f562ca4713f4527c77aeb83e7da4",
+          "windows/amd64": "2c60f862e488fb5da93a8af831cc43e1f50b5161ec7b3989babda8704fa0240c"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "qiniu-kodo/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
