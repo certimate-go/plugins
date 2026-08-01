@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
+	deployer := &dogeCloudCdnDeployer{}
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: map[string]githubplugin.Plugin{
-			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: &dogeCloudCdnDeployer{}},
+			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: deployer},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})

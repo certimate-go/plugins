@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
+	deployer := &k8sSecretDeployer{}
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: map[string]githubplugin.Plugin{
-			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: &k8sSecretDeployer{}},
+			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: deployer},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})

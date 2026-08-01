@@ -7,10 +7,11 @@ import (
 )
 
 func main() {
+	deployer := &qiniuKodoDeployer{}
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: map[string]githubplugin.Plugin{
-			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: &qiniuKodoDeployer{}},
+			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: deployer},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})
