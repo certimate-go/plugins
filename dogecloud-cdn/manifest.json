@@ -1,15 +1,35 @@
 {
-  "version": "0.1.0",
-  "provider_type": "dogecloud-cdn",
   "access_provider_type": "dogecloud",
-  "display_name_key": "plugin.dogecloud-cdn.name",
-  "deploy_category": "cdn",
-  "protocol_version": 2,
-  "min_core_version": "",
-  "max_core_version": "",
   "binary": "dogecloud-cdn",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.dogecloud-cdn.name",
   "icon": "dogecloud.png",
-  "sha256": "",
+  "max_core_version": "",
+  "min_core_version": "",
   "priority": 100,
-  "usages": ["hosting"]
+  "protocol_version": 2,
+  "provider_type": "dogecloud-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "dogecloud-cdn_darwin_amd64",
+      "darwin/arm64": "dogecloud-cdn_darwin_arm64",
+      "linux/amd64": "dogecloud-cdn_linux_amd64",
+      "linux/arm64": "dogecloud-cdn_linux_arm64",
+      "windows/amd64": "dogecloud-cdn_windows_amd64.exe"
+    },
+    "checksums": {
+      "darwin/amd64": "6758367d2eeb186bffed7eb2c5a5406e9e259c4f178817b221ec0ab7964c8c18",
+      "darwin/arm64": "3de973b357bc8819d5f49eb9a9216571b95c66afe54817f2d19cd00df3db29b1",
+      "linux/amd64": "ad22899fc7211548bf2d0a862d9fdad2452440ebf8faba1ba346c319d31b40cb",
+      "linux/arm64": "8be60b54064522ca8bcfd7a065f5d92529fa1e42d8f7a67ba07dcf30baadefa0",
+      "windows/amd64": "799280ec99906ee1eeee80818180322a7fcabccbe24d3286b8bd17b9431e0522"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "dogecloud-cdn/v0.1.0"
+  },
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
 }
