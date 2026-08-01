@@ -48,21 +48,21 @@
       "provider_type": "k8s-secret",
       "release": {
         "assets": {
-          "darwin/amd64": "k8s-secret_darwin_amd64",
-          "darwin/arm64": "k8s-secret_darwin_arm64",
-          "linux/amd64": "k8s-secret_linux_amd64",
-          "linux/arm64": "k8s-secret_linux_arm64",
-          "windows/amd64": "k8s-secret_windows_amd64.exe"
+          "darwin/amd64": "k8s-secret_darwin_amd64.zip",
+          "darwin/arm64": "k8s-secret_darwin_arm64.zip",
+          "linux/amd64": "k8s-secret_linux_amd64.zip",
+          "linux/arm64": "k8s-secret_linux_arm64.zip",
+          "windows/amd64": "k8s-secret_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "5121af0e887c71ec7f9628af5d7428bd78bfac936b1bcba061b5c4d9eb356755",
-          "darwin/arm64": "33fec460fec38493575aa48fda253fa7b5b1d595884f6a8c83ba7f4ebdf2a8cc",
-          "linux/amd64": "28770fc1cdbbee54c74ec00eccb0e6704e36febb2c2b336e234899dc85b3b9ad",
-          "linux/arm64": "bc953514a4ed9e7bda4dbf316ec4c406c30721510ccd0421710822aa42bc2afe",
-          "windows/amd64": "3afd6537aa7edbf5e1c78ce2a62158326775b5b784920e61a3cb1d889c612d63"
+          "darwin/amd64": "fb7a33de8afd4cd136edf1f27829851c70557deee135064ba0cc7d1cc1befafa",
+          "darwin/arm64": "19f7d7f328e7c52e1a2dc664d7d1fe14d8cb56c6338e1344a1ecf9f1295ba34a",
+          "linux/amd64": "4d3c237766b9caf559817dde6062536d330325f3dc35b4a47dd01a294823a811",
+          "linux/arm64": "d5352a543f21c0d8708ffb50f0fbafdfbef20efa978d599a4254afa8b6f58674",
+          "windows/amd64": "1a79d507c628e54857cd4444a1de5a6952598704c7db1038bdd59e6b8cb57386"
         },
         "repo": "certimate-go/plugins",
-        "tag": "k8s-secret/v0.1.0"
+        "tag": "k8s-secret/v0.1.1"
       },
       "sha256": "",
       "usages": [
