@@ -11,6 +11,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "dogecloud-cdn",
+      "release": {
+        "assets": {
+          "darwin/amd64": "dogecloud-cdn_darwin_amd64",
+          "darwin/arm64": "dogecloud-cdn_darwin_arm64",
+          "linux/amd64": "dogecloud-cdn_linux_amd64",
+          "linux/arm64": "dogecloud-cdn_linux_arm64",
+          "windows/amd64": "dogecloud-cdn_windows_amd64.exe"
+        },
+        "checksums": {
+          "darwin/amd64": "6758367d2eeb186bffed7eb2c5a5406e9e259c4f178817b221ec0ab7964c8c18",
+          "darwin/arm64": "3de973b357bc8819d5f49eb9a9216571b95c66afe54817f2d19cd00df3db29b1",
+          "linux/amd64": "ad22899fc7211548bf2d0a862d9fdad2452440ebf8faba1ba346c319d31b40cb",
+          "linux/arm64": "8be60b54064522ca8bcfd7a065f5d92529fa1e42d8f7a67ba07dcf30baadefa0",
+          "windows/amd64": "799280ec99906ee1eeee80818180322a7fcabccbe24d3286b8bd17b9431e0522"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "dogecloud-cdn/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
@@ -28,6 +46,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "k8s-secret",
+      "release": {
+        "assets": {
+          "darwin/amd64": "k8s-secret_darwin_amd64",
+          "darwin/arm64": "k8s-secret_darwin_arm64",
+          "linux/amd64": "k8s-secret_linux_amd64",
+          "linux/arm64": "k8s-secret_linux_arm64",
+          "windows/amd64": "k8s-secret_windows_amd64.exe"
+        },
+        "checksums": {
+          "darwin/amd64": "5121af0e887c71ec7f9628af5d7428bd78bfac936b1bcba061b5c4d9eb356755",
+          "darwin/arm64": "33fec460fec38493575aa48fda253fa7b5b1d595884f6a8c83ba7f4ebdf2a8cc",
+          "linux/amd64": "28770fc1cdbbee54c74ec00eccb0e6704e36febb2c2b336e234899dc85b3b9ad",
+          "linux/arm64": "bc953514a4ed9e7bda4dbf316ec4c406c30721510ccd0421710822aa42bc2afe",
+          "windows/amd64": "3afd6537aa7edbf5e1c78ce2a62158326775b5b784920e61a3cb1d889c612d63"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "k8s-secret/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
@@ -45,6 +81,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "qiniu-cdn",
+      "release": {
+        "assets": {
+          "darwin/amd64": "qiniu-cdn_darwin_amd64",
+          "darwin/arm64": "qiniu-cdn_darwin_arm64",
+          "linux/amd64": "qiniu-cdn_linux_amd64",
+          "linux/arm64": "qiniu-cdn_linux_arm64",
+          "windows/amd64": "qiniu-cdn_windows_amd64.exe"
+        },
+        "checksums": {
+          "darwin/amd64": "45fd5572a89f3e87b3028add74e40e1ef85b88c3f9d82f3d4e19f4fdb5073e44",
+          "darwin/arm64": "cc9db31ae7aebc911f8d235a9d73a5780a9e230d2e2beffb74cda38ec2e4ebf1",
+          "linux/amd64": "99f7b4b4fb3eb49ed2213abec5ad9279a29d3cd1702f1d89297638f06f800cf4",
+          "linux/arm64": "75870982baa679d5372ee40b45d79563c715a320f0c7ec4eb9c62695cbf0c1b0",
+          "windows/amd64": "c93b8465c2de8b09ee8d77dc516e926eb04497e471f546728b38419c5a488615"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "qiniu-cdn/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
@@ -62,6 +116,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "qiniu-kodo",
+      "release": {
+        "assets": {
+          "darwin/amd64": "qiniu-kodo_darwin_amd64",
+          "darwin/arm64": "qiniu-kodo_darwin_arm64",
+          "linux/amd64": "qiniu-kodo_linux_amd64",
+          "linux/arm64": "qiniu-kodo_linux_arm64",
+          "windows/amd64": "qiniu-kodo_windows_amd64.exe"
+        },
+        "checksums": {
+          "darwin/amd64": "9fc0d3691d079607bd602067e7b8d8ff7a4df752a01e0061f42edac4725ed5f8",
+          "darwin/arm64": "603a37e167c3a0a00360a643d8fb760793345e4271aee5856492d37e5835ba64",
+          "linux/amd64": "d479b6afe01fa45cb752b68eb88ea02a2637c15f8e644263c7bcf1a6e0a594af",
+          "linux/arm64": "eff40b7dbc40aeaa6aaeddc021347fae5520f562ca4713f4527c77aeb83e7da4",
+          "windows/amd64": "2c60f862e488fb5da93a8af831cc43e1f50b5161ec7b3989babda8704fa0240c"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "qiniu-kodo/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
@@ -79,6 +151,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "qiniu-pili",
+      "release": {
+        "assets": {
+          "darwin/amd64": "qiniu-pili_darwin_amd64",
+          "darwin/arm64": "qiniu-pili_darwin_arm64",
+          "linux/amd64": "qiniu-pili_linux_amd64",
+          "linux/arm64": "qiniu-pili_linux_arm64",
+          "windows/amd64": "qiniu-pili_windows_amd64.exe"
+        },
+        "checksums": {
+          "darwin/amd64": "4d73e061c387b77015f2bc3eb5ee5f934ba5aa3b3fb1f9500c6dc0e3883cab73",
+          "darwin/arm64": "1ddd63167adc0214a7043b1833403448bf6ae1309699f6585e7efa46bfd6e8dc",
+          "linux/amd64": "59155f19c6a995a9f920708604515b50c277eb9de3fc2cac236b420a1883205e",
+          "linux/arm64": "c46ec026541435b3b14cb850f8d12a013f8949d52972628553a3e9894c593861",
+          "windows/amd64": "5858a13bed817dc564a48b0f18a025fd77235c49969484fb7bac18936136e90e"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "qiniu-pili/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
