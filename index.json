@@ -118,21 +118,21 @@
       "provider_type": "qiniu-kodo",
       "release": {
         "assets": {
-          "darwin/amd64": "qiniu-kodo_darwin_amd64",
-          "darwin/arm64": "qiniu-kodo_darwin_arm64",
-          "linux/amd64": "qiniu-kodo_linux_amd64",
-          "linux/arm64": "qiniu-kodo_linux_arm64",
-          "windows/amd64": "qiniu-kodo_windows_amd64.exe"
+          "darwin/amd64": "qiniu-kodo_darwin_amd64.zip",
+          "darwin/arm64": "qiniu-kodo_darwin_arm64.zip",
+          "linux/amd64": "qiniu-kodo_linux_amd64.zip",
+          "linux/arm64": "qiniu-kodo_linux_arm64.zip",
+          "windows/amd64": "qiniu-kodo_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "9fc0d3691d079607bd602067e7b8d8ff7a4df752a01e0061f42edac4725ed5f8",
-          "darwin/arm64": "603a37e167c3a0a00360a643d8fb760793345e4271aee5856492d37e5835ba64",
-          "linux/amd64": "d479b6afe01fa45cb752b68eb88ea02a2637c15f8e644263c7bcf1a6e0a594af",
-          "linux/arm64": "eff40b7dbc40aeaa6aaeddc021347fae5520f562ca4713f4527c77aeb83e7da4",
-          "windows/amd64": "2c60f862e488fb5da93a8af831cc43e1f50b5161ec7b3989babda8704fa0240c"
+          "darwin/amd64": "96ef8e10f3b7d4305eeba711d70846b66a2d36a4d3e4af71dfdbef896785738f",
+          "darwin/arm64": "ebb6eb08551b441636b8d3eac0c95ae3d5bd0e86ba5b4e18d5ef2a56b20b53a8",
+          "linux/amd64": "eb62beb4b0f673d45c499ebf5c407a44750a90adba2e7e2c50de64369b331a51",
+          "linux/arm64": "13982ebbf17611bde0c56a94c343bff6daf026db5a29aec522b8d9cf46d9253a",
+          "windows/amd64": "493ff2b2294db1d1f5a2f0507c0e4f3b854301b47527629e9f93e2c9b2da625b"
         },
         "repo": "certimate-go/plugins",
-        "tag": "qiniu-kodo/v0.1.0"
+        "tag": "qiniu-kodo/v0.1.1"
       },
       "sha256": "",
       "usages": [
