@@ -83,7 +83,6 @@ jobs:
 
           for plugin in $(echo "${PLUGINS}" | tr ',' ' '); do
             version=$(jq -r .version "${plugin}/manifest.json")
-            icon=$(jq -r .icon "${plugin}/manifest.json")
             tag="${plugin}/v${version}"
 
             if [ "${force}" = "1" ] || [ "${zero_before}" = "1" ]; then
@@ -103,10 +102,7 @@ jobs:
               fi
               make build-all "PLUGIN=${plugin}"
               go run ./cmd/releaseinfo -plugin "${plugin}" -repo "${REPO}"
-              assets=(dist/${plugin}_*)
-              if [ -n "${icon}" ] && [ "${icon}" != "null" ] && [ -f "${plugin}/${icon}" ]; then
-                assets+=("${plugin}/${icon}")
-              fi
+              assets=(dist/${plugin}_*.zip)
               gh release create "${tag}" "${assets[@]}" --target "${SHA}" --title "${plugin} ${version}" --notes "Automated release of ${plugin} ${version}."
               go run ./cmd/genindex -o index.json
               git add "${plugin}/manifest.json" index.json

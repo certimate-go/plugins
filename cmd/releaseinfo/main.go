@@ -27,11 +27,7 @@ var (
 )
 
 func assetName(plugin, goos, goarch string) string {
-	name := fmt.Sprintf("%s_%s_%s", plugin, goos, goarch)
-	if goos == "windows" {
-		name += ".exe"
-	}
-	return name
+	return fmt.Sprintf("%s_%s_%s.zip", plugin, goos, goarch)
 }
 
 func assetKey(goos, goarch string) string { return goos + "/" + goarch }

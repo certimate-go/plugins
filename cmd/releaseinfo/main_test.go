@@ -72,11 +72,11 @@ func TestApplyRelease_HappyPath(t *testing.T) {
 		t.Fatalf("tag: want alpha/v1.2.0, got %v", rel["tag"])
 	}
 	assets, _ := rel["assets"].(map[string]any)
-	if assets["linux/amd64"] != "alpha_linux_amd64" {
-		t.Fatalf("assets[linux/amd64]: want alpha_linux_amd64, got %v", assets["linux/amd64"])
+	if assets["linux/amd64"] != "alpha_linux_amd64.zip" {
+		t.Fatalf("assets[linux/amd64]: want alpha_linux_amd64.zip, got %v", assets["linux/amd64"])
 	}
-	if assets["windows/amd64"] != "alpha_windows_amd64.exe" {
-		t.Fatalf("assets[windows/amd64]: want alpha_windows_amd64.exe, got %v", assets["windows/amd64"])
+	if assets["windows/amd64"] != "alpha_windows_amd64.zip" {
+		t.Fatalf("assets[windows/amd64]: want alpha_windows_amd64.zip, got %v", assets["windows/amd64"])
 	}
 	if len(assets) != len(targets) {
 		t.Fatalf("assets: want %d entries, got %d", len(targets), len(assets))
@@ -122,7 +122,7 @@ func TestApplyRelease_MissingBinaryErrors(t *testing.T) {
 		`{"provider_type":"alpha","version":"1.0.0"}`,
 		[]byte("x"),
 	)
-	if err := os.Remove(filepath.Join(distDir, "alpha_linux_arm64")); err != nil {
+	if err := os.Remove(filepath.Join(distDir, "alpha_linux_arm64.zip")); err != nil {
 		t.Fatal(err)
 	}
 	_, err := applyRelease(filepath.Join(root, "alpha", "manifest.json"), "alpha", "o/r", distDir)

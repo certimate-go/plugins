@@ -10,10 +10,13 @@ Plugins are released automatically by the `release` workflow on every push to
 3. Push to `main` (via a pull request).
 
 The workflow detects the changed plugin, cross-compiles it for every supported
-platform, computes per-binary SHA256 checksums, publishes a GitHub Release
-tagged `<provider_type>/v<version>`, writes a `release` block into the plugin's
-`manifest.json`, and regenerates `index.json`. The certimate market consumer
-reads that index to resolve and verify downloads.
+platform, packages each platform build as a ZIP archive (`<plugin>_<os>_<arch>.zip`)
+containing the plugin binary (named per the manifest `binary` field), the
+plugin's `manifest.json`, and its icon, computes a per-ZIP SHA256 checksum,
+publishes a GitHub Release tagged `<provider_type>/v<version>` with the ZIPs as
+assets, writes a `release` block into the plugin's `manifest.json`, and
+regenerates `index.json`. The certimate market consumer reads that index to
+resolve, verify, and extract downloads.
 
 ## The version-bump rule
 
