@@ -24,10 +24,11 @@ build:
 	go build -o $(OUTPUT_DIR)/$(PLUGIN) ./$(PLUGIN)
 
 build-all:
-	GOOS=linux   GOARCH=amd64 go build -o $(OUTPUT_DIR)/$(PLUGIN)-linux-amd64   ./$(PLUGIN)
-	GOOS=darwin  GOARCH=amd64 go build -o $(OUTPUT_DIR)/$(PLUGIN)-darwin-amd64  ./$(PLUGIN)
-	GOOS=darwin  GOARCH=arm64 go build -o $(OUTPUT_DIR)/$(PLUGIN)-darwin-arm64  ./$(PLUGIN)
-	GOOS=windows GOARCH=amd64 go build -o $(OUTPUT_DIR)/$(PLUGIN)-windows-amd64.exe ./$(PLUGIN)
+	GOOS=linux   GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o $(OUTPUT_DIR)/$(PLUGIN)_linux_amd64     ./$(PLUGIN)
+	GOOS=linux   GOARCH=arm64 CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o $(OUTPUT_DIR)/$(PLUGIN)_linux_arm64     ./$(PLUGIN)
+	GOOS=darwin  GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o $(OUTPUT_DIR)/$(PLUGIN)_darwin_amd64    ./$(PLUGIN)
+	GOOS=darwin  GOARCH=arm64 CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o $(OUTPUT_DIR)/$(PLUGIN)_darwin_arm64    ./$(PLUGIN)
+	GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o $(OUTPUT_DIR)/$(PLUGIN)_windows_amd64.exe ./$(PLUGIN)
 
 test:
 	go test ./...
