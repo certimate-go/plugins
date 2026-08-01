@@ -2,6 +2,7 @@ package qiniusdk
 
 import (
 	"context"
+	"fmt"
 	"net/http"
 
 	"github.com/qiniu/go-sdk/v7/auth"
@@ -38,7 +39,7 @@ func (m *KodoManager) BindBucketCert(ctx context.Context, domain string, certId 
 	}
 	resp := new(BindBucketCertResponse)
 	if err := m.client.CallWithJson(ctx, resp, http.MethodPut, urlf("cert/bind"), nil, req); err != nil {
-		return nil, err
+		return nil, fmt.Errorf("kodo.BindCert(domain=%q, certId=%q): %w | %s", domain, certId, err, formatSdkError(err))
 	}
 	return resp, nil
 }

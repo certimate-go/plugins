@@ -11,8 +11,8 @@ import (
 	"github.com/qiniu/go-sdk/v7/auth"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
-	qiniusslcert "github.com/certimate-go/plugins/internal/qiniusslcert"
 	qiniusdk "github.com/certimate-go/plugins/internal/qiniusdk"
+	qiniusslcert "github.com/certimate-go/plugins/internal/qiniusslcert"
 )
 
 //go:embed schema
@@ -99,10 +99,19 @@ func (d *qiniuKodoDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 	kodoManager := qiniusdk.NewKodoManager(auth.New(access.AccessKey, access.SecretKey))
 
 	bindResp, err := kodoManager.BindBucketCert(ctx, extended.Domain, upres.CertId)
-	logger.Debug("sdk request 'kodo.BindCert'", slog.String("params.domain", extended.Domain), slog.String("params.certId", upres.CertId), slog.Any("response", bindResp))
 	if err != nil {
+		logger.Error("failed to execute sdk request 'kodo.BindCert'",
+			slog.String("params.domain", extended.Domain),
+			slog.String("params.certId", upres.CertId),
+			slog.Any("error", err),
+		)
 		return nil, fmt.Errorf("failed to execute sdk request 'kodo.BindCert': %w", err)
 	}
+	logger.Info("sdk request 'kodo.BindCert' succeeded",
+		slog.String("params.domain", extended.Domain),
+		slog.String("params.certId", upres.CertId),
+		slog.Any("response", bindResp),
+	)
 
 	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
 }

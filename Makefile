@@ -1,4 +1,4 @@
-.PHONY: init build build-all test tidy clean
+.PHONY: init build build-all test tidy clean index
 
 PLUGIN := qiniu-cdn
 OUTPUT_DIR := dist
@@ -34,6 +34,9 @@ test:
 
 tidy:
 	go mod tidy
+
+index:
+	go run ./cmd/genindex -o index.json
 
 clean:
 	rm -rf $(OUTPUT_DIR)
