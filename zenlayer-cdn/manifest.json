@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "zenlayer-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "zenlayer-cdn_darwin_amd64.zip",
+      "darwin/arm64": "zenlayer-cdn_darwin_arm64.zip",
+      "linux/amd64": "zenlayer-cdn_linux_amd64.zip",
+      "linux/arm64": "zenlayer-cdn_linux_arm64.zip",
+      "windows/amd64": "zenlayer-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "43cfce3d42afbe79926f1c59b1961160ea3efe124f07426a5ea9e0a0429b70df",
+      "darwin/arm64": "3c92453e38c14e3a9fa32b9d56ca74439e57412366273c2d65b8ea4efb5faf6c",
+      "linux/amd64": "291b38dc2ee41276bde1f5c6bbff741e752c6a758bc4a3596ac747af122fc14f",
+      "linux/arm64": "72834640d67527581df3f72e21a5247e472885c37db4872345dead8eeb4efd3f",
+      "windows/amd64": "fc3731d6308d6ea236cfefdd60c798564152b1f3e149f3502d5f66fe0fcd9e35"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "zenlayer-cdn/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
