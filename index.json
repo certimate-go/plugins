@@ -13,21 +13,21 @@
       "provider_type": "dogecloud-cdn",
       "release": {
         "assets": {
-          "darwin/amd64": "dogecloud-cdn_darwin_amd64",
-          "darwin/arm64": "dogecloud-cdn_darwin_arm64",
-          "linux/amd64": "dogecloud-cdn_linux_amd64",
-          "linux/arm64": "dogecloud-cdn_linux_arm64",
-          "windows/amd64": "dogecloud-cdn_windows_amd64.exe"
+          "darwin/amd64": "dogecloud-cdn_darwin_amd64.zip",
+          "darwin/arm64": "dogecloud-cdn_darwin_arm64.zip",
+          "linux/amd64": "dogecloud-cdn_linux_amd64.zip",
+          "linux/arm64": "dogecloud-cdn_linux_arm64.zip",
+          "windows/amd64": "dogecloud-cdn_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "6758367d2eeb186bffed7eb2c5a5406e9e259c4f178817b221ec0ab7964c8c18",
-          "darwin/arm64": "3de973b357bc8819d5f49eb9a9216571b95c66afe54817f2d19cd00df3db29b1",
-          "linux/amd64": "ad22899fc7211548bf2d0a862d9fdad2452440ebf8faba1ba346c319d31b40cb",
-          "linux/arm64": "8be60b54064522ca8bcfd7a065f5d92529fa1e42d8f7a67ba07dcf30baadefa0",
-          "windows/amd64": "799280ec99906ee1eeee80818180322a7fcabccbe24d3286b8bd17b9431e0522"
+          "darwin/amd64": "e914bf5246bab300ce531bdba2eccac95697be3150328b81e4b53f366d63c9dc",
+          "darwin/arm64": "e1352b1f510ae518b461b4a97b633e783e91e99db70d6a35ce521418b483d10f",
+          "linux/amd64": "9f0f59f4dda12ae1f30887e77fe816d48bef65995bbe9a0695d924faa7645e59",
+          "linux/arm64": "a62f61d85afbab496c41af63d08aed66431d1b804bbc4a48a05eceee12bfb5b4",
+          "windows/amd64": "0837bbe466d216d93509502e91a4f26436c05e0cace2a66b9ab1c6e406c8a0b3"
         },
         "repo": "certimate-go/plugins",
-        "tag": "dogecloud-cdn/v0.1.0"
+        "tag": "dogecloud-cdn/v0.1.1"
       },
       "sha256": "",
       "usages": [
@@ -48,21 +48,21 @@
       "provider_type": "k8s-secret",
       "release": {
         "assets": {
-          "darwin/amd64": "k8s-secret_darwin_amd64",
-          "darwin/arm64": "k8s-secret_darwin_arm64",
-          "linux/amd64": "k8s-secret_linux_amd64",
-          "linux/arm64": "k8s-secret_linux_arm64",
-          "windows/amd64": "k8s-secret_windows_amd64.exe"
+          "darwin/amd64": "k8s-secret_darwin_amd64.zip",
+          "darwin/arm64": "k8s-secret_darwin_arm64.zip",
+          "linux/amd64": "k8s-secret_linux_amd64.zip",
+          "linux/arm64": "k8s-secret_linux_arm64.zip",
+          "windows/amd64": "k8s-secret_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "5121af0e887c71ec7f9628af5d7428bd78bfac936b1bcba061b5c4d9eb356755",
-          "darwin/arm64": "33fec460fec38493575aa48fda253fa7b5b1d595884f6a8c83ba7f4ebdf2a8cc",
-          "linux/amd64": "28770fc1cdbbee54c74ec00eccb0e6704e36febb2c2b336e234899dc85b3b9ad",
-          "linux/arm64": "bc953514a4ed9e7bda4dbf316ec4c406c30721510ccd0421710822aa42bc2afe",
-          "windows/amd64": "3afd6537aa7edbf5e1c78ce2a62158326775b5b784920e61a3cb1d889c612d63"
+          "darwin/amd64": "fb7a33de8afd4cd136edf1f27829851c70557deee135064ba0cc7d1cc1befafa",
+          "darwin/arm64": "19f7d7f328e7c52e1a2dc664d7d1fe14d8cb56c6338e1344a1ecf9f1295ba34a",
+          "linux/amd64": "4d3c237766b9caf559817dde6062536d330325f3dc35b4a47dd01a294823a811",
+          "linux/arm64": "d5352a543f21c0d8708ffb50f0fbafdfbef20efa978d599a4254afa8b6f58674",
+          "windows/amd64": "1a79d507c628e54857cd4444a1de5a6952598704c7db1038bdd59e6b8cb57386"
         },
         "repo": "certimate-go/plugins",
-        "tag": "k8s-secret/v0.1.0"
+        "tag": "k8s-secret/v0.1.1"
       },
       "sha256": "",
       "usages": [
@@ -83,21 +83,21 @@
       "provider_type": "qiniu-cdn",
       "release": {
         "assets": {
-          "darwin/amd64": "qiniu-cdn_darwin_amd64",
-          "darwin/arm64": "qiniu-cdn_darwin_arm64",
-          "linux/amd64": "qiniu-cdn_linux_amd64",
-          "linux/arm64": "qiniu-cdn_linux_arm64",
-          "windows/amd64": "qiniu-cdn_windows_amd64.exe"
+          "darwin/amd64": "qiniu-cdn_darwin_amd64.zip",
+          "darwin/arm64": "qiniu-cdn_darwin_arm64.zip",
+          "linux/amd64": "qiniu-cdn_linux_amd64.zip",
+          "linux/arm64": "qiniu-cdn_linux_arm64.zip",
+          "windows/amd64": "qiniu-cdn_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "45fd5572a89f3e87b3028add74e40e1ef85b88c3f9d82f3d4e19f4fdb5073e44",
-          "darwin/arm64": "cc9db31ae7aebc911f8d235a9d73a5780a9e230d2e2beffb74cda38ec2e4ebf1",
-          "linux/amd64": "99f7b4b4fb3eb49ed2213abec5ad9279a29d3cd1702f1d89297638f06f800cf4",
-          "linux/arm64": "75870982baa679d5372ee40b45d79563c715a320f0c7ec4eb9c62695cbf0c1b0",
-          "windows/amd64": "c93b8465c2de8b09ee8d77dc516e926eb04497e471f546728b38419c5a488615"
+          "darwin/amd64": "fcac9e22e61a979c73294f1ab84c5d4d701b1f37946b3d66e04b771f6df74db0",
+          "darwin/arm64": "d071449871c8cdb2e973a1639a984b13540ac79c897c5bf1d8dc222a19464147",
+          "linux/amd64": "cc601057ab1f84f85827527afe8334ab81ceeef8c45feb4925799d7cdbbddda7",
+          "linux/arm64": "1daf4b375b30ac49d64bfb95a54dd00fbce8b830a5b4d145e9cb99cf6d41a79e",
+          "windows/amd64": "ac8359a9338948da269721394325e2ecfa47c60835bc76cc0380dfa57eee7b3e"
         },
         "repo": "certimate-go/plugins",
-        "tag": "qiniu-cdn/v0.1.0"
+        "tag": "qiniu-cdn/v0.1.1"
       },
       "sha256": "",
       "usages": [
@@ -118,21 +118,21 @@
       "provider_type": "qiniu-kodo",
       "release": {
         "assets": {
-          "darwin/amd64": "qiniu-kodo_darwin_amd64",
-          "darwin/arm64": "qiniu-kodo_darwin_arm64",
-          "linux/amd64": "qiniu-kodo_linux_amd64",
-          "linux/arm64": "qiniu-kodo_linux_arm64",
-          "windows/amd64": "qiniu-kodo_windows_amd64.exe"
+          "darwin/amd64": "qiniu-kodo_darwin_amd64.zip",
+          "darwin/arm64": "qiniu-kodo_darwin_arm64.zip",
+          "linux/amd64": "qiniu-kodo_linux_amd64.zip",
+          "linux/arm64": "qiniu-kodo_linux_arm64.zip",
+          "windows/amd64": "qiniu-kodo_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "9fc0d3691d079607bd602067e7b8d8ff7a4df752a01e0061f42edac4725ed5f8",
-          "darwin/arm64": "603a37e167c3a0a00360a643d8fb760793345e4271aee5856492d37e5835ba64",
-          "linux/amd64": "d479b6afe01fa45cb752b68eb88ea02a2637c15f8e644263c7bcf1a6e0a594af",
-          "linux/arm64": "eff40b7dbc40aeaa6aaeddc021347fae5520f562ca4713f4527c77aeb83e7da4",
-          "windows/amd64": "2c60f862e488fb5da93a8af831cc43e1f50b5161ec7b3989babda8704fa0240c"
+          "darwin/amd64": "96ef8e10f3b7d4305eeba711d70846b66a2d36a4d3e4af71dfdbef896785738f",
+          "darwin/arm64": "ebb6eb08551b441636b8d3eac0c95ae3d5bd0e86ba5b4e18d5ef2a56b20b53a8",
+          "linux/amd64": "eb62beb4b0f673d45c499ebf5c407a44750a90adba2e7e2c50de64369b331a51",
+          "linux/arm64": "13982ebbf17611bde0c56a94c343bff6daf026db5a29aec522b8d9cf46d9253a",
+          "windows/amd64": "493ff2b2294db1d1f5a2f0507c0e4f3b854301b47527629e9f93e2c9b2da625b"
         },
         "repo": "certimate-go/plugins",
-        "tag": "qiniu-kodo/v0.1.0"
+        "tag": "qiniu-kodo/v0.1.1"
       },
       "sha256": "",
       "usages": [
@@ -153,21 +153,21 @@
       "provider_type": "qiniu-pili",
       "release": {
         "assets": {
-          "darwin/amd64": "qiniu-pili_darwin_amd64",
-          "darwin/arm64": "qiniu-pili_darwin_arm64",
-          "linux/amd64": "qiniu-pili_linux_amd64",
-          "linux/arm64": "qiniu-pili_linux_arm64",
-          "windows/amd64": "qiniu-pili_windows_amd64.exe"
+          "darwin/amd64": "qiniu-pili_darwin_amd64.zip",
+          "darwin/arm64": "qiniu-pili_darwin_arm64.zip",
+          "linux/amd64": "qiniu-pili_linux_amd64.zip",
+          "linux/arm64": "qiniu-pili_linux_arm64.zip",
+          "windows/amd64": "qiniu-pili_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "4d73e061c387b77015f2bc3eb5ee5f934ba5aa3b3fb1f9500c6dc0e3883cab73",
-          "darwin/arm64": "1ddd63167adc0214a7043b1833403448bf6ae1309699f6585e7efa46bfd6e8dc",
-          "linux/amd64": "59155f19c6a995a9f920708604515b50c277eb9de3fc2cac236b420a1883205e",
-          "linux/arm64": "c46ec026541435b3b14cb850f8d12a013f8949d52972628553a3e9894c593861",
-          "windows/amd64": "5858a13bed817dc564a48b0f18a025fd77235c49969484fb7bac18936136e90e"
+          "darwin/amd64": "45c00cce8222682a62ea42ed816a45b8d3f5408ab7051d4fa7b5c98fd2f33603",
+          "darwin/arm64": "c951a50cda7bde4dadd1d7faeddc000a9b903d0dc7b88b98e351089ecb38efed",
+          "linux/amd64": "9de7a6816fa7baeb595100fd4abe704a4bce92e8b0ef1af793c4c50dc3c1729e",
+          "linux/arm64": "f1e2b100aaacf8be641ffb2f788761d8c17e269cac99c0a4956eaa7defdafbb7",
+          "windows/amd64": "ccd91a5493cbdbfc80308f32a640d1d6ffc9b5539f641955383b1a73c7fd6230"
         },
         "repo": "certimate-go/plugins",
-        "tag": "qiniu-pili/v0.1.0"
+        "tag": "qiniu-pili/v0.1.1"
       },
       "sha256": "",
       "usages": [

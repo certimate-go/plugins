@@ -11,21 +11,21 @@
   "provider_type": "qiniu-cdn",
   "release": {
     "assets": {
-      "darwin/amd64": "qiniu-cdn_darwin_amd64",
-      "darwin/arm64": "qiniu-cdn_darwin_arm64",
-      "linux/amd64": "qiniu-cdn_linux_amd64",
-      "linux/arm64": "qiniu-cdn_linux_arm64",
-      "windows/amd64": "qiniu-cdn_windows_amd64.exe"
+      "darwin/amd64": "qiniu-cdn_darwin_amd64.zip",
+      "darwin/arm64": "qiniu-cdn_darwin_arm64.zip",
+      "linux/amd64": "qiniu-cdn_linux_amd64.zip",
+      "linux/arm64": "qiniu-cdn_linux_arm64.zip",
+      "windows/amd64": "qiniu-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "45fd5572a89f3e87b3028add74e40e1ef85b88c3f9d82f3d4e19f4fdb5073e44",
-      "darwin/arm64": "cc9db31ae7aebc911f8d235a9d73a5780a9e230d2e2beffb74cda38ec2e4ebf1",
-      "linux/amd64": "99f7b4b4fb3eb49ed2213abec5ad9279a29d3cd1702f1d89297638f06f800cf4",
-      "linux/arm64": "75870982baa679d5372ee40b45d79563c715a320f0c7ec4eb9c62695cbf0c1b0",
-      "windows/amd64": "c93b8465c2de8b09ee8d77dc516e926eb04497e471f546728b38419c5a488615"
+      "darwin/amd64": "fcac9e22e61a979c73294f1ab84c5d4d701b1f37946b3d66e04b771f6df74db0",
+      "darwin/arm64": "d071449871c8cdb2e973a1639a984b13540ac79c897c5bf1d8dc222a19464147",
+      "linux/amd64": "cc601057ab1f84f85827527afe8334ab81ceeef8c45feb4925799d7cdbbddda7",
+      "linux/arm64": "1daf4b375b30ac49d64bfb95a54dd00fbce8b830a5b4d145e9cb99cf6d41a79e",
+      "windows/amd64": "ac8359a9338948da269721394325e2ecfa47c60835bc76cc0380dfa57eee7b3e"
     },
     "repo": "certimate-go/plugins",
-    "tag": "qiniu-cdn/v0.1.0"
+    "tag": "qiniu-cdn/v0.1.1"
   },
   "sha256": "",
   "usages": [
