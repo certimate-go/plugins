@@ -1,0 +1,23 @@
+{
+  "plugin.zenlayer-ga.name": "Zenlayer - 全球智能加速 ZGA",
+  "plugin.zenlayer-ga.deploy.deploy_target.label": "证书部署方式",
+  "plugin.zenlayer-ga.deploy.deploy_target.placeholder": "请选择证书部署方式",
+  "plugin.zenlayer-ga.deploy.deploy_target.option.accelerator.label": "部署到指定全球网络加速器",
+  "plugin.zenlayer-ga.deploy.deploy_target.option.certificate.label": "替换指定证书",
+  "plugin.zenlayer-ga.deploy.accelerator_id.label": "Zenlayer ZGA 加速器 ID",
+  "plugin.zenlayer-ga.deploy.accelerator_id.placeholder": "请输入 Zenlayer ZGA 加速器 ID",
+  "plugin.zenlayer-ga.deploy.accelerator_id.tooltip": "这是什么？请参阅 <a href=\"https://console.zenlayer.com/gia/\" target=\"_blank\">https://console.zenlayer.com/gia/</a>",
+  "plugin.zenlayer-ga.deploy.certificate_id.label": "Zenlayer ZGA 证书 ID",
+  "plugin.zenlayer-ga.deploy.certificate_id.placeholder": "请输入 Zenlayer ZGA 证书 ID",
+  "plugin.zenlayer-ga.deploy.certificate_id.tooltip": "这是什么？请参阅 <a href=\"https://console.zenlayer.com/gia/\" target=\"_blank\">https://console.zenlayer.com/gia/</a>",
+  "plugin.zenlayer.access.access_key_id.label": "Zenlayer AccessKeyID",
+  "plugin.zenlayer.access.access_key_id.placeholder": "请输入 Zenlayer AccessKeyID",
+  "plugin.zenlayer.access.access_key_id.tooltip": "这是什么？请参阅 <a href=\"https://docs.console.zenlayer.com/welcome/cn/platform/team-management/generate-an-api-access-key\" target=\"_blank\">https://docs.console.zenlayer.com/welcome/cn/platform/team-management/generate-an-api-access-key</a>",
+  "plugin.zenlayer.access.access_key_password.label": "Zenlayer AccessKeyPassword",
+  "plugin.zenlayer.access.access_key_password.placeholder": "请输入 Zenlayer AccessKeyPassword",
+  "plugin.zenlayer.access.access_key_password.tooltip": "这是什么？请参阅 <a href=\"https://docs.console.zenlayer.com/welcome/cn/platform/team-management/generate-an-api-access-key\" target=\"_blank\">https://docs.console.zenlayer.com/welcome/cn/platform/team-management/generate-an-api-access-key</a>",
+  "plugin.zenlayer.access.resource_group_id.label": "Zenlayer 资源组 ID（可选）",
+  "plugin.zenlayer.access.resource_group_id.placeholder": "请输入 Zenlayer 资源组 ID",
+  "plugin.zenlayer.access.resource_group_id.tooltip": "这是什么？请参阅 <a href=\"https://docs.console.zenlayer.com/welcome/cn/platform/team-management/create-a-resource-group\" target=\"_blank\">https://docs.console.zenlayer.com/welcome/cn/platform/team-management/create-a-resource-group</a>",
+  "plugin.zenlayer.name": "Zenlayer"
+}

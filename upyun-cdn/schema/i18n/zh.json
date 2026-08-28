@@ -1,0 +1,18 @@
+{
+  "plugin.upyun-cdn.name": "又拍云 - 云分发 CDN",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.label": "域名匹配模式",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.exact.label": "精确匹配",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.exact.help": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.wildcard.label": "通配符匹配（泛域名）",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.certsan.label": "根据证书自动匹配",
+  "plugin.upyun-cdn.deploy.domain.label": "又拍云 CDN 加速域名",
+  "plugin.upyun-cdn.deploy.domain.placeholder": "请输入又拍云 CDN 加速域名",
+  "plugin.upyun-cdn.deploy.domain.tooltip": "由于又拍云未公开相关 API，这里将使用网页模拟登录方式部署，但无法保证稳定性。如遇又拍云接口变更，请到 GitHub 发起 Issue 告知。",
+  "plugin.upyun.access.username.label": "又拍云子账号用户名",
+  "plugin.upyun.access.username.placeholder": "请输入又拍云子账号用户名",
+  "plugin.upyun.access.username.tooltip": "这是什么？请参阅 <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a><br>请关闭该账号的二次登录验证。",
+  "plugin.upyun.access.password.label": "又拍云子账号密码",
+  "plugin.upyun.access.password.placeholder": "请输入又拍云子账号密码",
+  "plugin.upyun.access.password.tooltip": "这是什么？请参阅 <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a><br>请关闭该账号的二次登录验证。",
+  "plugin.upyun.name": "又拍云"
+}

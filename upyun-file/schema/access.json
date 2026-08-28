@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "upyun",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "plugin.upyun.access.username.label",
+        "placeholderKey": "plugin.upyun.access.username.placeholder",
+        "tooltipKey": "plugin.upyun.access.username.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "password",
+        "valueType": "secret",
+        "labelKey": "plugin.upyun.access.password.label",
+        "placeholderKey": "plugin.upyun.access.password.placeholder",
+        "tooltipKey": "plugin.upyun.access.password.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

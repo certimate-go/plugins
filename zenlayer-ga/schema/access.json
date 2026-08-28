@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "zenlayer",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "accessKeyId",
+        "valueType": "text",
+        "labelKey": "plugin.zenlayer.access.access_key_id.label",
+        "placeholderKey": "plugin.zenlayer.access.access_key_id.placeholder",
+        "tooltipKey": "plugin.zenlayer.access.access_key_id.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "accessKeyPassword",
+        "valueType": "secret",
+        "labelKey": "plugin.zenlayer.access.access_key_password.label",
+        "placeholderKey": "plugin.zenlayer.access.access_key_password.placeholder",
+        "tooltipKey": "plugin.zenlayer.access.access_key_password.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true
+      },
+      {
+        "name": "resourceGroupId",
+        "valueType": "text",
+        "labelKey": "plugin.zenlayer.access.resource_group_id.label",
+        "placeholderKey": "plugin.zenlayer.access.resource_group_id.placeholder",
+        "tooltipKey": "plugin.zenlayer.access.resource_group_id.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

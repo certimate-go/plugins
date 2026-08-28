@@ -1,0 +1,15 @@
+{
+  "plugin.upyun-file.name": "又拍云 - 云存储 USS",
+  "plugin.upyun-file.deploy.bucket.label": "又拍云云存储桶名",
+  "plugin.upyun-file.deploy.bucket.placeholder": "请输入又拍云云存储桶名",
+  "plugin.upyun-file.deploy.domain.label": "又拍云云存储自定义域名",
+  "plugin.upyun-file.deploy.domain.placeholder": "请输入又拍云云存储自定义域名",
+  "plugin.upyun-file.deploy.domain.tooltip": "由于又拍云未公开相关 API，这里将使用网页模拟登录方式部署，但无法保证稳定性。如遇又拍云接口变更，请到 GitHub 发起 Issue 告知。",
+  "plugin.upyun.access.username.label": "又拍云子账号用户名",
+  "plugin.upyun.access.username.placeholder": "请输入又拍云子账号用户名",
+  "plugin.upyun.access.username.tooltip": "这是什么？请参阅 <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a><br>请关闭该账号的二次登录验证。",
+  "plugin.upyun.access.password.label": "又拍云子账号密码",
+  "plugin.upyun.access.password.placeholder": "请输入又拍云子账号密码",
+  "plugin.upyun.access.password.tooltip": "这是什么？请参阅 <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a><br>请关闭该账号的二次登录验证。",
+  "plugin.upyun.name": "又拍云"
+}

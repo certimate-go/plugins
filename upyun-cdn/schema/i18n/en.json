@@ -1,0 +1,18 @@
+{
+  "plugin.upyun-cdn.name": "UPYUN - CDN (Content Delivery Network)",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.label": "Domain match pattern",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.exact.label": "Exact matches",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.exact.help": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.wildcard.label": "Wildcard matches",
+  "plugin.upyun-cdn.deploy.domain_match_pattern.option.certsan.label": "via Certificate",
+  "plugin.upyun-cdn.deploy.domain.label": "UPYUN CDN domain",
+  "plugin.upyun-cdn.deploy.domain.placeholder": "Please enter UPYUN CDN domain name",
+  "plugin.upyun-cdn.deploy.domain.tooltip": "This uses webpage simulator login and does not guarantee stability. If there are any changes to the UPYUN, please create a GitHub Issue.",
+  "plugin.upyun.access.username.label": "UPYUN subaccount username",
+  "plugin.upyun.access.username.placeholder": "Please enter UPYUN subaccount username",
+  "plugin.upyun.access.username.tooltip": "For more information, see <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a>",
+  "plugin.upyun.access.password.label": "UPYUN subaccount password",
+  "plugin.upyun.access.password.placeholder": "Please enter UPYUN subaccount password",
+  "plugin.upyun.access.password.tooltip": "For more information, see <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a>",
+  "plugin.upyun.name": "UPYUN"
+}

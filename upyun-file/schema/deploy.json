@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "upyun-file",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "bucket",
+        "valueType": "text",
+        "labelKey": "plugin.upyun-file.deploy.bucket.label",
+        "placeholderKey": "plugin.upyun-file.deploy.bucket.placeholder",
+        "required": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.upyun-file.deploy.domain.label",
+        "placeholderKey": "plugin.upyun-file.deploy.domain.placeholder",
+        "tooltipKey": "plugin.upyun-file.deploy.domain.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "validateWhen": [
+          {
+            "validator": "domain"
+          }
+        ]
+      }
+    ]
+  }
+}

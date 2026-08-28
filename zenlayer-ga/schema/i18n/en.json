@@ -1,0 +1,23 @@
+{
+  "plugin.zenlayer-ga.name": "Zenlayer - ZGA (Global Accelerator)",
+  "plugin.zenlayer-ga.deploy.deploy_target.label": "Certificate deploy target",
+  "plugin.zenlayer-ga.deploy.deploy_target.placeholder": "Please select certificate deploy target",
+  "plugin.zenlayer-ga.deploy.deploy_target.option.accelerator.label": "Accelerator",
+  "plugin.zenlayer-ga.deploy.deploy_target.option.certificate.label": "Certificate",
+  "plugin.zenlayer-ga.deploy.accelerator_id.label": "Zenlayer ZGA accelerator ID",
+  "plugin.zenlayer-ga.deploy.accelerator_id.placeholder": "Please enter Zenlayer ZGA accelerator ID",
+  "plugin.zenlayer-ga.deploy.accelerator_id.tooltip": "For more information, see <a href=\"https://console.zenlayer.com/gia/\" target=\"_blank\">https://console.zenlayer.com/gia/</a>",
+  "plugin.zenlayer-ga.deploy.certificate_id.label": "Zenlayer ZGA certificate ID",
+  "plugin.zenlayer-ga.deploy.certificate_id.placeholder": "Please enter Zenlayer ZGA certificate ID",
+  "plugin.zenlayer-ga.deploy.certificate_id.tooltip": "For more information, see <a href=\"https://console.zenlayer.com/gia/\" target=\"_blank\">https://console.zenlayer.com/gia/</a>",
+  "plugin.zenlayer.access.access_key_id.label": "Zenlayer AccessKeyID",
+  "plugin.zenlayer.access.access_key_id.placeholder": "Please enter Zenlayer AccessKeyID",
+  "plugin.zenlayer.access.access_key_id.tooltip": "For more information, see <a href=\"https://docs.console.zenlayer.com/welcome/platform/team-management/generate-an-api-access-key\" target=\"_blank\">https://docs.console.zenlayer.com/welcome/platform/team-management/generate-an-api-access-key</a>",
+  "plugin.zenlayer.access.access_key_password.label": "Zenlayer AccessKeyPassword",
+  "plugin.zenlayer.access.access_key_password.placeholder": "Please enter Zenlayer AccessKeyPassword",
+  "plugin.zenlayer.access.access_key_password.tooltip": "For more information, see <a href=\"https://docs.console.zenlayer.com/welcome/platform/team-management/generate-an-api-access-key\" target=\"_blank\">https://docs.console.zenlayer.com/welcome/platform/team-management/generate-an-api-access-key</a>",
+  "plugin.zenlayer.access.resource_group_id.label": "Zenlayer resource group ID (Optional)",
+  "plugin.zenlayer.access.resource_group_id.placeholder": "Please enter Zenlayer resource group ID",
+  "plugin.zenlayer.access.resource_group_id.tooltip": "For more information, see <a href=\"https://docs.console.zenlayer.com/welcome/platform/team-management/create-a-resource-group\" target=\"_blank\">https://docs.console.zenlayer.com/welcome/platform/team-management/create-a-resource-group</a>",
+  "plugin.zenlayer.name": "Zenlayer"
+}

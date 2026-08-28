@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "zenlayer-ga",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.zenlayer-ga.deploy.deploy_target.label",
+        "placeholderKey": "plugin.zenlayer-ga.deploy.deploy_target.placeholder",
+        "default": "accelerator",
+        "required": true,
+        "options": [
+          { "value": "accelerator", "labelKey": "plugin.zenlayer-ga.deploy.deploy_target.option.accelerator.label" },
+          { "value": "certificate", "labelKey": "plugin.zenlayer-ga.deploy.deploy_target.option.certificate.label" }
+        ]
+      },
+      {
+        "name": "acceleratorId",
+        "valueType": "text",
+        "labelKey": "plugin.zenlayer-ga.deploy.accelerator_id.label",
+        "placeholderKey": "plugin.zenlayer-ga.deploy.accelerator_id.placeholder",
+        "tooltipKey": "plugin.zenlayer-ga.deploy.accelerator_id.tooltip",
+        "tooltipHtml": true,
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["accelerator"] }],
+        "requiredWhen": [{ "field": "deployTarget", "op": "in", "values": ["accelerator"] }]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.zenlayer-ga.deploy.certificate_id.label",
+        "placeholderKey": "plugin.zenlayer-ga.deploy.certificate_id.placeholder",
+        "tooltipKey": "plugin.zenlayer-ga.deploy.certificate_id.tooltip",
+        "tooltipHtml": true,
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }],
+        "requiredWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }]
+      }
+    ]
+  }
+}

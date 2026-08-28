@@ -1,0 +1,17 @@
+{
+  "access_provider_type": "upyun",
+  "binary": "upyun-cdn",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.upyun-cdn.name",
+  "icon": "upyun.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "upyun-cdn",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

@@ -1,0 +1,15 @@
+{
+  "plugin.upyun-file.name": "UPYUN - USS (Storage Service)",
+  "plugin.upyun-file.deploy.bucket.label": "UPYUN USS bucket",
+  "plugin.upyun-file.deploy.bucket.placeholder": "Please enter UPYUN USS bucket name",
+  "plugin.upyun-file.deploy.domain.label": "UPYUN USS custom domain",
+  "plugin.upyun-file.deploy.domain.placeholder": "Please enter UPYUN USS bucket custom domain name",
+  "plugin.upyun-file.deploy.domain.tooltip": "This uses webpage simulator login and does not guarantee stability. If there are any changes to the UPYUN, please create a GitHub Issue.",
+  "plugin.upyun.access.username.label": "UPYUN subaccount username",
+  "plugin.upyun.access.username.placeholder": "Please enter UPYUN subaccount username",
+  "plugin.upyun.access.username.tooltip": "For more information, see <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a>",
+  "plugin.upyun.access.password.label": "UPYUN subaccount password",
+  "plugin.upyun.access.password.placeholder": "Please enter UPYUN subaccount password",
+  "plugin.upyun.access.password.tooltip": "For more information, see <a href=\"https://console.upyun.com/account/subaccount/\" target=\"_blank\">https://console.upyun.com/account/subaccount/</a>",
+  "plugin.upyun.name": "UPYUN"
+}

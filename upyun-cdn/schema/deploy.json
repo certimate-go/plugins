@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "upyun-cdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.upyun-cdn.deploy.domain_match_pattern.label",
+        "default": "exact",
+        "required": true,
+        "options": [
+          { "value": "exact", "labelKey": "plugin.upyun-cdn.deploy.domain_match_pattern.option.exact.label" },
+          { "value": "wildcard", "labelKey": "plugin.upyun-cdn.deploy.domain_match_pattern.option.wildcard.label" },
+          { "value": "certsan", "labelKey": "plugin.upyun-cdn.deploy.domain_match_pattern.option.certsan.label" }
+        ],
+        "extraKey": "plugin.upyun-cdn.deploy.domain_match_pattern.option.exact.help",
+        "extraHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.upyun-cdn.deploy.domain.label",
+        "placeholderKey": "plugin.upyun-cdn.deploy.domain.placeholder",
+        "tooltipKey": "plugin.upyun-cdn.deploy.domain.tooltip",
+        "tooltipHtml": true,
+        "dependencies": ["domainMatchPattern"],
+        "visibleWhen": [{ "field": "domainMatchPattern", "op": "notIn", "values": ["certsan"] }],
+        "requiredWhen": [{ "field": "domainMatchPattern", "op": "in", "values": ["exact", "wildcard"] }],
+        "validateWhen": [
+          { "field": "domainMatchPattern", "op": "in", "values": ["exact", "wildcard"], "validator": "domain", "params": { "allowWildcard": true } }
+        ]
+      }
+    ]
+  }
+}

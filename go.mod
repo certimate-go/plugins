@@ -4,9 +4,11 @@ go 1.25.12
 
 require (
 	github.com/go-resty/resty/v2 v2.17.2
+	github.com/google/go-querystring v1.2.0
 	github.com/hashicorp/go-plugin v1.8.0
 	github.com/qiniu/go-sdk/v7 v7.26.18
 	github.com/samber/lo v1.53.0
+	github.com/zenlayer/zenlayercloud-sdk-go v0.2.49
 	k8s.io/api v0.35.3
 	k8s.io/apimachinery v0.35.3
 	k8s.io/client-go v0.35.3

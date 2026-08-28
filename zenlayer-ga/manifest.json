@@ -1,0 +1,17 @@
+{
+  "access_provider_type": "zenlayer",
+  "binary": "zenlayer-ga",
+  "deploy_category": "accelerator",
+  "display_name_key": "plugin.zenlayer-ga.name",
+  "icon": "zenlayer.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "zenlayer-ga",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}
