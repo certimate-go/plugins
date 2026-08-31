@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "wangsu-cdnpro",
+  "release": {
+    "assets": {
+      "darwin/amd64": "wangsu-cdnpro_darwin_amd64.zip",
+      "darwin/arm64": "wangsu-cdnpro_darwin_arm64.zip",
+      "linux/amd64": "wangsu-cdnpro_linux_amd64.zip",
+      "linux/arm64": "wangsu-cdnpro_linux_arm64.zip",
+      "windows/amd64": "wangsu-cdnpro_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "e77acaa22fca0c8ceff0658d532d6081f968c152e979960f9aa1ad55d9301c17",
+      "darwin/arm64": "d2c70592e869bfefe1faab678398e5bf054a2e6b643f3d351a9ca53a317f3c17",
+      "linux/amd64": "5bf27241f5f47aecfe790f803f6d17f123c28bc33f758f231761483ed51af0eb",
+      "linux/arm64": "fb8dac0b031e08bdcc2a03e8a6c269f699b390cb073d3344d6bc317a1fe19d21",
+      "windows/amd64": "ca8c4715d5c30984adc98adf90e0a5097ef3f5e49c6393724a623db22b8f772c"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "wangsu-cdnpro/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
