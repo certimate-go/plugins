@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "wangsu-certificate",
+  "release": {
+    "assets": {
+      "darwin/amd64": "wangsu-certificate_darwin_amd64.zip",
+      "darwin/arm64": "wangsu-certificate_darwin_arm64.zip",
+      "linux/amd64": "wangsu-certificate_linux_amd64.zip",
+      "linux/arm64": "wangsu-certificate_linux_arm64.zip",
+      "windows/amd64": "wangsu-certificate_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "701f92383aba8dcf98103b7c3267911cea9c24b975323d8646a8379357eab1dc",
+      "darwin/arm64": "11e6bf0b8f451d188ba5df636e2d68e037b6d0f54e5db77665b89330dcd2746e",
+      "linux/amd64": "ee914c93fe0f5d8c116c039019e18510193aa818ba18107e2d489bc55c2b913f",
+      "linux/arm64": "cd75acce3509c67d357ab5a94d6e13f14e2d4cd18eb8c59a1bcffdab8df53cd0",
+      "windows/amd64": "d3c41f9f8e51574689dff88de65c3675bdcdaf0fc30a47323eff65c042d3a450"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "wangsu-certificate/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
