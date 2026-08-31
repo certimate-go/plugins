@@ -174,6 +174,146 @@
         "hosting"
       ],
       "version": "0.1.1"
+    },
+    {
+      "access_provider_type": "upyun",
+      "binary": "upyun-cdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.upyun-cdn.name",
+      "icon": "upyun.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "upyun-cdn",
+      "release": {
+        "assets": {
+          "darwin/amd64": "upyun-cdn_darwin_amd64.zip",
+          "darwin/arm64": "upyun-cdn_darwin_arm64.zip",
+          "linux/amd64": "upyun-cdn_linux_amd64.zip",
+          "linux/arm64": "upyun-cdn_linux_arm64.zip",
+          "windows/amd64": "upyun-cdn_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "3c0451fadf835b2cf088a5a4b1bfd0b41cbf499694da7e3ef06abbada68306fb",
+          "darwin/arm64": "819200bd3b89c8a462633204a2a40f704bd8b12eef01298e40f67904cb5a377c",
+          "linux/amd64": "8de31857570db8a381e2b57962a81b6dcae400cd70e654c275b2aa68ffbf9078",
+          "linux/arm64": "020b5b6b55337dd0e3330521d2153744c33d71078fe6336188b689b328092c62",
+          "windows/amd64": "4cccd219af3a8694810b546d3b180604da1e98c15f196ce03c4c7ee9921efbee"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "upyun-cdn/v0.1.0"
+      },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "upyun",
+      "binary": "upyun-file",
+      "deploy_category": "storage",
+      "display_name_key": "plugin.upyun-file.name",
+      "icon": "upyun.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "upyun-file",
+      "release": {
+        "assets": {
+          "darwin/amd64": "upyun-file_darwin_amd64.zip",
+          "darwin/arm64": "upyun-file_darwin_arm64.zip",
+          "linux/amd64": "upyun-file_linux_amd64.zip",
+          "linux/arm64": "upyun-file_linux_arm64.zip",
+          "windows/amd64": "upyun-file_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "2023bfdaef97de41a58d19add203b6bce23d0ba23e9f4b7465f6f40a830bb631",
+          "darwin/arm64": "d764b17e4289e2e16f85b885d389f35bc247c409b502184b45b10279fb854cc8",
+          "linux/amd64": "f4cb774cdc7d0b16658778af762398617f0061870232b72e00e6f499d4f2827c",
+          "linux/arm64": "a22f03ae4538aadf0ac7d28506c01b336730c23dad55e0aade402a04c1bdb556",
+          "windows/amd64": "34af4c54d7bdd72b527b66b351f6fd3e55852ba347f7793c8813f8bf1230ee67"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "upyun-file/v0.1.0"
+      },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "zenlayer",
+      "binary": "zenlayer-cdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.zenlayer-cdn.name",
+      "icon": "zenlayer.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "zenlayer-cdn",
+      "release": {
+        "assets": {
+          "darwin/amd64": "zenlayer-cdn_darwin_amd64.zip",
+          "darwin/arm64": "zenlayer-cdn_darwin_arm64.zip",
+          "linux/amd64": "zenlayer-cdn_linux_amd64.zip",
+          "linux/arm64": "zenlayer-cdn_linux_arm64.zip",
+          "windows/amd64": "zenlayer-cdn_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "43cfce3d42afbe79926f1c59b1961160ea3efe124f07426a5ea9e0a0429b70df",
+          "darwin/arm64": "3c92453e38c14e3a9fa32b9d56ca74439e57412366273c2d65b8ea4efb5faf6c",
+          "linux/amd64": "291b38dc2ee41276bde1f5c6bbff741e752c6a758bc4a3596ac747af122fc14f",
+          "linux/arm64": "72834640d67527581df3f72e21a5247e472885c37db4872345dead8eeb4efd3f",
+          "windows/amd64": "fc3731d6308d6ea236cfefdd60c798564152b1f3e149f3502d5f66fe0fcd9e35"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "zenlayer-cdn/v0.1.0"
+      },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "zenlayer",
+      "binary": "zenlayer-ga",
+      "deploy_category": "accelerator",
+      "display_name_key": "plugin.zenlayer-ga.name",
+      "icon": "zenlayer.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "zenlayer-ga",
+      "release": {
+        "assets": {
+          "darwin/amd64": "zenlayer-ga_darwin_amd64.zip",
+          "darwin/arm64": "zenlayer-ga_darwin_arm64.zip",
+          "linux/amd64": "zenlayer-ga_linux_amd64.zip",
+          "linux/arm64": "zenlayer-ga_linux_arm64.zip",
+          "windows/amd64": "zenlayer-ga_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "8f77e9435b9623152007777d6af3a3980228cc4083975e284365d458b52faa70",
+          "darwin/arm64": "996d12e3d0a08f9723a0529f900b2b4c4d1708aff44b20221aa0a3e658f32cfb",
+          "linux/amd64": "a75b89d5939714380da18182f1e68fee0aa35cf2eb50c00e59353c8847b7b672",
+          "linux/arm64": "0ef0dc6fdbdf1b644f86a24fb689467dd665f1b44f51da945040489cde30a351",
+          "windows/amd64": "6d4d61b7c87472e08d9ca276ffbf76c123fa630eadf2c97f12d135197a17779a"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "zenlayer-ga/v0.1.0"
+      },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
     }
   ]
 }

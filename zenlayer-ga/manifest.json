@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "zenlayer-ga",
+  "release": {
+    "assets": {
+      "darwin/amd64": "zenlayer-ga_darwin_amd64.zip",
+      "darwin/arm64": "zenlayer-ga_darwin_arm64.zip",
+      "linux/amd64": "zenlayer-ga_linux_amd64.zip",
+      "linux/arm64": "zenlayer-ga_linux_arm64.zip",
+      "windows/amd64": "zenlayer-ga_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "8f77e9435b9623152007777d6af3a3980228cc4083975e284365d458b52faa70",
+      "darwin/arm64": "996d12e3d0a08f9723a0529f900b2b4c4d1708aff44b20221aa0a3e658f32cfb",
+      "linux/amd64": "a75b89d5939714380da18182f1e68fee0aa35cf2eb50c00e59353c8847b7b672",
+      "linux/arm64": "0ef0dc6fdbdf1b644f86a24fb689467dd665f1b44f51da945040489cde30a351",
+      "windows/amd64": "6d4d61b7c87472e08d9ca276ffbf76c123fa630eadf2c97f12d135197a17779a"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "zenlayer-ga/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"

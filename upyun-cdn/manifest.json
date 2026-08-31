@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "upyun-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "upyun-cdn_darwin_amd64.zip",
+      "darwin/arm64": "upyun-cdn_darwin_arm64.zip",
+      "linux/amd64": "upyun-cdn_linux_amd64.zip",
+      "linux/arm64": "upyun-cdn_linux_arm64.zip",
+      "windows/amd64": "upyun-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "3c0451fadf835b2cf088a5a4b1bfd0b41cbf499694da7e3ef06abbada68306fb",
+      "darwin/arm64": "819200bd3b89c8a462633204a2a40f704bd8b12eef01298e40f67904cb5a377c",
+      "linux/amd64": "8de31857570db8a381e2b57962a81b6dcae400cd70e654c275b2aa68ffbf9078",
+      "linux/arm64": "020b5b6b55337dd0e3330521d2153744c33d71078fe6336188b689b328092c62",
+      "windows/amd64": "4cccd219af3a8694810b546d3b180604da1e98c15f196ce03c4c7ee9921efbee"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "upyun-cdn/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
