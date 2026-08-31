@@ -1,6 +1,41 @@
 {
   "plugins": [
     {
+      "access_provider_type": "baishan",
+      "binary": "baishan-cdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.baishan-cdn.name",
+      "icon": "baishan.png",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "baishan-cdn",
+      "release": {
+        "assets": {
+          "darwin/amd64": "baishan-cdn_darwin_amd64.zip",
+          "darwin/arm64": "baishan-cdn_darwin_arm64.zip",
+          "linux/amd64": "baishan-cdn_linux_amd64.zip",
+          "linux/arm64": "baishan-cdn_linux_arm64.zip",
+          "windows/amd64": "baishan-cdn_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "f6ae2e001ceaee38bc1b1f57234ada48fae2424528043d658753200e21af624b",
+          "darwin/arm64": "3bdccc10ae174faa081e129500144162bd4e10fd3e7d2a103cc436378e77e703",
+          "linux/amd64": "8a3366d811e72af588f7ec9b7e645094de89d82fbccf0aefd3dc5d1c320ba3ed",
+          "linux/arm64": "890d1bf1b8ee9c2962e7eb3b111be21be9ca9ccd23030c0209331077d7bc4588",
+          "windows/amd64": "4409686c70cd5002985b7d567936ba41d2eca75b015d3f44a9f3e684b00f4954"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "baishan-cdn/v0.1.0"
+      },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "dogecloud",
       "binary": "dogecloud-cdn",
       "deploy_category": "cdn",
@@ -69,6 +104,57 @@
         "hosting"
       ],
       "version": "0.1.1"
+    },
+    {
+      "access_provider_type": "ksyun",
+      "binary": "ksyun-cdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.ksyun-cdn.name",
+      "icon": "ksyun.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "ksyun-cdn",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "ksyun",
+      "binary": "ksyun-kcm",
+      "deploy_category": "ssl",
+      "display_name_key": "plugin.ksyun-kcm.name",
+      "icon": "ksyun.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "ksyun-kcm",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "ksyun",
+      "binary": "ksyun-slb",
+      "deploy_category": "loadbalance",
+      "display_name_key": "plugin.ksyun-slb.name",
+      "icon": "ksyun.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "ksyun-slb",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
     },
     {
       "access_provider_type": "qiniu",
@@ -239,6 +325,57 @@
         "repo": "certimate-go/plugins",
         "tag": "upyun-file/v0.1.0"
       },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "wangsu",
+      "binary": "wangsu-cdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.wangsu-cdn.name",
+      "icon": "wangsu.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "wangsu-cdn",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "wangsu",
+      "binary": "wangsu-cdnpro",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.wangsu-cdnpro.name",
+      "icon": "wangsu.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "wangsu-cdnpro",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "wangsu",
+      "binary": "wangsu-certificate",
+      "deploy_category": "ssl",
+      "display_name_key": "plugin.wangsu-certificate.name",
+      "icon": "wangsu.svg",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "wangsu-certificate",
       "sha256": "",
       "usages": [
         "hosting"

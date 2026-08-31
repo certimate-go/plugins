@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "baishan-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baishan-cdn_darwin_amd64.zip",
+      "darwin/arm64": "baishan-cdn_darwin_arm64.zip",
+      "linux/amd64": "baishan-cdn_linux_amd64.zip",
+      "linux/arm64": "baishan-cdn_linux_arm64.zip",
+      "windows/amd64": "baishan-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "f6ae2e001ceaee38bc1b1f57234ada48fae2424528043d658753200e21af624b",
+      "darwin/arm64": "3bdccc10ae174faa081e129500144162bd4e10fd3e7d2a103cc436378e77e703",
+      "linux/amd64": "8a3366d811e72af588f7ec9b7e645094de89d82fbccf0aefd3dc5d1c320ba3ed",
+      "linux/arm64": "890d1bf1b8ee9c2962e7eb3b111be21be9ca9ccd23030c0209331077d7bc4588",
+      "windows/amd64": "4409686c70cd5002985b7d567936ba41d2eca75b015d3f44a9f3e684b00f4954"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baishan-cdn/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
