@@ -186,6 +186,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "ksyun-slb",
+      "release": {
+        "assets": {
+          "darwin/amd64": "ksyun-slb_darwin_amd64.zip",
+          "darwin/arm64": "ksyun-slb_darwin_arm64.zip",
+          "linux/amd64": "ksyun-slb_linux_amd64.zip",
+          "linux/arm64": "ksyun-slb_linux_arm64.zip",
+          "windows/amd64": "ksyun-slb_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "babd2743837350e930714ccc6bf793414b01f1bbc7602b8bab1c8c3dc130f1f1",
+          "darwin/arm64": "a838a6e9990ef5cbb5afbbd982bc733e78a5c1ba352e940b28f6286bf66159c2",
+          "linux/amd64": "6ff3b31977c48c2809bbcf8d36c5f5788d58eefba11dae67bec55081ceef1eb5",
+          "linux/arm64": "116d1f22d503cd6b496f9f2cb77dd7b8808c4bea9d0e4b2f92af3a82667b08a8",
+          "windows/amd64": "8ed5c4d0c250c49f3d19f8888e33d13b4a8b6768d281ebf0b8ccd0ae33429909"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "ksyun-slb/v0.1.0"
+      },
       "sha256": "",
       "usages": [
         "hosting"
