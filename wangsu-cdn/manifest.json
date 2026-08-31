@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "wangsu-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "wangsu-cdn_darwin_amd64.zip",
+      "darwin/arm64": "wangsu-cdn_darwin_arm64.zip",
+      "linux/amd64": "wangsu-cdn_linux_amd64.zip",
+      "linux/arm64": "wangsu-cdn_linux_arm64.zip",
+      "windows/amd64": "wangsu-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "55796f14cfc52dff058d2858e9c9210c007090afd1409fd0f87b50c847ee5512",
+      "darwin/arm64": "710b20c44d38736dde4edd288c954ff3fbf4be80e4cd786381ed2b601a623803",
+      "linux/amd64": "58f6e1d0561ff8e118ae4d32ec1939b0c678aa2afec5d9e30eba7190c99d3737",
+      "linux/arm64": "23ca6454a0c2959beb943ba228cb053ea3d1e1cac61ea29cde0937f5c802f224",
+      "windows/amd64": "dafc4d6cb59f8717d8bbc2e9a06bb9ac2a6afe2c490573cbce475441ce85b41b"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "wangsu-cdn/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
