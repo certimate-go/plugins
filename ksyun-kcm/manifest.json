@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "ksyun-kcm",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ksyun-kcm_darwin_amd64.zip",
+      "darwin/arm64": "ksyun-kcm_darwin_arm64.zip",
+      "linux/amd64": "ksyun-kcm_linux_amd64.zip",
+      "linux/arm64": "ksyun-kcm_linux_arm64.zip",
+      "windows/amd64": "ksyun-kcm_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "98e85f1ec65cb137437a54e06d10d4c7136da6ed801c6e615ef91d066facd5c0",
+      "darwin/arm64": "a1fe2145d9e4f0267713f03fb77cb40816ea690064a3d7ee011891a9ac419911",
+      "linux/amd64": "e6c9b37965092a5dd05d643746616b590711d9b6634d8bce94927502c1507e24",
+      "linux/arm64": "f609dec10b90c527408382c8b077ff262b54d0a92f381555254fbdf3adae999e",
+      "windows/amd64": "219484535982b462d5db19d8ce6a0c7e86357c7c08729d22f8f3167bae7e7ff6"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ksyun-kcm/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
