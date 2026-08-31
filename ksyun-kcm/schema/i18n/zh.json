@@ -1,0 +1,10 @@
+{
+  "plugin.ksyun-kcm.name": "金山云 - 上传到 SSL 证书管理",
+  "plugin.ksyun.access.access_key_id.label": "金山云 AccessKeyID",
+  "plugin.ksyun.access.access_key_id.placeholder": "请输入金山云 AccessKeyID",
+  "plugin.ksyun.access.access_key_id.tooltip": "这是什么？请参阅 <a href=\"https://docs.ksyun.com/documents/39976\" target=\"_blank\">https://docs.ksyun.com/documents/39976</a>",
+  "plugin.ksyun.access.secret_access_key.label": "金山云 SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.placeholder": "请输入金山云 SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.tooltip": "这是什么？请参阅 <a href=\"https://docs.ksyun.com/documents/39976\" target=\"_blank\">https://docs.ksyun.com/documents/39976</a>",
+  "plugin.ksyun.name": "金山云"
+}

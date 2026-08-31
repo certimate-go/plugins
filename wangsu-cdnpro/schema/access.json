@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "wangsu",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "accessKeyId",
+        "valueType": "text",
+        "labelKey": "plugin.wangsu.access.access_key_id.label",
+        "placeholderKey": "plugin.wangsu.access.access_key_id.placeholder",
+        "tooltipKey": "plugin.wangsu.access.access_key_id.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "accessKeySecret",
+        "valueType": "secret",
+        "labelKey": "plugin.wangsu.access.access_key_secret.label",
+        "placeholderKey": "plugin.wangsu.access.access_key_secret.placeholder",
+        "tooltipKey": "plugin.wangsu.access.access_key_secret.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true
+      },
+      {
+        "name": "apiKey",
+        "valueType": "secret",
+        "labelKey": "plugin.wangsu.access.api_key.label",
+        "placeholderKey": "plugin.wangsu.access.api_key.placeholder",
+        "tooltipKey": "plugin.wangsu.access.api_key.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

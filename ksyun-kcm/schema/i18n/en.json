@@ -1,0 +1,10 @@
+{
+  "plugin.ksyun-kcm.name": "Kingsoft Cloud - Upload to KCM (SSL Certificate Manager)",
+  "plugin.ksyun.access.access_key_id.label": "Kingsoft Cloud AccessKeyID",
+  "plugin.ksyun.access.access_key_id.placeholder": "Please enter Kingsoft Cloud AccessKeyID",
+  "plugin.ksyun.access.access_key_id.tooltip": "For more information, see <a href=\"https://endocs.ksyun.com/documents/37659\" target=\"_blank\">https://endocs.ksyun.com/documents/37659</a>",
+  "plugin.ksyun.access.secret_access_key.label": "Kingsoft Cloud SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.placeholder": "Please enter Kingsoft Cloud SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.tooltip": "For more information, see <a href=\"https://endocs.ksyun.com/documents/37659\" target=\"_blank\">https://endocs.ksyun.com/documents/37659</a>",
+  "plugin.ksyun.name": "Kingsoft Cloud"
+}

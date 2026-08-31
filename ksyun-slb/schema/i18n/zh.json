@@ -1,0 +1,19 @@
+{
+  "plugin.ksyun-slb.name": "金山云 - 负载均衡 SLB",
+  "plugin.ksyun-slb.deploy.region.label": "金山云服务地域",
+  "plugin.ksyun-slb.deploy.region.placeholder": "请输入金山云 SLB 服务地域（例如：cn-beijing-6）",
+  "plugin.ksyun-slb.deploy.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.ksyun.com/documents/1164\" target=\"_blank\">https://docs.ksyun.com/documents/1164</a>",
+  "plugin.ksyun-slb.deploy.deploy_target.label": "证书部署方式",
+  "plugin.ksyun-slb.deploy.deploy_target.placeholder": "请选择证书部署方式",
+  "plugin.ksyun-slb.deploy.deploy_target.option.certificate.label": "替换指定证书",
+  "plugin.ksyun-slb.deploy.certificate_id.label": "金山云 SLB 证书 ID",
+  "plugin.ksyun-slb.deploy.certificate_id.placeholder": "请输入金山云 SLB 证书 ID",
+  "plugin.ksyun-slb.deploy.certificate_id.tooltip": "这是什么？请参阅 <a href=\"https://network.console.ksyun.com/index.html#!/slb/slbIndex\" target=\"_blank\">https://network.console.ksyun.com/index.html#!/slb/slbIndex</a>",
+  "plugin.ksyun.access.access_key_id.label": "金山云 AccessKeyID",
+  "plugin.ksyun.access.access_key_id.placeholder": "请输入金山云 AccessKeyID",
+  "plugin.ksyun.access.access_key_id.tooltip": "这是什么？请参阅 <a href=\"https://docs.ksyun.com/documents/39976\" target=\"_blank\">https://docs.ksyun.com/documents/39976</a>",
+  "plugin.ksyun.access.secret_access_key.label": "金山云 SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.placeholder": "请输入金山云 SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.tooltip": "这是什么？请参阅 <a href=\"https://docs.ksyun.com/documents/39976\" target=\"_blank\">https://docs.ksyun.com/documents/39976</a>",
+  "plugin.ksyun.name": "金山云"
+}

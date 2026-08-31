@@ -1,0 +1,17 @@
+{
+  "access_provider_type": "wangsu",
+  "binary": "wangsu-cdnpro",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.wangsu-cdnpro.name",
+  "icon": "wangsu.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "wangsu-cdnpro",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

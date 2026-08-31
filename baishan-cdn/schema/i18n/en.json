@@ -1,0 +1,18 @@
+{
+  "plugin.baishan-cdn.name": "Baishan - CDN (Content Delivery Network)",
+  "plugin.baishan-cdn.deploy.deploy_target.label": "Certificate deploy target",
+  "plugin.baishan-cdn.deploy.deploy_target.placeholder": "Please select certificate deploy target",
+  "plugin.baishan-cdn.deploy.deploy_target.option.domain.label": "Domain",
+  "plugin.baishan-cdn.deploy.deploy_target.option.certificate.label": "Certificate",
+  "plugin.baishan-cdn.deploy.domain_match_pattern.label": "Domain match pattern",
+  "plugin.baishan-cdn.deploy.domain_match_pattern.option.exact.label": "Exact matches",
+  "plugin.baishan-cdn.deploy.domain_match_pattern.option.exact.help": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.baishan-cdn.deploy.domain.label": "Baishan Cloud CDN domain",
+  "plugin.baishan-cdn.deploy.domain.placeholder": "Please enter Baishan Cloud CDN domain name",
+  "plugin.baishan-cdn.deploy.certificate_id.label": "Baishan Cloud CDN certificate ID",
+  "plugin.baishan-cdn.deploy.certificate_id.placeholder": "Please enter Baishan Cloud CDN certificate ID",
+  "plugin.baishan-cdn.deploy.certificate_id.tooltip": "For more information, see <a href=\"https://cdnx.console.baishan.com/#/cdn/cert\" target=\"_blank\">https://cdnx.console.baishan.com/#/cdn/cert</a>",
+  "plugin.baishan.access.api_token.label": "Baishan Cloud API token",
+  "plugin.baishan.access.api_token.placeholder": "Please enter Baishan Cloud API token",
+  "plugin.baishan.name": "Baishan"
+}

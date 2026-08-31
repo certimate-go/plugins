@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "wangsu-cdnpro",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "environment",
+        "valueType": "select",
+        "labelKey": "plugin.wangsu-cdnpro.deploy.environment.label",
+        "placeholderKey": "plugin.wangsu-cdnpro.deploy.environment.placeholder",
+        "default": "production",
+        "required": true,
+        "options": [
+          { "value": "production", "labelKey": "plugin.wangsu-cdnpro.deploy.environment.option.production.label" },
+          { "value": "staging", "labelKey": "plugin.wangsu-cdnpro.deploy.environment.option.staging.label" }
+        ]
+      },
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.wangsu-cdnpro.deploy.domain_match_pattern.label",
+        "default": "exact",
+        "required": true,
+        "options": [
+          { "value": "exact", "labelKey": "plugin.wangsu-cdnpro.deploy.domain_match_pattern.option.exact.label" }
+        ],
+        "extraKey": "plugin.wangsu-cdnpro.deploy.domain_match_pattern.option.exact.help",
+        "extraHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.wangsu-cdnpro.deploy.domain.label",
+        "placeholderKey": "plugin.wangsu-cdnpro.deploy.domain.placeholder",
+        "required": true,
+        "validateWhen": [
+          { "field": "domainMatchPattern", "op": "in", "values": ["exact"], "validator": "domain", "params": { "allowWildcard": true } }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.wangsu-cdnpro.deploy.certificate_id.label",
+        "placeholderKey": "plugin.wangsu-cdnpro.deploy.certificate_id.placeholder",
+        "extraKey": "plugin.wangsu-cdnpro.deploy.certificate_id.help",
+        "tooltipKey": "plugin.wangsu-cdnpro.deploy.certificate_id.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "webhookId",
+        "valueType": "text",
+        "labelKey": "plugin.wangsu-cdnpro.deploy.webhook_id.label",
+        "placeholderKey": "plugin.wangsu-cdnpro.deploy.webhook_id.placeholder",
+        "tooltipKey": "plugin.wangsu-cdnpro.deploy.webhook_id.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

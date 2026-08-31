@@ -1,0 +1,17 @@
+{
+  "access_provider_type": "wangsu",
+  "binary": "wangsu-certificate",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.wangsu-certificate.name",
+  "icon": "wangsu.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "wangsu-certificate",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

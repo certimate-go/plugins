@@ -1,0 +1,17 @@
+{
+  "plugin.wangsu-certificate.name": "Wangsu Cloud - Upload to Certificate Management",
+  "plugin.wangsu-certificate.deploy.certificate_id.label": "Wangsu Cloud certificate ID (Optional)",
+  "plugin.wangsu-certificate.deploy.certificate_id.placeholder": "Please enter Wangsu Cloud certificate ID",
+  "plugin.wangsu-certificate.deploy.certificate_id.help": "Notes: Leave it blank to import a new certificate; otherwise, to replace the existing one.",
+  "plugin.wangsu-certificate.deploy.certificate_id.tooltip": "For more information, see <a href=\"https://cdn.console.wangsu.com/v2/index#/certificate/list?code=cert_mylist&parentCode=cert_ssl&productCode=certificatemanagement\" target=\"_blank\">https://cdn.console.wangsu.com/v2/index#/certificate/list</a>",
+  "plugin.wangsu.access.access_key_id.label": "Wangsu Cloud AccessKeyID",
+  "plugin.wangsu.access.access_key_id.placeholder": "Please enter Wangsu Cloud AccessKeyID",
+  "plugin.wangsu.access.access_key_id.tooltip": "For more information, see <a href=\"https://en.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://en.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.access_key_secret.label": "Wangsu Cloud AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.placeholder": "Please enter Wangsu Cloud AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.tooltip": "For more information, see <a href=\"https://en.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://en.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.api_key.label": "Wangsu Cloud API key",
+  "plugin.wangsu.access.api_key.placeholder": "Please enter Wangsu Cloud API key",
+  "plugin.wangsu.access.api_key.tooltip": "For more information, see <a href=\"https://en.wangsu.com/document/account-manage/15776\" target=\"_blank\">https://en.wangsu.com/document/account-manage/15776</a>",
+  "plugin.wangsu.name": "Wangsu Cloud"
+}

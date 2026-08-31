@@ -1,0 +1,17 @@
+{
+  "access_provider_type": "ksyun",
+  "binary": "ksyun-cdn",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.ksyun-cdn.name",
+  "icon": "ksyun.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ksyun-cdn",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ksyun-cdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.ksyun-cdn.deploy.deploy_target.label",
+        "placeholderKey": "plugin.ksyun-cdn.deploy.deploy_target.placeholder",
+        "default": "domain",
+        "required": true,
+        "options": [
+          { "value": "domain", "labelKey": "plugin.ksyun-cdn.deploy.deploy_target.option.domain.label" },
+          { "value": "certificate", "labelKey": "plugin.ksyun-cdn.deploy.deploy_target.option.certificate.label" }
+        ]
+      },
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.ksyun-cdn.deploy.domain_match_pattern.label",
+        "default": "exact",
+        "required": true,
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["domain"] }],
+        "options": [
+          { "value": "exact", "labelKey": "plugin.ksyun-cdn.deploy.domain_match_pattern.option.exact.label" },
+          { "value": "wildcard", "labelKey": "plugin.ksyun-cdn.deploy.domain_match_pattern.option.wildcard.label" },
+          { "value": "certsan", "labelKey": "plugin.ksyun-cdn.deploy.domain_match_pattern.option.certsan.label" }
+        ],
+        "extraKey": "plugin.ksyun-cdn.deploy.domain_match_pattern.option.exact.help",
+        "extraHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.ksyun-cdn.deploy.domain.label",
+        "placeholderKey": "plugin.ksyun-cdn.deploy.domain.placeholder",
+        "dependencies": ["deployTarget", "domainMatchPattern"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["domain"] }],
+        "requiredWhen": [{ "field": "domainMatchPattern", "op": "in", "values": ["exact", "wildcard"] }],
+        "validateWhen": [
+          { "field": "domainMatchPattern", "op": "in", "values": ["exact", "wildcard"], "validator": "domain", "params": { "allowWildcard": true } }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.ksyun-cdn.deploy.certificate_id.label",
+        "placeholderKey": "plugin.ksyun-cdn.deploy.certificate_id.placeholder",
+        "tooltipKey": "plugin.ksyun-cdn.deploy.certificate_id.tooltip",
+        "tooltipHtml": true,
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }],
+        "requiredWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }]
+      }
+    ]
+  }
+}

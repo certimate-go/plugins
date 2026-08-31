@@ -1,0 +1,19 @@
+{
+  "plugin.wangsu-cdn.name": "网宿云 - 内容分发网络 CDN",
+  "plugin.wangsu-cdn.deploy.domain_match_pattern.label": "域名匹配模式",
+  "plugin.wangsu-cdn.deploy.domain_match_pattern.option.exact.label": "精确匹配",
+  "plugin.wangsu-cdn.deploy.domain_match_pattern.option.exact.help": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.wangsu-cdn.deploy.domains.label": "网宿云 CDN 加速域名",
+  "plugin.wangsu-cdn.deploy.domains.placeholder": "请输入网宿云 CDN 加速域名（多个值请用半角分号隔开）",
+  "plugin.wangsu-cdn.deploy.domains.help": "提示：支持多个域名，以半角分号隔开。",
+  "plugin.wangsu.access.access_key_id.label": "网宿云 AccessKeyID",
+  "plugin.wangsu.access.access_key_id.placeholder": "请输入网宿云 AccessKeyID",
+  "plugin.wangsu.access.access_key_id.tooltip": "这是什么？请参阅 <a href=\"https://www.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://www.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.access_key_secret.label": "网宿云 AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.placeholder": "请输入网宿云 AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.tooltip": "这是什么？请参阅 <a href=\"https://www.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://www.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.api_key.label": "网宿云 API 接口密码",
+  "plugin.wangsu.access.api_key.placeholder": "请输入网宿云 API 接口密码",
+  "plugin.wangsu.access.api_key.tooltip": "这是什么？请参阅 <a href=\"https://www.wangsu.com/document/account-manage/15776\" target=\"_blank\">https://www.wangsu.com/document/account-manage/15776</a>",
+  "plugin.wangsu.name": "网宿云"
+}

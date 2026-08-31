@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ksyun-slb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.ksyun-slb.deploy.region.label",
+        "placeholderKey": "plugin.ksyun-slb.deploy.region.placeholder",
+        "tooltipKey": "plugin.ksyun-slb.deploy.region.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.ksyun-slb.deploy.deploy_target.label",
+        "placeholderKey": "plugin.ksyun-slb.deploy.deploy_target.placeholder",
+        "default": "certificate",
+        "required": true,
+        "options": [
+          { "value": "certificate", "labelKey": "plugin.ksyun-slb.deploy.deploy_target.option.certificate.label" }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.ksyun-slb.deploy.certificate_id.label",
+        "placeholderKey": "plugin.ksyun-slb.deploy.certificate_id.placeholder",
+        "tooltipKey": "plugin.ksyun-slb.deploy.certificate_id.tooltip",
+        "tooltipHtml": true,
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }],
+        "requiredWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }]
+      }
+    ]
+  }
+}

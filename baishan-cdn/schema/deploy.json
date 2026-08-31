@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baishan-cdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.baishan-cdn.deploy.deploy_target.label",
+        "placeholderKey": "plugin.baishan-cdn.deploy.deploy_target.placeholder",
+        "default": "domain",
+        "required": true,
+        "options": [
+          { "value": "domain", "labelKey": "plugin.baishan-cdn.deploy.deploy_target.option.domain.label" },
+          { "value": "certificate", "labelKey": "plugin.baishan-cdn.deploy.deploy_target.option.certificate.label" }
+        ]
+      },
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.baishan-cdn.deploy.domain_match_pattern.label",
+        "default": "exact",
+        "required": true,
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["domain"] }],
+        "options": [
+          { "value": "exact", "labelKey": "plugin.baishan-cdn.deploy.domain_match_pattern.option.exact.label" }
+        ],
+        "extraKey": "plugin.baishan-cdn.deploy.domain_match_pattern.option.exact.help",
+        "extraHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.baishan-cdn.deploy.domain.label",
+        "placeholderKey": "plugin.baishan-cdn.deploy.domain.placeholder",
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["domain"] }],
+        "requiredWhen": [{ "field": "deployTarget", "op": "in", "values": ["domain"] }],
+        "validateWhen": [
+          { "field": "deployTarget", "op": "in", "values": ["domain"], "validator": "domain", "params": { "allowWildcard": true } }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.baishan-cdn.deploy.certificate_id.label",
+        "placeholderKey": "plugin.baishan-cdn.deploy.certificate_id.placeholder",
+        "tooltipKey": "plugin.baishan-cdn.deploy.certificate_id.tooltip",
+        "tooltipHtml": true,
+        "dependencies": ["deployTarget"],
+        "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }],
+        "requiredWhen": [{ "field": "deployTarget", "op": "in", "values": ["certificate"] }]
+      }
+    ]
+  }
+}

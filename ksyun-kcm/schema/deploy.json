@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ksyun-kcm",
+  "category": "deploy",
+  "schema": {
+    "columns": []
+  }
+}

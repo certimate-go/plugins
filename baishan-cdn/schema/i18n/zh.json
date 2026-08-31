@@ -1,0 +1,18 @@
+{
+  "plugin.baishan-cdn.name": "白山云 - 内容分发网络 CDN",
+  "plugin.baishan-cdn.deploy.deploy_target.label": "证书部署方式",
+  "plugin.baishan-cdn.deploy.deploy_target.placeholder": "请选择证书部署方式",
+  "plugin.baishan-cdn.deploy.deploy_target.option.domain.label": "部署到指定加速域名",
+  "plugin.baishan-cdn.deploy.deploy_target.option.certificate.label": "替换指定证书",
+  "plugin.baishan-cdn.deploy.domain_match_pattern.label": "域名匹配模式",
+  "plugin.baishan-cdn.deploy.domain_match_pattern.option.exact.label": "精确匹配",
+  "plugin.baishan-cdn.deploy.domain_match_pattern.option.exact.help": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.baishan-cdn.deploy.domain.label": "白山云 CDN 加速域名",
+  "plugin.baishan-cdn.deploy.domain.placeholder": "请输入白山云 CDN 加速域名",
+  "plugin.baishan-cdn.deploy.certificate_id.label": "白山云 CDN 证书 ID",
+  "plugin.baishan-cdn.deploy.certificate_id.placeholder": "请输入白山云 CDN 证书 ID",
+  "plugin.baishan-cdn.deploy.certificate_id.tooltip": "这是什么？请参阅 <a href=\"https://cdnx.console.baishan.com/#/cdn/cert\" target=\"_blank\">https://cdnx.console.baishan.com/#/cdn/cert</a>",
+  "plugin.baishan.access.api_token.label": "白山云 API Token",
+  "plugin.baishan.access.api_token.placeholder": "请输入白山云 API Token",
+  "plugin.baishan.name": "白山云"
+}

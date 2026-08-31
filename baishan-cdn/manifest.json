@@ -1,0 +1,17 @@
+{
+  "access_provider_type": "baishan",
+  "binary": "baishan-cdn",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.baishan-cdn.name",
+  "icon": "baishan.png",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "baishan-cdn",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baishan",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "apiToken",
+        "valueType": "secret",
+        "labelKey": "plugin.baishan.access.api_token.label",
+        "placeholderKey": "plugin.baishan.access.api_token.placeholder",
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

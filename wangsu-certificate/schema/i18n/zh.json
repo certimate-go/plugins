@@ -1,0 +1,17 @@
+{
+  "plugin.wangsu-certificate.name": "网宿云 - 上传到证书管理",
+  "plugin.wangsu-certificate.deploy.certificate_id.label": "网宿云证书 ID（可选）",
+  "plugin.wangsu-certificate.deploy.certificate_id.placeholder": "请输入网宿云证书 ID",
+  "plugin.wangsu-certificate.deploy.certificate_id.help": "提示：不填写时，将上传新证书；否则，将替换原证书。",
+  "plugin.wangsu-certificate.deploy.certificate_id.tooltip": "这是什么？请参阅 <a href=\"https://cdn.console.wangsu.com/v2/index#/certificate/list?code=cert_mylist&parentCode=cert_ssl&productCode=certificatemanagement\" target=\"_blank\">https://cdn.console.wangsu.com/v2/index#/certificate/list</a>",
+  "plugin.wangsu.access.access_key_id.label": "网宿云 AccessKeyID",
+  "plugin.wangsu.access.access_key_id.placeholder": "请输入网宿云 AccessKeyID",
+  "plugin.wangsu.access.access_key_id.tooltip": "这是什么？请参阅 <a href=\"https://www.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://www.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.access_key_secret.label": "网宿云 AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.placeholder": "请输入网宿云 AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.tooltip": "这是什么？请参阅 <a href=\"https://www.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://www.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.api_key.label": "网宿云 API 接口密码",
+  "plugin.wangsu.access.api_key.placeholder": "请输入网宿云 API 接口密码",
+  "plugin.wangsu.access.api_key.tooltip": "这是什么？请参阅 <a href=\"https://www.wangsu.com/document/account-manage/15776\" target=\"_blank\">https://www.wangsu.com/document/account-manage/15776</a>",
+  "plugin.wangsu.name": "网宿云"
+}

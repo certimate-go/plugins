@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "wangsu-certificate",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.wangsu-certificate.deploy.certificate_id.label",
+        "placeholderKey": "plugin.wangsu-certificate.deploy.certificate_id.placeholder",
+        "extraKey": "plugin.wangsu-certificate.deploy.certificate_id.help",
+        "tooltipKey": "plugin.wangsu-certificate.deploy.certificate_id.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

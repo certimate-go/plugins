@@ -1,0 +1,17 @@
+{
+  "access_provider_type": "ksyun",
+  "binary": "ksyun-kcm",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.ksyun-kcm.name",
+  "icon": "ksyun.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ksyun-kcm",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

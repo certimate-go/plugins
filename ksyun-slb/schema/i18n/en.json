@@ -1,0 +1,19 @@
+{
+  "plugin.ksyun-slb.name": "Kingsoft Cloud - SLB (Server Load Balancing)",
+  "plugin.ksyun-slb.deploy.region.label": "Kingsoft Cloud region",
+  "plugin.ksyun-slb.deploy.region.placeholder": "Please enter Kingsoft Cloud SLB region (e.g. cn-beijing-6)",
+  "plugin.ksyun-slb.deploy.region.tooltip": "For more information, see <a href=\"https://endocs.ksyun.com/directories/1164\" target=\"_blank\">https://endocs.ksyun.com/directories/1164</a>",
+  "plugin.ksyun-slb.deploy.deploy_target.label": "Certificate deploy target",
+  "plugin.ksyun-slb.deploy.deploy_target.placeholder": "Please select certificate deploy target",
+  "plugin.ksyun-slb.deploy.deploy_target.option.certificate.label": "Certificate",
+  "plugin.ksyun-slb.deploy.certificate_id.label": "Kingsoft Cloud SLB certificate ID",
+  "plugin.ksyun-slb.deploy.certificate_id.placeholder": "Please enter Kingsoft Cloud SLB certificate ID",
+  "plugin.ksyun-slb.deploy.certificate_id.tooltip": "For more information, see <a href=\"https://network.console.ksyun.com/index.html#!/slb/slbIndex\" target=\"_blank\">https://network.console.ksyun.com/index.html#!/slb/slbIndex</a>",
+  "plugin.ksyun.access.access_key_id.label": "Kingsoft Cloud AccessKeyID",
+  "plugin.ksyun.access.access_key_id.placeholder": "Please enter Kingsoft Cloud AccessKeyID",
+  "plugin.ksyun.access.access_key_id.tooltip": "For more information, see <a href=\"https://endocs.ksyun.com/documents/37659\" target=\"_blank\">https://endocs.ksyun.com/documents/37659</a>",
+  "plugin.ksyun.access.secret_access_key.label": "Kingsoft Cloud SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.placeholder": "Please enter Kingsoft Cloud SecretAccessKey",
+  "plugin.ksyun.access.secret_access_key.tooltip": "For more information, see <a href=\"https://endocs.ksyun.com/documents/37659\" target=\"_blank\">https://endocs.ksyun.com/documents/37659</a>",
+  "plugin.ksyun.name": "Kingsoft Cloud"
+}

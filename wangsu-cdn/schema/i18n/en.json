@@ -1,0 +1,19 @@
+{
+  "plugin.wangsu-cdn.name": "Wangsu Cloud - CDN (Content Delivery Network)",
+  "plugin.wangsu-cdn.deploy.domain_match_pattern.label": "Domain match pattern",
+  "plugin.wangsu-cdn.deploy.domain_match_pattern.option.exact.label": "Exact matches",
+  "plugin.wangsu-cdn.deploy.domain_match_pattern.option.exact.help": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.wangsu-cdn.deploy.domains.label": "Wangsu Cloud CDN domains",
+  "plugin.wangsu-cdn.deploy.domains.placeholder": "Please enter Wangsu Cloud CDN domain names (separated by semicolons)",
+  "plugin.wangsu-cdn.deploy.domains.help": "Notes: Multiple domains should be separated by semicolons.",
+  "plugin.wangsu.access.access_key_id.label": "Wangsu Cloud AccessKeyID",
+  "plugin.wangsu.access.access_key_id.placeholder": "Please enter Wangsu Cloud AccessKeyID",
+  "plugin.wangsu.access.access_key_id.tooltip": "For more information, see <a href=\"https://en.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://en.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.access_key_secret.label": "Wangsu Cloud AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.placeholder": "Please enter Wangsu Cloud AccessKeySecret",
+  "plugin.wangsu.access.access_key_secret.tooltip": "For more information, see <a href=\"https://en.wangsu.com/document/account-manage/15775\" target=\"_blank\">https://en.wangsu.com/document/account-manage/15775</a>",
+  "plugin.wangsu.access.api_key.label": "Wangsu Cloud API key",
+  "plugin.wangsu.access.api_key.placeholder": "Please enter Wangsu Cloud API key",
+  "plugin.wangsu.access.api_key.tooltip": "For more information, see <a href=\"https://en.wangsu.com/document/account-manage/15776\" target=\"_blank\">https://en.wangsu.com/document/account-manage/15776</a>",
+  "plugin.wangsu.name": "Wangsu Cloud"
+}

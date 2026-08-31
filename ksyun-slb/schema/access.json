@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ksyun",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "accessKeyId",
+        "valueType": "text",
+        "labelKey": "plugin.ksyun.access.access_key_id.label",
+        "placeholderKey": "plugin.ksyun.access.access_key_id.placeholder",
+        "tooltipKey": "plugin.ksyun.access.access_key_id.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "secretAccessKey",
+        "valueType": "secret",
+        "labelKey": "plugin.ksyun.access.secret_access_key.label",
+        "placeholderKey": "plugin.ksyun.access.secret_access_key.placeholder",
+        "tooltipKey": "plugin.ksyun.access.secret_access_key.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}
