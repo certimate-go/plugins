@@ -1,0 +1,53 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "cdnfly",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.cdnfly.access.form.cdnfly_server_url.label",
+        "placeholderKey": "plugin.cdnfly.access.form.cdnfly_server_url.placeholder",
+        "required": true,
+        "default": "http://<your-host-addr>:88/",
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "apiKey",
+        "valueType": "text",
+        "labelKey": "plugin.cdnfly.access.form.cdnfly_api_key.label",
+        "placeholderKey": "plugin.cdnfly.access.form.cdnfly_api_key.placeholder",
+        "tooltipKey": "plugin.cdnfly.access.form.cdnfly_api_key.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "apiSecret",
+        "valueType": "secret",
+        "labelKey": "plugin.cdnfly.access.form.cdnfly_api_secret.label",
+        "placeholderKey": "plugin.cdnfly.access.form.cdnfly_api_secret.placeholder",
+        "tooltipKey": "plugin.cdnfly.access.form.cdnfly_api_secret.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true,
+        "default": ""
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "plugin.cdnfly.access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

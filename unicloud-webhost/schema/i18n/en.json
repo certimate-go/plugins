@@ -1,0 +1,19 @@
+{
+  "access.form.unicloud_username.label": "uniCloud username",
+  "access.form.unicloud_username.placeholder": "Please enter uniCloud username",
+  "access.form.unicloud_password.label": "uniCloud password",
+  "access.form.unicloud_password.placeholder": "Please enter uniCloud password",
+  "workflow_node.deploy.form.unicloud_webhost.guide": "This uses webpage simulator login and does not guarantee stability. If there are any changes to the uniCloud, please create a GitHub Issue.",
+  "workflow_node.deploy.form.unicloud_webhost_space_provider.label": "uniCloud space provider",
+  "workflow_node.deploy.form.unicloud_webhost_space_provider.placeholder": "Please select uniCloud space provider",
+  "workflow_node.deploy.form.unicloud_webhost_space_provider.option.aliyun.label": "Alibaba Cloud",
+  "workflow_node.deploy.form.unicloud_webhost_space_provider.option.alipay.label": "Alipay Cloud",
+  "workflow_node.deploy.form.unicloud_webhost_space_provider.option.tencent.label": "Tencent Cloud",
+  "workflow_node.deploy.form.unicloud_webhost_space_id.label": "uniCloud space ID",
+  "workflow_node.deploy.form.unicloud_webhost_space_id.placeholder": "uniCloud space ID",
+  "workflow_node.deploy.form.unicloud_webhost_space_id.tooltip": "For more information, see <a href=\"https://doc.dcloud.net.cn/uniCloud/concepts/space.html\" target=\"_blank\">https://doc.dcloud.net.cn/uniCloud/concepts/space.html</a>",
+  "workflow_node.deploy.form.unicloud_webhost_domain.label": "uniCloud Web host domain",
+  "workflow_node.deploy.form.unicloud_webhost_domain.placeholder": "uniCloud Web host domain",
+  "plugin.unicloud-webhost.name": "uniCloud - Web Host",
+  "plugin.unicloud.name": "uniCloud (DCloud)"
+}

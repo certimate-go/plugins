@@ -1,0 +1,169 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "lecdn",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.lecdn.access.form.lecdn_server_url.label",
+        "placeholderKey": "plugin.lecdn.access.form.lecdn_server_url.placeholder",
+        "required": true,
+        "default": "http://<your-host-addr>:5090/",
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "apiVersion",
+        "valueType": "select",
+        "labelKey": "plugin.lecdn.access.form.lecdn_api_version.label",
+        "placeholderKey": "plugin.lecdn.access.form.lecdn_api_version.placeholder",
+        "required": true,
+        "default": "v4",
+        "options": [
+          {
+            "value": "v3",
+            "label": "v3"
+          },
+          {
+            "value": "v4",
+            "label": "v4"
+          }
+        ]
+      },
+      {
+        "name": "apiRole",
+        "valueType": "radio",
+        "labelKey": "plugin.lecdn.access.form.lecdn_api_role.label",
+        "placeholderKey": "plugin.lecdn.access.form.lecdn_api_role.placeholder",
+        "required": true,
+        "default": "client",
+        "options": [
+          {
+            "value": "client",
+            "labelKey": "plugin.lecdn.access.form.lecdn_api_role.option.client.label"
+          },
+          {
+            "value": "master",
+            "labelKey": "plugin.lecdn.access.form.lecdn_api_role.option.master.label"
+          }
+        ]
+      },
+      {
+        "name": "authMethod",
+        "valueType": "radio",
+        "labelKey": "plugin.lecdn.access.form.lecdn_auth_method.label",
+        "placeholderKey": "plugin.lecdn.access.form.lecdn_auth_method.placeholder",
+        "required": true,
+        "default": "password",
+        "options": [
+          {
+            "value": "password",
+            "labelKey": "plugin.lecdn.access.form.lecdn_auth_method.option.password.label"
+          },
+          {
+            "value": "apikey",
+            "labelKey": "plugin.lecdn.access.form.lecdn_auth_method.option.apikey.label"
+          }
+        ]
+      },
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "plugin.lecdn.access.form.lecdn_username.label",
+        "placeholderKey": "plugin.lecdn.access.form.lecdn_username.placeholder",
+        "dependencies": [
+          "authMethod"
+        ],
+        "visibleWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "password"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "password"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "password",
+        "valueType": "secret",
+        "labelKey": "plugin.lecdn.access.form.lecdn_password.label",
+        "placeholderKey": "plugin.lecdn.access.form.lecdn_password.placeholder",
+        "secret": true,
+        "dependencies": [
+          "authMethod"
+        ],
+        "visibleWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "password"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "password"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "apiKey",
+        "valueType": "secret",
+        "labelKey": "plugin.lecdn.access.form.lecdn_api_key.label",
+        "placeholderKey": "plugin.lecdn.access.form.lecdn_api_key.placeholder",
+        "secret": true,
+        "dependencies": [
+          "authMethod"
+        ],
+        "visibleWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "apikey"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "apikey"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "plugin.lecdn.access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

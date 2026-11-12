@@ -1,0 +1,15 @@
+{
+  "plugin.asiaispcdn.name": "Asia-ISP CDN",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_id.label": "Asia-ISP CDN AccessKeyID",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_id.placeholder": "Please enter Asia-ISP CDN AccessKeyID",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_secret.label": "Asia-ISP CDN AccessKeySecret",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_secret.placeholder": "Please enter Asia-ISP CDN AccessKeySecret",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.label": "Domain match pattern",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.placeholder": "Please select domain match pattern",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.exact.label": "Exact matches",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.wildcard.label": "Wildcard matches",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.certsan.label": "via Certificate",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.exact.help.wildcard": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.asiaispcdn.workflow_node.deploy.form.asiaispcdn_domain.label": "Asia-ISP CDN domain",
+  "plugin.asiaispcdn.workflow_node.deploy.form.asiaispcdn_domain.placeholder": "Please enter Asia-ISP CDN domain name"
+}

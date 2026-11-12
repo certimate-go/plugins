@@ -70,3 +70,51 @@ for (const [name, certificateId, expected] of flexScenarios) {
   if (result.success) assert.equal(result.data.certificateId, Number(certificateId));
   console.log(`PASS ${name}`);
 }
+
+const b1Cases = [
+  ["asiaispcdn", "deploy", {domainMatchPattern: "exact", domain: "example.com"}, true],
+  ["asiaispcdn", "deploy", {domainMatchPattern: "wildcard", domain: "*.example.com"}, true],
+  ["asiaispcdn", "deploy", {domainMatchPattern: "certsan", domain: ""}, true],
+  ["asiaispcdn", "deploy", {domainMatchPattern: "exact", domain: "bad domain"}, false],
+  ["cdnfly", "deploy", {deployTarget: "website", siteId: "42"}, true],
+  ["cdnfly", "deploy", {deployTarget: "website", siteId: 42}, true],
+  ["cdnfly", "deploy", {deployTarget: "certificate", certificateId: "42"}, true],
+  ["cdnfly", "deploy", {deployTarget: "certificate", certificateId: 42}, true],
+  ["cdnfly", "deploy", {deployTarget: "website", certificateId: "42"}, false],
+  ["cdnfly", "deploy", {deployTarget: "certificate", certificateId: "bad"}, false],
+  ["cdnfly", "deploy", {deployTarget: "certificate", certificateId: "1.5"}, false],
+  ["lecdn", "deploy", {deployTarget: "certificate", certificateId: "42", clientId: ""}, true],
+  ["lecdn", "deploy", {deployTarget: "certificate", certificateId: 42, clientId: 7}, true],
+  ["lecdn", "deploy", {deployTarget: "certificate", certificateId: "42", clientId: "saved-legacy"}, true],
+  ["lecdn", "deploy", {deployTarget: "certificate", certificateId: 0}, false],
+  ["mohua-mvh", "deploy", {hostId: "42", domainId: "7"}, true],
+  ["mohua-mvh", "deploy", {hostId: 42, domainId: 7}, true],
+  ["mohua-mvh", "deploy", {hostId: "", domainId: "7"}, false],
+  ["mohua-mvh", "deploy", {hostId: 0, domainId: "7"}, false],
+  ["unicloud-webhost", "deploy", {spaceProvider: "tencent", spaceId: "space", domain: "example.com"}, true],
+  ["unicloud-webhost", "deploy", {spaceProvider: "aliyun", spaceId: "space", domain: "*.example.com"}, false],
+  ["unicloud-webhost", "deploy", {spaceProvider: "unsupported", spaceId: "space", domain: "example.com"}, false],
+  ["flyio", "deploy", {appName: "app", domain: "*.example.com"}, true],
+  ["flyio", "deploy", {appName: "", domain: "example.com"}, false],
+];
+for (const authMethod of ["password", "apikey"]) {
+  for (const apiRole of ["client", "master"]) {
+    for (const apiVersion of ["v3", "v4"]) {
+      const access = {serverUrl: "https://example.com", apiVersion, apiRole, authMethod,
+        ...(authMethod === "password" ? {username: "user", password: "fixture-password"} : {apiKey: "fixture-key"})};
+      b1Cases.push(["lecdn", "access", access, true]);
+      b1Cases.push(["lecdn", "access", {...access, [authMethod === "password" ? "password" : "apiKey"]: ""}, false]);
+    }
+  }
+}
+for (const [provider, category, config, expected] of b1Cases) {
+  const form = JSON.parse(fs.readFileSync(path.join(pluginRoot, provider, `schema/${category}.json`), "utf8"));
+  const result = deriveZodSchema(form).safeParse(config);
+  assert.equal(result.success, expected, `${provider}/${category} ${JSON.stringify(config)}: ${JSON.stringify(result.error?.issues)}`);
+  if (result.success) {
+    for (const field of ["hostId", "domainId", "siteId", "certificateId", "clientId"]) {
+      if (field in config) assert.equal(result.data[field], config[field], `${provider} changed ${field} JSON type`);
+    }
+  }
+}
+console.log(`PASS ${b1Cases.length} B1 schema compatibility cases`);

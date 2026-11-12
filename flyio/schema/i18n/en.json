@@ -1,0 +1,11 @@
+{
+  "access.form.flyio_api_token.label": "Fly.io API token",
+  "access.form.flyio_api_token.placeholder": "Please enter Fly.io API token",
+  "access.form.flyio_api_token.tooltip": "For more information, see <a href=\"https://fly.io/docs/security/tokens/\" target=\"_blank\">https://fly.io/docs/security/tokens/</a>",
+  "workflow_node.deploy.form.flyio_app_name.label": "Fly.io App name",
+  "workflow_node.deploy.form.flyio_app_name.placeholder": "Please enter Fly.io App name",
+  "workflow_node.deploy.form.flyio_domain.label": "Fly.io custom domain",
+  "workflow_node.deploy.form.flyio_domain.placeholder": "Please enter Fly.io custom domain name",
+  "workflow_node.deploy.form.flyio_domain.help": "Notes: After importing the custom certificate for the first time, you need to complete domain ownership verification on Fly.io dashboard.",
+  "plugin.flyio.name": "Fly.io"
+}

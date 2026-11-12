@@ -1,0 +1,93 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "cdnfly",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.cdnfly.workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "plugin.cdnfly.workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "required": true,
+        "default": "website",
+        "options": [
+          {
+            "value": "website",
+            "labelKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_deploy_target.option.website.label"
+          },
+          {
+            "value": "certificate",
+            "labelKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_deploy_target.option.certificate.label"
+          }
+        ]
+      },
+      {
+        "name": "siteId",
+        "valueType": "text",
+        "labelKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_site_id.label",
+        "placeholderKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_site_id.placeholder",
+        "tooltipKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_site_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "inputType": "number",
+        "dependencies": [
+          "deployTarget"
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ],
+            "validator": "positiveInteger"
+          }
+        ],
+        "numericValue": "integer"
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_certificate_id.label",
+        "placeholderKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_certificate_id.placeholder",
+        "tooltipKey": "plugin.cdnfly.workflow_node.deploy.form.cdnfly_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "inputType": "number",
+        "dependencies": [
+          "deployTarget"
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ],
+            "validator": "positiveInteger"
+          }
+        ],
+        "numericValue": "integer"
+      }
+    ]
+  }
+}

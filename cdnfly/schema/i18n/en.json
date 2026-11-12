@@ -1,0 +1,22 @@
+{
+  "plugin.cdnfly.name": "Cdnfly",
+  "plugin.cdnfly.access.form.cdnfly_server_url.label": "Cdnfly server URL",
+  "plugin.cdnfly.access.form.cdnfly_server_url.placeholder": "Please enter Cdnfly server URL",
+  "plugin.cdnfly.access.form.cdnfly_api_key.label": "Cdnfly user API key",
+  "plugin.cdnfly.access.form.cdnfly_api_key.placeholder": "Please enter Cdnfly user API key",
+  "plugin.cdnfly.access.form.cdnfly_api_key.tooltip": "For more information, see <a href=\"https://doc.cdnfly.cn/shiyongjieshao.html\" target=\"_blank\">https://doc.cdnfly.cn/shiyongjieshao.html</a>",
+  "plugin.cdnfly.access.form.cdnfly_api_secret.label": "Cdnfly user API secret",
+  "plugin.cdnfly.access.form.cdnfly_api_secret.placeholder": "Please enter Cdnfly user API secret",
+  "plugin.cdnfly.access.form.cdnfly_api_secret.tooltip": "For more information, see <a href=\"https://doc.cdnfly.cn/shiyongjieshao.html\" target=\"_blank\">https://doc.cdnfly.cn/shiyongjieshao.html</a>",
+  "plugin.cdnfly.access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "plugin.cdnfly.workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "plugin.cdnfly.workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_deploy_target.option.website.label": "Website",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_deploy_target.option.certificate.label": "Certificate",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_site_id.label": "Cdnfly website ID",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_site_id.placeholder": "Please enter Cdnfly website ID",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_site_id.tooltip": "You can find it on Cdnfly dashboard.",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_certificate_id.label": "Cdnfly certificate ID",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_certificate_id.placeholder": "Please enter Cdnfly certificate ID",
+  "plugin.cdnfly.workflow_node.deploy.form.cdnfly_certificate_id.tooltip": "You can find it on Cdnfly dashboard."
+}

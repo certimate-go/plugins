@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "unicloud-webhost",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "spaceProvider",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.unicloud_webhost_space_provider.label",
+        "required": true,
+        "default": "tencent",
+        "placeholderKey": "workflow_node.deploy.form.unicloud_webhost_space_provider.placeholder",
+        "options": [
+          {
+            "value": "aliyun",
+            "labelKey": "workflow_node.deploy.form.unicloud_webhost_space_provider.option.aliyun.label"
+          },
+          {
+            "value": "alipay",
+            "labelKey": "workflow_node.deploy.form.unicloud_webhost_space_provider.option.alipay.label"
+          },
+          {
+            "value": "tencent",
+            "labelKey": "workflow_node.deploy.form.unicloud_webhost_space_provider.option.tencent.label"
+          }
+        ],
+        "extraKey": "workflow_node.deploy.form.unicloud_webhost.guide",
+        "extraHtml": true
+      },
+      {
+        "name": "spaceId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.unicloud_webhost_space_id.label",
+        "required": true,
+        "default": "",
+        "placeholderKey": "workflow_node.deploy.form.unicloud_webhost_space_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.unicloud_webhost_space_id.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.unicloud_webhost_domain.label",
+        "required": true,
+        "default": "",
+        "placeholderKey": "workflow_node.deploy.form.unicloud_webhost_domain.placeholder",
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
