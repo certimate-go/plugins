@@ -1,14 +1,32 @@
 {
-  "provider_type": "1panel-console",
   "access_provider_type": "1panel",
   "binary": "panel1-console",
   "deploy_category": "other",
   "display_name_key": "plugin.1panel-console.name",
   "icon": "1panel.svg",
-  "min_core_version": "0.4.37",
   "max_core_version": "",
+  "min_core_version": "0.4.37",
   "priority": 100,
   "protocol_version": 2,
+  "provider_type": "1panel-console",
+  "release": {
+    "assets": {
+      "darwin/amd64": "panel1-console_darwin_amd64.zip",
+      "darwin/arm64": "panel1-console_darwin_arm64.zip",
+      "linux/amd64": "panel1-console_linux_amd64.zip",
+      "linux/arm64": "panel1-console_linux_arm64.zip",
+      "windows/amd64": "panel1-console_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "e14616f00f79f469712255ec3f5cf52e6d7d6cdd0f0ec43bd4ac7cdea2839efe",
+      "darwin/arm64": "fb41bd3146fa0a4bee0eb9c55f273cf639d2a9534f3fbc6c5be3551361a1b744",
+      "linux/amd64": "8d2f48c73a126d428beeef07c212c91730d06243a1434468f99724762c8eade4",
+      "linux/arm64": "6cb4cc63a702b690ce1457d2a594938890d21ee43e115d6345b4d2dc89e77e39",
+      "windows/amd64": "1a2db89c689ae77524b0aba8f2de2b88edb8e68884971080256ff4f2b85f2e5f"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "panel1-console/v0.1.0"
+  },
   "usages": [
     "hosting"
   ],
