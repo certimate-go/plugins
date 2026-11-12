@@ -1,14 +1,32 @@
 {
-  "provider_type": "rainyun-sslcenter",
   "access_provider_type": "rainyun",
-  "display_name_key": "plugin.rainyun-sslcenter.name",
-  "deploy_category": "ssl",
-  "version": "0.1.0",
-  "protocol_version": 2,
   "binary": "rainyun-sslcenter",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.rainyun-sslcenter.name",
   "icon": "rainyun.svg",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "rainyun-sslcenter",
+  "release": {
+    "assets": {
+      "darwin/amd64": "rainyun-sslcenter_darwin_amd64.zip",
+      "darwin/arm64": "rainyun-sslcenter_darwin_arm64.zip",
+      "linux/amd64": "rainyun-sslcenter_linux_amd64.zip",
+      "linux/arm64": "rainyun-sslcenter_linux_arm64.zip",
+      "windows/amd64": "rainyun-sslcenter_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "1e8ddff3aaee209dd76e69abf08020ed106986ff0b55dedda63c74368e9e30af",
+      "darwin/arm64": "8050aee18db94b9ae8482b7e33bc6e3bed9fe8cac5fa50d2b42b478437a421c5",
+      "linux/amd64": "f784814a8656297002bf3ef3b0d09bcd91c998613ad88421700476cbfcd806da",
+      "linux/arm64": "b4c01e67868cc1cd082ba09cf1fa03b5d2ff152635a6c4c33846cc25fc9915d6",
+      "windows/amd64": "fc9af8066aa114c53a4b8bdfa73f91c3795ad495078858b8306b12a8b6002a5c"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "rainyun-sslcenter/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
