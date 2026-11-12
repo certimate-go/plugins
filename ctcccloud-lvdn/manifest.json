@@ -1,15 +1,33 @@
 {
-  "provider_type": "ctcccloud-lvdn",
   "access_provider_type": "ctcccloud",
-  "display_name_key": "plugin.ctcccloud-lvdn.name",
-  "deploy_category": "av",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "ctcccloud-lvdn",
+  "deploy_category": "av",
+  "display_name_key": "plugin.ctcccloud-lvdn.name",
   "icon": "ctcccloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ctcccloud-lvdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ctcccloud-lvdn_darwin_amd64.zip",
+      "darwin/arm64": "ctcccloud-lvdn_darwin_arm64.zip",
+      "linux/amd64": "ctcccloud-lvdn_linux_amd64.zip",
+      "linux/arm64": "ctcccloud-lvdn_linux_arm64.zip",
+      "windows/amd64": "ctcccloud-lvdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "8b876eb0882f3c33e4f2dc1714a272a5a606a7c87b9002938808fcc408700f67",
+      "darwin/arm64": "7892c81321fa0828864fd67bd445ae66bc17f7648c716a5850f612ff31059ed6",
+      "linux/amd64": "c257ce9973e79a7c78ecfb8a127e954b11726cbc771d8ac554884ad7bcd89273",
+      "linux/arm64": "2493db90e2456eace14404cabcb57c949b4408acb8676519987afa5c5631df23",
+      "windows/amd64": "f769b121b98ec74336f95c9593b2051bad5e945dd47cd92d70dd181c166aae54"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ctcccloud-lvdn/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
