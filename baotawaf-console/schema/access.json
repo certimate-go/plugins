@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baotawaf",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.baotawaf.access.form.baotawaf_server_url.label",
+        "placeholderKey": "plugin.baotawaf.access.form.baotawaf_server_url.placeholder",
+        "extraKey": "plugin.baotawaf.access.form.baotawaf_server_url.help",
+        "required": true,
+        "default": "http://<your-host-addr>:8379/",
+        "inputType": "url",
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "apiKey",
+        "valueType": "secret",
+        "labelKey": "plugin.baotawaf.access.form.baotawaf_api_key.label",
+        "placeholderKey": "plugin.baotawaf.access.form.baotawaf_api_key.placeholder",
+        "tooltipKey": "plugin.baotawaf.access.form.baotawaf_api_key.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "secret": true,
+        "default": ""
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "plugin.baotawaf.access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

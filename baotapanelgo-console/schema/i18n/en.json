@@ -1,0 +1,11 @@
+{
+  "plugin.baotapanelgo.access.form.baotapanelgo_api_key.label": "aaPanel WinGo API key",
+  "plugin.baotapanelgo.access.form.baotapanelgo_api_key.placeholder": "Please enter aaPanel WinGo API key",
+  "plugin.baotapanelgo.access.form.baotapanelgo_api_key.tooltip": "For more information, see <a href=\"https://www.bt.cn/bbs/thread-20376-1-1.html\" target=\"_blank\">https://www.bt.cn/bbs/thread-20376-1-1.html</a>",
+  "plugin.baotapanelgo.access.form.baotapanelgo_server_url.help": "Notes: DO NOT include the security entrance suffix.",
+  "plugin.baotapanelgo.access.form.baotapanelgo_server_url.label": "aaPanel WinGo server URL",
+  "plugin.baotapanelgo.access.form.baotapanelgo_server_url.placeholder": "Please enter aaPanel WinGo server URL",
+  "plugin.baotapanelgo.access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "plugin.baotapanelgo-console.name": "aaPanel WinGo - Console itself",
+  "plugin.baotapanelgo.access": "aaPanel WinGo / BaotaPanel WinGo"
+}

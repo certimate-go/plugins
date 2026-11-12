@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "huaweiibmc",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "autoRestart",
+        "valueType": "switch",
+        "labelKey": "workflow_node.deploy.form.huaweiibmc_auto_restart.label",
+        "default": true
+      }
+    ]
+  }
+}

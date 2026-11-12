@@ -1,0 +1,21 @@
+{
+  "access.form.goedge_api_role.option.user.label": "Platform user",
+  "access.form.goedge_server_url.placeholder": "Please enter GoEdge server URL",
+  "access.form.goedge_access_key_id.tooltip": "For more information, see <a href=\"https://goedge.cloud/docs/API/Auth.md\" target=\"_blank\">https://goedge.cloud/docs/API/Auth.md</a>",
+  "access.form.goedge_access_key.label": "GoEdge AccessKey",
+  "workflow_node.deploy.form.goedge_certificate_id.placeholder": "Please enter GoEdge certificate ID",
+  "access.form.goedge_access_key.placeholder": "Please enter GoEdge AccessKey",
+  "access.form.goedge_access_key_id.placeholder": "Please enter GoEdge AccessKeyID",
+  "workflow_node.deploy.form.goedge_certificate_id.tooltip": "You can find it on GoEdge dashboard. <br><br>(Please open the browser devtools, and visit the \"网站列表 -> 证书管理 -> 证书\" page to capture network requests, then you can get the certificate ID.)",
+  "workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "access.form.goedge_access_key_id.label": "GoEdge AccessKeyID",
+  "access.form.goedge_access_key.tooltip": "For more information, see <a href=\"https://goedge.cloud/docs/API/Auth.md\" target=\"_blank\">https://goedge.cloud/docs/API/Auth.md</a>",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "workflow_node.deploy.form.goedge_certificate_id.label": "GoEdge certificate ID",
+  "workflow_node.deploy.form.goedge_deploy_target.option.certificate.label": "Certificate",
+  "access.form.goedge_api_role.option.admin.label": "Administrator user",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "access.form.goedge_server_url.label": "GoEdge server URL",
+  "access.form.goedge_api_role.label": "GoEdge user role",
+  "plugin.goedge.name": "GoEdge"
+}

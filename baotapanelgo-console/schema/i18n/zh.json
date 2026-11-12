@@ -1,0 +1,11 @@
+{
+  "plugin.baotapanelgo.access.form.baotapanelgo_api_key.label": "宝塔面板极速版接口密钥",
+  "plugin.baotapanelgo.access.form.baotapanelgo_api_key.placeholder": "请输入宝塔面板极速版接口密钥",
+  "plugin.baotapanelgo.access.form.baotapanelgo_api_key.tooltip": "这是什么？请参阅 <a href=\"https://www.bt.cn/bbs/thread-113890-1-1.html\" target=\"_blank\">https://www.bt.cn/bbs/thread-113890-1-1.html</a>",
+  "plugin.baotapanelgo.access.form.baotapanelgo_server_url.help": "提示：请勿包含安全入口后缀。",
+  "plugin.baotapanelgo.access.form.baotapanelgo_server_url.label": "宝塔面板极速版服务地址",
+  "plugin.baotapanelgo.access.form.baotapanelgo_server_url.placeholder": "请输入宝塔面板极速版服务地址",
+  "plugin.baotapanelgo.access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "plugin.baotapanelgo-console.name": "宝塔面板极速版 - 面板自身",
+  "plugin.baotapanelgo.access": "宝塔面板极速版 / aaPanel WinGo"
+}

@@ -1,0 +1,19 @@
+{
+  "workflow_node.deploy.form.kong_certificate_id.placeholder": "请输入 Kong 证书 ID",
+  "workflow_node.deploy.form.kong_certificate_id.tooltip": "请登录 Kong 控制台查看",
+  "access.form.kong_server_url.label": "Kong Admin API 服务地址",
+  "workflow_node.deploy.form.kong_deploy_target.option.certificate.label": "替换指定证书",
+  "access.form.kong_api_token.tooltip": "这是什么？请参阅 <a href=\"https://developer.konghq.com/admin-api/\" target=\"_blank\">https://developer.konghq.com/admin-api/</a>",
+  "workflow_node.deploy.form.shared_deploy_target.label": "证书部署方式",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "workflow_node.deploy.form.kong_certificate_id.label": "Kong 证书 ID",
+  "access.form.kong_api_token.placeholder": "请输入 Kong Admin API Token",
+  "access.form.kong_api_token.label": "Kong Admin API Token（可选）",
+  "workflow_node.deploy.form.kong_workspace.tooltip": "请登录 Kong 控制台查看",
+  "workflow_node.deploy.form.kong.guide": "需要 Kong v2.0 或更高版本。",
+  "workflow_node.deploy.form.kong_workspace.label": "Kong 工作空间（可选）",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "请选择证书部署方式",
+  "workflow_node.deploy.form.kong_workspace.placeholder": "请输入 Kong 工作空间",
+  "access.form.kong_server_url.placeholder": "请输入 Kong Admin API 服务地址",
+  "plugin.kong.name": "Kong"
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "proxmoxve",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "nodeName",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.proxmoxve_node_name.label",
+        "placeholderKey": "workflow_node.deploy.form.proxmoxve_node_name.placeholder",
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "autoRestart",
+        "valueType": "switch",
+        "labelKey": "workflow_node.deploy.form.proxmoxve_auto_restart.label",
+        "default": true
+      }
+    ],
+    "noticeKey": "workflow_node.deploy.form.proxmoxve.guide",
+    "noticeHtml": true
+  }
+}

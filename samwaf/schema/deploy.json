@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "samwaf",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "default": "certificate",
+        "options": [
+          {
+            "value": "certificate",
+            "labelKey": "workflow_node.deploy.form.samwaf_deploy_target.option.certificate.label"
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.samwaf_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.samwaf_certificate_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.samwaf_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ],
+            "validator": "regex",
+            "params": {
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+            }
+          }
+        ]
+      }
+    ],
+    "noticeKey": "workflow_node.deploy.form.samwaf.guide",
+    "noticeHtml": true
+  }
+}

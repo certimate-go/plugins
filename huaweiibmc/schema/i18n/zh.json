@@ -1,0 +1,11 @@
+{
+  "access.form.huaweiibmc_host.label": "iBMC Redfish 服务器地址",
+  "access.form.huaweiibmc_host.placeholder": "请输入 iBMC Redfish 服务器地址",
+  "access.form.huaweiibmc_password.label": "iBMC 密码",
+  "access.form.huaweiibmc_password.placeholder": "请输入 iBMC 密码",
+  "access.form.huaweiibmc_username.label": "iBMC 用户名",
+  "access.form.huaweiibmc_username.placeholder": "请输入 iBMC 用户名",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "provider.huaweiibmc": "华为 iBMC",
+  "workflow_node.deploy.form.huaweiibmc_auto_restart.label": "部署后自动重启 iBMC 服务"
+}

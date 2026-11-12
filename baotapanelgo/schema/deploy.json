@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baotapanelgo",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "siteType",
+        "valueType": "select",
+        "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.label",
+        "placeholderKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.placeholder",
+        "required": true,
+        "default": "php",
+        "options": [
+          {
+            "value": "php",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.php.label"
+          },
+          {
+            "value": "java",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.java.label"
+          },
+          {
+            "value": "asp",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.asp.label"
+          },
+          {
+            "value": "go",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.go.label"
+          },
+          {
+            "value": "python",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.python.label"
+          },
+          {
+            "value": "nodejs",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.nodejs.label"
+          },
+          {
+            "value": "proxy",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.proxy.label"
+          },
+          {
+            "value": "general",
+            "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_type.option.general.label"
+          }
+        ],
+        "allowCustomValue": true
+      },
+      {
+        "name": "siteNames",
+        "valueType": "multipleSplit",
+        "labelKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_names.label",
+        "placeholderKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_names.placeholder",
+        "tooltipKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_names.tooltip",
+        "extraKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_names.help",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "separator": ";",
+        "modalTitleKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_names.multiple_input_modal.title",
+        "modalPlaceholderKey": "plugin.baotapanelgo.workflow_node.deploy.form.baotapanelgo_site_names.multiple_input_modal.placeholder"
+      }
+    ]
+  }
+}

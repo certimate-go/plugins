@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "dokploy",
+  "category": "deploy",
+  "schema": {
+    "columns": []
+  }
+}

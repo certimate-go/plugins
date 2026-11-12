@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "synologydsm",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "access.form.synologydsm_server_url.label",
+        "placeholderKey": "access.form.synologydsm_server_url.placeholder",
+        "required": true,
+        "default": "http://<your-host-addr>:5000/",
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ],
+        "inputType": "url"
+      },
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "access.form.synologydsm_username.label",
+        "placeholderKey": "access.form.synologydsm_username.placeholder",
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "password",
+        "valueType": "secret",
+        "labelKey": "access.form.synologydsm_password.label",
+        "placeholderKey": "access.form.synologydsm_password.placeholder",
+        "required": true,
+        "default": "",
+        "secret": true
+      },
+      {
+        "name": "totpSecret",
+        "valueType": "secret",
+        "labelKey": "access.form.synologydsm_totp_secret.label",
+        "placeholderKey": "access.form.synologydsm_totp_secret.placeholder",
+        "tooltipKey": "access.form.synologydsm_totp_secret.tooltip",
+        "tooltipHtml": true,
+        "extraKey": "access.form.synologydsm_totp_secret.help",
+        "secret": true,
+        "validateWhen": [
+          {
+            "field": "totpSecret",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "regex",
+            "params": {
+              "pattern": "^[A-Z2-7]{16,32}$"
+            }
+          }
+        ]
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

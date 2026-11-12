@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "safeline",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "default": "certificate",
+        "options": [
+          {
+            "value": "certificate",
+            "labelKey": "workflow_node.deploy.form.safeline_deploy_target.option.certificate.label"
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.safeline_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.safeline_certificate_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.safeline_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "validateWhen": [
+          {
+            "field": "certificateId",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "positiveInteger"
+          }
+        ]
+      }
+    ],
+    "noticeKey": "workflow_node.deploy.form.safeline.guide",
+    "noticeHtml": true
+  }
+}

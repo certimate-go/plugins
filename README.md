@@ -61,7 +61,7 @@ A plugin may declare a **new** access type (add `schema/access.json`) or reuse a
 ## Build & test
 
 ```bash
-make build PLUGIN=my-deployer         # host binary -> dist/<plugin>
+make build PLUGIN=my-deployer         # installable host package -> dist/<plugin>/
 make build-all PLUGIN=my-deployer     # cross-compile the release matrix
 make test                             # go test ./...
 ```

@@ -1,0 +1,16 @@
+{
+  "provider_type": "1panel",
+  "access_provider_type": "1panel",
+  "binary": "panel1",
+  "deploy_category": "website",
+  "display_name_key": "plugin.1panel.name",
+  "icon": "1panel.svg",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

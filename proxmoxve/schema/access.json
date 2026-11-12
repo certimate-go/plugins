@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "proxmoxve",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "access.form.proxmoxve_server_url.label",
+        "placeholderKey": "access.form.proxmoxve_server_url.placeholder",
+        "required": true,
+        "default": "http://<your-host-addr>:8006/",
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ],
+        "inputType": "url"
+      },
+      {
+        "name": "apiToken",
+        "valueType": "secret",
+        "labelKey": "access.form.proxmoxve_api_token.label",
+        "placeholderKey": "access.form.proxmoxve_api_token.placeholder",
+        "tooltipKey": "access.form.proxmoxve_api_token.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "secret": true
+      },
+      {
+        "name": "apiTokenSecret",
+        "valueType": "secret",
+        "labelKey": "access.form.proxmoxve_api_token_secret.label",
+        "placeholderKey": "access.form.proxmoxve_api_token_secret.placeholder",
+        "tooltipKey": "access.form.proxmoxve_api_token_secret.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "secret": true
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

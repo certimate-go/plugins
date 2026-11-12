@@ -1,0 +1,16 @@
+{
+  "access.form.proxmoxve_api_token.label": "Proxmox VE API token",
+  "access.form.proxmoxve_api_token.placeholder": "Please enter Proxmox VE API token",
+  "access.form.proxmoxve_api_token.tooltip": "For more information, see <a href=\"https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens\" target=\"_blank\">https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens</a>",
+  "access.form.proxmoxve_api_token_secret.label": "Proxmox VE API token secret",
+  "access.form.proxmoxve_api_token_secret.placeholder": "Please enter Proxmox VE API token secret",
+  "access.form.proxmoxve_api_token_secret.tooltip": "For more information, see <a href=\"https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens\" target=\"_blank\">https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens</a>",
+  "access.form.proxmoxve_server_url.label": "Proxmox VE server URL",
+  "access.form.proxmoxve_server_url.placeholder": "Please enter Proxmox VE server URL",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "provider.proxmoxve": "PVE (Proxmox Virtual Environment)",
+  "workflow_node.deploy.form.proxmoxve.guide": "Requires Proxmox Virtual Environment v5.2 or higher.",
+  "workflow_node.deploy.form.proxmoxve_auto_restart.label": "Auto restart Proxmox VE after deployment",
+  "workflow_node.deploy.form.proxmoxve_node_name.label": "Proxmox VE node name",
+  "workflow_node.deploy.form.proxmoxve_node_name.placeholder": "Please enter Proxmox VE node name"
+}

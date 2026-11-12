@@ -1,0 +1,16 @@
+{
+  "workflow_node.deploy.form.safeline.guide": "Requires SafeLine v6.6 or higher.",
+  "workflow_node.deploy.form.safeline_certificate_id.tooltip": "You can find it on SafeLine dashboard.",
+  "access.form.safeline_api_token.label": "SafeLine API token",
+  "workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "workflow_node.deploy.form.safeline_deploy_target.option.certificate.label": "Certificate",
+  "access.form.safeline_api_token.tooltip": "For more information, see <a href=\"https://docs.waf.chaitin.com/en/reference/articles/openapi\" target=\"_blank\">https://docs.waf.chaitin.com/en/reference/articles/openapi</a>",
+  "access.form.safeline_server_url.label": "SafeLine server URL",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "workflow_node.deploy.form.safeline_certificate_id.placeholder": "Please enter SafeLine certificate ID",
+  "workflow_node.deploy.form.safeline_certificate_id.label": "SafeLine certificate ID",
+  "access.form.safeline_api_token.placeholder": "Please enter SafeLine API token",
+  "access.form.safeline_server_url.placeholder": "Please enter SafeLine server URL",
+  "plugin.safeline.name": "SafeLine"
+}

@@ -1,0 +1,16 @@
+{
+  "workflow_node.deploy.form.safeline.guide": "需要雷池 v6.6 或更高版本。",
+  "workflow_node.deploy.form.safeline_certificate_id.tooltip": "请登录雷池控制台查看",
+  "access.form.safeline_api_token.label": "雷池 API Token",
+  "workflow_node.deploy.form.shared_deploy_target.label": "证书部署方式",
+  "workflow_node.deploy.form.safeline_deploy_target.option.certificate.label": "替换指定证书",
+  "access.form.safeline_api_token.tooltip": "这是什么？请参阅 <a href=\"https://docs.waf-ce.chaitin.cn/zh/%E6%9B%B4%E5%A4%9A%E6%8A%80%E6%9C%AF%E6%96%87%E6%A1%A3/OPENAPI\" target=\"_blank\">https://docs.waf-ce.chaitin.cn/zh/更多技术文档/OPENAPI</a>",
+  "access.form.safeline_server_url.label": "雷池服务地址",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "请选择证书部署方式",
+  "workflow_node.deploy.form.safeline_certificate_id.placeholder": "请输入雷池证书 ID",
+  "workflow_node.deploy.form.safeline_certificate_id.label": "雷池证书 ID",
+  "access.form.safeline_api_token.placeholder": "请输入雷池 API Token",
+  "access.form.safeline_server_url.placeholder": "请输入雷池服务地址",
+  "plugin.safeline.name": "雷池"
+}

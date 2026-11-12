@@ -1,0 +1,12 @@
+{
+  "plugin.baotawaf.access.form.baotawaf_api_key.label": "堡塔云 WAF 接口密钥",
+  "plugin.baotawaf.access.form.baotawaf_api_key.placeholder": "请输入堡塔云 WAF 接口密钥",
+  "plugin.baotawaf.access.form.baotawaf_api_key.tooltip": "这是什么？请参阅 <a href=\"https://github.com/aaPanel/aaWAF/blob/main/API.md\" target=\"_blank\">https://github.com/aaPanel/aaWAF/blob/main/API.md</a>",
+  "plugin.baotawaf.access.form.baotawaf_server_url.help": "提示：请勿包含安全入口后缀。",
+  "plugin.baotawaf.access.form.baotawaf_server_url.label": "堡塔云 WAF 服务地址",
+  "plugin.baotawaf.access.form.baotawaf_server_url.placeholder": "请输入堡塔云 WAF 服务地址",
+  "plugin.baotawaf.access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "plugin.baotawaf.workflow_node.deploy.form.baotawaf_console.guide": "需要堡塔云 WAF v5.7 或更高版本。",
+  "plugin.baotawaf-console.name": "堡塔云 WAF - 面板自身",
+  "plugin.baotawaf.access": "堡塔云 WAF / aaWAF"
+}

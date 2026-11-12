@@ -1,0 +1,14 @@
+{
+  "plugin.1panel.access.form.1panel_api_key.label": "1Panel API key",
+  "plugin.1panel.access.form.1panel_api_key.placeholder": "Please enter 1Panel API key",
+  "plugin.1panel.access.form.1panel_api_key.tooltip": "For more information, see <a href=\"https://1panel.pro/docs/v2/dev_manual/api_manual\" target=\"_blank\">https://1panel.pro/docs/v2/dev_manual/api_manual</a>",
+  "plugin.1panel.access.form.1panel_api_version.label": "1Panel version",
+  "plugin.1panel.access.form.1panel_api_version.placeholder": "Please select 1Panel version",
+  "plugin.1panel.access.form.1panel_server_url.help": "Notes: DO NOT include the security entrance suffix.",
+  "plugin.1panel.access.form.1panel_server_url.label": "1Panel server URL",
+  "plugin.1panel.access.form.1panel_server_url.placeholder": "Please enter 1Panel server URL",
+  "plugin.1panel.access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "plugin.1panel.workflow_node.deploy.form.1panel_console_auto_restart.label": "Auto restart 1Panel after deployment",
+  "plugin.1panel-console.name": "1Panel - Console itself",
+  "plugin.1panel.access": "1Panel"
+}

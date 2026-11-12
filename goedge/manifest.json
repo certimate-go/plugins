@@ -1,0 +1,16 @@
+{
+  "provider_type": "goedge",
+  "access_provider_type": "goedge",
+  "binary": "goedge",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.goedge.name",
+  "icon": "goedge.png",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

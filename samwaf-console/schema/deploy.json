@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "samwaf-console",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "autoRestart",
+        "valueType": "switch",
+        "labelKey": "workflow_node.deploy.form.samwaf_console_auto_restart.label",
+        "default": true
+      }
+    ],
+    "noticeKey": "workflow_node.deploy.form.samwaf_console.guide",
+    "noticeHtml": true
+  }
+}

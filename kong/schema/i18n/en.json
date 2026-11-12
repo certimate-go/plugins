@@ -1,0 +1,19 @@
+{
+  "workflow_node.deploy.form.kong_certificate_id.placeholder": "Please enter Kong certificate ID",
+  "workflow_node.deploy.form.kong_certificate_id.tooltip": "You can find it on Kong dashboard.",
+  "access.form.kong_server_url.label": "Kong admin API server URL",
+  "workflow_node.deploy.form.kong_deploy_target.option.certificate.label": "SSL certificate",
+  "access.form.kong_api_token.tooltip": "For more information, see <a href=\"https://developer.konghq.com/admin-api/\" target=\"_blank\">https://developer.konghq.com/admin-api/</a>",
+  "workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "workflow_node.deploy.form.kong_certificate_id.label": "Kong certificate ID",
+  "access.form.kong_api_token.placeholder": "Please enter Kong admin API token",
+  "access.form.kong_api_token.label": "Kong admin API token (Optional)",
+  "workflow_node.deploy.form.kong_workspace.tooltip": "You can find it on Kong dashboard.",
+  "workflow_node.deploy.form.kong.guide": "Requires Kong v2.0 or higher.",
+  "workflow_node.deploy.form.kong_workspace.label": "Kong workspace (Optional)",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "workflow_node.deploy.form.kong_workspace.placeholder": "Please enter Kong workspace",
+  "access.form.kong_server_url.placeholder": "Please enter Kong admin API server URL",
+  "plugin.kong.name": "Kong"
+}

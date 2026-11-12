@@ -1,0 +1,14 @@
+{
+  "access.form.ratpanel_access_token.label": "耗子面板 AccessToken",
+  "access.form.ratpanel_access_token.placeholder": "请输入耗子面板 AccessToken",
+  "access.form.ratpanel_access_token.tooltip": "这是什么？请参阅 <a href=\"https://ratpanel.github.io/advanced/api.html\" target=\"_blank\">https://ratpanel.github.io/advanced/api.html</a>",
+  "access.form.ratpanel_access_token_id.label": "耗子面板 AccessToken ID",
+  "access.form.ratpanel_access_token_id.placeholder": "请输入耗子面板 AccessToken ID",
+  "access.form.ratpanel_access_token_id.tooltip": "这是什么？请参阅 <a href=\"https://ratpanel.github.io/advanced/api.html\" target=\"_blank\">https://ratpanel.github.io/advanced/api.html</a>",
+  "access.form.ratpanel_server_url.help": "提示：请勿包含安全入口后缀。",
+  "access.form.ratpanel_server_url.label": "耗子面板服务地址",
+  "access.form.ratpanel_server_url.placeholder": "请输入耗子面板服务地址",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "provider.ratpanel": "耗子面板（又名：AcePanel）",
+  "provider.ratpanel_console": "耗子面板 - 面板自身"
+}

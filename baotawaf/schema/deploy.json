@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baotawaf",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "siteNames",
+        "valueType": "multipleSplit",
+        "labelKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_site_names.label",
+        "placeholderKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_site_names.placeholder",
+        "tooltipKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_site_names.tooltip",
+        "extraKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_site_names.help",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "separator": ";",
+        "modalTitleKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_site_names.multiple_input_modal.title",
+        "modalPlaceholderKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_site_names.multiple_input_modal.placeholder"
+      },
+      {
+        "name": "sitePort",
+        "valueType": "number",
+        "labelKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_site_port.label",
+        "placeholderKey": "plugin.baotawaf.access.form.ssh_port.placeholder",
+        "required": true,
+        "default": 443,
+        "min": 1,
+        "max": 65535,
+        "validateWhen": [
+          {
+            "field": "sitePort",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "port"
+          }
+        ]
+      }
+    ],
+    "noticeKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf.guide",
+    "noticeHtml": true
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baotapanel",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "siteType",
+        "valueType": "select",
+        "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.label",
+        "placeholderKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.placeholder",
+        "required": true,
+        "default": "any",
+        "options": [
+          {
+            "value": "php",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.php.label"
+          },
+          {
+            "value": "java",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.java.label"
+          },
+          {
+            "value": "nodejs",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.nodejs.label"
+          },
+          {
+            "value": "go",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.go.label"
+          },
+          {
+            "value": "python",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.python.label"
+          },
+          {
+            "value": "proxy",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.proxy.label"
+          },
+          {
+            "value": "html",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.html.label"
+          },
+          {
+            "value": "general",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.general.label"
+          },
+          {
+            "value": "any",
+            "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_type.option.any.label"
+          }
+        ],
+        "allowCustomValue": true
+      },
+      {
+        "name": "siteNames",
+        "valueType": "multipleSplit",
+        "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_names.label",
+        "placeholderKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_names.placeholder",
+        "tooltipKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_names.tooltip",
+        "extraKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_names.help",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "separator": ";",
+        "modalTitleKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_names.multiple_input_modal.title",
+        "modalPlaceholderKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_site_names.multiple_input_modal.placeholder"
+      }
+    ],
+    "noticeKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel.guide",
+    "noticeHtml": true
+  }
+}

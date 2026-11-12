@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baotawaf-console",
+  "category": "deploy",
+  "schema": {
+    "columns": [],
+    "noticeKey": "plugin.baotawaf.workflow_node.deploy.form.baotawaf_console.guide",
+    "noticeHtml": true
+  }
+}

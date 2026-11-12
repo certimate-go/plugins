@@ -1,0 +1,9 @@
+{
+  "access.form.dokploy_api_key.label": "Dokploy API key",
+  "access.form.dokploy_api_key.placeholder": "Please enter Dokploy API key",
+  "access.form.dokploy_api_key.tooltip": "For more information, see <a href=\"https://docs.dokploy.com/docs/api\" target=\"_blank\">https://docs.dokploy.com/docs/api</a>",
+  "access.form.dokploy_server_url.label": "Dokploy server URL",
+  "access.form.dokploy_server_url.placeholder": "Please enter Dokploy server URL",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "provider.dokploy": "Dokploy"
+}

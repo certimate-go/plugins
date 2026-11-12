@@ -1,0 +1,20 @@
+{
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "access.form.synologydsm_password.label": "群晖 DSM 用户密码",
+  "access.form.synologydsm_password.placeholder": "请输入群晖 DSM 用户密码",
+  "access.form.synologydsm_server_url.label": "群晖 DSM 服务地址",
+  "access.form.synologydsm_server_url.placeholder": "请输入群晖 DSM 服务地址",
+  "access.form.synologydsm_totp_secret.help": "提示：仅当群晖开启双重验证登录时需要填写，用于生成动态登录验证码。",
+  "access.form.synologydsm_totp_secret.label": "群晖 DSM 双重验证 TOTP 密钥（可选）",
+  "access.form.synologydsm_totp_secret.placeholder": "请输入群晖 DSM 双重验证 TOTP 密钥",
+  "access.form.synologydsm_totp_secret.tooltip": "如何获取此参数？可在设置双重验证时点击「无法扫描？」查看，或将二维码识别为文本后、提取其中的 <em>secret</em> 部分。注意，这不是 6 位动态 OTP 码。",
+  "access.form.synologydsm_username.label": "群晖 DSM 用户名",
+  "access.form.synologydsm_username.placeholder": "请输入群晖 DSM 用户名",
+  "provider.synologydsm": "群晖 DSM",
+  "workflow_node.deploy.form.synologydsm.guide": "需要群晖 DSM v6.0 或更高版本。",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.help": "提示：不填写时，将上传新证书；否则，将替换原证书。",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.label": "群晖 DSM 原证书 ID 或描述（可选）",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.placeholder": "请输入群晖 DSM 原证书 ID 或描述",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.tooltip": "请登录群晖 DSM 面板查看<br><br>（目前需要在「控制面板 -> 安全性 -> 证书」页面，并打开浏览器开发者工具抓取网络请求后得到证书 ID）",
+  "workflow_node.deploy.form.synologydsm_is_default.label": "设为默认证书并应用到所有 DSM 服务"
+}

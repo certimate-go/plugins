@@ -1,0 +1,16 @@
+{
+  "access.form.proxmoxve_api_token.label": "Proxmox VE API Token",
+  "access.form.proxmoxve_api_token.placeholder": "请输入 Proxmox VE API Token",
+  "access.form.proxmoxve_api_token.tooltip": "这是什么？请参阅 <a href=\"https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens\" target=\"_blank\">https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens</a>",
+  "access.form.proxmoxve_api_token_secret.label": "Proxmox VE API Token Secret",
+  "access.form.proxmoxve_api_token_secret.placeholder": "请输入 Proxmox VE API Token Secret",
+  "access.form.proxmoxve_api_token_secret.tooltip": "这是什么？请参阅 <a href=\"https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens\" target=\"_blank\">https://pve.proxmox.com/pve-docs/pve-admin-guide.html#pveum_tokens</a>",
+  "access.form.proxmoxve_server_url.label": "Proxmox VE 服务地址",
+  "access.form.proxmoxve_server_url.placeholder": "请输入 Proxmox VE 服务地址",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "provider.proxmoxve": "PVE（Proxmox Virtual Environment）",
+  "workflow_node.deploy.form.proxmoxve.guide": "需要 Proxmox Virtual Environment v5.2 或更高版本。",
+  "workflow_node.deploy.form.proxmoxve_auto_restart.label": "部署后自动重启 Proxmox VE 服务",
+  "workflow_node.deploy.form.proxmoxve_node_name.label": "Proxmox VE 节点名称",
+  "workflow_node.deploy.form.proxmoxve_node_name.placeholder": "请输入 Proxmox VE 节点名称"
+}

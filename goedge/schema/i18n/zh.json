@@ -1,0 +1,21 @@
+{
+  "access.form.goedge_api_role.option.user.label": "平台用户",
+  "access.form.goedge_server_url.placeholder": "请输入 GoEdge 服务地址",
+  "access.form.goedge_access_key_id.tooltip": "这是什么？请参阅 <a href=\"https://goedge.cloud/docs/API/Auth.md\" target=\"_blank\">https://goedge.cloud/docs/API/Auth.md</a>",
+  "access.form.goedge_access_key.label": "GoEdge AccessKey",
+  "workflow_node.deploy.form.goedge_certificate_id.placeholder": "请输入 GoEdge 证书 ID",
+  "access.form.goedge_access_key.placeholder": "请输入 GoEdge AccessKey",
+  "access.form.goedge_access_key_id.placeholder": "请输入 GoEdge AccessKeyID",
+  "workflow_node.deploy.form.goedge_certificate_id.tooltip": "请登录 GoEdge 控制台查看<br><br>（目前需要在「网站列表 -> 证书管理 -> 证书」页面，并打开浏览器开发者工具抓取网络请求后得到证书 ID）",
+  "workflow_node.deploy.form.shared_deploy_target.label": "证书部署方式",
+  "access.form.goedge_access_key_id.label": "GoEdge AccessKeyID",
+  "access.form.goedge_access_key.tooltip": "这是什么？请参阅 <a href=\"https://goedge.cloud/docs/API/Auth.md\" target=\"_blank\">https://goedge.cloud/docs/API/Auth.md</a>",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "workflow_node.deploy.form.goedge_certificate_id.label": "GoEdge 证书 ID",
+  "workflow_node.deploy.form.goedge_deploy_target.option.certificate.label": "替换指定证书",
+  "access.form.goedge_api_role.option.admin.label": "系统管理员",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "请选择证书部署方式",
+  "access.form.goedge_server_url.label": "GoEdge 服务地址",
+  "access.form.goedge_api_role.label": "GoEdge 用户角色",
+  "plugin.goedge.name": "GoEdge"
+}

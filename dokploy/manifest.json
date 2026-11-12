@@ -1,0 +1,16 @@
+{
+  "provider_type": "dokploy",
+  "access_provider_type": "dokploy",
+  "binary": "dokploy",
+  "deploy_category": "website",
+  "display_name_key": "provider.dokploy",
+  "icon": "dokploy.svg",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

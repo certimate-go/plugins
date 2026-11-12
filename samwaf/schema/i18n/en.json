@@ -1,0 +1,16 @@
+{
+  "workflow_node.deploy.form.samwaf_certificate_id.tooltip": "You can find it on SamWAF dashboard.",
+  "workflow_node.deploy.form.samwaf_certificate_id.placeholder": "Please enter SamWAF certificate ID",
+  "access.form.samwaf_api_key.label": "SamWAF API Key",
+  "workflow_node.deploy.form.samwaf_deploy_target.option.certificate.label": "Certificate",
+  "access.form.samwaf_api_key.tooltip": "For more information, see <a href=\"https://doc.samwaf.com/api/\" target=\"_blank\">https://doc.samwaf.com/api/</a>",
+  "workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "access.form.samwaf_server_url.placeholder": "Please enter SamWAF server URL",
+  "access.form.samwaf_api_key.placeholder": "Please enter SamWAF API Key",
+  "workflow_node.deploy.form.samwaf.guide": "Requires SamWAF v1.3.20 or higher.",
+  "access.form.samwaf_server_url.label": "SamWAF server URL",
+  "workflow_node.deploy.form.samwaf_certificate_id.label": "SamWAF certificate ID",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "plugin.samwaf.name": "SamWAF"
+}

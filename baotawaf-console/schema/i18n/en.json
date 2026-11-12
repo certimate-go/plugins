@@ -1,0 +1,12 @@
+{
+  "plugin.baotawaf.access.form.baotawaf_api_key.label": "aaWAF API key",
+  "plugin.baotawaf.access.form.baotawaf_api_key.placeholder": "Please enter aaWAF API key",
+  "plugin.baotawaf.access.form.baotawaf_api_key.tooltip": "For more information, see <a href=\"https://github.com/aaPanel/aaWAF/blob/main/API.md\" target=\"_blank\">https://github.com/aaPanel/aaWAF/blob/main/API.md</a>",
+  "plugin.baotawaf.access.form.baotawaf_server_url.help": "Notes: DO NOT include the security entrance suffix.",
+  "plugin.baotawaf.access.form.baotawaf_server_url.label": "aaWAF server URL",
+  "plugin.baotawaf.access.form.baotawaf_server_url.placeholder": "Please enter aaWAF server URL",
+  "plugin.baotawaf.access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "plugin.baotawaf.workflow_node.deploy.form.baotawaf_console.guide": "Requires aaWAF v5.7 or higher.",
+  "plugin.baotawaf-console.name": "aaWAF - Console itself",
+  "plugin.baotawaf.access": "aaWAF / BaotaWAF"
+}

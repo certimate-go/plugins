@@ -61,7 +61,7 @@ make init PLUGIN=my-deployer          # 从 _template 生成脚手架
 ## 构建与测试
 
 ```bash
-make build PLUGIN=my-deployer         # 当前主机平台二进制 -> dist/<plugin>
+make build PLUGIN=my-deployer         # 当前主机平台安装目录 -> dist/<plugin>/
 make build-all PLUGIN=my-deployer     # 跨平台编译出发布矩阵
 make test                             # go test ./...
 ```

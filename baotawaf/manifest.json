@@ -1,0 +1,16 @@
+{
+  "provider_type": "baotawaf",
+  "access_provider_type": "baotawaf",
+  "binary": "baotawaf",
+  "deploy_category": "firewall",
+  "display_name_key": "plugin.baotawaf.name",
+  "icon": "baota.svg",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

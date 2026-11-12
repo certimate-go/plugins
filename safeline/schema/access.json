@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "safeline",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "access.form.safeline_server_url.label",
+        "placeholderKey": "access.form.safeline_server_url.placeholder",
+        "default": "http://<your-host-addr>:9443/",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "apiToken",
+        "valueType": "secret",
+        "labelKey": "access.form.safeline_api_token.label",
+        "placeholderKey": "access.form.safeline_api_token.placeholder",
+        "tooltipKey": "access.form.safeline_api_token.tooltip",
+        "tooltipHtml": true,
+        "secret": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

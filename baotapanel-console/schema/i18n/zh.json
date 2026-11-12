@@ -1,0 +1,13 @@
+{
+  "plugin.baotapanel.access.form.baotapanel_api_key.label": "宝塔面板接口密钥",
+  "plugin.baotapanel.access.form.baotapanel_api_key.placeholder": "请输入宝塔面板接口密钥",
+  "plugin.baotapanel.access.form.baotapanel_api_key.tooltip": "这是什么？请参阅 <a href=\"https://www.bt.cn/bbs/thread-113890-1-1.html\" target=\"_blank\">https://www.bt.cn/bbs/thread-113890-1-1.html</a>",
+  "plugin.baotapanel.access.form.baotapanel_server_url.help": "提示：请勿包含安全入口后缀。",
+  "plugin.baotapanel.access.form.baotapanel_server_url.label": "宝塔面板服务地址",
+  "plugin.baotapanel.access.form.baotapanel_server_url.placeholder": "请输入宝塔面板服务地址",
+  "plugin.baotapanel.access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "plugin.baotapanel.workflow_node.deploy.form.baotapanel_console.guide": "需要宝塔面板 v8.3 或更高版本。",
+  "plugin.baotapanel.workflow_node.deploy.form.baotapanel_console_auto_restart.label": "部署后自动重启宝塔面板服务",
+  "plugin.baotapanel-console.name": "宝塔面板 - 面板自身",
+  "plugin.baotapanel.access": "宝塔面板 / aaPanel"
+}

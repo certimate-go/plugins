@@ -1,0 +1,12 @@
+{
+  "workflow_node.deploy.form.samwaf_console.guide": "Requires SamWAF v1.3.21 or higher.",
+  "access.form.samwaf_api_key.label": "SamWAF API Key",
+  "access.form.samwaf_api_key.tooltip": "For more information, see <a href=\"https://doc.samwaf.com/api/\" target=\"_blank\">https://doc.samwaf.com/api/</a>",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "access.form.samwaf_server_url.placeholder": "Please enter SamWAF server URL",
+  "access.form.samwaf_api_key.placeholder": "Please enter SamWAF API Key",
+  "access.form.samwaf_server_url.label": "SamWAF server URL",
+  "workflow_node.deploy.form.samwaf_console_auto_restart.label": "Auto restart SamWAF after deployment",
+  "plugin.samwaf-console.name": "SamWAF - Console itself",
+  "plugin.samwaf.name": "SamWAF"
+}

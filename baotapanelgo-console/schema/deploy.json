@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baotapanelgo-console",
+  "category": "deploy",
+  "schema": {
+    "columns": []
+  }
+}

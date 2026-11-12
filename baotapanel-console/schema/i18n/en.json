@@ -1,0 +1,13 @@
+{
+  "plugin.baotapanel.access.form.baotapanel_api_key.label": "aaPanel API key",
+  "plugin.baotapanel.access.form.baotapanel_api_key.placeholder": "Please enter aaPanel API key",
+  "plugin.baotapanel.access.form.baotapanel_api_key.tooltip": "For more information, see <a href=\"https://www.bt.cn/bbs/thread-20376-1-1.html\" target=\"_blank\">https://www.bt.cn/bbs/thread-20376-1-1.html</a>",
+  "plugin.baotapanel.access.form.baotapanel_server_url.help": "Notes: DO NOT include the security entrance suffix.",
+  "plugin.baotapanel.access.form.baotapanel_server_url.label": "aaPanel server URL",
+  "plugin.baotapanel.access.form.baotapanel_server_url.placeholder": "Please enter aaPanel server URL",
+  "plugin.baotapanel.access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "plugin.baotapanel.workflow_node.deploy.form.baotapanel_console.guide": "Requires aaPanel v7.0 or higher.",
+  "plugin.baotapanel.workflow_node.deploy.form.baotapanel_console_auto_restart.label": "Auto restart aaPanel after deployment",
+  "plugin.baotapanel-console.name": "aaPanel - Console itself",
+  "plugin.baotapanel.access": "aaPanel / BaotaPanel"
+}

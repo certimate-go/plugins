@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "huaweiibmc",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "host",
+        "valueType": "text",
+        "labelKey": "access.form.huaweiibmc_host.label",
+        "placeholderKey": "access.form.huaweiibmc_host.placeholder",
+        "required": true,
+        "default": "",
+        "validateWhen": [
+          {
+            "field": "host",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "hostname_or_url"
+          }
+        ]
+      },
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "access.form.huaweiibmc_username.label",
+        "placeholderKey": "access.form.huaweiibmc_username.placeholder",
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "password",
+        "valueType": "secret",
+        "labelKey": "access.form.huaweiibmc_password.label",
+        "placeholderKey": "access.form.huaweiibmc_password.placeholder",
+        "required": true,
+        "default": "",
+        "secret": true
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "access.form.shared_allow_insecure_conns.label",
+        "default": true
+      }
+    ]
+  }
+}

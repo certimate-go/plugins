@@ -1,0 +1,133 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "1panel",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "nodeName",
+        "valueType": "text",
+        "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_node_name.label",
+        "placeholderKey": "plugin.1panel.workflow_node.deploy.form.1panel_node_name.placeholder",
+        "tooltipKey": "plugin.1panel.workflow_node.deploy.form.1panel_node_name.tooltip",
+        "extraKey": "plugin.1panel.workflow_node.deploy.form.1panel_node_name.help",
+        "tooltipHtml": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.1panel.workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "plugin.1panel.workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "required": true,
+        "default": "website",
+        "options": [
+          {
+            "value": "website",
+            "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_deploy_target.option.website.label"
+          },
+          {
+            "value": "certificate",
+            "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_deploy_target.option.certificate.label"
+          }
+        ]
+      },
+      {
+        "name": "websiteMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_match_pattern.label",
+        "placeholderKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_match_pattern.placeholder",
+        "default": "specified",
+        "options": [
+          {
+            "value": "specified",
+            "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_match_pattern.option.specified.label"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_match_pattern.option.certsan.label"
+          }
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ]
+          }
+        ],
+        "extraKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_match_pattern.option.certsan.help",
+        "extraHtml": true,
+        "allowCustomValue": true
+      },
+      {
+        "name": "websiteId",
+        "valueType": "text",
+        "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_id.label",
+        "placeholderKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_id.placeholder",
+        "tooltipKey": "plugin.1panel.workflow_node.deploy.form.1panel_website_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ]
+          },
+          {
+            "field": "websiteMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ],
+            "validator": "positiveInteger"
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_certificate_id.label",
+        "placeholderKey": "plugin.1panel.workflow_node.deploy.form.1panel_certificate_id.placeholder",
+        "tooltipKey": "plugin.1panel.workflow_node.deploy.form.1panel_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ],
+            "validator": "positiveInteger"
+          }
+        ]
+      }
+    ]
+  }
+}

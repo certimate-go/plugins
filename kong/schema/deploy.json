@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "kong",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "default": "certificate",
+        "options": [
+          {
+            "value": "certificate",
+            "labelKey": "workflow_node.deploy.form.kong_deploy_target.option.certificate.label"
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "workspace",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.kong_workspace.label",
+        "placeholderKey": "workflow_node.deploy.form.kong_workspace.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.kong_workspace.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.kong_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.kong_certificate_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.kong_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ]
+      }
+    ],
+    "noticeKey": "workflow_node.deploy.form.kong.guide",
+    "noticeHtml": true
+  }
+}

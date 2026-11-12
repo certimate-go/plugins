@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ratpanel",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "required": true,
+        "default": "website",
+        "options": [
+          {
+            "value": "website",
+            "labelKey": "workflow_node.deploy.form.ratpanel_deploy_target.option.website.label"
+          },
+          {
+            "value": "certificate",
+            "labelKey": "workflow_node.deploy.form.ratpanel_deploy_target.option.certificate.label"
+          }
+        ]
+      },
+      {
+        "name": "siteNames",
+        "valueType": "multipleSplit",
+        "labelKey": "workflow_node.deploy.form.ratpanel_site_names.label",
+        "placeholderKey": "workflow_node.deploy.form.ratpanel_site_names.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.ratpanel_site_names.tooltip",
+        "tooltipHtml": true,
+        "extraKey": "workflow_node.deploy.form.ratpanel_site_names.help",
+        "default": "",
+        "separator": ";",
+        "modalTitleKey": "workflow_node.deploy.form.ratpanel_site_names.multiple_input_modal.title",
+        "modalPlaceholderKey": "workflow_node.deploy.form.ratpanel_site_names.multiple_input_modal.placeholder",
+        "dependencies": [
+          "deployTarget"
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ],
+            "validator": "regex",
+            "params": {
+              "pattern": "^\\s*[^;\\s][^;]*(?:;\\s*[^;\\s][^;]*)*$"
+            }
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.ratpanel_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.ratpanel_certificate_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.ratpanel_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "numericValue": "integer",
+        "inputType": "number",
+        "dependencies": [
+          "deployTarget"
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ],
+            "validator": "positiveInteger"
+          }
+        ]
+      }
+    ],
+    "noticeKey": "workflow_node.deploy.form.ratpanel.guide",
+    "noticeHtml": true
+  }
+}

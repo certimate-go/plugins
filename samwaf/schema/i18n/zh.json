@@ -1,0 +1,16 @@
+{
+  "workflow_node.deploy.form.samwaf_certificate_id.tooltip": "请登录 SamWAF 控制台查看",
+  "workflow_node.deploy.form.samwaf_certificate_id.placeholder": "请输入 SamWAF 证书 ID",
+  "access.form.samwaf_api_key.label": "SamWAF API Key",
+  "workflow_node.deploy.form.samwaf_deploy_target.option.certificate.label": "替换指定证书",
+  "access.form.samwaf_api_key.tooltip": "这是什么？请参阅 <a href=\"https://doc.samwaf.com/api/\" target=\"_blank\">https://doc.samwaf.com/api/</a>",
+  "workflow_node.deploy.form.shared_deploy_target.label": "证书部署方式",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "access.form.samwaf_server_url.placeholder": "请输入 SamWAF 服务地址",
+  "access.form.samwaf_api_key.placeholder": "请输入 SamWAF API Key",
+  "workflow_node.deploy.form.samwaf.guide": "需要 SamWAF v1.3.20 或更高版本。",
+  "access.form.samwaf_server_url.label": "SamWAF 服务地址",
+  "workflow_node.deploy.form.samwaf_certificate_id.label": "SamWAF 证书 ID",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "请选择证书部署方式",
+  "plugin.samwaf.name": "SamWAF"
+}

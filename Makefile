@@ -23,7 +23,10 @@ init:
 	@echo "  5. make build PLUGIN=$(PLUGIN)"
 
 build:
-	go build -o $(OUTPUT_DIR)/$(PLUGIN) ./$(PLUGIN)
+	mkdir -p $(OUTPUT_DIR)/$(PLUGIN)
+	go build -o $(OUTPUT_DIR)/$(PLUGIN)/$(BINARY) ./$(PLUGIN)
+	cp $(PLUGIN)/manifest.json $(OUTPUT_DIR)/$(PLUGIN)/manifest.json
+	@if [ -n "$(ICON)" ] && [ "$(ICON)" != "null" ]; then cp $(PLUGIN)/$(ICON) $(OUTPUT_DIR)/$(PLUGIN)/$(ICON); fi
 
 build-all:
 	@set -eu; \

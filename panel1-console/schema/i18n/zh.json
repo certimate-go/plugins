@@ -1,0 +1,14 @@
+{
+  "plugin.1panel.access.form.1panel_api_key.label": "1Panel 接口密钥",
+  "plugin.1panel.access.form.1panel_api_key.placeholder": "请输入 1Panel 接口密钥",
+  "plugin.1panel.access.form.1panel_api_key.tooltip": "这是什么？请参阅 <a href=\"https://docs.fit2cloud.com/1panel/dev_manual/api_manual\" target=\"_blank\">https://docs.fit2cloud.com/1panel/dev_manual/api_manual</a>",
+  "plugin.1panel.access.form.1panel_api_version.label": "1Panel 版本",
+  "plugin.1panel.access.form.1panel_api_version.placeholder": "请选择 1Panel 版本",
+  "plugin.1panel.access.form.1panel_server_url.help": "提示：请勿包含安全入口后缀。",
+  "plugin.1panel.access.form.1panel_server_url.label": "1Panel 服务地址",
+  "plugin.1panel.access.form.1panel_server_url.placeholder": "请输入 1Panel 服务地址",
+  "plugin.1panel.access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "plugin.1panel.workflow_node.deploy.form.1panel_console_auto_restart.label": "部署后自动重启 1Panel 服务",
+  "plugin.1panel-console.name": "1Panel - 面板自身",
+  "plugin.1panel.access": "1Panel"
+}

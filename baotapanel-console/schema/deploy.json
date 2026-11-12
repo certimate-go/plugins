@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baotapanel-console",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "autoRestart",
+        "valueType": "switch",
+        "labelKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_console_auto_restart.label",
+        "default": true
+      }
+    ],
+    "noticeKey": "plugin.baotapanel.workflow_node.deploy.form.baotapanel_console.guide",
+    "noticeHtml": true
+  }
+}

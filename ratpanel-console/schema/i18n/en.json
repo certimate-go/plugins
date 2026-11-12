@@ -1,0 +1,14 @@
+{
+  "access.form.ratpanel_access_token.label": "RatPanel access token",
+  "access.form.ratpanel_access_token.placeholder": "Please enter RatPanel access token",
+  "access.form.ratpanel_access_token.tooltip": "For more information, see <a href=\"https://ratpanel.github.io/advanced/api.html\" target=\"_blank\">https://ratpanel.github.io/advanced/api.html</a>",
+  "access.form.ratpanel_access_token_id.label": "RatPanel access token ID",
+  "access.form.ratpanel_access_token_id.placeholder": "Please enter RatPanel access token ID",
+  "access.form.ratpanel_access_token_id.tooltip": "For more information, see <a href=\"https://ratpanel.github.io/advanced/api.html\" target=\"_blank\">https://ratpanel.github.io/advanced/api.html</a>",
+  "access.form.ratpanel_server_url.help": "Notes: DO NOT include the security entrance suffix.",
+  "access.form.ratpanel_server_url.label": "RatPanel server URL",
+  "access.form.ratpanel_server_url.placeholder": "Please enter RatPanel server URL",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "provider.ratpanel": "AcePanel (aka RatPanel)",
+  "provider.ratpanel_console": "AcePanel - Console itself"
+}

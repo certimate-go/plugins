@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "1panel-console",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "autoRestart",
+        "valueType": "switch",
+        "labelKey": "plugin.1panel.workflow_node.deploy.form.1panel_console_auto_restart.label",
+        "default": true
+      }
+    ]
+  }
+}

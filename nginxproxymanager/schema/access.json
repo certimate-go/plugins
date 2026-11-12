@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "nginxproxymanager",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "access.form.nginxproxymanager_server_url.label",
+        "placeholderKey": "access.form.nginxproxymanager_server_url.placeholder",
+        "default": "http://<your-host-addr>:81/",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "authMethod",
+        "valueType": "radio",
+        "labelKey": "access.form.nginxproxymanager_auth_method.label",
+        "default": "password",
+        "required": true,
+        "options": [
+          {
+            "value": "password",
+            "labelKey": "access.form.nginxproxymanager_auth_method.option.password.label"
+          },
+          {
+            "value": "token",
+            "labelKey": "access.form.nginxproxymanager_auth_method.option.token.label"
+          }
+        ]
+      },
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "access.form.nginxproxymanager_username.label",
+        "placeholderKey": "access.form.nginxproxymanager_username.placeholder",
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "password"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "password",
+        "valueType": "secret",
+        "labelKey": "access.form.nginxproxymanager_password.label",
+        "placeholderKey": "access.form.nginxproxymanager_password.placeholder",
+        "secret": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "password"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "apiToken",
+        "valueType": "secret",
+        "labelKey": "access.form.nginxproxymanager_api_token.label",
+        "placeholderKey": "access.form.nginxproxymanager_api_token.placeholder",
+        "secret": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "authMethod",
+            "op": "eq",
+            "values": [
+              "token"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

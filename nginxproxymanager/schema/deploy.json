@@ -1,0 +1,157 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "nginxproxymanager",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "default": "host",
+        "options": [
+          {
+            "value": "host",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_deploy_target.option.host.label"
+          },
+          {
+            "value": "certificate",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_deploy_target.option.certificate.label"
+          }
+        ],
+        "required": true
+      },
+      {
+        "name": "hostMatchPattern",
+        "valueType": "radio",
+        "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_match_pattern.label",
+        "default": "specified",
+        "options": [
+          {
+            "value": "specified",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_match_pattern.option.specified.label"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_match_pattern.option.certsan.label"
+          }
+        ],
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "host"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "hostType",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_type.label",
+        "placeholderKey": "workflow_node.deploy.form.nginxproxymanager_host_type.placeholder",
+        "default": "proxy",
+        "options": [
+          {
+            "value": "proxy",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_type.option.proxy.label"
+          },
+          {
+            "value": "redirection",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_type.option.redirection.label"
+          },
+          {
+            "value": "stream",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_type.option.stream.label"
+          },
+          {
+            "value": "dead",
+            "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_type.option.dead.label"
+          }
+        ],
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "host"
+            ]
+          }
+        ],
+        "allowCustomValue": true
+      },
+      {
+        "name": "hostId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.nginxproxymanager_host_id.label",
+        "placeholderKey": "workflow_node.deploy.form.nginxproxymanager_host_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.nginxproxymanager_host_id.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "host"
+            ]
+          },
+          {
+            "field": "hostMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "validateWhen": [
+          {
+            "field": "hostId",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "positiveInteger"
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.nginxproxymanager_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.nginxproxymanager_certificate_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.nginxproxymanager_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "validateWhen": [
+          {
+            "field": "certificateId",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "positiveInteger"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "access.form.proxmoxbs_api_token.label": "Proxmox BS API Token",
+  "access.form.proxmoxbs_api_token.placeholder": "请输入 Proxmox BS API Token",
+  "access.form.proxmoxbs_api_token.tooltip": "这是什么？请参阅 <a href=\"https://pbs.proxmox.com/docs/user-management.html#api-tokens\" target=\"_blank\">https://pbs.proxmox.com/docs/user-management.html#api-tokens</a>",
+  "access.form.proxmoxbs_api_token_secret.label": "Proxmox BS API Token Secret",
+  "access.form.proxmoxbs_api_token_secret.placeholder": "请输入 Proxmox BS API Token Secret",
+  "access.form.proxmoxbs_api_token_secret.tooltip": "这是什么？请参阅 <a href=\"https://pbs.proxmox.com/docs/user-management.html#api-tokens\" target=\"_blank\">https://pbs.proxmox.com/docs/user-management.html#api-tokens</a>",
+  "access.form.proxmoxbs_server_url.label": "Proxmox BS 服务地址",
+  "access.form.proxmoxbs_server_url.placeholder": "请输入 Proxmox BS 服务地址",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "provider.proxmoxbs": "PBS（Proxmox Backup Server）",
+  "workflow_node.deploy.form.proxmoxbs.guide": "需要 Proxmox Backup Server v2.1 或更高版本。",
+  "workflow_node.deploy.form.proxmoxbs_auto_restart.label": "部署后自动重启 Proxmox BS 服务",
+  "workflow_node.deploy.form.proxmoxbs_node_name.label": "Proxmox BS 节点名称",
+  "workflow_node.deploy.form.proxmoxbs_node_name.placeholder": "请输入 Proxmox BS 节点名称"
+}

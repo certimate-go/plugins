@@ -1,0 +1,12 @@
+{
+  "workflow_node.deploy.form.samwaf_console.guide": "需要 SamWAF v1.3.21 或更高版本。",
+  "access.form.samwaf_api_key.label": "SamWAF API Key",
+  "access.form.samwaf_api_key.tooltip": "这是什么？请参阅 <a href=\"https://doc.samwaf.com/api/\" target=\"_blank\">https://doc.samwaf.com/api/</a>",
+  "access.form.shared_allow_insecure_conns.label": "忽略 SSL/TLS 证书验证",
+  "access.form.samwaf_server_url.placeholder": "请输入 SamWAF 服务地址",
+  "access.form.samwaf_api_key.placeholder": "请输入 SamWAF API Key",
+  "access.form.samwaf_server_url.label": "SamWAF 服务地址",
+  "workflow_node.deploy.form.samwaf_console_auto_restart.label": "部署后自动重启 SamWAF 服务",
+  "plugin.samwaf-console.name": "SamWAF - 面板自身",
+  "plugin.samwaf.name": "SamWAF"
+}

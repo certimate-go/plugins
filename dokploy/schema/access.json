@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "dokploy",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "access.form.dokploy_server_url.label",
+        "placeholderKey": "access.form.dokploy_server_url.placeholder",
+        "required": true,
+        "default": "http://<your-host-addr>:3000/",
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ],
+        "inputType": "url"
+      },
+      {
+        "name": "apiKey",
+        "valueType": "secret",
+        "labelKey": "access.form.dokploy_api_key.label",
+        "placeholderKey": "access.form.dokploy_api_key.placeholder",
+        "tooltipKey": "access.form.dokploy_api_key.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "secret": true
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "access.form.synologydsm_password.label": "Synology DSM password",
+  "access.form.synologydsm_password.placeholder": "Please enter Synology DSM password",
+  "access.form.synologydsm_server_url.label": "Synology DSM server URL",
+  "access.form.synologydsm_server_url.placeholder": "http://192.168.1.100:5000",
+  "access.form.synologydsm_totp_secret.help": "Notes: Only required when you set up 2FA sign-in to Synology DSM.",
+  "access.form.synologydsm_totp_secret.label": "Synology DSM 2FA TOTP secret key (Optional)",
+  "access.form.synologydsm_totp_secret.placeholder": "Please enter Synology DSM 2FA TOTP secret key",
+  "access.form.synologydsm_totp_secret.tooltip": "How to get it? The secret key can be found by clicking \"Can't scan it\" when setting up 2FA, or by using a QRCode scanning tool.",
+  "access.form.synologydsm_username.label": "Synology DSM username",
+  "access.form.synologydsm_username.placeholder": "Please enter Synology DSM username",
+  "provider.synologydsm": "Synology DSM",
+  "workflow_node.deploy.form.synologydsm.guide": "Requires Synology DSM v6.0 or higher.",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.help": "Notes: Leave it blank to import a new certificate; otherwise, to replace the existing one.",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.label": "Synology DSM certificate ID or description (Optional)",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.placeholder": "Please enter Synology DSM certificate ID or description",
+  "workflow_node.deploy.form.synologydsm_certificate_id_or_desc.tooltip": "You can find it on Synology DSM dashboard. <br><br>(Please open the browser devtools, and visit the \"Control Panel -> Security -> Certificate\" page to capture network requests, then you can get the certificate ID.)",
+  "workflow_node.deploy.form.synologydsm_is_default.label": "Set as default certificate and applied to all DSM services"
+}

@@ -1,0 +1,16 @@
+{
+  "access.form.apisix_server_url.placeholder": "Please enter APISIX server URL",
+  "access.form.apisix_server_url.label": "APISIX server URL",
+  "workflow_node.deploy.form.apisix_certificate_id.tooltip": "You can find it on APISIX dashboard.",
+  "access.form.apisix_api_key.label": "APISIX Admin API key",
+  "access.form.apisix_api_key.placeholder": "Please enter APISIX Admin API key",
+  "workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "workflow_node.deploy.form.apisix_deploy_target.option.certificate.label": "SSL certificate",
+  "access.form.shared_allow_insecure_conns.label": "Allow insecure SSL/TLS connections",
+  "workflow_node.deploy.form.apisix_certificate_id.label": "APISIX certificate ID",
+  "workflow_node.deploy.form.apisix.guide": "Requires APISIX v3.0 or higher.",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "access.form.apisix_api_key.tooltip": "For more information, see <a href=\"https://apisix.apache.org/docs/apisix/admin-api/\" target=\"_blank\">https://apisix.apache.org/docs/apisix/admin-api/</a>",
+  "workflow_node.deploy.form.apisix_certificate_id.placeholder": "Please enter APISIX certificate ID",
+  "plugin.apisix.name": "Apache APISIX"
+}

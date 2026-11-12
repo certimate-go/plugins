@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ratpanel-console",
+  "category": "deploy",
+  "schema": {
+    "columns": []
+  }
+}

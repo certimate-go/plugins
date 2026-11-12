@@ -1,0 +1,16 @@
+{
+  "provider_type": "nginxproxymanager",
+  "access_provider_type": "nginxproxymanager",
+  "binary": "nginxproxymanager",
+  "deploy_category": "website",
+  "display_name_key": "plugin.nginxproxymanager.name",
+  "icon": "nginxproxymanager.svg",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

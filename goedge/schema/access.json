@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "goedge",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "access.form.goedge_server_url.label",
+        "placeholderKey": "access.form.goedge_server_url.placeholder",
+        "default": "http://<your-host-addr>:7788/",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "apiRole",
+        "valueType": "radio",
+        "labelKey": "access.form.goedge_api_role.label",
+        "default": "user",
+        "required": true,
+        "options": [
+          {
+            "value": "user",
+            "labelKey": "access.form.goedge_api_role.option.user.label"
+          },
+          {
+            "value": "admin",
+            "labelKey": "access.form.goedge_api_role.option.admin.label"
+          }
+        ]
+      },
+      {
+        "name": "accessKeyId",
+        "valueType": "text",
+        "labelKey": "access.form.goedge_access_key_id.label",
+        "placeholderKey": "access.form.goedge_access_key_id.placeholder",
+        "tooltipKey": "access.form.goedge_access_key_id.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "accessKey",
+        "valueType": "secret",
+        "labelKey": "access.form.goedge_access_key.label",
+        "placeholderKey": "access.form.goedge_access_key.placeholder",
+        "tooltipKey": "access.form.goedge_access_key.tooltip",
+        "tooltipHtml": true,
+        "secret": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "access.form.shared_allow_insecure_conns.label"
+      }
+    ]
+  }
+}
