@@ -1,15 +1,33 @@
 {
-  "provider_type": "byteplus-medialive",
   "access_provider_type": "byteplus",
-  "display_name_key": "plugin.byteplus-medialive.name",
-  "deploy_category": "av",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "byteplus-medialive",
+  "deploy_category": "av",
+  "display_name_key": "plugin.byteplus-medialive.name",
   "icon": "byteplus.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "byteplus-medialive",
+  "release": {
+    "assets": {
+      "darwin/amd64": "byteplus-medialive_darwin_amd64.zip",
+      "darwin/arm64": "byteplus-medialive_darwin_arm64.zip",
+      "linux/amd64": "byteplus-medialive_linux_amd64.zip",
+      "linux/arm64": "byteplus-medialive_linux_arm64.zip",
+      "windows/amd64": "byteplus-medialive_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "8edb1688c3a0a9d81fc68e37a548ae0437e014205143cae76ae2a33d8fe7aff5",
+      "darwin/arm64": "5408f82e135a7944b7d75436b3ed83ed22387c0e98a603892ba01f17c21cb8d9",
+      "linux/amd64": "64c7b98de3eecc305c58370ca07c844523e0597a971a62e1f08b00a0231da541",
+      "linux/arm64": "587035d97309b488d3579590c92eba97a8ee9df915db21c2f488bec289e91f28",
+      "windows/amd64": "50d8dc2e627eee02ddc0d34c4672e31517ae795f31e21a86262c304864c8e4b7"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "byteplus-medialive/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
