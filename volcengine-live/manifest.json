@@ -1,15 +1,33 @@
 {
-  "provider_type": "volcengine-live",
   "access_provider_type": "volcengine",
-  "display_name_key": "plugin.volcengine-live.name",
-  "deploy_category": "av",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "volcengine-live",
+  "deploy_category": "av",
+  "display_name_key": "plugin.volcengine-live.name",
   "icon": "volcengine.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "volcengine-live",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-live_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-live_darwin_arm64.zip",
+      "linux/amd64": "volcengine-live_linux_amd64.zip",
+      "linux/arm64": "volcengine-live_linux_arm64.zip",
+      "windows/amd64": "volcengine-live_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "64ca96d4f4cbea636adb32e16427dda7060caf77665f65e4f4bd9f526a213be2",
+      "darwin/arm64": "e68f751facda760c2a36584d0223743643da20bdb9f0e3fdd8a0a35088a8f796",
+      "linux/amd64": "fee829ac1d88caffa9ddd5618a01cefbe2582e1d8ef85d08707cb5f214f24c97",
+      "linux/arm64": "5a5d0b8fd9d48e96e7a0971f3246c9670d052196d7cee7b8b5f42e2f4adadc16",
+      "windows/amd64": "39f6ebe1350eebeca9427ee9b2b6136b375c3a468eaaa36fa39af82f2275e5e0"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-live/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
