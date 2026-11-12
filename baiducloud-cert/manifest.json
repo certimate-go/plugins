@@ -1,15 +1,33 @@
 {
-  "provider_type": "baiducloud-cert",
   "access_provider_type": "baiducloud",
   "binary": "baiducloud-cert",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "ssl",
   "display_name_key": "plugin.baiducloud-cert.name",
   "icon": "baiducloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "baiducloud-cert",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baiducloud-cert_darwin_amd64.zip",
+      "darwin/arm64": "baiducloud-cert_darwin_arm64.zip",
+      "linux/amd64": "baiducloud-cert_linux_amd64.zip",
+      "linux/arm64": "baiducloud-cert_linux_arm64.zip",
+      "windows/amd64": "baiducloud-cert_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "9b1ab9974e2b96971d0e10a79077dcce1147d170e63be845e67679d0358268e9",
+      "darwin/arm64": "aabe4addd06bed03f43c486ec483bdf774fa42a67d8ab185188dc53e2cbe4e92",
+      "linux/amd64": "7741e557454db44022f5fd7b2b3ff5a68ffc37a9aa9e61f14fc35eed04fb2341",
+      "linux/arm64": "6d4f695ad51885ef9340b2569e6341013d3f9cbfa182398cc80528940e07c383",
+      "windows/amd64": "8c12c638c75f5de1b2ba3218f67e367b05def9790f30050333678d5c787ea33c"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baiducloud-cert/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
