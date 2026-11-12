@@ -1,14 +1,32 @@
 {
-  "provider_type": "gcore-cdn",
   "access_provider_type": "gcore",
-  "display_name_key": "plugin.gcore-cdn.name",
-  "deploy_category": "cdn",
-  "version": "0.1.0",
-  "protocol_version": 2,
   "binary": "gcore-cdn",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.gcore-cdn.name",
   "icon": "gcore.svg",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "gcore-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "gcore-cdn_darwin_amd64.zip",
+      "darwin/arm64": "gcore-cdn_darwin_arm64.zip",
+      "linux/amd64": "gcore-cdn_linux_amd64.zip",
+      "linux/arm64": "gcore-cdn_linux_arm64.zip",
+      "windows/amd64": "gcore-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "1343920d4ec781fee20b33e1b7c01263580cdfa442e6c279c6cc130a54fbde90",
+      "darwin/arm64": "bd0da76a91cb8c2faceac2d5a345da3568310a4a25feb49eb02ae2c3bc7691fd",
+      "linux/amd64": "90023b30aaa37ef722164989e74ce04fa453fa098ea5f7626f3e83cd0355921a",
+      "linux/arm64": "a167f110c6fa0548aaed873f85b97c4f89bd219a9a7a76c247020d5c4126d443",
+      "windows/amd64": "572db953e0e193d45123d51263b96dbff4cf4b0a940ad7036e1e6996b0d444b1"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "gcore-cdn/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
