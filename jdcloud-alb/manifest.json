@@ -1,15 +1,33 @@
 {
-  "provider_type": "jdcloud-alb",
   "access_provider_type": "jdcloud",
   "binary": "jdcloud-alb",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "loadbalance",
   "display_name_key": "plugin.jdcloud-alb.name",
   "icon": "jdcloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "jdcloud-alb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "jdcloud-alb_darwin_amd64.zip",
+      "darwin/arm64": "jdcloud-alb_darwin_arm64.zip",
+      "linux/amd64": "jdcloud-alb_linux_amd64.zip",
+      "linux/arm64": "jdcloud-alb_linux_arm64.zip",
+      "windows/amd64": "jdcloud-alb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "2aeb62e3d9560bc614d9fae2c9703855c06ef2dc50342dc3a54ae0b96b8143dc",
+      "darwin/arm64": "eacd000998e042e0391190584b69b331e7b68724dd576710ca96fb2d894fdeac",
+      "linux/amd64": "b2ef4c5dd17230bc63b9d8ae704e6c18bc3d1dbf9305c935187d8fd08bf5e67a",
+      "linux/arm64": "81126063c055189e2e05f79ea703299dc4a7227009a06357d1d33c8d777eb01e",
+      "windows/amd64": "b1981a6c52f6ecc5f1c2c83918d5ba87c2fc21855ef2ac639e14c33615b56c61"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "jdcloud-alb/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
