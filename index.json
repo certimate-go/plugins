@@ -283,6 +283,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "baotawaf",
+      "release": {
+        "assets": {
+          "darwin/amd64": "baotawaf_darwin_amd64.zip",
+          "darwin/arm64": "baotawaf_darwin_arm64.zip",
+          "linux/amd64": "baotawaf_linux_amd64.zip",
+          "linux/arm64": "baotawaf_linux_arm64.zip",
+          "windows/amd64": "baotawaf_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "c9cfe5f5630e0fd58150945118b4bfe99f807ae129cb0db8391713854760b2ef",
+          "darwin/arm64": "602421b84718ee40148575eda62479b1a3cdf5b366048ad0e8988b4ad76feb4b",
+          "linux/amd64": "86b4d9eeeb69d0aedd76b51c4e94563da8c1da4bfff333d81346de56904591cc",
+          "linux/arm64": "80f4a04809bb9f3145b2382b38ec54d311a10fb64e274c1c1670abe5a56feb79",
+          "windows/amd64": "92ddc63fdc542295c4e740a199dde076a1404258993573c35d171ebe93cabdd8"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "baotawaf/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
