@@ -1,15 +1,33 @@
 {
-  "provider_type": "volcengine-apig",
   "access_provider_type": "volcengine",
-  "display_name_key": "plugin.volcengine-apig.name",
-  "deploy_category": "apigw",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "volcengine-apig",
+  "deploy_category": "apigw",
+  "display_name_key": "plugin.volcengine-apig.name",
   "icon": "volcengine.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "volcengine-apig",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-apig_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-apig_darwin_arm64.zip",
+      "linux/amd64": "volcengine-apig_linux_amd64.zip",
+      "linux/arm64": "volcengine-apig_linux_arm64.zip",
+      "windows/amd64": "volcengine-apig_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "236334a5943af33a941397924f49c11db87ec0adb9087c7a8fbca594e8e9c41c",
+      "darwin/arm64": "51c25b731dd894067932680bda03797c48792d5dd2da445c05878e73c82b8d53",
+      "linux/amd64": "d3daacaee73e2a4bbaf12f2d8a2762fcebe94bda8d7fe06d337cba1787fb9bfb",
+      "linux/arm64": "74c6f178bce2829e24286c14aab20b8bea9daf942f02cc0e3753584c75ccb981",
+      "windows/amd64": "dc8f82055ddd18be4251d8cc2bc75982103e3fbf9d41165cc38cb67a3688bce6"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-apig/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
