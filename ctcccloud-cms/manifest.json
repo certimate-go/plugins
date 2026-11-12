@@ -1,15 +1,33 @@
 {
-  "provider_type": "ctcccloud-cms",
   "access_provider_type": "ctcccloud",
-  "display_name_key": "plugin.ctcccloud-cms.name",
-  "deploy_category": "ssl",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "ctcccloud-cms",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.ctcccloud-cms.name",
   "icon": "ctcccloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ctcccloud-cms",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ctcccloud-cms_darwin_amd64.zip",
+      "darwin/arm64": "ctcccloud-cms_darwin_arm64.zip",
+      "linux/amd64": "ctcccloud-cms_linux_amd64.zip",
+      "linux/arm64": "ctcccloud-cms_linux_arm64.zip",
+      "windows/amd64": "ctcccloud-cms_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "a642cf8f03175d9c2813e97cee08825800e9371a3e7c89c833a987bce8a0c4b0",
+      "darwin/arm64": "ea01e3e91617f3aa0643ca07ed335f1ae5328a225a5ce1354ad9f4eb244393d7",
+      "linux/amd64": "32c851c7997f00cf516e96c9de3a5c75405cb41c8ae4df358b47f2be4a7ef44d",
+      "linux/arm64": "f80f2881fb552629b08a96356d729298a29f89f9b8d9d2099ac86f6b681b48fd",
+      "windows/amd64": "7004a70270e50d69f465fa430ef33e68e11618447b7423fe323081490b53a1a1"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ctcccloud-cms/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
