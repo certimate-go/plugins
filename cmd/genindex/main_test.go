@@ -29,7 +29,7 @@ func generate(t *testing.T, root string) []byte {
 	if err != nil {
 		t.Fatal(err)
 	}
-	buf, err := renderIndex(plugins)
+	buf, err := renderIndex(root, plugins)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -54,8 +54,8 @@ func TestBuildIndex_HappyPathSorted(t *testing.T) {
 	}
 	want := []string{"alpha", "beta", "gamma"}
 	for i, w := range want {
-		if got[i]["provider_type"] != w {
-			t.Fatalf("entry %d: want %q, got %v", i, w, got[i]["provider_type"])
+		if got[i].fields["provider_type"] != w {
+			t.Fatalf("entry %d: want %q, got %v", i, w, got[i].fields["provider_type"])
 		}
 	}
 }
@@ -77,8 +77,8 @@ func TestBuildIndex_SkipsNonPluginDirs(t *testing.T) {
 	if len(got) != 1 {
 		t.Fatalf("want 1 entry (real only), got %d: %v", len(got), got)
 	}
-	if got[0]["provider_type"] != "real" {
-		t.Fatalf("want real, got %v", got[0]["provider_type"])
+	if got[0].fields["provider_type"] != "real" {
+		t.Fatalf("want real, got %v", got[0].fields["provider_type"])
 	}
 }
 
@@ -95,7 +95,7 @@ func TestBuildIndex_MalformedFails(t *testing.T) {
 func TestGenerate_IdempotentAndFaithful(t *testing.T) {
 	root := t.TempDir()
 	mkdir(t, root, "beta")
-	writeFile(t, filepath.Join(root, "beta", "manifest.json"), `{"provider_type":"beta","version":"2.0.0","binary":"beta","release":{"repo":"certimate-go/plugins","tag":"v2"}}`)
+	writeFile(t, filepath.Join(root, "beta", "manifest.json"), `{"provider_type":"beta","version":"2.0.0","binary":"beta","release":{"repo":"certimate-go/plugins","tag":"beta/v2.0.0","assets":{"linux/amd64":"beta.zip"}}}`)
 	mkdir(t, root, "alpha")
 	writeFile(t, filepath.Join(root, "alpha", "manifest.json"), `{"provider_type":"alpha","version":"1.0.0","binary":"alpha"}`)
 
@@ -107,8 +107,8 @@ func TestGenerate_IdempotentAndFaithful(t *testing.T) {
 	if !bytes.Contains(first, []byte(`"alpha"`)) || !bytes.Contains(first, []byte(`"beta"`)) {
 		t.Fatalf("output missing entries: %s", first)
 	}
-	if !bytes.Contains(first, []byte(`"release"`)) || !bytes.Contains(first, []byte(`"certimate-go/plugins"`)) {
-		t.Fatalf("release block not preserved faithfully: %s", first)
+	if !bytes.Contains(first, []byte(`"detail"`)) || !bytes.Contains(first, []byte(`"certimate-go/plugins"`)) {
+		t.Fatalf("release details not referenced: %s", first)
 	}
 	if bytes.Index(first, []byte(`"alpha"`)) > bytes.Index(first, []byte(`"beta"`)) {
 		t.Fatalf("entries not sorted by provider_type: %s", first)

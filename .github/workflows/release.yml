@@ -75,7 +75,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -eu
-          if [ -z "${PLUGINS}" ]; then echo "no plugins to release"; exit 0; fi
 
           force=0
           [ -n "${INPUT_PLUGINS}" ] && force=1
@@ -84,6 +83,7 @@ jobs:
           build_affecting_re='\.go$|/(go\.mod|go\.sum)$|/schema/'
 
           changed_index=0
+          [ -z "${PLUGINS}" ] && changed_index=1
 
           for plugin in $(echo "${PLUGINS}" | tr ',' ' '); do
             version=$(jq -r .version "${plugin}/manifest.json")
@@ -108,8 +108,8 @@ jobs:
               go run ./cmd/releaseinfo -plugin "${plugin}" -repo "${REPO}"
               assets=(dist/${plugin}_*.zip)
               gh release create "${tag}" "${assets[@]}" --target "${SHA}" --title "${plugin} ${version}" --notes "Automated release of ${plugin} ${version}."
-              go run ./cmd/genindex -o index.json
-              git add "${plugin}/manifest.json" index.json
+              make index
+              git add "${plugin}/manifest.json" index.json market/details
               git -c user.name='github-actions[bot]' -c user.email='github-actions[bot]@users.noreply.github.com' commit -m "chore: release ${plugin} ${version}"
               ok=0
               for i in 1 2 3 4 5; do
@@ -126,15 +126,17 @@ jobs:
           done
 
           if [ "${changed_index}" = "1" ]; then
-            go run ./cmd/genindex -o index.json
-            git add index.json '*/manifest.json'
+            make index
+            git add index.json market/details '*/manifest.json'
             if ! git diff --cached --quiet; then
               git -c user.name='github-actions[bot]' -c user.email='github-actions[bot]@users.noreply.github.com' commit -m "chore: regenerate plugin market index"
+              ok=0
               for i in 1 2 3 4 5; do
                 git fetch origin main
-                if git rebase origin/main && git push origin "HEAD:main"; then break; fi
+                if git rebase origin/main && git push origin "HEAD:main"; then ok=1; break; fi
                 git rebase --abort 2>/dev/null || true
                 sleep 5
               done
+              if [ "${ok}" != "1" ]; then echo "::error::failed to push market index"; exit 1; fi
             fi
           fi
