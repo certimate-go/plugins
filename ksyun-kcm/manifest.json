@@ -18,14 +18,14 @@
       "windows/amd64": "ksyun-kcm_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "98e85f1ec65cb137437a54e06d10d4c7136da6ed801c6e615ef91d066facd5c0",
-      "darwin/arm64": "a1fe2145d9e4f0267713f03fb77cb40816ea690064a3d7ee011891a9ac419911",
-      "linux/amd64": "e6c9b37965092a5dd05d643746616b590711d9b6634d8bce94927502c1507e24",
-      "linux/arm64": "f609dec10b90c527408382c8b077ff262b54d0a92f381555254fbdf3adae999e",
-      "windows/amd64": "219484535982b462d5db19d8ce6a0c7e86357c7c08729d22f8f3167bae7e7ff6"
+      "darwin/amd64": "f28968a08f787be385327e394977bfbf580f9bcfc4210a1f37ea8b214fb67759",
+      "darwin/arm64": "85bf2746f56dc1d3873faf116cbca18b489e07b7d2576d5f91c8fa16a832799c",
+      "linux/amd64": "71ea51ae1a2ab94534f7f1b9b9c1c57277071d6e46d2a97a7d6bcda9e8ea96f9",
+      "linux/arm64": "533d8825a0fab2a857c45ac28a309d48e5f70dfd9448713dcf807eaf2c7d8997",
+      "windows/amd64": "e925b2bdb732e65bc84f3653787b64ee3d448e158d03a7b7f07400cde0ed1795"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ksyun-kcm/v0.1.0"
+    "tag": "ksyun-kcm/v0.1.1"
   },
   "sha256": "",
   "usages": [
