@@ -1,15 +1,33 @@
 {
-  "provider_type": "ucloud-ualb",
   "access_provider_type": "ucloud",
   "binary": "ucloud-ualb",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "loadbalance",
   "display_name_key": "plugin.ucloud-ualb.name",
   "icon": "ucloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ucloud-ualb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ucloud-ualb_darwin_amd64.zip",
+      "darwin/arm64": "ucloud-ualb_darwin_arm64.zip",
+      "linux/amd64": "ucloud-ualb_linux_amd64.zip",
+      "linux/arm64": "ucloud-ualb_linux_arm64.zip",
+      "windows/amd64": "ucloud-ualb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "de887a1b1cb6aeb87fd16cdd4a685c88b58ead65b435754ab0748f4a416df823",
+      "darwin/arm64": "05a586d0bfd1ce1cf958eae6cce76e5ee6ee21037da81d02aa5b4206b81a5cc2",
+      "linux/amd64": "d4b469c2323c2acb79719c3f5bad9b51658a109ba7d41987367a8039f520e25f",
+      "linux/arm64": "44931b1e27e11052384ea5f810ca876859c78075e577faf002ea67671216540e",
+      "windows/amd64": "9ee52c2d4ef64c6f3326478008fcdc74602ccf060ca3b23c402b1218ba9a723f"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ucloud-ualb/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
