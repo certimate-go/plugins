@@ -1,0 +1,6 @@
+{
+  "plugin.cachefly.name": "CacheFly",
+  "plugin.cachefly.access.api_token.label": "CacheFly API token",
+  "plugin.cachefly.access.api_token.placeholder": "Please enter CacheFly API token",
+  "plugin.cachefly.access.api_token.tooltip": "For more information, see <a href=\"https://kb.cachefly.com/kb/guide/en/generating-tokens-and-keys-Oll9Irt5TI/Steps/2460228\" target=\"_blank\">https://kb.cachefly.com/kb/guide/en/generating-tokens-and-keys-Oll9Irt5TI/Steps/2460228</a>"
+}

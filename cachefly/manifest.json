@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "provider_type": "cachefly",
+  "access_provider_type": "cachefly",
+  "display_name_key": "plugin.cachefly.name",
+  "deploy_category": "cdn",
+  "protocol_version": 2,
+  "min_core_version": "",
+  "max_core_version": "",
+  "binary": "cachefly",
+  "icon": "cachefly.png",
+  "sha256": "",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

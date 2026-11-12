@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "flexcdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.flexcdn.deploy.target.label",
+        "placeholderKey": "plugin.flexcdn.deploy.target.placeholder",
+        "required": true,
+        "default": "certificate",
+        "options": [
+          {
+            "value": "certificate",
+            "labelKey": "plugin.flexcdn.deploy.target.option.certificate.label"
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "number",
+        "labelKey": "plugin.flexcdn.deploy.certificate_id.label",
+        "placeholderKey": "plugin.flexcdn.deploy.certificate_id.placeholder",
+        "required": true,
+        "tooltipKey": "plugin.flexcdn.deploy.certificate_id.tooltip",
+        "tooltipHtml": true,
+        "dependencies": [
+          "deployTarget"
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ],
+            "validator": "regex",
+            "params": {
+              "pattern": "^[1-9][0-9]*$"
+            }
+          }
+        ],
+        "min": 1,
+        "max": 9007199254740991
+      }
+    ]
+  }
+}
