@@ -1,0 +1,13 @@
+{
+  "plugin.byteplus-apig.name": "BytePlus - API Gateway",
+  "plugin.byteplus-apig.region.label": "BytePlus region",
+  "plugin.byteplus-apig.region.placeholder": "Please enter BytePlus API gateway region (e.g. ap-southeast-1)",
+  "plugin.byteplus-apig.region.tooltip": "For more information, see <a href=\"https://docs.byteplus.com/en/docs/apig/Regions_and_availability_zones\" target=\"_blank\">https://docs.byteplus.com/en/docs/apig/Regions_and_availability_zones</a>",
+  "plugin.byteplus-apig.domainMatchPattern.label": "Domain match pattern",
+  "plugin.byteplus-apig.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.byteplus-apig.domainMatchPattern.exact": "Exact matches",
+  "plugin.byteplus-apig.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.byteplus-apig.domainMatchPattern.certsan": "via Certificate",
+  "plugin.byteplus-apig.domain.label": "BytePlus API gateway custom domain",
+  "plugin.byteplus-apig.domain.placeholder": "Please enter BytePlus API gateway custom domain name"
+}

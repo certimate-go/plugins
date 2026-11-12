@@ -1,0 +1,10 @@
+{
+  "plugin.ctcccloud-ao.name": "China Telecom StateCloud - AccessOne",
+  "plugin.ctcccloud-ao.domainMatchPattern.label": "Domain match pattern",
+  "plugin.ctcccloud-ao.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.ctcccloud-ao.domainMatchPattern.exact": "Exact matches",
+  "plugin.ctcccloud-ao.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.ctcccloud-ao.domainMatchPattern.certsan": "via Certificate",
+  "plugin.ctcccloud-ao.domain.label": "CTCC StateCloud AccessOne domain",
+  "plugin.ctcccloud-ao.domain.placeholder": "Please enter CTCC StateCloud AccessOne domain name"
+}

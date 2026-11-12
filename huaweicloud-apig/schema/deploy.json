@@ -1,0 +1,59 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "huaweicloud-apig",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-apig.region.label",
+        "placeholderKey": "plugin.huaweicloud-apig.region.placeholder",
+        "tooltipKey": "plugin.huaweicloud-apig.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.huaweicloud-apig.deployTarget.label",
+        "placeholderKey": "plugin.huaweicloud-apig.deployTarget.placeholder",
+        "default": "certificate",
+        "required": true,
+        "options": [
+          {
+            "value": "certificate",
+            "labelKey": "plugin.huaweicloud-apig.deployTarget.certificate"
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-apig.certificateId.label",
+        "placeholderKey": "plugin.huaweicloud-apig.certificateId.placeholder",
+        "tooltipKey": "plugin.huaweicloud-apig.certificateId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

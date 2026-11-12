@@ -1,0 +1,20 @@
+{
+  "plugin.huaweicloud-elb.name": "Huawei Cloud - ELB (Elastic Load Balance)",
+  "plugin.huaweicloud-elb.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-elb.region.placeholder": "Please enter Huawei Cloud ELB region (e.g. cn-north-1)",
+  "plugin.huaweicloud-elb.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/elb?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/elb</a>",
+  "plugin.huaweicloud-elb.deployTarget.label": "Certificate deploy target",
+  "plugin.huaweicloud-elb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.huaweicloud-elb.deployTarget.loadbalancer": "ELB load balancer",
+  "plugin.huaweicloud-elb.deployTarget.listener": "ELB listener",
+  "plugin.huaweicloud-elb.deployTarget.certificate": "ELB certificate",
+  "plugin.huaweicloud-elb.loadbalancerId.label": "Huawei Cloud ELB load balancer ID",
+  "plugin.huaweicloud-elb.loadbalancerId.placeholder": "Please enter Huawei Cloud ELB load balancer ID",
+  "plugin.huaweicloud-elb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/vpc/#/elb/list/grid\" target=\"_blank\">https://console-intl.huaweicloud.com/vpc/#/elb/list/grid</a>",
+  "plugin.huaweicloud-elb.listenerId.label": "Huawei Cloud ELB listener ID",
+  "plugin.huaweicloud-elb.listenerId.placeholder": "Please enter Huawei Cloud ELB listener ID",
+  "plugin.huaweicloud-elb.listenerId.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/vpc/#/elb/list/grid\" target=\"_blank\">https://console-intl.huaweicloud.com/vpc/#/elb/list/grid</a>",
+  "plugin.huaweicloud-elb.certificateId.label": "Huawei Cloud ELB certificate ID",
+  "plugin.huaweicloud-elb.certificateId.placeholder": "Please enter Huawei Cloud ELB certificate ID",
+  "plugin.huaweicloud-elb.certificateId.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/vpc/#/elb/elbCert\" target=\"_blank\">https://console-intl.huaweicloud.com/vpc/#/elb/elbCert</a>"
+}

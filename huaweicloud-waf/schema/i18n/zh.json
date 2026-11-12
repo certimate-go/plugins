@@ -1,0 +1,16 @@
+{
+  "plugin.huaweicloud-waf.name": "华为云 - Web 应用防火墙 WAF",
+  "plugin.huaweicloud-waf.region.label": "华为云服务区域",
+  "plugin.huaweicloud-waf.region.placeholder": "请输入华为云 WAF 服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-waf.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/waf\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/waf</a>",
+  "plugin.huaweicloud-waf.deployTarget.label": "证书部署方式",
+  "plugin.huaweicloud-waf.deployTarget.placeholder": "请选择证书部署方式",
+  "plugin.huaweicloud-waf.deployTarget.cloudserver": "部署到指定云模式防护网站",
+  "plugin.huaweicloud-waf.deployTarget.premiumhost": "部署到指定独享模式防护网站",
+  "plugin.huaweicloud-waf.deployTarget.certificate": "替换指定证书",
+  "plugin.huaweicloud-waf.domain.label": "华为云 WAF 防护域名",
+  "plugin.huaweicloud-waf.domain.placeholder": "请输入华为云 WAF 防护域名",
+  "plugin.huaweicloud-waf.certificateId.label": "华为云 WAF 证书 ID",
+  "plugin.huaweicloud-waf.certificateId.placeholder": "请输入华为云 WAF 证书 ID",
+  "plugin.huaweicloud-waf.certificateId.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/console/#/waf/certificateManagement\" target=\"_blank\">https://console.huaweicloud.com/console/#/waf/certificateManagement</a>"
+}

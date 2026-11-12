@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "jdcloud-waf",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "regionId",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-waf.regionId.label",
+        "placeholderKey": "plugin.jdcloud-waf.regionId.placeholder",
+        "tooltipKey": "plugin.jdcloud-waf.regionId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "instanceId",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-waf.instanceId.label",
+        "placeholderKey": "plugin.jdcloud-waf.instanceId.placeholder",
+        "tooltipKey": "plugin.jdcloud-waf.instanceId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-waf.domain.label",
+        "placeholderKey": "plugin.jdcloud-waf.domain.placeholder",
+        "required": true,
+        "default": "",
+        "allowClear": true,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain"
+          }
+        ]
+      }
+    ]
+  }
+}

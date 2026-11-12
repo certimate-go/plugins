@@ -1,0 +1,10 @@
+{
+  "plugin.huaweicloud-obs.name": "Huawei Cloud - OBS (Object Storage Service)",
+  "plugin.huaweicloud-obs.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-obs.region.placeholder": "Please enter Huawei Cloud OBS region (e.g. cn-north-1)",
+  "plugin.huaweicloud-obs.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/obs?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/obs</a>",
+  "plugin.huaweicloud-obs.bucket.label": "Huawei Cloud OBS bucket name",
+  "plugin.huaweicloud-obs.bucket.placeholder": "Please enter Huawei Cloud OBS bucket name",
+  "plugin.huaweicloud-obs.domain.label": "Huawei Cloud OBS custom domain",
+  "plugin.huaweicloud-obs.domain.placeholder": "Please enter Huawei Cloud OBS custom domain name"
+}

@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "byteplus-clb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-clb.region.label",
+        "placeholderKey": "plugin.byteplus-clb.region.placeholder",
+        "tooltipKey": "plugin.byteplus-clb.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.byteplus-clb.deployTarget.label",
+        "placeholderKey": "plugin.byteplus-clb.deployTarget.placeholder",
+        "default": "listener",
+        "required": true,
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.byteplus-clb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.byteplus-clb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-clb.loadbalancerId.label",
+        "placeholderKey": "plugin.byteplus-clb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.byteplus-clb.loadbalancerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-clb.listenerId.label",
+        "placeholderKey": "plugin.byteplus-clb.listenerId.placeholder",
+        "tooltipKey": "plugin.byteplus-clb.listenerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

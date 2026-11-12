@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "byteplus-alb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-alb.region.label",
+        "placeholderKey": "plugin.byteplus-alb.region.placeholder",
+        "tooltipKey": "plugin.byteplus-alb.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.byteplus-alb.deployTarget.label",
+        "placeholderKey": "plugin.byteplus-alb.deployTarget.placeholder",
+        "default": "listener",
+        "required": true,
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.byteplus-alb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.byteplus-alb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-alb.loadbalancerId.label",
+        "placeholderKey": "plugin.byteplus-alb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.byteplus-alb.loadbalancerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-alb.listenerId.label",
+        "placeholderKey": "plugin.byteplus-alb.listenerId.placeholder",
+        "tooltipKey": "plugin.byteplus-alb.listenerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-alb.domain.label",
+        "placeholderKey": "plugin.byteplus-alb.domain.placeholder",
+        "extraKey": "plugin.byteplus-alb.domain.extra",
+        "allowClear": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "loadbalancer",
+              "listener"
+            ]
+          }
+        ],
+        "required": false,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

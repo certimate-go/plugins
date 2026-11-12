@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ucloud-pathx",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-pathx.endpoint.label",
+        "placeholderKey": "plugin.ucloud-pathx.endpoint.placeholder",
+        "tooltipKey": "plugin.ucloud-pathx.endpoint.tooltip",
+        "tooltipHtml": true,
+        "allowClear": true
+      },
+      {
+        "name": "acceleratorId",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-pathx.acceleratorId.label",
+        "placeholderKey": "plugin.ucloud-pathx.acceleratorId.placeholder",
+        "tooltipKey": "plugin.ucloud-pathx.acceleratorId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "listenerPort",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-pathx.listenerPort.label",
+        "placeholderKey": "plugin.ucloud-pathx.listenerPort.placeholder",
+        "tooltipKey": "plugin.ucloud-pathx.listenerPort.tooltip",
+        "required": true,
+        "default": 443,
+        "tooltipHtml": true,
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "validateWhen": [
+          {
+            "field": "listenerPort",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "port"
+          }
+        ]
+      }
+    ]
+  }
+}

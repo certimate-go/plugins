@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ucloud-uewaf",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-uewaf.endpoint.label",
+        "placeholderKey": "plugin.ucloud-uewaf.endpoint.placeholder",
+        "tooltipKey": "plugin.ucloud-uewaf.endpoint.tooltip",
+        "tooltipHtml": true,
+        "allowClear": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-uewaf.domain.label",
+        "placeholderKey": "plugin.ucloud-uewaf.domain.placeholder",
+        "required": true,
+        "default": "",
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "plugin.huaweicloud-cdn.name": "Huawei Cloud - CDN (Content Delivery Network)",
+  "plugin.huaweicloud-cdn.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-cdn.region.placeholder": "Please enter Huawei Cloud CDN region (e.g. cn-north-1)",
+  "plugin.huaweicloud-cdn.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/cdn?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/cdn</a>",
+  "plugin.huaweicloud-cdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.huaweicloud-cdn.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.huaweicloud-cdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.huaweicloud-cdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.huaweicloud-cdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.huaweicloud-cdn.domain.label": "Huawei Cloud CDN domain",
+  "plugin.huaweicloud-cdn.domain.placeholder": "Please enter Huawei Cloud CDN domain name"
+}

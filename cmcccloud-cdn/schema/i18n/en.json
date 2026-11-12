@@ -1,0 +1,10 @@
+{
+  "plugin.cmcccloud-cdn.name": "China Mobile ECloud - CDN (Content Delivery Network)",
+  "plugin.cmcccloud-cdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.cmcccloud-cdn.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.cmcccloud-cdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.cmcccloud-cdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.cmcccloud-cdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.cmcccloud-cdn.domain.label": "CMCC ECloud CDN domain",
+  "plugin.cmcccloud-cdn.domain.placeholder": "Please enter CMCC ECloud CDN domain name"
+}

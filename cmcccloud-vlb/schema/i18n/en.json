@@ -1,0 +1,19 @@
+{
+  "plugin.cmcccloud-vlb.name": "China Mobile ECloud - VLB (Virtual Load Balancer)",
+  "plugin.cmcccloud-vlb.poolId.label": "CMCC ECloud pool ID",
+  "plugin.cmcccloud-vlb.poolId.placeholder": "Please enter CMCC ECloud VLB pool ID  (e.g. CIDC-RP-29)",
+  "plugin.cmcccloud-vlb.poolId.tooltip": "For more information, see <a href=\"https://ecloud.10086.cn/op-help-center/doc/article/54462\" target=\"_blank\">https://ecloud.10086.cn/op-help-center/doc/article/54462</a>",
+  "plugin.cmcccloud-vlb.deployTarget.label": "Certificate deploy target",
+  "plugin.cmcccloud-vlb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.cmcccloud-vlb.deployTarget.loadbalancer": "VLB load balancer",
+  "plugin.cmcccloud-vlb.deployTarget.listener": "VLB listener",
+  "plugin.cmcccloud-vlb.loadbalancerId.label": "CMCC ECloud VLB load balancer ID",
+  "plugin.cmcccloud-vlb.loadbalancerId.placeholder": "Please enter CMCC ECloud VLB load balancer ID",
+  "plugin.cmcccloud-vlb.loadbalancerId.tooltip": "For more information, see <a href=\"https://ecloud.10086.cn/api/page/lb-console-manage-web/CIDC-RP-29/elb/instancelist\" target=\"_blank\">https://ecloud.10086.cn/api/page/lb-console-manage-web/CIDC-RP-29/elb/instancelist</a>",
+  "plugin.cmcccloud-vlb.listenerId.label": "CMCC ECloud VLB listener ID",
+  "plugin.cmcccloud-vlb.listenerId.placeholder": "Please enter CMCC ECloud VLB listener ID",
+  "plugin.cmcccloud-vlb.listenerId.tooltip": "For more information, see <a href=\"https://ecloud.10086.cn/api/page/lb-console-manage-web/CIDC-RP-29/elb/instancelist\" target=\"_blank\">https://ecloud.10086.cn/api/page/lb-console-manage-web/CIDC-RP-29/elb/instancelist</a>",
+  "plugin.cmcccloud-vlb.domain.label": "CMCC ECloud VLB SNI domain (Optional)",
+  "plugin.cmcccloud-vlb.domain.placeholder": "Please enter CMCC ECloud VLB SNI domain name",
+  "plugin.cmcccloud-vlb.domain.extra": "Notes: Leave it blank to set the default certificate; otherwise, to set the extension one for SNI."
+}

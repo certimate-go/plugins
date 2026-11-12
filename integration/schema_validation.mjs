@@ -156,3 +156,14 @@ for (const provider of ["baiducloud-appblb", "baiducloud-blb"]) {
 }
 assert.deepEqual(loadDeployForm("baiducloud-cert").parse({}), {});
 console.log("PASS B4 form defaults, saved ID/port types, and conditional validation");
+
+const vlbEnvelope = JSON.parse(fs.readFileSync(path.join(pluginRoot, "cmcccloud-vlb/schema/deploy.json"), "utf8"));
+const vlbSchema = deriveZodSchema(vlbEnvelope);
+const loadbalancer = { poolId: "CIDC-CORE-00", loadbalancerId: "vlb-1" };
+const listener = { ...loadbalancer, deployTarget: "listener", listenerId: "listener-1" };
+assert.equal(vlbSchema.parse(listener).loadbalancerId, "vlb-1");
+assert.equal(vlbSchema.safeParse({ ...listener, loadbalancerId: "" }).success, false);
+assert.equal(vlbSchema.safeParse({ ...listener, listenerId: "" }).success, false);
+assert.equal(vlbSchema.safeParse({ ...loadbalancer, deployTarget: "loadbalancer" }).success, true);
+assert.equal(vlbSchema.safeParse({ ...loadbalancer, deployTarget: "loadbalancer", loadbalancerId: "" }).success, false);
+console.log("PASS CMCC VLB requires and preserves the load balancer ID for both targets");

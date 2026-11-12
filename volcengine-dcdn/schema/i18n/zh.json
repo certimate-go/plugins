@@ -1,0 +1,10 @@
+{
+  "plugin.volcengine-dcdn.name": "火山引擎 - 全站加速 DCDN",
+  "plugin.volcengine-dcdn.domainMatchPattern.label": "域名匹配模式",
+  "plugin.volcengine-dcdn.domainMatchPattern.extra": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.volcengine-dcdn.domainMatchPattern.exact": "精确匹配",
+  "plugin.volcengine-dcdn.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.volcengine-dcdn.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.volcengine-dcdn.domain.label": "火山引擎 DCDN 加速域名",
+  "plugin.volcengine-dcdn.domain.placeholder": "请输入火山引擎 DCDN 加速域名"
+}

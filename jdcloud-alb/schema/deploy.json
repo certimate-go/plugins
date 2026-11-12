@@ -1,0 +1,120 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "jdcloud-alb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "regionId",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-alb.regionId.label",
+        "placeholderKey": "plugin.jdcloud-alb.regionId.placeholder",
+        "tooltipKey": "plugin.jdcloud-alb.regionId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.jdcloud-alb.deployTarget.label",
+        "placeholderKey": "plugin.jdcloud-alb.deployTarget.placeholder",
+        "required": true,
+        "default": "listener",
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.jdcloud-alb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.jdcloud-alb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-alb.loadbalancerId.label",
+        "placeholderKey": "plugin.jdcloud-alb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.jdcloud-alb.loadbalancerId.tooltip",
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ],
+        "tooltipHtml": true
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-alb.listenerId.label",
+        "placeholderKey": "plugin.jdcloud-alb.listenerId.placeholder",
+        "tooltipKey": "plugin.jdcloud-alb.listenerId.tooltip",
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "tooltipHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-alb.domain.label",
+        "placeholderKey": "plugin.jdcloud-alb.domain.placeholder",
+        "extraKey": "plugin.jdcloud-alb.domain.help",
+        "allowClear": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "loadbalancer",
+              "listener"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -24,8 +24,9 @@ type workflowRequestBarrier struct {
 }
 
 type workflowLifecycleTarget struct {
-	barrier *workflowRequestBarrier
-	verify  func(*plugin.DeployRequest)
+	failureOnly bool
+	barrier     *workflowRequestBarrier
+	verify      func(*plugin.DeployRequest)
 }
 
 func (b *workflowRequestBarrier) arm() (<-chan struct{}, func()) {

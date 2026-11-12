@@ -1,0 +1,11 @@
+{
+  "plugin.jdcloud-waf.name": "京东云 - Web 应用防火墙 WAF",
+  "plugin.jdcloud-waf.regionId.label": "京东云服务地域 ID",
+  "plugin.jdcloud-waf.regionId.placeholder": "请输入京东云 WAF 服务地域 ID（例如：cn-north-1）",
+  "plugin.jdcloud-waf.regionId.tooltip": "这是什么？请参阅 <a href=\"https://docs.jdcloud.com/cn/common-declaration/api/introduction\" target=\"_blank\">https://docs.jdcloud.com/cn/common-declaration/api/introduction</a>",
+  "plugin.jdcloud-waf.instanceId.label": "京东云 WAF 实例 ID",
+  "plugin.jdcloud-waf.instanceId.placeholder": "请输入京东云 WAF 实例 ID",
+  "plugin.jdcloud-waf.instanceId.tooltip": "这是什么？请参阅 <a href=\"https://cloudwaf-console.jdcloud.com/instance\" target=\"_blank\">https://cloudwaf-console.jdcloud.com/instance</a>",
+  "plugin.jdcloud-waf.domain.label": "京东云 WAF 防护域名",
+  "plugin.jdcloud-waf.domain.placeholder": "请输入京东云 WAF 防护域名"
+}

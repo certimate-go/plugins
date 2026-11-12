@@ -1,0 +1,11 @@
+{
+  "plugin.jdcloud-waf.name": "JD Cloud - WAF (Web Application Firewall)",
+  "plugin.jdcloud-waf.regionId.label": "JD Cloud region ID",
+  "plugin.jdcloud-waf.regionId.placeholder": "Please enter JD Cloud WAF region ID (e.g. cn-north-1)",
+  "plugin.jdcloud-waf.regionId.tooltip": "For more information, see <a href=\"https://docs.jdcloud.com/en/common-declaration/api/introduction\" target=\"_blank\">https://docs.jdcloud.com/en/common-declaration/api/introduction</a>",
+  "plugin.jdcloud-waf.instanceId.label": "JD Cloud WAF instance ID",
+  "plugin.jdcloud-waf.instanceId.placeholder": "Please enter JD Cloud WAF instance ID",
+  "plugin.jdcloud-waf.instanceId.tooltip": "For more information, see <a href=\"https://cloudwaf-console.jdcloud.com/instance\" target=\"_blank\">https://cloudwaf-console.jdcloud.com/instance</a>",
+  "plugin.jdcloud-waf.domain.label": "JD Cloud WAF domain",
+  "plugin.jdcloud-waf.domain.placeholder": "Please enter JD Cloud WAF domain name"
+}

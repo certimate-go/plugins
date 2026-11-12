@@ -1,0 +1,10 @@
+{
+  "plugin.byteplus-cdn.name": "BytePlus - 内容分发网络 CDN",
+  "plugin.byteplus-cdn.domainMatchPattern.label": "域名匹配模式",
+  "plugin.byteplus-cdn.domainMatchPattern.extra": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.byteplus-cdn.domainMatchPattern.exact": "精确匹配",
+  "plugin.byteplus-cdn.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.byteplus-cdn.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.byteplus-cdn.domain.label": "BytePlus CDN 域名",
+  "plugin.byteplus-cdn.domain.placeholder": "请输入 BytePlus CDN 域名"
+}

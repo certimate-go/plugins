@@ -1,0 +1,15 @@
+{
+  "provider_type": "cmcccloud-cdn",
+  "access_provider_type": "cmcccloud",
+  "display_name_key": "plugin.cmcccloud-cdn.name",
+  "deploy_category": "cdn",
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "protocol_version": 2,
+  "binary": "cmcccloud-cdn",
+  "icon": "cmcccloud.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

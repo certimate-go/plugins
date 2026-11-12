@@ -1,0 +1,10 @@
+{
+  "plugin.huaweicloud-vod.name": "Huawei Cloud - VOD (Video on Demand)",
+  "plugin.huaweicloud-vod.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-vod.region.placeholder": "Please enter Huawei Cloud VOD region (e.g. cn-north-1)",
+  "plugin.huaweicloud-vod.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/vod?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/vod</a>",
+  "plugin.huaweicloud-vod.domainMatchPattern.label": "Domain match pattern",
+  "plugin.huaweicloud-vod.domainMatchPattern.exact": "Exact matches",
+  "plugin.huaweicloud-vod.domain.label": "Huawei Cloud VOD domain",
+  "plugin.huaweicloud-vod.domain.placeholder": "Please enter Huawei Cloud VOD domain name"
+}

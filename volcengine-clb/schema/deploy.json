@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "volcengine-clb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-clb.region.label",
+        "placeholderKey": "plugin.volcengine-clb.region.placeholder",
+        "tooltipKey": "plugin.volcengine-clb.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.volcengine-clb.deployTarget.label",
+        "placeholderKey": "plugin.volcengine-clb.deployTarget.placeholder",
+        "default": "listener",
+        "required": true,
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.volcengine-clb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.volcengine-clb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-clb.loadbalancerId.label",
+        "placeholderKey": "plugin.volcengine-clb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.volcengine-clb.loadbalancerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-clb.listenerId.label",
+        "placeholderKey": "plugin.volcengine-clb.listenerId.placeholder",
+        "tooltipKey": "plugin.volcengine-clb.listenerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-clb.domain.label",
+        "placeholderKey": "plugin.volcengine-clb.domain.placeholder",
+        "extraKey": "plugin.volcengine-clb.domain.extra",
+        "allowClear": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "loadbalancer",
+              "listener"
+            ]
+          }
+        ],
+        "required": false,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

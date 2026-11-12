@@ -1,0 +1,16 @@
+{
+  "plugin.huaweicloud-aad.name": "Huawei Cloud - AAD (Advanced Anti-DDoS)",
+  "plugin.huaweicloud-aad.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-aad.region.placeholder": "Please enter Huawei Cloud AAD region (e.g. cn-north-4)",
+  "plugin.huaweicloud-aad.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/aad?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/aad</a>",
+  "plugin.huaweicloud-aad.instanceId.label": "Huawei Cloud AAD instance ID",
+  "plugin.huaweicloud-aad.instanceId.placeholder": "Please enter Huawei Cloud AAD instance ID",
+  "plugin.huaweicloud-aad.instanceId.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/cnad/#/cnad/cad/list\" target=\"_blank\">https://console-intl.huaweicloud.com/cnad/#/cnad/cad/list</a>",
+  "plugin.huaweicloud-aad.domainMatchPattern.label": "Domain match pattern",
+  "plugin.huaweicloud-aad.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.huaweicloud-aad.domainMatchPattern.exact": "Exact matches",
+  "plugin.huaweicloud-aad.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.huaweicloud-aad.domainMatchPattern.certsan": "via Certificate",
+  "plugin.huaweicloud-aad.domain.label": "Huawei Cloud AAD domain",
+  "plugin.huaweicloud-aad.domain.placeholder": "Please enter Huawei Cloud AAD domain name"
+}

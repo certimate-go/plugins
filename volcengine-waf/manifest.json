@@ -1,0 +1,15 @@
+{
+  "provider_type": "volcengine-waf",
+  "access_provider_type": "volcengine",
+  "display_name_key": "plugin.volcengine-waf.name",
+  "deploy_category": "firewall",
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "protocol_version": 2,
+  "binary": "volcengine-waf",
+  "icon": "volcengine.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

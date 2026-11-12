@@ -1,0 +1,13 @@
+{
+  "plugin.ucloud-us3.name": "UCloud - US3 (Object-based Storage)",
+  "plugin.ucloud-us3.endpoint.label": "UCloud API endpoint (Optional)",
+  "plugin.ucloud-us3.endpoint.placeholder": "Please enter UCloud US3 API endpoint (e.g. api.ucloud-global.com)",
+  "plugin.ucloud-us3.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>api.ucloud-global.com</strong> for UCloud Global</li><li><strong>api.ucloud.cn</strong> for UCloud in China (<em>Default</em>)</li></ul>",
+  "plugin.ucloud-us3.region.label": "UCloud region",
+  "plugin.ucloud-us3.region.placeholder": "Please enter UCloud US3 region (e.g. cn-bj2)",
+  "plugin.ucloud-us3.region.tooltip": "For more information, see <a href=\"https://www.ucloud-global.com/en/docs/api/summary/regionlist\" target=\"_blank\">https://www.ucloud-global.com/en/docs/api/summary/regionlist</a>",
+  "plugin.ucloud-us3.bucket.label": "UCloud US3 bucket",
+  "plugin.ucloud-us3.bucket.placeholder": "Please enter UCloud US3 bucket name",
+  "plugin.ucloud-us3.domain.label": "UCloud US3 custom domain",
+  "plugin.ucloud-us3.domain.placeholder": "Please enter UCloud US3 bucket custom domain name"
+}

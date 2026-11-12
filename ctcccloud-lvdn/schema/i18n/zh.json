@@ -1,0 +1,8 @@
+{
+  "plugin.ctcccloud-lvdn.name": "天翼云 - 视频直播 LVDN",
+  "plugin.ctcccloud-lvdn.domainMatchPattern.label": "域名匹配模式",
+  "plugin.ctcccloud-lvdn.domainMatchPattern.exact": "精确匹配",
+  "plugin.ctcccloud-lvdn.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.ctcccloud-lvdn.domain.label": "天翼云 LVDN 加速域名",
+  "plugin.ctcccloud-lvdn.domain.placeholder": "请输入天翼云 LVDN 加速域名"
+}
