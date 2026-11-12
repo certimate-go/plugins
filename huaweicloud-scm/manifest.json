@@ -1,15 +1,33 @@
 {
-  "provider_type": "huaweicloud-scm",
   "access_provider_type": "huaweicloud",
-  "display_name_key": "plugin.huaweicloud-scm.name",
-  "deploy_category": "ssl",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "huaweicloud-scm",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.huaweicloud-scm.name",
   "icon": "huaweicloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "huaweicloud-scm",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-scm_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-scm_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-scm_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-scm_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-scm_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "39c037a8e4ce9d883385f775ad73b011e9a0f30b3f1cd6f209c2a3da99725002",
+      "darwin/arm64": "02c88f16cc439b0c3cc8d00c8a351d325c6578f3d156b2f6b3bd3dea39a79bfe",
+      "linux/amd64": "e69762db72b10fdf1e7f111047dd5f0d2cf999f7ca0925f4d2ab2f3c48710edb",
+      "linux/arm64": "f5652d23459eb52c63ca2afc380387eb906a1e8c56a5e830fa5939eb65b02abb",
+      "windows/amd64": "0ab5e307bda91e2ec5a4b87657e2f074c1e249c34bb1908e8e50cfc5e459b7df"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-scm/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
