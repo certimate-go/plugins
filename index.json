@@ -103,6 +103,41 @@
       "version": "0.1.0"
     },
     {
+      "access_provider_type": "asiaispcdn",
+      "binary": "asiaispcdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.asiaispcdn.name",
+      "icon": "asiaispcdn.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "asiaispcdn",
+      "release": {
+        "assets": {
+          "darwin/amd64": "asiaispcdn_darwin_amd64.zip",
+          "darwin/arm64": "asiaispcdn_darwin_arm64.zip",
+          "linux/amd64": "asiaispcdn_linux_amd64.zip",
+          "linux/arm64": "asiaispcdn_linux_arm64.zip",
+          "windows/amd64": "asiaispcdn_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "fb90241344afecc34ba1e1420e78c73b74a9511252122f6f11c044745ce86765",
+          "darwin/arm64": "9e18de07fb03a4d680ef0a9af617a1bae77c05301afe2abe20631331fe121e2c",
+          "linux/amd64": "68b5959322cf697b4d7587875ed902dacb1729d892dac241398748f4d47035db",
+          "linux/arm64": "e3e38db50a11fd49603fce5fd4a72d9a70a4e3df17a0348d50f4e288a69c051d",
+          "windows/amd64": "5918f06ee8f41441a890c87d0d9cb936524a8d1523eeba40fd22177820a40455"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "asiaispcdn/v0.1.0"
+      },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "axisnow",
       "binary": "axisnow",
       "deploy_category": "cdn",
@@ -412,6 +447,23 @@
       "version": "0.1.0"
     },
     {
+      "access_provider_type": "cdnfly",
+      "binary": "cdnfly",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.cdnfly.name",
+      "icon": "cdnfly.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "cdnfly",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "dogecloud",
       "binary": "dogecloud-cdn",
       "deploy_category": "cdn",
@@ -510,6 +562,22 @@
         "tag": "flexcdn/v0.1.0"
       },
       "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "flyio",
+      "binary": "flyio",
+      "deploy_category": "website",
+      "display_name_key": "plugin.flyio.name",
+      "icon": "flyio.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "flyio",
       "usages": [
         "hosting"
       ],
@@ -756,6 +824,39 @@
         "hosting"
       ],
       "version": "0.1.1"
+    },
+    {
+      "access_provider_type": "lecdn",
+      "binary": "lecdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.lecdn.name",
+      "icon": "lecdn.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "lecdn",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "mohua",
+      "binary": "mohua-mvh",
+      "deploy_category": "website",
+      "display_name_key": "plugin.mohua-mvh.name",
+      "icon": "mohua.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "mohua-mvh",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
     },
     {
       "access_provider_type": "nginxproxymanager",
@@ -1163,6 +1264,22 @@
         "repo": "certimate-go/plugins",
         "tag": "synologydsm/v0.1.0"
       },
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "unicloud",
+      "binary": "unicloud-webhost",
+      "deploy_category": "website",
+      "display_name_key": "plugin.unicloud-webhost.name",
+      "icon": "unicloud.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "unicloud-webhost",
       "usages": [
         "hosting"
       ],
