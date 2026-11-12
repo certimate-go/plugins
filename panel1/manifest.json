@@ -1,14 +1,32 @@
 {
-  "provider_type": "1panel",
   "access_provider_type": "1panel",
   "binary": "panel1",
   "deploy_category": "website",
   "display_name_key": "plugin.1panel.name",
   "icon": "1panel.svg",
-  "min_core_version": "0.4.37",
   "max_core_version": "",
+  "min_core_version": "0.4.37",
   "priority": 100,
   "protocol_version": 2,
+  "provider_type": "1panel",
+  "release": {
+    "assets": {
+      "darwin/amd64": "panel1_darwin_amd64.zip",
+      "darwin/arm64": "panel1_darwin_arm64.zip",
+      "linux/amd64": "panel1_linux_amd64.zip",
+      "linux/arm64": "panel1_linux_arm64.zip",
+      "windows/amd64": "panel1_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "6f6b4e336cc350fbd0d41ab3e692a218425642e8ca0d9822faf4c2a7b29fdbc1",
+      "darwin/arm64": "fc32a6597c8eabe32a7f4a8f7b947596ab322973cf7a9dc45d7be7090df902d6",
+      "linux/amd64": "4bff3bc60bbef98a666d17d04c0b9167e20a5bcc602f8772d81ba3db15bcc7f1",
+      "linux/arm64": "47d6cc25e7a0127b42371f82cc4e1f8ab416909f8e442eb7c2d7a1479e11d119",
+      "windows/amd64": "ca3ddf26b5f5def11787ea922339eccb5a92bfee230d6d6592b20e8b830e5068"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "panel1/v0.1.0"
+  },
   "usages": [
     "hosting"
   ],
