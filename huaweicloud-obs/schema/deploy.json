@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "huaweicloud-obs",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-obs.region.label",
+        "placeholderKey": "plugin.huaweicloud-obs.region.placeholder",
+        "tooltipKey": "plugin.huaweicloud-obs.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "bucket",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-obs.bucket.label",
+        "placeholderKey": "plugin.huaweicloud-obs.bucket.placeholder",
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-obs.domain.label",
+        "placeholderKey": "plugin.huaweicloud-obs.domain.placeholder",
+        "default": "",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

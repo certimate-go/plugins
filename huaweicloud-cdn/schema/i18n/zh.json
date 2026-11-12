@@ -1,0 +1,13 @@
+{
+  "plugin.huaweicloud-cdn.name": "华为云 - 内容分发网络 CDN",
+  "plugin.huaweicloud-cdn.region.label": "华为云服务区域",
+  "plugin.huaweicloud-cdn.region.placeholder": "请输入华为云 CDN 服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-cdn.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/cdn\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/cdn</a>",
+  "plugin.huaweicloud-cdn.domainMatchPattern.label": "域名匹配模式",
+  "plugin.huaweicloud-cdn.domainMatchPattern.extra": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.huaweicloud-cdn.domainMatchPattern.exact": "精确匹配",
+  "plugin.huaweicloud-cdn.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.huaweicloud-cdn.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.huaweicloud-cdn.domain.label": "华为云 CDN 加速域名",
+  "plugin.huaweicloud-cdn.domain.placeholder": "请输入华为云 CDN 加速域名"
+}

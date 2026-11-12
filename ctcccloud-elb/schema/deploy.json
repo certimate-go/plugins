@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ctcccloud-elb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "regionId",
+        "valueType": "text",
+        "labelKey": "plugin.ctcccloud-elb.regionId.label",
+        "placeholderKey": "plugin.ctcccloud-elb.regionId.placeholder",
+        "tooltipKey": "plugin.ctcccloud-elb.regionId.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.ctcccloud-elb.deployTarget.label",
+        "placeholderKey": "plugin.ctcccloud-elb.deployTarget.placeholder",
+        "default": "listener",
+        "required": true,
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.ctcccloud-elb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.ctcccloud-elb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.ctcccloud-elb.loadbalancerId.label",
+        "placeholderKey": "plugin.ctcccloud-elb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.ctcccloud-elb.loadbalancerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.ctcccloud-elb.listenerId.label",
+        "placeholderKey": "plugin.ctcccloud-elb.listenerId.placeholder",
+        "tooltipKey": "plugin.ctcccloud-elb.listenerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

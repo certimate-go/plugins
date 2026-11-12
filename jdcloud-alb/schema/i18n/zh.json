@@ -1,0 +1,19 @@
+{
+  "plugin.jdcloud-alb.name": "京东云 - 应用负载均衡 ALB",
+  "plugin.jdcloud-alb.regionId.label": "京东云服务地域 ID",
+  "plugin.jdcloud-alb.regionId.placeholder": "请输入京东云 ALB 服务地域 ID（例如：cn-north-1）",
+  "plugin.jdcloud-alb.regionId.tooltip": "这是什么？请参阅 <a href=\"https://docs.jdcloud.com/cn/common-declaration/api/introduction\" target=\"_blank\">https://docs.jdcloud.com/cn/common-declaration/api/introduction</a>",
+  "plugin.jdcloud-alb.deployTarget.label": "证书部署方式",
+  "plugin.jdcloud-alb.deployTarget.placeholder": "请选择证书部署方式",
+  "plugin.jdcloud-alb.deployTarget.loadbalancer": "部署到指定负载均衡器下的全部 HTTPS/TLS 监听",
+  "plugin.jdcloud-alb.deployTarget.listener": "部署到指定 HTTPS/TLS 监听器",
+  "plugin.jdcloud-alb.loadbalancerId.label": "京东云 ALB 负载均衡器 ID",
+  "plugin.jdcloud-alb.loadbalancerId.placeholder": "请输入京东云 ALB 负载均衡器 ID",
+  "plugin.jdcloud-alb.loadbalancerId.tooltip": "这是什么？请参阅 <a href=\"https://cns-console.jdcloud.com/host/loadBalance/list\" target=\"_blank\">https://cns-console.jdcloud.com/host/loadBalance/list</a>",
+  "plugin.jdcloud-alb.listenerId.label": "京东云 ALB 监听器 ID",
+  "plugin.jdcloud-alb.listenerId.placeholder": "请输入京东云 ALB 监听器 ID",
+  "plugin.jdcloud-alb.listenerId.tooltip": "这是什么？请参阅 <a href=\"https://cns-console.jdcloud.com/host/loadBalance/list\" target=\"_blank\">https://cns-console.jdcloud.com/host/loadBalance/list</a>",
+  "plugin.jdcloud-alb.domain.label": "京东云 ALB 扩展域名（可选）",
+  "plugin.jdcloud-alb.domain.placeholder": "请输入京东云 ALB 扩展域名",
+  "plugin.jdcloud-alb.domain.help": "提示：不填写时，将替换监听器的默认证书；否则，将替换扩展域名证书。"
+}

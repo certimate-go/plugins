@@ -384,7 +384,7 @@ func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string, targets ...
 			if name == "accesstokenid" {
 				continue
 			}
-			if strings.Contains(name, "password") || strings.Contains(name, "secret") || strings.Contains(name, "token") || name == "apikey" || name == "accesskey" {
+			if strings.Contains(name, "password") || strings.Contains(name, "secret") || strings.Contains(name, "token") || name == "apikey" || name == "accesskey" || name == "privatekey" {
 				if secret, ok := value.(string); ok && secret != "" {
 					secrets = append(secrets, secret, base64.StdEncoding.EncodeToString([]byte(secret)))
 				}
@@ -429,7 +429,7 @@ func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string, targets ...
 			}
 		}
 	}
-	if !baseline {
+	if !baseline && (len(targets) == 0 || !targets[0].failureOnly) {
 		t.Cleanup(func() {
 			if lastSuccess == nil {
 				t.Fatal("lifecycle verification requires a successful saved workflow")

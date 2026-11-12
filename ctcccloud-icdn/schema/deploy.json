@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ctcccloud-icdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.ctcccloud-icdn.domainMatchPattern.label",
+        "extraKey": "plugin.ctcccloud-icdn.domainMatchPattern.extra",
+        "extraHtml": true,
+        "extraWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ]
+          }
+        ],
+        "default": "exact",
+        "required": true,
+        "defaultOnMissing": true,
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "plugin.ctcccloud-icdn.domainMatchPattern.exact"
+          },
+          {
+            "value": "wildcard",
+            "labelKey": "plugin.ctcccloud-icdn.domainMatchPattern.wildcard"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.ctcccloud-icdn.domainMatchPattern.certsan"
+          }
+        ],
+        "allowCustomValue": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.ctcccloud-icdn.domain.label",
+        "placeholderKey": "plugin.ctcccloud-icdn.domain.placeholder",
+        "default": "",
+        "visibleWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

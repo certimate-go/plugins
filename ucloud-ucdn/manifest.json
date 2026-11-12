@@ -1,0 +1,15 @@
+{
+  "provider_type": "ucloud-ucdn",
+  "access_provider_type": "ucloud",
+  "binary": "ucloud-ucdn",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.ucloud-ucdn.name",
+  "icon": "ucloud.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "plugin.volcengine-live.name": "火山引擎 - 视频直播 Live",
+  "plugin.volcengine-live.domainMatchPattern.label": "域名匹配模式",
+  "plugin.volcengine-live.domainMatchPattern.exact": "精确匹配",
+  "plugin.volcengine-live.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.volcengine-live.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.volcengine-live.domain.label": "火山引擎视频直播流域名",
+  "plugin.volcengine-live.domain.placeholder": "请输入火山引擎视频直播流域名"
+}

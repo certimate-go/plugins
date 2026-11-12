@@ -1,0 +1,10 @@
+{
+  "plugin.ctcccloud-cdn.name": "China Telecom StateCloud - CDN (Content Delivery Network)",
+  "plugin.ctcccloud-cdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.ctcccloud-cdn.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.ctcccloud-cdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.ctcccloud-cdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.ctcccloud-cdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.ctcccloud-cdn.domain.label": "CTCC StateCloud CDN domain",
+  "plugin.ctcccloud-cdn.domain.placeholder": "Please enter CTCC StateCloud CDN domain name"
+}

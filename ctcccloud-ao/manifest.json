@@ -1,0 +1,15 @@
+{
+  "provider_type": "ctcccloud-ao",
+  "access_provider_type": "ctcccloud",
+  "display_name_key": "plugin.ctcccloud-ao.name",
+  "deploy_category": "cdn",
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "protocol_version": 2,
+  "binary": "ctcccloud-ao",
+  "icon": "ctcccloud.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

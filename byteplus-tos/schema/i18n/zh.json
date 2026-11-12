@@ -1,0 +1,10 @@
+{
+  "plugin.byteplus-tos.name": "BytePlus - 对象存储 TOS",
+  "plugin.byteplus-tos.region.label": "BytePlus 服务地域",
+  "plugin.byteplus-tos.region.placeholder": "请输入 BytePlus TOS 服务地域（例如：ap-southeast-1）",
+  "plugin.byteplus-tos.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.byteplus.com/en/docs/tos/docs-region-and-endpoint\" target=\"_blank\">https://docs.byteplus.com/en/docs/tos/docs-region-and-endpoint</a>",
+  "plugin.byteplus-tos.bucket.label": "BytePlus TOS 存储桶名",
+  "plugin.byteplus-tos.bucket.placeholder": "请输入 BytePlus TOS 存储桶名",
+  "plugin.byteplus-tos.domain.label": "BytePlus TOS 自定义域名",
+  "plugin.byteplus-tos.domain.placeholder": "请输入 BytePlus TOS 自定义域名"
+}

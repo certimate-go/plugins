@@ -1,0 +1,23 @@
+{
+  "plugin.ucloud-ualb.name": "UCloud - UALB (Application Load Balancer)",
+  "plugin.ucloud-ualb.endpoint.label": "UCloud API endpoint (Optional)",
+  "plugin.ucloud-ualb.endpoint.placeholder": "Please enter UCloud UALB API endpoint (e.g. api.ucloud-global.com)",
+  "plugin.ucloud-ualb.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>api.ucloud-global.com</strong> for UCloud Global</li><li><strong>api.ucloud.cn</strong> for UCloud in China (<em>Default</em>)</li></ul>",
+  "plugin.ucloud-ualb.region.label": "UCloud region",
+  "plugin.ucloud-ualb.region.placeholder": "Please enter UCloud ALB region (e.g. cn-bj2)",
+  "plugin.ucloud-ualb.region.tooltip": "For more information, see <a href=\"https://www.ucloud-global.com/en/docs/api/summary/regionlist\" target=\"_blank\">https://www.ucloud-global.com/en/docs/api/summary/regionlist</a>",
+  "plugin.ucloud-ualb.deployTarget.label": "Certificate deploy target",
+  "plugin.ucloud-ualb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.ucloud-ualb.deployTarget.loadbalancer": "UALB load balancer",
+  "plugin.ucloud-ualb.deployTarget.listener": "UALB listener",
+  "plugin.ucloud-ualb.loadbalancerId.label": "UCloud UALB load balancer ID",
+  "plugin.ucloud-ualb.loadbalancerId.placeholder": "Please enter UCloud ALB load balancer ID",
+  "plugin.ucloud-ualb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.ucloud-global.com/ulb/alb\" target=\"_blank\">https://console.ucloud-global.com/ulb/alb</a>",
+  "plugin.ucloud-ualb.listenerId.label": "UCloud UALB listener ID",
+  "plugin.ucloud-ualb.listenerId.placeholder": "Please enter UCloud ALB listener ID",
+  "plugin.ucloud-ualb.listenerId.tooltip": "For more information, see <a href=\"https://console.ucloud-global.com/ulb/alb\" target=\"_blank\">https://console.ucloud-global.com/ulb/alb</a>",
+  "plugin.ucloud-ualb.domain.label": "UCloud UALB SNI domain (Optional)",
+  "plugin.ucloud-ualb.domain.placeholder": "Please enter UCloud UALB SNI domain name",
+  "plugin.ucloud-ualb.domain.help": "Notes: Leave it blank to set the default certificate; otherwise, to set the extension one for SNI.",
+  "plugin.ucloud-ualb.autoPrune.label": "Auto prune old certificates with the same SANs after deployment"
+}

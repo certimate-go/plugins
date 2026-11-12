@@ -1,0 +1,19 @@
+{
+  "plugin.volcengine-clb.name": "Volcengine - CLB (Classic Load Balancer)",
+  "plugin.volcengine-clb.region.label": "VolcEngine region",
+  "plugin.volcengine-clb.region.placeholder": "Please enter VolcEngine CLB region (e.g. cn-beijing)",
+  "plugin.volcengine-clb.region.tooltip": "For more information, see <a href=\"https://www.volcengine.com/docs/6406/74892?lang=en\" target=\"_blank\">https://www.volcengine.com/docs/6406/74892</a>",
+  "plugin.volcengine-clb.deployTarget.label": "Certificate deploy target",
+  "plugin.volcengine-clb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.volcengine-clb.deployTarget.loadbalancer": "CLB load balancer",
+  "plugin.volcengine-clb.deployTarget.listener": "CLB listener",
+  "plugin.volcengine-clb.loadbalancerId.label": "VolcEngine CLB load balancer ID",
+  "plugin.volcengine-clb.loadbalancerId.placeholder": "Please enter VolcEngine CLB load balancer ID",
+  "plugin.volcengine-clb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.volcengine.com/clb/LoadBalancer\" target=\"_blank\">https://console.volcengine.com/clb/LoadBalancer</a>",
+  "plugin.volcengine-clb.listenerId.label": "VolcEngine CLB listener ID",
+  "plugin.volcengine-clb.listenerId.placeholder": "Please enter VolcEngine CLB listener ID",
+  "plugin.volcengine-clb.listenerId.tooltip": "For more information, see <a href=\"https://console.volcengine.com/clb/LoadBalancer\" target=\"_blank\">https://console.volcengine.com/clb/LoadBalancer</a>",
+  "plugin.volcengine-clb.domain.label": "VolcEngine CLB SNI domain (Optional)",
+  "plugin.volcengine-clb.domain.placeholder": "Please enter the VolcEngine CLB extension domain",
+  "plugin.volcengine-clb.domain.extra": "Notes: Leave it blank to set the default certificate; otherwise, set the extension one for SNI."
+}

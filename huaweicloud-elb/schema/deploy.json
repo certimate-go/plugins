@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "huaweicloud-elb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-elb.region.label",
+        "placeholderKey": "plugin.huaweicloud-elb.region.placeholder",
+        "tooltipKey": "plugin.huaweicloud-elb.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.huaweicloud-elb.deployTarget.label",
+        "placeholderKey": "plugin.huaweicloud-elb.deployTarget.placeholder",
+        "default": "listener",
+        "required": true,
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.huaweicloud-elb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.huaweicloud-elb.deployTarget.listener"
+          },
+          {
+            "value": "certificate",
+            "labelKey": "plugin.huaweicloud-elb.deployTarget.certificate"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-elb.loadbalancerId.label",
+        "placeholderKey": "plugin.huaweicloud-elb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.huaweicloud-elb.loadbalancerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-elb.listenerId.label",
+        "placeholderKey": "plugin.huaweicloud-elb.listenerId.placeholder",
+        "tooltipKey": "plugin.huaweicloud-elb.listenerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-elb.certificateId.label",
+        "placeholderKey": "plugin.huaweicloud-elb.certificateId.placeholder",
+        "tooltipKey": "plugin.huaweicloud-elb.certificateId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

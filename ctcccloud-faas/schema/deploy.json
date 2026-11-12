@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ctcccloud-faas",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "regionId",
+        "valueType": "text",
+        "labelKey": "plugin.ctcccloud-faas.regionId.label",
+        "placeholderKey": "plugin.ctcccloud-faas.regionId.placeholder",
+        "tooltipKey": "plugin.ctcccloud-faas.regionId.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.ctcccloud-faas.domain.label",
+        "placeholderKey": "plugin.ctcccloud-faas.domain.placeholder",
+        "default": "",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

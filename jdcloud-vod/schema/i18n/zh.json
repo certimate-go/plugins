@@ -1,0 +1,8 @@
+{
+  "plugin.jdcloud-vod.name": "京东云 - 视频点播 VOD",
+  "plugin.jdcloud-vod.domainMatchPattern.label": "域名匹配模式",
+  "plugin.jdcloud-vod.domainMatchPattern.exact": "精确匹配",
+  "plugin.jdcloud-vod.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.jdcloud-vod.domain.label": "京东云视频点播加速域名",
+  "plugin.jdcloud-vod.domain.placeholder": "请输入京东云视频点播加速域名"
+}

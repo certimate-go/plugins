@@ -1,0 +1,16 @@
+{
+  "plugin.ctcccloud-elb.name": "China Telecom StateCloud - ELB (Elastic Load Balancing)",
+  "plugin.ctcccloud-elb.regionId.label": "CTCC StateCloud region ID",
+  "plugin.ctcccloud-elb.regionId.placeholder": "Please enter CTCC StateCloud ELB region ID",
+  "plugin.ctcccloud-elb.regionId.tooltip": "For more information, see <a href=\"https://www.ctyun.cn/document/10026755/10196575\" target=\"_blank\">https://www.ctyun.cn/document/10026755/10196575</a>",
+  "plugin.ctcccloud-elb.deployTarget.label": "Certificate deploy target",
+  "plugin.ctcccloud-elb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.ctcccloud-elb.deployTarget.loadbalancer": "ELB load balancer",
+  "plugin.ctcccloud-elb.deployTarget.listener": "ELB listener",
+  "plugin.ctcccloud-elb.loadbalancerId.label": "CTCC StateCloud ELB load balancer ID",
+  "plugin.ctcccloud-elb.loadbalancerId.placeholder": "Please enter CTCC StateCloud ELB load balancer ID",
+  "plugin.ctcccloud-elb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.ctyun.cn/network/index/#/elb/elbList\" target=\"_blank\">https://console.ctyun.cn/network/index/#/elb/elbList</a>",
+  "plugin.ctcccloud-elb.listenerId.label": "CTCC StateCloud ELB listener ID",
+  "plugin.ctcccloud-elb.listenerId.placeholder": "Please enter CTCC StateCloud ELB listener ID",
+  "plugin.ctcccloud-elb.listenerId.tooltip": "For more information, see <a href=\"https://console.ctyun.cn/network/index/#/elb/elbList\" target=\"_blank\">https://console.ctyun.cn/network/index/#/elb/elbList</a>"
+}

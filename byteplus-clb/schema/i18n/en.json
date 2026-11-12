@@ -1,0 +1,16 @@
+{
+  "plugin.byteplus-clb.name": "BytePlus - CLB (Classic Load Balancer)",
+  "plugin.byteplus-clb.region.label": "BytePlus region",
+  "plugin.byteplus-clb.region.placeholder": "Please enter BytePlus CLB region (e.g. ap-southeast-1)",
+  "plugin.byteplus-clb.region.tooltip": "For more information, see <a href=\"https://docs.byteplus.com/en/docs/clb/Product-Overview-08\" target=\"_blank\">https://docs.byteplus.com/en/docs/clb/Product-Overview-08</a>",
+  "plugin.byteplus-clb.deployTarget.label": "Certificate deploy target",
+  "plugin.byteplus-clb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.byteplus-clb.deployTarget.loadbalancer": "CLB load balancer",
+  "plugin.byteplus-clb.deployTarget.listener": "CLB listener",
+  "plugin.byteplus-clb.loadbalancerId.label": "BytePlus CLB load balancer ID",
+  "plugin.byteplus-clb.loadbalancerId.placeholder": "Please enter BytePlus CLB load balancer ID",
+  "plugin.byteplus-clb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.byteplus.com/clb/LoadBalancer\" target=\"_blank\">https://console.byteplus.com/clb/LoadBalancer</a>",
+  "plugin.byteplus-clb.listenerId.label": "BytePlus CLB listener ID",
+  "plugin.byteplus-clb.listenerId.placeholder": "Please enter BytePlus CLB listener ID",
+  "plugin.byteplus-clb.listenerId.tooltip": "For more information, see <a href=\"https://console.byteplus.com/clb/LoadBalancer\" target=\"_blank\">https://console.byteplus.com/clb/LoadBalancer</a>"
+}

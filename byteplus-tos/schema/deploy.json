@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "byteplus-tos",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-tos.region.label",
+        "placeholderKey": "plugin.byteplus-tos.region.placeholder",
+        "tooltipKey": "plugin.byteplus-tos.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "bucket",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-tos.bucket.label",
+        "placeholderKey": "plugin.byteplus-tos.bucket.placeholder",
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-tos.domain.label",
+        "placeholderKey": "plugin.byteplus-tos.domain.placeholder",
+        "default": "",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "plugin.huaweicloud-vod.name": "华为云 - 视频点播 VOD",
+  "plugin.huaweicloud-vod.region.label": "华为云服务区域",
+  "plugin.huaweicloud-vod.region.placeholder": "请输入华为云视频点播服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-vod.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/vod\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/vod</a>",
+  "plugin.huaweicloud-vod.domainMatchPattern.label": "域名匹配模式",
+  "plugin.huaweicloud-vod.domainMatchPattern.exact": "精确匹配",
+  "plugin.huaweicloud-vod.domain.label": "华为云视频点播加速域名",
+  "plugin.huaweicloud-vod.domain.placeholder": "请输入华为云视频点播加速域名"
+}

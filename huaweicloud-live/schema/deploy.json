@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "huaweicloud-live",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-live.region.label",
+        "placeholderKey": "plugin.huaweicloud-live.region.placeholder",
+        "tooltipKey": "plugin.huaweicloud-live.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.huaweicloud-live.domainMatchPattern.label",
+        "default": "exact",
+        "required": true,
+        "defaultOnMissing": true,
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "plugin.huaweicloud-live.domainMatchPattern.exact"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.huaweicloud-live.domainMatchPattern.certsan"
+          }
+        ],
+        "allowCustomValue": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-live.domain.label",
+        "placeholderKey": "plugin.huaweicloud-live.domain.placeholder",
+        "default": "",
+        "visibleWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

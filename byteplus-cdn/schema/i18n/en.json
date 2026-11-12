@@ -1,0 +1,10 @@
+{
+  "plugin.byteplus-cdn.name": "BytePlus - CDN (Content Delivery Network)",
+  "plugin.byteplus-cdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.byteplus-cdn.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.byteplus-cdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.byteplus-cdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.byteplus-cdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.byteplus-cdn.domain.label": "BytePlus CDN domain",
+  "plugin.byteplus-cdn.domain.placeholder": "Please enter BytePlus CDN domain name"
+}

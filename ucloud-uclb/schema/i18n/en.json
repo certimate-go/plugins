@@ -1,0 +1,19 @@
+{
+  "plugin.ucloud-uclb.name": "UCloud - UCLB (Classic Load Balancer)",
+  "plugin.ucloud-uclb.endpoint.label": "UCloud API endpoint (Optional)",
+  "plugin.ucloud-uclb.endpoint.placeholder": "Please enter UCloud UCLB API endpoint (e.g. api.ucloud-global.com)",
+  "plugin.ucloud-uclb.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>api.ucloud-global.com</strong> for UCloud Global</li><li><strong>api.ucloud.cn</strong> for UCloud in China (<em>Default</em>)</li></ul>",
+  "plugin.ucloud-uclb.region.label": "UCloud region",
+  "plugin.ucloud-uclb.region.placeholder": "Please enter UCloud UCLB region (e.g. cn-bj2)",
+  "plugin.ucloud-uclb.region.tooltip": "For more information, see <a href=\"https://www.ucloud-global.com/en/docs/api/summary/regionlist\" target=\"_blank\">https://www.ucloud-global.com/en/docs/api/summary/regionlist</a>",
+  "plugin.ucloud-uclb.deployTarget.label": "Certificate deploy target",
+  "plugin.ucloud-uclb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.ucloud-uclb.deployTarget.loadbalancer": "UCLB load balancer",
+  "plugin.ucloud-uclb.deployTarget.vserver": "UCLB VServer",
+  "plugin.ucloud-uclb.loadbalancerId.label": "UCloud UCLB load balancer ID",
+  "plugin.ucloud-uclb.loadbalancerId.placeholder": "Please enter UCloud UCLB load balancer ID",
+  "plugin.ucloud-uclb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.ucloud-global.com/ulb/ulb\" target=\"_blank\">https://console.ucloud-global.com/ulb/ulb</a>",
+  "plugin.ucloud-uclb.vserverId.label": "UCloud UCLB VServer ID",
+  "plugin.ucloud-uclb.vserverId.placeholder": "Please enter UCloud UCLB VServer ID",
+  "plugin.ucloud-uclb.vserverId.tooltip": "For more information, see <a href=\"https://console.ucloud-global.com/ulb/ulb\" target=\"_blank\">https://console.ucloud-global.com/ulb/ulb</a>"
+}

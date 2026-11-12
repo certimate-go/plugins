@@ -1,0 +1,11 @@
+{
+  "plugin.huaweicloud-live.name": "华为云 - 视频直播 Live",
+  "plugin.huaweicloud-live.region.label": "华为云服务区域",
+  "plugin.huaweicloud-live.region.placeholder": "请输入华为云视频直播服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-live.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/live\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/live</a>",
+  "plugin.huaweicloud-live.domainMatchPattern.label": "域名匹配模式",
+  "plugin.huaweicloud-live.domainMatchPattern.exact": "精确匹配",
+  "plugin.huaweicloud-live.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.huaweicloud-live.domain.label": "华为云视频直播流域名",
+  "plugin.huaweicloud-live.domain.placeholder": "请输入华为云视频直播流域名"
+}

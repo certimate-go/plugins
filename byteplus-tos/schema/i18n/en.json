@@ -1,0 +1,10 @@
+{
+  "plugin.byteplus-tos.name": "BytePlus - TOS (Torch Object Storage)",
+  "plugin.byteplus-tos.region.label": "BytePlus region",
+  "plugin.byteplus-tos.region.placeholder": "Please enter BytePlus TOS region (e.g. ap-southeast-1)",
+  "plugin.byteplus-tos.region.tooltip": "For more information, see <a href=\"https://docs.byteplus.com/en/docs/tos/docs-region-and-endpoint\" target=\"_blank\">https://docs.byteplus.com/en/docs/tos/docs-region-and-endpoint</a>",
+  "plugin.byteplus-tos.bucket.label": "BytePlus TOS bucket",
+  "plugin.byteplus-tos.bucket.placeholder": "Please enter BytePlus TOS bucket name",
+  "plugin.byteplus-tos.domain.label": "BytePlus TOS custom domain",
+  "plugin.byteplus-tos.domain.placeholder": "Please enter BytePlus TOS bucket custom domain name"
+}

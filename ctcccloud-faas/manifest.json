@@ -1,0 +1,15 @@
+{
+  "provider_type": "ctcccloud-faas",
+  "access_provider_type": "ctcccloud",
+  "display_name_key": "plugin.ctcccloud-faas.name",
+  "deploy_category": "serverless",
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "protocol_version": 2,
+  "binary": "ctcccloud-faas",
+  "icon": "ctcccloud.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

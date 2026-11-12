@@ -1,0 +1,5 @@
+{
+  "plugin.byteplus-certcenter.name": "BytePlus - Upload to Certificate Center",
+  "plugin.byteplus-certcenter.region.label": "BytePlus region",
+  "plugin.byteplus-certcenter.region.placeholder": "Please enter BytePlus Certificate Center region (e.g. ap-singapore-1)"
+}

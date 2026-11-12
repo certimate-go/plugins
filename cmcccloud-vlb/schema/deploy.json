@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "cmcccloud-vlb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "poolId",
+        "valueType": "text",
+        "labelKey": "plugin.cmcccloud-vlb.poolId.label",
+        "placeholderKey": "plugin.cmcccloud-vlb.poolId.placeholder",
+        "tooltipKey": "plugin.cmcccloud-vlb.poolId.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.cmcccloud-vlb.deployTarget.label",
+        "placeholderKey": "plugin.cmcccloud-vlb.deployTarget.placeholder",
+        "default": "listener",
+        "required": true,
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.cmcccloud-vlb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.cmcccloud-vlb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.cmcccloud-vlb.loadbalancerId.label",
+        "placeholderKey": "plugin.cmcccloud-vlb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.cmcccloud-vlb.loadbalancerId.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.cmcccloud-vlb.listenerId.label",
+        "placeholderKey": "plugin.cmcccloud-vlb.listenerId.placeholder",
+        "tooltipKey": "plugin.cmcccloud-vlb.listenerId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.cmcccloud-vlb.domain.label",
+        "placeholderKey": "plugin.cmcccloud-vlb.domain.placeholder",
+        "extraKey": "plugin.cmcccloud-vlb.domain.extra",
+        "allowClear": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "loadbalancer",
+              "listener"
+            ]
+          }
+        ],
+        "required": false,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

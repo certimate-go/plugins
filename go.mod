@@ -5,7 +5,9 @@ go 1.25.12
 require (
 	github.com/go-resty/resty/v2 v2.17.2
 	github.com/google/go-querystring v1.2.0
+	github.com/google/uuid v1.6.0
 	github.com/hashicorp/go-plugin v1.8.0
+	github.com/pocketbase/pocketbase v0.39.9
 	github.com/pquerna/otp v1.5.0
 	github.com/qiniu/go-sdk/v7 v7.26.18
 	github.com/samber/lo v1.53.0
@@ -19,24 +21,31 @@ require (
 	cloud.google.com/go/auth v0.23.2 // indirect
 	cloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect
 	cloud.google.com/go/compute/metadata v0.9.0 // indirect
+	github.com/avast/retry-go v3.0.0+incompatible // indirect
 	github.com/boombuler/barcode v1.1.0 // indirect
+	github.com/cenkalti/backoff/v4 v4.3.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/jsonpointer v1.0.0 // indirect
+	github.com/goccy/go-yaml v1.19.2 // indirect
 	github.com/gofrs/flock v0.13.1 // indirect
+	github.com/gofrs/uuid v4.4.0+incompatible // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
+	github.com/golang-jwt/jwt/v5 v5.3.1 // indirect
 	github.com/google/s2a-go v0.1.9 // indirect
-	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.20 // indirect
 	github.com/googleapis/gax-go/v2 v2.24.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.8 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/sirupsen/logrus v1.9.4 // indirect
 	github.com/sony/gobreaker/v2 v2.4.0 // indirect
+	github.com/tjfoc/gmsm v1.4.1 // indirect
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
+	go.mongodb.org/mongo-driver v1.17.9 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.67.0 // indirect
 	go.opentelemetry.io/otel v1.44.0 // indirect
@@ -47,6 +56,7 @@ require (
 	go.yaml.in/yaml/v3 v3.0.5 // indirect
 	golang.org/x/sync v0.22.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260715232425-e75dac1f907d // indirect
+	gopkg.in/ini.v1 v1.67.3 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )
 
@@ -54,6 +64,8 @@ require (
 	github.com/BurntSushi/toml v1.6.0 // indirect
 	github.com/G-Core/gcorelabscdn-go v1.0.37
 	github.com/baidubce/bce-sdk-go v0.9.276
+	github.com/byteplus-sdk/byteplus-go-sdk-v2 v1.0.80
+	github.com/byteplus-sdk/byteplus-sdk-golang v1.0.73
 	github.com/certimate-go/certimate v0.4.30-0.20260801043400-926b29dea6b3
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/fatih/color v1.19.0 // indirect
@@ -68,6 +80,8 @@ require (
 	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
+	github.com/huaweicloud/huaweicloud-sdk-go-v3 v0.1.219
+	github.com/jdcloud-api/jdcloud-sdk-go v1.67.0
 	github.com/json-iterator/go v1.1.13-0.20220915233716-71ac16282d12 // indirect
 	github.com/leodido/go-urn v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.15 // indirect
@@ -83,6 +97,9 @@ require (
 	github.com/qiniu/x v1.17.0 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stretchr/testify v1.12.1 // indirect
+	github.com/ucloud/ucloud-sdk-go v0.22.136
+	github.com/volcengine/volc-sdk-golang v1.0.258
+	github.com/volcengine/volcengine-go-sdk v1.2.58
 	github.com/x448/float16 v0.8.4 // indirect
 	github.com/yandex-cloud/go-genproto v0.128.0
 	github.com/yandex-cloud/go-sdk/services/certificatemanager v0.0.102

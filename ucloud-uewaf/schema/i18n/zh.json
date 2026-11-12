@@ -1,0 +1,8 @@
+{
+  "plugin.ucloud-uewaf.name": "优刻得 - 企业 Web 应用防火墙 UEWAF",
+  "plugin.ucloud-uewaf.endpoint.label": "优刻得接口端点（可选）",
+  "plugin.ucloud-uewaf.endpoint.placeholder": "请输入优刻得 UEWAF 接口端点（例如：api.ucloud.cn）",
+  "plugin.ucloud-uewaf.endpoint.tooltip": "这是什么？请参阅 <a href=\"https://docs.ucloud.cn/api/summary/gateway\" target=\"_blank\">https://docs.ucloud.cn/api/summary/gateway</a><br>国际站用户请填写 <em>api.ucloud-global.com</em>。",
+  "plugin.ucloud-uewaf.domain.label": "优刻得 UEWAF 防护域名",
+  "plugin.ucloud-uewaf.domain.placeholder": "请输入优刻得 UEWAF 防护域名"
+}

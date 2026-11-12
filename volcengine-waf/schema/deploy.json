@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "volcengine-waf",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-waf.region.label",
+        "placeholderKey": "plugin.volcengine-waf.region.placeholder",
+        "tooltipKey": "plugin.volcengine-waf.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "accessMode",
+        "valueType": "select",
+        "labelKey": "plugin.volcengine-waf.accessMode.label",
+        "placeholderKey": "plugin.volcengine-waf.accessMode.placeholder",
+        "default": "cname",
+        "required": true,
+        "options": [
+          {
+            "value": "cname",
+            "labelKey": "plugin.volcengine-waf.accessMode.cname"
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-waf.domain.label",
+        "placeholderKey": "plugin.volcengine-waf.domain.placeholder",
+        "allowClear": true,
+        "default": "",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
