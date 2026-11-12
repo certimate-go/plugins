@@ -1,6 +1,41 @@
 {
   "plugins": [
     {
+      "access_provider_type": "axisnow",
+      "binary": "axisnow",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.axisnow.name",
+      "icon": "axisnow.png",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "axisnow",
+      "release": {
+        "assets": {
+          "darwin/amd64": "axisnow_darwin_amd64.zip",
+          "darwin/arm64": "axisnow_darwin_arm64.zip",
+          "linux/amd64": "axisnow_linux_amd64.zip",
+          "linux/arm64": "axisnow_linux_arm64.zip",
+          "windows/amd64": "axisnow_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "8642584220a4a90a5ef7ce7408ae919621e7b5fad8c384b4ef7b4a7086f24ed2",
+          "darwin/arm64": "800ca20321f77753a6959c9ed91f436ba7ec9f52cce17242329d3294c1487e0d",
+          "linux/amd64": "d0c53dc7c0294b99f681b54b59c5c0dd0cb5fbcfe36016177e549be13c716ef3",
+          "linux/arm64": "a3950922441d778eb7dfcae715c0dd67d67d1210db74bdc28b1482b9a78bd9f8",
+          "windows/amd64": "184bedd56a21f8406348e6ec0d26902738499db6f7264b172a69e4bfddcc648e"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "axisnow/v0.1.0"
+      },
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "baishan",
       "binary": "baishan-cdn",
       "deploy_category": "cdn",
@@ -36,6 +71,23 @@
       "version": "0.1.1"
     },
     {
+      "access_provider_type": "cachefly",
+      "binary": "cachefly",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.cachefly.name",
+      "icon": "cachefly.png",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "cachefly",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "dogecloud",
       "binary": "dogecloud-cdn",
       "deploy_category": "cdn",
@@ -69,6 +121,23 @@
         "hosting"
       ],
       "version": "0.1.1"
+    },
+    {
+      "access_provider_type": "flexcdn",
+      "binary": "flexcdn",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.flexcdn.name",
+      "icon": "flexcdn.png",
+      "max_core_version": "",
+      "min_core_version": "",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "flexcdn",
+      "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
     },
     {
       "access_provider_type": "k8s",
