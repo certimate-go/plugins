@@ -125,14 +125,14 @@
           "windows/amd64": "ksyun-cdn_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "ac0830837a75563a88703ac221b1cc0de2a0d6b977648d52a3c4cdbb05306bd6",
-          "darwin/arm64": "9e22fc78ea2b8a6a1ea93b9481bd418a789ad46dc7183dadee0d8f6258927051",
-          "linux/amd64": "7977d99007ff73c175171e1cd2450eb86fc5bab999181325d914c431b8380321",
-          "linux/arm64": "bcbb620df97f74fdd85a77a9cb5f90a3e801859033a5c97b614aaea6b8f27e6c",
-          "windows/amd64": "04db7861a4be3975846fa8cc85aae7dd1f6c56049fae4814752b4fd89d252fb3"
+          "darwin/amd64": "c2077312ddb643041c1c7b3dfd187202ca2d10815ca54cfbaba82af1e7d57d71",
+          "darwin/arm64": "17a4e31e3ce345acbef5ee34748bd9b873ab1f6d08e915e1eec00a6cbe90f96b",
+          "linux/amd64": "5c20d398daa18fb0185b15e03d82bc8172a2197be049c1f7ef4bf9548e802c9e",
+          "linux/arm64": "8eec5ebc3e393dbfc944730851bb442951115965bf5ea9448d60d49259321d23",
+          "windows/amd64": "e5e4c4025042bebacb82d653ed242104ac3c7340e0660c502c4db3838680ea96"
         },
         "repo": "certimate-go/plugins",
-        "tag": "ksyun-cdn/v0.1.0"
+        "tag": "ksyun-cdn/v0.1.1"
       },
       "sha256": "",
       "usages": [
