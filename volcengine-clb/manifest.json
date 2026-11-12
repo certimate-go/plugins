@@ -1,15 +1,33 @@
 {
-  "provider_type": "volcengine-clb",
   "access_provider_type": "volcengine",
-  "display_name_key": "plugin.volcengine-clb.name",
-  "deploy_category": "loadbalance",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "volcengine-clb",
+  "deploy_category": "loadbalance",
+  "display_name_key": "plugin.volcengine-clb.name",
   "icon": "volcengine.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "volcengine-clb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-clb_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-clb_darwin_arm64.zip",
+      "linux/amd64": "volcengine-clb_linux_amd64.zip",
+      "linux/arm64": "volcengine-clb_linux_arm64.zip",
+      "windows/amd64": "volcengine-clb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "f503cc48878602ca760b509298c7542ad852b8844c2dc700cb99f5cf017cd081",
+      "darwin/arm64": "e373e3c763327f731d9fc1f5dd9a73b6d4b2795ffd0e217866f6cfc547eaa344",
+      "linux/amd64": "1acff726fb1cfaea67b31ace06ee5f389f1f62581ce82ea38ddf9693a5f37c0e",
+      "linux/arm64": "5c8e03a59dc2467362b47186eae603033bcad5ad5223535aaf6d8e7593abfcc2",
+      "windows/amd64": "316a1bdd7008c23d7b400d17d356bf4da5e334b7a558c01ea3675224b09f55ff"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-clb/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
