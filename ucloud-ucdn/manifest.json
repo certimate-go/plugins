@@ -1,15 +1,33 @@
 {
-  "provider_type": "ucloud-ucdn",
   "access_provider_type": "ucloud",
   "binary": "ucloud-ucdn",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "cdn",
   "display_name_key": "plugin.ucloud-ucdn.name",
   "icon": "ucloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ucloud-ucdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ucloud-ucdn_darwin_amd64.zip",
+      "darwin/arm64": "ucloud-ucdn_darwin_arm64.zip",
+      "linux/amd64": "ucloud-ucdn_linux_amd64.zip",
+      "linux/arm64": "ucloud-ucdn_linux_arm64.zip",
+      "windows/amd64": "ucloud-ucdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "6fbcc97892d3d54cdd6bdba8849044feb37bc1d5cbcc9cc822988de1c0dd5fd8",
+      "darwin/arm64": "d921e98a17af0afca1f3afd4e694f4898f52c0a35fa45c91040f1c1909ffe17e",
+      "linux/amd64": "095f0a2ebfd545079baa1cfe8e54998cdbb2221f5a8d49a19bdc619f4c59ed9b",
+      "linux/arm64": "49c079d71a4d1d207f0bdef906478bf888b0938eea5be54834c4dc53c1161856",
+      "windows/amd64": "0242b803149f1b528e55d8f0f045d01f4233f53f5a83b9919d8607e014377be4"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ucloud-ucdn/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
