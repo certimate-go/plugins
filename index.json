@@ -20,20 +20,20 @@
           "windows/amd64": "baishan-cdn_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "f6ae2e001ceaee38bc1b1f57234ada48fae2424528043d658753200e21af624b",
-          "darwin/arm64": "3bdccc10ae174faa081e129500144162bd4e10fd3e7d2a103cc436378e77e703",
-          "linux/amd64": "8a3366d811e72af588f7ec9b7e645094de89d82fbccf0aefd3dc5d1c320ba3ed",
-          "linux/arm64": "890d1bf1b8ee9c2962e7eb3b111be21be9ca9ccd23030c0209331077d7bc4588",
-          "windows/amd64": "4409686c70cd5002985b7d567936ba41d2eca75b015d3f44a9f3e684b00f4954"
+          "darwin/amd64": "a2324d6863a4d5981fba8560f0380cab95342e8474d0f6f76d49daf9eba247cc",
+          "darwin/arm64": "88edc57294f08eeb6be78e5c52b2e0082ca95dcea8d463f80f7bf8fccb1aaca4",
+          "linux/amd64": "f47d3a58c4c5bc47c7ecee007c6fb105a3d23a5d4cf1663f41bdf1a1ed60a439",
+          "linux/arm64": "dc76588f5b58188f048fb887897310f94604347d57bd41e769bcd7617c7a7b94",
+          "windows/amd64": "f04649c7e4b82704a53661e4e03a0d1ae3e0d3c3612610fba2e9a49c0cde2fbd"
         },
         "repo": "certimate-go/plugins",
-        "tag": "baishan-cdn/v0.1.0"
+        "tag": "baishan-cdn/v0.1.1"
       },
       "sha256": "",
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "dogecloud",
@@ -138,7 +138,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "ksyun",
@@ -173,7 +173,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "ksyun",
@@ -208,7 +208,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "qiniu",
@@ -418,7 +418,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "wangsu",
@@ -453,7 +453,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "wangsu",
@@ -488,7 +488,7 @@
       "usages": [
         "hosting"
       ],
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "access_provider_type": "zenlayer",
