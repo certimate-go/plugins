@@ -1043,6 +1043,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "safeline",
+      "release": {
+        "assets": {
+          "darwin/amd64": "safeline_darwin_amd64.zip",
+          "darwin/arm64": "safeline_darwin_arm64.zip",
+          "linux/amd64": "safeline_linux_amd64.zip",
+          "linux/arm64": "safeline_linux_arm64.zip",
+          "windows/amd64": "safeline_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "13e1d0ab67ffe03fa7a0a099758c951952fab402e5ea17b605f40f60d52715f4",
+          "darwin/arm64": "c6b566a88672009333867499f9acb3d73acbf3914784666e5a4689045e2afa7b",
+          "linux/amd64": "4693b949b738395ef19a06f8c423071b5cb624eb097ea6aaf0962956accb2790",
+          "linux/arm64": "50b5b78f2bc46ed983be429f5c5ba65208da1a271d79127780eaa18766e63961",
+          "windows/amd64": "948f35d0f391e08c9954ebcbe4b4d180564bbe41bda37eef1b27f6d0ff3682d6"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "safeline/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
