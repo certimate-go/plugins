@@ -440,14 +440,14 @@
           "windows/amd64": "wangsu-cdnpro_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "e77acaa22fca0c8ceff0658d532d6081f968c152e979960f9aa1ad55d9301c17",
-          "darwin/arm64": "d2c70592e869bfefe1faab678398e5bf054a2e6b643f3d351a9ca53a317f3c17",
-          "linux/amd64": "5bf27241f5f47aecfe790f803f6d17f123c28bc33f758f231761483ed51af0eb",
-          "linux/arm64": "fb8dac0b031e08bdcc2a03e8a6c269f699b390cb073d3344d6bc317a1fe19d21",
-          "windows/amd64": "ca8c4715d5c30984adc98adf90e0a5097ef3f5e49c6393724a623db22b8f772c"
+          "darwin/amd64": "182ee8189f60f856fa9855e77cdea816fae93890977d1b3bd76a86ada14eb865",
+          "darwin/arm64": "05660967ccb3f090aed8c4e90c7d59574e20a85c38b5aa21ac22ca9fb5380753",
+          "linux/amd64": "c553681fd2bc8c6e5b39b4375d13bcaeda58bd9869f2536d6bd65708670372fa",
+          "linux/arm64": "d1a136135dfea9f2f92c351bdf52d014b538f9cec5ea437e13c467b9cf9c786f",
+          "windows/amd64": "454181592c6750ba1687e4a48670f9fea9fca2ce091d700aec508ff8c7d5d59c"
         },
         "repo": "certimate-go/plugins",
-        "tag": "wangsu-cdnpro/v0.1.0"
+        "tag": "wangsu-cdnpro/v0.1.1"
       },
       "sha256": "",
       "usages": [
