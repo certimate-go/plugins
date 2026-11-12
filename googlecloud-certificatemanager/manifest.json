@@ -1,14 +1,32 @@
 {
-  "provider_type": "googlecloud-certificatemanager",
   "access_provider_type": "googlecloud",
-  "display_name_key": "plugin.googlecloud-certificatemanager.name",
-  "deploy_category": "ssl",
-  "version": "0.1.0",
-  "protocol_version": 2,
   "binary": "googlecloud-certificatemanager",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.googlecloud-certificatemanager.name",
   "icon": "google.svg",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "googlecloud-certificatemanager",
+  "release": {
+    "assets": {
+      "darwin/amd64": "googlecloud-certificatemanager_darwin_amd64.zip",
+      "darwin/arm64": "googlecloud-certificatemanager_darwin_arm64.zip",
+      "linux/amd64": "googlecloud-certificatemanager_linux_amd64.zip",
+      "linux/arm64": "googlecloud-certificatemanager_linux_arm64.zip",
+      "windows/amd64": "googlecloud-certificatemanager_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "c511c7a4c9adb64bc4891cc9b29a2aed755893aed526ebda2b1689cac0b41a11",
+      "darwin/arm64": "1c2d34e6e9eae71e0a708a9489109aeb924115527d8e412013406962c8388916",
+      "linux/amd64": "e41d69046f63fc40a9614b2cc18a882d04b5541b293f840cb4dcfb709043b4bd",
+      "linux/arm64": "d6f9fee31099605f189a726d4474bb3e07c6bfc6e178e787e0fc32e42897a313",
+      "windows/amd64": "962a79b94b2dc1614bfa0e8dded6845c9b607027a9e725fdf196940117362706"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "googlecloud-certificatemanager/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
