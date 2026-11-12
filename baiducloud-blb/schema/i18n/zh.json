@@ -1,0 +1,19 @@
+{
+  "plugin.baiducloud-blb.name": "百度智能云 - 普通型负载均衡 BLB",
+  "plugin.baiducloud-blb.region.label": "百度智能云服务地域",
+  "plugin.baiducloud-blb.region.placeholder": "请输入百度智能云 BLB 服务地域（例如：bj）",
+  "plugin.baiducloud-blb.region.tooltip": "这是什么？请参阅 <a href=\"https://cloud.baidu.com/doc/BLB/s/cjwvxnzix\" target=\"_blank\">https://cloud.baidu.com/doc/BLB/s/cjwvxnzix</a>",
+  "plugin.baiducloud-blb.deployTarget.label": "证书部署方式",
+  "plugin.baiducloud-blb.deployTarget.placeholder": "请选择证书部署方式",
+  "plugin.baiducloud-blb.deployTarget.loadbalancer": "部署到指定负载均衡器下的全部 HTTPS/SSL 监听",
+  "plugin.baiducloud-blb.deployTarget.listener": "部署到指定 HTTPS/SSL 监听",
+  "plugin.baiducloud-blb.loadbalancerId.label": "百度智能云 BLB 负载均衡器 ID",
+  "plugin.baiducloud-blb.loadbalancerId.placeholder": "请输入百度智能云 BLB 负载均衡器 ID",
+  "plugin.baiducloud-blb.loadbalancerId.tooltip": "这是什么？请参阅 <a href=\"https://console.bce.baidu.com/blb/#/blb/list\" target=\"_blank\">https://console.bce.baidu.com/blb/#/blb/list</a>",
+  "plugin.baiducloud-blb.listenerPort.label": "百度智能云 BLB 监听端口",
+  "plugin.baiducloud-blb.listenerPort.placeholder": "请输入百度智能云 BLB 监听端口",
+  "plugin.baiducloud-blb.listenerPort.tooltip": "这是什么？请参阅 <a href=\"https://console.bce.baidu.com/blb/#/blb/list\" target=\"_blank\">https://console.bce.baidu.com/blb/#/blb/list</a>",
+  "plugin.baiducloud-blb.domain.label": "百度智能云 BLB 扩展域名（可选）",
+  "plugin.baiducloud-blb.domain.placeholder": "请输入百度智能云 BLB 扩展域名",
+  "plugin.baiducloud-blb.domain.help": "提示：不填写时，将替换监听器的默认证书；否则，将替换扩展域名证书。"
+}

@@ -53,6 +53,7 @@ require (
 require (
 	github.com/BurntSushi/toml v1.6.0 // indirect
 	github.com/G-Core/gcorelabscdn-go v1.0.37
+	github.com/baidubce/bce-sdk-go v0.9.276
 	github.com/certimate-go/certimate v0.4.30-0.20260801043400-926b29dea6b3
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/fatih/color v1.19.0 // indirect

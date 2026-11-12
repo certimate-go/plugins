@@ -118,3 +118,41 @@ for (const [provider, category, config, expected] of b1Cases) {
   }
 }
 console.log(`PASS ${b1Cases.length} B1 schema compatibility cases`);
+
+const loadDeployForm = (provider) =>
+  deriveZodSchema(JSON.parse(fs.readFileSync(path.join(pluginRoot, provider, "schema/deploy.json"), "utf8")));
+
+const rainyunRCDN = loadDeployForm("rainyun-rcdn");
+for (const instanceId of ["42", 42]) {
+  assert.deepEqual(rainyunRCDN.parse({ instanceId, domain: "*.example.com" }), {
+    instanceId,
+    domainMatchPattern: "exact",
+    domain: "*.example.com",
+  });
+}
+assert.equal(rainyunRCDN.safeParse({ instanceId: "42", domain: "bad domain" }).success, false);
+
+const rainyunSSL = loadDeployForm("rainyun-sslcenter");
+assert.deepEqual(rainyunSSL.parse({}), {});
+for (const certificateId of ["42", 42]) {
+  assert.deepEqual(rainyunSSL.parse({ certificateId }), { certificateId });
+}
+
+const baiduCDN = loadDeployForm("baiducloud-cdn");
+assert.deepEqual(baiduCDN.parse({ domain: "example.com" }), { domainMatchPattern: "exact", domain: "example.com" });
+assert.deepEqual(baiduCDN.parse({ domainMatchPattern: "certsan" }), { domainMatchPattern: "certsan" });
+assert.equal(baiduCDN.safeParse({ domain: "bad domain" }).success, false);
+
+for (const provider of ["baiducloud-appblb", "baiducloud-blb"]) {
+  const schema = loadDeployForm(provider);
+  const lb = { region: "bj", loadbalancerId: "lb-42" };
+  for (const listenerPort of ["443", 443]) {
+    const config = { ...lb, deployTarget: "listener", listenerPort, domain: "*.example.com" };
+    assert.deepEqual(schema.parse(config), config);
+  }
+  const listener = { ...lb, deployTarget: "listener" };
+  assert.equal(schema.safeParse({ ...listener, listenerPort: "65536" }).success, false);
+  assert.deepEqual(schema.parse({ ...lb, deployTarget: "loadbalancer" }), { ...lb, deployTarget: "loadbalancer" });
+}
+assert.deepEqual(loadDeployForm("baiducloud-cert").parse({}), {});
+console.log("PASS B4 form defaults, saved ID/port types, and conditional validation");

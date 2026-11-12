@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "rainyun-sslcenter",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "numericValue": "positiveInteger",
+        "labelKey": "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "extraKey": "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.help",
+        "allowClear": true
+      }
+    ]
+  }
+}

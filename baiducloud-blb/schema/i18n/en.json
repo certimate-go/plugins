@@ -1,0 +1,19 @@
+{
+  "plugin.baiducloud-blb.name": "Baidu Cloud - BLB (Load Balancer)",
+  "plugin.baiducloud-blb.region.label": "Baidu Cloud region",
+  "plugin.baiducloud-blb.region.placeholder": "Please enter Baidu Cloud BLB region (e.g. bj)",
+  "plugin.baiducloud-blb.region.tooltip": "For more information, see <a href=\"https://cloud.baidu.com/doc/BLB/s/cjwvxnzix\" target=\"_blank\">https://cloud.baidu.com/doc/BLB/s/cjwvxnzix</a>",
+  "plugin.baiducloud-blb.deployTarget.label": "Certificate deploy target",
+  "plugin.baiducloud-blb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.baiducloud-blb.deployTarget.loadbalancer": "BLB load balancer",
+  "plugin.baiducloud-blb.deployTarget.listener": "BLB listener",
+  "plugin.baiducloud-blb.loadbalancerId.label": "Baidu Cloud BLB load balancer ID",
+  "plugin.baiducloud-blb.loadbalancerId.placeholder": "Please enter Baidu Cloud BLB load balancer ID",
+  "plugin.baiducloud-blb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.bce.baidu.com/blb/#/blb/list\" target=\"_blank\">https://console.bce.baidu.com/blb/#/blb/list</a>",
+  "plugin.baiducloud-blb.listenerPort.label": "Baidu Cloud BLB listener port",
+  "plugin.baiducloud-blb.listenerPort.placeholder": "Please enter Baidu Cloud BLB listener port",
+  "plugin.baiducloud-blb.listenerPort.tooltip": "For more information, see <a href=\"https://console.bce.baidu.com/blb/#/blb/list\" target=\"_blank\">https://console.bce.baidu.com/blb/#/blb/list</a>",
+  "plugin.baiducloud-blb.domain.label": "Baidu Cloud BLB SNI domain (Optional)",
+  "plugin.baiducloud-blb.domain.placeholder": "Please enter Baidu Cloud BLB SNI domain name",
+  "plugin.baiducloud-blb.domain.help": "Notes: Leave it blank to set the default certificate; otherwise, to set the extension one for SNI."
+}

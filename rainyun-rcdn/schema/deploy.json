@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "rainyun-rcdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "instanceId",
+        "valueType": "text",
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "default": "",
+        "labelKey": "workflow_node.deploy.form.rainyun_rcdn_instance_id.label",
+        "placeholderKey": "workflow_node.deploy.form.rainyun_rcdn_instance_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.rainyun_rcdn_instance_id.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "default": "exact",
+        "required": true,
+        "allowCustomValue": true,
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "workflow_node.deploy.form.shared_domain_match_pattern.option.exact.label"
+          }
+        ],
+        "extraKey": "workflow_node.deploy.form.shared_domain_match_pattern.option.exact.help.wildcard",
+        "extraHtml": true,
+        "labelKey": "workflow_node.deploy.form.shared_domain_match_pattern.label",
+        "extraWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ]
+          }
+        ],
+        "defaultOnMissing": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "default": "",
+        "dependencies": [
+          "domainMatchPattern"
+        ],
+        "requiredWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ],
+        "labelKey": "workflow_node.deploy.form.rainyun_rcdn_domain.label",
+        "placeholderKey": "workflow_node.deploy.form.rainyun_rcdn_domain.placeholder"
+      }
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "plugin.rainyun-sslcenter.name": "Rain Yun - Upload to SSL Certificate Center",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.label": "Rain Yun RCDN certificate ID",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.placeholder": "Please enter Rain Yun RCDN certificate ID",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.tooltip": "For more information, see <a href=\"https://app.rainyun.com/apps/ssl/list\" target=\"_blank\">https://app.rainyun.com/apps/ssl/list</a>",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.help": "Notes: Leave it blank to import a new certificate; otherwise, to replace the existing one."
+}
