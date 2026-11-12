@@ -1,14 +1,32 @@
 {
-  "provider_type": "digitalocean-certificate",
   "access_provider_type": "digitalocean",
   "binary": "digitalocean-certificate",
   "deploy_category": "ssl",
   "display_name_key": "plugin.digitalocean-certificate.name",
   "icon": "digitalocean.svg",
-  "protocol_version": 2,
-  "version": "0.1.0",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "digitalocean-certificate",
+  "release": {
+    "assets": {
+      "darwin/amd64": "digitalocean-certificate_darwin_amd64.zip",
+      "darwin/arm64": "digitalocean-certificate_darwin_arm64.zip",
+      "linux/amd64": "digitalocean-certificate_linux_amd64.zip",
+      "linux/arm64": "digitalocean-certificate_linux_arm64.zip",
+      "windows/amd64": "digitalocean-certificate_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "8b4319854e3abb75d8b63961d1c02194e92d5d89b24e1b064ab5e1a814334a2d",
+      "darwin/arm64": "07dabe4b00072f9706a9064e63651cfe66c8b7023a9e218fcc98a25b56bc7260",
+      "linux/amd64": "9fd03cd8a59fdccbe415f1235a200bf7bf15d9fa5e0129cb4f4d6918867066d6",
+      "linux/arm64": "cf8ecc01a972f7faa478213b85da000525e7bb80be7997170532f3ac284a6de7",
+      "windows/amd64": "da303e3103d0a7868a13bf58be0f78383be33fe7db4095fcb1b6281f56905263"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "digitalocean-certificate/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
