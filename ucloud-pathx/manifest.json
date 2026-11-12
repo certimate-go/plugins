@@ -1,15 +1,33 @@
 {
-  "provider_type": "ucloud-pathx",
   "access_provider_type": "ucloud",
   "binary": "ucloud-pathx",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "accelerator",
   "display_name_key": "plugin.ucloud-pathx.name",
   "icon": "ucloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ucloud-pathx",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ucloud-pathx_darwin_amd64.zip",
+      "darwin/arm64": "ucloud-pathx_darwin_arm64.zip",
+      "linux/amd64": "ucloud-pathx_linux_amd64.zip",
+      "linux/arm64": "ucloud-pathx_linux_arm64.zip",
+      "windows/amd64": "ucloud-pathx_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "46bd93995ebcb86904a9fc0e0852761447a20c17d449d63945bba9f1b876afb6",
+      "darwin/arm64": "e697129c273afcb95aaedc9c1f121ab0d35dc0b051a4e94a5893f8654ccbf8a7",
+      "linux/amd64": "4b0cc0ac65bcb6b330bf12182691cd7a5c2606dcfdc112965f277cf1d543ca7a",
+      "linux/arm64": "a97c4d799c96ac5891363849204e3c6ce91f987d5361ee8f5fe5b8c09660dba8",
+      "windows/amd64": "394521b56786906d8d88c811f6673aa21767e53674cc4a7de0a177067170af0a"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ucloud-pathx/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
