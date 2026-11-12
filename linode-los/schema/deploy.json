@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "linode-los",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "regionId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.linode_los_region_id.label",
+        "placeholderKey": "workflow_node.deploy.form.linode_los_region_id.placeholder",
+        "default": "",
+        "required": true,
+        "tooltipKey": "workflow_node.deploy.form.linode_los_region_id.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "bucket",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.linode_los_bucket.label",
+        "placeholderKey": "workflow_node.deploy.form.linode_los_bucket.placeholder",
+        "default": "",
+        "required": true
+      }
+    ]
+  }
+}

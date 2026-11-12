@@ -1,0 +1,4 @@
+{
+  "plugin.digitalocean-certificate.name": "DigitalOcean - Upload to Custom Certificate",
+  "provider.digitalocean": "DigitalOcean"
+}

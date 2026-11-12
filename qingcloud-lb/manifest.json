@@ -1,0 +1,17 @@
+{
+  "provider_type": "qingcloud-lb",
+  "access_provider_type": "qingcloud",
+  "binary": "qingcloud-lb",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "deploy_category": "loadbalance",
+  "display_name_key": "plugin.qingcloud-lb.name",
+  "icon": "qingcloud.svg",
+  "priority": 100,
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "workflow_node.deploy.form.bunny_cdn_hostname.tooltip": "What is this? See <a href=\"https://dash.bunny.net/cdn\" target=\"_blank\">https://dash.bunny.net/cdn</a>",
+  "workflow_node.deploy.form.bunny_cdn_hostname.label": "Bunny CDN hostname",
+  "workflow_node.deploy.form.bunny_cdn_pull_zone_id.tooltip": "What is this? See <a href=\"https://dash.bunny.net/cdn\" target=\"_blank\">https://dash.bunny.net/cdn</a>",
+  "workflow_node.deploy.form.bunny_cdn_pull_zone_id.placeholder": "Please enter Bunny CDN pull zone ID",
+  "workflow_node.deploy.form.bunny_cdn_hostname.placeholder": "Please enter Bunny CDN hostname",
+  "workflow_node.deploy.form.bunny_cdn_pull_zone_id.label": "Bunny CDN pull zone ID",
+  "plugin.bunny-cdn.name": "Bunny - CDN (Content Delivery Network)",
+  "provider.bunny": "Bunny"
+}

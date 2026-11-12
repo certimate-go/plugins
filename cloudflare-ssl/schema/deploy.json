@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "cloudflare-ssl",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "environment",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.cloudflare_ssl_environment.label",
+        "placeholderKey": "workflow_node.deploy.form.cloudflare_ssl_environment.placeholder",
+        "allowCustomValue": true,
+        "options": [
+          {
+            "value": "production",
+            "label": "production"
+          },
+          {
+            "value": "staging",
+            "label": "staging"
+          }
+        ],
+        "tooltipKey": "workflow_node.deploy.form.cloudflare_ssl_environment.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "zoneId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.cloudflare_ssl_zone_id.label",
+        "placeholderKey": "workflow_node.deploy.form.cloudflare_ssl_zone_id.placeholder",
+        "required": true,
+        "default": "",
+        "tooltipKey": "workflow_node.deploy.form.cloudflare_ssl_zone_id.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.cloudflare_ssl_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.cloudflare_ssl_certificate_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.cloudflare_ssl_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "extraKey": "workflow_node.deploy.form.cloudflare_ssl_certificate_id.help"
+      }
+    ]
+  }
+}

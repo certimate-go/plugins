@@ -1,0 +1,9 @@
+{
+  "plugin.netlify.name": "Netlify",
+  "workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "workflow_node.deploy.form.netlify_deploy_target.option.website.label": "Website",
+  "workflow_node.deploy.form.netlify_site_id.label": "Netlify website ID",
+  "workflow_node.deploy.form.netlify_site_id.placeholder": "Please enter Netlify website ID",
+  "workflow_node.deploy.form.netlify_site_id.tooltip": "For more information, see <a href=\"https://docs.netlify.com/api/get-started/#get-site\" target=\"_blank\">https://docs.netlify.com/api/get-started/#get-site</a>"
+}

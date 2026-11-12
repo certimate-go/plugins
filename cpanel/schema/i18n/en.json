@@ -1,0 +1,9 @@
+{
+  "workflow_node.deploy.form.cpanel_deploy_target.option.website.label": "Website",
+  "workflow_node.deploy.form.cpanel_domain.label": "cPanel website domain",
+  "workflow_node.deploy.form.cpanel_domain.placeholder": "Please enter cPanel website domain name",
+  "workflow_node.deploy.form.shared_deploy_target.label": "Certificate deploy target",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "Please select certificate deploy target",
+  "plugin.cpanel.name": "cPanel",
+  "provider.cpanel": "cPanel"
+}

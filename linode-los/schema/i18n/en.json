@@ -1,0 +1,8 @@
+{
+  "plugin.linode-los.name": "Linode - Object Storage",
+  "workflow_node.deploy.form.linode_los_region_id.label": "Linode region ID",
+  "workflow_node.deploy.form.linode_los_region_id.placeholder": "Please enter Linode object storage region ID (e.g. us-east)",
+  "workflow_node.deploy.form.linode_los_region_id.tooltip": "For more information, see <a href=\"https://techdocs.akamai.com/cloud-computing/docs/endpoint-types#supported-endpoint-types-by-region\" target=\"_blank\">https://techdocs.akamai.com/cloud-computing/docs/endpoint-types</a>",
+  "workflow_node.deploy.form.linode_los_bucket.label": "Linode object storage bucket name",
+  "workflow_node.deploy.form.linode_los_bucket.placeholder": "Please enter Linode object storage bucket name"
+}

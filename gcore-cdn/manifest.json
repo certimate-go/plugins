@@ -1,0 +1,14 @@
+{
+  "provider_type": "gcore-cdn",
+  "access_provider_type": "gcore",
+  "display_name_key": "plugin.gcore-cdn.name",
+  "deploy_category": "cdn",
+  "version": "0.1.0",
+  "protocol_version": 2,
+  "binary": "gcore-cdn",
+  "icon": "gcore.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

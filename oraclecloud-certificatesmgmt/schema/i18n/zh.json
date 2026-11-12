@@ -1,0 +1,6 @@
+{
+  "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.label": "OCI 资源区间 OCID",
+  "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.placeholder": "请输入 OCI 资源区间 OCID",
+  "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.tooltip": "这是什么？请参阅 <a href=\"https://docs.oracle.com/en-us/iaas/Content/Identity/compartments/managingcompartments.htm\" target=\"_blank\">https://docs.oracle.com/en-us/iaas/Content/Identity/compartments/managingcompartments.htm</a>",
+  "plugin.oraclecloud-certificatesmgmt.name": "Oracle Cloud - 证书管理服务"
+}

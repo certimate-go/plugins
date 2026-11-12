@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "oraclecloud-certificatesmgmt",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "compartmentOcid",
+        "valueType": "text",
+        "labelKey": "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.label",
+        "placeholderKey": "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.placeholder",
+        "tooltipKey": "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "default": "",
+        "validateWhen": [
+          {
+            "field": "compartmentOcid",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "regex",
+            "params": {
+              "pattern": "^ocid\\d\\..{1,}$"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

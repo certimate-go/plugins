@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "yandexcloud-certificatemanager",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.label",
+        "placeholderKey": "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.placeholder",
+        "extraKey": "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.help"
+      }
+    ]
+  }
+}

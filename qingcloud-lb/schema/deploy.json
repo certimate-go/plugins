@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "qingcloud-lb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "zoneId",
+        "valueType": "text",
+        "labelKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.label",
+        "placeholderKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.placeholder",
+        "tooltipKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "required": true,
+        "default": "listener",
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.qingcloud-lb.target.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.qingcloud-lb.target.listener"
+          }
+        ],
+        "labelKey": "plugin.qingcloud-lb.target",
+        "placeholderKey": "plugin.qingcloud-lb.targetPlaceholder"
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.label",
+        "placeholderKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.placeholder",
+        "tooltipKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "loadbalancer"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.label",
+        "placeholderKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.placeholder",
+        "tooltipKey": "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

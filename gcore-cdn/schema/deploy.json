@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "gcore-cdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "resourceId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.gcore_cdn_resource_id.label",
+        "placeholderKey": "workflow_node.deploy.form.gcore_cdn_resource_id.placeholder",
+        "default": "",
+        "required": true,
+        "inputType": "number",
+        "tooltipKey": "workflow_node.deploy.form.gcore_cdn_resource_id.tooltip",
+        "tooltipHtml": true,
+        "numericValue": "positiveInteger"
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.gcore_cdn_certificate_id.label",
+        "placeholderKey": "workflow_node.deploy.form.gcore_cdn_certificate_id.placeholder",
+        "required": false,
+        "inputType": "number",
+        "tooltipKey": "workflow_node.deploy.form.gcore_cdn_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "extraKey": "workflow_node.deploy.form.gcore_cdn_certificate_id.help",
+        "numericValue": "positiveInteger"
+      }
+    ]
+  }
+}

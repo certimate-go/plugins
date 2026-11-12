@@ -1,0 +1,6 @@
+{
+  "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.label": "Yandex Cloud Certificate Manager certificate ID (Optional)",
+  "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.placeholder": "Please enter Yandex Cloud Certificate Manager certificate ID",
+  "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.help": "Notes: Leave it blank to import a new certificate; otherwise, to replace the existing one.",
+  "plugin.yandexcloud-certificatemanager.name": "Yandex Cloud - Certificate Manager"
+}

@@ -1,0 +1,10 @@
+{
+  "plugin.gcore-cdn.name": "G-Core - CDN (Content Delivery Network)",
+  "workflow_node.deploy.form.gcore_cdn_resource_id.label": "G-Core CDN resource ID",
+  "workflow_node.deploy.form.gcore_cdn_resource_id.placeholder": "Please enter G-Core CDN resource ID",
+  "workflow_node.deploy.form.gcore_cdn_resource_id.tooltip": "For more information, see <a href=\"https://cdn.gcore.com/resources/list\" target=\"_blank\">https://cdn.gcore.com/resources/list</a>",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.label": "G-Core CDN certificate ID (Optional)",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.placeholder": "Please enter G-Core CDN certificate ID",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.tooltip": "For more information, see <a href=\"https://cdn.gcore.com/ssl\" target=\"_blank\">https://cdn.gcore.com/ssl</a>",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.help": "Notes: Leave it blank to import a new certificate; otherwise, to replace the existing one."
+}

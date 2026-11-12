@@ -1,0 +1,17 @@
+{
+  "provider_type": "yandexcloud-certificatemanager",
+  "access_provider_type": "yandexcloud",
+  "binary": "yandexcloud-certificatemanager",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.yandexcloud-certificatemanager.name",
+  "icon": "yandexcloud.svg",
+  "priority": 100,
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "plugin.linode-los.name": "Linode - 对象存储",
+  "workflow_node.deploy.form.linode_los_region_id.label": "Linode 服务区域 ID",
+  "workflow_node.deploy.form.linode_los_region_id.placeholder": "请输入 Linode 对象存储区域 ID（例如：us-east）",
+  "workflow_node.deploy.form.linode_los_region_id.tooltip": "这是什么？请参阅 <a href=\"https://techdocs.akamai.com/cloud-computing/docs/endpoint-types#supported-endpoint-types-by-region\" target=\"_blank\">https://techdocs.akamai.com/cloud-computing/docs/endpoint-types</a>",
+  "workflow_node.deploy.form.linode_los_bucket.label": "Linode 对象存储桶名",
+  "workflow_node.deploy.form.linode_los_bucket.placeholder": "请输入 Linode 对象存储桶名"
+}

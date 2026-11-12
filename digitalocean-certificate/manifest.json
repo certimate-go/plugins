@@ -1,0 +1,14 @@
+{
+  "provider_type": "digitalocean-certificate",
+  "access_provider_type": "digitalocean",
+  "binary": "digitalocean-certificate",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.digitalocean-certificate.name",
+  "icon": "digitalocean.svg",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}
