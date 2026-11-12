@@ -836,6 +836,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "proxmoxve",
+      "release": {
+        "assets": {
+          "darwin/amd64": "proxmoxve_darwin_amd64.zip",
+          "darwin/arm64": "proxmoxve_darwin_arm64.zip",
+          "linux/amd64": "proxmoxve_linux_amd64.zip",
+          "linux/arm64": "proxmoxve_linux_arm64.zip",
+          "windows/amd64": "proxmoxve_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "a20f7abe9afb24d2ccd46b5424fe5a956f314722fc13ec996c9dd14d9a40cb34",
+          "darwin/arm64": "216027fec27c63ce5f6d6f55e256bbbfaf2806848ab44d1f06b586c2d9215083",
+          "linux/amd64": "391cb90e49814572410f46bc93310f311caab089a2c113fb3414d9ed228fc71d",
+          "linux/arm64": "f39678169166b111e0c96ac3d31ab2d721546b8d8f846aedbd4be176493ce5a7",
+          "windows/amd64": "d0711e58d9c8759e29353624c73f912efb61584af01b59120b0be3838af6d6e3"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "proxmoxve/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
