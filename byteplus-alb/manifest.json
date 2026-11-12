@@ -1,15 +1,33 @@
 {
-  "provider_type": "byteplus-alb",
   "access_provider_type": "byteplus",
-  "display_name_key": "plugin.byteplus-alb.name",
-  "deploy_category": "loadbalance",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "byteplus-alb",
+  "deploy_category": "loadbalance",
+  "display_name_key": "plugin.byteplus-alb.name",
   "icon": "byteplus.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "byteplus-alb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "byteplus-alb_darwin_amd64.zip",
+      "darwin/arm64": "byteplus-alb_darwin_arm64.zip",
+      "linux/amd64": "byteplus-alb_linux_amd64.zip",
+      "linux/arm64": "byteplus-alb_linux_arm64.zip",
+      "windows/amd64": "byteplus-alb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "7e4ed3709f3043329d0f7cde778126ad9e5c0815ea0e0557465d9f23e9c520d8",
+      "darwin/arm64": "bf6f82b55c8aa2426f11659a5659e883d615f76bcb752df660e25e89b8694313",
+      "linux/amd64": "814e9f3c4b8c5c4a65196cb240eb21d61a09a863463148eb1fbfb1c70da77d54",
+      "linux/arm64": "e9a078ce3fd29ed4d21195f5e6354c2aacd771ff7a85ca8009dad70717aca76c",
+      "windows/amd64": "196d7042a94750773935d2442414016bcb9cd6338306737a92c251bf6c70a09e"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "byteplus-alb/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
