@@ -1,15 +1,33 @@
 {
-  "provider_type": "huaweicloud-elb",
   "access_provider_type": "huaweicloud",
-  "display_name_key": "plugin.huaweicloud-elb.name",
-  "deploy_category": "loadbalance",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "huaweicloud-elb",
+  "deploy_category": "loadbalance",
+  "display_name_key": "plugin.huaweicloud-elb.name",
   "icon": "huaweicloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "huaweicloud-elb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-elb_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-elb_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-elb_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-elb_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-elb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "8fe9b3d5a54e77008bfba79d7477eff6848a87e1944445661b00b854a8855fa1",
+      "darwin/arm64": "fb9199715d5ef6d976123c5ff4e9627fa4c84adb217fc62c67ef48ed36c5882a",
+      "linux/amd64": "dd889311b3929d7a778e45b95b12a8e663f8eb06b2c0810f72ce401beb582735",
+      "linux/arm64": "e740281dfa2e771da00d256cbdfc7cf146df9641f598be4dae645638e583a649",
+      "windows/amd64": "7bc69d3d6dc7f9a5a443a22abe58d57317c619be16c693df852c9e955073c61a"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-elb/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
