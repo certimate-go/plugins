@@ -50,15 +50,8 @@ func TestGetConfigSchema(t *testing.T) {
 		} `json:"schema"`
 	}
 
-	if len(schema.AccessSchemaJSON) == 0 {
-		t.Fatalf("plugin must emit an access schema for the shared %q access type", accessType)
-	}
-	var accessEnv envelope
-	if err := json.Unmarshal(schema.AccessSchemaJSON, &accessEnv); err != nil {
-		t.Fatalf("access envelope invalid: %v", err)
-	}
-	if accessEnv.SchemaVersion != "form/v1" || accessEnv.Provider != accessType || accessEnv.Category != "access" {
-		t.Fatalf("access envelope mismatch: %+v", accessEnv)
+	if len(schema.AccessSchemaJSON) != 0 {
+		t.Fatalf("plugin must not emit an access schema for the shared %q access type; only the access owner may", accessType)
 	}
 
 	var deployEnv envelope
@@ -81,7 +74,7 @@ func TestGetConfigSchema(t *testing.T) {
 		if bundle[displayNameKey] == "" {
 			t.Fatalf("locale %s missing display name", locale)
 		}
-		for _, env := range []envelope{accessEnv, deployEnv} {
+		for _, env := range []envelope{deployEnv} {
 			for _, c := range env.Schema.Columns {
 				if c.LabelKey != "" && bundle[c.LabelKey] == "" {
 					t.Fatalf("locale %s missing i18n key %q", locale, c.LabelKey)

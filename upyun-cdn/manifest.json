@@ -1,5 +1,6 @@
 {
   "access_provider_type": "upyun",
+  "capability": "deploy",
   "binary": "upyun-cdn",
   "deploy_category": "cdn",
   "display_name_key": "plugin.upyun-cdn.name",
@@ -7,7 +8,7 @@
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "upyun-cdn",
   "release": {
     "assets": {

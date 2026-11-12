@@ -1,16 +1,19 @@
 {
-  "version": "0.1.0",
-  "provider_type": "__PLUGIN_NAME__",
   "access_provider_type": "__ACCESS_TYPE__",
-  "display_name_key": "plugin.__PLUGIN_NAME__.name",
-  "deploy_category": "other",
-  "protocol_version": 2,
-  "min_core_version": "",
-  "max_core_version": "",
+  "capability": "deploy",
   "binary": "__PLUGIN_NAME__",
+  "deploy_category": "other",
+  "description": "",
+  "display_name_key": "plugin.__PLUGIN_NAME__.name",
   "icon": "",
-  "sha256": "",
+  "max_core_version": "",
+  "min_core_version": "",
   "priority": 0,
-  "usages": ["hosting"],
-  "description": ""
+  "protocol_version": 3,
+  "provider_type": "__PLUGIN_NAME__",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
 }

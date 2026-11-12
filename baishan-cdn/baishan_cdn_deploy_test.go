@@ -1,3 +1,5 @@
+//go:build tester
+
 package main
 
 import (
@@ -7,12 +9,12 @@ import (
 	"testing"
 
 	"github.com/certimate-go/certimate/pkg/core"
-	tester "github.com/certimate-go/certimate/pkg/core/deployer/testing"
+	tester "github.com/certimate-go/certimate/pkg/core/deployer/providers-tester"
 	"github.com/certimate-go/certimate/pkg/plugin"
 )
 
 var (
-	fp            = tester.Args("BAISHANCDN_")
+	fp            = tester.InitArgs("BAISHANCDN_")
 	fTestCertPath string
 	fTestKeyPath  string
 	fApiToken     string
@@ -84,10 +86,10 @@ func TestDeploy_EnvGated(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		tester.TestDeploy(t, &envDeployTester{
+		tester.Deploy(t, &envDeployTester{
 			impl:               &baishanCdnDeployer{},
 			accessConfigJSON:   string(accessConfigJSON),
 			extendedConfigJSON: string(extendedConfigJSON),
-		}, tester.TestDeployArgs{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
+		}, tester.DeployInput{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
 	})
 }

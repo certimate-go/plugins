@@ -1,3 +1,7 @@
 dist/
 .DS_Store
 /genindex
+/vendor/
+/mockdns/
+/mockdns-deploy/
+/mocknotify/

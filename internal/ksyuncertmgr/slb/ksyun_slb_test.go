@@ -1,14 +1,16 @@
+//go:build tester
+
 package ksyunslb_test
 
 import (
 	"testing"
 
-	tester "github.com/certimate-go/certimate/pkg/core/certmgr/testing"
+	tester "github.com/certimate-go/certimate/pkg/core/certmgr/providers-tester"
 	impl "github.com/certimate-go/plugins/internal/ksyuncertmgr/slb"
 )
 
 var (
-	fp               = tester.Args("KSYUNSLB_")
+	fp               = tester.InitArgs("KSYUNSLB_")
 	fTestCertPath    string
 	fTestKeyPath     string
 	fAccessKeyId     string
@@ -41,6 +43,6 @@ func TestProvider(t *testing.T) {
 			return
 		}
 
-		tester.TestUpload(t, provider, tester.TestUploadArgs{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
+		tester.Upload(t, provider, tester.UploadInput{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
 	})
 }

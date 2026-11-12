@@ -1,14 +1,16 @@
+//go:build tester
+
 package upyuncertmgr_test
 
 import (
 	"testing"
 
 	impl "github.com/certimate-go/plugins/internal/upyuncertmgr"
-	tester "github.com/certimate-go/certimate/pkg/core/certmgr/testing"
+	tester "github.com/certimate-go/certimate/pkg/core/certmgr/providers-tester"
 )
 
 var (
-	fp            = tester.Args("UPYUNSSL_")
+	fp            = tester.InitArgs("UPYUNSSL_")
 	fTestCertPath string
 	fTestKeyPath  string
 	fUsername     string
@@ -47,6 +49,6 @@ func TestProvider(t *testing.T) {
 			return
 		}
 
-		tester.TestUpload(t, provider, tester.TestUploadArgs{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
+		tester.Upload(t, provider, tester.UploadInput{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
 	})
 }

@@ -1,14 +1,16 @@
+//go:build tester
+
 package baishancdn_test
 
 import (
 	"testing"
 
-	tester "github.com/certimate-go/certimate/pkg/core/certmgr/testing"
+	tester "github.com/certimate-go/certimate/pkg/core/certmgr/providers-tester"
 	impl "github.com/certimate-go/plugins/internal/baishancertmgr"
 )
 
 var (
-	fp            = tester.Args("BAISHANCDN_")
+	fp            = tester.InitArgs("BAISHANCDN_")
 	fTestCertPath string
 	fTestKeyPath  string
 	fApiToken     string
@@ -35,6 +37,6 @@ func TestProvider(t *testing.T) {
 			return
 		}
 
-		tester.TestUpload(t, provider, tester.TestUploadArgs{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
+		tester.Upload(t, provider, tester.UploadInput{CertPath: fTestCertPath, KeyPath: fTestKeyPath})
 	})
 }

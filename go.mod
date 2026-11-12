@@ -1,13 +1,13 @@
 module github.com/certimate-go/plugins
 
-go 1.25.12
+go 1.25.14
 
 require (
 	github.com/go-resty/resty/v2 v2.17.2
 	github.com/google/go-querystring v1.2.0
 	github.com/google/uuid v1.6.0
 	github.com/hashicorp/go-plugin v1.8.0
-	github.com/pocketbase/pocketbase v0.39.9
+	github.com/pocketbase/pocketbase v0.39.10
 	github.com/pquerna/otp v1.5.0
 	github.com/qiniu/go-sdk/v7 v7.26.18
 	github.com/samber/lo v1.53.0
@@ -125,7 +125,7 @@ require (
 	sigs.k8s.io/randfill v1.0.0 // indirect
 	sigs.k8s.io/structured-merge-diff/v6 v6.3.2 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect
-	software.sslmate.com/src/go-pkcs12 v0.7.3
+	software.sslmate.com/src/go-pkcs12 v0.7.4
 )
 
 replace (
@@ -136,3 +136,5 @@ replace (
 	gitlab.ecloud.com/ecloud/ecloudsdkcore v1.0.6 => ./pkg/sdk3rd-forked/gitlab.ecloud.com/ecloud/ecloudsdkcore@v1.0.6
 	gitlab.ecloud.com/ecloud/ecloudsdkvlb v1.0.7 => ./pkg/sdk3rd-forked/gitlab.ecloud.com/ecloud/ecloudsdkvlb@v1.0.7
 )
+
+replace github.com/certimate-go/certimate => ../certimate
