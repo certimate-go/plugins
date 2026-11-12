@@ -1,14 +1,32 @@
 {
-  "provider_type": "flyio",
   "access_provider_type": "flyio",
   "binary": "flyio",
   "deploy_category": "website",
   "display_name_key": "plugin.flyio.name",
   "icon": "flyio.svg",
-  "min_core_version": "0.4.37",
   "max_core_version": "",
+  "min_core_version": "0.4.37",
   "priority": 100,
   "protocol_version": 2,
+  "provider_type": "flyio",
+  "release": {
+    "assets": {
+      "darwin/amd64": "flyio_darwin_amd64.zip",
+      "darwin/arm64": "flyio_darwin_arm64.zip",
+      "linux/amd64": "flyio_linux_amd64.zip",
+      "linux/arm64": "flyio_linux_arm64.zip",
+      "windows/amd64": "flyio_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "80f9a5d61101a696985204e1d2235a6bd2eb4adfdd507571fd1a80e9a17aa8be",
+      "darwin/arm64": "8fa916d22e6ca60cbe6b84df01e4daaf2a81d8fbb1d2a66d0f2de6bcf4de2be0",
+      "linux/amd64": "2e1bb81b924142f16881637f0f2127da73f0f0d98afe42014673e0db84ca1a59",
+      "linux/arm64": "84f933e186c79c241cf199f4280e60ebc4403c44cb1cd6da5a2580024624f9f2",
+      "windows/amd64": "9cb0c59c6e98032d8fd4613c12a63bc05978dc1eaff3241b0910e905486dc859"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "flyio/v0.1.0"
+  },
   "usages": [
     "hosting"
   ],
