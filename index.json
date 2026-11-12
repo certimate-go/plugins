@@ -421,6 +421,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "dokploy",
+      "release": {
+        "assets": {
+          "darwin/amd64": "dokploy_darwin_amd64.zip",
+          "darwin/arm64": "dokploy_darwin_arm64.zip",
+          "linux/amd64": "dokploy_linux_amd64.zip",
+          "linux/arm64": "dokploy_linux_arm64.zip",
+          "windows/amd64": "dokploy_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "362b412034253af6e0c065209b5be83f6f2edb25cd0dd10e4f2c77a982effa4e",
+          "darwin/arm64": "641e65860627dfbb2f64a1baf16a24f7856db54fe4bf5a8f1ea34378629549f5",
+          "linux/amd64": "a9310c83058fd6599126d44186ec324de989f4e70f2c209c2ee4320f7c77ce35",
+          "linux/arm64": "9d6eea2e5c4cb72e52297e349c47b9c520dcc3cc68b756034a49786281c92cf2",
+          "windows/amd64": "0f6c0d2e6fab4baae227e18ca01a8fd9729c25861bfa303b3aa65ae8f9041670"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "dokploy/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
