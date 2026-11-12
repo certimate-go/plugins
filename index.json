@@ -593,6 +593,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "kong",
+      "release": {
+        "assets": {
+          "darwin/amd64": "kong_darwin_amd64.zip",
+          "darwin/arm64": "kong_darwin_arm64.zip",
+          "linux/amd64": "kong_linux_amd64.zip",
+          "linux/arm64": "kong_linux_arm64.zip",
+          "windows/amd64": "kong_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "00a513289196f8b6c5543075ed6f3433c245a68cbc81966cc2386913f0ff8817",
+          "darwin/arm64": "6fecc816ea15afbd39e7ce1794a5591404e55362873f126056de4cd0b55999f0",
+          "linux/amd64": "bda31dc562acff6d3688a924163f30117143fd55dec76ae9d5fa949616a52ec6",
+          "linux/arm64": "561c7adff4b3954a802b8bb97b4985c02108ea5bc456499ebff8bf88f4408619",
+          "windows/amd64": "117a25c871c4593aa427f799e8819365d0dfc5113ba1b59457b00beb4331fd88"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "kong/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
