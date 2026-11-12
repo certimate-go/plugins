@@ -475,14 +475,14 @@
           "windows/amd64": "wangsu-certificate_windows_amd64.zip"
         },
         "checksums": {
-          "darwin/amd64": "701f92383aba8dcf98103b7c3267911cea9c24b975323d8646a8379357eab1dc",
-          "darwin/arm64": "11e6bf0b8f451d188ba5df636e2d68e037b6d0f54e5db77665b89330dcd2746e",
-          "linux/amd64": "ee914c93fe0f5d8c116c039019e18510193aa818ba18107e2d489bc55c2b913f",
-          "linux/arm64": "cd75acce3509c67d357ab5a94d6e13f14e2d4cd18eb8c59a1bcffdab8df53cd0",
-          "windows/amd64": "d3c41f9f8e51574689dff88de65c3675bdcdaf0fc30a47323eff65c042d3a450"
+          "darwin/amd64": "b82482215a79d7b5822f907911bf9af9e4ba68c7e85c8fee4c51566018c1f509",
+          "darwin/arm64": "469670fdb2e1e40d0e29118a02392f27b0853f3750b354c3f729f59b981292ef",
+          "linux/amd64": "8fd91935b693c1c71230a32e4eb6a986480f8e1313e0d4779d68dc004dbcac00",
+          "linux/arm64": "2264ede6ad4d8c06ab453e1dfa93d64c97815d2f779abced1c98a3bb48e9f707",
+          "windows/amd64": "12312b405128aa2a084a1a97815adc74c8315699199773695c09ad4a9a260414"
         },
         "repo": "certimate-go/plugins",
-        "tag": "wangsu-certificate/v0.1.0"
+        "tag": "wangsu-certificate/v0.1.1"
       },
       "sha256": "",
       "usages": [
