@@ -1,15 +1,33 @@
 {
-  "provider_type": "huaweicloud-cdn",
   "access_provider_type": "huaweicloud",
-  "display_name_key": "plugin.huaweicloud-cdn.name",
-  "deploy_category": "cdn",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "huaweicloud-cdn",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.huaweicloud-cdn.name",
   "icon": "huaweicloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "huaweicloud-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-cdn_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-cdn_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-cdn_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-cdn_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "d6efd9cc7f0211d2cddf9a09ca5af24213993841ee007f67b10724ce99e14a7d",
+      "darwin/arm64": "f3ee81d7bec975f41a353406380779112d220b3db64d9d1ef1a33c849cb1ee32",
+      "linux/amd64": "bf2b41e0860274ab3e9d2d0095ccdf23053a92a064d59c993fab63514245d2ae",
+      "linux/arm64": "1b28595363618e4bd7011770188a8bc721d64db7af6a40cb5b4a7f01e6770156",
+      "windows/amd64": "363929513184d31650cde40c4626e39443a4997c8697143faaea1bd6403a60cd"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-cdn/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
