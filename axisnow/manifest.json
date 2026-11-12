@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "provider_type": "axisnow",
+  "access_provider_type": "axisnow",
+  "display_name_key": "plugin.axisnow.name",
+  "deploy_category": "cdn",
+  "protocol_version": 2,
+  "min_core_version": "",
+  "max_core_version": "",
+  "binary": "axisnow",
+  "icon": "axisnow.png",
+  "sha256": "",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

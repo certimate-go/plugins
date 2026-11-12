@@ -1,0 +1,22 @@
+{
+  "plugin.flexcdn.name": "FlexCDN",
+  "plugin.flexcdn.access.server_url.label": "FlexCDN 服务地址",
+  "plugin.flexcdn.access.server_url.placeholder": "请输入 FlexCDN 服务地址",
+  "plugin.flexcdn.access.api_role.label": "FlexCDN 用户角色",
+  "plugin.flexcdn.access.api_role.placeholder": "请选择 FlexCDN 用户角色",
+  "plugin.flexcdn.access.api_role.option.user.label": "平台用户",
+  "plugin.flexcdn.access.api_role.option.admin.label": "系统管理员",
+  "plugin.flexcdn.access.access_key_id.label": "FlexCDN AccessKeyID",
+  "plugin.flexcdn.access.access_key_id.placeholder": "请输入 FlexCDN AccessKeyID",
+  "plugin.flexcdn.access.access_key_id.tooltip": "这是什么？请参阅 <a href=\"https://flexcdn.cn/docs/api/auth\" target=\"_blank\">https://flexcdn.cn/docs/api/auth</a>",
+  "plugin.flexcdn.access.access_key.label": "FlexCDN AccessKey",
+  "plugin.flexcdn.access.access_key.placeholder": "请输入 FlexCDN AccessKey",
+  "plugin.flexcdn.access.access_key.tooltip": "这是什么？请参阅 <a href=\"https://flexcdn.cn/docs/api/auth\" target=\"_blank\">https://flexcdn.cn/docs/api/auth</a>",
+  "plugin.flexcdn.access.allow_insecure_connections.label": "忽略 SSL/TLS 证书验证",
+  "plugin.flexcdn.deploy.target.label": "证书部署方式",
+  "plugin.flexcdn.deploy.target.placeholder": "请选择证书部署方式",
+  "plugin.flexcdn.deploy.target.option.certificate.label": "替换指定证书",
+  "plugin.flexcdn.deploy.certificate_id.label": "FlexCDN 证书 ID",
+  "plugin.flexcdn.deploy.certificate_id.placeholder": "请输入 FlexCDN 证书 ID",
+  "plugin.flexcdn.deploy.certificate_id.tooltip": "请登录 FlexCDN 控制台查看<br><br>（目前需要在「网站列表 -> 证书管理 -> 证书」页面，并打开浏览器开发者工具抓取网络请求后得到证书 ID）"
+}

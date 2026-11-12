@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "flexcdn",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.flexcdn.access.server_url.label",
+        "placeholderKey": "plugin.flexcdn.access.server_url.placeholder",
+        "required": true,
+        "default": "http://<your-host-addr>:8000/",
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "apiRole",
+        "valueType": "radio",
+        "labelKey": "plugin.flexcdn.access.api_role.label",
+        "placeholderKey": "plugin.flexcdn.access.api_role.placeholder",
+        "required": true,
+        "default": "user",
+        "options": [
+          {
+            "value": "user",
+            "labelKey": "plugin.flexcdn.access.api_role.option.user.label"
+          },
+          {
+            "value": "admin",
+            "labelKey": "plugin.flexcdn.access.api_role.option.admin.label"
+          }
+        ]
+      },
+      {
+        "name": "accessKeyId",
+        "valueType": "text",
+        "labelKey": "plugin.flexcdn.access.access_key_id.label",
+        "placeholderKey": "plugin.flexcdn.access.access_key_id.placeholder",
+        "required": true,
+        "tooltipKey": "plugin.flexcdn.access.access_key_id.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "accessKey",
+        "valueType": "secret",
+        "labelKey": "plugin.flexcdn.access.access_key.label",
+        "placeholderKey": "plugin.flexcdn.access.access_key.placeholder",
+        "required": true,
+        "secret": true,
+        "tooltipKey": "plugin.flexcdn.access.access_key.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "allowInsecureConnections",
+        "valueType": "switch",
+        "labelKey": "plugin.flexcdn.access.allow_insecure_connections.label",
+        "default": false
+      }
+    ]
+  }
+}

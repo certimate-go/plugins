@@ -1,0 +1,6 @@
+{
+  "plugin.axisnow.name": "AxisNow",
+  "plugin.axisnow.access.api_token.label": "AxisNow API token",
+  "plugin.axisnow.access.api_token.placeholder": "Please enter AxisNow API token",
+  "plugin.axisnow.access.api_token.tooltip": "For more information, see <a href=\"https://www.axisnow.io/zh/docs/edge/tenant/api-tokens\" target=\"_blank\">https://www.axisnow.io/zh/docs/edge/tenant/api-tokens</a>"
+}

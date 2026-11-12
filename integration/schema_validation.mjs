@@ -49,3 +49,24 @@ for (const [name, config, expected] of scenarios) {
   assert.equal(result.success, expected, `${name}: ${JSON.stringify(result.error?.issues)}`);
   console.log(`PASS ${name}`);
 }
+
+const flexEnvelope = JSON.parse(fs.readFileSync(path.join(pluginRoot, "flexcdn/schema/deploy.json"), "utf8"));
+const flexSchema = deriveZodSchema(flexEnvelope);
+const flexScenarios = [
+  ["FlexCDN accepts a saved string ID", "42", true],
+  ["FlexCDN accepts a numeric ID", 42, true],
+  ["FlexCDN accepts the maximum safe integer", "9007199254740991", true],
+  ["FlexCDN rejects an unsafe string ID", "9007199254740993", false],
+  ["FlexCDN rejects an unsafe numeric ID", 9007199254740992, false],
+  ["FlexCDN rejects a fractional ID", 1.5, false],
+  ["FlexCDN rejects a negative ID", -1, false],
+  ["FlexCDN rejects zero", 0, false],
+  ["FlexCDN requires an ID", undefined, false],
+];
+
+for (const [name, certificateId, expected] of flexScenarios) {
+  const result = flexSchema.safeParse({ deployTarget: "certificate", certificateId });
+  assert.equal(result.success, expected, `${name}: ${JSON.stringify(result.error?.issues)}`);
+  if (result.success) assert.equal(result.data.certificateId, Number(certificateId));
+  console.log(`PASS ${name}`);
+}

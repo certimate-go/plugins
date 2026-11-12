@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "axisnow",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "apiToken",
+        "valueType": "secret",
+        "labelKey": "plugin.axisnow.access.api_token.label",
+        "placeholderKey": "plugin.axisnow.access.api_token.placeholder",
+        "required": true,
+        "secret": true,
+        "tooltipKey": "plugin.axisnow.access.api_token.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

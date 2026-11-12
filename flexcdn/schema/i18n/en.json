@@ -1,0 +1,22 @@
+{
+  "plugin.flexcdn.name": "FlexCDN",
+  "plugin.flexcdn.access.server_url.label": "FlexCDN server URL",
+  "plugin.flexcdn.access.server_url.placeholder": "Please enter FlexCDN server URL",
+  "plugin.flexcdn.access.api_role.label": "FlexCDN user role",
+  "plugin.flexcdn.access.api_role.placeholder": "Please select FlexCDN user role",
+  "plugin.flexcdn.access.api_role.option.user.label": "Platform user",
+  "plugin.flexcdn.access.api_role.option.admin.label": "Administrator user",
+  "plugin.flexcdn.access.access_key_id.label": "FlexCDN AccessKeyID",
+  "plugin.flexcdn.access.access_key_id.placeholder": "Please enter FlexCDN AccessKeyID",
+  "plugin.flexcdn.access.access_key_id.tooltip": "For more information, see <a href=\"https://flexcdn.cn/docs/api/auth\" target=\"_blank\">https://flexcdn.cn/docs/api/auth</a>",
+  "plugin.flexcdn.access.access_key.label": "FlexCDN AccessKey",
+  "plugin.flexcdn.access.access_key.placeholder": "Please enter FlexCDN AccessKey",
+  "plugin.flexcdn.access.access_key.tooltip": "For more information, see <a href=\"https://flexcdn.cn/docs/api/auth\" target=\"_blank\">https://flexcdn.cn/docs/api/auth</a>",
+  "plugin.flexcdn.access.allow_insecure_connections.label": "Allow insecure SSL/TLS connections",
+  "plugin.flexcdn.deploy.target.label": "Certificate deploy target",
+  "plugin.flexcdn.deploy.target.placeholder": "Please select certificate deploy target",
+  "plugin.flexcdn.deploy.target.option.certificate.label": "Certificate",
+  "plugin.flexcdn.deploy.certificate_id.label": "FlexCDN certificate ID",
+  "plugin.flexcdn.deploy.certificate_id.placeholder": "Please enter FlexCDN certificate ID",
+  "plugin.flexcdn.deploy.certificate_id.tooltip": "You can find it on FlexCDN dashboard. <br><br>(Please open the browser devtools, and visit the \"网站列表 -> 证书管理 -> 证书\" page to capture network requests, then you can get the certificate ID.)"
+}

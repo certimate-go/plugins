@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "cachefly",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "apiToken",
+        "valueType": "secret",
+        "labelKey": "plugin.cachefly.access.api_token.label",
+        "placeholderKey": "plugin.cachefly.access.api_token.placeholder",
+        "required": true,
+        "secret": true,
+        "tooltipKey": "plugin.cachefly.access.api_token.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

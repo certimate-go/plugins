@@ -1,0 +1,6 @@
+{
+  "plugin.axisnow.name": "AxisNow",
+  "plugin.axisnow.access.api_token.label": "AxisNow API 令牌",
+  "plugin.axisnow.access.api_token.placeholder": "请输入 AxisNow API 令牌",
+  "plugin.axisnow.access.api_token.tooltip": "这是什么？请参阅 <a href=\"https://www.axisnow.io/zh/docs/edge/tenant/api-tokens\" target=\"_blank\">https://www.axisnow.io/zh/docs/edge/tenant/api-tokens</a>"
+}
