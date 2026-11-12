@@ -1,15 +1,33 @@
 {
-  "provider_type": "jdcloud-live",
   "access_provider_type": "jdcloud",
   "binary": "jdcloud-live",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "av",
   "display_name_key": "plugin.jdcloud-live.name",
   "icon": "jdcloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "jdcloud-live",
+  "release": {
+    "assets": {
+      "darwin/amd64": "jdcloud-live_darwin_amd64.zip",
+      "darwin/arm64": "jdcloud-live_darwin_arm64.zip",
+      "linux/amd64": "jdcloud-live_linux_amd64.zip",
+      "linux/arm64": "jdcloud-live_linux_arm64.zip",
+      "windows/amd64": "jdcloud-live_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "3d43befa517aeb3c17e8559f418db257e7114f3cf1f9ed2ca70b5429fd26ba50",
+      "darwin/arm64": "6dd69a7f26226c32492d5d599fe0dd384a8ee82963733e0ceac787e9f66b1bd5",
+      "linux/amd64": "f3cb9af99cc84686d9ab5d143a858f1f333e3152dcb265c5f4eec6df4f3f8f14",
+      "linux/arm64": "c5da35eb6ec50d4e2cd35aff019339eaeeefbed9acae7584f5d1c30ab9e45097",
+      "windows/amd64": "f9400a87c1f023c369cd6b5e276d327dd8571a52a24739430022c384775f8189"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "jdcloud-live/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
