@@ -1,15 +1,33 @@
 {
-  "provider_type": "volcengine-waf",
   "access_provider_type": "volcengine",
-  "display_name_key": "plugin.volcengine-waf.name",
-  "deploy_category": "firewall",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "volcengine-waf",
+  "deploy_category": "firewall",
+  "display_name_key": "plugin.volcengine-waf.name",
   "icon": "volcengine.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "volcengine-waf",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-waf_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-waf_darwin_arm64.zip",
+      "linux/amd64": "volcengine-waf_linux_amd64.zip",
+      "linux/arm64": "volcengine-waf_linux_arm64.zip",
+      "windows/amd64": "volcengine-waf_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "10ee67482b4b6e783a01a0995d4fe721e5b14d0e12233f2df9101a8421ffb2c0",
+      "darwin/arm64": "a896580dacdeca0f8ac015a5975845ae88e886e01c98195f313e265d3c0fcfcd",
+      "linux/amd64": "df04a7b85e1971743f77637a13df2d0a7bf2b7a304e33dcb84ceb51527d8e7e9",
+      "linux/arm64": "d4123252aec8d2e32a5d60b5cbd00f8e1436da5ea6ff5ece9d9aa1a20c921d22",
+      "windows/amd64": "e6a5120b1fe56f7d7c4a3dd90731b92f1d9b816f126468aea904f7b288614490"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-waf/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
