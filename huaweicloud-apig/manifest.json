@@ -1,15 +1,33 @@
 {
-  "provider_type": "huaweicloud-apig",
   "access_provider_type": "huaweicloud",
-  "display_name_key": "plugin.huaweicloud-apig.name",
-  "deploy_category": "apigw",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "huaweicloud-apig",
+  "deploy_category": "apigw",
+  "display_name_key": "plugin.huaweicloud-apig.name",
   "icon": "huaweicloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "huaweicloud-apig",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-apig_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-apig_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-apig_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-apig_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-apig_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "b0affff7304a9c89bce11ce325bfa4ecedf12b207168adf60bee5eaea97dbd0a",
+      "darwin/arm64": "b7dded047a62df2e289e87613cd6ddab7b20a9cf1557a8823376f50b226826ad",
+      "linux/amd64": "3edefa1dc99868ba15867d9887a4339dfa637c827e27a3068cd3a4307ee96e33",
+      "linux/arm64": "c8e67cf7ea92fcf7ce8826330cbf3fa56665b7cb654870b76777372045114814",
+      "windows/amd64": "706b4696f930a6e40e1b94925556273c7ecf5e514a81e8ce2cdd3ad0ac24a474"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-apig/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
