@@ -907,6 +907,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "mohua-mvh",
+      "release": {
+        "assets": {
+          "darwin/amd64": "mohua-mvh_darwin_amd64.zip",
+          "darwin/arm64": "mohua-mvh_darwin_arm64.zip",
+          "linux/amd64": "mohua-mvh_linux_amd64.zip",
+          "linux/arm64": "mohua-mvh_linux_arm64.zip",
+          "windows/amd64": "mohua-mvh_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "4c17d14aae225396e99f1777b1219bc27b62b4a4635e097e6d7f8924cc6d58ef",
+          "darwin/arm64": "0e1b7ebb602890e934fc798e4cbbbbbcacfc927c0dc052e5eb56ac487503a1f7",
+          "linux/amd64": "ab93c58653258a7ddd3ee52ed3358cddf47e3167b1a638fb233660d2c84303cd",
+          "linux/arm64": "503b826dc7bca2b9bdcde6fe84faaffb4c956fda2ec7bec1ba528046665c6da5",
+          "windows/amd64": "49508229157871ca02c88be20db303e36a787cdc8adeaa8ee454c7e81c522514"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "mohua-mvh/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
