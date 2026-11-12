@@ -62,7 +62,7 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 			}
 			f := &b2PanelFixture{}
 			server := httptest.NewServer(http.HandlerFunc(f.serve))
-			defer server.Close()
+			t.Cleanup(server.Close)
 			cert, key, _ := makeCertificate(t, []string{"app.example.com"}, false)
 			req := plugin.DeployRequest{LogLevel: "DEBUG", CertificatePEM: cert, PrivateKeyPEM: key}
 			access := map[string]any{"allowInsecureConnections": "true", "serverUrl": server.URL, "apiKey": "panel-fixture-secret", "apiVersion": "v2"}

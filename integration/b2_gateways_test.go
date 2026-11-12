@@ -47,7 +47,7 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 			provider := dp.Manifest.ProviderType
 			fixture := &b2GatewayFixture{t: t, provider: provider}
 			server := httptest.NewServer(http.HandlerFunc(fixture.serve))
-			defer server.Close()
+			t.Cleanup(server.Close)
 			meta, schema, err := manager.Bootstrap(ctx, dp)
 			if err != nil {
 				t.Fatal(err)

@@ -104,7 +104,7 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 			}
 			fixture := &b2DeviceFixture{t: t, provider: provider, waitEntered: make(chan struct{}, 1)}
 			server := httptest.NewServer(http.HandlerFunc(fixture.serve))
-			defer server.Close()
+			t.Cleanup(server.Close)
 			access := map[string]any{"serverUrl": server.URL, "host": server.URL, "username": "fixture-user", "password": "fixture-password", "apiKey": "fixture-api-key", "apiToken": "fixture-token", "apiTokenSecret": "fixture-secret", "accessTokenId": 1, "accessToken": "fixture-access"}
 			extended := map[string]any{}
 			switch provider {
