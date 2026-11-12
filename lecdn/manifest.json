@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 2,
   "provider_type": "lecdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "lecdn_darwin_amd64.zip",
+      "darwin/arm64": "lecdn_darwin_arm64.zip",
+      "linux/amd64": "lecdn_linux_amd64.zip",
+      "linux/arm64": "lecdn_linux_arm64.zip",
+      "windows/amd64": "lecdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "391eb5844c85133d7d007e88e0466ae7f645d3740953220ff9b1999d4a59766e",
+      "darwin/arm64": "57d665558c7129f9193652ea0f98b11da7c22eea8d70a2906dc356162490fbb1",
+      "linux/amd64": "44227996ff02b02669a1cc90e59622edae6204409e5d560bed21b5320dcdd223",
+      "linux/arm64": "2109924a094480a8a26150d4444395f63d8685a84dbd4c763bb77fbd411ccb2a",
+      "windows/amd64": "f46baa6e964a4c084f4b44d65ecf143827f890437f76dd964a24a9c7eb2bdbc2"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "lecdn/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
