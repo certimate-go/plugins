@@ -181,6 +181,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "baotapanel-console",
+      "release": {
+        "assets": {
+          "darwin/amd64": "baotapanel-console_darwin_amd64.zip",
+          "darwin/arm64": "baotapanel-console_darwin_arm64.zip",
+          "linux/amd64": "baotapanel-console_linux_amd64.zip",
+          "linux/arm64": "baotapanel-console_linux_arm64.zip",
+          "windows/amd64": "baotapanel-console_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "be8c3f4801faff8a168c402503abe4bd262d318609317bef918f0899cc44036a",
+          "darwin/arm64": "a41bb22d56daafb122415edcf047811c57b42a763dd96e0ccf0061485387404d",
+          "linux/amd64": "5ffd752f31a70daad9ca25ff911bbdf4f6c63d381413f819f096d8ae972384d9",
+          "linux/arm64": "cb193bc0226bf3b0e05cb2a4c7e1fb9cd1d978d3389bb4c63c969dd21e503579",
+          "windows/amd64": "7d7f4cfa4de68a8c46c584d4d18e26389801c4985ab18b961b2909fe02a59e85"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "baotapanel-console/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
