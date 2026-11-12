@@ -1,15 +1,33 @@
 {
-  "provider_type": "baiducloud-cdn",
   "access_provider_type": "baiducloud",
   "binary": "baiducloud-cdn",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "cdn",
   "display_name_key": "plugin.baiducloud-cdn.name",
   "icon": "baiducloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "baiducloud-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baiducloud-cdn_darwin_amd64.zip",
+      "darwin/arm64": "baiducloud-cdn_darwin_arm64.zip",
+      "linux/amd64": "baiducloud-cdn_linux_amd64.zip",
+      "linux/arm64": "baiducloud-cdn_linux_arm64.zip",
+      "windows/amd64": "baiducloud-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "2a008a4efc5dfa70c0c11a76b226de0cdb9e17f3f3d5e73ec6e263d39b610e6e",
+      "darwin/arm64": "a7bae1f7032d3c5ccb1f6c3164a3811fe2ecee4386b6c3ebb44a4e8806d1ef6f",
+      "linux/amd64": "1b147f0f4cfcdb62c0cae34d76138340ed3e6f3cc69fe8b0a67369a08babeb04",
+      "linux/arm64": "8b2d81ea6f56588f34859158de9ae55c4bbdfc5371db0917af8a144607eac582",
+      "windows/amd64": "25f6547221fe3e33de2962320a5a6b19a5842a6584036d1cdcc1cef2acaa4680"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baiducloud-cdn/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
