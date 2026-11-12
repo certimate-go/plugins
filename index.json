@@ -1352,6 +1352,24 @@
       "priority": 100,
       "protocol_version": 2,
       "provider_type": "unicloud-webhost",
+      "release": {
+        "assets": {
+          "darwin/amd64": "unicloud-webhost_darwin_amd64.zip",
+          "darwin/arm64": "unicloud-webhost_darwin_arm64.zip",
+          "linux/amd64": "unicloud-webhost_linux_amd64.zip",
+          "linux/arm64": "unicloud-webhost_linux_arm64.zip",
+          "windows/amd64": "unicloud-webhost_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "5699fc8827fde268019633d61427f4fee2247b2b84e604a84a50fe2bc97fbb39",
+          "darwin/arm64": "6d55216a009240321cf165151bb1b1575ac666ab68ff0f8f16c33946643e9f8f",
+          "linux/amd64": "955a0218cb3e562471030a008d323c8ca0652e1c27005a53d7379f52f1be7a5b",
+          "linux/arm64": "32f9400594022331fd9d840e0f12dd465f94782d09a4cd0fa2b2ba51ebb94b04",
+          "windows/amd64": "42b15ba3d4f5ebb9f5a4ee3d699178a54080522030f3d9ed040e33dc068525ff"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "unicloud-webhost/v0.1.0"
+      },
       "usages": [
         "hosting"
       ],
