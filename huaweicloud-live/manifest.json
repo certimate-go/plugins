@@ -1,15 +1,33 @@
 {
-  "provider_type": "huaweicloud-live",
   "access_provider_type": "huaweicloud",
-  "display_name_key": "plugin.huaweicloud-live.name",
-  "deploy_category": "av",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "huaweicloud-live",
+  "deploy_category": "av",
+  "display_name_key": "plugin.huaweicloud-live.name",
   "icon": "huaweicloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "huaweicloud-live",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-live_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-live_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-live_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-live_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-live_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "c90e05efcf45727428b78007f00f87a40c5ca5a4c0c3865af12d0bdaf879ce20",
+      "darwin/arm64": "169e0c1cf7f49a153d31debfd6dd67c00081c77e0ad5ce38872f8075a70af1d9",
+      "linux/amd64": "45e7ff67978eb0fb363f86a3ff6507e935c5687ce6e8ef9f4ebe654ec17001ee",
+      "linux/arm64": "43566ddbdc34e7edcdb5e0106b15fa85b2de30d67cf7b0fb219ab69b2ac6fdf1",
+      "windows/amd64": "3d17d31e87ea8bdae2c64bac6a2e48a933568cba8d138a59dee9a3b72e27a85b"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-live/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
