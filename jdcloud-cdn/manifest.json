@@ -1,15 +1,33 @@
 {
-  "provider_type": "jdcloud-cdn",
   "access_provider_type": "jdcloud",
   "binary": "jdcloud-cdn",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "cdn",
   "display_name_key": "plugin.jdcloud-cdn.name",
   "icon": "jdcloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "jdcloud-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "jdcloud-cdn_darwin_amd64.zip",
+      "darwin/arm64": "jdcloud-cdn_darwin_arm64.zip",
+      "linux/amd64": "jdcloud-cdn_linux_amd64.zip",
+      "linux/arm64": "jdcloud-cdn_linux_arm64.zip",
+      "windows/amd64": "jdcloud-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "a1ff2ef5f5494956d13efd12ee335afd5af2be3d54aaad36e68a28f8a245c979",
+      "darwin/arm64": "99f3d5e202d301ba7ded884c90f67f788164f1485453414787ac762c82873522",
+      "linux/amd64": "c2c7a9b36e8e1103d6b211da2f64560160a0a451f1b609e9ed24e3f51b7c6171",
+      "linux/arm64": "51682428d4fbc5c96d52e08fd0d71fdbf79a8c78e652987ea0b54b408bb2c12f",
+      "windows/amd64": "bb4430ea702ed6a3b3ac8db40cd9c4afdcadd91af8bf3038764698aa7eeb78cd"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "jdcloud-cdn/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
