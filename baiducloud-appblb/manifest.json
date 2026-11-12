@@ -1,15 +1,33 @@
 {
-  "provider_type": "baiducloud-appblb",
   "access_provider_type": "baiducloud",
   "binary": "baiducloud-appblb",
-  "protocol_version": 2,
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
   "deploy_category": "loadbalance",
   "display_name_key": "plugin.baiducloud-appblb.name",
   "icon": "baiducloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "baiducloud-appblb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baiducloud-appblb_darwin_amd64.zip",
+      "darwin/arm64": "baiducloud-appblb_darwin_arm64.zip",
+      "linux/amd64": "baiducloud-appblb_linux_amd64.zip",
+      "linux/arm64": "baiducloud-appblb_linux_arm64.zip",
+      "windows/amd64": "baiducloud-appblb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "d525c282be8220a1d4f77fc87bf441f5d599998b2411a38c2eb175f0a8c4d243",
+      "darwin/arm64": "5935c8e8b3ea59d052fb3df082fd52425e95e83833e5ec8203bf2d076497732f",
+      "linux/amd64": "177bef4ee2c87d0fc3f690a99acbae7212463ebcf90cc5e9561cc5c58307e71a",
+      "linux/arm64": "018ccca49a11ab7c788544559bbd6c292f64a440282baf78b688680b3269a2b8",
+      "windows/amd64": "e58541362fcf2916c0ff42e462c01299c3339f38cec4bf77145e8ffc4c43d20a"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baiducloud-appblb/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
