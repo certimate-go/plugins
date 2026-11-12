@@ -1,14 +1,32 @@
 {
-  "provider_type": "ratpanel-console",
   "access_provider_type": "ratpanel",
   "binary": "ratpanel-console",
   "deploy_category": "other",
   "display_name_key": "provider.ratpanel_console",
   "icon": "ratpanel.png",
-  "min_core_version": "0.4.37",
   "max_core_version": "",
+  "min_core_version": "0.4.37",
   "priority": 100,
   "protocol_version": 2,
+  "provider_type": "ratpanel-console",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ratpanel-console_darwin_amd64.zip",
+      "darwin/arm64": "ratpanel-console_darwin_arm64.zip",
+      "linux/amd64": "ratpanel-console_linux_amd64.zip",
+      "linux/arm64": "ratpanel-console_linux_arm64.zip",
+      "windows/amd64": "ratpanel-console_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "ac77b55d1e354cfa0aeac705dcd2f0616bda316836bd71bf7d3368ec232839cd",
+      "darwin/arm64": "ea4a018d17bb8fb2f830d7648961804bda62bf1d0c618b54f3227c5217e82826",
+      "linux/amd64": "46778a5cfe5f24acfd627e14316c4ffcef0cb98116846bbd0f1c7a5736622777",
+      "linux/arm64": "5f34808a904e10019d51a64b56094ba4fc66403f90416e9fe05d5399345005aa",
+      "windows/amd64": "6d08709763c2a01506d5876bed66125d24670c61fb75d6a6823bf23a30b33574"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ratpanel-console/v0.1.0"
+  },
   "usages": [
     "hosting"
   ],
