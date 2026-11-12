@@ -1,15 +1,33 @@
 {
-  "provider_type": "volcengine-alb",
   "access_provider_type": "volcengine",
-  "display_name_key": "plugin.volcengine-alb.name",
-  "deploy_category": "loadbalance",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "volcengine-alb",
+  "deploy_category": "loadbalance",
+  "display_name_key": "plugin.volcengine-alb.name",
   "icon": "volcengine.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "volcengine-alb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-alb_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-alb_darwin_arm64.zip",
+      "linux/amd64": "volcengine-alb_linux_amd64.zip",
+      "linux/arm64": "volcengine-alb_linux_arm64.zip",
+      "windows/amd64": "volcengine-alb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "ddaaed8a71041e1568991c073cecdd1c724a767146da77a9e03b44d1eed3105d",
+      "darwin/arm64": "5690e37d8636af111024dae5309faf4d4ae9905469ccf07699f6f014e138a30e",
+      "linux/amd64": "20c5da39d45264b7ae05b4f01525d2aef07bfdff47a70324634bcb1162f48e2f",
+      "linux/arm64": "fe9b431b87a649e975d59f5d499175edfdbc3d77e2654377a6246177a6694266",
+      "windows/amd64": "3d0b4005ef411676e35f101721dec146c82a8fa0989efcb013067054646785ea"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-alb/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
