@@ -1,14 +1,32 @@
 {
-  "provider_type": "cloudflare-ssl",
   "access_provider_type": "cloudflare",
   "binary": "cloudflare-ssl",
   "deploy_category": "ssl",
   "display_name_key": "plugin.cloudflare-ssl.name",
   "icon": "cloudflare.svg",
-  "protocol_version": 2,
-  "version": "0.1.0",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "cloudflare-ssl",
+  "release": {
+    "assets": {
+      "darwin/amd64": "cloudflare-ssl_darwin_amd64.zip",
+      "darwin/arm64": "cloudflare-ssl_darwin_arm64.zip",
+      "linux/amd64": "cloudflare-ssl_linux_amd64.zip",
+      "linux/arm64": "cloudflare-ssl_linux_arm64.zip",
+      "windows/amd64": "cloudflare-ssl_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "02383a2444add85b551fffc44cecb292f90f2612ec130edacc828753109cdbf1",
+      "darwin/arm64": "fc31a10a071264973ff5cfa52401cf4824d2b7dff8e6f369a65e498797ae2436",
+      "linux/amd64": "68fe83b167844d4cfb2e8db62f569c9f3b2cb32dec66fe896856585d24a78f9b",
+      "linux/arm64": "739234caf7c24cbac570f97b3b2b07305049643bc895cc122892975510048452",
+      "windows/amd64": "8430fb853c5c4237dde08c635b0d2327af7ad3120eb29aed3418ba05f99343d8"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "cloudflare-ssl/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
