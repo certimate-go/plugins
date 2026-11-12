@@ -114,7 +114,7 @@ func (c *Certmgr) Upload(ctx context.Context, certPEM, privkeyPEM string) (*Uplo
 		Comment:     lo.ToPtr("upload from Certimate"),
 	}
 	createCertificateResp, err := c.sdkClient.CreateCertificateWithContext(ctx, createCertificateReq)
-	c.logger.Debug("sdk request 'certificatemanagement.CreateCertificate'", slog.Any("request", createCertificateReq), slog.Any("response", createCertificateResp))
+	c.logger.Debug("sdk request 'certificatemanagement.CreateCertificate'", slog.Any("response", createCertificateResp))
 	if err != nil {
 		return nil, fmt.Errorf("failed to execute sdk request 'certificatemanagement.CreateCertificate': %w", err)
 	}
@@ -146,7 +146,7 @@ func (c *Certmgr) Replace(ctx context.Context, certIdOrName string, certPEM, pri
 		Comment:     lo.ToPtr("upload from Certimate"),
 	}
 	updateCertificateResp, err := c.sdkClient.UpdateCertificateWithContext(ctx, certId, updateCertificateReq)
-	c.logger.Debug("sdk request 'certificatemanagement.UpdateCertificate'", slog.Any("request", updateCertificateReq), slog.Any("response", updateCertificateResp))
+	c.logger.Debug("sdk request 'certificatemanagement.UpdateCertificate'", slog.Any("response", updateCertificateResp))
 	if err != nil {
 		return nil, fmt.Errorf("failed to execute sdk request 'certificatemanagement.UpdateCertificate': %w", err)
 	}

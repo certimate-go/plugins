@@ -42,6 +42,7 @@ func (*ksyunCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error
 		ProtocolVersion:      plugin.ProtocolVersion,
 		DeployCategory:       "cdn",
 		DeployDisplayNameKey: displayNameKey,
+		AccessDisplayNameKey: "plugin.ksyun.name",
 	}, nil
 }
 
@@ -50,7 +51,10 @@ func (*ksyunCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchem
 	if err != nil {
 		return nil, err
 	}
-	accessSchema, _ := plugin.LoadAccessSchema(schemaFS)
+	accessSchema, err := plugin.LoadAccessSchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
 	i18n, err := plugin.LoadI18n(schemaFS)
 	if err != nil {
 		return nil, err
@@ -228,7 +232,7 @@ func (d *cdnRunner) deployToCertificate(ctx context.Context, certPEM, privkeyPEM
 		PrivateKey:        lo.ToPtr(privkeyPEM),
 	}
 	setCertificateResp, err := d.sdkClient.SetCertificateWithContext(ctx, setCertificateReq)
-	d.logger.Debug("sdk request 'cdn.SetCertificate'", slog.Any("request", setCertificateReq), slog.Any("response", setCertificateResp))
+	d.logger.Debug("sdk request 'cdn.SetCertificate'", slog.Any("response", setCertificateResp))
 	if err != nil {
 		return fmt.Errorf("failed to execute sdk request 'cdn.SetCertificate': %w", err)
 	}
@@ -291,7 +295,7 @@ func (d *cdnRunner) updateDomainCertificate(ctx context.Context, cloudDomainId s
 		PrivateKey:        lo.ToPtr(privkeyPEM),
 	}
 	configCertificateResp, err := d.sdkClient.ConfigCertificateWithContext(ctx, configCertificateReq)
-	d.logger.Debug("sdk request 'cdn.ConfigCertificate'", slog.Any("request", configCertificateReq), slog.Any("response", configCertificateResp))
+	d.logger.Debug("sdk request 'cdn.ConfigCertificate'", slog.Any("response", configCertificateResp))
 	if err != nil {
 		return fmt.Errorf("failed to execute sdk request 'cdn.ConfigCertificate': %w", err)
 	}

@@ -39,6 +39,7 @@ func (*baishanCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, err
 		ProtocolVersion:      plugin.ProtocolVersion,
 		DeployCategory:       "cdn",
 		DeployDisplayNameKey: displayNameKey,
+		AccessDisplayNameKey: "plugin.baishan.name",
 	}, nil
 }
 
@@ -47,7 +48,10 @@ func (*baishanCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSch
 	if err != nil {
 		return nil, err
 	}
-	accessSchema, _ := plugin.LoadAccessSchema(schemaFS)
+	accessSchema, err := plugin.LoadAccessSchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
 	i18n, err := plugin.LoadI18n(schemaFS)
 	if err != nil {
 		return nil, err

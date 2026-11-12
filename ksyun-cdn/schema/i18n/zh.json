@@ -20,5 +20,6 @@
   "plugin.ksyun.access.secret_access_key.label": "金山云 SecretAccessKey",
   "plugin.ksyun.access.secret_access_key.placeholder": "请输入金山云 SecretAccessKey",
   "plugin.ksyun.access.secret_access_key.tooltip": "这是什么？请参阅 <a href=\"https://docs.ksyun.com/documents/39976\" target=\"_blank\">https://docs.ksyun.com/documents/39976</a>",
-  "plugin.ksyun.name": "金山云"
+  "plugin.ksyun.name": "金山云",
+  "plugin.ksyun-cdn.deploy.domain.help": "精确匹配或泛域名匹配时必填；按证书 SAN 匹配时可留空。"
 }
