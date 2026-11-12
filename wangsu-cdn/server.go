@@ -37,6 +37,7 @@ func (*wangsuCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, erro
 		ProtocolVersion:      plugin.ProtocolVersion,
 		DeployCategory:       "cdn",
 		DeployDisplayNameKey: displayNameKey,
+		AccessDisplayNameKey: "plugin.wangsu.name",
 	}, nil
 }
 
@@ -45,7 +46,10 @@ func (*wangsuCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSche
 	if err != nil {
 		return nil, err
 	}
-	accessSchema, _ := plugin.LoadAccessSchema(schemaFS)
+	accessSchema, err := plugin.LoadAccessSchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
 	i18n, err := plugin.LoadI18n(schemaFS)
 	if err != nil {
 		return nil, err

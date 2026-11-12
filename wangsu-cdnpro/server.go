@@ -46,6 +46,7 @@ func (*wangsuCdnproDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, e
 		ProtocolVersion:      plugin.ProtocolVersion,
 		DeployCategory:       "cdn",
 		DeployDisplayNameKey: displayNameKey,
+		AccessDisplayNameKey: "plugin.wangsu.name",
 	}, nil
 }
 
@@ -54,7 +55,10 @@ func (*wangsuCdnproDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigS
 	if err != nil {
 		return nil, err
 	}
-	accessSchema, _ := plugin.LoadAccessSchema(schemaFS)
+	accessSchema, err := plugin.LoadAccessSchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
 	i18n, err := plugin.LoadI18n(schemaFS)
 	if err != nil {
 		return nil, err
@@ -123,7 +127,8 @@ func (d *wangsuCdnproDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 		return nil, fmt.Errorf("failed to execute sdk request 'cdnpro.GetHostnameDetail': %w", err)
 	}
 
-	encryptedPrivateKey, err := encryptPrivateKey(req.PrivateKeyPEM, access.ApiKey, time.Now().Unix())
+	timestamp := time.Now().Unix()
+	encryptedPrivateKey, err := encryptPrivateKey(req.PrivateKeyPEM, access.ApiKey, timestamp)
 	if err != nil {
 		return nil, fmt.Errorf("failed to encrypt private key: %w", err)
 	}
@@ -136,7 +141,6 @@ func (d *wangsuCdnproDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 	var wangsuCertId string
 	var wangsuCertVer int32
 
-	timestamp := time.Now().Unix()
 	if extended.CertificateId == "" {
 		createCertificateReq := &wangsucdnprosdk.CreateCertificateRequest{
 			Timestamp:  timestamp,
@@ -145,7 +149,7 @@ func (d *wangsuCdnproDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 			NewVersion: certificateNewVersionInfo,
 		}
 		createCertificateResp, err := sdkClient.CreateCertificateWithContext(ctx, createCertificateReq)
-		logger.Debug("sdk request 'cdnpro.CreateCertificate'", slog.Any("request", createCertificateReq), slog.Any("response", createCertificateResp))
+		logger.Debug("sdk request 'cdnpro.CreateCertificate'", slog.Any("response", createCertificateResp))
 		if err != nil {
 			return nil, fmt.Errorf("failed to execute sdk request 'cdnpro.CreateCertificate': %w", err)
 		}
@@ -167,7 +171,7 @@ func (d *wangsuCdnproDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 			NewVersion: certificateNewVersionInfo,
 		}
 		updateCertificateResp, err := sdkClient.UpdateCertificateWithContext(ctx, extended.CertificateId, updateCertificateReq)
-		logger.Debug("sdk request 'cdnpro.UpdateCertificate'", slog.String("params.certificateId", extended.CertificateId), slog.Any("request", updateCertificateReq), slog.Any("response", updateCertificateResp))
+		logger.Debug("sdk request 'cdnpro.UpdateCertificate'", slog.String("params.certificateId", extended.CertificateId), slog.Any("response", updateCertificateResp))
 		if err != nil {
 			return nil, fmt.Errorf("failed to execute sdk request 'cdnpro.UpdateCertificate': %w", err)
 		}

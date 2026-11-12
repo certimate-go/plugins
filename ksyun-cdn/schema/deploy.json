@@ -39,9 +39,9 @@
         "placeholderKey": "plugin.ksyun-cdn.deploy.domain.placeholder",
         "dependencies": ["deployTarget", "domainMatchPattern"],
         "visibleWhen": [{ "field": "deployTarget", "op": "in", "values": ["domain"] }],
-        "requiredWhen": [{ "field": "domainMatchPattern", "op": "in", "values": ["exact", "wildcard"] }],
+        "extraKey": "plugin.ksyun-cdn.deploy.domain.help",
         "validateWhen": [
-          { "field": "domainMatchPattern", "op": "in", "values": ["exact", "wildcard"], "validator": "domain", "params": { "allowWildcard": true } }
+          { "field": "deployTarget", "op": "in", "values": ["domain"], "validator": "domain", "params": { "allowWildcard": true } }
         ]
       },
       {

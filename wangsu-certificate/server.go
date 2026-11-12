@@ -30,6 +30,7 @@ func (*wangsuCertificateDeployer) GetMetadata(_ context.Context) (*plugin.Metada
 		ProtocolVersion:      plugin.ProtocolVersion,
 		DeployCategory:       "ssl",
 		DeployDisplayNameKey: displayNameKey,
+		AccessDisplayNameKey: "plugin.wangsu.name",
 	}, nil
 }
 
@@ -38,7 +39,10 @@ func (*wangsuCertificateDeployer) GetConfigSchema(_ context.Context) (*plugin.Co
 	if err != nil {
 		return nil, err
 	}
-	accessSchema, _ := plugin.LoadAccessSchema(schemaFS)
+	accessSchema, err := plugin.LoadAccessSchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
 	i18n, err := plugin.LoadI18n(schemaFS)
 	if err != nil {
 		return nil, err

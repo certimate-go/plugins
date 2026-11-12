@@ -32,6 +32,7 @@ func (*ksyunSlbDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error
 		ProtocolVersion:      plugin.ProtocolVersion,
 		DeployCategory:       "loadbalance",
 		DeployDisplayNameKey: displayNameKey,
+		AccessDisplayNameKey: "plugin.ksyun.name",
 	}, nil
 }
 
@@ -40,7 +41,10 @@ func (*ksyunSlbDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchem
 	if err != nil {
 		return nil, err
 	}
-	accessSchema, _ := plugin.LoadAccessSchema(schemaFS)
+	accessSchema, err := plugin.LoadAccessSchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
 	i18n, err := plugin.LoadI18n(schemaFS)
 	if err != nil {
 		return nil, err

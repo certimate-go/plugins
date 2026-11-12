@@ -81,7 +81,7 @@ func (c *Certmgr) Upload(ctx context.Context, certPEM, privkeyPEM string) (*Uplo
 		CertKey:   lo.ToPtr(privkeyPEM),
 	}
 	uploadCertificateResp, err := c.sdkClient.UploadCertificateWithContext(ctx, uploadCertificateReq)
-	c.logger.Debug("sdk request 'kcm.UploadCertificate'", slog.Any("request", uploadCertificateReq), slog.Any("response", uploadCertificateResp))
+	c.logger.Debug("sdk request 'kcm.UploadCertificate'", slog.Any("response", uploadCertificateResp))
 	if err != nil {
 		if uploadCertificateResp != nil &&
 			uploadCertificateResp.Error != nil && uploadCertificateResp.Error.Message == "重复的证书文件" {

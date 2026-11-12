@@ -99,30 +99,15 @@ func TestGetConfigSchema(t *testing.T) {
 			continue
 		}
 		domainSeen = true
-		if col.Required {
-			t.Fatalf("domain column must stay conditionally required, not unconditionally required")
+		if col.Required || len(col.RequiredWhen) != 0 {
+			t.Fatalf("domain must allow SAN matching and certificate replacement without a domain")
 		}
-		if len(col.RequiredWhen) == 0 {
-			t.Fatalf("domain column must gate requiredness on domainMatchPattern")
-		}
-		for _, cond := range col.RequiredWhen {
-			if cond.Field != "domainMatchPattern" || cond.Op != "in" {
-				t.Fatalf("domain requiredWhen must match domainMatchPattern in [exact wildcard], got %+v", cond)
-			}
-			for _, v := range cond.Values {
-				if v == "certsan" {
-					t.Fatalf("domain must not be required when domainMatchPattern is certsan")
-				}
-			}
+		if len(col.ValidateWhen) != 1 {
+			t.Fatalf("domain must validate nonempty values for domain deployments")
 		}
 		for _, rule := range col.ValidateWhen {
-			if rule.Field != "domainMatchPattern" || rule.Op != "in" {
-				t.Fatalf("domain validateWhen must match domainMatchPattern in [exact wildcard], got %+v", rule)
-			}
-			for _, v := range rule.Values {
-				if v == "certsan" {
-					t.Fatalf("domain format must not be enforced when domainMatchPattern is certsan")
-				}
+			if rule.Field != "deployTarget" || rule.Op != "in" || len(rule.Values) != 1 || rule.Values[0] != "domain" {
+				t.Fatalf("domain validation must use the deployment target discriminator, got %+v", rule)
 			}
 		}
 	}

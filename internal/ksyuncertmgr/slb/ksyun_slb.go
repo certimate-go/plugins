@@ -158,12 +158,13 @@ func (c *Certmgr) Replace(ctx context.Context, certIdOrName string, certPEM, pri
 	// 更新证书
 	// REF: https://apiexplorer.ksyun.com/#/api/96/ModifyCertificate/2016-03-04/1013
 	modifyCertificateReq := &ksyunkcmsdk.ModifyCertificateRequest{
+		CertificateId:    lo.ToPtr(certIdOrName),
 		Region:           lo.ToPtr(c.config.Region),
 		Description:      lo.ToPtr("upload from Certimate"),
 		SSLCertificateId: lo.ToPtr(upres.CertId),
 	}
 	modifyCertificateResp, err := c.sdkClient.ModifyCertificateWithContext(ctx, modifyCertificateReq)
-	c.logger.Debug("sdk request 'kcm.ModifyCertificate'", slog.Any("request", modifyCertificateReq), slog.Any("response", modifyCertificateResp))
+	c.logger.Debug("sdk request 'kcm.ModifyCertificate'", slog.Any("response", modifyCertificateResp))
 	if err != nil {
 		return nil, fmt.Errorf("failed to execute sdk request 'kcm.ModifyCertificate': %w", err)
 	}
