@@ -62,6 +62,9 @@ func buildRelease(plugin, repo, version, distDir string) (map[string]any, error)
 }
 
 func applyRelease(manifestPath, plugin, repo, distDir string) ([]byte, error) {
+	if !providerTypePattern.MatchString(plugin) {
+		return nil, fmt.Errorf("invalid plugin directory name %q", plugin)
+	}
 	data, err := os.ReadFile(manifestPath)
 	if err != nil {
 		return nil, fmt.Errorf("read manifest %q: %w", manifestPath, err)
@@ -73,9 +76,6 @@ func applyRelease(manifestPath, plugin, repo, distDir string) ([]byte, error) {
 	pt, _ := m["provider_type"].(string)
 	if !providerTypePattern.MatchString(pt) {
 		return nil, fmt.Errorf("manifest %q has invalid provider_type %q", manifestPath, pt)
-	}
-	if pt != plugin {
-		return nil, fmt.Errorf("manifest provider_type %q does not match --plugin %q", pt, plugin)
 	}
 	version, _ := m["version"].(string)
 	if !versionPattern.MatchString(version) {
@@ -94,14 +94,14 @@ func applyRelease(manifestPath, plugin, repo, distDir string) ([]byte, error) {
 }
 
 func main() {
-	plugin := flag.String("plugin", "", "plugin provider_type (also its directory name)")
+	plugin := flag.String("plugin", "", "plugin directory name")
 	repo := flag.String("repo", "", "release repo, e.g. usual2970/certimate-plugins")
 	distDir := flag.String("dist", "dist", "directory holding the built release binaries")
 	root := flag.String("root", ".", "plugins repo root directory")
 	flag.Parse()
 
 	if *plugin == "" || *repo == "" {
-		fmt.Fprintln(os.Stderr, "usage: releaseinfo -plugin <provider_type> -repo <repo> [-dist dist] [-root .]")
+		fmt.Fprintln(os.Stderr, "usage: releaseinfo -plugin <directory> -repo <repo> [-dist dist] [-root .]")
 		os.Exit(2)
 	}
 	manifestPath := filepath.Join(*root, *plugin, "manifest.json")

@@ -155,13 +155,37 @@ func TestApplyRelease_BadVersionErrors(t *testing.T) {
 	}
 }
 
-func TestApplyRelease_ProviderTypeMismatchErrors(t *testing.T) {
+func TestApplyRelease_DirectoryMayDifferFromProviderType(t *testing.T) {
+	root, distDir, _ := setUpPlugin(t,
+		`{"provider_type":"1panel","version":"1.0.0"}`,
+		[]byte("x"),
+	)
+	out, err := applyRelease(filepath.Join(root, "alpha", "manifest.json"), "alpha", "o/r", distDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var manifest struct {
+		ProviderType string `json:"provider_type"`
+		Release      struct {
+			Tag string `json:"tag"`
+		} `json:"release"`
+	}
+	if err := json.Unmarshal(out, &manifest); err != nil {
+		t.Fatal(err)
+	}
+	if manifest.ProviderType != "1panel" || manifest.Release.Tag != "alpha/v1.0.0" {
+		t.Fatalf("unexpected provider or release identity: %s", out)
+	}
+}
+
+func TestApplyRelease_InvalidDirectoryErrors(t *testing.T) {
 	root, distDir, _ := setUpPlugin(t,
 		`{"provider_type":"alpha","version":"1.0.0"}`,
 		[]byte("x"),
 	)
-	_, err := applyRelease(filepath.Join(root, "alpha", "manifest.json"), "beta", "o/r", distDir)
-	if err == nil {
-		t.Fatal("want error for provider_type mismatch, got nil")
+	for _, name := range []string{"", "../alpha", "alpha/child"} {
+		if _, err := applyRelease(filepath.Join(root, "alpha", "manifest.json"), name, "o/r", distDir); err == nil {
+			t.Fatalf("want error for invalid directory %q", name)
+		}
 	}
 }
