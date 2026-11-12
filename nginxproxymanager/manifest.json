@@ -1,14 +1,32 @@
 {
-  "provider_type": "nginxproxymanager",
   "access_provider_type": "nginxproxymanager",
   "binary": "nginxproxymanager",
   "deploy_category": "website",
   "display_name_key": "plugin.nginxproxymanager.name",
   "icon": "nginxproxymanager.svg",
-  "min_core_version": "0.4.37",
   "max_core_version": "",
+  "min_core_version": "0.4.37",
   "priority": 100,
   "protocol_version": 2,
+  "provider_type": "nginxproxymanager",
+  "release": {
+    "assets": {
+      "darwin/amd64": "nginxproxymanager_darwin_amd64.zip",
+      "darwin/arm64": "nginxproxymanager_darwin_arm64.zip",
+      "linux/amd64": "nginxproxymanager_linux_amd64.zip",
+      "linux/arm64": "nginxproxymanager_linux_arm64.zip",
+      "windows/amd64": "nginxproxymanager_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "f7d4fc024e97d4ac397dea8fcb5d98f1bab5d8d5d4bba72a5ba791435a26fdb6",
+      "darwin/arm64": "e85daa99651d29868aaa781ef2d5162ed03351f470f787e0d3b974f9a66cd7af",
+      "linux/amd64": "cc84d6e47e7adf9c3f3003edafa0a575dcd8b2f98bb50b158c47d4ba93da9735",
+      "linux/arm64": "f3a26f4459cfc235753225b6af277401f52babded7a71efa1c7e7de8a501468c",
+      "windows/amd64": "c0379989f5573ceac3a4392fb055a7524f904c2ff566c16211b63915ae8fb1ec"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "nginxproxymanager/v0.1.0"
+  },
   "usages": [
     "hosting"
   ],
