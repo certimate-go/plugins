@@ -1,6 +1,72 @@
 {
   "plugins": [
     {
+      "access_provider_type": "1panel",
+      "binary": "panel1",
+      "deploy_category": "website",
+      "display_name_key": "plugin.1panel.name",
+      "icon": "1panel.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "1panel",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "1panel",
+      "binary": "panel1-console",
+      "deploy_category": "other",
+      "display_name_key": "plugin.1panel-console.name",
+      "icon": "1panel.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "1panel-console",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "apisix",
+      "binary": "apisix",
+      "deploy_category": "apigw",
+      "display_name_key": "plugin.apisix.name",
+      "icon": "apisix.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "apisix",
+      "release": {
+        "assets": {
+          "darwin/amd64": "apisix_darwin_amd64.zip",
+          "darwin/arm64": "apisix_darwin_arm64.zip",
+          "linux/amd64": "apisix_linux_amd64.zip",
+          "linux/arm64": "apisix_linux_arm64.zip",
+          "windows/amd64": "apisix_windows_amd64.zip"
+        },
+        "checksums": {
+          "darwin/amd64": "902bc4498545e194dfc1ee3ee3da446ce2596966a5114edffa515ca8066b90d4",
+          "darwin/arm64": "dd121fd430805146d1bdf29504b36f35862d2cb19d1b0d4bcef9c3d63c694a24",
+          "linux/amd64": "4c948e77b7ce5e5d41aa6b25758d1686cf68db0d248001606d1915fae934aa4c",
+          "linux/arm64": "93f65b1ce9bd3ccf1ec461a9719c304d01fcc58c75c544d6f5a7f91e42c0fc1c",
+          "windows/amd64": "8c610c4bddc1a5a554b162496aeca9a471628ecdf445e2c5eba5cef4ddb808f3"
+        },
+        "repo": "certimate-go/plugins",
+        "tag": "apisix/v0.1.0"
+      },
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "axisnow",
       "binary": "axisnow",
       "deploy_category": "cdn",
@@ -69,6 +135,102 @@
         "hosting"
       ],
       "version": "0.1.1"
+    },
+    {
+      "access_provider_type": "baotapanel",
+      "binary": "baotapanel",
+      "deploy_category": "website",
+      "display_name_key": "plugin.baotapanel.name",
+      "icon": "baota.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "baotapanel",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "baotapanel",
+      "binary": "baotapanel-console",
+      "deploy_category": "other",
+      "display_name_key": "plugin.baotapanel-console.name",
+      "icon": "baota.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "baotapanel-console",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "baotapanelgo",
+      "binary": "baotapanelgo",
+      "deploy_category": "website",
+      "display_name_key": "plugin.baotapanelgo.name",
+      "icon": "baota.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "baotapanelgo",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "baotapanelgo",
+      "binary": "baotapanelgo-console",
+      "deploy_category": "other",
+      "display_name_key": "plugin.baotapanelgo-console.name",
+      "icon": "baota.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "baotapanelgo-console",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "baotawaf",
+      "binary": "baotawaf",
+      "deploy_category": "firewall",
+      "display_name_key": "plugin.baotawaf.name",
+      "icon": "baota.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "baotawaf",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "baotawaf",
+      "binary": "baotawaf-console",
+      "deploy_category": "other",
+      "display_name_key": "plugin.baotawaf-console.name",
+      "icon": "baota.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "baotawaf-console",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
     },
     {
       "access_provider_type": "cachefly",
@@ -141,6 +303,22 @@
       "version": "0.1.1"
     },
     {
+      "access_provider_type": "dokploy",
+      "binary": "dokploy",
+      "deploy_category": "website",
+      "display_name_key": "provider.dokploy",
+      "icon": "dokploy.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "dokploy",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "flexcdn",
       "binary": "flexcdn",
       "deploy_category": "cdn",
@@ -170,6 +348,38 @@
         "tag": "flexcdn/v0.1.0"
       },
       "sha256": "",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "goedge",
+      "binary": "goedge",
+      "deploy_category": "cdn",
+      "display_name_key": "plugin.goedge.name",
+      "icon": "goedge.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "goedge",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "huaweiibmc",
+      "binary": "huaweiibmc",
+      "deploy_category": "other",
+      "display_name_key": "provider.huaweiibmc",
+      "icon": "huawei.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "huaweiibmc",
       "usages": [
         "hosting"
       ],
@@ -209,6 +419,22 @@
         "hosting"
       ],
       "version": "0.1.1"
+    },
+    {
+      "access_provider_type": "kong",
+      "binary": "kong",
+      "deploy_category": "apigw",
+      "display_name_key": "plugin.kong.name",
+      "icon": "kong.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "kong",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
     },
     {
       "access_provider_type": "ksyun",
@@ -316,6 +542,54 @@
       "version": "0.1.1"
     },
     {
+      "access_provider_type": "nginxproxymanager",
+      "binary": "nginxproxymanager",
+      "deploy_category": "website",
+      "display_name_key": "plugin.nginxproxymanager.name",
+      "icon": "nginxproxymanager.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "nginxproxymanager",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "proxmoxbs",
+      "binary": "proxmoxbs",
+      "deploy_category": "other",
+      "display_name_key": "provider.proxmoxbs",
+      "icon": "proxmoxbs.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "proxmoxbs",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "proxmoxve",
+      "binary": "proxmoxve",
+      "deploy_category": "other",
+      "display_name_key": "provider.proxmoxve",
+      "icon": "proxmoxve.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "proxmoxve",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
       "access_provider_type": "qiniu",
       "binary": "qiniu-cdn",
       "deploy_category": "cdn",
@@ -419,6 +693,102 @@
         "hosting"
       ],
       "version": "0.1.1"
+    },
+    {
+      "access_provider_type": "ratpanel",
+      "binary": "ratpanel",
+      "deploy_category": "website",
+      "display_name_key": "provider.ratpanel_common",
+      "icon": "ratpanel.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "ratpanel",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "ratpanel",
+      "binary": "ratpanel-console",
+      "deploy_category": "other",
+      "display_name_key": "provider.ratpanel_console",
+      "icon": "ratpanel.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "ratpanel-console",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "safeline",
+      "binary": "safeline",
+      "deploy_category": "firewall",
+      "display_name_key": "plugin.safeline.name",
+      "icon": "safeline.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "safeline",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "samwaf",
+      "binary": "samwaf",
+      "deploy_category": "firewall",
+      "display_name_key": "plugin.samwaf.name",
+      "icon": "samwaf.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "samwaf",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "samwaf",
+      "binary": "samwaf-console",
+      "deploy_category": "other",
+      "display_name_key": "plugin.samwaf-console.name",
+      "icon": "samwaf.png",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "samwaf-console",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
+    },
+    {
+      "access_provider_type": "synologydsm",
+      "binary": "synologydsm",
+      "deploy_category": "other",
+      "display_name_key": "provider.synologydsm",
+      "icon": "synologydsm.svg",
+      "max_core_version": "",
+      "min_core_version": "0.4.37",
+      "priority": 100,
+      "protocol_version": 2,
+      "provider_type": "synologydsm",
+      "usages": [
+        "hosting"
+      ],
+      "version": "0.1.0"
     },
     {
       "access_provider_type": "upyun",
