@@ -1,0 +1,16 @@
+{
+  "provider_type": "unicloud-webhost",
+  "access_provider_type": "unicloud",
+  "binary": "unicloud-webhost",
+  "deploy_category": "website",
+  "display_name_key": "plugin.unicloud-webhost.name",
+  "icon": "unicloud.png",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "priority": 100,
+  "protocol_version": 2,
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

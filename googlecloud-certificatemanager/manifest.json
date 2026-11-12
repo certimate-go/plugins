@@ -1,0 +1,14 @@
+{
+  "provider_type": "googlecloud-certificatemanager",
+  "access_provider_type": "googlecloud",
+  "display_name_key": "plugin.googlecloud-certificatemanager.name",
+  "deploy_category": "ssl",
+  "version": "0.1.0",
+  "protocol_version": 2,
+  "binary": "googlecloud-certificatemanager",
+  "icon": "google.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

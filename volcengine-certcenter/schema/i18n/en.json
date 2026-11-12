@@ -1,0 +1,5 @@
+{
+  "plugin.volcengine-certcenter.name": "Volcengine - Upload to Certificate Center",
+  "plugin.volcengine-certcenter.region.label": "VolcEngine region",
+  "plugin.volcengine-certcenter.region.placeholder": "Please enter VolcEngine Certificate Center region (e.g. cn-beijing)"
+}

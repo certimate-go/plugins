@@ -13,16 +13,17 @@ import (
 
 var providerTypePattern = regexp.MustCompile(`^[a-z0-9][a-z0-9_.-]*$`)
 
-type indexFile struct {
-	Plugins []map[string]any `json:"plugins"`
+type catalogManifest struct {
+	directory string
+	fields    map[string]any
 }
 
-func buildIndex(rootDir string) ([]map[string]any, error) {
+func buildIndex(rootDir string) ([]catalogManifest, error) {
 	entries, err := os.ReadDir(rootDir)
 	if err != nil {
 		return nil, fmt.Errorf("read repo root %q: %w", rootDir, err)
 	}
-	var plugins []map[string]any
+	plugins := make([]catalogManifest, 0)
 	for _, e := range entries {
 		if !e.IsDir() || e.Name() == "_template" || strings.HasPrefix(e.Name(), ".") {
 			continue
@@ -43,20 +44,12 @@ func buildIndex(rootDir string) ([]map[string]any, error) {
 		if !providerTypePattern.MatchString(pt) {
 			continue
 		}
-		plugins = append(plugins, m)
+		plugins = append(plugins, catalogManifest{directory: e.Name(), fields: m})
 	}
 	sort.Slice(plugins, func(i, j int) bool {
-		return plugins[i]["provider_type"].(string) < plugins[j]["provider_type"].(string)
+		return plugins[i].fields["provider_type"].(string) < plugins[j].fields["provider_type"].(string)
 	})
 	return plugins, nil
-}
-
-func renderIndex(plugins []map[string]any) ([]byte, error) {
-	buf, err := json.MarshalIndent(indexFile{Plugins: plugins}, "", "  ")
-	if err != nil {
-		return nil, err
-	}
-	return append(buf, '\n'), nil
 }
 
 func main() {
@@ -69,7 +62,11 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
 	}
-	buf, err := renderIndex(plugins)
+	destination := *rootDir
+	if *out != "" {
+		destination = filepath.Dir(*out)
+	}
+	buf, err := renderIndex(destination, plugins)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)

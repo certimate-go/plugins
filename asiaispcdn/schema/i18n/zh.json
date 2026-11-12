@@ -1,0 +1,15 @@
+{
+  "plugin.asiaispcdn.name": "橙域网络网迹 CDN",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_id.label": "橙域网络网迹 CDN AccessKeyID",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_id.placeholder": "请输入橙域网络网迹 CDN AccessKeyID",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_secret.label": "橙域网络网迹 CDN AccessKeySecret",
+  "plugin.asiaispcdn.access.form.asiaispcdn_access_key_secret.placeholder": "请输入橙域网络网迹 CDN AccessKeySecret",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.label": "域名匹配模式",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.placeholder": "请选择部署域名匹配模式",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.exact.label": "精确匹配",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.wildcard.label": "通配符匹配（泛域名）",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.certsan.label": "根据证书自动匹配",
+  "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.exact.help.wildcard": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.asiaispcdn.workflow_node.deploy.form.asiaispcdn_domain.label": "橙域网络网迹 CDN 加速域名",
+  "plugin.asiaispcdn.workflow_node.deploy.form.asiaispcdn_domain.placeholder": "请输入橙域网络网迹 CDN 加速域名"
+}

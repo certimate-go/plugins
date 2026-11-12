@@ -1,0 +1,15 @@
+{
+  "provider_type": "jdcloud-vod",
+  "access_provider_type": "jdcloud",
+  "binary": "jdcloud-vod",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "deploy_category": "av",
+  "display_name_key": "plugin.jdcloud-vod.name",
+  "icon": "jdcloud.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

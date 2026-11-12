@@ -1,0 +1,14 @@
+{
+  "provider_type": "cpanel",
+  "access_provider_type": "cpanel",
+  "binary": "cpanel",
+  "deploy_category": "website",
+  "display_name_key": "plugin.cpanel.name",
+  "icon": "cpanel.svg",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

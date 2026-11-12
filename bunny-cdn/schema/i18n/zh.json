@@ -1,0 +1,10 @@
+{
+  "workflow_node.deploy.form.bunny_cdn_hostname.tooltip": "这是什么？请参阅 <a href=\"https://dash.bunny.net/cdn\" target=\"_blank\">https://dash.bunny.net/cdn</a>",
+  "workflow_node.deploy.form.bunny_cdn_hostname.label": "Bunny CDN 主机名",
+  "workflow_node.deploy.form.bunny_cdn_pull_zone_id.tooltip": "这是什么？请参阅 <a href=\"https://dash.bunny.net/cdn\" target=\"_blank\">https://dash.bunny.net/cdn</a>",
+  "workflow_node.deploy.form.bunny_cdn_pull_zone_id.placeholder": "请输入 Bunny CDN 拉取区域 ID",
+  "workflow_node.deploy.form.bunny_cdn_hostname.placeholder": "请输入 Bunny CDN 主机名",
+  "workflow_node.deploy.form.bunny_cdn_pull_zone_id.label": "Bunny CDN 拉取区域 ID",
+  "plugin.bunny-cdn.name": "Bunny - 内容分发网络 CDN",
+  "provider.bunny": "Bunny"
+}

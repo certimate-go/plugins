@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ucloud-ualb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-ualb.endpoint.label",
+        "placeholderKey": "plugin.ucloud-ualb.endpoint.placeholder",
+        "tooltipKey": "plugin.ucloud-ualb.endpoint.tooltip",
+        "tooltipHtml": true,
+        "allowClear": true
+      },
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-ualb.region.label",
+        "placeholderKey": "plugin.ucloud-ualb.region.placeholder",
+        "tooltipKey": "plugin.ucloud-ualb.region.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.ucloud-ualb.deployTarget.label",
+        "placeholderKey": "plugin.ucloud-ualb.deployTarget.placeholder",
+        "required": true,
+        "default": "listener",
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.ucloud-ualb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.ucloud-ualb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-ualb.loadbalancerId.label",
+        "placeholderKey": "plugin.ucloud-ualb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.ucloud-ualb.loadbalancerId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "listenerId",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-ualb.listenerId.label",
+        "placeholderKey": "plugin.ucloud-ualb.listenerId.placeholder",
+        "tooltipKey": "plugin.ucloud-ualb.listenerId.tooltip",
+        "default": "",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-ualb.domain.label",
+        "placeholderKey": "plugin.ucloud-ualb.domain.placeholder",
+        "extraKey": "plugin.ucloud-ualb.domain.help",
+        "allowClear": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "loadbalancer",
+              "listener"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain"
+          }
+        ]
+      },
+      {
+        "name": "autoPrune",
+        "valueType": "switch",
+        "labelKey": "plugin.ucloud-ualb.autoPrune.label",
+        "default": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "loadbalancer",
+              "listener"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

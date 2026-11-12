@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "asiaispcdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.label",
+        "placeholderKey": "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.placeholder",
+        "required": true,
+        "default": "exact",
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.exact.label"
+          },
+          {
+            "value": "wildcard",
+            "labelKey": "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.wildcard.label"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.certsan.label"
+          }
+        ],
+        "extraKey": "plugin.asiaispcdn.workflow_node.deploy.form.shared_domain_match_pattern.option.exact.help.wildcard",
+        "extraHtml": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.asiaispcdn.workflow_node.deploy.form.asiaispcdn_domain.label",
+        "placeholderKey": "plugin.asiaispcdn.workflow_node.deploy.form.asiaispcdn_domain.placeholder",
+        "required": true,
+        "default": "",
+        "dependencies": [
+          "domainMatchPattern"
+        ],
+        "visibleWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

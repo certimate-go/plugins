@@ -1,0 +1,10 @@
+{
+  "plugin.ctcccloud-icdn.name": "China Telecom StateCloud - ICDN (Integrated Content Delivery Network)",
+  "plugin.ctcccloud-icdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.ctcccloud-icdn.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.ctcccloud-icdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.ctcccloud-icdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.ctcccloud-icdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.ctcccloud-icdn.domain.label": "CTCC StateCloud ICDN domain",
+  "plugin.ctcccloud-icdn.domain.placeholder": "Please enter CTCC StateCloud ICDN domain name"
+}

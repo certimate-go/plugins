@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "bunny-cdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "pullZoneId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.bunny_cdn_pull_zone_id.label",
+        "placeholderKey": "workflow_node.deploy.form.bunny_cdn_pull_zone_id.placeholder",
+        "required": true,
+        "default": "",
+        "numericValue": "positiveInteger",
+        "tooltipKey": "workflow_node.deploy.form.bunny_cdn_pull_zone_id.tooltip",
+        "tooltipHtml": true
+      },
+      {
+        "name": "hostname",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.bunny_cdn_hostname.label",
+        "placeholderKey": "workflow_node.deploy.form.bunny_cdn_hostname.placeholder",
+        "required": true,
+        "default": "",
+        "tooltipKey": "workflow_node.deploy.form.bunny_cdn_hostname.tooltip",
+        "tooltipHtml": true,
+        "validateWhen": [
+          {
+            "field": "hostname",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

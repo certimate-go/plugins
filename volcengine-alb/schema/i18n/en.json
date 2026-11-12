@@ -1,0 +1,19 @@
+{
+  "plugin.volcengine-alb.name": "Volcengine - ALB (Application Load Balancer)",
+  "plugin.volcengine-alb.region.label": "VolcEngine region",
+  "plugin.volcengine-alb.region.placeholder": "Please enter VolcEngine ALB region (e.g. cn-beijing)",
+  "plugin.volcengine-alb.region.tooltip": "For more information, see <a href=\"https://www.volcengine.com/docs/6767/127501?lang=en\" target=\"_blank\">https://www.volcengine.com/docs/6767/127501</a>",
+  "plugin.volcengine-alb.deployTarget.label": "Certificate deploy target",
+  "plugin.volcengine-alb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.volcengine-alb.deployTarget.loadbalancer": "ALB load balancer",
+  "plugin.volcengine-alb.deployTarget.listener": "ALB listener",
+  "plugin.volcengine-alb.loadbalancerId.label": "VolcEngine ALB load balancer ID",
+  "plugin.volcengine-alb.loadbalancerId.placeholder": "Please enter VolcEngine ALB load balancer ID",
+  "plugin.volcengine-alb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.volcengine.com/alb\" target=\"_blank\">https://console.volcengine.com/alb</a>",
+  "plugin.volcengine-alb.listenerId.label": "VolcEngine ALB listener ID",
+  "plugin.volcengine-alb.listenerId.placeholder": "Please enter VolcEngine ALB listener ID",
+  "plugin.volcengine-alb.listenerId.tooltip": "For more information, see <a href=\"https://console.volcengine.com/alb\" target=\"_blank\">https://console.volcengine.com/alb</a>",
+  "plugin.volcengine-alb.domain.label": "VolcEngine ALB SNI domain (Optional)",
+  "plugin.volcengine-alb.domain.placeholder": "Please enter VolcEngine ALB SNI domain name",
+  "plugin.volcengine-alb.domain.extra": "Notes: Leave it blank to set the default certificate; otherwise, to set the extension one for SNI."
+}

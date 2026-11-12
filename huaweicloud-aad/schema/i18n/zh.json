@@ -1,0 +1,16 @@
+{
+  "plugin.huaweicloud-aad.name": "华为云 - DDoS 高防 AAD",
+  "plugin.huaweicloud-aad.region.label": "华为云服务区域",
+  "plugin.huaweicloud-aad.region.placeholder": "请输入华为云 DDoS 高防服务区域（例如：cn-north-4）",
+  "plugin.huaweicloud-aad.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/aad\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/aad</a>",
+  "plugin.huaweicloud-aad.instanceId.label": "华为云 DDoS 高防实例 ID",
+  "plugin.huaweicloud-aad.instanceId.placeholder": "请输入华为云 DDoS 高防实例 ID",
+  "plugin.huaweicloud-aad.instanceId.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/cnad/#/cnad/cad/list\" target=\"_blank\">https://console.huaweicloud.com/cnad/#/cnad/cad/list</a>",
+  "plugin.huaweicloud-aad.domainMatchPattern.label": "域名匹配模式",
+  "plugin.huaweicloud-aad.domainMatchPattern.extra": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.huaweicloud-aad.domainMatchPattern.exact": "精确匹配",
+  "plugin.huaweicloud-aad.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.huaweicloud-aad.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.huaweicloud-aad.domain.label": "华为云 DDoS 高防网站域名",
+  "plugin.huaweicloud-aad.domain.placeholder": "请输入华为云 DDoS 高防网站域名"
+}

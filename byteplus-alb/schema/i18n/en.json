@@ -1,0 +1,19 @@
+{
+  "plugin.byteplus-alb.name": "BytePlus - ALB (Application Load Balancer)",
+  "plugin.byteplus-alb.region.label": "BytePlus region",
+  "plugin.byteplus-alb.region.placeholder": "Please enter BytePlus ALB region (e.g. ap-southeast-1)",
+  "plugin.byteplus-alb.region.tooltip": "For more information, see <a href=\"https://docs.byteplus.com/en/docs/clb/Regions-and-Availability-Zones\" target=\"_blank\">https://docs.byteplus.com/en/docs/clb/Regions-and-Availability-Zones</a>",
+  "plugin.byteplus-alb.deployTarget.label": "Certificate deploy target",
+  "plugin.byteplus-alb.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.byteplus-alb.deployTarget.loadbalancer": "ALB load balancer",
+  "plugin.byteplus-alb.deployTarget.listener": "ALB listener",
+  "plugin.byteplus-alb.loadbalancerId.label": "BytePlus ALB load balancer ID",
+  "plugin.byteplus-alb.loadbalancerId.placeholder": "Please enter BytePlus ALB load balancer ID",
+  "plugin.byteplus-alb.loadbalancerId.tooltip": "For more information, see <a href=\"https://console.byteplus.com/alb\" target=\"_blank\">https://console.byteplus.com/alb</a>",
+  "plugin.byteplus-alb.listenerId.label": "BytePlus ALB listener ID",
+  "plugin.byteplus-alb.listenerId.placeholder": "Please enter BytePlus ALB listener ID",
+  "plugin.byteplus-alb.listenerId.tooltip": "For more information, see <a href=\"https://console.byteplus.com/alb\" target=\"_blank\">https://console.byteplus.com/alb</a>",
+  "plugin.byteplus-alb.domain.label": "BytePlus ALB SNI domain (Optional)",
+  "plugin.byteplus-alb.domain.placeholder": "Please enter BytePlus ALB SNI domain name",
+  "plugin.byteplus-alb.domain.extra": "Notes: Leave it blank to set the default certificate; otherwise, to set the extension one for SNI."
+}

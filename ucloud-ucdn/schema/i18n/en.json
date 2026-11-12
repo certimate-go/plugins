@@ -1,0 +1,9 @@
+{
+  "plugin.ucloud-ucdn.name": "UCloud - UCDN (Content Delivery Network)",
+  "plugin.ucloud-ucdn.endpoint.label": "UCloud API endpoint (Optional)",
+  "plugin.ucloud-ucdn.endpoint.placeholder": "Please enter UCloud UCDN API endpoint (e.g. api.ucloud-global.com)",
+  "plugin.ucloud-ucdn.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>api.ucloud-global.com</strong> for UCloud Global</li><li><strong>api.ucloud.cn</strong> for UCloud in China (<em>Default</em>)</li></ul>",
+  "plugin.ucloud-ucdn.domainId.label": "UCloud UCDN domain ID",
+  "plugin.ucloud-ucdn.domainId.placeholder": "Please enter UCloud UCDN domain ID",
+  "plugin.ucloud-ucdn.domainId.tooltip": "For more information, see <a href=\"https://console.ucloud-global.com/ucdn\" target=\"_blank\">https://console.ucloud-global.com/ucdn</a>"
+}

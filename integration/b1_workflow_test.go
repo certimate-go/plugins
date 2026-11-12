@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/base64"
 	"encoding/json"
+	"encoding/pem"
 	"fmt"
 	"io"
 	"net"
@@ -13,11 +14,13 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"reflect"
 	"strings"
 	"testing"
 	"time"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
+	xcert "github.com/certimate-go/certimate/pkg/utils/cert"
 )
 
 type b1WorkflowAPI struct {
@@ -112,7 +115,7 @@ func (a *b1WorkflowAPI) inspectLogs(ctx context.Context, runID, runError string,
 	return nil
 }
 
-func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string) func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error) {
+func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string, targets ...workflowLifecycleTarget) func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error) {
 	t.Helper()
 	binary := os.Getenv("CERTIMATE_B1_CORE_BINARY")
 	if binary == "" {
@@ -381,7 +384,7 @@ func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string) func(contex
 			if name == "accesstokenid" {
 				continue
 			}
-			if strings.Contains(name, "password") || strings.Contains(name, "secret") || strings.Contains(name, "token") || name == "apikey" || name == "accesskey" {
+			if strings.Contains(name, "password") || strings.Contains(name, "secret") || strings.Contains(name, "token") || name == "apikey" || name == "accesskey" || name == "privatekey" {
 				if secret, ok := value.(string); ok && secret != "" {
 					secrets = append(secrets, secret, base64.StdEncoding.EncodeToString([]byte(secret)))
 				}
@@ -426,7 +429,7 @@ func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string) func(contex
 			}
 		}
 	}
-	if !baseline {
+	if !baseline && (len(targets) == 0 || !targets[0].failureOnly) {
 		t.Cleanup(func() {
 			if lastSuccess == nil {
 				t.Fatal("lifecycle verification requires a successful saved workflow")
@@ -438,11 +441,90 @@ func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string) func(contex
 			}
 			replayOnly = true
 			persistedAccessID, persistedWorkflowID := accessID, workflowID
+			deploySuccess := func(ctx context.Context, request *plugin.DeployRequest) (*plugin.DeployResult, error) {
+				if len(targets) == 0 {
+					return deploy(ctx, request)
+				}
+				certificate, err := xcert.ParseCertificateFromPEM(request.CertificatePEM)
+				if err != nil {
+					return nil, err
+				}
+				_, chain := pem.Decode([]byte(request.CertificatePEM))
+				request.CertificatePEM, request.PrivateKeyPEM, _ = makeCertificate(t, certificate.DNSNames, false)
+				request.CertificatePEM += string(chain)
+				type savedWorkflow struct {
+					ID           string         `json:"id"`
+					GraphContent map[string]any `json:"graphContent"`
+					GraphDraft   map[string]any `json:"graphDraft"`
+					HasContent   bool           `json:"hasContent"`
+					HasDraft     bool           `json:"hasDraft"`
+				}
+				workflowPath := "/api/collections/workflow/records/" + workflowID
+				accessPath := "/api/collections/access/records/" + accessID
+				var saved savedWorkflow
+				var savedAccess map[string]any
+				if err := api.request(ctx, http.MethodGet, workflowPath, nil, &saved); err != nil {
+					return nil, err
+				}
+				if err := api.request(ctx, http.MethodGet, accessPath, nil, &savedAccess); err != nil {
+					return nil, err
+				}
+				for _, graph := range []map[string]any{saved.GraphContent, saved.GraphDraft} {
+					nodes, ok := graph["nodes"].([]any)
+					if !ok {
+						return nil, fmt.Errorf("saved workflow has no graph nodes")
+					}
+					updatedUploads := 0
+					for _, raw := range nodes {
+						node, ok := raw.(map[string]any)
+						if !ok || node["id"] != "upload" || node["type"] != "bizUpload" {
+							continue
+						}
+						data, _ := node["data"].(map[string]any)
+						config, _ := data["config"].(map[string]any)
+						if config == nil {
+							return nil, fmt.Errorf("saved upload node has no configuration")
+						}
+						config["certificate"] = request.CertificatePEM
+						config["privateKey"] = request.PrivateKeyPEM
+						updatedUploads++
+					}
+					if updatedUploads != 1 {
+						return nil, fmt.Errorf("saved workflow has %d upload nodes, want one", updatedUploads)
+					}
+				}
+				if err := api.request(ctx, http.MethodPatch, workflowPath, map[string]any{"graphContent": saved.GraphContent, "graphDraft": saved.GraphDraft}, nil); err != nil {
+					return nil, err
+				}
+				var updated savedWorkflow
+				var updatedAccess map[string]any
+				if err := api.request(ctx, http.MethodGet, workflowPath, nil, &updated); err != nil {
+					return nil, err
+				}
+				if err := api.request(ctx, http.MethodGet, accessPath, nil, &updatedAccess); err != nil {
+					return nil, err
+				}
+				if !reflect.DeepEqual(saved, updated) || !reflect.DeepEqual(savedAccess, updatedAccess) {
+					return nil, fmt.Errorf("fresh certificate update changed the saved graph, workflow state, or access record")
+				}
+				result, err := deploy(ctx, request)
+				if accessID != persistedAccessID || workflowID != persistedWorkflowID {
+					t.Fatal("fresh certificate deployment replaced the saved records")
+				}
+				return result, err
+			}
 			assertRun := func(scenario string, wantSuccess bool) {
 				t.Helper()
-				_, err := deploy(ctx, lastSuccess)
+				invoke := deploy
+				if wantSuccess {
+					invoke = deploySuccess
+				}
+				_, err := invoke(ctx, lastSuccess)
 				if wantSuccess && err != nil {
 					t.Fatalf("%s: %v", scenario, err)
+				}
+				if wantSuccess && len(targets) != 0 {
+					targets[0].verify(lastSuccess)
 				}
 				if !wantSuccess && (err == nil || !strings.Contains(err.Error(), "provider '"+provider+"' not registered")) {
 					t.Fatalf("%s: expected missing provider error, got %v", scenario, err)
@@ -453,6 +535,9 @@ func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string) func(contex
 				t.Logf("LIFECYCLE PASS %s %s workflow=%s", provider, scenario, workflowID)
 			}
 			packageDir := filepath.Join(pluginDir, provider)
+			if len(targets) != 0 {
+				verifyWorkflowReloadLifecycle(t, ctx, api, provider, packageDir, accessID, lastSuccess, deploy, deploySuccess, targets[0])
+			}
 			parkedDir := filepath.Join(t.TempDir(), provider)
 			stopCore()
 			if err := os.Rename(packageDir, parkedDir); err != nil {

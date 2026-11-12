@@ -1,0 +1,17 @@
+{
+  "provider_type": "vercel",
+  "access_provider_type": "vercel",
+  "binary": "vercel",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "deploy_category": "website",
+  "display_name_key": "plugin.vercel.name",
+  "icon": "vercel.svg",
+  "priority": 100,
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ]
+}

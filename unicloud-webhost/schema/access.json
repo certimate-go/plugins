@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "unicloud",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "access.form.unicloud_username.label",
+        "required": true,
+        "default": "",
+        "placeholderKey": "access.form.unicloud_username.placeholder"
+      },
+      {
+        "name": "password",
+        "valueType": "secret",
+        "labelKey": "access.form.unicloud_password.label",
+        "required": true,
+        "default": "",
+        "secret": true,
+        "placeholderKey": "access.form.unicloud_password.placeholder"
+      }
+    ]
+  }
+}

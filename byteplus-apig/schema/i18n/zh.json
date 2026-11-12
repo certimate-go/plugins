@@ -1,0 +1,13 @@
+{
+  "plugin.byteplus-apig.name": "BytePlus - API 网关",
+  "plugin.byteplus-apig.region.label": "BytePlus 服务地域",
+  "plugin.byteplus-apig.region.placeholder": "请输入 BytePlus API 网关服务地域（例如：ap-southeast-1）",
+  "plugin.byteplus-apig.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.byteplus.com/en/docs/apig/Regions_and_availability_zones\" target=\"_blank\">https://docs.byteplus.com/en/docs/apig/Regions_and_availability_zones</a>",
+  "plugin.byteplus-apig.domainMatchPattern.label": "域名匹配模式",
+  "plugin.byteplus-apig.domainMatchPattern.extra": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "plugin.byteplus-apig.domainMatchPattern.exact": "精确匹配",
+  "plugin.byteplus-apig.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.byteplus-apig.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.byteplus-apig.domain.label": "BytePlus API 网关自定义域名",
+  "plugin.byteplus-apig.domain.placeholder": "请输入 BytePlus API 网关自定义域名"
+}

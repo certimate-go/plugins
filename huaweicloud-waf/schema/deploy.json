@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "huaweicloud-waf",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-waf.region.label",
+        "placeholderKey": "plugin.huaweicloud-waf.region.placeholder",
+        "tooltipKey": "plugin.huaweicloud-waf.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.huaweicloud-waf.deployTarget.label",
+        "placeholderKey": "plugin.huaweicloud-waf.deployTarget.placeholder",
+        "required": true,
+        "options": [
+          {
+            "value": "cloudserver",
+            "labelKey": "plugin.huaweicloud-waf.deployTarget.cloudserver"
+          },
+          {
+            "value": "premiumhost",
+            "labelKey": "plugin.huaweicloud-waf.deployTarget.premiumhost"
+          },
+          {
+            "value": "certificate",
+            "labelKey": "plugin.huaweicloud-waf.deployTarget.certificate"
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-waf.domain.label",
+        "placeholderKey": "plugin.huaweicloud-waf.domain.placeholder",
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "cloudserver",
+              "premiumhost"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "cloudserver",
+              "premiumhost"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "cloudserver",
+              "premiumhost"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.huaweicloud-waf.certificateId.label",
+        "placeholderKey": "plugin.huaweicloud-waf.certificateId.placeholder",
+        "tooltipKey": "plugin.huaweicloud-waf.certificateId.tooltip",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "plugin.volcengine-dcdn.name": "Volcengine - DCDN (Dynamic Content Delivery Network)",
+  "plugin.volcengine-dcdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.volcengine-dcdn.domainMatchPattern.extra": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.volcengine-dcdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.volcengine-dcdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.volcengine-dcdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.volcengine-dcdn.domain.label": "VolcEngine DCDN domain",
+  "plugin.volcengine-dcdn.domain.placeholder": "Please enter VolcEngine DCDN domain name"
+}

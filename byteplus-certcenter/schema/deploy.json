@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "byteplus-certcenter",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.byteplus-certcenter.region.label",
+        "placeholderKey": "plugin.byteplus-certcenter.region.placeholder",
+        "default": "ap-singapore-1",
+        "required": true
+      }
+    ]
+  }
+}

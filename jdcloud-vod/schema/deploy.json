@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "jdcloud-vod",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.jdcloud-vod.domainMatchPattern.label",
+        "required": true,
+        "default": "exact",
+        "defaultOnMissing": true,
+        "allowCustomValue": true,
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "plugin.jdcloud-vod.domainMatchPattern.exact"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.jdcloud-vod.domainMatchPattern.certsan"
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-vod.domain.label",
+        "placeholderKey": "plugin.jdcloud-vod.domain.placeholder",
+        "default": "",
+        "visibleWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

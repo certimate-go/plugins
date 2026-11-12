@@ -1,0 +1,11 @@
+{
+  "plugin.huaweicloud-live.name": "Huawei Cloud - Cloud Live",
+  "plugin.huaweicloud-live.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-live.region.placeholder": "Please enter Huawei Cloud Live region (e.g. cn-north-1)",
+  "plugin.huaweicloud-live.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/live?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/live</a>",
+  "plugin.huaweicloud-live.domainMatchPattern.label": "Domain match pattern",
+  "plugin.huaweicloud-live.domainMatchPattern.exact": "Exact matches",
+  "plugin.huaweicloud-live.domainMatchPattern.certsan": "via Certificate",
+  "plugin.huaweicloud-live.domain.label": "Huawei Cloud Live streaming domain",
+  "plugin.huaweicloud-live.domain.placeholder": "Please enter Huawei Cloud Live streaming domain name"
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "cpanel",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "required": true,
+        "default": "website",
+        "options": [
+          {
+            "value": "website",
+            "labelKey": "workflow_node.deploy.form.cpanel_deploy_target.option.website.label"
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.cpanel_domain.label",
+        "placeholderKey": "workflow_node.deploy.form.cpanel_domain.placeholder",
+        "required": true,
+        "default": "",
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "website"
+            ],
+            "validator": "domain"
+          }
+        ]
+      }
+    ]
+  }
+}

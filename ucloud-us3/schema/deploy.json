@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ucloud-us3",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-us3.endpoint.label",
+        "placeholderKey": "plugin.ucloud-us3.endpoint.placeholder",
+        "tooltipKey": "plugin.ucloud-us3.endpoint.tooltip",
+        "tooltipHtml": true,
+        "allowClear": true
+      },
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-us3.region.label",
+        "placeholderKey": "plugin.ucloud-us3.region.placeholder",
+        "tooltipKey": "plugin.ucloud-us3.region.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "bucket",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-us3.bucket.label",
+        "placeholderKey": "plugin.ucloud-us3.bucket.placeholder",
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-us3.domain.label",
+        "placeholderKey": "plugin.ucloud-us3.domain.placeholder",
+        "required": true,
+        "default": "",
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain"
+          }
+        ]
+      }
+    ]
+  }
+}

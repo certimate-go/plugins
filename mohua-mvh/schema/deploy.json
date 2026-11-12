@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "mohua-mvh",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "hostId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.mohua_mvh_host_id.label",
+        "required": true,
+        "default": "",
+        "placeholderKey": "workflow_node.deploy.form.mohua_mvh_host_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.mohua_mvh_host_id.tooltip",
+        "tooltipHtml": true,
+        "numericValue": "positiveInteger"
+      },
+      {
+        "name": "domainId",
+        "valueType": "text",
+        "labelKey": "workflow_node.deploy.form.mohua_mvh_domain_id.label",
+        "required": true,
+        "default": "",
+        "placeholderKey": "workflow_node.deploy.form.mohua_mvh_domain_id.placeholder",
+        "tooltipKey": "workflow_node.deploy.form.mohua_mvh_domain_id.tooltip",
+        "tooltipHtml": true,
+        "numericValue": "positiveInteger"
+      }
+    ]
+  }
+}

@@ -4,7 +4,7 @@ English | [中文](README.zh.md)
 
 Out-of-process deployer plugins for [certimate](https://github.com/certimate-go/certimate). Each plugin is a standalone binary that certimate launches as a gRPC subprocess ([hashicorp/go-plugin](https://github.com/hashicorp/go-plugin)) to deploy certificates to a target platform. Adding a plugin requires **no changes to the certimate core**.
 
-This repository is also the plugin **market** source: it builds plugins, publishes them as GitHub Releases, and serves a market index (`index.json`) that certimate's plugin-market UI reads to list, install, and update plugins.
+This repository is also the plugin **market** source: it builds plugins, publishes them as GitHub Releases, and publishes the catalog and release details used by Certimate to list, install, and update plugins.
 
 ## Repository layout
 
@@ -22,7 +22,8 @@ plugins/
 │   └── releaseinfo/        writes the release block (sha256/assets) into a manifest
 ├── internal/ pkg/        shared plugin helpers
 ├── docs/releasing.md     how releases work
-├── index.json            generated market index (consumed by certimate)
+├── index.json            compact market catalog
+├── market/details/       release manifests named by SHA-256
 └── Makefile
 ```
 
@@ -70,7 +71,7 @@ make test                             # go test ./...
 
 ## Releasing
 
-Releases are **change-driven and version-gated**. On push to `main`, the `release` workflow detects which plugins changed; for each build-affecting change whose `version` was bumped, it cross-compiles the plugin, publishes a GitHub Release tagged `<provider_type>/v<version>`, computes per-platform SHA256 checksums, and writes a `release` block into the manifest. `genindex` then regenerates `index.json` so the certimate market can resolve and verify downloads.
+Releases are **change-driven and version-gated**. On push to `main`, the `release` workflow detects which plugins changed; for each build-affecting change whose `version` was bumped, it cross-compiles the plugin, publishes a GitHub Release tagged `<provider_type>/v<version>`, computes per-platform SHA256 checksums, and writes a `release` block into the manifest. The workflow then regenerates the catalog and publishes them in the same commit as the generated release details.
 
 - To ship a change: change the code, **bump `version`** in the plugin's `manifest.json`, push to `main`.
 - A build-affecting change (Go source, `go.mod`/`go.sum`, `schema/`) without a version bump fails the run.
@@ -80,7 +81,7 @@ See [`docs/releasing.md`](docs/releasing.md) for the full flow and trust precond
 
 ## Tooling
 
-- `make index` → `cmd/genindex` regenerates `index.json` from all manifests.
+- `make index` regenerates the catalog and the SHA-256 named files under `market/details/`. Keep existing detail files so clients with cached catalogs can resolve the release they saw.
 - `cmd/releaseinfo` computes checksums and writes the `release` block (used by the release workflow).
 - `make clean` removes `dist/`.
 

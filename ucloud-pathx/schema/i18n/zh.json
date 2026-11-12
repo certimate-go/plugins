@@ -1,0 +1,12 @@
+{
+  "plugin.ucloud-pathx.name": "优刻得 - 全球动态加速 UPathX",
+  "plugin.ucloud-pathx.endpoint.label": "优刻得接口端点（可选）",
+  "plugin.ucloud-pathx.endpoint.placeholder": "请输入优刻得 UPathX 接口端点（例如：api.ucloud.cn）",
+  "plugin.ucloud-pathx.endpoint.tooltip": "这是什么？请参阅 <a href=\"https://docs.ucloud.cn/api/summary/gateway\" target=\"_blank\">https://docs.ucloud.cn/api/summary/gateway</a><br>国际站用户请填写 <em>api.ucloud-global.com</em>。",
+  "plugin.ucloud-pathx.acceleratorId.label": "优刻得 UPathX 加速器实例 ID",
+  "plugin.ucloud-pathx.acceleratorId.placeholder": "请输入优刻得 UPathX 加速器实例 ID",
+  "plugin.ucloud-pathx.acceleratorId.tooltip": "这是什么？请参阅 <a href=\"https://console.ucloud.cn/upathx/accelerate\" target=\"_blank\">https://console.ucloud.cn/upathx/accelerate</a>",
+  "plugin.ucloud-pathx.listenerPort.label": "优刻得 UPathX 加速器监听端口",
+  "plugin.ucloud-pathx.listenerPort.placeholder": "请输入优刻得 UPathX 加速器监听端口",
+  "plugin.ucloud-pathx.listenerPort.tooltip": "这是什么？请参阅 <a href=\"https://console.ucloud.cn/upathx/accelerate\" target=\"_blank\">https://console.ucloud.cn/upathx/accelerate</a>"
+}

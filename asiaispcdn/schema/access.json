@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "asiaispcdn",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "accessKeyId",
+        "valueType": "text",
+        "labelKey": "plugin.asiaispcdn.access.form.asiaispcdn_access_key_id.label",
+        "placeholderKey": "plugin.asiaispcdn.access.form.asiaispcdn_access_key_id.placeholder",
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "accessKeySecret",
+        "valueType": "secret",
+        "labelKey": "plugin.asiaispcdn.access.form.asiaispcdn_access_key_secret.label",
+        "placeholderKey": "plugin.asiaispcdn.access.form.asiaispcdn_access_key_secret.placeholder",
+        "required": true,
+        "secret": true,
+        "default": ""
+      }
+    ]
+  }
+}

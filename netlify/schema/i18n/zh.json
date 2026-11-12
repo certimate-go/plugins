@@ -1,0 +1,9 @@
+{
+  "plugin.netlify.name": "Netlify",
+  "workflow_node.deploy.form.shared_deploy_target.label": "证书部署方式",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "请选择证书部署方式",
+  "workflow_node.deploy.form.netlify_deploy_target.option.website.label": "部署到指定网站",
+  "workflow_node.deploy.form.netlify_site_id.label": "Netlify 网站 ID",
+  "workflow_node.deploy.form.netlify_site_id.placeholder": "请输入 netlify 网站 ID",
+  "workflow_node.deploy.form.netlify_site_id.tooltip": "这是什么？请参阅 <a href=\"https://docs.netlify.com/api/get-started/#get-site\" target=\"_blank\">https://docs.netlify.com/api/get-started/#get-site</a>"
+}

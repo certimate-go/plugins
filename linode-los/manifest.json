@@ -1,0 +1,14 @@
+{
+  "provider_type": "linode-los",
+  "access_provider_type": "linode",
+  "display_name_key": "plugin.linode-los.name",
+  "deploy_category": "storage",
+  "version": "0.1.0",
+  "protocol_version": 2,
+  "binary": "linode-los",
+  "icon": "linode.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

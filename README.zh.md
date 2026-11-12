@@ -4,7 +4,7 @@
 
 [certimate](https://github.com/certimate-go/certimate) 的外置 deployer 插件集合。每个插件是一个独立二进制，certimate 通过 [hashicorp/go-plugin](https://github.com/hashicorp/go-plugin) 以 gRPC 子进程的方式启动它，把证书部署到目标平台。新增插件**无需改动 certimate 核心**。
 
-本仓库同时也是插件**市场**源：构建插件、发布为 GitHub Release，并产出市场索引 `index.json`，供 certimate 的插件市场界面列出、安装、更新插件。
+本仓库同时也是插件**市场**源：构建插件、发布为 GitHub Release，并发布目录和发布详情，供 Certimate 浏览、安装和更新插件。
 
 ## 仓库结构
 
@@ -22,7 +22,8 @@ plugins/
 │   └── releaseinfo/        把 release 块（sha256/assets）写进 manifest
 ├── internal/ pkg/        插件共享工具
 ├── docs/releasing.md     发版机制说明
-├── index.json            生成的市场索引（certimate 消费）
+├── index.json            轻量市场目录
+├── market/details/       以 SHA-256 命名的发布详情
 └── Makefile
 ```
 
@@ -70,7 +71,7 @@ make test                             # go test ./...
 
 ## 发版
 
-发版是 **change-driven（按改动驱动）+ version-gated（按版本号卡控）**。push 到 `main` 时，`release` 工作流检测哪些插件发生了变化；对每个 build-affecting 改动且已 bump `version` 的插件，跨平台编译、发布 GitHub Release（tag `<provider_type>/v<version>`）、计算各平台 SHA256 校验、并把 release 块写入 manifest。随后 `genindex` 重新生成 `index.json`，让 certimate 市场能解析和校验下载。
+发版是 **change-driven（按改动驱动）+ version-gated（按版本号卡控）**。push 到 `main` 时，`release` 工作流检测哪些插件发生了变化；对每个 build-affecting 改动且已 bump `version` 的插件，跨平台编译、发布 GitHub Release（tag `<provider_type>/v<version>`）、计算各平台 SHA256 校验、并把 release 块写入 manifest。工作流随后重新生成市场目录，并与生成的发布详情一并提交。
 
 - 发一个改动：改代码、在插件 `manifest.json` 里 **bump `version`**、push 到 `main`。
 - build-affecting 改动（Go 源码、`go.mod`/`go.sum`、`schema/`）不 bump 版本会让本次运行失败。
@@ -80,7 +81,7 @@ make test                             # go test ./...
 
 ## 工具
 
-- `make index` → `cmd/genindex` 从所有 manifest 重新生成 `index.json`。
+- `make index` 重新生成市场目录和 `market/details/` 下以 SHA-256 命名的文件。保留历史详情文件，已缓存目录的客户端仍可获取对应版本。
 - `cmd/releaseinfo` 计算校验和并写入 release 块（发版工作流使用）。
 - `make clean` 清除 `dist/`。
 

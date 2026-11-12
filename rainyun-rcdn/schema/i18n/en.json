@@ -1,0 +1,11 @@
+{
+  "plugin.rainyun-rcdn.name": "Rain Yun - RCDN (Content Delivery Network)",
+  "workflow_node.deploy.form.rainyun_rcdn_instance_id.label": "Rain Yun RCDN instance ID",
+  "workflow_node.deploy.form.rainyun_rcdn_instance_id.placeholder": "Please enter Rain Yun RCDN instance ID",
+  "workflow_node.deploy.form.rainyun_rcdn_instance_id.tooltip": "For more information, see <a href=\"https://app.rainyun.com/apps/rcdn/list\" target=\"_blank\">https://app.rainyun.com/apps/rcdn/list</a>",
+  "workflow_node.deploy.form.shared_domain_match_pattern.option.exact.help.wildcard": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "workflow_node.deploy.form.shared_domain_match_pattern.label": "Domain match pattern",
+  "workflow_node.deploy.form.shared_domain_match_pattern.option.exact.label": "Exact matches",
+  "workflow_node.deploy.form.rainyun_rcdn_domain.label": "Rain Yun RCDN domain",
+  "workflow_node.deploy.form.rainyun_rcdn_domain.placeholder": "Please enter Rain Yun RCDN domain name"
+}

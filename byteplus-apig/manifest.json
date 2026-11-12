@@ -1,0 +1,15 @@
+{
+  "provider_type": "byteplus-apig",
+  "access_provider_type": "byteplus",
+  "display_name_key": "plugin.byteplus-apig.name",
+  "deploy_category": "apigw",
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "protocol_version": 2,
+  "binary": "byteplus-apig",
+  "icon": "byteplus.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

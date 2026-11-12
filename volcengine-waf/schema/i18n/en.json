@@ -1,0 +1,11 @@
+{
+  "plugin.volcengine-waf.name": "Volcengine - WAF (Web Application Firewall)",
+  "plugin.volcengine-waf.region.label": "VolcEngine region",
+  "plugin.volcengine-waf.region.placeholder": "Please enter VolcEngine WAF region (e.g. cn-beijing)",
+  "plugin.volcengine-waf.region.tooltip": "For more information, see <a href=\"https://www.volcengine.com/docs/6511/1594024?lang=en\" target=\"_blank\">https://www.volcengine.com/docs/6511/1594024</a>",
+  "plugin.volcengine-waf.accessMode.label": "VolcEngine WAF access mode",
+  "plugin.volcengine-waf.accessMode.placeholder": "Please select VolcEngine WAF access mode",
+  "plugin.volcengine-waf.accessMode.cname": "CNAME access",
+  "plugin.volcengine-waf.domain.label": "VolcEngine WAF domain",
+  "plugin.volcengine-waf.domain.placeholder": "Please enter VolcEngine WAF domain name"
+}

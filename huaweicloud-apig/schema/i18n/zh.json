@@ -1,0 +1,12 @@
+{
+  "plugin.huaweicloud-apig.name": "华为云 - API 网关",
+  "plugin.huaweicloud-apig.region.label": "华为云服务区域",
+  "plugin.huaweicloud-apig.region.placeholder": "请输入华为云 API 网关服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-apig.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/apig\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/apig</a>",
+  "plugin.huaweicloud-apig.deployTarget.label": "证书部署方式",
+  "plugin.huaweicloud-apig.deployTarget.placeholder": "请选择证书部署方式",
+  "plugin.huaweicloud-apig.deployTarget.certificate": "替换指定证书",
+  "plugin.huaweicloud-apig.certificateId.label": "华为云 API 网关证书 ID",
+  "plugin.huaweicloud-apig.certificateId.placeholder": "请输入华为云 API 网关证书 ID",
+  "plugin.huaweicloud-apig.certificateId.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apig2/#/overview\" target=\"_blank\">https://console.huaweicloud.com/apig2/#/overview</a>"
+}

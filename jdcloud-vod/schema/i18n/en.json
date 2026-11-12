@@ -1,0 +1,8 @@
+{
+  "plugin.jdcloud-vod.name": "JD Cloud - VOD (Video on Demand)",
+  "plugin.jdcloud-vod.domainMatchPattern.label": "Domain match pattern",
+  "plugin.jdcloud-vod.domainMatchPattern.exact": "Exact matches",
+  "plugin.jdcloud-vod.domainMatchPattern.certsan": "via Certificate",
+  "plugin.jdcloud-vod.domain.label": "JD Cloud VOD domain",
+  "plugin.jdcloud-vod.domain.placeholder": "Please enter JD Cloud VOD domain name"
+}

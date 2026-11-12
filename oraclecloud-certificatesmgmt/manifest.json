@@ -1,0 +1,17 @@
+{
+  "provider_type": "oraclecloud-certificatesmgmt",
+  "access_provider_type": "oraclecloud",
+  "binary": "oraclecloud-certificatesmgmt",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "min_core_version": "0.4.37",
+  "max_core_version": "",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.oraclecloud-certificatesmgmt.name",
+  "icon": "oraclecloud.svg",
+  "priority": 100,
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "workflow_node.deploy.form.cpanel_deploy_target.option.website.label": "部署到指定网站",
+  "workflow_node.deploy.form.cpanel_domain.label": "cPanel 网站域名",
+  "workflow_node.deploy.form.cpanel_domain.placeholder": "请输入 cPanel 网站域名",
+  "workflow_node.deploy.form.shared_deploy_target.label": "证书部署方式",
+  "workflow_node.deploy.form.shared_deploy_target.placeholder": "请选择证书部署方式",
+  "plugin.cpanel.name": "cPanel",
+  "provider.cpanel": "cPanel"
+}

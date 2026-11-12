@@ -154,10 +154,21 @@ githubplugin.Serve(&githubplugin.ServeConfig{
 ## 6. Build and install
 
 ```bash
-make build PLUGIN=my-deployer  # produces dist/my-deployer
+make build PLUGIN=my-deployer
 ```
 
-Place the binary **and** its `manifest.json` into the plugin directory under a per-provider subdirectory:
+This writes an install directory:
+
+```
+dist/my-deployer/
+  my-deployer       # binary name from manifest.json
+  manifest.json
+  icon.svg          # copied when manifest.icon is set
+```
+
+`make build-all PLUGIN=my-deployer` cross-compiles release ZIPs for linux/amd64, linux/arm64, darwin/amd64, darwin/arm64, and windows/amd64. Each ZIP keeps the binary name from the manifest (no platform suffix inside the archive).
+
+Copy that directory into the core plugin root under a per-provider subdirectory:
 
 ```
 <pluginDir>/my-deployer/
@@ -166,8 +177,14 @@ Place the binary **and** its `manifest.json` into the plugin directory under a p
   icon.svg          # optional
 ```
 
-`<pluginDir>` is resolved by the core from the `CERTIMATE_PLUGIN_DIR` env var, or defaults to `./plugins` relative to the directory the core process is launched from (its working directory). Restart the core to load it (no hot reload).
+`<pluginDir>` comes from `CERTIMATE_PLUGIN_DIR`, or defaults to `./plugins` under the core process working directory. Directory and binary must not be group- or world-writable.
+
+The core watches the plugin directory and reloads on install, update, delete, or filesystem changes. In-flight deployments keep the previous runtime; a bad package that fails to start does not replace a working one. Market install/update/delete goes through the same reloader. A full process restart is still fine for local bring-up.
+
+### Local checkout pairing
+
+During development this plugins module may pin an older published `github.com/certimate-go/certimate` version in `go.mod`. Real host verification should use a core binary built from the matching workspace checkout, with plugins built from this tree and loaded through `CERTIMATE_PLUGIN_DIR`. After the remaining-deployer migration cleanup in this workspace: core keeps 49 built-in deploy types; this repo holds 113 plugin manifests (`provider_type` unique, no overlap with built-ins).
 
 ## Verification
 
-After restart: the provider appears in the deploy provider picker (tagged "Plugin"), its dynamic config form renders with translated labels, and a deploy routes through the plugin subprocess. See the core's `internal/pluginhost` E2E test for the full cross-layer path.
+After load: the provider appears in the deploy provider picker (tagged "Plugin"), its dynamic config form renders with translated labels, and a deploy routes through the plugin subprocess. See the core's `internal/pluginhost` E2E tests and this repo's `integration` workflow tests for the full host-to-plugin path.

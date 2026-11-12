@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "volcengine-imagex",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-imagex.region.label",
+        "placeholderKey": "plugin.volcengine-imagex.region.placeholder",
+        "tooltipKey": "plugin.volcengine-imagex.region.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "serviceId",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-imagex.serviceId.label",
+        "placeholderKey": "plugin.volcengine-imagex.serviceId.placeholder",
+        "tooltipKey": "plugin.volcengine-imagex.serviceId.tooltip",
+        "tooltipHtml": true,
+        "default": "",
+        "required": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-imagex.domain.label",
+        "placeholderKey": "plugin.volcengine-imagex.domain.placeholder",
+        "default": "",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

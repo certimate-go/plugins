@@ -1,0 +1,11 @@
+{
+  "access.form.flyio_api_token.label": "Fly.io API Token",
+  "access.form.flyio_api_token.placeholder": "请输入 Fly.io API Token",
+  "access.form.flyio_api_token.tooltip": "这是什么？请参阅 <a href=\"https://fly.io/docs/security/tokens/\" target=\"_blank\">https://fly.io/docs/security/tokens/</a>",
+  "workflow_node.deploy.form.flyio_app_name.label": "Fly.io 应用名称",
+  "workflow_node.deploy.form.flyio_app_name.placeholder": "请输入 Fly.io 应用名称",
+  "workflow_node.deploy.form.flyio_domain.label": "Fly.io 自定义域名",
+  "workflow_node.deploy.form.flyio_domain.placeholder": "请输入 Fly.io 自定义域名",
+  "workflow_node.deploy.form.flyio_domain.help": "提示：首次导入自定义证书后，请登录 Fly.io 控制台完成域名所有权验证。",
+  "plugin.flyio.name": "Fly.io"
+}

@@ -1,0 +1,9 @@
+{
+  "plugin.byteplus-medialive.name": "BytePlus - MediaLive",
+  "plugin.byteplus-medialive.domainMatchPattern.label": "Domain match pattern",
+  "plugin.byteplus-medialive.domainMatchPattern.exact": "Exact matches",
+  "plugin.byteplus-medialive.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.byteplus-medialive.domainMatchPattern.certsan": "via Certificate",
+  "plugin.byteplus-medialive.domain.label": "BytePlus MediaLive streaming domain",
+  "plugin.byteplus-medialive.domain.placeholder": "Please enter BytePlus MediaLive streaming domain name"
+}

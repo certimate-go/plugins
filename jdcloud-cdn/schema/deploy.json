@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "jdcloud-cdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.jdcloud-cdn.domainMatchPattern.label",
+        "required": true,
+        "default": "exact",
+        "defaultOnMissing": true,
+        "allowCustomValue": true,
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "plugin.jdcloud-cdn.domainMatchPattern.exact"
+          },
+          {
+            "value": "wildcard",
+            "labelKey": "plugin.jdcloud-cdn.domainMatchPattern.wildcard"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.jdcloud-cdn.domainMatchPattern.certsan"
+          }
+        ],
+        "extraKey": "plugin.jdcloud-cdn.domainMatchPattern.exactHelp",
+        "extraHtml": true,
+        "extraWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.jdcloud-cdn.domain.label",
+        "placeholderKey": "plugin.jdcloud-cdn.domain.placeholder",
+        "default": "",
+        "visibleWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

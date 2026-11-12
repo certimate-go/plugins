@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "mohua",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "access.form.mohua_username.label",
+        "required": true,
+        "default": "",
+        "placeholderKey": "access.form.mohua_username.placeholder"
+      },
+      {
+        "name": "apiPassword",
+        "valueType": "secret",
+        "labelKey": "access.form.mohua_api_password.label",
+        "required": true,
+        "default": "",
+        "secret": true,
+        "placeholderKey": "access.form.mohua_api_password.placeholder",
+        "tooltipKey": "access.form.mohua_api_password.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

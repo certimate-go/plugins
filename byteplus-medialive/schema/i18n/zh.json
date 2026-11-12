@@ -1,0 +1,9 @@
+{
+  "plugin.byteplus-medialive.name": "BytePlus - 视频平台 MediaLive",
+  "plugin.byteplus-medialive.domainMatchPattern.label": "域名匹配模式",
+  "plugin.byteplus-medialive.domainMatchPattern.exact": "精确匹配",
+  "plugin.byteplus-medialive.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.byteplus-medialive.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.byteplus-medialive.domain.label": "BytePlus 视频平台直播流域名",
+  "plugin.byteplus-medialive.domain.placeholder": "请输入 BytePlus 视频平台直播流域名"
+}

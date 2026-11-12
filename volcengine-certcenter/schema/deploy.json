@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "volcengine-certcenter",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-certcenter.region.label",
+        "placeholderKey": "plugin.volcengine-certcenter.region.placeholder",
+        "default": "cn-beijing",
+        "required": true
+      }
+    ]
+  }
+}

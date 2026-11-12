@@ -1,0 +1,12 @@
+{
+  "plugin.ucloud-pathx.name": "UCloud - UPathX (Global Dynamic Acceleration)",
+  "plugin.ucloud-pathx.endpoint.label": "UCloud API endpoint (Optional)",
+  "plugin.ucloud-pathx.endpoint.placeholder": "Please enter UCloud UPathX API endpoint (e.g. api.ucloud-global.com)",
+  "plugin.ucloud-pathx.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>api.ucloud-global.com</strong> for UCloud Global</li><li><strong>api.ucloud.cn</strong> for UCloud in China (<em>Default</em>)</li></ul>",
+  "plugin.ucloud-pathx.acceleratorId.label": "UCloud UPathX accelerator ID",
+  "plugin.ucloud-pathx.acceleratorId.placeholder": "Please enter UCloud UPathX accelerator ID",
+  "plugin.ucloud-pathx.acceleratorId.tooltip": "For more information, see <a href=\"https://console.ucloud-global.com/upathx/accelerate\" target=\"_blank\">https://console.ucloud-global.com/upathx/accelerate</a>",
+  "plugin.ucloud-pathx.listenerPort.label": "UCloud UPathX listener port",
+  "plugin.ucloud-pathx.listenerPort.placeholder": "Please enter UCloud UPathX listener port",
+  "plugin.ucloud-pathx.listenerPort.tooltip": "For more information, see <a href=\"https://console.ucloud-global.com/upathx/accelerate\" target=\"_blank\">https://console.ucloud-global.com/upathx/accelerate</a>"
+}

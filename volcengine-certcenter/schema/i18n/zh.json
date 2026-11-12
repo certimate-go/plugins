@@ -1,0 +1,5 @@
+{
+  "plugin.volcengine-certcenter.name": "火山引擎 - 上传到证书中心",
+  "plugin.volcengine-certcenter.region.label": "火山引擎服务地域",
+  "plugin.volcengine-certcenter.region.placeholder": "请输入火山引擎证书中心服务地域（例如：cn-beijing）"
+}

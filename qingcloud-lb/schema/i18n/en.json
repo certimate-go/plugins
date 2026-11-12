@@ -1,0 +1,16 @@
+{
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.label": "QingCloud zone ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.placeholder": "Please enter QingCloud LBC zone ID (e.g. pek3a)",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.tooltip": "For more information, see <a href=\"https://docsv4.qingcloud.com/user_guide/helpcenter/area/\" target=\"_blank\">https://docsv4.qingcloud.com/user_guide/helpcenter/area/</a>",
+  "plugin.qingcloud-lb.target": "Certificate deploy target",
+  "plugin.qingcloud-lb.targetPlaceholder": "Please select certificate deploy target",
+  "plugin.qingcloud-lb.target.loadbalancer": "LBC load balancer",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.label": "QingCloud LBC load balancer ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.placeholder": "Please enter QingCloud LBC load balancer ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.tooltip": "For more information, see <a href=\"https://console.qingcloud.com/pek3a/loadbalancers/\" target=\"_blank\">https://console.qingcloud.com/pek3a/loadbalancers/</a>",
+  "plugin.qingcloud-lb.target.listener": "LBC listener",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.label": "QingCloud LBC listener ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.placeholder": "Please enter QingCloud LBC listener ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.tooltip": "For more information, see <a href=\"https://console.qingcloud.com/pek3a/loadbalancers/\" target=\"_blank\">https://console.qingcloud.com/pek3a/loadbalancers/</a>",
+  "plugin.qingcloud-lb.name": "QingCloud - LBC (Load Balancer Cluster)"
+}

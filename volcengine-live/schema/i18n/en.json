@@ -1,0 +1,9 @@
+{
+  "plugin.volcengine-live.name": "Volcengine - Live",
+  "plugin.volcengine-live.domainMatchPattern.label": "Domain match pattern",
+  "plugin.volcengine-live.domainMatchPattern.exact": "Exact matches",
+  "plugin.volcengine-live.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.volcengine-live.domainMatchPattern.certsan": "via Certificate",
+  "plugin.volcengine-live.domain.label": "VolcEngine Live streaming domain",
+  "plugin.volcengine-live.domain.placeholder": "Please enter VolcEngine Live streaming domain name"
+}

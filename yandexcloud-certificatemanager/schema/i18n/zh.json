@@ -1,0 +1,6 @@
+{
+  "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.label": "Yandex Cloud 证书管理器证书 ID（可选）",
+  "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.placeholder": "请输入 Yandex Cloud 证书管理器证书 ID",
+  "plugin.yandexcloud-certificatemanager.workflow_node.deploy.form.yandexcloud_certificatemanager_certificate_id.help": "提示：不填写时，将上传新证书；否则，将替换原证书。",
+  "plugin.yandexcloud-certificatemanager.name": "Yandex Cloud - 证书管理器"
+}

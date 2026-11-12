@@ -1,0 +1,16 @@
+{
+  "plugin.huaweicloud-waf.name": "Huawei Cloud - WAF (Web Application Firewall)",
+  "plugin.huaweicloud-waf.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-waf.region.placeholder": "Please enter Huawei Cloud WAF region (e.g. cn-north-1)",
+  "plugin.huaweicloud-waf.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/waf?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/waf</a>",
+  "plugin.huaweicloud-waf.deployTarget.label": "Certificate deploy target",
+  "plugin.huaweicloud-waf.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.huaweicloud-waf.deployTarget.cloudserver": "WAF cloud server",
+  "plugin.huaweicloud-waf.deployTarget.premiumhost": "WAF premium host",
+  "plugin.huaweicloud-waf.deployTarget.certificate": "WAF certificate",
+  "plugin.huaweicloud-waf.domain.label": "Huawei Cloud WAF domain",
+  "plugin.huaweicloud-waf.domain.placeholder": "Please enter Huawei Cloud WAF domain name",
+  "plugin.huaweicloud-waf.certificateId.label": "Huawei Cloud WAF certificate ID",
+  "plugin.huaweicloud-waf.certificateId.placeholder": "Please enter Huawei Cloud WAF certificate ID",
+  "plugin.huaweicloud-waf.certificateId.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/console/#/waf/certificateManagement\" target=\"_blank\">https://console-intl.huaweicloud.com/console/#/waf/certificateManagement</a>"
+}

@@ -1,0 +1,20 @@
+{
+  "plugin.huaweicloud-elb.name": "华为云 - 弹性负载均衡 ELB",
+  "plugin.huaweicloud-elb.region.label": "华为云服务区域",
+  "plugin.huaweicloud-elb.region.placeholder": "请输入华为云 ELB 服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-elb.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/elb\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/elb</a>",
+  "plugin.huaweicloud-elb.deployTarget.label": "证书部署方式",
+  "plugin.huaweicloud-elb.deployTarget.placeholder": "请选择证书部署方式",
+  "plugin.huaweicloud-elb.deployTarget.loadbalancer": "部署到指定负载均衡器下的全部 HTTPS 监听器",
+  "plugin.huaweicloud-elb.deployTarget.listener": "部署到指定 HTTPS 监听器",
+  "plugin.huaweicloud-elb.deployTarget.certificate": "替换指定证书",
+  "plugin.huaweicloud-elb.loadbalancerId.label": "华为云 ELB 负载均衡器 ID",
+  "plugin.huaweicloud-elb.loadbalancerId.placeholder": "请输入华为云 ELB 负载均衡器 ID",
+  "plugin.huaweicloud-elb.loadbalancerId.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/vpc/#/elb/list/grid\" target=\"_blank\">https://console.huaweicloud.com/vpc/#/elb/list/grid</a>",
+  "plugin.huaweicloud-elb.listenerId.label": "华为云 ELB 监听器 ID",
+  "plugin.huaweicloud-elb.listenerId.placeholder": "请输入华为云 ELB 监听器 ID",
+  "plugin.huaweicloud-elb.listenerId.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/vpc/#/elb/list/grid\" target=\"_blank\">https://console.huaweicloud.com/vpc/#/elb/list/grid</a>",
+  "plugin.huaweicloud-elb.certificateId.label": "华为云 ELB 证书 ID",
+  "plugin.huaweicloud-elb.certificateId.placeholder": "请输入华为云 ELB 证书 ID",
+  "plugin.huaweicloud-elb.certificateId.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/vpc/#/elb/elbCert\" target=\"_blank\">https://console.huaweicloud.com/vpc/#/elb/elbCert</a>"
+}

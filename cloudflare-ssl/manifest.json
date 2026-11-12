@@ -1,0 +1,14 @@
+{
+  "provider_type": "cloudflare-ssl",
+  "access_provider_type": "cloudflare",
+  "binary": "cloudflare-ssl",
+  "deploy_category": "ssl",
+  "display_name_key": "plugin.cloudflare-ssl.name",
+  "icon": "cloudflare.svg",
+  "protocol_version": 2,
+  "version": "0.1.0",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

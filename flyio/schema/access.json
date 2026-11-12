@@ -1,0 +1,20 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "flyio",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "apiToken",
+        "valueType": "secret",
+        "labelKey": "access.form.flyio_api_token.label",
+        "required": true,
+        "default": "",
+        "secret": true,
+        "placeholderKey": "access.form.flyio_api_token.placeholder",
+        "tooltipKey": "access.form.flyio_api_token.tooltip",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

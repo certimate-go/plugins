@@ -1,0 +1,16 @@
+{
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.label": "青云服务区域 ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.placeholder": "请输入青云 ELB 服务区域 ID（例如：pek3a）",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_zone_id.tooltip": "这是什么？请参阅 <a href=\"https://docsv4.qingcloud.com/user_guide/helpcenter/area/\" target=\"_blank\">https://docsv4.qingcloud.com/user_guide/helpcenter/area/</a>",
+  "plugin.qingcloud-lb.target": "证书部署方式",
+  "plugin.qingcloud-lb.targetPlaceholder": "请选择证书部署方式",
+  "plugin.qingcloud-lb.target.loadbalancer": "部署到指定负载均衡器下的全部 HTTPS 监听器",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.label": "青云 LB 负载均衡器 ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.placeholder": "请输入青云 LB 负载均衡器 ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_loadbalancer_id.tooltip": "这是什么？请参阅 <a href=\"https://console.qingcloud.com/pek3a/loadbalancers/\" target=\"_blank\">https://console.qingcloud.com/pek3a/loadbalancers/</a>",
+  "plugin.qingcloud-lb.target.listener": "部署到指定 HTTPS 监听器",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.label": "青云 LB 监听器 ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.placeholder": "请输入青云 LB 监听器 ID",
+  "plugin.qingcloud-lb.workflow_node.deploy.form.qingcloud_lb_listener_id.tooltip": "这是什么？请参阅 <a href=\"https://console.qingcloud.com/pek3a/loadbalancers/\" target=\"_blank\">https://console.qingcloud.com/pek3a/loadbalancers/</a>",
+  "plugin.qingcloud-lb.name": "青云 - 负载均衡 LB"
+}

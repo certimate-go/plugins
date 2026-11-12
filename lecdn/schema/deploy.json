@@ -1,0 +1,78 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "lecdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.lecdn.workflow_node.deploy.form.shared_deploy_target.label",
+        "placeholderKey": "plugin.lecdn.workflow_node.deploy.form.shared_deploy_target.placeholder",
+        "required": true,
+        "default": "certificate",
+        "options": [
+          {
+            "value": "certificate",
+            "labelKey": "plugin.lecdn.workflow_node.deploy.form.lecdn_deploy_target.option.certificate.label"
+          }
+        ]
+      },
+      {
+        "name": "certificateId",
+        "valueType": "text",
+        "labelKey": "plugin.lecdn.workflow_node.deploy.form.lecdn_certificate_id.label",
+        "placeholderKey": "plugin.lecdn.workflow_node.deploy.form.lecdn_certificate_id.placeholder",
+        "tooltipKey": "plugin.lecdn.workflow_node.deploy.form.lecdn_certificate_id.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "inputType": "number",
+        "dependencies": [
+          "deployTarget"
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ],
+            "validator": "positiveInteger"
+          }
+        ],
+        "numericValue": "integer"
+      },
+      {
+        "name": "clientId",
+        "valueType": "text",
+        "labelKey": "plugin.lecdn.workflow_node.deploy.form.lecdn_client_id.label",
+        "placeholderKey": "plugin.lecdn.workflow_node.deploy.form.lecdn_client_id.placeholder",
+        "tooltipKey": "plugin.lecdn.workflow_node.deploy.form.lecdn_client_id.tooltip",
+        "tooltipHtml": true,
+        "inputType": "number",
+        "dependencies": [
+          "deployTarget"
+        ],
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "certificate"
+            ]
+          }
+        ],
+        "numericValue": "integer"
+      }
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baiducloud-appblb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.baiducloud-appblb.region.label",
+        "placeholderKey": "plugin.baiducloud-appblb.region.placeholder",
+        "tooltipKey": "plugin.baiducloud-appblb.region.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.baiducloud-appblb.deployTarget.label",
+        "placeholderKey": "plugin.baiducloud-appblb.deployTarget.placeholder",
+        "required": true,
+        "default": "listener",
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.baiducloud-appblb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "listener",
+            "labelKey": "plugin.baiducloud-appblb.deployTarget.listener"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.baiducloud-appblb.loadbalancerId.label",
+        "placeholderKey": "plugin.baiducloud-appblb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.baiducloud-appblb.loadbalancerId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "listenerPort",
+        "valueType": "text",
+        "labelKey": "plugin.baiducloud-appblb.listenerPort.label",
+        "placeholderKey": "plugin.baiducloud-appblb.listenerPort.placeholder",
+        "tooltipKey": "plugin.baiducloud-appblb.listenerPort.tooltip",
+        "required": true,
+        "default": 443,
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ]
+          }
+        ],
+        "inputType": "number",
+        "numericValue": "positiveInteger",
+        "validateWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "listener"
+            ],
+            "validator": "port"
+          }
+        ]
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.baiducloud-appblb.domain.label",
+        "placeholderKey": "plugin.baiducloud-appblb.domain.placeholder",
+        "extraKey": "plugin.baiducloud-appblb.domain.help",
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "in",
+            "values": [
+              "loadbalancer",
+              "listener"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domain",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ],
+        "allowClear": true
+      }
+    ]
+  }
+}

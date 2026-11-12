@@ -1,0 +1,7 @@
+{
+  "plugin.rainyun-sslcenter.name": "雨云 - 上传到 SSL 证书中心",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.label": "雨云 RCDN 证书 ID",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.placeholder": "请输入雨云 RCDN 证书 ID",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.tooltip": "这是什么？请参阅 <a href=\"https://app.rainyun.com/apps/ssl/list\" target=\"_blank\">https://app.rainyun.com/apps/ssl/list</a>",
+  "workflow_node.deploy.form.rainyun_sslcenter_certificate_id.help": "提示：不填写时，将上传新证书；否则，将替换原证书。"
+}

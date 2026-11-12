@@ -1,0 +1,8 @@
+{
+  "plugin.jdcloud-live.name": "JD Cloud - Live Video",
+  "plugin.jdcloud-live.domainMatchPattern.label": "Domain match pattern",
+  "plugin.jdcloud-live.domainMatchPattern.exact": "Exact matches",
+  "plugin.jdcloud-live.domainMatchPattern.certsan": "via Certificate",
+  "plugin.jdcloud-live.domain.label": "JD Cloud Live Video streaming domain",
+  "plugin.jdcloud-live.domain.placeholder": "Please enter JD Cloud Live Video streaming domain name"
+}

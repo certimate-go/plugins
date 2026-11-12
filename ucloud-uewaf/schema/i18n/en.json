@@ -1,0 +1,8 @@
+{
+  "plugin.ucloud-uewaf.name": "UCloud - UEWAF (Enterprise Web Application Firewall)",
+  "plugin.ucloud-uewaf.endpoint.label": "UCloud API endpoint (Optional)",
+  "plugin.ucloud-uewaf.endpoint.placeholder": "Please enter UCloud UEWAF API endpoint (e.g. api.ucloud-global.com)",
+  "plugin.ucloud-uewaf.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>api.ucloud-global.com</strong> for UCloud Global</li><li><strong>api.ucloud.cn</strong> for UCloud in China (<em>Default</em>)</li></ul>",
+  "plugin.ucloud-uewaf.domain.label": "UCloud UEWAF domain",
+  "plugin.ucloud-uewaf.domain.placeholder": "Please enter UCloud UEWAF domain name"
+}

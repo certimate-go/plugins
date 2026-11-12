@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ucloud-uclb",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-uclb.endpoint.label",
+        "placeholderKey": "plugin.ucloud-uclb.endpoint.placeholder",
+        "tooltipKey": "plugin.ucloud-uclb.endpoint.tooltip",
+        "tooltipHtml": true,
+        "allowClear": true
+      },
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-uclb.region.label",
+        "placeholderKey": "plugin.ucloud-uclb.region.placeholder",
+        "tooltipKey": "plugin.ucloud-uclb.region.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "deployTarget",
+        "valueType": "select",
+        "labelKey": "plugin.ucloud-uclb.deployTarget.label",
+        "placeholderKey": "plugin.ucloud-uclb.deployTarget.placeholder",
+        "required": true,
+        "default": "vserver",
+        "options": [
+          {
+            "value": "loadbalancer",
+            "labelKey": "plugin.ucloud-uclb.deployTarget.loadbalancer"
+          },
+          {
+            "value": "vserver",
+            "labelKey": "plugin.ucloud-uclb.deployTarget.vserver"
+          }
+        ]
+      },
+      {
+        "name": "loadbalancerId",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-uclb.loadbalancerId.label",
+        "placeholderKey": "plugin.ucloud-uclb.loadbalancerId.placeholder",
+        "tooltipKey": "plugin.ucloud-uclb.loadbalancerId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      },
+      {
+        "name": "vserverId",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-uclb.vserverId.label",
+        "placeholderKey": "plugin.ucloud-uclb.vserverId.placeholder",
+        "tooltipKey": "plugin.ucloud-uclb.vserverId.tooltip",
+        "default": "",
+        "tooltipHtml": true,
+        "visibleWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "vserver"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "deployTarget",
+            "op": "eq",
+            "values": [
+              "vserver"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

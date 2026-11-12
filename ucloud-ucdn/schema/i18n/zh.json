@@ -1,0 +1,9 @@
+{
+  "plugin.ucloud-ucdn.name": "优刻得 - 云分发 UCDN",
+  "plugin.ucloud-ucdn.endpoint.label": "优刻得接口端点（可选）",
+  "plugin.ucloud-ucdn.endpoint.placeholder": "请输入优刻得 UCDN 接口端点（例如：api.ucloud.cn）",
+  "plugin.ucloud-ucdn.endpoint.tooltip": "这是什么？请参阅 <a href=\"https://docs.ucloud.cn/api/summary/gateway\" target=\"_blank\">https://docs.ucloud.cn/api/summary/gateway</a><br>国际站用户请填写 <em>api.ucloud-global.com</em>。",
+  "plugin.ucloud-ucdn.domainId.label": "优刻得 UCDN 域名 ID",
+  "plugin.ucloud-ucdn.domainId.placeholder": "请输入优刻得 UCDN 域名 ID",
+  "plugin.ucloud-ucdn.domainId.tooltip": "这是什么？请参阅 <a href=\"https://console.ucloud.cn/ucdn\" target=\"_blank\">https://console.ucloud.cn/ucdn</a>"
+}

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ucloud-ucdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-ucdn.endpoint.label",
+        "placeholderKey": "plugin.ucloud-ucdn.endpoint.placeholder",
+        "tooltipKey": "plugin.ucloud-ucdn.endpoint.tooltip",
+        "tooltipHtml": true,
+        "allowClear": true
+      },
+      {
+        "name": "domainId",
+        "valueType": "text",
+        "labelKey": "plugin.ucloud-ucdn.domainId.label",
+        "placeholderKey": "plugin.ucloud-ucdn.domainId.placeholder",
+        "tooltipKey": "plugin.ucloud-ucdn.domainId.tooltip",
+        "required": true,
+        "default": "",
+        "tooltipHtml": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.label": "OCI compartment OCID",
+  "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.placeholder": "Please enter OCI compartment OCID",
+  "plugin.oraclecloud-certificatesmgmt.workflow_node.deploy.form.oraclecloud_certificatesmgmt_compartment_ocid.tooltip": "For more information, see <a href=\"https://docs.oracle.com/en-us/iaas/Content/Identity/compartments/managingcompartments.htm\" target=\"_blank\">https://docs.oracle.com/en-us/iaas/Content/Identity/compartments/managingcompartments.htm</a>",
+  "plugin.oraclecloud-certificatesmgmt.name": "Oracle Cloud - Certificates Management"
+}

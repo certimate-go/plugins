@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "volcengine-live",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.volcengine-live.domainMatchPattern.label",
+        "default": "exact",
+        "required": true,
+        "defaultOnMissing": true,
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "plugin.volcengine-live.domainMatchPattern.exact"
+          },
+          {
+            "value": "wildcard",
+            "labelKey": "plugin.volcengine-live.domainMatchPattern.wildcard"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.volcengine-live.domainMatchPattern.certsan"
+          }
+        ],
+        "allowCustomValue": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.volcengine-live.domain.label",
+        "placeholderKey": "plugin.volcengine-live.domain.placeholder",
+        "default": "",
+        "visibleWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

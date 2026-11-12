@@ -1,0 +1,14 @@
+{
+  "workflow_node.deploy.form.cloudflare_ssl_zone_id.tooltip": "这是什么？请参阅 <a href=\"https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#copy-your-zone-id\" target=\"_blank\">https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/</a>",
+  "workflow_node.deploy.form.cloudflare_ssl_certificate_id.tooltip": "这是什么？请参阅 <a href=\"https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/\" target=\"_blank\">https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/</a>",
+  "workflow_node.deploy.form.cloudflare_ssl_certificate_id.placeholder": "请输入 Cloudflare 自定义证书 ID",
+  "workflow_node.deploy.form.cloudflare_ssl_certificate_id.help": "提示：不填写时，将上传新证书；否则，将替换原证书。",
+  "workflow_node.deploy.form.cloudflare_ssl_environment.tooltip": "这是什么？请参阅 <a href=\"https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/\" target=\"_blank\">https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/</a>",
+  "workflow_node.deploy.form.cloudflare_ssl_zone_id.label": "Cloudflare DNS 区域 ID",
+  "workflow_node.deploy.form.cloudflare_ssl_certificate_id.label": "Cloudflare 自定义证书 ID（可选）",
+  "workflow_node.deploy.form.cloudflare_ssl_environment.label": "Cloudflare 部署环境（可选）",
+  "workflow_node.deploy.form.cloudflare_ssl_zone_id.placeholder": "请输入 Cloudflare DNS 区域 ID",
+  "workflow_node.deploy.form.cloudflare_ssl_environment.placeholder": "请输入 Cloudflare 部署环境",
+  "plugin.cloudflare-ssl.name": "Cloudflare - 边缘证书",
+  "provider.cloudflare": "Cloudflare"
+}

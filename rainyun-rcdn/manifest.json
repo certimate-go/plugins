@@ -1,0 +1,14 @@
+{
+  "provider_type": "rainyun-rcdn",
+  "access_provider_type": "rainyun",
+  "display_name_key": "plugin.rainyun-rcdn.name",
+  "deploy_category": "cdn",
+  "version": "0.1.0",
+  "protocol_version": 2,
+  "binary": "rainyun-rcdn",
+  "icon": "rainyun.svg",
+  "priority": 100,
+  "usages": [
+    "hosting"
+  ]
+}

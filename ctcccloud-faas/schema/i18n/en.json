@@ -1,0 +1,8 @@
+{
+  "plugin.ctcccloud-faas.name": "China Telecom StateCloud - FaaS (Function as a Service)",
+  "plugin.ctcccloud-faas.regionId.label": "CTCC StateCloud region ID",
+  "plugin.ctcccloud-faas.regionId.placeholder": "Please enter CTCC StateCloud FaaS region ID",
+  "plugin.ctcccloud-faas.regionId.tooltip": "For more information, see <a href=\"https://www.ctyun.cn/document/10026755/10196575\" target=\"_blank\">https://www.ctyun.cn/document/10026755/10196575</a>",
+  "plugin.ctcccloud-faas.domain.label": "CTCC StateCloud FaaS domain",
+  "plugin.ctcccloud-faas.domain.placeholder": "Please enter CTCC StateCloud FaaS domain name"
+}

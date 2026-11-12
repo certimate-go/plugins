@@ -1,0 +1,10 @@
+{
+  "plugin.baiducloud-cdn.name": "Baidu Cloud - CDN (Content Delivery Network)",
+  "plugin.baiducloud-cdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.baiducloud-cdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.baiducloud-cdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.baiducloud-cdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.baiducloud-cdn.domainMatchPattern.exactHelp": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.baiducloud-cdn.domain.label": "Baidu Cloud CDN domain",
+  "plugin.baiducloud-cdn.domain.placeholder": "Please enter Baidu Cloud CDN domain name"
+}

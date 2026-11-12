@@ -1,0 +1,8 @@
+{
+  "plugin.ctcccloud-lvdn.name": "China Telecom StateCloud - LVDN (Live Video Delivery Network)",
+  "plugin.ctcccloud-lvdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.ctcccloud-lvdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.ctcccloud-lvdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.ctcccloud-lvdn.domain.label": "CTCC StateCloud LVDN domain",
+  "plugin.ctcccloud-lvdn.domain.placeholder": "Please enter CTCC StateCloud LVDN domain name"
+}

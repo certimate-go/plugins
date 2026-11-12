@@ -1,0 +1,16 @@
+{
+  "plugin.byteplus-clb.name": "BytePlus - 传统型负载均衡 CLB",
+  "plugin.byteplus-clb.region.label": "BytePlus 服务地域",
+  "plugin.byteplus-clb.region.placeholder": "请输入 BytePlus CLB 服务地域（例如：ap-southeast-1）",
+  "plugin.byteplus-clb.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.byteplus.com/en/docs/clb/Product-Overview-08\" target=\"_blank\">https://docs.byteplus.com/en/docs/clb/Product-Overview-08</a>",
+  "plugin.byteplus-clb.deployTarget.label": "证书部署方式",
+  "plugin.byteplus-clb.deployTarget.placeholder": "请选择证书部署方式",
+  "plugin.byteplus-clb.deployTarget.loadbalancer": "部署到指定负载均衡器下的全部 HTTPS 监听",
+  "plugin.byteplus-clb.deployTarget.listener": "部署到 HTTPS 监听器",
+  "plugin.byteplus-clb.loadbalancerId.label": "BytePlus CLB 负载均衡器 ID",
+  "plugin.byteplus-clb.loadbalancerId.placeholder": "请输入 BytePlus CLB 负载均衡器 ID",
+  "plugin.byteplus-clb.loadbalancerId.tooltip": "这是什么？请参阅 <a href=\"https://console.byteplus.com/clb/LoadBalancer\" target=\"_blank\">https://console.byteplus.com/clb/LoadBalancer</a>",
+  "plugin.byteplus-clb.listenerId.label": "BytePlus CLB 监听器 ID",
+  "plugin.byteplus-clb.listenerId.placeholder": "请输入 BytePlus CLB 监听器 ID",
+  "plugin.byteplus-clb.listenerId.tooltip": "这是什么？请参阅 <a href=\"https://console.byteplus.com/clb/LoadBalancer\" target=\"_blank\">https://console.byteplus.com/clb/LoadBalancer</a>"
+}

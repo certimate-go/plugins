@@ -1,0 +1,13 @@
+{
+  "plugin.ucloud-us3.name": "优刻得 - 对象存储 US3",
+  "plugin.ucloud-us3.endpoint.label": "优刻得接口端点（可选）",
+  "plugin.ucloud-us3.endpoint.placeholder": "请输入优刻得 US3 接口端点（例如：api.ucloud.cn）",
+  "plugin.ucloud-us3.endpoint.tooltip": "这是什么？请参阅 <a href=\"https://docs.ucloud.cn/api/summary/gateway\" target=\"_blank\">https://docs.ucloud.cn/api/summary/gateway</a><br>国际站用户请填写 <em>api.ucloud-global.com</em>。",
+  "plugin.ucloud-us3.region.label": "优刻得服务地域",
+  "plugin.ucloud-us3.region.placeholder": "请输入优刻得 US3 服务地域（例如：cn-bj2）",
+  "plugin.ucloud-us3.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.ucloud.cn/api/summary/regionlist\" target=\"_blank\">https://docs.ucloud.cn/api/summary/regionlist</a>",
+  "plugin.ucloud-us3.bucket.label": "优刻得 US3 存储桶名",
+  "plugin.ucloud-us3.bucket.placeholder": "请输入优刻得 US3 存储桶名",
+  "plugin.ucloud-us3.domain.label": "优刻得 US3 自定义域名",
+  "plugin.ucloud-us3.domain.placeholder": "请输入优刻得 US3 自定义域名"
+}

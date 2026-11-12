@@ -1,0 +1,11 @@
+{
+  "plugin.rainyun-rcdn.name": "雨云 - 雨盾 CDN",
+  "workflow_node.deploy.form.rainyun_rcdn_instance_id.label": "雨云 RCDN 实例 ID",
+  "workflow_node.deploy.form.rainyun_rcdn_instance_id.placeholder": "请输入雨云 RCDN 实例 ID",
+  "workflow_node.deploy.form.rainyun_rcdn_instance_id.tooltip": "这是什么？请参阅 <a href=\"https://app.rainyun.com/apps/rcdn/list\" target=\"_blank\">https://app.rainyun.com/apps/rcdn/list</a>",
+  "workflow_node.deploy.form.shared_domain_match_pattern.option.exact.help.wildcard": "提示：对于支持泛解析的站点，<strong>精确匹配</strong>一个泛域名仅包含该站点本身、不包括相关子域名站点。",
+  "workflow_node.deploy.form.shared_domain_match_pattern.label": "域名匹配模式",
+  "workflow_node.deploy.form.shared_domain_match_pattern.option.exact.label": "精确匹配",
+  "workflow_node.deploy.form.rainyun_rcdn_domain.label": "雨云 RCDN 加速域名",
+  "workflow_node.deploy.form.rainyun_rcdn_domain.placeholder": "请输入雨云 RCDN 加速域名"
+}

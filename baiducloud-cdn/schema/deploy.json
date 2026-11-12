@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baiducloud-cdn",
+  "category": "deploy",
+  "schema": {
+    "columns": [
+      {
+        "name": "domainMatchPattern",
+        "valueType": "radio",
+        "labelKey": "plugin.baiducloud-cdn.domainMatchPattern.label",
+        "required": true,
+        "default": "exact",
+        "allowCustomValue": true,
+        "options": [
+          {
+            "value": "exact",
+            "labelKey": "plugin.baiducloud-cdn.domainMatchPattern.exact"
+          },
+          {
+            "value": "wildcard",
+            "labelKey": "plugin.baiducloud-cdn.domainMatchPattern.wildcard"
+          },
+          {
+            "value": "certsan",
+            "labelKey": "plugin.baiducloud-cdn.domainMatchPattern.certsan"
+          }
+        ],
+        "extraKey": "plugin.baiducloud-cdn.domainMatchPattern.exactHelp",
+        "extraHtml": true,
+        "extraWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "eq",
+            "values": [
+              "exact"
+            ]
+          }
+        ],
+        "defaultOnMissing": true
+      },
+      {
+        "name": "domain",
+        "valueType": "text",
+        "labelKey": "plugin.baiducloud-cdn.domain.label",
+        "placeholderKey": "plugin.baiducloud-cdn.domain.placeholder",
+        "default": "",
+        "visibleWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "ne",
+            "values": [
+              "certsan"
+            ]
+          }
+        ],
+        "requiredWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "domainMatchPattern",
+            "op": "in",
+            "values": [
+              "exact",
+              "wildcard"
+            ],
+            "validator": "domain",
+            "params": {
+              "allowWildcard": true
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

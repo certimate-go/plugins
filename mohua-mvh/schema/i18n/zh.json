@@ -1,0 +1,15 @@
+{
+  "access.form.mohua_username.label": "嘿华云用户名",
+  "access.form.mohua_username.placeholder": "请输入嘿华云用户名",
+  "access.form.mohua_api_password.label": "嘿华云 API 密码",
+  "access.form.mohua_api_password.placeholder": "请输入嘿华云 API 密码",
+  "access.form.mohua_api_password.tooltip": "这是什么？请参阅 <a href=\"https://cloud.mhjz1.cn/apimanage\" target=\"_blank\">https://cloud.mhjz1.cn/apimanage</a>",
+  "workflow_node.deploy.form.mohua_mvh_host_id.label": "嘿华云虚拟主机 ID",
+  "workflow_node.deploy.form.mohua_mvh_host_id.placeholder": "请输入嘿华云虚拟主机 ID",
+  "workflow_node.deploy.form.mohua_mvh_host_id.tooltip": "这是什么？请参阅 <a href=\"https://cloud.mhjz1.cn/service?groupid=328\" target=\"_blank\">https://cloud.mhjz1.cn/service?groupid=328</a>",
+  "workflow_node.deploy.form.mohua_mvh_domain_id.label": "嘿华云虚拟主机域名 ID",
+  "workflow_node.deploy.form.mohua_mvh_domain_id.placeholder": "请输入嘿华云虚拟主机域名 ID",
+  "workflow_node.deploy.form.mohua_mvh_domain_id.tooltip": "这是什么？请参阅 <a href=\"https://cloud.mhjz1.cn/service?groupid=328\" target=\"_blank\">https://cloud.mhjz1.cn/service?groupid=328</a>",
+  "plugin.mohua-mvh.name": "嘿华云 - 虚拟主机 MVH ",
+  "plugin.mohua.name": "嘿华云"
+}

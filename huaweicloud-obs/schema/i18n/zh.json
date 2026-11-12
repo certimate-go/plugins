@@ -1,0 +1,10 @@
+{
+  "plugin.huaweicloud-obs.name": "华为云 - 对象储存服务 OBS",
+  "plugin.huaweicloud-obs.region.label": "华为云服务区域",
+  "plugin.huaweicloud-obs.region.placeholder": "请输入华为云 OBS 服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-obs.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/obs\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/obs</a>",
+  "plugin.huaweicloud-obs.bucket.label": "华为云 OBS 存储桶名",
+  "plugin.huaweicloud-obs.bucket.placeholder": "请输入华为云 OBS 存储桶名",
+  "plugin.huaweicloud-obs.domain.label": "华为云 OBS 自定义域名",
+  "plugin.huaweicloud-obs.domain.placeholder": "请输入华为云 OBS 自定义域名"
+}

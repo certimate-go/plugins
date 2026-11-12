@@ -1,0 +1,10 @@
+{
+  "plugin.jdcloud-cdn.name": "JD Cloud - CDN (Content Delivery Network)",
+  "plugin.jdcloud-cdn.domainMatchPattern.label": "Domain match pattern",
+  "plugin.jdcloud-cdn.domainMatchPattern.exact": "Exact matches",
+  "plugin.jdcloud-cdn.domainMatchPattern.wildcard": "Wildcard matches",
+  "plugin.jdcloud-cdn.domainMatchPattern.certsan": "via Certificate",
+  "plugin.jdcloud-cdn.domainMatchPattern.exactHelp": "Notes: For the sites which support wildcard resolution, an <strong>exact match</strong> of a wildcard domain only includes the site itself, does not include its subdomains.",
+  "plugin.jdcloud-cdn.domain.label": "JD Cloud CDN domain",
+  "plugin.jdcloud-cdn.domain.placeholder": "Please enter JD Cloud CDN domain name"
+}

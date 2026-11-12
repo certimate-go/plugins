@@ -1,0 +1,20 @@
+{
+  "plugin.volcengine-vod.name": "火山引擎 - 视频点播 VOD",
+  "plugin.volcengine-vod.region.label": "火山引擎服务地域",
+  "plugin.volcengine-vod.region.placeholder": "请输入火山引擎 VOD 服务地域（例如：cn-north-1）",
+  "plugin.volcengine-vod.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.volcengine.com/docs/4/1215505\" target=\"_blank\">https://docs.volcengine.com/docs/4/1215505</a>",
+  "plugin.volcengine-vod.spaceName.label": "火山引擎 VOD 空间名称",
+  "plugin.volcengine-vod.spaceName.placeholder": "请输入火山引擎 VOD 空间名称",
+  "plugin.volcengine-vod.spaceName.tooltip": "这是什么？请参阅 <a href=\"https://console.volcengine.com/vod/overview\" target=\"_blank\">https://console.volcengine.com/vod/overview</a>",
+  "plugin.volcengine-vod.domainType.label": "火山引擎 VOD 域名类型",
+  "plugin.volcengine-vod.domainType.placeholder": "请选择火山引擎 VOD 域名类型",
+  "plugin.volcengine-vod.domainType.play": "点播加速域名",
+  "plugin.volcengine-vod.domainType.image": "封面加速域名",
+  "plugin.volcengine-vod.domainType.third": "自定义源站加速域名",
+  "plugin.volcengine-vod.domainMatchPattern.label": "域名匹配模式",
+  "plugin.volcengine-vod.domainMatchPattern.exact": "精确匹配",
+  "plugin.volcengine-vod.domainMatchPattern.wildcard": "通配符匹配（泛域名）",
+  "plugin.volcengine-vod.domainMatchPattern.certsan": "根据证书自动匹配",
+  "plugin.volcengine-vod.domain.label": "火山引擎 VOD 加速域名",
+  "plugin.volcengine-vod.domain.placeholder": "请输入火山引擎 VOD 加速域名"
+}

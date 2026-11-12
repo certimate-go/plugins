@@ -1,0 +1,10 @@
+{
+  "plugin.gcore-cdn.name": "G-Core - 内容分发网络 CDN",
+  "workflow_node.deploy.form.gcore_cdn_resource_id.label": "G-Core CDN 资源 ID",
+  "workflow_node.deploy.form.gcore_cdn_resource_id.placeholder": "请输入 G-Core CDN 资源 ID",
+  "workflow_node.deploy.form.gcore_cdn_resource_id.tooltip": "这是什么？请参阅 <a href=\"https://cdn.gcore.com/resources/list\" target=\"_blank\">https://cdn.gcore.com/resources/list</a>",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.label": "G-Core CDN 原证书 ID（可选）",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.placeholder": "请输入 G-Core CDN 原证书 ID",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.tooltip": "这是什么？请参阅 <a href=\"https://cdn.gcore.com/ssl\" target=\"_blank\">https://cdn.gcore.com/ssl</a>",
+  "workflow_node.deploy.form.gcore_cdn_certificate_id.help": "提示：不填写时，将上传新证书；否则，将替换原证书。"
+}

@@ -1,0 +1,12 @@
+{
+  "plugin.huaweicloud-apig.name": "Huawei Cloud - API Gateway",
+  "plugin.huaweicloud-apig.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-apig.region.placeholder": "Please enter Huawei Cloud API gateway region (e.g. cn-north-1)",
+  "plugin.huaweicloud-apig.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/apig?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/apig</a>",
+  "plugin.huaweicloud-apig.deployTarget.label": "Certificate deploy target",
+  "plugin.huaweicloud-apig.deployTarget.placeholder": "Please select certificate deploy target",
+  "plugin.huaweicloud-apig.deployTarget.certificate": "API gateway certificate",
+  "plugin.huaweicloud-apig.certificateId.label": "Huawei Cloud API gateway certificate ID",
+  "plugin.huaweicloud-apig.certificateId.placeholder": "Please enter Huawei Cloud API gateway certificate ID",
+  "plugin.huaweicloud-apig.certificateId.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apig2/#/overview\" target=\"_blank\">https://console-intl.huaweicloud.com/apig2/#/overview</a>"
+}
