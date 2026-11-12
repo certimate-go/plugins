@@ -1,15 +1,33 @@
 {
-  "provider_type": "ctcccloud-icdn",
   "access_provider_type": "ctcccloud",
-  "display_name_key": "plugin.ctcccloud-icdn.name",
-  "deploy_category": "cdn",
-  "version": "0.1.0",
-  "min_core_version": "0.4.37",
-  "protocol_version": 2,
   "binary": "ctcccloud-icdn",
+  "deploy_category": "cdn",
+  "display_name_key": "plugin.ctcccloud-icdn.name",
   "icon": "ctcccloud.svg",
+  "min_core_version": "0.4.37",
   "priority": 100,
+  "protocol_version": 2,
+  "provider_type": "ctcccloud-icdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ctcccloud-icdn_darwin_amd64.zip",
+      "darwin/arm64": "ctcccloud-icdn_darwin_arm64.zip",
+      "linux/amd64": "ctcccloud-icdn_linux_amd64.zip",
+      "linux/arm64": "ctcccloud-icdn_linux_arm64.zip",
+      "windows/amd64": "ctcccloud-icdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "84a6b18fc6063b6364f80cb282453891039bd4c5843c8c34fd26677a1f200dac",
+      "darwin/arm64": "4025c847073540084cfccb03c3b55b006ba068dfa6012549da4e1337dde276d0",
+      "linux/amd64": "a9c542147af40d7d35ea176c9f90ca70e11c0d93fbfc673caf3fd997a40558db",
+      "linux/arm64": "2b9da1a2efde8aceea1dcffb0337ecc4d8c129116df6698a5fd5997349c2eb3f",
+      "windows/amd64": "c3cba1cc825d5617ddf4ec8af1f0c19d591a10b9708070d20f0db95ad9112ef5"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ctcccloud-icdn/v0.1.0"
+  },
   "usages": [
     "hosting"
-  ]
+  ],
+  "version": "0.1.0"
 }
