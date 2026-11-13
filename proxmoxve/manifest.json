@@ -19,14 +19,14 @@
       "windows/amd64": "proxmoxve_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "a20f7abe9afb24d2ccd46b5424fe5a956f314722fc13ec996c9dd14d9a40cb34",
-      "darwin/arm64": "216027fec27c63ce5f6d6f55e256bbbfaf2806848ab44d1f06b586c2d9215083",
-      "linux/amd64": "391cb90e49814572410f46bc93310f311caab089a2c113fb3414d9ed228fc71d",
-      "linux/arm64": "f39678169166b111e0c96ac3d31ab2d721546b8d8f846aedbd4be176493ce5a7",
-      "windows/amd64": "d0711e58d9c8759e29353624c73f912efb61584af01b59120b0be3838af6d6e3"
+      "darwin/amd64": "321547f76a7c9caefc32fa751b6d416924df70c685b39e30808144ecc2e343f8",
+      "darwin/arm64": "ca46abbf153534b8d1ebb6d1e7acc8f115a06457401c7c987e5d3b89f6d44ee7",
+      "linux/amd64": "ac4ac09dd720c846395b1d8b8aa55e7916d259cfd1697d6885e24c17503cbf1a",
+      "linux/arm64": "be4d459608a208cdb1cb8eefb7900ba8743b922e95c383e747229ebcaf9ae038",
+      "windows/amd64": "540917eb9ca06db029a556293d526df7345b5aae0aa63a9ad96bdc86d868bfc2"
     },
     "repo": "certimate-go/plugins",
-    "tag": "proxmoxve/v0.1.0"
+    "tag": "proxmoxve/v0.1.1"
   },
   "usages": [
     "hosting"
