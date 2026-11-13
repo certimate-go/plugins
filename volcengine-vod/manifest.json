@@ -18,14 +18,14 @@
       "windows/amd64": "volcengine-vod_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "1ad5bda750547114f9c99b01ccc23df3e2bd13fcb78c9b96ec72564260bbe32c",
-      "darwin/arm64": "76924e049f516b9214eb5c024b485856c74818a9a2ae97131c82bba91e90e8e7",
-      "linux/amd64": "4911bf19b9418bc38b1a4745678fcd0dea3ba94b8af60b55970973ceec75ba43",
-      "linux/arm64": "43e2c4b279a303eea309da67e0c33e1bc4234e71b5b354894fa1c95c1ac2de61",
-      "windows/amd64": "3d79c80abcad2dd13fa1f04e231c1ed105255ba18ea10541bebf0d17f6965a5d"
+      "darwin/amd64": "1080201ca3e800f928a948491e4f6cd86cf4b07a7fee7b7fb27b9ee803de96c9",
+      "darwin/arm64": "273e25044ddcbfa9799c7b1b72b40b70ded6b9ab9c171c29c9d9bb9c1fcfb6e1",
+      "linux/amd64": "e3a7657d0eb032f0687ef2d2470f448bbe1029c3ec3caf1812036346c50455ba",
+      "linux/arm64": "5bc0cad8b465637465bfb5567525726668937e2fabd7b3484110b081d922b45e",
+      "windows/amd64": "78fc673cc52a56c7bb1d94f317dc9de7215d3a4b57f2b2fc98be70fa289c868f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "volcengine-vod/v0.1.0"
+    "tag": "volcengine-vod/v0.1.1"
   },
   "usages": [
     "hosting"
