@@ -17,14 +17,14 @@
       "windows/amd64": "rainyun-rcdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "55f9937076997cc531409bce0426cfa412ead1888aebfe9ca5c878682d25ce07",
-      "darwin/arm64": "4d57c2fc137d74f14cbb880b238c996d6ea6eceb297d9b22ceb4085aa1473828",
-      "linux/amd64": "4007dacee094e0162c8601ab9d87f96e5a4fb722160b349295822055aee16a9c",
-      "linux/arm64": "ebc39074e6717d2ac65315ca1adb3ebe26eb4c5c9872d85402b3e730a6f8324e",
-      "windows/amd64": "9006a30c0bb696c6c6085f9d12f2491952a207aaa4e53e6d24f48e6d0e132b9d"
+      "darwin/amd64": "87c49903970d7aa7977ad09e94860912d5f31035d9265bf9a94d952317b68aa7",
+      "darwin/arm64": "a8f51a498a83f67e3a18a92b23195ee62fad29f34c53d162e17f4c9ab51071dc",
+      "linux/amd64": "b1981b9c8af27a52ea43d4baf04d07f8dbd75e6a22b2a907b9e1985907985b55",
+      "linux/arm64": "3fb951a48f2c08e64cb5435a53429d7f0d3c1506d98c156278a0d68ba7e0d25d",
+      "windows/amd64": "69ba902278d6657e3a79495ba41e865eae5e6ce09662e4d34655a64fe6a66ca9"
     },
     "repo": "certimate-go/plugins",
-    "tag": "rainyun-rcdn/v0.1.0"
+    "tag": "rainyun-rcdn/v0.1.1"
   },
   "usages": [
     "hosting"
