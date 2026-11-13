@@ -1,0 +1,1 @@
+The ntfy icon is the [ntfy documentation logo](https://github.com/binwiederhier/ntfy/blob/a331a5c8db86d8e0fa743de5af98be586afe3b0a/docs/static/img/ntfy.png) from Philipp C. Heckel's ntfy project, used unmodified under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).

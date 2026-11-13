@@ -1,0 +1,1 @@
+The Gotify icon is [Gotify's small logo](https://github.com/gotify/logo/blob/25c1d2c08894fcb0ed39c36a2816316a161c0e57/gotify-logo-small.png), used unmodified under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The original Go gopher was designed by Renée French.
