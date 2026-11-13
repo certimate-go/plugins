@@ -18,14 +18,14 @@
       "windows/amd64": "jdcloud-waf_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "497d69f0ed7f91279e19cfcd9bad4ac1a142ec20239789f8f71e175764b82106",
-      "darwin/arm64": "3bbc12916050badb7e6487b829efd7578417b3d26cf01822fb3e80746f86e5fe",
-      "linux/amd64": "764350f4fe311fceb53537bd35d6ef9a62cc604d962ee5c3599b9bc3969a321f",
-      "linux/arm64": "a66b77307b22ff2754ab3cc2309aa5f995d64e363d4e43e03f4cb136880cbe95",
-      "windows/amd64": "1b83458889e1e7c5805081cdfaffe74ebc3653fe36d23843b407838d971670d1"
+      "darwin/amd64": "904725e44170e5e3330c0072749255f29458ec0a3c1d1099f699d218815db443",
+      "darwin/arm64": "aa7f4f94e6984414a09f7156f00e53d265f21b1f6cfe4b675e45e3423ae40e8c",
+      "linux/amd64": "9694f1dc3bee3263818e2b306b7745a04805002fdf0374617c88d72556d2701a",
+      "linux/arm64": "cff0f611adb3fa7b7709f727ed2219434f2e4d9f5951a1954c3b81604b29ef62",
+      "windows/amd64": "1b07bed27b48dc31e04f75a98eb8a2f91c64d5dd85bee7c13c04fb684aeabd05"
     },
     "repo": "certimate-go/plugins",
-    "tag": "jdcloud-waf/v0.1.0"
+    "tag": "jdcloud-waf/v0.1.1"
   },
   "usages": [
     "hosting"
