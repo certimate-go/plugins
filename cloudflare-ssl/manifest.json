@@ -17,14 +17,14 @@
       "windows/amd64": "cloudflare-ssl_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "02383a2444add85b551fffc44cecb292f90f2612ec130edacc828753109cdbf1",
-      "darwin/arm64": "fc31a10a071264973ff5cfa52401cf4824d2b7dff8e6f369a65e498797ae2436",
-      "linux/amd64": "68fe83b167844d4cfb2e8db62f569c9f3b2cb32dec66fe896856585d24a78f9b",
-      "linux/arm64": "739234caf7c24cbac570f97b3b2b07305049643bc895cc122892975510048452",
-      "windows/amd64": "8430fb853c5c4237dde08c635b0d2327af7ad3120eb29aed3418ba05f99343d8"
+      "darwin/amd64": "b817f2acb62f16ac718628cb7f79b4740088e958eab396100e2039068d8583a0",
+      "darwin/arm64": "f57ddb616faadf4c907a4f45659cd5fdb782c84a3146f0e2f9b90ec637bbb910",
+      "linux/amd64": "b6310e2a850446df423416756c43f75998d7d1723f7046fb68ed797b2210cc9b",
+      "linux/arm64": "7feb66a0974d0e3c967069c1eb6381322191ed24863d0c3269d3cede631496e1",
+      "windows/amd64": "ea6a1381489ec97f5522a530b0d14f39cbe32f808eedac445a5c5eabec776d38"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cloudflare-ssl/v0.1.0"
+    "tag": "cloudflare-ssl/v0.1.1"
   },
   "usages": [
     "hosting"
