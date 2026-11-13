@@ -7,6 +7,24 @@
   "icon": "telegram.svg",
   "protocol_version": 3,
   "provider_type": "telegrambot",
+  "release": {
+    "assets": {
+      "darwin/amd64": "telegrambot_darwin_amd64.zip",
+      "darwin/arm64": "telegrambot_darwin_arm64.zip",
+      "linux/amd64": "telegrambot_linux_amd64.zip",
+      "linux/arm64": "telegrambot_linux_arm64.zip",
+      "windows/amd64": "telegrambot_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "ef724c4d49cc490bd36fe3e1dbd15dad0ed62cba9a752a4c931ca78473d7b1a8",
+      "darwin/arm64": "8a03785e261b4d0d4f86807987c444aca0d4cfcb07443579d55120f1eea7068e",
+      "linux/amd64": "03ff23f93bb347298f28e599f95114a14b6566c8dbb72d3570f74036ea95e03f",
+      "linux/arm64": "7b409f5da7459ed11984859251e148b94c8f16ddfb79991abf9f32acaf689fa2",
+      "windows/amd64": "d545c9d579a5926fa305c5a1a948b61300a0cd09327c2403f3b27356ba32c0aa"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "telegrambot/v0.1.0"
+  },
   "usages": [
     "notification"
   ],
