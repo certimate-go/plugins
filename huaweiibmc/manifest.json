@@ -19,14 +19,14 @@
       "windows/amd64": "huaweiibmc_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "51b6235b5f2a4ff7dbe05b7968b70faafe0c03bd2d40d5510d2c1d4e2fd76f1d",
-      "darwin/arm64": "4f4b775fc5b0f1a5158d37d880e9fc40b653eb4977763bacb9db807ff8fed737",
-      "linux/amd64": "611c3822135b504667cf1152ee06be964f15ce9fc05dfefa43f49a86a7af6a36",
-      "linux/arm64": "4088154695f44ff9b7ef190ca989a38743c2b551bad1a02dcc2f288b63327a77",
-      "windows/amd64": "b1b997e06f2a8cf6b835fbe65f4fff73fdac68825ae1c3f78ae999726f5d62b5"
+      "darwin/amd64": "dd440c86abc3329343ebea7c8e0fd9ca83d9ec27c18dda058f96f527fd33bf1a",
+      "darwin/arm64": "ed76817ca9e601b5632b3d2b21e933632ca5dd041e50b60746b1cfcaf536ee2a",
+      "linux/amd64": "d36b4f27a84df69d87328ee1952f61c041f0464360448f42f574187997e35ef8",
+      "linux/arm64": "5eff6593568f0b7079cfe3b6674ac833d52457189b10f10455368f6c6645db2f",
+      "windows/amd64": "53aeb8d56ed65f049d5e4f6686c3dc1e59848f3b54782861641d925e62b47461"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweiibmc/v0.1.0"
+    "tag": "huaweiibmc/v0.1.1"
   },
   "usages": [
     "hosting"
