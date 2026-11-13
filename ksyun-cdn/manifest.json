@@ -1,7 +1,7 @@
 {
   "access_provider_type": "ksyun",
-  "capability": "deploy",
   "binary": "ksyun-cdn",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.ksyun-cdn.name",
   "icon": "ksyun.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "ksyun-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c2077312ddb643041c1c7b3dfd187202ca2d10815ca54cfbaba82af1e7d57d71",
-      "darwin/arm64": "17a4e31e3ce345acbef5ee34748bd9b873ab1f6d08e915e1eec00a6cbe90f96b",
-      "linux/amd64": "5c20d398daa18fb0185b15e03d82bc8172a2197be049c1f7ef4bf9548e802c9e",
-      "linux/arm64": "8eec5ebc3e393dbfc944730851bb442951115965bf5ea9448d60d49259321d23",
-      "windows/amd64": "e5e4c4025042bebacb82d653ed242104ac3c7340e0660c502c4db3838680ea96"
+      "darwin/amd64": "c7adaead8fb617efd35a253e307a4872d0331af1e3f6e72e1b6433bac45661d4",
+      "darwin/arm64": "1f86079d938eb051640a8306ca7737096a37c153ccb4e038c28513e889a4b1a2",
+      "linux/amd64": "3987607b3d1f64a25f4189a16d431a841712d0ea382579361978c1ad9b2ccd61",
+      "linux/arm64": "cbbd63b7beddcd4d477f98fca7226990e6f9468588cd2c36243f456d96ed7d2a",
+      "windows/amd64": "00df7cdeb24bd1747c2a7e30b9a5429caf587a54756e5dd358d87b8fe4117f67"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ksyun-cdn/v0.1.1"
+    "tag": "ksyun-cdn/v0.1.2"
   },
   "sha256": "",
   "usages": [
