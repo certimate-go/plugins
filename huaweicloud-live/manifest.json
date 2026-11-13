@@ -18,14 +18,14 @@
       "windows/amd64": "huaweicloud-live_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c90e05efcf45727428b78007f00f87a40c5ca5a4c0c3865af12d0bdaf879ce20",
-      "darwin/arm64": "169e0c1cf7f49a153d31debfd6dd67c00081c77e0ad5ce38872f8075a70af1d9",
-      "linux/amd64": "45e7ff67978eb0fb363f86a3ff6507e935c5687ce6e8ef9f4ebe654ec17001ee",
-      "linux/arm64": "43566ddbdc34e7edcdb5e0106b15fa85b2de30d67cf7b0fb219ab69b2ac6fdf1",
-      "windows/amd64": "3d17d31e87ea8bdae2c64bac6a2e48a933568cba8d138a59dee9a3b72e27a85b"
+      "darwin/amd64": "de3a4cf000b1755e34413d6920a676b7df8f6b4c0b1646ef571dd023807ab121",
+      "darwin/arm64": "6178f331b6c7d427ec4ca842b00362ffbf1e2d10e3e75a30b0ec0d16844d38ff",
+      "linux/amd64": "9bdeca65969fcc7b7283aeca53e5bfce6987fbeccce22909d07c3b69387f5347",
+      "linux/arm64": "93129d9fe6fdbd8a79db1a035ed1471bcdedd9313ce28640ec6f99761666fbbe",
+      "windows/amd64": "e9c7227bac7208f2a89936483521b3262bb83baf2edbda657be2f572001262e3"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-live/v0.1.0"
+    "tag": "huaweicloud-live/v0.1.1"
   },
   "usages": [
     "hosting"
