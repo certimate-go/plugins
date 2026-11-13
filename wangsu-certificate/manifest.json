@@ -1,7 +1,7 @@
 {
   "access_provider_type": "wangsu",
-  "capability": "deploy",
   "binary": "wangsu-certificate",
+  "capability": "deploy",
   "deploy_category": "ssl",
   "display_name_key": "plugin.wangsu-certificate.name",
   "icon": "wangsu.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "wangsu-certificate_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "b82482215a79d7b5822f907911bf9af9e4ba68c7e85c8fee4c51566018c1f509",
-      "darwin/arm64": "469670fdb2e1e40d0e29118a02392f27b0853f3750b354c3f729f59b981292ef",
-      "linux/amd64": "8fd91935b693c1c71230a32e4eb6a986480f8e1313e0d4779d68dc004dbcac00",
-      "linux/arm64": "2264ede6ad4d8c06ab453e1dfa93d64c97815d2f779abced1c98a3bb48e9f707",
-      "windows/amd64": "12312b405128aa2a084a1a97815adc74c8315699199773695c09ad4a9a260414"
+      "darwin/amd64": "eb2fd81f998d0fcf83469ecdb2c545ee56d6a45e8361f7371cf8271a5832915a",
+      "darwin/arm64": "fd945efafc4cf96b41d55b2cd380678bfe96ad532834bb453c210f99f8200fbb",
+      "linux/amd64": "e1ead9d4af26bde52c4969e1b7fd1163fe35d79d6c1077bef039070934000ce1",
+      "linux/arm64": "30de0ac6fc058e45e2f36a41dacc6949e13501a24357164891e8899645cc0a1d",
+      "windows/amd64": "2c84ef7a5428d99b0032556996dbc1848889b69fe44d547c3b623f371eb9a4bb"
     },
     "repo": "certimate-go/plugins",
-    "tag": "wangsu-certificate/v0.1.1"
+    "tag": "wangsu-certificate/v0.1.2"
   },
   "sha256": "",
   "usages": [
