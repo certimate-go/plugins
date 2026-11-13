@@ -1,7 +1,7 @@
 {
   "access_provider_type": "baishan",
-  "capability": "deploy",
   "binary": "baishan-cdn",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.baishan-cdn.name",
   "icon": "baishan.png",
@@ -19,14 +19,14 @@
       "windows/amd64": "baishan-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "a2324d6863a4d5981fba8560f0380cab95342e8474d0f6f76d49daf9eba247cc",
-      "darwin/arm64": "88edc57294f08eeb6be78e5c52b2e0082ca95dcea8d463f80f7bf8fccb1aaca4",
-      "linux/amd64": "f47d3a58c4c5bc47c7ecee007c6fb105a3d23a5d4cf1663f41bdf1a1ed60a439",
-      "linux/arm64": "dc76588f5b58188f048fb887897310f94604347d57bd41e769bcd7617c7a7b94",
-      "windows/amd64": "f04649c7e4b82704a53661e4e03a0d1ae3e0d3c3612610fba2e9a49c0cde2fbd"
+      "darwin/amd64": "a11861e6bd65843d1848b51efccb91dd83848fd14257fc3413f70ceba664edbf",
+      "darwin/arm64": "2d6a4ad275db3c476b503281de9fb5a9ebe74df40b49d70a36832b30f17b4d2a",
+      "linux/amd64": "69ec46afb1368ffdf454c66a6f649dd775696362db6c17f3058b461b388bce30",
+      "linux/arm64": "947eea5891989dd1559570a20a8516d45076840e9b828db8f5aca4822618f6ef",
+      "windows/amd64": "5bc857f5616e230178508f06e7a3dcd16935f9e5d4085ca2b16c10c1d51484c4"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baishan-cdn/v0.1.1"
+    "tag": "baishan-cdn/v0.1.2"
   },
   "sha256": "",
   "usages": [
