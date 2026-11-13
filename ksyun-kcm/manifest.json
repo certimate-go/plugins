@@ -1,7 +1,7 @@
 {
   "access_provider_type": "ksyun",
-  "capability": "deploy",
   "binary": "ksyun-kcm",
+  "capability": "deploy",
   "deploy_category": "ssl",
   "display_name_key": "plugin.ksyun-kcm.name",
   "icon": "ksyun.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "ksyun-kcm_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "f28968a08f787be385327e394977bfbf580f9bcfc4210a1f37ea8b214fb67759",
-      "darwin/arm64": "85bf2746f56dc1d3873faf116cbca18b489e07b7d2576d5f91c8fa16a832799c",
-      "linux/amd64": "71ea51ae1a2ab94534f7f1b9b9c1c57277071d6e46d2a97a7d6bcda9e8ea96f9",
-      "linux/arm64": "533d8825a0fab2a857c45ac28a309d48e5f70dfd9448713dcf807eaf2c7d8997",
-      "windows/amd64": "e925b2bdb732e65bc84f3653787b64ee3d448e158d03a7b7f07400cde0ed1795"
+      "darwin/amd64": "25260d8b8acb58d083fc198f26ea08abf0b0cc83c00b245d14cb75dce3af39ec",
+      "darwin/arm64": "6e40c38932e5eb61ec4c00b50082f7b34adee9bbce07e3183af2725855d1cb37",
+      "linux/amd64": "8366bb52020b933cae63be882ca62edae00c8cd4824593b4a953a1f6cb816669",
+      "linux/arm64": "ba9d74399a175bd22f68adf88176246498e1c400c8c05b1c3695721816501ddb",
+      "windows/amd64": "3e0637ab070c32d8a22f8df487a690c76d63cf98f4f58558b99d58d61ca68c00"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ksyun-kcm/v0.1.1"
+    "tag": "ksyun-kcm/v0.1.2"
   },
   "sha256": "",
   "usages": [
