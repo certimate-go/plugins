@@ -18,14 +18,14 @@
       "windows/amd64": "byteplus-alb_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "7e4ed3709f3043329d0f7cde778126ad9e5c0815ea0e0557465d9f23e9c520d8",
-      "darwin/arm64": "bf6f82b55c8aa2426f11659a5659e883d615f76bcb752df660e25e89b8694313",
-      "linux/amd64": "814e9f3c4b8c5c4a65196cb240eb21d61a09a863463148eb1fbfb1c70da77d54",
-      "linux/arm64": "e9a078ce3fd29ed4d21195f5e6354c2aacd771ff7a85ca8009dad70717aca76c",
-      "windows/amd64": "196d7042a94750773935d2442414016bcb9cd6338306737a92c251bf6c70a09e"
+      "darwin/amd64": "c077cd0291737f2212a561b1ad36381915ec55d2cd7d9e58e2a3fafa1470d879",
+      "darwin/arm64": "a532828fd6d306cba21b156b718d77018d9c6eebf3da9eff624e4b7723e9cef6",
+      "linux/amd64": "ab8ff00555cf04f7e50b9788bf9301b0f2b5b4f9dbfe9b60d75c59ad0eaee670",
+      "linux/arm64": "c52264bebd8a56db87ddb110e5dd7ba3e72419152411ee89be4becacdda856a8",
+      "windows/amd64": "acaae7d5f39200d8f58d70342a40f2fad8a900c37939112fe7e5031bb01b0c99"
     },
     "repo": "certimate-go/plugins",
-    "tag": "byteplus-alb/v0.1.0"
+    "tag": "byteplus-alb/v0.1.1"
   },
   "usages": [
     "hosting"
