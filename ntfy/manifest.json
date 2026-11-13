@@ -16,14 +16,14 @@
       "windows/amd64": "ntfy_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "861505016fced1563e7545bdb733c23f0009a1af71412af58bd6ea293dfbd98e",
-      "darwin/arm64": "9d0b188ff9692136561d7c6cef36dc60752ba405f883f7ed5941ac4d819d61e8",
-      "linux/amd64": "52db94cc8f6470f13165a12dbeccddc3a50d2fa555779ba734cc9dd1eeb4b3cb",
-      "linux/arm64": "4b6a6129e26bf64fbfe08069dfc2e7f6455c981a4a3b68ac585a3d636764f472",
-      "windows/amd64": "f49459ad171efc737d26da3fd288116cb76bbf6f3c4604e457c6fdadbdf7cf73"
+      "darwin/amd64": "52e7948a6bf61640d621b3d48994a41e180b1b9ed512abc135c465fce75d5c8e",
+      "darwin/arm64": "90f52c8bf18c74b649dba1c51222cb8faa07c613f88e8a430a3874a30eecde12",
+      "linux/amd64": "48309aca1144f913170dfa8ca6b9ed251ffd7efac60a0a67d43e3fde5f499264",
+      "linux/arm64": "198ef97cce48d159b3dd8a121f86dadd0df4f2d979f4532ba38bc753fa268064",
+      "windows/amd64": "24b7a4498b35a597c40929e2f9b7a31ec8a0df33900519aeeb0bf22f7092c5da"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ntfy/v0.1.0"
+    "tag": "ntfy/v0.1.1"
   },
   "usages": [
     "notification"
