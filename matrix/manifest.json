@@ -7,6 +7,24 @@
   "icon": "matrix.svg",
   "protocol_version": 3,
   "provider_type": "matrix",
+  "release": {
+    "assets": {
+      "darwin/amd64": "matrix_darwin_amd64.zip",
+      "darwin/arm64": "matrix_darwin_arm64.zip",
+      "linux/amd64": "matrix_linux_amd64.zip",
+      "linux/arm64": "matrix_linux_arm64.zip",
+      "windows/amd64": "matrix_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "105ced21c8b249aee94d89947283de2e38243cf80ae18a7140252f903121c629",
+      "darwin/arm64": "2d489e51fe9a229389bce4c4bb03fa9b1490671fe0682d3f350890cf2350db0b",
+      "linux/amd64": "1eac8676e092f3d3eb0d1f939dcabcbd27a3a536c514398a1db6089134773fc4",
+      "linux/arm64": "81b4696eddfa3a02c84cb2be69c3de16792f584fa43f5153d2657b290e00100a",
+      "windows/amd64": "55f6f73df5b16ed87847ca40a1d87457f970c849511e347b1c5d57fe95c8700b"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "matrix/v0.1.0"
+  },
   "usages": [
     "notification"
   ],
