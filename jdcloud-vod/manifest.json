@@ -18,14 +18,14 @@
       "windows/amd64": "jdcloud-vod_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "cabbd44939ef049816f4f3d491beba67c2065826e316d079c105816c918f6b09",
-      "darwin/arm64": "7305efea734c679dd3d49dccfec769faaeff644c050a24145a580c50561399cd",
-      "linux/amd64": "41a4631aa2cfc2de8366342d772fdd724601ccebf6541ca70cf49d43c1342d01",
-      "linux/arm64": "382d5d10d05fbe51a5ee45c7447a6aa7b7a36190d0de83f6fc7d2a33f09c55d0",
-      "windows/amd64": "659b6d855f3619edc301b5a00c538c29b193b3f9f89a471fe5db9409f58e608c"
+      "darwin/amd64": "edf25b40ec116534630bbc9f191b9d96fe9024942293e67d92574c7067803f3d",
+      "darwin/arm64": "59a42984c1d5d6b54b72746d48d94c7c9c53f8c7f7e641328e88e4f64b7c6a72",
+      "linux/amd64": "07bff730f9bd8e64791d3309ca66f620e3596906c0c0150b4e752d2e179516fb",
+      "linux/arm64": "25b924b7dcfa6ad8dff76b2580129f921453b308cc01919b1c32321466ab3f9e",
+      "windows/amd64": "588bb206f9409179734ad670712d62f7485ef5760dc95d7a6f7288f2e73400cc"
     },
     "repo": "certimate-go/plugins",
-    "tag": "jdcloud-vod/v0.1.0"
+    "tag": "jdcloud-vod/v0.1.1"
   },
   "usages": [
     "hosting"
