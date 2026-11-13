@@ -18,14 +18,14 @@
       "windows/amd64": "ucloud-ucdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "6fbcc97892d3d54cdd6bdba8849044feb37bc1d5cbcc9cc822988de1c0dd5fd8",
-      "darwin/arm64": "d921e98a17af0afca1f3afd4e694f4898f52c0a35fa45c91040f1c1909ffe17e",
-      "linux/amd64": "095f0a2ebfd545079baa1cfe8e54998cdbb2221f5a8d49a19bdc619f4c59ed9b",
-      "linux/arm64": "49c079d71a4d1d207f0bdef906478bf888b0938eea5be54834c4dc53c1161856",
-      "windows/amd64": "0242b803149f1b528e55d8f0f045d01f4233f53f5a83b9919d8607e014377be4"
+      "darwin/amd64": "580adec463358707078d973345c95a1cb1a2d4a692f2765264809c0f25d7c838",
+      "darwin/arm64": "e394d12bda7eed5aecf15d9818453b1aea032eb166415be51539a397123860ef",
+      "linux/amd64": "c4e1bf14a01ffb35068c39db208e2445c3cb6b65f8eac698e870c83cb922e900",
+      "linux/arm64": "d445cf0f06afcac6d4807b3c648956c0c7a9a30264fd47c300cedc82e88648b4",
+      "windows/amd64": "536c0ebc538e531dbba67d30fccb9577f92b04a6940798c2ad0be70d2aa43a08"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ucloud-ucdn/v0.1.0"
+    "tag": "ucloud-ucdn/v0.1.1"
   },
   "usages": [
     "hosting"
