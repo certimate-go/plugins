@@ -18,14 +18,14 @@
       "windows/amd64": "huaweicloud-obs_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "814899d50a22eaddc59dadc13c54a62e5526b5ce5f1e300d0cb84de71c483409",
-      "darwin/arm64": "f61158f6477ce535e0cc07466a5485e4899619e94147fe056df5ed2f8938711f",
-      "linux/amd64": "3e100d81b2a6cd2d83e26993cd6c6e27bd90dc1cc29bea83721b77c98e899ad4",
-      "linux/arm64": "864aa2d05e8df9749e48e5b7a03d55eda791f523a73306203456a2751c0e42b2",
-      "windows/amd64": "2b73c7d3533bbb0d39abcad92b1d96d306b6eb161271e5f087d707e7bd072316"
+      "darwin/amd64": "de5fa3fbdc75d578758f43f3a3689a060a417408eed06627907f3f430323f3e0",
+      "darwin/arm64": "cbbc4dc14ed64fa20b47dacdb80b4fdf9fb4a44b176833a1f61796f32db15c29",
+      "linux/amd64": "ea6127d69e7baff89a9109bfedfa0661d0affd3f8f2e47f2577e45b986315111",
+      "linux/arm64": "07a9858e5ba4c3e209522f09e63720cd5dd756398b11c1285e88c002a81b0689",
+      "windows/amd64": "80c95fa0e9e2e54b5a730b34b3a0be014b18b5fe2518a880779410ab4e61216f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-obs/v0.1.0"
+    "tag": "huaweicloud-obs/v0.1.1"
   },
   "usages": [
     "hosting"
