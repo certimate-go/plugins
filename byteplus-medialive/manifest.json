@@ -18,14 +18,14 @@
       "windows/amd64": "byteplus-medialive_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "8edb1688c3a0a9d81fc68e37a548ae0437e014205143cae76ae2a33d8fe7aff5",
-      "darwin/arm64": "5408f82e135a7944b7d75436b3ed83ed22387c0e98a603892ba01f17c21cb8d9",
-      "linux/amd64": "64c7b98de3eecc305c58370ca07c844523e0597a971a62e1f08b00a0231da541",
-      "linux/arm64": "587035d97309b488d3579590c92eba97a8ee9df915db21c2f488bec289e91f28",
-      "windows/amd64": "50d8dc2e627eee02ddc0d34c4672e31517ae795f31e21a86262c304864c8e4b7"
+      "darwin/amd64": "c149da9d60c125b2331174adfcf86d43108256c53d35e84f56e55c5fa20029d6",
+      "darwin/arm64": "50a898b2a611bd735c1143b9dbd02a393fa1fc8984f2a6a092fc6c9560f503a6",
+      "linux/amd64": "6a6126ffa3693a269b66e5216b97b0ba8d67d8ef490eede7551fc7e028565ac7",
+      "linux/arm64": "9a4084dfbaf6f54fe4c631fa05767f0b9b4ef2d4deb1b909ec4d4f4d5d6b41ed",
+      "windows/amd64": "bef8992ffa4eb97cfb127f8f5ac52c06548a3da4d7fa6c71900d87cb1ba01341"
     },
     "repo": "certimate-go/plugins",
-    "tag": "byteplus-medialive/v0.1.0"
+    "tag": "byteplus-medialive/v0.1.1"
   },
   "usages": [
     "hosting"
