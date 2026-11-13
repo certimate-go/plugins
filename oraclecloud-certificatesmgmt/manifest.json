@@ -19,14 +19,14 @@
       "windows/amd64": "oraclecloud-certificatesmgmt_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "3527b1882070650c589d0d0d6c643d0c984128985d63191960d5af9dbabe026a",
-      "darwin/arm64": "e1d69397e5b1b26cb5bd167e972011049b6597b0137363defabe5ea555ef3eba",
-      "linux/amd64": "5918d7070e6d171d64c968def5b9fa1583987d69aff349c61500dd2a49e0eff4",
-      "linux/arm64": "aa2aa42b2928a715605b77d9e9d293624ebf394fb3bb500e30d08da79542b94c",
-      "windows/amd64": "d885af6a339d89149bd2ae05f108c3a9fef58f1357a131ef610887986c5995a9"
+      "darwin/amd64": "cb92cc9b912561c9258f8279863af03b258757b8b7bd1abfcfe4ab1cc17a2977",
+      "darwin/arm64": "813735ef58aedd5a82931882d9fd397a90ffbc3058511eb22b7b706d84981091",
+      "linux/amd64": "f8f8701c0c4864eabfd99c4d63d4aee3a2bea52c47ce3e96ddb4d76fef199efd",
+      "linux/arm64": "da155426fce5a81111b24b2834e7419c1f391afa99a4e50c8d6b720fe9a589de",
+      "windows/amd64": "caed325629c642a6ec548eb9a85aa44b3313da35b8cbfe3b413a5e998a8f0bda"
     },
     "repo": "certimate-go/plugins",
-    "tag": "oraclecloud-certificatesmgmt/v0.1.0"
+    "tag": "oraclecloud-certificatesmgmt/v0.1.1"
   },
   "sha256": "",
   "usages": [
