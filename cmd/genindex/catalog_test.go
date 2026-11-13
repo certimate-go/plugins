@@ -9,6 +9,38 @@ import (
 	"testing"
 )
 
+func TestRenderIndexCarriesCapability(t *testing.T) {
+	root := t.TempDir()
+	mkdir(t, root, "dnsplugin")
+	writeFile(t, filepath.Join(root, "dnsplugin", "manifest.json"), `{"provider_type":"dnsplugin","version":"1.0.0","capability":"dns"}`)
+	mkdir(t, root, "deployplugin")
+	writeFile(t, filepath.Join(root, "deployplugin", "manifest.json"), `{"provider_type":"deployplugin","version":"1.0.0"}`)
+
+	body := generate(t, root)
+	var catalog struct {
+		Plugins []struct {
+			ProviderType string  `json:"provider_type"`
+			Capability   *string `json:"capability"`
+		} `json:"plugins"`
+	}
+	if err := json.Unmarshal(body, &catalog); err != nil {
+		t.Fatal(err)
+	}
+	capabilities := map[string]*string{}
+	for _, plugin := range catalog.Plugins {
+		capabilities[plugin.ProviderType] = plugin.Capability
+	}
+	if len(capabilities) != 2 {
+		t.Fatalf("want 2 entries, got %d: %s", len(capabilities), body)
+	}
+	if capabilities["dnsplugin"] == nil || *capabilities["dnsplugin"] != "dns" {
+		t.Fatalf("dnsplugin summary missing capability %q: %s", "dns", body)
+	}
+	if capabilities["deployplugin"] != nil {
+		t.Fatalf("deployplugin summary should omit capability: %s", body)
+	}
+}
+
 func TestCatalogKeepsPublishedDetailsAddressable(t *testing.T) {
 	root := t.TempDir()
 	manifestPath := filepath.Join(mkdir(t, root, "example"), "manifest.json")

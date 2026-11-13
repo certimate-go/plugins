@@ -1,12 +1,13 @@
 {
   "access_provider_type": "ucloud",
   "binary": "ucloud-pathx",
+  "capability": "deploy",
   "deploy_category": "accelerator",
   "display_name_key": "plugin.ucloud-pathx.name",
   "icon": "ucloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "ucloud-pathx",
   "release": {
     "assets": {
@@ -29,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

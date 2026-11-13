@@ -1,11 +1,12 @@
 {
   "access_provider_type": "netlify",
   "binary": "netlify",
+  "capability": "deploy",
   "deploy_category": "website",
   "display_name_key": "plugin.netlify.name",
   "icon": "netlify.svg",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "netlify",
   "release": {
     "assets": {
@@ -28,5 +29,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

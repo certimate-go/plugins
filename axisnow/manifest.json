@@ -1,13 +1,14 @@
 {
   "access_provider_type": "axisnow",
   "binary": "axisnow",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.axisnow.name",
   "icon": "axisnow.png",
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "axisnow",
   "release": {
     "assets": {
@@ -31,5 +32,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

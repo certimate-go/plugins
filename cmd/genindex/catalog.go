@@ -37,7 +37,7 @@ func renderIndex(root string, plugins []catalogManifest) ([]byte, error) {
 		seen[provider] = true
 		summary := make(map[string]any)
 		for _, key := range []string{
-			"provider_type", "version", "display_name_key", "deploy_category", "description",
+			"provider_type", "version", "display_name_key", "deploy_category", "capability", "description",
 			"protocol_version", "min_core_version", "max_core_version",
 		} {
 			if value, ok := manifest[key]; ok && value != "" {

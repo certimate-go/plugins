@@ -1,11 +1,12 @@
 {
   "access_provider_type": "rainyun",
   "binary": "rainyun-sslcenter",
+  "capability": "deploy",
   "deploy_category": "ssl",
   "display_name_key": "plugin.rainyun-sslcenter.name",
   "icon": "rainyun.svg",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "rainyun-sslcenter",
   "release": {
     "assets": {
@@ -28,5 +29,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

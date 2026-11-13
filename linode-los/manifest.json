@@ -1,11 +1,12 @@
 {
   "access_provider_type": "linode",
   "binary": "linode-los",
+  "capability": "deploy",
   "deploy_category": "storage",
   "display_name_key": "plugin.linode-los.name",
   "icon": "linode.svg",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "linode-los",
   "release": {
     "assets": {
@@ -28,5 +29,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

@@ -66,7 +66,7 @@ require (
 	github.com/baidubce/bce-sdk-go v0.9.276
 	github.com/byteplus-sdk/byteplus-go-sdk-v2 v1.0.80
 	github.com/byteplus-sdk/byteplus-sdk-golang v1.0.73
-	github.com/certimate-go/certimate v0.4.30-0.20260801043400-926b29dea6b3
+	github.com/certimate-go/certimate v0.4.38-0.20261112233855-b0fca4697cbe
 	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/fatih/color v1.19.0 // indirect
 	github.com/fxamacker/cbor/v2 v2.9.1 // indirect
@@ -136,5 +136,3 @@ replace (
 	gitlab.ecloud.com/ecloud/ecloudsdkcore v1.0.6 => ./pkg/sdk3rd-forked/gitlab.ecloud.com/ecloud/ecloudsdkcore@v1.0.6
 	gitlab.ecloud.com/ecloud/ecloudsdkvlb v1.0.7 => ./pkg/sdk3rd-forked/gitlab.ecloud.com/ecloud/ecloudsdkvlb@v1.0.7
 )
-
-replace github.com/certimate-go/certimate => ../certimate

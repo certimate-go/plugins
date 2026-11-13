@@ -12,7 +12,7 @@ import (
 	jdlbmodels "github.com/jdcloud-api/jdcloud-sdk-go/services/lb/models"
 	"github.com/samber/lo"
 
-	jdlb "github.com/certimate-go/certimate/pkg/sdk3rd-trimmed/github.com/jdcloud-api/jdcloud-sdk-go/services/lb/client"
+	jdlb "github.com/certimate-go/plugins/internal/cloudsdk/jdcloud/lb/client"
 
 	"github.com/certimate-go/certimate/pkg/core"
 	xloop "github.com/certimate-go/certimate/pkg/utils/loop"

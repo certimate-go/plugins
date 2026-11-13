@@ -9,7 +9,7 @@ import (
 	jdliveapis "github.com/jdcloud-api/jdcloud-sdk-go/services/live/apis"
 	"github.com/samber/lo"
 
-	jdlive "github.com/certimate-go/certimate/pkg/sdk3rd-trimmed/github.com/jdcloud-api/jdcloud-sdk-go/services/live/client"
+	jdlive "github.com/certimate-go/plugins/internal/cloudsdk/jdcloud/live/client"
 
 	"github.com/certimate-go/certimate/pkg/core"
 	xcerthostname "github.com/certimate-go/certimate/pkg/utils/cert/hostname"

@@ -1,13 +1,14 @@
 {
   "access_provider_type": "proxmoxbs",
   "binary": "proxmoxbs",
+  "capability": "deploy",
   "deploy_category": "other",
   "display_name_key": "provider.proxmoxbs",
   "icon": "proxmoxbs.svg",
   "max_core_version": "",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "proxmoxbs",
   "release": {
     "assets": {
@@ -30,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

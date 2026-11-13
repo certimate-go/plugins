@@ -1,12 +1,13 @@
 {
   "access_provider_type": "jdcloud",
   "binary": "jdcloud-vod",
+  "capability": "deploy",
   "deploy_category": "av",
   "display_name_key": "plugin.jdcloud-vod.name",
   "icon": "jdcloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "jdcloud-vod",
   "release": {
     "assets": {
@@ -29,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

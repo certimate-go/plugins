@@ -1,12 +1,13 @@
 {
   "access_provider_type": "ctcccloud",
   "binary": "ctcccloud-elb",
+  "capability": "deploy",
   "deploy_category": "loadbalance",
   "display_name_key": "plugin.ctcccloud-elb.name",
   "icon": "ctcccloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "ctcccloud-elb",
   "release": {
     "assets": {
@@ -29,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

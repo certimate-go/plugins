@@ -10,7 +10,7 @@ import (
 	jdcdnapis "github.com/jdcloud-api/jdcloud-sdk-go/services/cdn/apis"
 	"github.com/samber/lo"
 
-	jdcdn "github.com/certimate-go/certimate/pkg/sdk3rd-trimmed/github.com/jdcloud-api/jdcloud-sdk-go/services/cdn/client"
+	jdcdn "github.com/certimate-go/plugins/internal/cloudsdk/jdcloud/cdn/client"
 
 	"github.com/certimate-go/certimate/pkg/core"
 	xcerthostname "github.com/certimate-go/certimate/pkg/utils/cert/hostname"

@@ -11,7 +11,7 @@ import (
 	jdvodapis "github.com/jdcloud-api/jdcloud-sdk-go/services/vod/apis"
 	"github.com/samber/lo"
 
-	jdvod "github.com/certimate-go/certimate/pkg/sdk3rd-trimmed/github.com/jdcloud-api/jdcloud-sdk-go/services/vod/client"
+	jdvod "github.com/certimate-go/plugins/internal/cloudsdk/jdcloud/vod/client"
 
 	"github.com/certimate-go/certimate/pkg/core"
 	xcerthostname "github.com/certimate-go/certimate/pkg/utils/cert/hostname"

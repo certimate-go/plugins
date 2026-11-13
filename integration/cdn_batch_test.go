@@ -230,7 +230,7 @@ func TestCDNDeploymentBatch(t *testing.T) {
 					fixture.reset(cdnNormal)
 					request := req
 					request.CertificatePEM = "not a certificate"
-					deploy(t, request, "certificate")
+					deploy(t, request, "PEM decode did not yield a valid block")
 					if fixture.snapshot().calls != 0 {
 						t.Fatal("invalid certificate reached API")
 					}
@@ -250,7 +250,7 @@ func TestCDNDeploymentBatch(t *testing.T) {
 					fixture.reset(cdnNormal)
 					request := req
 					request.AccessConfigJSON = fixture.flexAccess("user", fixture.flexTLSURL, false)
-					deploy(t, request, "certificate")
+					deploy(t, request, "signed by unknown authority")
 					if fixture.snapshot().calls != 0 {
 						t.Fatal("untrusted TLS connection reached API")
 					}

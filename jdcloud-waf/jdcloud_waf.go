@@ -9,7 +9,7 @@ import (
 	jdwafapis "github.com/jdcloud-api/jdcloud-sdk-go/services/waf/apis"
 	jdwafmodels "github.com/jdcloud-api/jdcloud-sdk-go/services/waf/models"
 
-	jdwaf "github.com/certimate-go/certimate/pkg/sdk3rd-trimmed/github.com/jdcloud-api/jdcloud-sdk-go/services/waf/client"
+	jdwaf "github.com/certimate-go/plugins/internal/cloudsdk/jdcloud/waf/client"
 
 	"github.com/certimate-go/certimate/pkg/core"
 	cmgrimpl "github.com/certimate-go/plugins/internal/jdcloudsslcert"

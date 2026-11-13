@@ -1,12 +1,13 @@
 {
   "access_provider_type": "ctcccloud",
   "binary": "ctcccloud-lvdn",
+  "capability": "deploy",
   "deploy_category": "av",
   "display_name_key": "plugin.ctcccloud-lvdn.name",
   "icon": "ctcccloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "ctcccloud-lvdn",
   "release": {
     "assets": {
@@ -29,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

@@ -1,11 +1,12 @@
 {
   "access_provider_type": "bunny",
   "binary": "bunny-cdn",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.bunny-cdn.name",
   "icon": "bunny.svg",
   "priority": 100,
-  "protocol_version": 2,
+  "protocol_version": 3,
   "provider_type": "bunny-cdn",
   "release": {
     "assets": {
@@ -28,5 +29,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
