@@ -19,14 +19,14 @@
       "windows/amd64": "dokploy_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "362b412034253af6e0c065209b5be83f6f2edb25cd0dd10e4f2c77a982effa4e",
-      "darwin/arm64": "641e65860627dfbb2f64a1baf16a24f7856db54fe4bf5a8f1ea34378629549f5",
-      "linux/amd64": "a9310c83058fd6599126d44186ec324de989f4e70f2c209c2ee4320f7c77ce35",
-      "linux/arm64": "9d6eea2e5c4cb72e52297e349c47b9c520dcc3cc68b756034a49786281c92cf2",
-      "windows/amd64": "0f6c0d2e6fab4baae227e18ca01a8fd9729c25861bfa303b3aa65ae8f9041670"
+      "darwin/amd64": "1e6d8b531cb0ee299c97d607a8253f60da08da9478768658b2c64c459b1964d4",
+      "darwin/arm64": "37d4f51ce410a8c7aeb32284a6791a48d60b8785d48cdfaa17412f957bed0623",
+      "linux/amd64": "217b971d01509275c600ebf5105c2a664ea122c05f3515e172322f7eae22dc45",
+      "linux/arm64": "68a7a4e657e0c91fed9a4d5af55d3f11cad6b3d917c692c2b0b61d3c714a6535",
+      "windows/amd64": "30e1c81e977dc6a26c9ff077081a6e3db9620bf9e4c338204ced869a18f67b64"
     },
     "repo": "certimate-go/plugins",
-    "tag": "dokploy/v0.1.0"
+    "tag": "dokploy/v0.1.1"
   },
   "usages": [
     "hosting"
