@@ -57,6 +57,15 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 				t.Fatal(err)
 			}
 			validateSchema(t, schema, provider, family, meta)
+			var accessOwner string
+			if provider != family {
+				accessOwner = family
+				if len(schema.AccessSchemaJSON) != 0 {
+					t.Fatal("console plugin must reuse the panel's access schema")
+				}
+			} else if len(schema.AccessSchemaJSON) == 0 {
+				t.Fatal("panel plugin must provide its access schema")
+			}
 			if meta.ProviderType != provider || meta.AccessProviderType != family || meta.ProtocolVersion != plugin.ProtocolVersion || meta.DeployCategory != dp.Manifest.DeployCategory {
 				t.Fatal("manifest and metadata differ")
 			}
@@ -86,7 +95,7 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 				return manager.Deploy(ctx, dp, request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
 			}
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
-				run = newB1WorkflowDeployer(t, dir, provider)
+				run = newB1WorkflowDeployerWithAccessOwner(t, dir, provider, accessOwner)
 			}
 			deploy := func(t *testing.T, request plugin.DeployRequest, wantError bool) {
 				t.Helper()
@@ -491,7 +500,7 @@ func buildB2Panels(t *testing.T, dir string) {
 	}
 	for _, provider := range b2PanelProviders {
 		name := strings.Replace(provider, "1panel", "panel1", 1)
-		out := filepath.Join(dir, name)
+		out := filepath.Join(dir, provider)
 		if err := os.MkdirAll(out, 0o755); err != nil {
 			t.Fatal(err)
 		}

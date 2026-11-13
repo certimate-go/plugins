@@ -117,6 +117,11 @@ func (a *b1WorkflowAPI) inspectLogs(ctx context.Context, runID, runError string,
 
 func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string, targets ...workflowLifecycleTarget) func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error) {
 	t.Helper()
+	return newB1WorkflowDeployerWithAccessOwner(t, binaryDir, provider, "", targets...)
+}
+
+func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, accessOwner string, targets ...workflowLifecycleTarget) func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error) {
+	t.Helper()
 	binary := os.Getenv("CERTIMATE_B1_CORE_BINARY")
 	if binary == "" {
 		t.Fatal("CERTIMATE_B1_CORE_BINARY is required for workflow verification")
@@ -135,6 +140,11 @@ func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string, targets ...
 	if !baseline {
 		if err := os.CopyFS(filepath.Join(pluginDir, provider), os.DirFS(filepath.Join(binaryDir, provider))); err != nil {
 			t.Fatal(err)
+		}
+		if accessOwner != "" {
+			if err := os.CopyFS(filepath.Join(pluginDir, accessOwner), os.DirFS(filepath.Join(binaryDir, accessOwner))); err != nil {
+				t.Fatal(err)
+			}
 		}
 	}
 	env := append(os.Environ(), "CERTIMATE_PLUGIN_DIR="+pluginDir)
