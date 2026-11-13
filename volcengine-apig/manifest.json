@@ -18,14 +18,14 @@
       "windows/amd64": "volcengine-apig_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "236334a5943af33a941397924f49c11db87ec0adb9087c7a8fbca594e8e9c41c",
-      "darwin/arm64": "51c25b731dd894067932680bda03797c48792d5dd2da445c05878e73c82b8d53",
-      "linux/amd64": "d3daacaee73e2a4bbaf12f2d8a2762fcebe94bda8d7fe06d337cba1787fb9bfb",
-      "linux/arm64": "74c6f178bce2829e24286c14aab20b8bea9daf942f02cc0e3753584c75ccb981",
-      "windows/amd64": "dc8f82055ddd18be4251d8cc2bc75982103e3fbf9d41165cc38cb67a3688bce6"
+      "darwin/amd64": "f0c155cc8f6e1299e9823df88a12e1e3c01838d06a076a24d224896ee8cc0a65",
+      "darwin/arm64": "3c85d1db63412124f6de95162801e25711ae9a19ca8f4628e2ebca788bb6ba44",
+      "linux/amd64": "ea66de239e5a1bc5f6bf541f410fbefea8e9504fdf9a756b904aef426ac8af28",
+      "linux/arm64": "10bca5b691e363ba89b347ba7d0ffda2fd093454bbcd0ee3b6da0757079dbc19",
+      "windows/amd64": "0e3dc4c9ec0179819e674cd1909f7e75f0e0560cf8243a635c0c07d25e797079"
     },
     "repo": "certimate-go/plugins",
-    "tag": "volcengine-apig/v0.1.0"
+    "tag": "volcengine-apig/v0.1.1"
   },
   "usages": [
     "hosting"
