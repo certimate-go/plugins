@@ -19,14 +19,14 @@
       "windows/amd64": "baotawaf_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c9cfe5f5630e0fd58150945118b4bfe99f807ae129cb0db8391713854760b2ef",
-      "darwin/arm64": "602421b84718ee40148575eda62479b1a3cdf5b366048ad0e8988b4ad76feb4b",
-      "linux/amd64": "86b4d9eeeb69d0aedd76b51c4e94563da8c1da4bfff333d81346de56904591cc",
-      "linux/arm64": "80f4a04809bb9f3145b2382b38ec54d311a10fb64e274c1c1670abe5a56feb79",
-      "windows/amd64": "92ddc63fdc542295c4e740a199dde076a1404258993573c35d171ebe93cabdd8"
+      "darwin/amd64": "f977b7ed6e677bb5be1a274b80d7c3bd8ba33d9c2401adb9e3ebffc2b0818d41",
+      "darwin/arm64": "8b0b88a938409ddff9d136e47c46264c75d719f93c96069e5266c020643c9780",
+      "linux/amd64": "5517d2cac92f2dd15517420c2581ae5ce1dc3c18a38d70abb21dec2d4ea13009",
+      "linux/arm64": "b9ce160b9912e5b88fdaa0ffb407c73daf13ea71db6483b1322bcc96dec326ab",
+      "windows/amd64": "973eeb5fcdae99d994ec32427ffc97490ceab2bb090c2b05454d43a2943ab0ed"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baotawaf/v0.1.0"
+    "tag": "baotawaf/v0.1.1"
   },
   "usages": [
     "hosting"
