@@ -17,14 +17,14 @@
       "windows/amd64": "netlify_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "d9f0f34b33d6e51ba2ca56ff98265186479648093e7cc7bb1f0cb29b25689986",
-      "darwin/arm64": "9dbcb50ab617e9829f2c8b00be10f84b59c72f0a085ac6709d5db47fc2a4b334",
-      "linux/amd64": "1aaf41fcf1df4417e936ad23dea04465bd74445a3d7833ac390aacf7645e16d4",
-      "linux/arm64": "65c9f8b7f462abaa0d4f5aa6c0d55f17f41cf492d468c97347b9ba44cd9b86f0",
-      "windows/amd64": "5c915d5233cce677210ade87d67ed3a5af25bdba8ea794bba6ac82af4756d940"
+      "darwin/amd64": "5c5e774ca0e16469489c8e11f3a18d88268bc070021cd116daa32ac2d2c4a9a2",
+      "darwin/arm64": "4d94ac8fae5803a3c0048ddab9a4114443a6d6cfb6c43610b38bdc09b769c8ca",
+      "linux/amd64": "bc59cf1cad2e9591470a4aed185cd1d7a7955089481eb2c7539119b4caf5fdce",
+      "linux/arm64": "b723b490c35f04e7e47feb37847e828a6e8a52f1887ec6eb83f1c784a868d734",
+      "windows/amd64": "410ba2e22e47e71063ef8c75cfbad277f87e4505734d68708d5c2c20a9e18861"
     },
     "repo": "certimate-go/plugins",
-    "tag": "netlify/v0.1.0"
+    "tag": "netlify/v0.1.1"
   },
   "usages": [
     "hosting"
