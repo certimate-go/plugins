@@ -7,6 +7,24 @@
   "icon": "wecom.svg",
   "protocol_version": 3,
   "provider_type": "wecombot",
+  "release": {
+    "assets": {
+      "darwin/amd64": "wecombot_darwin_amd64.zip",
+      "darwin/arm64": "wecombot_darwin_arm64.zip",
+      "linux/amd64": "wecombot_linux_amd64.zip",
+      "linux/arm64": "wecombot_linux_arm64.zip",
+      "windows/amd64": "wecombot_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "4dc363f5653d9c3c4f08cdb27eb1e21475de70394f4c3cd58e88eb590e1275f2",
+      "darwin/arm64": "315c90cd57f7045186a93e2544dbfdcc41db90fcfe8e867cf2cf8a1df130b6e3",
+      "linux/amd64": "5610a6a2e8daf782797d603c699ca0615449d4bc263a924a6c06d7d3b23717b7",
+      "linux/arm64": "2d73b2c928dc0be89200541448d03b9ba62db2ff01e1cdabce920fbc31be3baa",
+      "windows/amd64": "770e25f3995fabaa114f9faff3cf2048b41f43703456daeb3ac321bcc68462da"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "wecombot/v0.1.0"
+  },
   "usages": [
     "notification"
   ],
