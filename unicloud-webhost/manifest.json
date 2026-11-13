@@ -19,14 +19,14 @@
       "windows/amd64": "unicloud-webhost_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "5699fc8827fde268019633d61427f4fee2247b2b84e604a84a50fe2bc97fbb39",
-      "darwin/arm64": "6d55216a009240321cf165151bb1b1575ac666ab68ff0f8f16c33946643e9f8f",
-      "linux/amd64": "955a0218cb3e562471030a008d323c8ca0652e1c27005a53d7379f52f1be7a5b",
-      "linux/arm64": "32f9400594022331fd9d840e0f12dd465f94782d09a4cd0fa2b2ba51ebb94b04",
-      "windows/amd64": "42b15ba3d4f5ebb9f5a4ee3d699178a54080522030f3d9ed040e33dc068525ff"
+      "darwin/amd64": "c40e963b4d719ae903ff4fbb5ff48bea3363dc13c88bb86c9624a754245ea999",
+      "darwin/arm64": "ff7949021f2797c8b84241b4427a23c02e063e1a78b071e3a8c5c5a8626c1ff4",
+      "linux/amd64": "f8833d8e212a076401df120188d82fde3ffa5e599a5e456e064e740b7c4b7c99",
+      "linux/arm64": "03134b80530deab43208acc0f6fad8cb60ee9d587550d56cca2ab1ecce7ea1cb",
+      "windows/amd64": "aa01c27926be8b28a75582d77cc5c786396de8cdfa272c9ee74428bbdccf2ac4"
     },
     "repo": "certimate-go/plugins",
-    "tag": "unicloud-webhost/v0.1.0"
+    "tag": "unicloud-webhost/v0.1.1"
   },
   "usages": [
     "hosting"
