@@ -18,14 +18,14 @@
       "windows/amd64": "baiducloud-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "2a008a4efc5dfa70c0c11a76b226de0cdb9e17f3f3d5e73ec6e263d39b610e6e",
-      "darwin/arm64": "a7bae1f7032d3c5ccb1f6c3164a3811fe2ecee4386b6c3ebb44a4e8806d1ef6f",
-      "linux/amd64": "1b147f0f4cfcdb62c0cae34d76138340ed3e6f3cc69fe8b0a67369a08babeb04",
-      "linux/arm64": "8b2d81ea6f56588f34859158de9ae55c4bbdfc5371db0917af8a144607eac582",
-      "windows/amd64": "25f6547221fe3e33de2962320a5a6b19a5842a6584036d1cdcc1cef2acaa4680"
+      "darwin/amd64": "cede6390f31478961d0e4a281e9785cc7bf79be4ae26057443f1b2edfa28a9e7",
+      "darwin/arm64": "1df03d8e4108b9fefb2d08964f3c75c635a8377f28e9cd6762ac589090277863",
+      "linux/amd64": "9b620e52c1b8c414dcd9e7f29ace32bdbf02000f11f91d55daba4fd68ea1a2cf",
+      "linux/arm64": "2d30b8059027cdcc805d950c128220eb565a22e258211218ffb692ab3514f278",
+      "windows/amd64": "23c6cf7afc5e95fa8fa7dfc5321386005c4f62c5c71d344783719c1db5a3b042"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baiducloud-cdn/v0.1.0"
+    "tag": "baiducloud-cdn/v0.1.1"
   },
   "usages": [
     "hosting"
