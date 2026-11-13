@@ -1,0 +1,13 @@
+{
+  "access_provider_type": "powerdns-dns",
+  "capability": "dns",
+  "binary": "powerdns-dns",
+  "description": "DNS-01 via the PowerDNS Authoritative HTTP API (4.9.12+ or 5.0.2+).",
+  "display_name_key": "plugin.powerdns-dns.name",
+  "protocol_version": 3,
+  "provider_type": "powerdns-dns",
+  "usages": [
+    "dns"
+  ],
+  "version": "0.1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "access_provider_type": "gotify",
+  "capability": "notify",
+  "binary": "gotify",
+  "description": "Send notifications via a Gotify application.",
+  "display_name_key": "plugin.gotify.name",
+  "protocol_version": 3,
+  "provider_type": "gotify",
+  "usages": [
+    "notification"
+  ],
+  "version": "0.1.0"
+}

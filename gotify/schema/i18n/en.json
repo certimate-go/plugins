@@ -1,0 +1,5 @@
+{
+  "plugin.gotify.name": "Gotify",
+  "plugin.gotify.access.serverUrl": "Gotify server URL",
+  "plugin.gotify.access.token": "Application token"
+}

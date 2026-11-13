@@ -1,0 +1,6 @@
+{
+  "plugin.ntfy.name": "ntfy",
+  "plugin.ntfy.access.serverUrl": "ntfy 服务地址",
+  "plugin.ntfy.access.topic": "主题",
+  "plugin.ntfy.access.token": "访问令牌"
+}

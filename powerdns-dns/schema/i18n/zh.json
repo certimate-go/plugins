@@ -1,0 +1,7 @@
+{
+  "plugin.powerdns-dns.name": "PowerDNS 权威服务器",
+  "plugin.powerdns-dns.access.serverUrl": "PowerDNS 服务地址",
+  "plugin.powerdns-dns.access.zone": "DNS 区域",
+  "plugin.powerdns-dns.access.apiKey": "PowerDNS API 密钥",
+  "plugin.powerdns-dns.config.ttl": "TXT 记录 TTL（秒）"
+}

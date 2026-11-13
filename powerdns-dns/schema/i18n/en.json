@@ -1,0 +1,7 @@
+{
+  "plugin.powerdns-dns.name": "PowerDNS Authoritative",
+  "plugin.powerdns-dns.access.serverUrl": "PowerDNS server URL",
+  "plugin.powerdns-dns.access.zone": "DNS zone",
+  "plugin.powerdns-dns.access.apiKey": "PowerDNS API key",
+  "plugin.powerdns-dns.config.ttl": "TXT record TTL in seconds"
+}
