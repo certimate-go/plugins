@@ -18,14 +18,14 @@
       "windows/amd64": "ctcccloud-elb_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "28f21905fdcdc86d2ccfb75deacdccb5fbb91dbdd75a2c2a4d325795b88ca10a",
-      "darwin/arm64": "efd035029cfda9ee6db22baa48a534f38576007965fdc1cdaff8d88a13056f5a",
-      "linux/amd64": "0b747bb455c9880bb3bea9b7ba4db2375acf95ba6cb07e889fe52c0213848847",
-      "linux/arm64": "9f4f5baf85dfd77a491a029e69c307524e46565ee67935fc1b64ab184771cb33",
-      "windows/amd64": "bdbcbe2bb84be73aed8dd7f679702dc4faa816c47d036a8a4b7c05b1fd2044ad"
+      "darwin/amd64": "5d5bf884ec231b2635d3cf9c9f2e2ca2c85c236e0b972d82284185570fd15f29",
+      "darwin/arm64": "1eb3f31e8c54c175b85bdd5b7f40a7d3a9dd420b71c808591fb6ce73bebe4a16",
+      "linux/amd64": "70c14fdd4be18d65f9aa80897b51e4dbd6e5c8e2434852b0eaeff0db578e4ef4",
+      "linux/arm64": "f20d9a5ec3714360847af33fb3bcc55e6096162434ca8128bb71136c1a8f5d1b",
+      "windows/amd64": "f78ef21fbc5a6b6af58f57375df915b383e50098965336755b74808c807bac05"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ctcccloud-elb/v0.1.0"
+    "tag": "ctcccloud-elb/v0.1.1"
   },
   "usages": [
     "hosting"
