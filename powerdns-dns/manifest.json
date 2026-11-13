@@ -16,14 +16,14 @@
       "windows/amd64": "powerdns-dns_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "b3228f6ef451adaf0044c374f5de02c9f6cb693336bdcfd04a10586de141f672",
-      "darwin/arm64": "a711d87cd561d506dc8fd5511e363323056df20807c1451b625c08e7d7a074c9",
-      "linux/amd64": "8f5a1805a4cf2d6aef093d134308837cd53979a2d29e2378d4fd50d1d27783cf",
-      "linux/arm64": "3f535ff086a4bdd6db0c6a16c72fdbf9287a1aad4c6d1b56a2e7414ad761d8ab",
-      "windows/amd64": "edadfe41d5ba3973951006d59017308959977be539b7498d4674e183373664ca"
+      "darwin/amd64": "56ed82bdd26b5d7c390b1435cb34c07c198797c2f974fdce23330db8aea1ea0b",
+      "darwin/arm64": "69f91a0d9ec91882d339e26692b3d49e733a9819ad3ff174e5b473ba81b569d7",
+      "linux/amd64": "785d5bd0dd304d65c542488905703870ac781d0aa5943d332984c67a1deb8409",
+      "linux/arm64": "d04be82f1210ec1eaa0577a778435af2200f4a68e43afc19a9b61edf178a66c1",
+      "windows/amd64": "c980aa664efc9c78529354fefa8fca0de9dc20018c04ea83c499407a78637c6f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "powerdns-dns/v0.1.0"
+    "tag": "powerdns-dns/v0.1.1"
   },
   "usages": [
     "dns"
