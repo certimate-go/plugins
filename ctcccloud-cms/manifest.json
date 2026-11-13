@@ -18,14 +18,14 @@
       "windows/amd64": "ctcccloud-cms_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "a642cf8f03175d9c2813e97cee08825800e9371a3e7c89c833a987bce8a0c4b0",
-      "darwin/arm64": "ea01e3e91617f3aa0643ca07ed335f1ae5328a225a5ce1354ad9f4eb244393d7",
-      "linux/amd64": "32c851c7997f00cf516e96c9de3a5c75405cb41c8ae4df358b47f2be4a7ef44d",
-      "linux/arm64": "f80f2881fb552629b08a96356d729298a29f89f9b8d9d2099ac86f6b681b48fd",
-      "windows/amd64": "7004a70270e50d69f465fa430ef33e68e11618447b7423fe323081490b53a1a1"
+      "darwin/amd64": "59809078eae75ee3ebd5115df2bc7f0c7dbedbd7f16a2d8bb60918633e80af83",
+      "darwin/arm64": "a85b7ffaf703ce7e13e0b1c8a53acd76a3587326299d89e62dd28c9f5dcc5a3e",
+      "linux/amd64": "32aa33e46ea41f47c989a0f41deebc6017acdc65776c7ac2f465b6eccfa43410",
+      "linux/arm64": "d67ace55af6224381144e0b7fffe266c405531120b4c6e9276a446c2ee2871e5",
+      "windows/amd64": "ab566d48a39b6dd74784bdf1f7b51167e29cd3cf32e11389760edc770b21f3c0"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ctcccloud-cms/v0.1.0"
+    "tag": "ctcccloud-cms/v0.1.1"
   },
   "usages": [
     "hosting"
