@@ -1,7 +1,7 @@
 {
   "access_provider_type": "wangsu",
-  "capability": "deploy",
   "binary": "wangsu-cdnpro",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.wangsu-cdnpro.name",
   "icon": "wangsu.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "wangsu-cdnpro_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "182ee8189f60f856fa9855e77cdea816fae93890977d1b3bd76a86ada14eb865",
-      "darwin/arm64": "05660967ccb3f090aed8c4e90c7d59574e20a85c38b5aa21ac22ca9fb5380753",
-      "linux/amd64": "c553681fd2bc8c6e5b39b4375d13bcaeda58bd9869f2536d6bd65708670372fa",
-      "linux/arm64": "d1a136135dfea9f2f92c351bdf52d014b538f9cec5ea437e13c467b9cf9c786f",
-      "windows/amd64": "454181592c6750ba1687e4a48670f9fea9fca2ce091d700aec508ff8c7d5d59c"
+      "darwin/amd64": "19fffb494b4ebec5d5c61243e3ecb5cbaadf46887c4fe04c482d20c6e88c6d49",
+      "darwin/arm64": "947b6633cdac2723d8557e5d96128b82e5843199bd7461bd05fbeb6aa0fc941b",
+      "linux/amd64": "273069485d61267b46054780b5ba56192e2a80bbf199a546f7b60b831ab7bea6",
+      "linux/arm64": "8980f06d1403fd9542e67c2d62136fc371db546204dc30c17bd3761ba03531df",
+      "windows/amd64": "21b066731125311842360022c21239997e8ee680a84a77bfae215d73242d41a0"
     },
     "repo": "certimate-go/plugins",
-    "tag": "wangsu-cdnpro/v0.1.1"
+    "tag": "wangsu-cdnpro/v0.1.2"
   },
   "sha256": "",
   "usages": [
