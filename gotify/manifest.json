@@ -16,14 +16,14 @@
       "windows/amd64": "gotify_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "2e94b9f4e84c2766ea6301623258139bae658151dce5e5de5f177a0449de7ccf",
-      "darwin/arm64": "04569d9bd8ab3b13e49777fbc0b3185eeba1755d92009553f3fc957aa3bafb83",
-      "linux/amd64": "03bde15b39438996841813f8a4052b284654f8c825e3100a00e33bf4aa2e53f5",
-      "linux/arm64": "c757117f4f91e8cba6375d958fe572719ab1e9da3f01b58e704ba516f30fca0c",
-      "windows/amd64": "95370ce41e97e61d8bb7418b4d3de7957a3f9bb46785ac8349acb606dbd0a88f"
+      "darwin/amd64": "393dd1da297649582b660ab42fde5b748d8dadbf17617412a974a4f3ea61ba76",
+      "darwin/arm64": "47b75966350b8ef12dcb2a506bdb346d2981b9c64ac3bf9640a4031c13236f51",
+      "linux/amd64": "c39a833f04d5c4867ff604ed54222af8ae99a6966d041410d2a5a05dc7d6caa8",
+      "linux/arm64": "1d3ec1ad7ff33f9f30fa6d546a707ea9fe4373d3640635299955ceba3d439433",
+      "windows/amd64": "4555561db1cf6a9afa708e8eb98b84837dda8ded1863725bdd3f64fcc8376ca7"
     },
     "repo": "certimate-go/plugins",
-    "tag": "gotify/v0.1.0"
+    "tag": "gotify/v0.1.1"
   },
   "usages": [
     "notification"
