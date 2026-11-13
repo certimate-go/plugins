@@ -1,7 +1,7 @@
 {
   "access_provider_type": "qiniu",
-  "capability": "deploy",
   "binary": "qiniu-pili",
+  "capability": "deploy",
   "deploy_category": "av",
   "display_name_key": "plugin.qiniu-pili.name",
   "icon": "qiniu.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "qiniu-pili_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "45c00cce8222682a62ea42ed816a45b8d3f5408ab7051d4fa7b5c98fd2f33603",
-      "darwin/arm64": "c951a50cda7bde4dadd1d7faeddc000a9b903d0dc7b88b98e351089ecb38efed",
-      "linux/amd64": "9de7a6816fa7baeb595100fd4abe704a4bce92e8b0ef1af793c4c50dc3c1729e",
-      "linux/arm64": "f1e2b100aaacf8be641ffb2f788761d8c17e269cac99c0a4956eaa7defdafbb7",
-      "windows/amd64": "ccd91a5493cbdbfc80308f32a640d1d6ffc9b5539f641955383b1a73c7fd6230"
+      "darwin/amd64": "83bca0352f70a454b44333d1fcb3b23339199971f3f1250222024ff9276d0b72",
+      "darwin/arm64": "042579759acff40572d3a7735ae84593ded46131546db5b3a56b3677caa31003",
+      "linux/amd64": "85423dc29ce723ead7921d2ca17bf69981137c9ce8505e97954bf6b11f57efcf",
+      "linux/arm64": "adee5ea497f1dc2b5321a7694ec2cd4626e2469f094d80b7e9ddce5c3b1a3a36",
+      "windows/amd64": "ea80fecec63bc0012d9daaeb4b8dff494520532101adbb2307b0f682ffe5affc"
     },
     "repo": "certimate-go/plugins",
-    "tag": "qiniu-pili/v0.1.1"
+    "tag": "qiniu-pili/v0.1.2"
   },
   "sha256": "",
   "usages": [
