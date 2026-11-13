@@ -17,14 +17,14 @@
       "windows/amd64": "gcore-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "1343920d4ec781fee20b33e1b7c01263580cdfa442e6c279c6cc130a54fbde90",
-      "darwin/arm64": "bd0da76a91cb8c2faceac2d5a345da3568310a4a25feb49eb02ae2c3bc7691fd",
-      "linux/amd64": "90023b30aaa37ef722164989e74ce04fa453fa098ea5f7626f3e83cd0355921a",
-      "linux/arm64": "a167f110c6fa0548aaed873f85b97c4f89bd219a9a7a76c247020d5c4126d443",
-      "windows/amd64": "572db953e0e193d45123d51263b96dbff4cf4b0a940ad7036e1e6996b0d444b1"
+      "darwin/amd64": "e3ed46ea06464118c97681e5539915edf1964d12384f6d2b39c628e43deff89b",
+      "darwin/arm64": "831f1c05c40dcdc28a09745d154e8676cf5e3331ef86a5244b0376b4c8a308f4",
+      "linux/amd64": "9e8d5de563389f3608599e2b17b98841bd234db3a842ae68165105b4a0ff9c7f",
+      "linux/arm64": "d28693c8dda2035889285d8d9e7169a8628875a172da9082dc5dc59d2dd04fa8",
+      "windows/amd64": "11e788f3d810e7ee4978e7a8e5934255ca5f2f94167f7b3277ab70cbbc1f5d80"
     },
     "repo": "certimate-go/plugins",
-    "tag": "gcore-cdn/v0.1.0"
+    "tag": "gcore-cdn/v0.1.1"
   },
   "usages": [
     "hosting"
