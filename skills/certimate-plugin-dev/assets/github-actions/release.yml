@@ -1,0 +1,132 @@
+name: Release plugin
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      plugin:
+        description: Optional top-level plugin directory to release
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: certimate-market-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      REQUESTED_PLUGIN: ${{ inputs.plugin }}
+      RELEASE_REPO: ${{ github.repository }}
+      GOWORK: "off"
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
+        with:
+          go-version-file: go.mod
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: certimate-go/plugins
+          ref: e12c0d980775edea531d2cbe4b3061d725ae9083
+          path: .certimate-release-tools
+          persist-credentials: false
+      - name: Find unpublished plugin versions
+        id: plugins
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -n "$REQUESTED_PLUGIN" ]]; then
+            [[ "$REQUESTED_PLUGIN" =~ ^[a-z0-9][a-z0-9_.-]*$ ]]
+            manifests=("$REQUESTED_PLUGIN/manifest.json")
+            test -f "${manifests[0]}"
+          else
+            manifests=(*/manifest.json)
+          fi
+
+          pending=""
+          for manifest in "${manifests[@]}"; do
+            [[ -f "$manifest" ]] || continue
+            directory=${manifest%/manifest.json}
+            [[ "$directory" != _template ]] || continue
+            [[ "$directory" =~ ^[a-z0-9][a-z0-9_.-]*$ ]]
+            provider=$(jq -er '.provider_type | strings | select(test("^[a-z0-9][a-z0-9_.-]*$"))' "$manifest")
+            version=$(jq -er '.version | strings | select(test("^[0-9]+\\.[0-9]+\\.[0-9]+(-[A-Za-z0-9.]+)?$"))' "$manifest")
+            tag="$provider/v$version"
+            if jq -e --arg repo "$RELEASE_REPO" --arg tag "$tag" \
+              '.release.repo == $repo and .release.tag == $tag' "$manifest" >/dev/null; then
+              continue
+            fi
+            pending+="${pending:+ }$directory"
+          done
+          printf 'pending=%s\n' "$pending" >> "$GITHUB_OUTPUT"
+      - name: Test plugins
+        if: steps.plugins.outputs.pending != ''
+        run: go test ./...
+      - name: Build and publish releases, then update main catalog
+        if: steps.plugins.outputs.pending != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PENDING_PLUGINS: ${{ steps.plugins.outputs.pending }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          read -r -a plugins <<< "$PENDING_PLUGINS"
+          expected_head="$GITHUB_SHA"
+
+          for directory in "${plugins[@]}"; do
+            manifest="$directory/manifest.json"
+            provider=$(jq -er .provider_type "$manifest")
+            version=$(jq -er .version "$manifest")
+            tag="$provider/v$version"
+            binary=$(jq -er '.binary | strings | select(test("^[a-z0-9][a-z0-9_.-]*$"))' "$manifest")
+            if [[ "$binary" != *.exe ]]; then
+              echo "::error::Use a manifest binary name ending in .exe for the Windows build."
+              exit 1
+            fi
+            icon=$(jq -r '.icon // empty' "$manifest")
+            if [[ -n "$icon" && ( ! "$icon" =~ ^[a-zA-Z0-9][a-zA-Z0-9_.-]*$ || ! -f "$directory/$icon" ) ]]; then
+              echo "::error::The declared icon must be a file at the root of the plugin directory."
+              exit 1
+            fi
+
+            output=".certimate-release-assets/$directory"
+            mkdir -p "$output"
+            make -f .certimate-release-tools/Makefile build-all PLUGIN="$directory" OUTPUT_DIR="$output"
+            go run ./.certimate-release-tools/cmd/releaseinfo/main.go \
+              -plugin "$directory" -repo "$RELEASE_REPO" -dist "$output"
+            go run ./.certimate-release-tools/cmd/genindex/{main,catalog}.go -o index.json
+
+            remote_head=$(git ls-remote --exit-code origin refs/heads/main | cut -f1)
+            if [[ "$remote_head" != "$expected_head" ]]; then
+              echo "::error::main advanced. Run the workflow again from the latest main."
+              exit 1
+            fi
+            assets=("$output"/"${directory}"_*.zip)
+            git add -- "$manifest" index.json market/details
+            git -c user.name='github-actions[bot]' -c user.email='github-actions[bot]@users.noreply.github.com' \
+              commit -m "Publish plugin $tag in market catalog"
+            gh release create "$tag" "${assets[@]}" --repo "$RELEASE_REPO" \
+              --target "$GITHUB_SHA" --title "$tag" --generate-notes
+            if ! git -c credential.helper= -c 'credential.helper=!gh auth git-credential' push origin HEAD:main; then
+              git format-patch -1 --stdout > "$RUNNER_TEMP/market-catalog.patch"
+              echo "::error::Release created. Download the catalog patch artifact and apply it to main."
+              exit 1
+            fi
+            expected_head=$(git rev-parse HEAD)
+          done
+      - name: Save catalog patch if main could not be updated
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: market-catalog-patch
+          path: ${{ runner.temp }}/market-catalog.patch
+          if-no-files-found: ignore
