@@ -19,14 +19,14 @@
       "windows/amd64": "vercel_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "6ca5beaf41147f499f1225df770181422cc43be330d6bbc086b06576d4fb8434",
-      "darwin/arm64": "fb54dd4de2221c795611d482ba1842827aace8d30c96466dc0051744ff1d6130",
-      "linux/amd64": "a90a63bed308420a7044867f8a62ce3e71d8acb95e0eaa8a5456f924637a489d",
-      "linux/arm64": "c48b8b1f766240e7a2dfa0c19b3978259b5471a14385da264e507d3d7eded2c4",
-      "windows/amd64": "bf497bb1447eedb4d3cb856631123fa27efe493d7589c399c53f0fc59a53ecb7"
+      "darwin/amd64": "9770e18dadf70efd976ef0c5082cab238c04cd648ec60e2934c1bfe268201565",
+      "darwin/arm64": "5bd56553a7930abcd0ed46aeab0293f1acc92f9f9af08d5bc9a41410e89278e0",
+      "linux/amd64": "5fd84932cde99506f3834d93a00978efc5b709d489cbcfa79cc14d79a5b8ff4f",
+      "linux/arm64": "35aa987483cd42999012e9a1f3e8e0cbbdeff57477cf6ce30e399142556003f2",
+      "windows/amd64": "1328efb12ddcc70d49ad805bbecdf1c4c53baea16290fe4a44ee9a0523bb9f8a"
     },
     "repo": "certimate-go/plugins",
-    "tag": "vercel/v0.1.0"
+    "tag": "vercel/v0.1.1"
   },
   "sha256": "",
   "usages": [
