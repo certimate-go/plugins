@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "discordbot",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "botToken",
+        "valueType": "secret",
+        "labelKey": "plugin.discordbot.access.botToken.label",
+        "tooltipKey": "plugin.discordbot.access.botToken.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.discordbot.access.botToken.placeholder",
+        "required": true,
+        "secret": true
+      },
+      {
+        "name": "channelId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.discordbot.access.channelId.label",
+        "tooltipKey": "plugin.discordbot.access.channelId.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.discordbot.access.channelId.placeholder",
+        "extraKey": "plugin.discordbot.access.channelId.help"
+      }
+    ]
+  }
+}

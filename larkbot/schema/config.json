@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "larkbot",
+  "category": "notify",
+  "schema": {
+    "columns": []
+  }
+}

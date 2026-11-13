@@ -1,0 +1,14 @@
+{
+  "access_provider_type": "telegrambot",
+  "binary": "telegrambot",
+  "capability": "notify",
+  "description": "Send notifications to a Telegram chat.",
+  "display_name_key": "plugin.telegrambot.name",
+  "icon": "telegram.svg",
+  "protocol_version": 3,
+  "provider_type": "telegrambot",
+  "usages": [
+    "notification"
+  ],
+  "version": "0.1.0"
+}

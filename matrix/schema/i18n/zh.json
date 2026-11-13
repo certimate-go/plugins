@@ -1,0 +1,18 @@
+{
+  "plugin.matrix.name": "Matrix / ElementX",
+  "plugin.matrix.access.serverUrl.label": "Matrix 服务地址",
+  "plugin.matrix.access.serverUrl.placeholder": "请输入 Matrix 服务地址",
+  "plugin.matrix.access.userId.label": "Matrix 用户 ID",
+  "plugin.matrix.access.userId.tooltip": "这是什么？请参阅 <a href=\"https://docs.element.io/latest/element-support/matrix-account-management/creating-a-matrix-account/\" target=\"_blank\">https://docs.element.io/latest/element-support/matrix-account-management/creating-a-matrix-account/</a>",
+  "plugin.matrix.access.userId.placeholder": "请输入 Matrix 用户 ID",
+  "plugin.matrix.access.accessToken.label": "Matrix Access token",
+  "plugin.matrix.access.accessToken.tooltip": "这是什么？请参阅 <a href=\"https://docs.element.io/latest/element-support/element-webdesktop-client-settings/element-settings/#your-access-token\" target=\"_blank\">https://docs.element.io/latest/element-support/element-webdesktop-client-settings/element-settings/</a>",
+  "plugin.matrix.access.accessToken.placeholder": "请输入 Matrix Access token",
+  "plugin.matrix.access.roomId.label": "Matrix 房间 ID（可选）",
+  "plugin.matrix.access.roomId.tooltip": "这是什么？请参阅 <a href=\"https://docs.element.io/latest/element-support/matrix-rooms/managing-a-room-room-settings/#advanced\" target=\"_blank\">https://docs.element.io/latest/element-support/matrix-rooms/managing-a-room-room-settings/</a>",
+  "plugin.matrix.access.roomId.placeholder": "请输入默认的 Matrix 房间 ID",
+  "plugin.matrix.access.roomId.help": "提示：可在工作流中覆盖此设置。请先将机器人邀请进房间。",
+  "plugin.matrix.notify.roomId.label": "Matrix 房间 ID（可选）",
+  "plugin.matrix.notify.roomId.placeholder": "请输入 Matrix 房间 ID",
+  "plugin.matrix.notify.roomId.help": "提示：不填写时，将使用所选通知渠道授权的默认房间 ID。"
+}

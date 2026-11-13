@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "mattermost",
+  "category": "notify",
+  "schema": {
+    "columns": [
+      {
+        "name": "channelId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.mattermost.notify.channelId.label",
+        "placeholderKey": "plugin.mattermost.notify.channelId.placeholder",
+        "extraKey": "plugin.mattermost.notify.channelId.help"
+      }
+    ]
+  }
+}

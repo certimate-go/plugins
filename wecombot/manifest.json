@@ -1,0 +1,14 @@
+{
+  "access_provider_type": "wecombot",
+  "binary": "wecombot",
+  "capability": "notify",
+  "description": "Send notifications via a WeCom group robot.",
+  "display_name_key": "plugin.wecombot.name",
+  "icon": "wecom.svg",
+  "protocol_version": 3,
+  "provider_type": "wecombot",
+  "usages": [
+    "notification"
+  ],
+  "version": "0.1.0"
+}

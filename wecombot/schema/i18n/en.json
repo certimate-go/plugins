@@ -1,0 +1,9 @@
+{
+  "plugin.wecombot.name": "WeCom Bot",
+  "plugin.wecombot.access.webhookUrl.label": "WeCom bot Webhook URL",
+  "plugin.wecombot.access.webhookUrl.tooltip": "For more information, see <a href=\"https://www.west.cn/CustomerCenter/doc/apiv2.html#12u3001u8eabu4efdu9a8cu8bc10a3ca20id3d12u3001u8eabu4efdu9a8cu8bc13e203ca3e\" target=\"_blank\">https://www.west.cn/CustomerCenter/doc/apiv2.html</a>",
+  "plugin.wecombot.access.webhookUrl.placeholder": "Please enter WeCom bot Webhook URL",
+  "plugin.wecombot.access.customPayload.label": "WeCom bot message payload (Optional)",
+  "plugin.wecombot.access.customPayload.placeholder": "Please enter custom WeCom bot message payload",
+  "plugin.wecombot.access.customPayload.help": "Use ${CERTIMATE_NOTIFIER_SUBJECT} and ${CERTIMATE_NOTIFIER_MESSAGE} for the notification subject and message. Leave blank to use the default payload."
+}

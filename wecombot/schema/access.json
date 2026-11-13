@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "wecombot",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "webhookUrl",
+        "valueType": "text",
+        "labelKey": "plugin.wecombot.access.webhookUrl.label",
+        "tooltipKey": "plugin.wecombot.access.webhookUrl.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.wecombot.access.webhookUrl.placeholder",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "webhookUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "customPayload",
+        "valueType": "code",
+        "labelKey": "plugin.wecombot.access.customPayload.label",
+        "placeholderKey": "plugin.wecombot.access.customPayload.placeholder",
+        "extraKey": "plugin.wecombot.access.customPayload.help",
+        "language": "json",
+        "validateWhen": [
+          {
+            "field": "customPayload",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "json_object"
+          }
+        ]
+      }
+    ]
+  }
+}

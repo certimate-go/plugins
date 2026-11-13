@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "telegrambot",
+  "category": "notify",
+  "schema": {
+    "columns": [
+      {
+        "name": "chatId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.telegrambot.notify.chatId.label",
+        "placeholderKey": "plugin.telegrambot.notify.chatId.placeholder",
+        "extraKey": "plugin.telegrambot.notify.chatId.help",
+        "numericValue": "integer"
+      }
+    ]
+  }
+}

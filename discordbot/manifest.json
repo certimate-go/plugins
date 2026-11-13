@@ -1,0 +1,14 @@
+{
+  "access_provider_type": "discordbot",
+  "binary": "discordbot",
+  "capability": "notify",
+  "description": "Send notifications to a Discord channel.",
+  "display_name_key": "plugin.discordbot.name",
+  "icon": "discord.svg",
+  "protocol_version": 3,
+  "provider_type": "discordbot",
+  "usages": [
+    "notification"
+  ],
+  "version": "0.1.0"
+}

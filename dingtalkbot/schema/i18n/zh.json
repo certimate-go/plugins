@@ -1,0 +1,12 @@
+{
+  "plugin.dingtalkbot.name": "钉钉群机器人",
+  "plugin.dingtalkbot.access.webhookUrl.label": "钉钉群机器人 Webhook 地址",
+  "plugin.dingtalkbot.access.webhookUrl.tooltip": "这是什么？请参阅 <a href=\"https://open.dingtalk.com/document/orgapp/obtain-the-webhook-address-of-a-custom-robot\" target=\"_blank\">https://open.dingtalk.com/document/orgapp/obtain-the-webhook-address-of-a-custom-robot</a>",
+  "plugin.dingtalkbot.access.webhookUrl.placeholder": "请输入钉钉群机器人 Webhook 地址",
+  "plugin.dingtalkbot.access.secret.label": "钉钉群机器人签名密钥（可选）",
+  "plugin.dingtalkbot.access.secret.tooltip": "这是什么？请参阅 <a href=\"https://open.dingtalk.com/document/orgapp/customize-robot-security-settings\" target=\"_blank\">https://open.dingtalk.com/document/orgapp/customize-robot-security-settings</a>",
+  "plugin.dingtalkbot.access.secret.placeholder": "请输入钉钉群机器人签名密钥",
+  "plugin.dingtalkbot.access.customPayload.label": "钉钉群机器人消息数据（可选）",
+  "plugin.dingtalkbot.access.customPayload.placeholder": "请输入自定义的钉钉群机器人消息数据",
+  "plugin.dingtalkbot.access.customPayload.help": "用 ${CERTIMATE_NOTIFIER_SUBJECT} 和 ${CERTIMATE_NOTIFIER_MESSAGE} 引用通知标题和正文。留空时使用默认消息格式。"
+}

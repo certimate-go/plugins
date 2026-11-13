@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "slackbot",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "botToken",
+        "valueType": "secret",
+        "labelKey": "plugin.slackbot.access.botToken.label",
+        "tooltipKey": "plugin.slackbot.access.botToken.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.slackbot.access.botToken.placeholder",
+        "required": true,
+        "secret": true
+      },
+      {
+        "name": "channelId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.slackbot.access.channelId.label",
+        "tooltipKey": "plugin.slackbot.access.channelId.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.slackbot.access.channelId.placeholder",
+        "extraKey": "plugin.slackbot.access.channelId.help"
+      }
+    ]
+  }
+}

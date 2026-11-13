@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "wecombot",
+  "category": "notify",
+  "schema": {
+    "columns": []
+  }
+}

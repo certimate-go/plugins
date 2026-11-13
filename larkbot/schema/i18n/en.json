@@ -1,0 +1,12 @@
+{
+  "plugin.larkbot.name": "Lark Bot",
+  "plugin.larkbot.access.webhookUrl.label": "Lark bot Webhook URL",
+  "plugin.larkbot.access.webhookUrl.tooltip": "For more information, see <a href=\"https://open.larksuite.com/document/client-docs/bot-v3/add-custom-bot\" target=\"_blank\">https://open.larksuite.com/document/client-docs/bot-v3/add-custom-bot</a>",
+  "plugin.larkbot.access.webhookUrl.placeholder": "Please enter Lark bot Webhook URL",
+  "plugin.larkbot.access.secret.label": "Lark bot secret",
+  "plugin.larkbot.access.secret.tooltip": "For more information, see <a href=\"https://open.larksuite.com/document/client-docs/bot-v3/add-custom-bot\" target=\"_blank\">https://open.larksuite.com/document/client-docs/bot-v3/add-custom-bot</a>",
+  "plugin.larkbot.access.secret.placeholder": "Please enter Lark bot secret",
+  "plugin.larkbot.access.customPayload.label": "Lark bot message payload (Optional)",
+  "plugin.larkbot.access.customPayload.placeholder": "Please enter custom Lark bot message payload",
+  "plugin.larkbot.access.customPayload.help": "Use ${CERTIMATE_NOTIFIER_SUBJECT} and ${CERTIMATE_NOTIFIER_MESSAGE} for the notification subject and message. Leave blank to use the default payload."
+}

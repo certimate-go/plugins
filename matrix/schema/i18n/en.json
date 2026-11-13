@@ -1,0 +1,18 @@
+{
+  "plugin.matrix.name": "Matrix / ElementX",
+  "plugin.matrix.access.serverUrl.label": "Matrix server URL",
+  "plugin.matrix.access.serverUrl.placeholder": "Please enter Matrix server URL",
+  "plugin.matrix.access.userId.label": "Matrix user ID",
+  "plugin.matrix.access.userId.tooltip": "For more information, see <a href=\"https://docs.element.io/latest/element-support/matrix-account-management/creating-a-matrix-account/\" target=\"_blank\">https://docs.element.io/latest/element-support/matrix-account-management/creating-a-matrix-account/</a>",
+  "plugin.matrix.access.userId.placeholder": "Please enter Matrix user ID",
+  "plugin.matrix.access.accessToken.label": "Matrix access token",
+  "plugin.matrix.access.accessToken.tooltip": "For more information, see <a href=\"https://docs.element.io/latest/element-support/element-webdesktop-client-settings/element-settings/#your-access-token\" target=\"_blank\">https://docs.element.io/latest/element-support/element-webdesktop-client-settings/element-settings/</a>",
+  "plugin.matrix.access.accessToken.placeholder": "Please enter Matrix access token",
+  "plugin.matrix.access.roomId.label": "Matrix room ID (Optional)",
+  "plugin.matrix.access.roomId.tooltip": "For more information, see <a href=\"https://docs.element.io/latest/element-support/matrix-rooms/managing-a-room-room-settings/#advanced\" target=\"_blank\">https://docs.element.io/latest/element-support/matrix-rooms/managing-a-room-room-settings/</a>",
+  "plugin.matrix.access.roomId.placeholder": "Please enter the default Matrix room ID",
+  "plugin.matrix.access.roomId.help": "Notes: It can be overrided in the workflows. Invite the bot to the room first.",
+  "plugin.matrix.notify.roomId.label": "Matrix room ID (Optional)",
+  "plugin.matrix.notify.roomId.placeholder": "Please enter Matrix room ID",
+  "plugin.matrix.notify.roomId.help": "Notes: Leave it blank to use the default room ID provided by the selected credential."
+}

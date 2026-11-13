@@ -1,0 +1,13 @@
+{
+  "plugin.slackbot.name": "Slack 机器人",
+  "plugin.slackbot.access.botToken.label": "Slack 机器人 Token",
+  "plugin.slackbot.access.botToken.tooltip": "这是什么？请参阅 <a href=\"https://docs.slack.dev/authentication/tokens#bot\" target=\"_blank\">https://docs.slack.dev/authentication/tokens#bot</a>",
+  "plugin.slackbot.access.botToken.placeholder": "请输入 Slack 机器人 Token",
+  "plugin.slackbot.access.channelId.label": "Slack 频道 ID（可选）",
+  "plugin.slackbot.access.channelId.tooltip": "如何获取此参数？请参阅 <a href=\"https://www.youtube.com/watch?v=Uz5Yi5C2pwQ\" target=\"_blank\">https://www.youtube.com/watch?v=Uz5Yi5C2pwQ</a>",
+  "plugin.slackbot.access.channelId.placeholder": "请输入默认的 Slack 频道 ID",
+  "plugin.slackbot.access.channelId.help": "提示：可在工作流中覆盖此设置。",
+  "plugin.slackbot.notify.channelId.label": "Slack 频道 ID（可选）",
+  "plugin.slackbot.notify.channelId.placeholder": "请输入 Slack 频道 ID",
+  "plugin.slackbot.notify.channelId.help": "提示：不填写时，将使用所选通知渠道授权的默认频道 ID。"
+}

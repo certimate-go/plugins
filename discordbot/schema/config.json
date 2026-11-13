@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "discordbot",
+  "category": "notify",
+  "schema": {
+    "columns": [
+      {
+        "name": "channelId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.discordbot.notify.channelId.label",
+        "placeholderKey": "plugin.discordbot.notify.channelId.placeholder",
+        "extraKey": "plugin.discordbot.notify.channelId.help"
+      }
+    ]
+  }
+}

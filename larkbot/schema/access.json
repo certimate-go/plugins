@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "larkbot",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "webhookUrl",
+        "valueType": "text",
+        "labelKey": "plugin.larkbot.access.webhookUrl.label",
+        "tooltipKey": "plugin.larkbot.access.webhookUrl.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.larkbot.access.webhookUrl.placeholder",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "webhookUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "secret",
+        "valueType": "secret",
+        "labelKey": "plugin.larkbot.access.secret.label",
+        "tooltipKey": "plugin.larkbot.access.secret.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.larkbot.access.secret.placeholder",
+        "secret": true
+      },
+      {
+        "name": "customPayload",
+        "valueType": "code",
+        "labelKey": "plugin.larkbot.access.customPayload.label",
+        "placeholderKey": "plugin.larkbot.access.customPayload.placeholder",
+        "extraKey": "plugin.larkbot.access.customPayload.help",
+        "language": "json",
+        "validateWhen": [
+          {
+            "field": "customPayload",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "json_object"
+          }
+        ]
+      }
+    ]
+  }
+}

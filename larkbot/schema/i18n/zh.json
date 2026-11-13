@@ -1,0 +1,12 @@
+{
+  "plugin.larkbot.name": "飞书群机器人",
+  "plugin.larkbot.access.webhookUrl.label": "飞书群机器人 Webhook 地址",
+  "plugin.larkbot.access.webhookUrl.tooltip": "这是什么？请参阅 <a href=\"https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot\" target=\"_blank\">https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot</a>",
+  "plugin.larkbot.access.webhookUrl.placeholder": "请输入飞书群机器人 Webhook 地址",
+  "plugin.larkbot.access.secret.label": "飞书群机器人签名密钥（可选）",
+  "plugin.larkbot.access.secret.tooltip": "这是什么？请参阅 <a href=\"https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot\" target=\"_blank\">https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot</a>",
+  "plugin.larkbot.access.secret.placeholder": "请输入飞书群机器人签名密钥",
+  "plugin.larkbot.access.customPayload.label": "飞书群机器人消息数据（可选）",
+  "plugin.larkbot.access.customPayload.placeholder": "请输入自定义的飞书群机器人消息数据",
+  "plugin.larkbot.access.customPayload.help": "用 ${CERTIMATE_NOTIFIER_SUBJECT} 和 ${CERTIMATE_NOTIFIER_MESSAGE} 引用通知标题和正文。留空时使用默认消息格式。"
+}

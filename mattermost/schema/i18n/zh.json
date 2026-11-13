@@ -1,0 +1,16 @@
+{
+  "plugin.mattermost.name": "Mattermost",
+  "plugin.mattermost.access.serverUrl.label": "Mattermost 服务地址",
+  "plugin.mattermost.access.serverUrl.placeholder": "请输入 Mattermost 服务地址",
+  "plugin.mattermost.access.username.label": "Mattermost 用户名",
+  "plugin.mattermost.access.username.placeholder": "请输入 Mattermost 用户名",
+  "plugin.mattermost.access.password.label": "Mattermost 密码",
+  "plugin.mattermost.access.password.placeholder": "请输入 Mattermost 密码",
+  "plugin.mattermost.access.channelId.label": "Mattermost 频道 ID（可选）",
+  "plugin.mattermost.access.channelId.tooltip": "如何获取此参数？从左侧边栏中选择目标频道，点击顶部的频道名称，选择“频道详情”，即可在弹出页面中直接看到频道 ID。",
+  "plugin.mattermost.access.channelId.placeholder": "请输入默认的 Mattermost 频道 ID",
+  "plugin.mattermost.access.channelId.help": "提示：可在工作流中覆盖此设置。",
+  "plugin.mattermost.notify.channelId.label": "Mattermost 频道 ID（可选）",
+  "plugin.mattermost.notify.channelId.placeholder": "请输入 Mattermost 频道 ID",
+  "plugin.mattermost.notify.channelId.help": "提示：不填写时，将使用所选通知渠道授权的默认频道 ID。"
+}

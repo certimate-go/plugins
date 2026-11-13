@@ -1,0 +1,13 @@
+{
+  "plugin.discordbot.name": "Discord Bot",
+  "plugin.discordbot.access.botToken.label": "Discord bot token",
+  "plugin.discordbot.access.botToken.tooltip": "For more information, see <a href=\"https://docs.discordbotstudio.org/setting-up-dbs/finding-your-bot-token\" target=\"_blank\">https://docs.discordbotstudio.org/setting-up-dbs/finding-your-bot-token</a>",
+  "plugin.discordbot.access.botToken.placeholder": "Please enter Discord bot token",
+  "plugin.discordbot.access.channelId.label": "Discord channel ID (Optional)",
+  "plugin.discordbot.access.channelId.tooltip": "For more information, see <a href=\"https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID\" target=\"_blank\">https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID</a>",
+  "plugin.discordbot.access.channelId.placeholder": "Please enter the default Discord channel ID",
+  "plugin.discordbot.access.channelId.help": "Notes: It can be overrided in the workflows.",
+  "plugin.discordbot.notify.channelId.label": "Discord channel ID (Optional)",
+  "plugin.discordbot.notify.channelId.placeholder": "Please enter Discord channel ID",
+  "plugin.discordbot.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential."
+}

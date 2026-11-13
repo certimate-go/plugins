@@ -1,0 +1,16 @@
+{
+  "plugin.mattermost.name": "Mattermost",
+  "plugin.mattermost.access.serverUrl.label": "Mattermost server URL",
+  "plugin.mattermost.access.serverUrl.placeholder": "Please enter Mattermost server URL",
+  "plugin.mattermost.access.username.label": "Mattermost username",
+  "plugin.mattermost.access.username.placeholder": "Please enter Mattermost username",
+  "plugin.mattermost.access.password.label": "Mattermost password",
+  "plugin.mattermost.access.password.placeholder": "Please enter Mattermost password",
+  "plugin.mattermost.access.channelId.label": "Mattermost channel ID (Optional)",
+  "plugin.mattermost.access.channelId.tooltip": "How to get it? Select the target channel from the left sidebar, click on the channel name at the top, and choose ”Channel Details”. You can directly see the channel ID on the pop-up page.",
+  "plugin.mattermost.access.channelId.placeholder": "Please enter the default Mattermost channel ID",
+  "plugin.mattermost.access.channelId.help": "Notes: It can be overrided in the workflows.",
+  "plugin.mattermost.notify.channelId.label": "Mattermost channel ID (Optional)",
+  "plugin.mattermost.notify.channelId.placeholder": "Please enter Mattermost channel ID",
+  "plugin.mattermost.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential."
+}

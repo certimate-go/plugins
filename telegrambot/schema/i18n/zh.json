@@ -1,0 +1,13 @@
+{
+  "plugin.telegrambot.name": "Telegram 机器人",
+  "plugin.telegrambot.access.botToken.label": "Telegram 机器人 API Token",
+  "plugin.telegrambot.access.botToken.tooltip": "如何获取此参数？请参阅 <a href=\"https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a\" target=\"_blank\">https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a</a>",
+  "plugin.telegrambot.access.botToken.placeholder": "请输入 Telegram 机器人 API Token",
+  "plugin.telegrambot.access.chatId.label": "Telegram 会话 ID（可选）",
+  "plugin.telegrambot.access.chatId.tooltip": "如何获取此参数？请参阅 <a href=\"https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a\" target=\"_blank\">https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a</a>",
+  "plugin.telegrambot.access.chatId.placeholder": "请输入默认的 Telegram 会话 ID",
+  "plugin.telegrambot.access.chatId.help": "提示：可在工作流中覆盖此设置。",
+  "plugin.telegrambot.notify.chatId.label": "Telegram 会话 ID（可选）",
+  "plugin.telegrambot.notify.chatId.placeholder": "请输入 Telegram 会话 ID",
+  "plugin.telegrambot.notify.chatId.help": "提示：不填写时，将使用所选通知渠道授权的默认会话 ID。"
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "matrix",
+  "category": "notify",
+  "schema": {
+    "columns": [
+      {
+        "name": "roomId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.matrix.notify.roomId.label",
+        "placeholderKey": "plugin.matrix.notify.roomId.placeholder",
+        "extraKey": "plugin.matrix.notify.roomId.help"
+      }
+    ]
+  }
+}

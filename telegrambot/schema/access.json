@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "telegrambot",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "botToken",
+        "valueType": "secret",
+        "labelKey": "plugin.telegrambot.access.botToken.label",
+        "tooltipKey": "plugin.telegrambot.access.botToken.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.telegrambot.access.botToken.placeholder",
+        "required": true,
+        "secret": true
+      },
+      {
+        "name": "chatId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.telegrambot.access.chatId.label",
+        "tooltipKey": "plugin.telegrambot.access.chatId.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.telegrambot.access.chatId.placeholder",
+        "extraKey": "plugin.telegrambot.access.chatId.help",
+        "required": true,
+        "numericValue": "integer"
+      }
+    ]
+  }
+}

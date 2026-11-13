@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "dingtalkbot",
+  "category": "notify",
+  "schema": {
+    "columns": []
+  }
+}

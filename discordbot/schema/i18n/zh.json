@@ -1,0 +1,13 @@
+{
+  "plugin.discordbot.name": "Discord 机器人",
+  "plugin.discordbot.access.botToken.label": "Discord 机器人 API Token",
+  "plugin.discordbot.access.botToken.tooltip": "这是什么？请参阅 <a href=\"https://docs.discordbotstudio.org/setting-up-dbs/finding-your-bot-token\" target=\"_blank\">https://docs.discordbotstudio.org/setting-up-dbs/finding-your-bot-token</a>",
+  "plugin.discordbot.access.botToken.placeholder": "请输入 Discord 机器人 API Token",
+  "plugin.discordbot.access.channelId.label": "Discord 频道 ID（可选）",
+  "plugin.discordbot.access.channelId.tooltip": "这是什么？请参阅 <a href=\"https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID\" target=\"_blank\">https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID</a>",
+  "plugin.discordbot.access.channelId.placeholder": "请输入默认的 Discord 频道 ID",
+  "plugin.discordbot.access.channelId.help": "提示：可在工作流中覆盖此设置。",
+  "plugin.discordbot.notify.channelId.label": "Discord 频道 ID（可选）",
+  "plugin.discordbot.notify.channelId.placeholder": "请输入 Discord 频道 ID",
+  "plugin.discordbot.notify.channelId.help": "提示：不填写时，将使用所选通知渠道授权的默认频道 ID。"
+}

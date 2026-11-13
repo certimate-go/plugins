@@ -1,0 +1,14 @@
+{
+  "access_provider_type": "mattermost",
+  "binary": "mattermost",
+  "capability": "notify",
+  "description": "Send notifications to a Mattermost channel.",
+  "display_name_key": "plugin.mattermost.name",
+  "icon": "mattermost.svg",
+  "protocol_version": 3,
+  "provider_type": "mattermost",
+  "usages": [
+    "notification"
+  ],
+  "version": "0.1.0"
+}

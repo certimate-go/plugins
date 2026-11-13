@@ -1,0 +1,13 @@
+{
+  "plugin.telegrambot.name": "Telegram Bot",
+  "plugin.telegrambot.access.botToken.label": "Telegram bot token",
+  "plugin.telegrambot.access.botToken.tooltip": "How to get it? Please refer to <a href=\"https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a\" target=\"_blank\">https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a</a>",
+  "plugin.telegrambot.access.botToken.placeholder": "Please enter Telegram bot token",
+  "plugin.telegrambot.access.chatId.label": "Telegram chat ID (Optional)",
+  "plugin.telegrambot.access.chatId.tooltip": "How to get it? Please refer to <a href=\"https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a\" target=\"_blank\">https://gist.github.com/nafiesl/4ad622f344cd1dc3bb1ecbe468ff9f8a</a>",
+  "plugin.telegrambot.access.chatId.placeholder": "Please enter the default Telegram chat ID",
+  "plugin.telegrambot.access.chatId.help": "Notes: It can be overrided in the workflows.",
+  "plugin.telegrambot.notify.chatId.label": "Telegram chat ID (Optional)",
+  "plugin.telegrambot.notify.chatId.placeholder": "Please enter Telegram chat ID",
+  "plugin.telegrambot.notify.chatId.help": "Notes: Leave it blank to use the default chat ID provided by the selected credential."
+}

@@ -1,0 +1,13 @@
+{
+  "plugin.slackbot.name": "Slack Bot",
+  "plugin.slackbot.access.botToken.label": "Slack bot token",
+  "plugin.slackbot.access.botToken.tooltip": "For more information, see <a href=\"https://docs.slack.dev/authentication/tokens#bot\" target=\"_blank\">https://docs.slack.dev/authentication/tokens#bot</a>",
+  "plugin.slackbot.access.botToken.placeholder": "Please enter Slack bot token",
+  "plugin.slackbot.access.channelId.label": "Slack channel ID (Optional)",
+  "plugin.slackbot.access.channelId.tooltip": "How to get it? Please refer to <a href=\"https://www.youtube.com/watch?v=Uz5Yi5C2pwQ\" target=\"_blank\">https://www.youtube.com/watch?v=Uz5Yi5C2pwQ</a>",
+  "plugin.slackbot.access.channelId.placeholder": "Please enter the default Slack channel ID",
+  "plugin.slackbot.access.channelId.help": "Notes: It can be overrided in the workflows.",
+  "plugin.slackbot.notify.channelId.label": "Slack channel ID (Optional)",
+  "plugin.slackbot.notify.channelId.placeholder": "Please enter Slack channel ID",
+  "plugin.slackbot.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential."
+}

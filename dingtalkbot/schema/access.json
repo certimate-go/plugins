@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "dingtalkbot",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "webhookUrl",
+        "valueType": "text",
+        "labelKey": "plugin.dingtalkbot.access.webhookUrl.label",
+        "tooltipKey": "plugin.dingtalkbot.access.webhookUrl.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.dingtalkbot.access.webhookUrl.placeholder",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "webhookUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "secret",
+        "valueType": "secret",
+        "labelKey": "plugin.dingtalkbot.access.secret.label",
+        "tooltipKey": "plugin.dingtalkbot.access.secret.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.dingtalkbot.access.secret.placeholder",
+        "secret": true
+      },
+      {
+        "name": "customPayload",
+        "valueType": "code",
+        "labelKey": "plugin.dingtalkbot.access.customPayload.label",
+        "placeholderKey": "plugin.dingtalkbot.access.customPayload.placeholder",
+        "extraKey": "plugin.dingtalkbot.access.customPayload.help",
+        "language": "json",
+        "validateWhen": [
+          {
+            "field": "customPayload",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "json_object"
+          }
+        ]
+      }
+    ]
+  }
+}

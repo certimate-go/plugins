@@ -1,0 +1,51 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "mattermost",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.mattermost.access.serverUrl.label",
+        "placeholderKey": "plugin.mattermost.access.serverUrl.placeholder",
+        "required": true,
+        "validateWhen": [
+          {
+            "field": "serverUrl",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "url"
+          }
+        ]
+      },
+      {
+        "name": "username",
+        "valueType": "text",
+        "labelKey": "plugin.mattermost.access.username.label",
+        "placeholderKey": "plugin.mattermost.access.username.placeholder",
+        "required": true
+      },
+      {
+        "name": "password",
+        "valueType": "secret",
+        "labelKey": "plugin.mattermost.access.password.label",
+        "placeholderKey": "plugin.mattermost.access.password.placeholder",
+        "required": true,
+        "secret": true
+      },
+      {
+        "name": "channelId",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.mattermost.access.channelId.label",
+        "tooltipKey": "plugin.mattermost.access.channelId.tooltip",
+        "tooltipHtml": true,
+        "placeholderKey": "plugin.mattermost.access.channelId.placeholder",
+        "extraKey": "plugin.mattermost.access.channelId.help"
+      }
+    ]
+  }
+}

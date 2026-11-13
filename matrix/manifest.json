@@ -1,0 +1,14 @@
+{
+  "access_provider_type": "matrix",
+  "binary": "matrix",
+  "capability": "notify",
+  "description": "Send notifications to a Matrix room.",
+  "display_name_key": "plugin.matrix.name",
+  "icon": "matrix.svg",
+  "protocol_version": 3,
+  "provider_type": "matrix",
+  "usages": [
+    "notification"
+  ],
+  "version": "0.1.0"
+}

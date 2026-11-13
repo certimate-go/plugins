@@ -1,0 +1,12 @@
+{
+  "plugin.dingtalkbot.name": "DingTalk Bot",
+  "plugin.dingtalkbot.access.webhookUrl.label": "DingTalk bot Webhook URL",
+  "plugin.dingtalkbot.access.webhookUrl.tooltip": "For more information, see <a href=\"https://open.dingtalk.com/document/orgapp/obtain-the-webhook-address-of-a-custom-robot\" target=\"_blank\">https://open.dingtalk.com/document/orgapp/obtain-the-webhook-address-of-a-custom-robot</a>",
+  "plugin.dingtalkbot.access.webhookUrl.placeholder": "Please enter DingTalk bot Webhook URL",
+  "plugin.dingtalkbot.access.secret.label": "DingTalk bot secret",
+  "plugin.dingtalkbot.access.secret.tooltip": "For more information, see <a href=\"https://open.dingtalk.com/document/orgapp/customize-robot-security-settings\" target=\"_blank\">https://open.dingtalk.com/document/orgapp/customize-robot-security-settings</a>",
+  "plugin.dingtalkbot.access.secret.placeholder": "Please enter DingTalk bot secret",
+  "plugin.dingtalkbot.access.customPayload.label": "DingTalk bot message payload (Optional)",
+  "plugin.dingtalkbot.access.customPayload.placeholder": "Please enter custom DingTalk bot message payload",
+  "plugin.dingtalkbot.access.customPayload.help": "Use ${CERTIMATE_NOTIFIER_SUBJECT} and ${CERTIMATE_NOTIFIER_MESSAGE} for the notification subject and message. Leave blank to use the default payload."
+}

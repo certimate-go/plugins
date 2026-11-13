@@ -15,43 +15,9 @@ import (
 )
 
 func TestExternalNotificationPlugins(t *testing.T) {
-	core := filepath.Join("..", "..", "certimate")
-	if _, err := os.Stat(filepath.Join(core, "go.mod")); os.IsNotExist(err) {
-		t.Skip("requires the sibling certimate checkout")
-	} else if err != nil {
-		t.Fatal(err)
-	}
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Minute)
 	defer cancel()
-
-	plugins := t.TempDir()
-	binary := filepath.Join(t.TempDir(), "certimate")
-	build := func(dir, output string) {
-		t.Helper()
-		cmd := exec.CommandContext(ctx, "go", "build", "-o", output, ".")
-		cmd.Dir = dir
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("build %s: %v\n%s", dir, err, out)
-		}
-	}
-	build(core, binary)
-	for _, name := range []string{"ntfy", "gotify"} {
-		source := filepath.Join("..", name)
-		stage := filepath.Join(plugins, name)
-		if err := os.Mkdir(stage, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		build(source, filepath.Join(stage, name))
-		manifest, err := os.ReadFile(filepath.Join(source, "manifest.json"))
-		if err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(filepath.Join(stage, "manifest.json"), manifest, 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
-
-	api := startNotificationCore(t, ctx, binary, plugins)
+	api := buildAndStartNotificationCore(t, ctx, "ntfy", "gotify")
 	var catalog struct {
 		Data []struct {
 			ProviderType string
@@ -142,6 +108,44 @@ func TestExternalNotificationPlugins(t *testing.T) {
 			}
 		})
 	}
+}
+
+func buildAndStartNotificationCore(t *testing.T, ctx context.Context, names ...string) *b1WorkflowAPI {
+	t.Helper()
+	core := filepath.Join("..", "..", "certimate")
+	if _, err := os.Stat(filepath.Join(core, "go.mod")); os.IsNotExist(err) {
+		t.Skip("requires the sibling certimate checkout")
+	} else if err != nil {
+		t.Fatal(err)
+	}
+	plugins := t.TempDir()
+	binary := filepath.Join(t.TempDir(), "certimate")
+	build := func(dir, output string) {
+		t.Helper()
+		cmd := exec.CommandContext(ctx, "go", "build", "-o", output, ".")
+		cmd.Dir = dir
+		if out, err := cmd.CombinedOutput(); err != nil {
+			t.Fatalf("build %s: %v\n%s", dir, err, out)
+		}
+	}
+	build(core, binary)
+	for _, name := range names {
+		source := filepath.Join("..", name)
+		stage := filepath.Join(plugins, name)
+		if err := os.Mkdir(stage, 0o755); err != nil {
+			t.Fatal(err)
+		}
+		build(source, filepath.Join(stage, name))
+		manifest, err := os.ReadFile(filepath.Join(source, "manifest.json"))
+		if err != nil {
+			t.Fatal(err)
+		}
+		if err := os.WriteFile(filepath.Join(stage, "manifest.json"), manifest, 0o644); err != nil {
+			t.Fatal(err)
+		}
+	}
+
+	return startNotificationCore(t, ctx, binary, plugins)
 }
 
 func startNotificationCore(t *testing.T, ctx context.Context, binary, plugins string) *b1WorkflowAPI {

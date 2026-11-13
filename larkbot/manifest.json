@@ -1,0 +1,14 @@
+{
+  "access_provider_type": "larkbot",
+  "binary": "larkbot",
+  "capability": "notify",
+  "description": "Send notifications via a Feishu or Lark custom bot.",
+  "display_name_key": "plugin.larkbot.name",
+  "icon": "lark.svg",
+  "protocol_version": 3,
+  "provider_type": "larkbot",
+  "usages": [
+    "notification"
+  ],
+  "version": "0.1.0"
+}
