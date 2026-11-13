@@ -1,7 +1,7 @@
 {
   "access_provider_type": "ksyun",
-  "capability": "deploy",
   "binary": "ksyun-slb",
+  "capability": "deploy",
   "deploy_category": "loadbalance",
   "display_name_key": "plugin.ksyun-slb.name",
   "icon": "ksyun.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "ksyun-slb_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "268f88b6b7063de34ff539ea95320a8a743e77b6c037f27b24307f643c4b486a",
-      "darwin/arm64": "ab18657a72b7b78facc23db967d58251a682872651414b92b7dd5f35b9e0d765",
-      "linux/amd64": "40071c6a1b531e93ae066e6bf65d17fe2277a2ebd7d26b65e95c47bb3c574317",
-      "linux/arm64": "436f7e9795130c066e26ff77bd673f1baa9724c1d2a3ec513ed371ad3997c0a9",
-      "windows/amd64": "56650f0800e3dd5344de53393d9a92a2b005efcbc0de6cea2893ac61239fa141"
+      "darwin/amd64": "ccabf6131cef5f2a05c3e3bed46a43bc6c68212a4a6f2da222e94394b7d31826",
+      "darwin/arm64": "1a2bbef98955b3e2e9352b29b5ffaa2053fdabf9a1cedea816348ff914d8acf1",
+      "linux/amd64": "172dc40d5131c9f478354f6364d8811cd3d01b59b49e3b4653a118eed617d3bf",
+      "linux/arm64": "625829ec4dbc5f54c28813a4119144d5f3c74452aac0e4ddf42b518ea93f8dc3",
+      "windows/amd64": "a70771c6f237fe779543a0c858fba3ad9f65169bfe088f4341ebf7e909baf620"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ksyun-slb/v0.1.1"
+    "tag": "ksyun-slb/v0.1.2"
   },
   "sha256": "",
   "usages": [
