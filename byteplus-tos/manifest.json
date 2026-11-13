@@ -18,14 +18,14 @@
       "windows/amd64": "byteplus-tos_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "23f52df1d5aa84b2bdf6cdeceef9667dc0c9673caab3bfae2e2804da13f7aa04",
-      "darwin/arm64": "d65e3dc87b723de9f667d8a9372700936a17e0818cd2fbc59fc6bedc0cf06f2c",
-      "linux/amd64": "3ea094ecb4e4e64330b72156893e921fba28b96c44a55989c77fd468c7f6301a",
-      "linux/arm64": "2b12497229c9c5f2cab7396eb49d3e3f990a4de0f177688bbc68a0412101fd4e",
-      "windows/amd64": "980e937e2b443b2897467b86a4a8b7c9617782e17a52b0e0b3d33f0249f37aea"
+      "darwin/amd64": "f0c78204a112f149b1829254c52dd3d3a7bea542c444b8504078b4026d1e7e99",
+      "darwin/arm64": "87e4a41d6a4ffbd19774d25d1500d85a9a84b60cad41efa6956799f786dc873b",
+      "linux/amd64": "f2a14ca21a1297e07c4af5fe48f7bfcd43093886226b92ba845d66c34b386597",
+      "linux/arm64": "9d6328ef603ebd4c0fe3dc661b6e09a443947fc5a13896a7388b838ba06aa906",
+      "windows/amd64": "4545c2441df4a2ab6adcf8d0ab67d4b1dbda6fae38a067e6e47928b11a8d3ed3"
     },
     "repo": "certimate-go/plugins",
-    "tag": "byteplus-tos/v0.1.0"
+    "tag": "byteplus-tos/v0.1.1"
   },
   "usages": [
     "hosting"
