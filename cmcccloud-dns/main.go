@@ -1,0 +1,49 @@
+package main
+
+import (
+	"context"
+	"embed"
+
+	githubplugin "github.com/hashicorp/go-plugin"
+
+	"github.com/certimate-go/certimate/pkg/plugin"
+)
+
+//go:embed schema
+var schemaFS embed.FS
+
+const providerType = "cmcccloud-dns"
+
+func main() {
+	githubplugin.Serve(&githubplugin.ServeConfig{
+		HandshakeConfig: plugin.HandshakeConfig,
+		Plugins: plugin.PluginSet{
+			plugin.DnsPluginName: &plugin.DnsGRPCPlugin{Impl: &server{recordIDs: make(map[string]string)}},
+		},
+		GRPCServer: githubplugin.DefaultGRPCServer,
+	})
+}
+
+func (*server) GetMetadata(context.Context) (*plugin.Metadata, error) {
+	return &plugin.Metadata{
+		ProviderType:         providerType,
+		AccessProviderType:   "cmcccloud",
+		ProtocolVersion:      plugin.ProtocolVersion,
+		DeployDisplayNameKey: "plugin." + providerType + ".name",
+	}, nil
+}
+
+func (*server) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
+	config, err := plugin.LoadProviderSchema(schemaFS)
+	if err != nil {
+		return nil, err
+	}
+	i18n, err := plugin.LoadI18n(schemaFS)
+	if err != nil {
+		return nil, err
+	}
+	return &plugin.ConfigSchema{
+		DeploySchemaJSON: config,
+		I18n:             i18n,
+	}, nil
+}

@@ -1,0 +1,12 @@
+{
+  "access_provider_type": "cmcccloud",
+  "binary": "cmcccloud-dns",
+  "capability": "dns",
+  "description": "DNS-01 via China Mobile ECloud DNS.",
+  "display_name_key": "plugin.cmcccloud-dns.name",
+  "icon": "cmcccloud.svg",
+  "protocol_version": 3,
+  "provider_type": "cmcccloud-dns",
+  "usages": ["dns"],
+  "version": "0.1.0"
+}
