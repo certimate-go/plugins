@@ -19,14 +19,14 @@
       "windows/amd64": "kong_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "00a513289196f8b6c5543075ed6f3433c245a68cbc81966cc2386913f0ff8817",
-      "darwin/arm64": "6fecc816ea15afbd39e7ce1794a5591404e55362873f126056de4cd0b55999f0",
-      "linux/amd64": "bda31dc562acff6d3688a924163f30117143fd55dec76ae9d5fa949616a52ec6",
-      "linux/arm64": "561c7adff4b3954a802b8bb97b4985c02108ea5bc456499ebff8bf88f4408619",
-      "windows/amd64": "117a25c871c4593aa427f799e8819365d0dfc5113ba1b59457b00beb4331fd88"
+      "darwin/amd64": "236d9dde048f1a313cdb95709ea4d8aca8143cd72581d473c98159e2ba49b6f6",
+      "darwin/arm64": "7c35043d2aa323ac1d0110930bd177209e06b871fe1c5f1354625de6a4457c05",
+      "linux/amd64": "aba306473a3db8b1e84da60e97d3ad3ea63a6f950080f031fa168480bd914799",
+      "linux/arm64": "d0d1d88502314984991ae3b5b4899f62147afe0da04282ff4d7178c50e354151",
+      "windows/amd64": "c5931c80ad3493f0e97fe6e1c6d9ffcad18b982558b63982660d5e231099742f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "kong/v0.1.0"
+    "tag": "kong/v0.1.1"
   },
   "usages": [
     "hosting"
