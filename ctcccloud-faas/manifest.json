@@ -18,14 +18,14 @@
       "windows/amd64": "ctcccloud-faas_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "988261805dbc031f24f000244b91eb3674c9cc40254c1562570a600880a6d462",
-      "darwin/arm64": "47c3f8eca6fe55e37b46f3e900ff822e34369bcbe49f156dfa53c972f63b9b38",
-      "linux/amd64": "64f6bff230c912ec113a42bc1cebce3abf6a9ee26c58305f53019bc418bfb44b",
-      "linux/arm64": "19931beb99d6440426c9df797355b73f1d06b3cabc4b96c5c8074761fa2f8074",
-      "windows/amd64": "a88db4c5339843443ce577d88ea474fe444a249fb5fd91a8b5bd2f69148e9d81"
+      "darwin/amd64": "061f329d72b4b0e0eca532b6bbbbd93fcc166c6717043838bbc7c0f397809f5a",
+      "darwin/arm64": "5f33cde0bc8282d5a8bf39fe1a7ed605bbf605f279ba3579071c7f2498934e1f",
+      "linux/amd64": "d2782c453ec9eff20d7c185964a1e98c78b6b3d5c5ddf22977e49f6e1fdf0abe",
+      "linux/arm64": "e14ac12db4d8a3d4b76bed13aa438884f9f9f3733255e94b3bc45eb76be88d5d",
+      "windows/amd64": "4eb634443261ad66c79a4fb9ec2ad3c3a6c2292599cc96345adf9732abdde96e"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ctcccloud-faas/v0.1.0"
+    "tag": "ctcccloud-faas/v0.1.1"
   },
   "usages": [
     "hosting"
