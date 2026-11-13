@@ -13,11 +13,8 @@ This guide walks through the full author flow using `webhook-deployer/` as the r
   require github.com/certimate-go/certimate <version>
   ```
 
-  During local development, add a replace to your local checkout:
+  Pin a version compatible with your target Certimate host. For a standalone repository, use the [independent development guide](../skills/certimate-plugin-dev/references/third-party-development.md) for project setup, capability-specific examples, and host verification. Keep local overrides in a separate Go workspace.
 
-  ```
-  replace github.com/certimate-go/certimate => ../certimate
-  ```
 
 ## 0. Scaffold a new plugin
 
@@ -70,7 +67,7 @@ A deployer does **not** have to invent its own credential type. `AccessProviderT
 - **A new, plugin-owned access type** — return a non-empty `AccessSchemaJSON` from `loadAccessSchema()`. The core registers the schema and the type appears in the access picker. Use this only if no existing access type fits.
 - **An existing access type** (built-in, or one another plugin already declared) — return `nil` for `AccessSchemaJSON`. The core reuses the existing access type's schema and picker entry; your `Deploy` must parse that type's config shape. This is how multiple deploy plugins share one credential (e.g. several Aliyun deployers all read an `aliyun` access), and how a deploy plugin shares a credential with `notify`/`apply` (e.g. the `webhook-deployer` pilot reuses the built-in `webhook` access that notifications also use).
 
-When in doubt, prefer **reusing** an existing access type — one credential record then serves every consumer.
+When reusing an existing access type, one credential record can serve every consumer. The owner and consumer may come from separate markets. Match the owner’s credential fields, install the owner first, and remove consumers before uninstalling the owner.
 
 Errors you return are transported to the core as gRPC status messages and surfaced to the user — return plain `fmt.Errorf(...)`.
 

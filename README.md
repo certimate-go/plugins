@@ -50,6 +50,22 @@ Each plugin implements the `Deployer` interface defined in `certimate/pkg/plugin
 
 ## Add a plugin
 
+The repository includes a [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md) for AI coding assistants developing deploy, DNS, and notification plugins. It covers credential reuse, forms and Chinese/English translations, builds, and verification through the real host. From this repository, ask your assistant:
+
+```text
+Read skills/certimate-plugin-dev/SKILL.md and develop a <deploy/dns/notify> plugin for <platform>.
+Expected behavior: <deployment target / DNS service / notification channel>; API docs: <URL>; credentials: <existing type or new>.
+```
+
+To install in Codex, run these commands from this repository root to copy the entire skill into your personal skills directory. Back up an existing installation with the same name before updating it.
+
+```sh
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+cp -R skills/certimate-plugin-dev "${CODEX_HOME:-$HOME/.codex}/skills/"
+```
+
+Once installed, open your own project and ask: “Use `$certimate-plugin-dev` to build a DNS plugin for my provider and prepare this repository as a custom market.” For other assistants supporting `SKILL.md`, copy the entire directory into their skills directory. See the [custom market setup](docs/releasing.md#distributing-from-your-own-market).
+
 ```bash
 make init PLUGIN=my-deployer          # scaffold from _template
 ```

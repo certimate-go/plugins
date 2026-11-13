@@ -50,6 +50,22 @@ plugins/
 
 ## 新增插件
 
+仓库提供 [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md)，指导 AI 编程助手开发 deploy、dns、notify 插件，覆盖凭据复用、表单与中英文翻译、构建及真实宿主验证。在本仓库中使用时，可直接给助手以下指令：
+
+```text
+请读取 skills/certimate-plugin-dev/SKILL.md，为 <目标平台> 开发一个 <deploy/dns/notify> 插件。
+目标行为：<部署目标 / DNS 服务 / 通知渠道>；API 文档：<文档地址>；凭据类型：<已有类型或新建>。
+```
+
+安装到 Codex：在本仓库根目录执行以下命令，将整个 skill 目录复制到个人 skills 目录（如已安装同名 skill，请先备份再更新）：
+
+```sh
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+cp -R skills/certimate-plugin-dev "${CODEX_HOME:-$HOME/.codex}/skills/"
+```
+
+安装后，在你自己的项目中调用：“用 `$certimate-plugin-dev` 为我的服务开发 DNS 插件，并把本仓库配置成自定义市场。”其他支持 `SKILL.md` 的助手可将整个目录复制到各自的 skills 目录。参见[自定义市场发布指南](docs/releasing.md#distributing-from-your-own-market)。
+
 ```bash
 make init PLUGIN=my-deployer          # 从 _template 生成脚手架
 ```

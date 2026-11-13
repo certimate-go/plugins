@@ -48,7 +48,7 @@ func TestCatalogKeepsPublishedDetailsAddressable(t *testing.T) {
 		t.Helper()
 		writeFile(t, manifestPath, fmt.Sprintf(`{
 			"provider_type":"example", "version":%q, "binary":"example",
-			"release":{"repo":"certimate-go/plugins","tag":"example/v%s","assets":{"linux/amd64":"example.zip"}}
+			"release":{"repo":"independent-author/releases","tag":"example/v%s","assets":{"linux/amd64":"example.zip"}}
 		}`, version, releaseVersion))
 		manifests, err := buildIndex(root)
 		if err != nil {
@@ -78,7 +78,7 @@ func TestCatalogKeepsPublishedDetailsAddressable(t *testing.T) {
 			}
 			return ""
 		}
-		if ref == nil || len(ref.Platforms) != 1 || ref.Platforms[0] != "linux/amd64" {
+		if ref == nil || ref.Repo != "independent-author/releases" || len(ref.Platforms) != 1 || ref.Platforms[0] != "linux/amd64" {
 			t.Fatalf("missing published platform: %+v", ref)
 		}
 		detail, err := os.ReadFile(filepath.Join(root, "market", "details", ref.SHA256+".json"))
