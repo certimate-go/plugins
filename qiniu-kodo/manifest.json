@@ -1,7 +1,7 @@
 {
   "access_provider_type": "qiniu",
-  "capability": "deploy",
   "binary": "qiniu-kodo",
+  "capability": "deploy",
   "deploy_category": "storage",
   "display_name_key": "plugin.qiniu-kodo.name",
   "icon": "qiniu.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "qiniu-kodo_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "96ef8e10f3b7d4305eeba711d70846b66a2d36a4d3e4af71dfdbef896785738f",
-      "darwin/arm64": "ebb6eb08551b441636b8d3eac0c95ae3d5bd0e86ba5b4e18d5ef2a56b20b53a8",
-      "linux/amd64": "eb62beb4b0f673d45c499ebf5c407a44750a90adba2e7e2c50de64369b331a51",
-      "linux/arm64": "13982ebbf17611bde0c56a94c343bff6daf026db5a29aec522b8d9cf46d9253a",
-      "windows/amd64": "493ff2b2294db1d1f5a2f0507c0e4f3b854301b47527629e9f93e2c9b2da625b"
+      "darwin/amd64": "455494492a6f1b3e55de0708290758a12888d0dece850ed7dcc641b2d28fa1c5",
+      "darwin/arm64": "4f2f55ea2510aa8dc0e6d8d3a5960c9f7a95a60204429d5ea9362ef01d825340",
+      "linux/amd64": "ab11fd37130442d2e4fcb82735527668f523de3604f041c05ec0931fbc90ec68",
+      "linux/arm64": "9b67b27c79fc631e4b01e5da903ee454926b37fe825a97bb27e86866de3d6ae1",
+      "windows/amd64": "0af29546c530d6f53131215628f3f38c19ee0a1b4e7d39e4b3bc75035e4924d1"
     },
     "repo": "certimate-go/plugins",
-    "tag": "qiniu-kodo/v0.1.1"
+    "tag": "qiniu-kodo/v0.1.2"
   },
   "sha256": "",
   "usages": [
