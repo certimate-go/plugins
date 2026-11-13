@@ -19,14 +19,14 @@
       "windows/amd64": "mohua-mvh_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "4c17d14aae225396e99f1777b1219bc27b62b4a4635e097e6d7f8924cc6d58ef",
-      "darwin/arm64": "0e1b7ebb602890e934fc798e4cbbbbbcacfc927c0dc052e5eb56ac487503a1f7",
-      "linux/amd64": "ab93c58653258a7ddd3ee52ed3358cddf47e3167b1a638fb233660d2c84303cd",
-      "linux/arm64": "503b826dc7bca2b9bdcde6fe84faaffb4c956fda2ec7bec1ba528046665c6da5",
-      "windows/amd64": "49508229157871ca02c88be20db303e36a787cdc8adeaa8ee454c7e81c522514"
+      "darwin/amd64": "5c81a03ae162631121508c7ec01f76aa15e76f7211c2b37347879f56e141ea4c",
+      "darwin/arm64": "c09d1cd162fddea7740aae3557370dde986ef7af4015abc1beb345c579d36dbe",
+      "linux/amd64": "9447ba5b303a951e46824fc60e365fe993fed06a2bfab75c2f0f2d0ff66b071c",
+      "linux/arm64": "82e92d2e065fddc61bea54a166bd3480169552a40bed3819d845ec74ecf490ee",
+      "windows/amd64": "1fd7aeeb9091ef164fa21c8ef088d1d626764d9a8cad0c8f19fd234ab71c3896"
     },
     "repo": "certimate-go/plugins",
-    "tag": "mohua-mvh/v0.1.0"
+    "tag": "mohua-mvh/v0.1.1"
   },
   "usages": [
     "hosting"
