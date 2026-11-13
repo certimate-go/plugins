@@ -1,7 +1,7 @@
 {
   "access_provider_type": "upyun",
-  "capability": "deploy",
   "binary": "upyun-cdn",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.upyun-cdn.name",
   "icon": "upyun.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "upyun-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "3c0451fadf835b2cf088a5a4b1bfd0b41cbf499694da7e3ef06abbada68306fb",
-      "darwin/arm64": "819200bd3b89c8a462633204a2a40f704bd8b12eef01298e40f67904cb5a377c",
-      "linux/amd64": "8de31857570db8a381e2b57962a81b6dcae400cd70e654c275b2aa68ffbf9078",
-      "linux/arm64": "020b5b6b55337dd0e3330521d2153744c33d71078fe6336188b689b328092c62",
-      "windows/amd64": "4cccd219af3a8694810b546d3b180604da1e98c15f196ce03c4c7ee9921efbee"
+      "darwin/amd64": "55e72162594313fd3f20d768b1af19d130ee9771e55d8be71206fe5fdc0eb4ce",
+      "darwin/arm64": "7c6e52c9f3c2a282106fc9d663fafe5f42bb8d7fe43e6232bcddf4c9769921e6",
+      "linux/amd64": "1f65384463fe7829894f41475f6d12b347d0c624ca90c3001ac1e54eaf020543",
+      "linux/arm64": "9f235bab5797f302042de853ac69d89fec4795de77b82deb49a5e32f250b7a89",
+      "windows/amd64": "1b54f90697cdf639986297d3ad5ce15db125cdb2801c73b928529436b4ec8a25"
     },
     "repo": "certimate-go/plugins",
-    "tag": "upyun-cdn/v0.1.0"
+    "tag": "upyun-cdn/v0.1.1"
   },
   "sha256": "",
   "usages": [
