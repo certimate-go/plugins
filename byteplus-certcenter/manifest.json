@@ -18,14 +18,14 @@
       "windows/amd64": "byteplus-certcenter_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "778cba846d7c5a361cb23bf0d3574f3f20c339d1e1800f6cf3fdf3047ae39d6d",
-      "darwin/arm64": "fc5a63ad4a3317afd170cccdc50268dd249301b27fa108f7132bef2be0ed8177",
-      "linux/amd64": "eab3400fac33ec1c037d4aeb2ad8031d0a2f01fe0300c01d02c249da0c506ec2",
-      "linux/arm64": "6cd8370fb7dc067f42811c0297ea55e179e4a6c83b9d4960c0b44b211897c7cc",
-      "windows/amd64": "8fe6d2c86f16ad800a0b9e5c5a9126d5dc9fe51f0c49536e744205f34f255de8"
+      "darwin/amd64": "0c3e8ced90f96c61f2af8031247224e6003deaca9571e3f91b89a3aeafae3a52",
+      "darwin/arm64": "c470f237a2f2041d667a5680cf7dec68a26ffe08a3e62c997f1b1b7c37cc89d1",
+      "linux/amd64": "05a1e8b76af19db78aea2a2af9ab95bfb23cb73077370159905dd7ceab6cc1ed",
+      "linux/arm64": "2b2a75037725317e82a0197dcb23c2fc2298fad5ca23cdb6c30401f89c2c4b00",
+      "windows/amd64": "df4d2a284b16f147492ab55203d036ad0c578f10388adeb8e3ca72cfbb5d3d8c"
     },
     "repo": "certimate-go/plugins",
-    "tag": "byteplus-certcenter/v0.1.0"
+    "tag": "byteplus-certcenter/v0.1.1"
   },
   "usages": [
     "hosting"
