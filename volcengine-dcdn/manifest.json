@@ -18,14 +18,14 @@
       "windows/amd64": "volcengine-dcdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c3ff16cfea0c23edce1bf32b5d8185d5701d1761950cfb9e99442fe51361711d",
-      "darwin/arm64": "73cd0ec3909e213bfe519464450d786e9b0965ab27f44cfbbd83d48b7327c08c",
-      "linux/amd64": "0da139d625198d55d74e3c483c1f00dfd23c88d0b14899c9a62cf69c3e18e3ed",
-      "linux/arm64": "dae11f8585623ef70086af20929420c3bb8a399ddd1725f67d2f2ed1a68b7515",
-      "windows/amd64": "635d98072e137c67b1dfbf9a72de37abed3e5e4800ef4e319efa365b6a556100"
+      "darwin/amd64": "a685d9e44d4ae45cff2f175c824ed7d4fdf0c62fd404c3ad109fff087c8d5506",
+      "darwin/arm64": "41a7e1a7bc82df571b5b15c6c68e6de92a2a67c0bfc97e6aac9f0ccdc38918c3",
+      "linux/amd64": "dc389554c0ce2ac14b5082af10f24c167eb4955c7b3202c7f525f6d18e94b107",
+      "linux/arm64": "b107f00371804d026af760185fada3d81326433a9add7a282e78f7563de46b77",
+      "windows/amd64": "29e855d063f986be5d56d7bd55567ad405ade17fb5e9b3e66d32476a5d0e9f62"
     },
     "repo": "certimate-go/plugins",
-    "tag": "volcengine-dcdn/v0.1.0"
+    "tag": "volcengine-dcdn/v0.1.1"
   },
   "usages": [
     "hosting"
