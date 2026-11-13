@@ -1,7 +1,7 @@
 {
   "access_provider_type": "zenlayer",
-  "capability": "deploy",
   "binary": "zenlayer-ga",
+  "capability": "deploy",
   "deploy_category": "accelerator",
   "display_name_key": "plugin.zenlayer-ga.name",
   "icon": "zenlayer.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "zenlayer-ga_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "8f77e9435b9623152007777d6af3a3980228cc4083975e284365d458b52faa70",
-      "darwin/arm64": "996d12e3d0a08f9723a0529f900b2b4c4d1708aff44b20221aa0a3e658f32cfb",
-      "linux/amd64": "a75b89d5939714380da18182f1e68fee0aa35cf2eb50c00e59353c8847b7b672",
-      "linux/arm64": "0ef0dc6fdbdf1b644f86a24fb689467dd665f1b44f51da945040489cde30a351",
-      "windows/amd64": "6d4d61b7c87472e08d9ca276ffbf76c123fa630eadf2c97f12d135197a17779a"
+      "darwin/amd64": "41b632739f7b93c3c2f48ab9dda1dc0e0a4a67221ee1cacc903bfae7a2fa6c9e",
+      "darwin/arm64": "783f4691375139b4b8df437d3a2f98d84a43164b07dbfe8a50664b4167860168",
+      "linux/amd64": "89447f2cb62e4f1ea833be6ce677f6cce253f32e8f1939ae9e5a4851d827fddd",
+      "linux/arm64": "9a55023b084e2525cda49bb3af295b723faf145124bc0d630f58850cde179aa5",
+      "windows/amd64": "37c5358688a012b5c5d438d8a480336b0078ef0b65e34075700f5f6dc93c59a2"
     },
     "repo": "certimate-go/plugins",
-    "tag": "zenlayer-ga/v0.1.0"
+    "tag": "zenlayer-ga/v0.1.1"
   },
   "sha256": "",
   "usages": [
