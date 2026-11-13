@@ -19,14 +19,14 @@
       "windows/amd64": "lecdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "391eb5844c85133d7d007e88e0466ae7f645d3740953220ff9b1999d4a59766e",
-      "darwin/arm64": "57d665558c7129f9193652ea0f98b11da7c22eea8d70a2906dc356162490fbb1",
-      "linux/amd64": "44227996ff02b02669a1cc90e59622edae6204409e5d560bed21b5320dcdd223",
-      "linux/arm64": "2109924a094480a8a26150d4444395f63d8685a84dbd4c763bb77fbd411ccb2a",
-      "windows/amd64": "f46baa6e964a4c084f4b44d65ecf143827f890437f76dd964a24a9c7eb2bdbc2"
+      "darwin/amd64": "4e5e90d0408274393bd537d5415b30b9aa24b9305eae08481f71b6f648eccdd8",
+      "darwin/arm64": "52b2f3fc96e7e9100d2349d3c03c29196fc7670a198a659665057c857b02ba88",
+      "linux/amd64": "294207bc0049d25b4bf91a70e3cb8e61b6e36fcf95e2d60e1f5f9cc91ab7aab1",
+      "linux/arm64": "e9d2a90b1250625bdaecd9cac965c6c4ee109ee4aa96c4142f6671f565e99970",
+      "windows/amd64": "01ad6c3a916cbd9e0464c09183dfd6db49d4504ffc4a9a056b485430d710e2e5"
     },
     "repo": "certimate-go/plugins",
-    "tag": "lecdn/v0.1.0"
+    "tag": "lecdn/v0.1.1"
   },
   "sha256": "",
   "usages": [
