@@ -18,14 +18,14 @@
       "windows/amd64": "volcengine-tos_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ed8c0270e892f170e85dacf25acd51557c3a9937c0ca63b890dab7da1ed91ad4",
-      "darwin/arm64": "eb391dc891f01e4dbb1f446b35c52ab68649f0d8314ae2f70d83a32a11cbb899",
-      "linux/amd64": "8129447cac714edf10fce4ea36ebb7957cc727466d49136af7b360f10c83a988",
-      "linux/arm64": "253f93d0e9de06b0b15040b33a76d4b353f00f7cb953862b8305bcb17487b59d",
-      "windows/amd64": "666c93906b65db3d30574d9b2e6dc40028a561b92bda853197991056a5990e94"
+      "darwin/amd64": "9027ac9289f4ac27d5b5e6a1bb031d0c3eb43bd5377139f525dc6ed8b81021d7",
+      "darwin/arm64": "f88948e57a75db873daf8ef9426dc0833ebe75668133cffcd9d5d2ee52bde5dc",
+      "linux/amd64": "a73ae29b1d1447832eb90ed9943e5f3210389399968bc47af9a21551f76e9a6b",
+      "linux/arm64": "75296304b45f48416003de5a805941f02641324c53c5f21b4f0e53a9baee0f32",
+      "windows/amd64": "6ced1a0bad528c010a5901c6e9b156620556d97659fa31bb38a8130307ba3a40"
     },
     "repo": "certimate-go/plugins",
-    "tag": "volcengine-tos/v0.1.0"
+    "tag": "volcengine-tos/v0.1.1"
   },
   "usages": [
     "hosting"
