@@ -7,6 +7,24 @@
   "icon": "lark.svg",
   "protocol_version": 3,
   "provider_type": "larkbot",
+  "release": {
+    "assets": {
+      "darwin/amd64": "larkbot_darwin_amd64.zip",
+      "darwin/arm64": "larkbot_darwin_arm64.zip",
+      "linux/amd64": "larkbot_linux_amd64.zip",
+      "linux/arm64": "larkbot_linux_arm64.zip",
+      "windows/amd64": "larkbot_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "745ab9224c97267e2c2fce374fbbd46839a765f8d1d8fe4396800c8c7d3a2fc0",
+      "darwin/arm64": "b9eac2015925dd076480dec2221b39a3a7457b278acd9e5fef29d3060be9e6d9",
+      "linux/amd64": "db5c8dacb2c83096fcdbbbb84ddfb2befbc296de9355a677f61b04ea87f69ec0",
+      "linux/arm64": "db2f8e8fe77fae26bafc319454c8db65dfba7dcd1201774790ed32577fcb5fd4",
+      "windows/amd64": "6d927a5d4073a3a9e89c4cbbe4bda8b7be0baa573c0da8a92d35499a0ba3edda"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "larkbot/v0.1.0"
+  },
   "usages": [
     "notification"
   ],
