@@ -19,14 +19,14 @@
       "windows/amd64": "flyio_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "80f9a5d61101a696985204e1d2235a6bd2eb4adfdd507571fd1a80e9a17aa8be",
-      "darwin/arm64": "8fa916d22e6ca60cbe6b84df01e4daaf2a81d8fbb1d2a66d0f2de6bcf4de2be0",
-      "linux/amd64": "2e1bb81b924142f16881637f0f2127da73f0f0d98afe42014673e0db84ca1a59",
-      "linux/arm64": "84f933e186c79c241cf199f4280e60ebc4403c44cb1cd6da5a2580024624f9f2",
-      "windows/amd64": "9cb0c59c6e98032d8fd4613c12a63bc05978dc1eaff3241b0910e905486dc859"
+      "darwin/amd64": "d3a9ca8c37280b8862e6e8ad2bd0dc60ee7773ac8f2d47ba7d11a59ef50b3676",
+      "darwin/arm64": "68cab7febd4818f6bff746ee7a3e62364f7a9a3092e88291c63c9fe099a7a863",
+      "linux/amd64": "1f8fea518dfb10ddce5b1b8666e2656e1c0a3b0546f51ec4a1ecf65b4b0ca151",
+      "linux/arm64": "314d5cec0b5c0c0a1c3af47b35c0762a5c543dff795f4e84ce1961dace8eaa28",
+      "windows/amd64": "d37378d1cfd73c7483825f88ce603aaba7e287313571a7ad40824fcacdd534ef"
     },
     "repo": "certimate-go/plugins",
-    "tag": "flyio/v0.1.0"
+    "tag": "flyio/v0.1.1"
   },
   "usages": [
     "hosting"
