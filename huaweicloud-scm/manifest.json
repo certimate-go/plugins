@@ -18,14 +18,14 @@
       "windows/amd64": "huaweicloud-scm_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "39c037a8e4ce9d883385f775ad73b011e9a0f30b3f1cd6f209c2a3da99725002",
-      "darwin/arm64": "02c88f16cc439b0c3cc8d00c8a351d325c6578f3d156b2f6b3bd3dea39a79bfe",
-      "linux/amd64": "e69762db72b10fdf1e7f111047dd5f0d2cf999f7ca0925f4d2ab2f3c48710edb",
-      "linux/arm64": "f5652d23459eb52c63ca2afc380387eb906a1e8c56a5e830fa5939eb65b02abb",
-      "windows/amd64": "0ab5e307bda91e2ec5a4b87657e2f074c1e249c34bb1908e8e50cfc5e459b7df"
+      "darwin/amd64": "21320b4c661dc250ece23d6d8b6a2dd44155e94321fe615d77aa937092cfc996",
+      "darwin/arm64": "c18b63ce6bfcb0a246c71c8efeb11eb498f448ca5a1417113b2dcdebef54ff79",
+      "linux/amd64": "fb6fd1d1736f2348a9c24c03db257debef340065ddb90f2a27ea9a9bd6372226",
+      "linux/arm64": "8d74fde69ba388d097526e7987ec17af718ac678a3bbb988817face522054581",
+      "windows/amd64": "28632851c4f462f1d48657f9a82053199643dbb9768df2db300142e8f32f6221"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-scm/v0.1.0"
+    "tag": "huaweicloud-scm/v0.1.1"
   },
   "usages": [
     "hosting"
