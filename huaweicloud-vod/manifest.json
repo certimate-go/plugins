@@ -18,14 +18,14 @@
       "windows/amd64": "huaweicloud-vod_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "45429f445be2d8ee395e3ed424dba521af66841813bb592cc533b5b2e85ec4e9",
-      "darwin/arm64": "7793338929d800292a9a1cfc5ccaea6a6c6d6e69b62e830e0b2a5c3f9b6001f4",
-      "linux/amd64": "db30f551923d18d3a813dcd025304e36f4cc5867c5517ec3f15a6c8eb36774f5",
-      "linux/arm64": "274ef4c7dc642128f916171a4c8f566d54f35a4e219f734f5a900b60b283d4a2",
-      "windows/amd64": "986cae6e70003ab19efed051dc29b5208eb60e917a46465111291057b366f92b"
+      "darwin/amd64": "7035e08fd11401565931d4a6c5e3fdb491b2d825b83996f080c94cce1a177d43",
+      "darwin/arm64": "9c3978a24f5fdee7113a17d086a5d5858a40bbdec8f0d7006e29e3df478e995e",
+      "linux/amd64": "67eec2f89636632f1e1ae1aa9143b09622b42d38288d8b08205755612ae2a6eb",
+      "linux/arm64": "fcefaf71f2fe1e463a6ae8f1036c7bf22d5ac6e15d5c61153be0182d893cbc55",
+      "windows/amd64": "921160d1c745d8f1d900804c103c8743da3d0d3dcd38f6ee8cbf6411cf44f48f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-vod/v0.1.0"
+    "tag": "huaweicloud-vod/v0.1.1"
   },
   "usages": [
     "hosting"
