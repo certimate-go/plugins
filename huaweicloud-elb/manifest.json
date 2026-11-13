@@ -18,14 +18,14 @@
       "windows/amd64": "huaweicloud-elb_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "8fe9b3d5a54e77008bfba79d7477eff6848a87e1944445661b00b854a8855fa1",
-      "darwin/arm64": "fb9199715d5ef6d976123c5ff4e9627fa4c84adb217fc62c67ef48ed36c5882a",
-      "linux/amd64": "dd889311b3929d7a778e45b95b12a8e663f8eb06b2c0810f72ce401beb582735",
-      "linux/arm64": "e740281dfa2e771da00d256cbdfc7cf146df9641f598be4dae645638e583a649",
-      "windows/amd64": "7bc69d3d6dc7f9a5a443a22abe58d57317c619be16c693df852c9e955073c61a"
+      "darwin/amd64": "5f2a705679f5081c761e967b1a103ee225eaf9913058c87830443a213eb54f9c",
+      "darwin/arm64": "2010cdcfb72f447cbb4f37bac687e5bb95e3f73041c5ba59ebee3a9a5111406c",
+      "linux/amd64": "896c3651ef9988c44c95bdcee8ed2258645bf73c30a8c93b08d7fbebfc79ba8b",
+      "linux/arm64": "f68b05f0adb17ada8240dbad49324588705e3e53131a6af8732454feee0a6c69",
+      "windows/amd64": "dd3710959cd610fd19342d069bf8f98e07a672344fca8fef26664b3335102653"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-elb/v0.1.0"
+    "tag": "huaweicloud-elb/v0.1.1"
   },
   "usages": [
     "hosting"
