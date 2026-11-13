@@ -18,14 +18,14 @@
       "windows/amd64": "cmcccloud-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "5d42cf1a4e527efbc481d567f48f5c4fd453422bf3b159b9f9d418b51d9390c9",
-      "darwin/arm64": "1222a9d37948f04aadad88e66d0acb8c1de968a81b9ae90fdf567d82d3957113",
-      "linux/amd64": "bf3555f8f441f96f12d2e0b41ac09f581aed704cf613358798dac117730ad8e4",
-      "linux/arm64": "c94deccbeca6547147f4f3287e89c6a329e38f4e14f78403e87b3d5831767e1b",
-      "windows/amd64": "70425cbe1b0c18dfbcd7d03d96c6c995f659db8a98448063dd91e6960929e108"
+      "darwin/amd64": "1484066f8458304b9d7d22615b02ff9286e88a5a92ec536ce966472675eb3a0b",
+      "darwin/arm64": "5141b6a15d018057114e722b0856037bb96d6d7eb56a8a9cc8fee9504ee71780",
+      "linux/amd64": "c40a711dac07ecef7292e71df85edb26692e5fd160acee04657d1a00361e71e2",
+      "linux/arm64": "9f67f9ba726b8397ab76045edc8775a7225d449f2135410a8d190cc307ae9cf5",
+      "windows/amd64": "757ee5b7492fc538712ce399375961f0c0aa41f4d2a5a3674757b3681edcd14f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cmcccloud-cdn/v0.1.0"
+    "tag": "cmcccloud-cdn/v0.1.1"
   },
   "usages": [
     "hosting"
