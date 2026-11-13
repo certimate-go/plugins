@@ -102,5 +102,5 @@ make test                             # go test ./...
 
 ## 环境要求
 
-- Go 1.25+（`GOTOOLCHAIN=auto` 会自动拉取所需工具链）。
+- Go 1.27.4+（`GOTOOLCHAIN=auto` 会自动拉取所需工具链）。
 - 依赖 `github.com/certimate-go/certimate/pkg/plugin` 提供 `Deployer` 接口与握手协议。

@@ -102,5 +102,5 @@ See [`docs/releasing.md`](docs/releasing.md) for the full flow and trust precond
 
 ## Requirements
 
-- Go 1.25+ (`GOTOOLCHAIN=auto` fetches the required toolchain).
+- Go 1.27.4+ (`GOTOOLCHAIN=auto` fetches the required toolchain).
 - Depends on `github.com/certimate-go/certimate/pkg/plugin` for the `Deployer` interface and handshake.

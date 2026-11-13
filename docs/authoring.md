@@ -6,7 +6,7 @@ This guide walks through the full author flow using `webhook-deployer/` as the r
 
 ## Prerequisites
 
-- Go 1.25+
+- Go 1.27.4+
 - The plugin imports the protocol from Certimate:
 
   ```

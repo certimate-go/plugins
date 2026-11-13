@@ -6,7 +6,7 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/pocketbase/pocketbase/tools/security"
+	"ganigeorgiev.com/pocketbase/pocketbase/tools/security"
 	"github.com/samber/lo"
 
 	"github.com/certimate-go/certimate/pkg/core"
