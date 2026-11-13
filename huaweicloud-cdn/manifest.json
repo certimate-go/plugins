@@ -18,14 +18,14 @@
       "windows/amd64": "huaweicloud-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "d6efd9cc7f0211d2cddf9a09ca5af24213993841ee007f67b10724ce99e14a7d",
-      "darwin/arm64": "f3ee81d7bec975f41a353406380779112d220b3db64d9d1ef1a33c849cb1ee32",
-      "linux/amd64": "bf2b41e0860274ab3e9d2d0095ccdf23053a92a064d59c993fab63514245d2ae",
-      "linux/arm64": "1b28595363618e4bd7011770188a8bc721d64db7af6a40cb5b4a7f01e6770156",
-      "windows/amd64": "363929513184d31650cde40c4626e39443a4997c8697143faaea1bd6403a60cd"
+      "darwin/amd64": "0139ae3ca0a55e6a61b6ffba0d6cc3add536d3a3fae5bea2de251362add3c0e6",
+      "darwin/arm64": "34d8f6a3b3d65734abb95ab9a217a338ba9a4ac94a5f2d4f1172d40f3166baef",
+      "linux/amd64": "eebd0d24be461764bab740049a6d21866181d5d84341a68ecb841342818a9208",
+      "linux/arm64": "f9bcb3027d79a5bca6b38741744cb392f38d4df770b65a3d504bfdd8c52c37e3",
+      "windows/amd64": "19f83a492b390e28afa33a2089b917079e97c29ced77994fba3e3937c30d1004"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-cdn/v0.1.0"
+    "tag": "huaweicloud-cdn/v0.1.1"
   },
   "usages": [
     "hosting"
