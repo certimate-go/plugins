@@ -19,14 +19,14 @@
       "windows/amd64": "goedge_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "09a0a0622a489d20939c1331ef0bba9ad660c5d00741bff89838bd694783b968",
-      "darwin/arm64": "cfad7953634968da64c3375e788aae5897325d6bc7f92eaf894caca53282e9ed",
-      "linux/amd64": "4a0c7c0044c3994736b1a7d7875aac8901c53c93eb94b9c01f19f500a1c2e049",
-      "linux/arm64": "9948dc2bf45be72c63515b78c1b6d6f4c93bf7485e923edef77f9454552bb5d5",
-      "windows/amd64": "e5a959f15e26c030d071de11f3e6b7ed91d9970f1a8b12846ef42a7971688d22"
+      "darwin/amd64": "6ed112ff2c35a925226f54c6d3031f0528cdc8fc88c647aaed906402153f3f0e",
+      "darwin/arm64": "21ec7ffa0412e6c27c6475ccd57ee93feee8c4ccac4d0fdc5ec7c7081c4e0e1f",
+      "linux/amd64": "48a3b363dd5fbe2aca6eeab4082e4e97329a701ec115b5b072017b4f3b1a55a0",
+      "linux/arm64": "1d56f34c7b9feeaf64c4aa439685c94af2c366f77647a1323c569604ac51c265",
+      "windows/amd64": "07f0a065649b1a5e7414ca74e3996e5865d42c7724333c4496cba26a6fe27995"
     },
     "repo": "certimate-go/plugins",
-    "tag": "goedge/v0.1.0"
+    "tag": "goedge/v0.1.1"
   },
   "usages": [
     "hosting"
