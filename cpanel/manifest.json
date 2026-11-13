@@ -17,14 +17,14 @@
       "windows/amd64": "cpanel_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "5d677faf80e751adcb8e4055cb8bafc42df489108dc290034b4aaaa044aebe94",
-      "darwin/arm64": "c64a548b4dca2db8b314c59d6c899c7dd4a36c541560bad3a91e8bed4d68af2f",
-      "linux/amd64": "fe59f74cc4f721513a6def77d44d8e7988fe4da40066a00ac574699c7d06442b",
-      "linux/arm64": "e9fd6287447025b7fb771419dadd9c7a26bd30fffa9a735278bcf97447a0516d",
-      "windows/amd64": "954c4684dc8b78827dd4d8f71107f13367aa1c32eb53d213e62cd1b6ce10b64a"
+      "darwin/amd64": "6f6ff1fdc3fddc854d470edb2ab237628403f45ec4cfb0a079950033bf0ff175",
+      "darwin/arm64": "5f7367a432f9b528b51ed1f3d504809b936bdd1e0de2e716d28ad41958b8046f",
+      "linux/amd64": "c92a9f7ff6aa71c59cba739f178f3ca79b43b7a18e5131752c636c53d402c7f4",
+      "linux/arm64": "3d517faa7af516fa2fe4ba7a6924c8bcfab55de63419ba534b8c652f2cfacd65",
+      "windows/amd64": "af6c6c965ffde0bbe8d7b5ccd6aa398a3244c19caae702804bc94fc5a31ed412"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cpanel/v0.1.0"
+    "tag": "cpanel/v0.1.1"
   },
   "usages": [
     "hosting"
