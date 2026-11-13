@@ -17,14 +17,14 @@
       "windows/amd64": "rainyun-sslcenter_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "1e8ddff3aaee209dd76e69abf08020ed106986ff0b55dedda63c74368e9e30af",
-      "darwin/arm64": "8050aee18db94b9ae8482b7e33bc6e3bed9fe8cac5fa50d2b42b478437a421c5",
-      "linux/amd64": "f784814a8656297002bf3ef3b0d09bcd91c998613ad88421700476cbfcd806da",
-      "linux/arm64": "b4c01e67868cc1cd082ba09cf1fa03b5d2ff152635a6c4c33846cc25fc9915d6",
-      "windows/amd64": "fc9af8066aa114c53a4b8bdfa73f91c3795ad495078858b8306b12a8b6002a5c"
+      "darwin/amd64": "16e4dea8570007c0aa15d55eee2134efd1e34496fec10117c311c1181ee540de",
+      "darwin/arm64": "444f83744c40d3f5f9b5b5e289a215115a92db85baf243f2085a827ae8f24757",
+      "linux/amd64": "807a65b1dfece0002d7cfc0d33d11b85fa796c30b886b38212a338d7dcb9a8b7",
+      "linux/arm64": "5d80cd043aa0b0cf37965dad058ddcbbc93f6c6301d6bfbcb94d1cd1b734315f",
+      "windows/amd64": "19a04f9c58b6d5e55ce22a89a116456b664e5d3ff4c2ce1db421aa1d9e972fef"
     },
     "repo": "certimate-go/plugins",
-    "tag": "rainyun-sslcenter/v0.1.0"
+    "tag": "rainyun-sslcenter/v0.1.1"
   },
   "usages": [
     "hosting"
