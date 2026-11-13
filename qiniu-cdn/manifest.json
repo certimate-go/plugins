@@ -1,7 +1,7 @@
 {
   "access_provider_type": "qiniu",
-  "capability": "deploy",
   "binary": "qiniu-cdn",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.qiniu-cdn.name",
   "icon": "qiniu.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "qiniu-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "fcac9e22e61a979c73294f1ab84c5d4d701b1f37946b3d66e04b771f6df74db0",
-      "darwin/arm64": "d071449871c8cdb2e973a1639a984b13540ac79c897c5bf1d8dc222a19464147",
-      "linux/amd64": "cc601057ab1f84f85827527afe8334ab81ceeef8c45feb4925799d7cdbbddda7",
-      "linux/arm64": "1daf4b375b30ac49d64bfb95a54dd00fbce8b830a5b4d145e9cb99cf6d41a79e",
-      "windows/amd64": "ac8359a9338948da269721394325e2ecfa47c60835bc76cc0380dfa57eee7b3e"
+      "darwin/amd64": "c6d4bcab0c6fa29b105d6fecdc211e4803bd03eaa871b0f309e33f2dad77fc92",
+      "darwin/arm64": "4fb08177f37ff24efcd3b036b868a923172e795543dfc451306b03d4cca80d67",
+      "linux/amd64": "a2e84dbcac2832a19bb85e6c2cda8dc16cd91409886bb611f4fe4d5b1c5e96fe",
+      "linux/arm64": "dca07afd5555d318da25c28a1a14d221573583ccd60b2c86b5db7a63ff190fb5",
+      "windows/amd64": "83080c9a10d0cfe0053dab3f6b307bac44389e5fc123e8d19cdb2e718a7f8ecd"
     },
     "repo": "certimate-go/plugins",
-    "tag": "qiniu-cdn/v0.1.1"
+    "tag": "qiniu-cdn/v0.1.2"
   },
   "sha256": "",
   "usages": [
