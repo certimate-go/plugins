@@ -19,14 +19,14 @@
       "windows/amd64": "ratpanel_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "35869f8998afea18415d2a10681e2d2575cf5b397508c0945318113aeff134a3",
-      "darwin/arm64": "5facc55c4bd53d93ff3c435e1c9a8c286e7fb59d05c8c6028ab928add390a7da",
-      "linux/amd64": "97ce715b1ae189726f4b953a99542d04de1da90d5b5a72d57014a8dc913691fc",
-      "linux/arm64": "406d91dd62c3284a5f09b7b285ab7cac7cebea7e867605848a2093054c8abdbb",
-      "windows/amd64": "059cb76c0b8ba0202c12175a8c91ff4f10fe5fb7da2b137a6e98e83caef256f7"
+      "darwin/amd64": "4ab32af142bfd8a123dea714c68e1dbfa3eecfd51b487c0f5f560e21641554c2",
+      "darwin/arm64": "2036b695817f6268aa2c05cdc5bec7a30f6062c2b3311da0c64660df84388760",
+      "linux/amd64": "15ff217c249147290fb06982aca3e3479cdc2da764d4b176fd4b7f1dee4bf917",
+      "linux/arm64": "16895f99b6550e564cba1b3dda20fde145cad851fc30ee32cbc98f0732cf1c93",
+      "windows/amd64": "2bf2d2f4ca50518ad438e96aef262243b69ae12ca0e072956c59070e6cbfab53"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ratpanel/v0.1.0"
+    "tag": "ratpanel/v0.1.1"
   },
   "usages": [
     "hosting"
