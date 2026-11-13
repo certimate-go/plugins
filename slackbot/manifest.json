@@ -7,6 +7,24 @@
   "icon": "slack.svg",
   "protocol_version": 3,
   "provider_type": "slackbot",
+  "release": {
+    "assets": {
+      "darwin/amd64": "slackbot_darwin_amd64.zip",
+      "darwin/arm64": "slackbot_darwin_arm64.zip",
+      "linux/amd64": "slackbot_linux_amd64.zip",
+      "linux/arm64": "slackbot_linux_arm64.zip",
+      "windows/amd64": "slackbot_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "612d7e834b5f9f126f783e49a105c6193ca848e0d0a290e7e1630e2b5741839a",
+      "darwin/arm64": "25d5dbf3b83d835c52c4ff49adb3445e26e759aed1d5327acd1519c2fd3a350b",
+      "linux/amd64": "5625e61a2c0cf888b8253afcb5b62321b81d0ff3077e68ec214490835707a24c",
+      "linux/arm64": "27c03526b25129ec105b983b6d7921c916aad01d496c31e5535a504a9bb3e691",
+      "windows/amd64": "4fb41a8e2ddba1fb27a7257087a02a8631926c2cf7b58f00ad6d46ed6d4df914"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "slackbot/v0.1.0"
+  },
   "usages": [
     "notification"
   ],
