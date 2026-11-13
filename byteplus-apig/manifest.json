@@ -18,14 +18,14 @@
       "windows/amd64": "byteplus-apig_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ae9c4398a26e06e59d2f0afb49a037732fefd1baf5906f72cfb0aa2477923b62",
-      "darwin/arm64": "e15ee608e9e1c974ac80c4bb5e6c642872ce38cc1f309c5f0048418014933b01",
-      "linux/amd64": "b8472c5668afc18df309fdd8c1483a130c6805ab4579f78f86da15eac80acdf1",
-      "linux/arm64": "4397128845248588c1cf397211ccdfa7ea0425e34de490284ab1226015244722",
-      "windows/amd64": "bb0dd4f8fa7a0bf47c39d6a75b0188dec992d99e605d746a79cd24ff2fe9fe88"
+      "darwin/amd64": "fe40a98ae072af8f8578b211b5c5e03608a35a33ca681828bfe2ab1f63194302",
+      "darwin/arm64": "e1b115fff90a22581c662ec3af95a37e0e54a1f957594864fa5c40d6d6275600",
+      "linux/amd64": "dffc7718d91b4177d71d673b68f88bad05ba1e17903f9d0cdaa5e63530c387d8",
+      "linux/arm64": "b4289e53e3a6c8c8747f3f55a61b5f654f41279ae22a14ad257369422bd53b3e",
+      "windows/amd64": "9979049d4011f3662017462c39a24d300342a8bb2d7a6ca994d892bd2afe0df8"
     },
     "repo": "certimate-go/plugins",
-    "tag": "byteplus-apig/v0.1.0"
+    "tag": "byteplus-apig/v0.1.1"
   },
   "usages": [
     "hosting"
