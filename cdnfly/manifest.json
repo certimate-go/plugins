@@ -19,14 +19,14 @@
       "windows/amd64": "cdnfly_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "d0569b16088f4a82343092d03e210715e1ce06629e8ac320682faf0191401821",
-      "darwin/arm64": "04323d2798664b04cfb86a979db8d77155e4c45d7c8ef2b0fd5d96b90908c444",
-      "linux/amd64": "16edbdde16b7fc4d0c990887698f8f6e8919bc19ee28d269e126ff5ba9835c0f",
-      "linux/arm64": "a56292912015c645bd941cd269688b6ed0031e23f15070f8e8cf4e7986a6dd13",
-      "windows/amd64": "762d5d9c76db69d35f7aa8aaf865d5cb7ea5f86a01a3a668eac50a0cd5f048b1"
+      "darwin/amd64": "5b74dc16672fc80be9857beb23a4c2e9240fd210a95e82abd9dc313144a1fc0d",
+      "darwin/arm64": "28475efbee317bfbdf888e7c5dd97196197577518643c10199e58086825dc4de",
+      "linux/amd64": "0b4f57129ffbeff207d40e26ec686071a52a116c32d50cab6e8b84220b377c24",
+      "linux/arm64": "3159f77659221ec85f283682eb0d17be36448bdb7f422256d3be73da12540e4e",
+      "windows/amd64": "19626246874c8e3c2082741001989d9cc56164ccb1468162de91bb60db45d622"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cdnfly/v0.1.0"
+    "tag": "cdnfly/v0.1.1"
   },
   "sha256": "",
   "usages": [
