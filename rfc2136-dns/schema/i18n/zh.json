@@ -1,0 +1,10 @@
+{
+  "plugin.rfc2136-dns.name": "RFC 2136 动态更新",
+  "plugin.rfc2136-dns.access.server": "主 DNS 服务器（主机:端口）",
+  "plugin.rfc2136-dns.access.zone": "DNS 区域",
+  "plugin.rfc2136-dns.access.keyName": "TSIG 密钥名称",
+  "plugin.rfc2136-dns.access.keySecret": "TSIG 密钥（Base64）",
+  "plugin.rfc2136-dns.access.tsigPair": "同时填写 TSIG 密钥名称和 Secret 可发送签名更新。两项均留空时发送未签名更新。",
+  "plugin.rfc2136-dns.access.algorithm": "TSIG 算法（默认 hmac-sha256）",
+  "plugin.rfc2136-dns.config.ttl": "TXT 记录 TTL（秒）"
+}

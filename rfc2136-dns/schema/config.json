@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "rfc2136-dns",
+  "category": "apply",
+  "schema": {
+    "columns": [
+      {
+        "name": "ttl",
+        "valueType": "number",
+        "labelKey": "plugin.rfc2136-dns.config.ttl",
+        "default": 120
+      }
+    ]
+  }
+}

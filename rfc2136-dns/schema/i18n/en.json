@@ -1,0 +1,10 @@
+{
+  "plugin.rfc2136-dns.name": "RFC 2136",
+  "plugin.rfc2136-dns.access.server": "Primary DNS server (host:port)",
+  "plugin.rfc2136-dns.access.zone": "DNS zone",
+  "plugin.rfc2136-dns.access.keyName": "TSIG key name",
+  "plugin.rfc2136-dns.access.keySecret": "TSIG secret (Base64)",
+  "plugin.rfc2136-dns.access.tsigPair": "Enter both the TSIG key name and secret to sign updates. Leave both fields empty to send unsigned updates.",
+  "plugin.rfc2136-dns.access.algorithm": "TSIG algorithm (default hmac-sha256)",
+  "plugin.rfc2136-dns.config.ttl": "TXT record TTL in seconds"
+}

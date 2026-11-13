@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "rfc2136-dns",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "server",
+        "valueType": "text",
+        "labelKey": "plugin.rfc2136-dns.access.server",
+        "required": true
+      },
+      {
+        "name": "zone",
+        "valueType": "text",
+        "labelKey": "plugin.rfc2136-dns.access.zone",
+        "required": true
+      },
+      {
+        "name": "keyName",
+        "valueType": "text",
+        "labelKey": "plugin.rfc2136-dns.access.keyName",
+        "tooltipKey": "plugin.rfc2136-dns.access.tsigPair",
+        "default": "",
+        "defaultOnMissing": true,
+        "requiredWhen": [
+          { "field": "keySecret", "op": "ne", "values": [""] }
+        ]
+      },
+      {
+        "name": "keySecret",
+        "valueType": "secret",
+        "labelKey": "plugin.rfc2136-dns.access.keySecret",
+        "tooltipKey": "plugin.rfc2136-dns.access.tsigPair",
+        "secret": true,
+        "default": "",
+        "defaultOnMissing": true,
+        "requiredWhen": [
+          { "field": "keyName", "op": "ne", "values": [""] }
+        ]
+      },
+      {
+        "name": "algorithm",
+        "valueType": "text",
+        "labelKey": "plugin.rfc2136-dns.access.algorithm"
+      }
+    ]
+  }
+}
