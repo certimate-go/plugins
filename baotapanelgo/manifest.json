@@ -19,14 +19,14 @@
       "windows/amd64": "baotapanelgo_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ff7c53b765dd85a5108c752de40fe14c65d4dca4201962581d5e3561e73f5ae1",
-      "darwin/arm64": "6bbe3ed287f46c6e63a087960789a6977b626bbd013ee59d51d4db80bd8d5bad",
-      "linux/amd64": "9e231194ceba9811b239dae1b4123244873c9eed8bb108813d390de861126d1e",
-      "linux/arm64": "95d4265076e58fa8df528c9cfc68a9cd99ea4e2c064fd54433f897686cd5dadf",
-      "windows/amd64": "eec81ea7c8d824063e5a2195a12dbd9f91a9dfd21d2cf9a58eea28b4b8d4abdd"
+      "darwin/amd64": "d464d9cabada1978d0ac6ed31d1a3c7d54216550ab0504a375077992fb708427",
+      "darwin/arm64": "75c36356ad0403ad8b755b7138a55dfd89f6531b4bde7c5b4ac629d3b194142a",
+      "linux/amd64": "e3bfe2b1d9b17cfa4d4329cc70b17fdc94395cb96812e58d6b91d8f28170ecfe",
+      "linux/arm64": "5c37e13cbae9c529664769a6a7a3ea82e7182fb607f8759757d21a3e1a89f4e0",
+      "windows/amd64": "7d1f410e80d64b4ec38a785ba739b41a67036513562b2153595d9402fcf94b8e"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baotapanelgo/v0.1.0"
+    "tag": "baotapanelgo/v0.1.1"
   },
   "usages": [
     "hosting"
