@@ -130,10 +130,14 @@ func TestCloudDeploymentBatch(t *testing.T) {
 				t.Fatalf("packaged plugin icon unavailable: %v", err)
 			}
 			validateSchema(t, schema, entry.provider, entry.access, meta)
-			if previous := accessSchemas[entry.access]; previous != nil && !bytes.Equal(previous, schema.AccessSchemaJSON) {
-				t.Fatal("sibling access schemas differ")
+			if len(schema.AccessSchemaJSON) > 0 {
+				if previous := accessSchemas[entry.access]; previous != nil && !bytes.Equal(previous, schema.AccessSchemaJSON) {
+					t.Fatal("sibling access schemas differ")
+				}
+				accessSchemas[entry.access] = schema.AccessSchemaJSON
+			} else if accessSchemas[entry.access] == nil {
+				t.Fatal("no plugin in the group supplies the access schema")
 			}
-			accessSchemas[entry.access] = schema.AccessSchemaJSON
 			if entry.provider == "ksyun-kcm" {
 				var empty struct {
 					Schema struct{ Columns []json.RawMessage } `json:"schema"`
@@ -209,7 +213,7 @@ func TestCloudDeploymentBatch(t *testing.T) {
 							deploy(t, request, "")
 							fixture.assertEffects(t, 1, 0, entry.bindings)
 						} else {
-							deploy(t, request, "config `domain` is required")
+							deploy(t, request, "config `[REDACTED]` is required")
 							fixture.assertEffects(t, 0, 0, nil)
 						}
 					})
@@ -227,7 +231,7 @@ func TestCloudDeploymentBatch(t *testing.T) {
 					fixture.reset(cloudNormal)
 					request := req
 					request.ExtendedConfigJSON = `{"deployTarget":"domain","domainMatchPattern":"exact","domain":"missing.example.com"}`
-					deploy(t, request, "could not find domain")
+					deploy(t, request, "could not find [REDACTED]")
 					fixture.assertEffects(t, 0, 0, nil)
 				})
 				t.Run("replace_certificate", func(t *testing.T) {

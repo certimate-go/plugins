@@ -22,6 +22,9 @@ func validateSchema(t *testing.T, schema *plugin.ConfigSchema, provider, access 
 		data               []byte
 		provider, category string
 	}{{schema.AccessSchemaJSON, access, "access"}, {schema.DeploySchemaJSON, provider, "deploy"}} {
+		if item.category == "access" && len(item.data) == 0 {
+			continue
+		}
 		var envelope map[string]any
 		if err := json.Unmarshal(item.data, &envelope); err != nil {
 			t.Fatal(err)
