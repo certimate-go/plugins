@@ -19,14 +19,14 @@
       "windows/amd64": "safeline_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "13e1d0ab67ffe03fa7a0a099758c951952fab402e5ea17b605f40f60d52715f4",
-      "darwin/arm64": "c6b566a88672009333867499f9acb3d73acbf3914784666e5a4689045e2afa7b",
-      "linux/amd64": "4693b949b738395ef19a06f8c423071b5cb624eb097ea6aaf0962956accb2790",
-      "linux/arm64": "50b5b78f2bc46ed983be429f5c5ba65208da1a271d79127780eaa18766e63961",
-      "windows/amd64": "948f35d0f391e08c9954ebcbe4b4d180564bbe41bda37eef1b27f6d0ff3682d6"
+      "darwin/amd64": "8ba8f516b19648821d87d4efac3704f7d1067c8a9ff1948c1ee9a0131bf3020e",
+      "darwin/arm64": "a4ea414360c15e34afa889293f84979fdfc0ebccbd4b55eb4267122657d048ef",
+      "linux/amd64": "7abc423549e3ed1837513922383a4c1b792e75a4151067cd7fd943fa17fa00d8",
+      "linux/arm64": "2cd79121518e66a5f7c33b26b1a48987c1435817c2b02e6a2c11e11f26fcd97e",
+      "windows/amd64": "76e260f03f60e3ee2d308502ac744e28c65f0f9c61dc29990d9774efa83fb6cf"
     },
     "repo": "certimate-go/plugins",
-    "tag": "safeline/v0.1.0"
+    "tag": "safeline/v0.1.1"
   },
   "usages": [
     "hosting"
