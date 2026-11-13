@@ -19,14 +19,14 @@
       "windows/amd64": "baotapanel-console_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "be8c3f4801faff8a168c402503abe4bd262d318609317bef918f0899cc44036a",
-      "darwin/arm64": "a41bb22d56daafb122415edcf047811c57b42a763dd96e0ccf0061485387404d",
-      "linux/amd64": "5ffd752f31a70daad9ca25ff911bbdf4f6c63d381413f819f096d8ae972384d9",
-      "linux/arm64": "cb193bc0226bf3b0e05cb2a4c7e1fb9cd1d978d3389bb4c63c969dd21e503579",
-      "windows/amd64": "7d7f4cfa4de68a8c46c584d4d18e26389801c4985ab18b961b2909fe02a59e85"
+      "darwin/amd64": "5e64aadecae133dcecad93d2a2caf7b55b8d752d5877180352abe3adec239a8c",
+      "darwin/arm64": "567a393fda0a346aae03db4d84fc6f19096cf6b31709c21d54cc18dac01bdd50",
+      "linux/amd64": "346e307f3501aed8087eb4b17b00e96ce0f96f767567e30fc2e93c550e3eefc3",
+      "linux/arm64": "fb69ae022e9866fcded62be1c3249987d174021b69d457b0abc04970ea7553e6",
+      "windows/amd64": "ce68f903b3c593675fd2a97fc6002f74ef1112a947c116270502acf85ac54a3c"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baotapanel-console/v0.1.0"
+    "tag": "baotapanel-console/v0.1.1"
   },
   "usages": [
     "hosting"
