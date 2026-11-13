@@ -17,14 +17,14 @@
       "windows/amd64": "bunny-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "f50b24527d5ec32ddf5d88105f4a1901a6e1ee51d84106612d3478519132fce3",
-      "darwin/arm64": "e7856817bb656f7fec2c5e326a6c027be95581b120015aec7afff2845fd55fd5",
-      "linux/amd64": "9f87ce30c4ac96013cd96af43e72f16dc299124854aad8b3705578ed4e7f5f54",
-      "linux/arm64": "7b0bcee74797c4d2f9d78d131c1f4e4182a192fd351502bdb49565c469f9249b",
-      "windows/amd64": "958aada9939016cd1d9a5741d3a855d21fbbf0f87b868b4bff73bb5e40ffc463"
+      "darwin/amd64": "7ac21a825ac60176c014d359f293f604431a5ba6cba2e15f1915aad648ec769e",
+      "darwin/arm64": "74a7ad3912f717527ed3a568c0a35267977d08a1d26c5501723eefcc5a0afaf8",
+      "linux/amd64": "3395fbd6a06d6829d048e3ef8bd050d6122086de256a5bee737070877aef5ed6",
+      "linux/arm64": "ef701bec13443027eacf0a35ac5f856416a44029a54c2e1c543f76c97cf750d1",
+      "windows/amd64": "0d40b3e6e3c1826f1487598e78426cfe4496728f1a4d503116bb8f68c3b11d0b"
     },
     "repo": "certimate-go/plugins",
-    "tag": "bunny-cdn/v0.1.0"
+    "tag": "bunny-cdn/v0.1.1"
   },
   "usages": [
     "hosting"
