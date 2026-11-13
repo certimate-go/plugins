@@ -17,14 +17,14 @@
       "windows/amd64": "googlecloud-certificatemanager_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c511c7a4c9adb64bc4891cc9b29a2aed755893aed526ebda2b1689cac0b41a11",
-      "darwin/arm64": "1c2d34e6e9eae71e0a708a9489109aeb924115527d8e412013406962c8388916",
-      "linux/amd64": "e41d69046f63fc40a9614b2cc18a882d04b5541b293f840cb4dcfb709043b4bd",
-      "linux/arm64": "d6f9fee31099605f189a726d4474bb3e07c6bfc6e178e787e0fc32e42897a313",
-      "windows/amd64": "962a79b94b2dc1614bfa0e8dded6845c9b607027a9e725fdf196940117362706"
+      "darwin/amd64": "0250bd655e2f01d4a0d8fea9252d70b98d90a2d71b4118cc53ecce70c63896f5",
+      "darwin/arm64": "b8bd175ebbba5e5d54bc5b421a598cbea2c294225afdd9a73001da0f19900a7f",
+      "linux/amd64": "b1f702d99825f4bee00ced088bf3b8756dc8e6cde5103c57d3b5ede84cfbdd89",
+      "linux/arm64": "f3746cdfe5055eee63e7d8ced1a32891ebd5aee3eda04a086acc941ba3cd074e",
+      "windows/amd64": "792ade1c586395a4485431a101415756a4faddcadd101bed654183acb9bcdc6d"
     },
     "repo": "certimate-go/plugins",
-    "tag": "googlecloud-certificatemanager/v0.1.0"
+    "tag": "googlecloud-certificatemanager/v0.1.1"
   },
   "usages": [
     "hosting"
