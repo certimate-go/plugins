@@ -1,0 +1,5 @@
+{
+  "plugin.gotify.name": "Gotify",
+  "plugin.gotify.access.serverUrl": "Gotify 服务地址",
+  "plugin.gotify.access.token": "应用令牌"
+}

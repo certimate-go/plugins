@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ntfy",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.ntfy.access.serverUrl",
+        "required": true
+      },
+      {
+        "name": "topic",
+        "valueType": "text",
+        "labelKey": "plugin.ntfy.access.topic",
+        "required": true
+      },
+      {
+        "name": "token",
+        "valueType": "secret",
+        "labelKey": "plugin.ntfy.access.token",
+        "secret": true
+      }
+    ]
+  }
+}

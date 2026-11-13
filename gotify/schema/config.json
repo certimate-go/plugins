@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "gotify",
+  "category": "notify",
+  "schema": {
+    "columns": []
+  }
+}

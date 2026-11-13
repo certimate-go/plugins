@@ -1,0 +1,6 @@
+{
+  "plugin.ntfy.name": "ntfy",
+  "plugin.ntfy.access.serverUrl": "ntfy server URL",
+  "plugin.ntfy.access.topic": "Topic",
+  "plugin.ntfy.access.token": "Access token"
+}

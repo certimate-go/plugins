@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "powerdns-dns",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.powerdns-dns.access.serverUrl",
+        "required": true
+      },
+      {
+        "name": "zone",
+        "valueType": "text",
+        "labelKey": "plugin.powerdns-dns.access.zone",
+        "required": true
+      },
+      {
+        "name": "apiKey",
+        "valueType": "secret",
+        "labelKey": "plugin.powerdns-dns.access.apiKey",
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "gotify",
+  "category": "access",
+  "schema": {
+    "columns": [
+      {
+        "name": "serverUrl",
+        "valueType": "text",
+        "labelKey": "plugin.gotify.access.serverUrl",
+        "required": true
+      },
+      {
+        "name": "token",
+        "valueType": "secret",
+        "labelKey": "plugin.gotify.access.token",
+        "required": true,
+        "secret": true
+      }
+    ]
+  }
+}

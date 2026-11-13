@@ -1,0 +1,15 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "powerdns-dns",
+  "category": "apply",
+  "schema": {
+    "columns": [
+      {
+        "name": "ttl",
+        "valueType": "number",
+        "labelKey": "plugin.powerdns-dns.config.ttl",
+        "default": 120
+      }
+    ]
+  }
+}
