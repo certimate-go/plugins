@@ -19,14 +19,14 @@
       "windows/amd64": "samwaf-console_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "56689d60ffc79ec013948974b3df9d974d7f90b9265beb2f4f278df65f75553a",
-      "darwin/arm64": "adedd38eaa5c510b77cbffcfe1fd33cd80b7730c03126ff98fadb7a2f778f324",
-      "linux/amd64": "44268b2e59d769f8c8db0fc8ce7f5fe6da2d082edf9dc7979e50dbabf30d645c",
-      "linux/arm64": "d640c39f8a38964fd085f343fd0e1117e1c81b8b9f54859c4a10c9ae2cdbb67a",
-      "windows/amd64": "246aec61249ead8ed7ef5230d8edec1910b3880a14a580b2baed653c94b3b963"
+      "darwin/amd64": "c38763a79a45ee4d283870f09723207848f435101929509332ac73eb2d6d59a2",
+      "darwin/arm64": "59e61c3df2ac6798ca58cc9c4d17f605605048ca94dc57f6f9a683ec36b1dd5b",
+      "linux/amd64": "ec6229892b935baeeb48ea0a96a2c2ce93d41d99014e9cd02f82a9ed1fb1d391",
+      "linux/arm64": "f1dab8fcccb21a0126f3f371bd117eb84cb1df6d44666553cd09204bb9b19ff6",
+      "windows/amd64": "efc1c000a56f357a83bc08a85722d51ad37c60befdd6a53308a8ec9ea460b268"
     },
     "repo": "certimate-go/plugins",
-    "tag": "samwaf-console/v0.1.0"
+    "tag": "samwaf-console/v0.1.1"
   },
   "usages": [
     "hosting"
