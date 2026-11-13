@@ -18,14 +18,14 @@
       "windows/amd64": "jdcloud-alb_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "2aeb62e3d9560bc614d9fae2c9703855c06ef2dc50342dc3a54ae0b96b8143dc",
-      "darwin/arm64": "eacd000998e042e0391190584b69b331e7b68724dd576710ca96fb2d894fdeac",
-      "linux/amd64": "b2ef4c5dd17230bc63b9d8ae704e6c18bc3d1dbf9305c935187d8fd08bf5e67a",
-      "linux/arm64": "81126063c055189e2e05f79ea703299dc4a7227009a06357d1d33c8d777eb01e",
-      "windows/amd64": "b1981a6c52f6ecc5f1c2c83918d5ba87c2fc21855ef2ac639e14c33615b56c61"
+      "darwin/amd64": "66c38e4c9ff5c1a714b07b5e615f527f495171f7829416b3bfe5b0ef80dab503",
+      "darwin/arm64": "5c1eaf014f49a89b4262564da3e36684c341c333505fb5cdf20a08cc02e18987",
+      "linux/amd64": "972db272ba29eb2735b887e1fde331f949e86667d13b7447ec90f928e6b0ebb5",
+      "linux/arm64": "1c23db3ad234423bfbf6b92e7b7270a65a51bbb6340c750ee981499bee842ecf",
+      "windows/amd64": "4327f0c01c59d47d817f21e774c4bb23bc1df190e6579ab177e180d2a800d013"
     },
     "repo": "certimate-go/plugins",
-    "tag": "jdcloud-alb/v0.1.0"
+    "tag": "jdcloud-alb/v0.1.1"
   },
   "usages": [
     "hosting"
