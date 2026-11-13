@@ -1,11 +1,29 @@
 {
   "access_provider_type": "ntfy",
-  "capability": "notify",
   "binary": "ntfy",
+  "capability": "notify",
   "description": "Send notifications to an ntfy topic.",
   "display_name_key": "plugin.ntfy.name",
   "protocol_version": 3,
   "provider_type": "ntfy",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ntfy_darwin_amd64.zip",
+      "darwin/arm64": "ntfy_darwin_arm64.zip",
+      "linux/amd64": "ntfy_linux_amd64.zip",
+      "linux/arm64": "ntfy_linux_arm64.zip",
+      "windows/amd64": "ntfy_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "861505016fced1563e7545bdb733c23f0009a1af71412af58bd6ea293dfbd98e",
+      "darwin/arm64": "9d0b188ff9692136561d7c6cef36dc60752ba405f883f7ed5941ac4d819d61e8",
+      "linux/amd64": "52db94cc8f6470f13165a12dbeccddc3a50d2fa555779ba734cc9dd1eeb4b3cb",
+      "linux/arm64": "4b6a6129e26bf64fbfe08069dfc2e7f6455c981a4a3b68ac585a3d636764f472",
+      "windows/amd64": "f49459ad171efc737d26da3fd288116cb76bbf6f3c4604e457c6fdadbdf7cf73"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ntfy/v0.1.0"
+  },
   "usages": [
     "notification"
   ],
