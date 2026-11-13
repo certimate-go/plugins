@@ -19,14 +19,14 @@
       "windows/amd64": "panel1_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "6f6b4e336cc350fbd0d41ab3e692a218425642e8ca0d9822faf4c2a7b29fdbc1",
-      "darwin/arm64": "fc32a6597c8eabe32a7f4a8f7b947596ab322973cf7a9dc45d7be7090df902d6",
-      "linux/amd64": "4bff3bc60bbef98a666d17d04c0b9167e20a5bcc602f8772d81ba3db15bcc7f1",
-      "linux/arm64": "47d6cc25e7a0127b42371f82cc4e1f8ab416909f8e442eb7c2d7a1479e11d119",
-      "windows/amd64": "ca3ddf26b5f5def11787ea922339eccb5a92bfee230d6d6592b20e8b830e5068"
+      "darwin/amd64": "e23442d523d4bfc3752b1729d576f0b043dc73f68618b4ac9341aa1d211a33a3",
+      "darwin/arm64": "09b1b1c8e104c19836d16c7942481ab72e26dab720f02b8461f1c335f2c8c871",
+      "linux/amd64": "b2146e62cbedd5101ba24b0f8a3f3cc35dcae4007550d4c4332a639525956513",
+      "linux/arm64": "a109aa2582990998d11c9c89a0e0b9ffb698f2fb1820e05d748f9be45767512d",
+      "windows/amd64": "23b2961e8d63b144580321196c30528c3c846463c0ae317d6ca8bde70b20ebc6"
     },
     "repo": "certimate-go/plugins",
-    "tag": "panel1/v0.1.0"
+    "tag": "panel1/v0.1.1"
   },
   "usages": [
     "hosting"
