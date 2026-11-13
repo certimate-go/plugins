@@ -1,7 +1,7 @@
 {
   "access_provider_type": "zenlayer",
-  "capability": "deploy",
   "binary": "zenlayer-cdn",
+  "capability": "deploy",
   "deploy_category": "cdn",
   "display_name_key": "plugin.zenlayer-cdn.name",
   "icon": "zenlayer.svg",
@@ -19,14 +19,14 @@
       "windows/amd64": "zenlayer-cdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "43cfce3d42afbe79926f1c59b1961160ea3efe124f07426a5ea9e0a0429b70df",
-      "darwin/arm64": "3c92453e38c14e3a9fa32b9d56ca74439e57412366273c2d65b8ea4efb5faf6c",
-      "linux/amd64": "291b38dc2ee41276bde1f5c6bbff741e752c6a758bc4a3596ac747af122fc14f",
-      "linux/arm64": "72834640d67527581df3f72e21a5247e472885c37db4872345dead8eeb4efd3f",
-      "windows/amd64": "fc3731d6308d6ea236cfefdd60c798564152b1f3e149f3502d5f66fe0fcd9e35"
+      "darwin/amd64": "a9b2d5e8626e735bba513b91a5160b1204f13e435d05a08697a492167ee9ef4a",
+      "darwin/arm64": "3dbe0ebef69729210833726a87f10c45058d8edc6269b049b4244ebe194304bb",
+      "linux/amd64": "92d153d6aae455a813609815696a5355167becc75cca52f21cea37785dbc63f6",
+      "linux/arm64": "11d19a0885a7ee4fd8f54bd1fb0c8997258788423715061e67636f6978282c0b",
+      "windows/amd64": "6ae69660e8f08fbece9b66d854a1ddf3bb4ac30502ff5ea76be9e0fbe4575de7"
     },
     "repo": "certimate-go/plugins",
-    "tag": "zenlayer-cdn/v0.1.0"
+    "tag": "zenlayer-cdn/v0.1.1"
   },
   "sha256": "",
   "usages": [
