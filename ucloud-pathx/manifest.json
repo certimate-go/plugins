@@ -18,14 +18,14 @@
       "windows/amd64": "ucloud-pathx_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "46bd93995ebcb86904a9fc0e0852761447a20c17d449d63945bba9f1b876afb6",
-      "darwin/arm64": "e697129c273afcb95aaedc9c1f121ab0d35dc0b051a4e94a5893f8654ccbf8a7",
-      "linux/amd64": "4b0cc0ac65bcb6b330bf12182691cd7a5c2606dcfdc112965f277cf1d543ca7a",
-      "linux/arm64": "a97c4d799c96ac5891363849204e3c6ce91f987d5361ee8f5fe5b8c09660dba8",
-      "windows/amd64": "394521b56786906d8d88c811f6673aa21767e53674cc4a7de0a177067170af0a"
+      "darwin/amd64": "d8f0f57475a056df42d6982c28a16ae328c690c6fe3b05e293e1cc93d9fc52a6",
+      "darwin/arm64": "7ff3dec7f8edf523bf330df3091d1f85fd917bab948cc1f0fed958f59fd7e6f8",
+      "linux/amd64": "7441201221d956cb2f907c6bc566c2d1303e0f10e992211f1ab5200b857920bf",
+      "linux/arm64": "70d60c0800e9e6179816602a32069c19d7105a51e193d46ad09aaee2511a47bf",
+      "windows/amd64": "f1d4a7522243732cb410f32e18bbda82f1d02df30b9170f3ac9f8ce20685007e"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ucloud-pathx/v0.1.0"
+    "tag": "ucloud-pathx/v0.1.1"
   },
   "usages": [
     "hosting"
