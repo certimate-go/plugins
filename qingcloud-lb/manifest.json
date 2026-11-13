@@ -19,14 +19,14 @@
       "windows/amd64": "qingcloud-lb_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "0c264a4787b6b2edd92ec4094a422e2b8ad9b3532fc9179fba2fc7e1ddd3709e",
-      "darwin/arm64": "26c149f59963a2be117834bafce09ee20316c15826ef4f7c9ffc45fc87e77973",
-      "linux/amd64": "ce4b156716ba5b6eae4865fe918a29ec7a9c0f5ef69e9f9a7e0ad2541bab819a",
-      "linux/arm64": "0932cc18f51160a16c9971ba23dfeae8611946f967082014f0e55f6172f8787f",
-      "windows/amd64": "a618a0c759e5978dec16aadf41809397a454c5bbcc24ea9db5ec02b3a337ba1a"
+      "darwin/amd64": "0da5a3f98920e5815ea096aa8c0ff6cd92c765ff58a70d0639393902878366eb",
+      "darwin/arm64": "ab5bb601e6b0e7fef44f67e1c1a33d8535aafdbabfe6102cde5acc0d0a37db7d",
+      "linux/amd64": "e82775d46a5d083d4b821af225ba46056a1712fafa6b5d3e71ef9852cc8bc65f",
+      "linux/arm64": "5a653e8b60e23361657b54f91c6daaec6a8eea2eb73b8a9e861cc4026fdeb178",
+      "windows/amd64": "18666d030fa9c0793894cb6877418daa77a4b56b19851a9a21864fbc0043d2f2"
     },
     "repo": "certimate-go/plugins",
-    "tag": "qingcloud-lb/v0.1.0"
+    "tag": "qingcloud-lb/v0.1.1"
   },
   "sha256": "",
   "usages": [
