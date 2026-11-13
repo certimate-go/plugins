@@ -18,14 +18,14 @@
       "windows/amd64": "ucloud-uewaf_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "e78f57e2f2e8c03d7a2f8db15469e1645c2b4ca9c75136b7dd1bd215f326c12e",
-      "darwin/arm64": "ef54eac02f66e5ecf458702a176df849989d81a82df0e42d6708343a24361192",
-      "linux/amd64": "e734d1695e1b711cfb391dba78080b47eee04df08b762c0c41c9d195094f11f6",
-      "linux/arm64": "168e23563b3935269031958048530c8f18646d49e037a23411795fee0fb0fdd5",
-      "windows/amd64": "948448198fb39eb0a68fd7577790ad4b7fe1539be95907f7b3f17ef1375f92ac"
+      "darwin/amd64": "2e9e62c27e4b0b0b6bd79df1e773b494cf8ffbc8e0baabf04e5f87f87d57d8d7",
+      "darwin/arm64": "9a55933c2070dc63b31a4470cd259cf4f9db1ce65f1bacc9fd6ebc9df4a185bf",
+      "linux/amd64": "ae513e21e66589a5727842ce33816ac5df8a48b65f03d8f9706be47795cd0ded",
+      "linux/arm64": "5c5d0a180ecaa6440be56f93b095dbe76463adc15b36a93e00a952cb30e7b9e8",
+      "windows/amd64": "eb16b1e16b7dde708596e8b4933a04fe278f50f4a0f9cad41790f604833fed06"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ucloud-uewaf/v0.1.0"
+    "tag": "ucloud-uewaf/v0.1.1"
   },
   "usages": [
     "hosting"
