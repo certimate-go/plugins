@@ -18,14 +18,14 @@
       "windows/amd64": "volcengine-alb_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ddaaed8a71041e1568991c073cecdd1c724a767146da77a9e03b44d1eed3105d",
-      "darwin/arm64": "5690e37d8636af111024dae5309faf4d4ae9905469ccf07699f6f014e138a30e",
-      "linux/amd64": "20c5da39d45264b7ae05b4f01525d2aef07bfdff47a70324634bcb1162f48e2f",
-      "linux/arm64": "fe9b431b87a649e975d59f5d499175edfdbc3d77e2654377a6246177a6694266",
-      "windows/amd64": "3d0b4005ef411676e35f101721dec146c82a8fa0989efcb013067054646785ea"
+      "darwin/amd64": "fc2c5026d7e9519207657ec0394cff0e19faaecf04bfbe2c77cc3cceea6bea92",
+      "darwin/arm64": "23b6d173ff3483e3acba0ad60412ee5b00699447ad1a0b634986f928bf7c636a",
+      "linux/amd64": "afdb0cb9016048a97c225942cec1b0ca9ef7b3d2031b1900065e43fd6c672088",
+      "linux/arm64": "d68dfeb3b4c30c4b2dd81af1cb6050e566f001f96809874f9daf93d97475ff62",
+      "windows/amd64": "d04e74bc152460464cc35dd0480133b760c2b96632e861ff84784e11f227be11"
     },
     "repo": "certimate-go/plugins",
-    "tag": "volcengine-alb/v0.1.0"
+    "tag": "volcengine-alb/v0.1.1"
   },
   "usages": [
     "hosting"
