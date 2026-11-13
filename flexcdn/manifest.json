@@ -19,14 +19,14 @@
       "windows/amd64": "flexcdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ac80b52dbd0d2da650a2b805c783607bfdbc446c2338cbc9b227a288255e17f6",
-      "darwin/arm64": "5d575fbd15ca2e93a0ed4d8fa7852f721aca48066804b8b36b12c74245a39e11",
-      "linux/amd64": "a73539c6ccc56a828f0b8569fffc86398c884b23fb626cc0efc32e32d9c8197e",
-      "linux/arm64": "f649462cc6800a001d670e47030c624b4767c0f7533f50a08dd40a928b1aa1ff",
-      "windows/amd64": "7ea9a0027bf0aed6527172415aa5f3ce281d7463784158eb4a38554fd6a59cfb"
+      "darwin/amd64": "44856f0174b30fb685bf43d5db72cf862a63048b9cafa5bc5ba24f2b0b9c303e",
+      "darwin/arm64": "27a5d954eca9959000638e2cdd9c2bc19eec8094320973b8db48b030da25423d",
+      "linux/amd64": "1e082bf8434a87f5a5ef50f1e985fb4180bad3c506110d55ae1b8c7c54320b2c",
+      "linux/arm64": "9e3aec269659bc18b11146ab08b07cdc42a418bd1d42d4632717cf28114bae05",
+      "windows/amd64": "3f5edbbfe49ecc2cd2ba0460825b13cf13ab2b0afa1424d4552ff6850c3f069a"
     },
     "repo": "certimate-go/plugins",
-    "tag": "flexcdn/v0.1.0"
+    "tag": "flexcdn/v0.1.1"
   },
   "sha256": "",
   "usages": [
