@@ -18,14 +18,14 @@
       "windows/amd64": "ctcccloud-lvdn_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "8b876eb0882f3c33e4f2dc1714a272a5a606a7c87b9002938808fcc408700f67",
-      "darwin/arm64": "7892c81321fa0828864fd67bd445ae66bc17f7648c716a5850f612ff31059ed6",
-      "linux/amd64": "c257ce9973e79a7c78ecfb8a127e954b11726cbc771d8ac554884ad7bcd89273",
-      "linux/arm64": "2493db90e2456eace14404cabcb57c949b4408acb8676519987afa5c5631df23",
-      "windows/amd64": "f769b121b98ec74336f95c9593b2051bad5e945dd47cd92d70dd181c166aae54"
+      "darwin/amd64": "576f7de99492df56b08e1eef73b7cf0c7c8cb9dff8ffefa54cd1185f3d005a25",
+      "darwin/arm64": "ee40b399e6941eb9aa687a4f4b427305ef98fdad51dad1018e5b3ca280fab42b",
+      "linux/amd64": "74766eb22df62b16941126e19349ad48a714c1ee126a959833fae0bad1a7d4a9",
+      "linux/arm64": "a1b6d2397aefadd796957aba3ed89b1c40461a893a248c97511562bb47a4f991",
+      "windows/amd64": "af6c13535a8e45345944493a90623467c43f7937a919969c2b460ebbe242ba7d"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ctcccloud-lvdn/v0.1.0"
+    "tag": "ctcccloud-lvdn/v0.1.1"
   },
   "usages": [
     "hosting"
