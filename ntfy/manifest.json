@@ -5,11 +5,29 @@
   "description": "Send notifications to an ntfy topic.",
   "display_name_key": "plugin.ntfy.name",
   "icon": "icon.png",
+  "min_core_version": "",
   "protocol_version": 4,
   "provider_type": "ntfy",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ntfy_darwin_amd64.zip",
+      "darwin/arm64": "ntfy_darwin_arm64.zip",
+      "linux/amd64": "ntfy_linux_amd64.zip",
+      "linux/arm64": "ntfy_linux_arm64.zip",
+      "windows/amd64": "ntfy_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "e6abdabbc1add8f5ac885153ed2ba4b817523d093e15e2828fb6eafd4e095640",
+      "darwin/arm64": "18f0ebfd4dc51b8004de0876034ba255e3b79ba732ba520926994d2f59ef272e",
+      "linux/amd64": "a9e3c25bf96c6269be14a9a0bc41846f7d3474dfde0c5db2964995290ef882ac",
+      "linux/arm64": "90415f473694bc16a48e3a81f8c1e0edc1c7f6d018a581ea50ca3177398159cd",
+      "windows/amd64": "d6e78a67d85c4aa2e66cfcd1f291c91d4d3d09c556e98f07a904e304fb7c94a4"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ntfy/v0.2.0"
+  },
   "usages": [
     "notification"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
