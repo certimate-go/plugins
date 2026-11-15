@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "ctcccloud-lvdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ctcccloud-lvdn_darwin_amd64.zip",
+      "darwin/arm64": "ctcccloud-lvdn_darwin_arm64.zip",
+      "linux/amd64": "ctcccloud-lvdn_linux_amd64.zip",
+      "linux/arm64": "ctcccloud-lvdn_linux_arm64.zip",
+      "windows/amd64": "ctcccloud-lvdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "ec58724d3effacace3f39399cd5a192191a7fbd25fe5025b87af7150d01b25d5",
+      "darwin/arm64": "23ff6e3d789f6432fc24bb39d5b02377e7e7e74e7f01ce55c3d1c761af24105e",
+      "linux/amd64": "5039dee52e2e5926829e86327ec7a702a11c01a60837af6739265b6244b5ee60",
+      "linux/arm64": "03306a5cb2041dde57eadd7017f4091e0905829b875806737908edaf67e8c153",
+      "windows/amd64": "b4956422b462a1d62c90b32341534e2d822a4ad949056cd5568c9d49d1e56c93"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ctcccloud-lvdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
