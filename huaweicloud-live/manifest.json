@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "huaweicloud-live",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-live_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-live_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-live_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-live_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-live_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "6fbb6f120536d0795c0ff4e26c6b07f0c16649015f842fcec559785b2fa1b811",
+      "darwin/arm64": "48427ed25031be1cc9131ab4f195592aa908e44778fa56131780f731ac993241",
+      "linux/amd64": "adcb0f39f8df9fbc28bec3b3be7ea6761806753d9ce031a741661dafed8e0718",
+      "linux/arm64": "9681ee3cacf0331c57882881537a021cc8e85fe25c470dc180338df781654e51",
+      "windows/amd64": "59989a7a06c19c4d4c3beb0f18bb1d07ba9f8f4e60d6ba0fe2b2fe6f6066db72"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-live/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
