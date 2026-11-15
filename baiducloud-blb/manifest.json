@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "baiducloud-blb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baiducloud-blb_darwin_amd64.zip",
+      "darwin/arm64": "baiducloud-blb_darwin_arm64.zip",
+      "linux/amd64": "baiducloud-blb_linux_amd64.zip",
+      "linux/arm64": "baiducloud-blb_linux_arm64.zip",
+      "windows/amd64": "baiducloud-blb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "70fd753c2c36d44e95a2dc7298bf2b03ee279a29922cd936981d7e748c52db28",
+      "darwin/arm64": "52a1911abe087fc3e6e17ef37c3c6daf91dee72f019130e085b6c64f5a506692",
+      "linux/amd64": "3ce2fc688cfe54817a73591f0aff8701ff857ed67dcf413be7ab5a5b2a0394f9",
+      "linux/arm64": "237a7177fbb98457139deffe519bf77dfe359de6b22b0f53d28fdda3dc98d6ed",
+      "windows/amd64": "dd1bb7f12d884d9342ea901c97892662555d8f19a1de8330a24d9fcef769f6ef"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baiducloud-blb/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
