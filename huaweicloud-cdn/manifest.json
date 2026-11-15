@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "huaweicloud-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-cdn_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-cdn_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-cdn_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-cdn_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "9ab8de666bb4d0bb9e9cd1e8449ee2fa465471315fa80728534f869b36bbc521",
+      "darwin/arm64": "7f4e0eaa4bc1bbd1f4742b72d7a3b2a37aeee7cdf5112a1909e123f49648a77b",
+      "linux/amd64": "eb3ad662c6d794cbf2d4db5863e6d8675fb25617d57cde76e0841975d7593629",
+      "linux/arm64": "5dfb2b835c8fd40fdb2d3f050c4f3f305643d8d9a1010d40a661b701b64e411e",
+      "windows/amd64": "2dde83f019043b3bc79b8428c768dea3fafe06db484729a4a7e0db3a131f7c1e"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-cdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
