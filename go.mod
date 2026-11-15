@@ -18,7 +18,7 @@ require (
 	github.com/baidubce/bce-sdk-go v0.9.277
 	github.com/byteplus-sdk/byteplus-go-sdk-v2 v1.0.80
 	github.com/byteplus-sdk/byteplus-sdk-golang v1.0.73
-	github.com/certimate-go/certimate v0.4.38-0.20261112233855-b0fca4697cbe
+	github.com/certimate-go/certimate v0.4.38-0.20261115072429-2ca4e0b46a82
 	github.com/go-acme/lego/v5 v5.6.0
 	github.com/go-resty/resty/v2 v2.17.2
 	github.com/google/go-querystring v1.2.0
@@ -115,6 +115,7 @@ require (
 	github.com/json-iterator/go v1.1.13-0.20220915233716-71ac16282d12 // indirect
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/leodido/go-urn v1.5.0 // indirect
+	github.com/mailru/easyjson v0.9.2 // indirect
 	github.com/mattn/go-colorable v0.1.16 // indirect
 	github.com/mattn/go-isatty v0.0.24 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
@@ -168,7 +169,6 @@ require (
 )
 
 replace (
-	github.com/certimate-go/certimate => ../certimate
 	gitlab.ecloud.com/ecloud/ecloudsdkcloudcore v1.0.0 => ./pkg/sdk3rd-forked/gitlab.ecloud.com/ecloud/ecloudsdkcloudcore@v1.0.0+mod
 	gitlab.ecloud.com/ecloud/ecloudsdkclouddns v1.0.1 => ./pkg/sdk3rd-forked/gitlab.ecloud.com/ecloud/ecloudsdkclouddns@v1.0.1+mod
 	gitlab.ecloud.com/ecloud/ecloudsdkcmcdn v1.0.0 => ./pkg/sdk3rd-forked/gitlab.ecloud.com/ecloud/ecloudsdkcmcdn@v1.0.0

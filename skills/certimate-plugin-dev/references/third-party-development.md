@@ -8,12 +8,12 @@ In an empty repository, initialize your own module. In an existing project, use 
 
 ```sh
 go mod init github.com/example/certimate-widget
-core_version=v0.4.38-0.20261112233855-b0fca4697cbe
+core_version=next
 go get "github.com/certimate-go/certimate/pkg/plugin@$core_version"
 go list -f '{{.Dir}}' github.com/certimate-go/certimate/pkg/plugin
 ```
 
-The pin above is an example with deploy, DNS, and notify support; the purge capability (`plugin.CapabilityPurge`) ships in newer hosts than that commit, so a purge plugin must pin a tag or commit whose `pkg/plugin` already declares it. Choose the tag or commit corresponding to the actual host, and use the Go version required by that dependency. Run `go mod tidy` after the imports are in place. The protocol package builds from the published module. Go ignores dependency-module `replace` directives. If an imported SDK needs one, choose a published SDK or add a resolvable replacement in your own module. For local host development, put any checkout overrides in a temporary `go.work` outside the project and set `GOWORK` for that command.
+The command resolves the `next` branch to a version pinned in `go.mod`, with deploy, DNS, notify, and purge support. Use a compatible host and the Go version required by that dependency. Run `go mod tidy` after the imports are in place. The protocol package builds from the published module. Go ignores dependency-module `replace` directives. If an imported SDK needs one, choose a published SDK or add a resolvable replacement in your own module. For local host development, put any checkout overrides in a temporary `go.work` outside the project and set `GOWORK` for that command.
 
 ## Scaffold a capability
 
