@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "synologydsm",
+  "release": {
+    "assets": {
+      "darwin/amd64": "synologydsm_darwin_amd64.zip",
+      "darwin/arm64": "synologydsm_darwin_arm64.zip",
+      "linux/amd64": "synologydsm_linux_amd64.zip",
+      "linux/arm64": "synologydsm_linux_arm64.zip",
+      "windows/amd64": "synologydsm_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "94ad9f2de55354313dba335c7b92395b8614b25c8e40668490697bc538246704",
+      "darwin/arm64": "620b41c68da8f7db87f24986ff61219c27d57f07abaa6f225c256af220272c51",
+      "linux/amd64": "db14154a81a487702bf9fca658f253a57c9f72709cb431ceb588af34536946d2",
+      "linux/arm64": "2fbb09b81a7d9280029f11e90e493019cf2001cbe67bbec4aef6e6b87f1fce89",
+      "windows/amd64": "8c792e2217bc7d53d424b5cbb8fc77a027a5fb2d7fbca321a07d9c77e38466b3"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "synologydsm/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
