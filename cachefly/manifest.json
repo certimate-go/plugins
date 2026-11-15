@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "cachefly",
+  "release": {
+    "assets": {
+      "darwin/amd64": "cachefly_darwin_amd64.zip",
+      "darwin/arm64": "cachefly_darwin_arm64.zip",
+      "linux/amd64": "cachefly_linux_amd64.zip",
+      "linux/arm64": "cachefly_linux_arm64.zip",
+      "windows/amd64": "cachefly_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "60e4965c162af0500d8a833a042d8c208d3eee97050b216480edcc2a17be971b",
+      "darwin/arm64": "fef79a3158e2e7ee9aea8b650dd93a4c82a4629cc3c3e069f6c351b81ccc70b5",
+      "linux/amd64": "55525156fa11c4a6c4799b7df64284081fba20e9365f89381d7b58c5ded689df",
+      "linux/arm64": "cbe07910fdd389b369ee4125a763b75c94fb121b00d812122c41dc8c5e816953",
+      "windows/amd64": "d147618b2112c7d8c7b7482217207b74af263213ec594e58b52fcd4e97830e19"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "cachefly/v0.2.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
