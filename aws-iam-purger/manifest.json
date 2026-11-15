@@ -11,6 +11,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "aws-iam-purger",
+  "release": {
+    "assets": {
+      "darwin/amd64": "aws-iam-purger_darwin_amd64.zip",
+      "darwin/arm64": "aws-iam-purger_darwin_arm64.zip",
+      "linux/amd64": "aws-iam-purger_linux_amd64.zip",
+      "linux/arm64": "aws-iam-purger_linux_arm64.zip",
+      "windows/amd64": "aws-iam-purger_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "54eeec87f2e3b51dea1ea00f9694705e9d52e13924896fe67b3ce28069a66e2d",
+      "darwin/arm64": "07cae2b88edb918ee606f2d9e545b02ac18075bd472dd7e25c1e5fbbef38c172",
+      "linux/amd64": "adfede7f38514598b8a09a974e88c0e2e422d0756140d10ecbe140589e54e7b8",
+      "linux/arm64": "d3b7eb78fbc2cefb18eaee5219645a5d25564601125f5c36d0c49ce9ff2a1a50",
+      "windows/amd64": "4d99576b87b7eb83552e879b6a5033642bccd54517e92297850d67d99c3f4aad"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "aws-iam-purger/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
