@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "ctcccloud-elb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ctcccloud-elb_darwin_amd64.zip",
+      "darwin/arm64": "ctcccloud-elb_darwin_arm64.zip",
+      "linux/amd64": "ctcccloud-elb_linux_amd64.zip",
+      "linux/arm64": "ctcccloud-elb_linux_arm64.zip",
+      "windows/amd64": "ctcccloud-elb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "c7d2cf2995d85e6571ba237eb0b8a5b8073cc76f1ed11244c7d104253ed6fbd9",
+      "darwin/arm64": "666055e5e212258d3d1904f3527b7d01ed1f34037e77ececa1ec16629c85e620",
+      "linux/amd64": "6eaea203fea2a9a43f0172e44322261b35327035a2bfa204ae17aa2ea648219b",
+      "linux/arm64": "cfe2e94674fe8e356db368100b459e1ed1c67aa1051227d6c072fa1b097c65b5",
+      "windows/amd64": "0294ef890555e8ffe1db9135de7c4b87ed1b8ccd8e46f9f87f3d7ea5ef66961d"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ctcccloud-elb/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
