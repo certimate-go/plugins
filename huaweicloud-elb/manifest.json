@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "huaweicloud-elb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-elb_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-elb_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-elb_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-elb_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-elb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "e0124f24d976b4c131825f15617f518c3c6269b310c86add9fb7016c9ebc00ac",
+      "darwin/arm64": "c67c28ab41aa0daadfe263ac9acb14cc375e2ad00a35c707e26e56b20aa50907",
+      "linux/amd64": "8eb0b3f20b47e78784e4b36e150826dc6619eabfe36b82b976d3b7bdb1a6a1a7",
+      "linux/arm64": "820c7cf5b82d0214a598995d19a32b754900f0a5b04b59a5209f4efae9957456",
+      "windows/amd64": "b55d14dfee25a5e2f97809c81d9911aa0aa7ab6901fb9a5e9584798dc164483d"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-elb/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
