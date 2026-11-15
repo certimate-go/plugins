@@ -5,12 +5,30 @@
   "category": "cdn",
   "display_name_key": "plugin.bunny-cdn.name",
   "icon": "bunny.svg",
+  "min_core_version": "",
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "bunny-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "bunny-cdn_darwin_amd64.zip",
+      "darwin/arm64": "bunny-cdn_darwin_arm64.zip",
+      "linux/amd64": "bunny-cdn_linux_amd64.zip",
+      "linux/arm64": "bunny-cdn_linux_arm64.zip",
+      "windows/amd64": "bunny-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "11b852579485b8b27422692d350ab2def1198f087044d3700a1e65f7c4e9b1be",
+      "darwin/arm64": "037ecdcc814c8444e3fa8c6d9ef512b6ecaa99cc409890dc09ac3c24e816ee32",
+      "linux/amd64": "13dc8f62c0b27ffab42deeec73a0b645c6652e1935138d04270ecd8882e2d290",
+      "linux/arm64": "8b6813c228b01039fe41ec0cb67d18555a32585be2372b98b79f7e9ec4769ef7",
+      "windows/amd64": "07baa7739011066668a1690dca19d5e047f414e65422f0261f4f0bff39c2fa05"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "bunny-cdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
