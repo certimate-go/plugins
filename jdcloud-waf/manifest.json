@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "jdcloud-waf",
+  "release": {
+    "assets": {
+      "darwin/amd64": "jdcloud-waf_darwin_amd64.zip",
+      "darwin/arm64": "jdcloud-waf_darwin_arm64.zip",
+      "linux/amd64": "jdcloud-waf_linux_amd64.zip",
+      "linux/arm64": "jdcloud-waf_linux_arm64.zip",
+      "windows/amd64": "jdcloud-waf_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "ef6b2087058f812093649b57276f8249fbbd886c779e74f3416ff60d72b28a54",
+      "darwin/arm64": "709ae00479a7ff158e1be38caeac7a6264385a43048328aa8ca8d949b44097f0",
+      "linux/amd64": "7aea9c3d7294da63861648a80b37517ad7705a87711abdf3ac8ade6893c6b9b7",
+      "linux/arm64": "4ca36eeef865d03ed58d135b710f3caf9422f24b45f1a3d302f15e4e890e3874",
+      "windows/amd64": "4f9e81d94a519863624b585fe7d1c460aea776cf16c624ddabbd8a4a97852894"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "jdcloud-waf/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
