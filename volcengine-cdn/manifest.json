@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "volcengine-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-cdn_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-cdn_darwin_arm64.zip",
+      "linux/amd64": "volcengine-cdn_linux_amd64.zip",
+      "linux/arm64": "volcengine-cdn_linux_arm64.zip",
+      "windows/amd64": "volcengine-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "223630225fc39ce3d3e229fbaa8bd0368b00607c4a17367b4dd5d6df9f74b813",
+      "darwin/arm64": "39956c1cc15043e9ae8016bc9b37e69b52daed79aa3763953dce5e1818be9ec7",
+      "linux/amd64": "aeb1b080d459f929b396396b642deeab5c2b74beb8034033af98a3127690c709",
+      "linux/arm64": "4bdcfe2122229b61d0ed6ba891eee5b1d7660a619c1a16ae96ca1701794e8d17",
+      "windows/amd64": "5643e3c08940944cb65c031dd5f47657f33b2a4826c1324b22c24cbffd526a46"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-cdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
