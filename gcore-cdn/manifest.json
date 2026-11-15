@@ -5,12 +5,30 @@
   "category": "cdn",
   "display_name_key": "plugin.gcore-cdn.name",
   "icon": "gcore.svg",
+  "min_core_version": "",
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "gcore-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "gcore-cdn_darwin_amd64.zip",
+      "darwin/arm64": "gcore-cdn_darwin_arm64.zip",
+      "linux/amd64": "gcore-cdn_linux_amd64.zip",
+      "linux/arm64": "gcore-cdn_linux_arm64.zip",
+      "windows/amd64": "gcore-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "855574a480d2fb440e2115be36bc8cde264dca48ff833ec9fc17b4aeb8657aa0",
+      "darwin/arm64": "bd76e8e67d5eff735062e862f35515c7eeb7433e0ab70ea8a6af5da6cc332bc5",
+      "linux/amd64": "dcd026180b64a88e6dfc275af4491609320b2f2e43142b319ff2e75be0afd7e9",
+      "linux/arm64": "62aa297f298935cd31ab6573bc9695c3128b7a2407a1f42639d5b24bdbb95ccc",
+      "windows/amd64": "3eedf95cf7ff3d16f2d29eb784cf07e947a36f8daa73ab85bffe1ea092fd09b2"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "gcore-cdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
