@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "yandexcloud-certificatemanager",
+  "release": {
+    "assets": {
+      "darwin/amd64": "yandexcloud-certificatemanager_darwin_amd64.zip",
+      "darwin/arm64": "yandexcloud-certificatemanager_darwin_arm64.zip",
+      "linux/amd64": "yandexcloud-certificatemanager_linux_amd64.zip",
+      "linux/arm64": "yandexcloud-certificatemanager_linux_arm64.zip",
+      "windows/amd64": "yandexcloud-certificatemanager_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "6ac671fe52ea85a0a338a6b1b4b0d5d77f17bfea9a0b9b2f41da98649084e3ea",
+      "darwin/arm64": "2794a290f11907ffd4ba6220c5db9730f658048cbf07afb80001ff9e59798dd9",
+      "linux/amd64": "34fad4d6fa217206b28aa6ddb4898da088d7030b4a663ba7506872d54080b876",
+      "linux/arm64": "96760517fd1a0ce5d8ad676df3027b7e67a00f7858a25582eaf68fffb6efba62",
+      "windows/amd64": "b16585af663667b5480f6416664baa7fa193529b26eb8fdc786acb6ae5c61402"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "yandexcloud-certificatemanager/v0.2.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
