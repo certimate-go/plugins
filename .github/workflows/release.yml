@@ -11,6 +11,7 @@ on:
       - '**/manifest.json'
       - 'Makefile'
       - 'cmd/**'
+      - '.github/scripts/**'
       - '.github/workflows/release.yml'
   workflow_dispatch:
     inputs:
@@ -33,6 +34,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           fetch-depth: 0
+      - name: test release detection
+        run: python3 .github/scripts/test_release_workflow.py
       - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff
         with:
           go-version-file: go.mod
@@ -48,15 +51,31 @@ jobs:
           INPUT_PLUGINS: ${{ github.event.inputs.plugins }}
         run: |
           set -eu
+          shared_build_change=0
+          if [ -n "${BEFORE}" ] && [ "${BEFORE}" != "0000000000000000000000000000000000000000" ] &&
+            git diff --name-only "${BEFORE}" "${AFTER}" -- go.mod go.sum Makefile internal pkg | grep -q .; then
+            shared_build_change=1
+          fi
+          echo "shared_build_change=${shared_build_change}" >> "$GITHUB_OUTPUT"
           if [ -n "${INPUT_PLUGINS}" ]; then
             echo "plugins=${INPUT_PLUGINS}" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          if [ -z "${BEFORE}" ] || [ "${BEFORE}" = "0000000000000000000000000000000000000000" ]; then
-            dirs=$(find . -maxdepth 2 -name manifest.json -not -path './_template/*' -exec dirname {} \; | sed 's|^\./||' | sort -u)
+          if [ -z "${BEFORE}" ] || [ "${BEFORE}" = "0000000000000000000000000000000000000000" ] || [ "${shared_build_change}" = "1" ]; then
+            dirs=$(git ls-files '*/manifest.json' | sed -n 's|^\([^/]*\)/manifest.json$|\1|p' | sort -u)
           else
             dirs=$(git diff --name-only "${BEFORE}" "${AFTER}" | grep -Eo '^[^/]+/' | sed 's|/$||' | sort -u)
           fi
+          for manifest in $(git ls-files '*/manifest.json'); do
+            directory=${manifest%/manifest.json}
+            [ "${directory}" = "_template" ] && continue
+            [ "${directory#*/}" != "${directory}" ] && continue
+            tag=$(jq -r '.provider_type + "/v" + .version' "${manifest}")
+            if ! jq -e --arg tag "${tag}" '.release.tag == $tag' "${manifest}" >/dev/null; then
+              dirs="${dirs} ${directory}"
+            fi
+          done
+          dirs=$(printf '%s\n' $dirs | sort -u)
           plugins=""
           for d in $dirs; do
             [ "$d" = "_template" ] && continue
@@ -72,6 +91,7 @@ jobs:
           BEFORE: ${{ github.event.before }}
           AFTER: ${{ github.event.after }}
           INPUT_PLUGINS: ${{ github.event.inputs.plugins }}
+          SHARED_BUILD_CHANGE: ${{ steps.detect.outputs.shared_build_change }}
           GH_TOKEN: ${{ github.token }}
         run: |
           set -eu
@@ -86,7 +106,8 @@ jobs:
             version=$(jq -r .version "${plugin}/manifest.json")
             tag="${plugin}/v${version}"
 
-            if [ "${force}" = "1" ] || [ "${zero_before}" = "1" ]; then
+            if [ "${force}" = "1" ] || [ "${zero_before}" = "1" ] || [ "${SHARED_BUILD_CHANGE}" = "1" ] ||
+              ! jq -e --arg tag "${tag}" '.release.tag == $tag' "${plugin}/manifest.json" >/dev/null; then
               is_ba=1
             else
               previous_version=$( { git show "${BEFORE}:${plugin}/manifest.json" 2>/dev/null || true; } | jq -r .version)

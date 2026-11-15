@@ -26,6 +26,17 @@ fails the run with an actionable message, because the release tag
 `<provider_type>/v<version>` already exists. A forgotten bump must never result
 in a changed plugin silently not shipping.
 
+Changes to the root `go.mod`, `go.sum`, `Makefile`, or shared `internal/` and
+`pkg/` code select every tracked plugin for rebuilding. Bump every affected
+plugin version before pushing those changes. Local test fixtures are excluded.
+
+Protocol 4 plugins are built against the core `next` branch. Existing plugins
+move to version `0.2.0`; the sixteen new purge plugins start at `0.1.0`. Their
+minimum core version stays empty while `next` still reports `0.4.37`;
+`protocol_version: 4` rejects incompatible hosts. Pin the minimum version when
+the first protocol 4 core release is available. A plugin without a matching
+release block is selected for its first publication on the next workflow run.
+
 ## Metadata-only changes
 
 Changes that do not affect the compiled binary — display name, icon, `usages`,
