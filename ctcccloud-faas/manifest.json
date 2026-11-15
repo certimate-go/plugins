@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "ctcccloud-faas",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ctcccloud-faas_darwin_amd64.zip",
+      "darwin/arm64": "ctcccloud-faas_darwin_arm64.zip",
+      "linux/amd64": "ctcccloud-faas_linux_amd64.zip",
+      "linux/arm64": "ctcccloud-faas_linux_arm64.zip",
+      "windows/amd64": "ctcccloud-faas_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "b38ae85188c655d2c574985ba2a32c3067bd686bbe78def11b475842cbe4170f",
+      "darwin/arm64": "a7694eb45f92c4317260edaab9fbb9005d9ab774b7e2bc85ce58c428ee4040b7",
+      "linux/amd64": "841667c3798cb8db47bc65d108110196fd52add9365487b3daa8a864b8c0dc2f",
+      "linux/arm64": "67fa4410f1880c82789fd738d4191626d6d5d0b6505981cba892abbd701ddff9",
+      "windows/amd64": "53a050275f8bf5537a8d9ed85c898a80450501ff080e3fcb6e10aa29965c0f27"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ctcccloud-faas/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
