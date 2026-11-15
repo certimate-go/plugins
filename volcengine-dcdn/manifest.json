@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "volcengine-dcdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-dcdn_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-dcdn_darwin_arm64.zip",
+      "linux/amd64": "volcengine-dcdn_linux_amd64.zip",
+      "linux/arm64": "volcengine-dcdn_linux_arm64.zip",
+      "windows/amd64": "volcengine-dcdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "f7284ae65077b71dc916129116e9b5b21b9053914b01bf98edd27ef2238cfcbf",
+      "darwin/arm64": "225945edb4cdec270aa4cfc62014338d90b527b32c9ba58232c6a58a23fc5263",
+      "linux/amd64": "7cc4531eda86a5d2786d4acd46674c25ad4c5b50d04877fd33dfb5d70645ee32",
+      "linux/arm64": "883a00196e4c6e91cdc1a1aebb8e6b9e4531f5b63368b79783775402dc4dde88",
+      "windows/amd64": "3b50f60791236681e9b55337d8e222211bb5bfa03197625e80d4536a0143f292"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-dcdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
