@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "asiaispcdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "asiaispcdn_darwin_amd64.zip",
+      "darwin/arm64": "asiaispcdn_darwin_arm64.zip",
+      "linux/amd64": "asiaispcdn_linux_amd64.zip",
+      "linux/arm64": "asiaispcdn_linux_arm64.zip",
+      "windows/amd64": "asiaispcdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "72db54e1aac3d5058297bcb833799c6408739acf8501528fba67bb72e95f0cb3",
+      "darwin/arm64": "89e82b2e7d94e9b4a5e7a01fe87a5f5b9d26a59e8294ebc1adf06f643db0c372",
+      "linux/amd64": "4c0bb9a3b8882cf75e2bb1a2c1e7ea06c4c6defb4bb29f4643f213b8aae2e47e",
+      "linux/arm64": "c36a74f69f80d45dd0c9c3692e38ee9faa851c6debe3e8f977bb26b5be78393c",
+      "windows/amd64": "91e527cf578bf724a99b064888e9dc904a7620e9cace1dd2dc9c1739418e5cc6"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "asiaispcdn/v0.2.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
