@@ -11,6 +11,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "aws-acm-purger",
+  "release": {
+    "assets": {
+      "darwin/amd64": "aws-acm-purger_darwin_amd64.zip",
+      "darwin/arm64": "aws-acm-purger_darwin_arm64.zip",
+      "linux/amd64": "aws-acm-purger_linux_amd64.zip",
+      "linux/arm64": "aws-acm-purger_linux_arm64.zip",
+      "windows/amd64": "aws-acm-purger_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "b9f367a6cd8621d9007b5c0d4bd7e6ea238b05cd2e07328d4fc4baa7a607ef1e",
+      "darwin/arm64": "1776ce26b93a243a1a10fd20bed8a2f2de7f3e2a3cd339c63e174e1acc33885c",
+      "linux/amd64": "e9ec86b855d02b3720f1f7fe32bc2233aec1cf821c2c8e5d0ad4e8210d22b98c",
+      "linux/arm64": "a1935ec50af1e430f3600d2672a05751fa10845389aad663624620bdec8163fc",
+      "windows/amd64": "ce228cd6dc2622ad90fd4aae1b48c5c78ca7c71aa636b0cf91ae83ed7b67e684"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "aws-acm-purger/v0.1.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
