@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "goedge",
+  "release": {
+    "assets": {
+      "darwin/amd64": "goedge_darwin_amd64.zip",
+      "darwin/arm64": "goedge_darwin_arm64.zip",
+      "linux/amd64": "goedge_linux_amd64.zip",
+      "linux/arm64": "goedge_linux_arm64.zip",
+      "windows/amd64": "goedge_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "ec8d004da4ce949037e75503e44474cf59de664e08286dea2948f66dfc7bd6ba",
+      "darwin/arm64": "cef9530235db519db8b06d1f6d2a1ccfbe7af9de89996077ea5e7867f6091635",
+      "linux/amd64": "d8a398a7a522c1afcaaf5fd79e70afa377a4751d4207a350a84194ebef1dda33",
+      "linux/arm64": "8cf1f7761be6581715cb16df0d54d7510f95cc204f19b8c6e5454383116b488b",
+      "windows/amd64": "cefc96699188321ffcf17d7ad6545a90d206a9eb0591f41dfcd3ec2eded2990a"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "goedge/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
