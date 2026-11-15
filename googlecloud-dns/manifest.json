@@ -5,11 +5,29 @@
   "description": "DNS-01 via Google Cloud DNS.",
   "display_name_key": "plugin.googlecloud-dns.name",
   "icon": "google.svg",
+  "min_core_version": "",
   "protocol_version": 4,
   "provider_type": "googlecloud-dns",
+  "release": {
+    "assets": {
+      "darwin/amd64": "googlecloud-dns_darwin_amd64.zip",
+      "darwin/arm64": "googlecloud-dns_darwin_arm64.zip",
+      "linux/amd64": "googlecloud-dns_linux_amd64.zip",
+      "linux/arm64": "googlecloud-dns_linux_arm64.zip",
+      "windows/amd64": "googlecloud-dns_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "fde3368a623268808f8c527135656c587cbefec2523f820008e92d3bd024ac0a",
+      "darwin/arm64": "99aec84717ded2908aa76d075fb984a45806653b1b77bd03eb87976d32ed2645",
+      "linux/amd64": "00f18effaa8b29f86387f754b2fbd39c6e6d0625708e86c27e0e9e8b3565c68a",
+      "linux/arm64": "ffff32ca6cda3de4952333fb8ade91aae45efe7b4d3bb9cedb27820403661b21",
+      "windows/amd64": "49503b6dd3483f933d0120133b87aeeb585932087e51d51e780dd51597aa9c1c"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "googlecloud-dns/v0.2.0"
+  },
   "usages": [
     "dns"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
