@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "byteplus-tos",
+  "release": {
+    "assets": {
+      "darwin/amd64": "byteplus-tos_darwin_amd64.zip",
+      "darwin/arm64": "byteplus-tos_darwin_arm64.zip",
+      "linux/amd64": "byteplus-tos_linux_amd64.zip",
+      "linux/arm64": "byteplus-tos_linux_arm64.zip",
+      "windows/amd64": "byteplus-tos_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "a3f8318fb95a8ab6f73faf76af7f7be03e8ce0991a86738ffc065d1c02ce0ccf",
+      "darwin/arm64": "6822204a68bbd4233e7d0f260c8ea671e0cc8c4e48d909d61188b1f4e1f75518",
+      "linux/amd64": "c9817e6894e54b1870a69f357c256674163d990162b25fef639638200713ccd9",
+      "linux/arm64": "e88ee9113b19c3e28aa3f9b52ff0f8e6758727bd4c444f3961af9c50a897c8bf",
+      "windows/amd64": "9c28bec8b5babb8f84ee081c324e69fb790efdcc9c11245078a264676a319efd"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "byteplus-tos/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
