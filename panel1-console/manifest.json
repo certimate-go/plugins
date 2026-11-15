@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "1panel-console",
+  "release": {
+    "assets": {
+      "darwin/amd64": "panel1-console_darwin_amd64.zip",
+      "darwin/arm64": "panel1-console_darwin_arm64.zip",
+      "linux/amd64": "panel1-console_linux_amd64.zip",
+      "linux/arm64": "panel1-console_linux_arm64.zip",
+      "windows/amd64": "panel1-console_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "0527efb446b372b204a2499084f1d4fc3ea1cb3790ffbe02c2f272390b045644",
+      "darwin/arm64": "703c3205da84622ea677c2ead02348a123a511efa71c09d8684a9a50777d3ed9",
+      "linux/amd64": "88c6116ad8c1f4a945fc44de5b10160447b2eef56d1725f936f895ced91a478b",
+      "linux/arm64": "30f2c549f960278e4b2e5a31407fd59489bec5828cef1e60ee4cda9729de03d6",
+      "windows/amd64": "dc13a28aa97ab4c462cc64405f8e49fad591f0c9f575f8705a54e995191237a7"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "panel1-console/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
