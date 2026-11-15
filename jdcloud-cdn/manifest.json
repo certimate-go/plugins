@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "jdcloud-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "jdcloud-cdn_darwin_amd64.zip",
+      "darwin/arm64": "jdcloud-cdn_darwin_arm64.zip",
+      "linux/amd64": "jdcloud-cdn_linux_amd64.zip",
+      "linux/arm64": "jdcloud-cdn_linux_arm64.zip",
+      "windows/amd64": "jdcloud-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "8ebd45f7c4509bf4796a4f053176c99e33887dd5980e9e4a2ee04cf99148b42c",
+      "darwin/arm64": "131135930e1281abaad1c1ff3e08da65600a388057e2512be0f62b441eed603b",
+      "linux/amd64": "ad93d22078e6c8f9252c240ccaccbab93684693207329c54c7160154f4ac8036",
+      "linux/arm64": "85660ccec05230f50c85fa27dce47e7b61c33e662312a24ed5c69fb4154ea890",
+      "windows/amd64": "742ff6563ddf1ad94a7fe0af713961e604f5665885b5af44031b833b2487dff1"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "jdcloud-cdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
