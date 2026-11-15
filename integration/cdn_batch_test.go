@@ -73,7 +73,7 @@ func TestCDNDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: binaryDir, StartTimeout: 15 * time.Second, DeployTimeout: 15 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: binaryDir, StartTimeout: 15 * time.Second, ProcessTimeout: 15 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != len(cdnProviders) {
 		t.Fatalf("discover three plugins: count=%d failures=%v", len(discovered), failures)
@@ -94,10 +94,10 @@ func TestCDNDeploymentBatch(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			if meta.ProviderType != provider || meta.AccessProviderType != provider || meta.DeployCategory != "cdn" || meta.ProtocolVersion != plugin.ProtocolVersion {
+			if meta.ProviderType != provider || meta.AccessProviderType != provider || meta.Category != "cdn" || meta.ProtocolVersion != plugin.ProtocolVersion {
 				t.Fatalf("unexpected metadata: %+v", meta)
 			}
-			if dp.Manifest.AccessProviderType != provider || dp.Manifest.DeployCategory != meta.DeployCategory || dp.Manifest.ProtocolVersion != meta.ProtocolVersion || dp.Manifest.DisplayNameKey != meta.DeployDisplayNameKey {
+			if dp.Manifest.AccessProviderType != provider || dp.Manifest.Category != meta.Category || dp.Manifest.ProtocolVersion != meta.ProtocolVersion || dp.Manifest.DisplayNameKey != meta.DisplayNameKey {
 				t.Fatalf("manifest differs from metadata: %+v", dp.Manifest)
 			}
 			if info, err := os.Stat(filepath.Join(dp.Dir, dp.Manifest.Icon)); err != nil || info.IsDir() || info.Size() == 0 {
@@ -108,19 +108,25 @@ func TestCDNDeploymentBatch(t *testing.T) {
 				var form struct {
 					Schema struct{ Columns []json.RawMessage } `json:"schema"`
 				}
-				if err := json.Unmarshal(schema.DeploySchemaJSON, &form); err != nil || len(form.Schema.Columns) != 0 {
-					t.Fatalf("deployment form must be empty: %s", schema.DeploySchemaJSON)
+				if err := json.Unmarshal(schema.ProviderSchemaJSON, &form); err != nil || len(form.Schema.Columns) != 0 {
+					t.Fatalf("deployment form must be empty: %s", schema.ProviderSchemaJSON)
 				}
 			}
-			req := plugin.DeployRequest{AccessConfigJSON: `{"apiToken":"fixture-token"}`, ExtendedConfigJSON: `{}`, CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM, LogLevel: "DEBUG"}
+			req := plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   `{"apiToken":"fixture-token"}`,
+				ExtendedConfigJSON: `{}`,
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM},
+			}
 			if provider == "flexcdn" {
 				req.AccessConfigJSON = fixture.flexAccess("user", fixture.flexURL, false)
 				req.ExtendedConfigJSON = `{"deployTarget":"certificate","certificateId":42}`
 			}
-			deploy := func(t *testing.T, request plugin.DeployRequest, wantError string) {
+			deploy := func(t *testing.T, request plugin.Request, wantError string) {
 				t.Helper()
 				var logs bytes.Buffer
-				result, err := manager.Deploy(ctx, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
+				result, err := deployViaSession(ctx, manager, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
 				for _, secret := range []string{fixture.keyPEM, strings.Split(fixture.keyPEM, "\n")[1], base64.StdEncoding.EncodeToString([]byte(fixture.keyPEM)), "fixture-token", "fixture-secret", "fixture-session"} {
 					if strings.Contains(logs.String(), secret) || err != nil && strings.Contains(err.Error(), secret) {
 						t.Fatal("secret leaked in host logs or error")
@@ -229,7 +235,7 @@ func TestCDNDeploymentBatch(t *testing.T) {
 				t.Run("invalid_certificate", func(t *testing.T) {
 					fixture.reset(cdnNormal)
 					request := req
-					request.CertificatePEM = "not a certificate"
+					request.Deploy = &plugin.DeployPayload{CertificatePEM: "not a certificate", PrivateKeyPEM: req.Deploy.PrivateKeyPEM}
 					deploy(t, request, "PEM decode did not yield a valid block")
 					if fixture.snapshot().calls != 0 {
 						t.Fatal("invalid certificate reached API")

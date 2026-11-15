@@ -45,7 +45,7 @@ func TestB4BaiduWorkflow(t *testing.T) {
 			fixture := startB4BaiduFixture(t, provider)
 			deploy := newB1WorkflowDeployer(t, dir, provider, workflowLifecycleTarget{
 				barrier: &fixture.barrier,
-				verify: func(req *plugin.DeployRequest) {
+				verify: func(req *plugin.Request) {
 					fixture.verify(t, req)
 				},
 			})
@@ -67,13 +67,18 @@ func TestB4BaiduWorkflow(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			req := &plugin.DeployRequest{AccessConfigJSON: string(rawAccess), ExtendedConfigJSON: string(rawConfig)}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   string(rawAccess),
+				ExtendedConfigJSON: string(rawConfig),
+				Deploy:             &plugin.DeployPayload{},
+			}
 			issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "auth-recovery", "write-failure", "write-recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" || step == "auth-failure" || step == "write-failure" {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{b4BaiduDomain}, false)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b4BaiduDomain}, false)
+						req.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step
@@ -147,12 +152,12 @@ func startB4BaiduFixture(t *testing.T, provider string) *b4BaiduFixture {
 	return f
 }
 
-func (f *b4BaiduFixture) verify(t *testing.T, req *plugin.DeployRequest) {
+func (f *b4BaiduFixture) verify(t *testing.T, req *plugin.Request) {
 	t.Helper()
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	got := f.targetCertificate()
-	if strings.TrimSpace(got.PEM) != strings.TrimSpace(req.CertificatePEM) || strings.TrimSpace(got.Key) != strings.TrimSpace(req.PrivateKeyPEM) {
+	if strings.TrimSpace(got.PEM) != strings.TrimSpace(req.Deploy.CertificatePEM) || strings.TrimSpace(got.Key) != strings.TrimSpace(req.Deploy.PrivateKeyPEM) {
 		t.Fatal("target certificate chain, private key, or binding differs")
 	}
 }

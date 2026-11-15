@@ -2,12 +2,12 @@
   "access_provider_type": "ucloud",
   "binary": "ucloud-uclb",
   "capability": "deploy",
-  "deploy_category": "loadbalance",
+  "category": "loadbalance",
   "display_name_key": "plugin.ucloud-uclb.name",
   "icon": "ucloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "ucloud-uclb",
   "release": {
     "assets": {

@@ -50,7 +50,7 @@ func newDeployment(config *deploymentConfig, logger *slog.Logger) (*deployment, 
 	}, nil
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	createCertificateReq := &cacheflysdk.CreateCertificateRequest{
 		Certificate:    lo.ToPtr(certPEM),
 		CertificateKey: lo.ToPtr(privkeyPEM),
@@ -61,7 +61,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, fmt.Errorf("failed to execute sdk request 'CreateCertificate': %w", err)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func createSDKClient(apiToken string) (*cacheflysdk.Client, error) {
@@ -84,21 +84,24 @@ const (
 	displayNameKey = "plugin.cachefly.name"
 )
 
-type cacheflyDeployer struct{}
+type cacheflyDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*cacheflyDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "cdn",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.cachefly.name",
 	}, nil
 }
 
 func (*cacheflyDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -110,10 +113,10 @@ func (*cacheflyDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema,
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, DeploySchemaJSON: deploySchema, I18n: i18n}, nil
+	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, ProviderSchemaJSON: deploySchema, I18n: i18n}, nil
 }
 
-func (*cacheflyDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*cacheflyDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -126,5 +129,5 @@ func (*cacheflyDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, 
 	if err != nil {
 		return nil, err
 	}
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

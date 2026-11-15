@@ -2,12 +2,12 @@
   "access_provider_type": "byteplus",
   "binary": "byteplus-alb",
   "capability": "deploy",
-  "deploy_category": "loadbalance",
+  "category": "loadbalance",
   "display_name_key": "plugin.byteplus-alb.name",
   "icon": "byteplus.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "byteplus-alb",
   "release": {
     "assets": {

@@ -24,20 +24,23 @@ const (
 	displayNameKey = "plugin.qiniu-kodo.name"
 )
 
-type qiniuKodoDeployer struct{}
+type qiniuKodoDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*qiniuKodoDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "storage",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "storage",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*qiniuKodoDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -47,9 +50,9 @@ func (*qiniuKodoDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSche
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -63,7 +66,7 @@ type extendedConfig struct {
 	Domain string `json:"domain"`
 }
 
-func (d *qiniuKodoDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *qiniuKodoDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -90,7 +93,7 @@ func (d *qiniuKodoDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 	}
 	certmgr.SetLogger(logger)
 
-	upres, err := certmgr.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	upres, err := certmgr.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 	}
@@ -113,5 +116,5 @@ func (d *qiniuKodoDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 		slog.Any("response", bindResp),
 	)
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }

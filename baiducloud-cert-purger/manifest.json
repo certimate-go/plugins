@@ -1,0 +1,19 @@
+{
+  "access_provider_type": "baiducloud",
+  "binary": "baiducloud-cert-purger",
+  "capability": "purge",
+  "category": "other",
+  "description": "",
+  "display_name_key": "plugin.baiducloud-cert-purger.name",
+  "icon": "baiducloud.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 4,
+  "provider_type": "baiducloud-cert-purger",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

@@ -47,7 +47,7 @@ func (d *deployment) SetLogger(logger *slog.Logger) {
 	}
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	if d.config.PullZoneId == "" {
 		return nil, fmt.Errorf("config `pullZoneId` is required")
 	}
@@ -64,7 +64,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, fmt.Errorf("failed to execute sdk request 'cdn.AddCustomCertificate': %w", err)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func createSDKClient(apiKey string) (*bunnysdk.Client, error) {

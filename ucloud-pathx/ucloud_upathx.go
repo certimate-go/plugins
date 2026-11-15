@@ -6,6 +6,8 @@ import (
 	"log/slog"
 	"strings"
 
+	"github.com/certimate-go/plugins/internal/ucloudsdk/transport"
+
 	"github.com/ucloud/ucloud-sdk-go/services/uaccount"
 	"github.com/ucloud/ucloud-sdk-go/ucloud"
 	"github.com/ucloud/ucloud-sdk-go/ucloud/auth"
@@ -43,17 +45,17 @@ type Deployer struct {
 
 var _ Provider = (*Deployer)(nil)
 
-func NewDeployer(config *DeployerConfig) (*Deployer, error) {
+func NewDeployer(ctx context.Context, config *DeployerConfig) (*Deployer, error) {
 	if config == nil {
 		return nil, fmt.Errorf("the configuration of the deployer provider is nil")
 	}
 
-	client, err := createSDKClient(config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
+	client, err := createSDKClient(ctx, config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
 	if err != nil {
 		return nil, fmt.Errorf("could not create client: %w", err)
 	}
 
-	pcertmgr, err := cmgrimpl.NewCertmgr(&cmgrimpl.CertmgrConfig{
+	pcertmgr, err := cmgrimpl.NewCertmgr(ctx, &cmgrimpl.CertmgrConfig{
 		PublicKey:  config.PublicKey,
 		PrivateKey: config.PrivateKey,
 		ProjectId:  config.ProjectId,
@@ -109,7 +111,7 @@ func (d *Deployer) Deploy(ctx context.Context, certPEM, privkeyPEM string) (*Dep
 	return &DeployResult{}, nil
 }
 
-func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.UPathXClient, error) {
+func createSDKClient(ctx context.Context, publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.UPathXClient, error) {
 	if publicKey == "" {
 		return nil, fmt.Errorf("ucloud: invalid public key")
 	}
@@ -130,7 +132,7 @@ func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloud
 	}
 
 	if cfg.ProjectId == "" {
-		defaultProjectId, err := getSDKDefaultProjectId(publicKey, privateKey, endpoint)
+		defaultProjectId, err := getSDKDefaultProjectId(ctx, publicKey, privateKey, endpoint)
 		if err != nil {
 			return nil, err
 		}
@@ -142,11 +144,11 @@ func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloud
 	credential.PublicKey = publicKey
 	credential.PrivateKey = privateKey
 
-	client := ucloudsdk.NewClient(&cfg, &credential)
+	client := ucloudsdk.NewClient(ctx, &cfg, &credential)
 	return client, nil
 }
 
-func getSDKDefaultProjectId(publicKey, privateKey, endpoint string) (string, error) {
+func getSDKDefaultProjectId(ctx context.Context, publicKey, privateKey, endpoint string) (string, error) {
 	cfg := ucloud.NewConfig()
 	if endpoint != "" {
 		if strings.Contains(endpoint, "://") {
@@ -161,6 +163,7 @@ func getSDKDefaultProjectId(publicKey, privateKey, endpoint string) (string, err
 	credential.PrivateKey = privateKey
 
 	client := uaccount.NewClient(&cfg, &credential)
+	client.SetTransport(transport.NewContextRoundTripper(ctx, nil))
 
 	request := client.NewGetProjectListRequest()
 	response, err := client.GetProjectList(request)

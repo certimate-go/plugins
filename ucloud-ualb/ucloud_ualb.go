@@ -53,17 +53,17 @@ type Deployer struct {
 
 var _ Provider = (*Deployer)(nil)
 
-func NewDeployer(config *DeployerConfig) (*Deployer, error) {
+func NewDeployer(ctx context.Context, config *DeployerConfig) (*Deployer, error) {
 	if config == nil {
 		return nil, fmt.Errorf("the configuration of the deployer provider is nil")
 	}
 
-	client, err := createSDKClient(config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint, config.Region)
+	client, err := createSDKClient(ctx, config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint, config.Region)
 	if err != nil {
 		return nil, fmt.Errorf("could not create client: %w", err)
 	}
 
-	pcertmgr, err := cmgrimpl.NewCertmgr(&cmgrimpl.CertmgrConfig{
+	pcertmgr, err := cmgrimpl.NewCertmgr(ctx, &cmgrimpl.CertmgrConfig{
 		PublicKey:  config.PublicKey,
 		PrivateKey: config.PrivateKey,
 		ProjectId:  config.ProjectId,
@@ -306,7 +306,7 @@ func (d *Deployer) pruneListenerSniCertificates(ctx context.Context, cloudLoadba
 	return nil
 }
 
-func createSDKClient(publicKey, privateKey, projectId, endpoint, region string) (*ucloudsdk.ULBClient, error) {
+func createSDKClient(ctx context.Context, publicKey, privateKey, projectId, endpoint, region string) (*ucloudsdk.ULBClient, error) {
 	if publicKey == "" {
 		return nil, fmt.Errorf("ucloud: invalid public key")
 	}
@@ -333,6 +333,6 @@ func createSDKClient(publicKey, privateKey, projectId, endpoint, region string) 
 	credential.PublicKey = publicKey
 	credential.PrivateKey = privateKey
 
-	client := ucloudsdk.NewClient(&cfg, &credential)
+	client := ucloudsdk.NewClient(ctx, &cfg, &credential)
 	return client, nil
 }

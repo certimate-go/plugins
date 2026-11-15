@@ -1,0 +1,6 @@
+{
+  "plugin.tencentcloud-gaap-purger.name": "腾讯云 - 全球应用加速 GAAP（过期清除）",
+  "plugin.tencentcloud-gaap-purger.purge.form.endpoint.label": "腾讯云接口端点（可选）",
+  "plugin.tencentcloud-gaap-purger.purge.form.endpoint.placeholder": "请输入腾讯云 GAAP 接口端点（例如：gaap.tencentcloudapi.com）",
+  "plugin.tencentcloud-gaap-purger.purge.form.endpoint.tooltip": "这是什么？请参阅 <a href=\"https://cloud.tencent.com/document/product/608/36934\" target=\"_blank\">https://cloud.tencent.com/document/product/608/36934</a><br>国际站用户请填写 <em>gaap.intl.tencentcloudapi.com</em>。"
+}

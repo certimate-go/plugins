@@ -58,7 +58,7 @@ func newDeployment(config *deploymentConfig, logger *slog.Logger) (*deployment, 
 	}, nil
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	switch d.config.DeployTarget {
 	case DEPLOY_TARGET_WEBSITE:
 		if err := d.deployToSite(ctx, certPEM, privkeyPEM); err != nil {
@@ -74,7 +74,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, fmt.Errorf("unsupported deploy target '%s'", d.config.DeployTarget)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func (d *deployment) deployToSite(ctx context.Context, certPEM, privkeyPEM string) error {
@@ -159,21 +159,24 @@ const (
 	displayNameKey = "plugin.cdnfly.name"
 )
 
-type cdnflyDeployer struct{}
+type cdnflyDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*cdnflyDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "cdn",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.cdnfly.name",
 	}, nil
 }
 
 func (*cdnflyDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -185,10 +188,10 @@ func (*cdnflyDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, DeploySchemaJSON: deploySchema, I18n: i18n}, nil
+	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, ProviderSchemaJSON: deploySchema, I18n: i18n}, nil
 }
 
-func (*cdnflyDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*cdnflyDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -202,5 +205,5 @@ func (*cdnflyDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, lo
 	if err != nil {
 		return nil, err
 	}
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

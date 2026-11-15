@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log/slog"
 	"strings"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
@@ -16,7 +17,7 @@ type accessConfig struct {
 	ChannelID string `json:"channelId"`
 }
 
-func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.NotifyResult, error) {
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var config accessConfig
 	if err := notifier.DecodeAccess(req, &config); err != nil {
 		return nil, err
@@ -49,8 +50,8 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 			"props": map[string]any{
 				"attachments": []map[string]any{
 					{
-						"title": req.Subject,
-						"text":  req.Message,
+						"title": req.Notify.Subject,
+						"text":  req.Notify.Message,
 					},
 				},
 			},
@@ -62,5 +63,5 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 		return nil, fmt.Errorf("mattermost api error: unexpected status code: %d (resp: %s)", postResp.StatusCode(), postResp.String())
 	}
 
-	return &plugin.NotifyResult{}, nil
+	return &plugin.Result{Notify: &plugin.NotifyResult{}}, nil
 }

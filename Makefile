@@ -16,7 +16,7 @@ init:
 	find $(PLUGIN) -type f \( -name '*.json' -o -name '*.go' \) -exec sed -i '' 's/__PLUGIN_NAME__/$(PLUGIN)/g' {} +
 	@echo "Plugin scaffolded at $(PLUGIN)/"
 	@echo "Next steps:"
-	@echo "  1. Edit $(PLUGIN)/schema/deploy.json to define your deploy form"
+	@echo "  1. Edit $(PLUGIN)/schema/config.json to define your provider form"
 	@echo "  2. Edit $(PLUGIN)/schema/i18n/zh.json and en.json for translations"
 	@echo "  3. If defining a new access type, edit $(PLUGIN)/schema/access.json. Otherwise, delete it and update access_provider_type in manifest.json."
 	@echo "  4. Implement Deploy() in $(PLUGIN)/server.go"

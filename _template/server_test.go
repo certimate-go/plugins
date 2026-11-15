@@ -14,7 +14,7 @@ func TestGetConfigSchema_ReturnsParseableDeploySchema(t *testing.T) {
 	if err != nil {
 		t.Fatalf("GetConfigSchema: %v", err)
 	}
-	if cs.DeploySchemaJSON == nil {
+	if cs.ProviderSchemaJSON == nil {
 		t.Fatal("expected non-nil deploy schema")
 	}
 	var env struct {
@@ -32,7 +32,7 @@ func TestGetConfigSchema_ReturnsParseableDeploySchema(t *testing.T) {
 			} `json:"columns"`
 		} `json:"schema"`
 	}
-	if err := json.Unmarshal(cs.DeploySchemaJSON, &env); err != nil {
+	if err := json.Unmarshal(cs.ProviderSchemaJSON, &env); err != nil {
 		t.Fatalf("deploy schema not valid JSON: %v", err)
 	}
 	if env.SchemaVersion != "form/v1" {
@@ -59,7 +59,7 @@ func TestGetConfigSchema_I18nCoverage(t *testing.T) {
 			} `json:"columns"`
 		} `json:"schema"`
 	}
-	if err := json.Unmarshal(cs.DeploySchemaJSON, &env); err != nil {
+	if err := json.Unmarshal(cs.ProviderSchemaJSON, &env); err != nil {
 		t.Fatalf("deploy schema not valid JSON: %v", err)
 	}
 
@@ -82,10 +82,16 @@ func TestGetConfigSchema_I18nCoverage(t *testing.T) {
 	}
 }
 
-func TestDeploy_ReturnsNotImplemented(t *testing.T) {
+func TestProcess_ReturnsDeployResult(t *testing.T) {
 	d := &myDeployer{}
-	_, err := d.Deploy(context.Background(), &plugin.DeployRequest{}, nil)
-	if err == nil {
-		t.Fatal("expected not-implemented error")
+	res, err := d.Process(context.Background(), &plugin.Request{
+		Capability: plugin.CapabilityDeploy,
+		Deploy:     &plugin.DeployPayload{},
+	}, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res == nil || res.Deploy == nil {
+		t.Fatal("expected a deploy result")
 	}
 }

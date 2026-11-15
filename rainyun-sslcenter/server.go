@@ -24,14 +24,19 @@ const (
 type accessConfig struct {
 	ApiKey string `json:"apiKey"`
 }
-type pluginDeployer struct{}
+type pluginDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*pluginDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
-	return &plugin.Metadata{ProviderType: providerType, AccessProviderType: accessType, ProtocolVersion: plugin.ProtocolVersion, DeployCategory: "ssl", DeployDisplayNameKey: displayNameKey}, nil
+	return &plugin.Metadata{
+		ProviderType: providerType, AccessProviderType: accessType, ProtocolVersion: plugin.ProtocolVersion,
+		Capability: plugin.CapabilityDeploy, Category: "ssl", DisplayNameKey: displayNameKey,
+	}, nil
 }
 
 func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploy, err := plugin.LoadDeploySchema(schemaFS)
+	deploy, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -39,10 +44,10 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{DeploySchemaJSON: deploy, I18n: i18n}, nil
+	return &plugin.ConfigSchema{ProviderSchemaJSON: deploy, I18n: i18n}, nil
 }
 
-func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*pluginDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var raw map[string]any
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &raw); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -60,16 +65,16 @@ func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, lo
 		return nil, fmt.Errorf("could not create client: %w", err)
 	}
 	if id := xmaps.GetInt64(extended, "certificateId"); id != 0 {
-		if err := client.Replace(ctx, id, req.CertificatePEM, req.PrivateKeyPEM); err != nil {
+		if err := client.Replace(ctx, id, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM); err != nil {
 			return nil, fmt.Errorf("failed to replace certificate file: %w", err)
 		}
 		logger.Info("ssl certificate replaced", slog.Int64("certificateId", id))
 	} else {
-		id, err := client.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+		id, err := client.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 		if err != nil {
 			return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 		}
 		logger.Info("ssl certificate uploaded", slog.Int64("certificateId", id))
 	}
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }

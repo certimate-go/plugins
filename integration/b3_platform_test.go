@@ -55,7 +55,7 @@ func TestB3PlatformDeploymentBatch(t *testing.T) {
 	fixture := newB3PlatformFixture(t)
 	ctx, cancel := context.WithTimeout(context.Background(), 8*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, DeployTimeout: 20 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, ProcessTimeout: 20 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != len(b3PlatformProviders) {
 		t.Fatalf("discovery count=%d failures=%v", len(discovered), failures)
@@ -75,19 +75,25 @@ func TestB3PlatformDeploymentBatch(t *testing.T) {
 			access, extended := fixture.config(provider)
 			accessJSON, _ := json.Marshal(access)
 			extendedJSON, _ := json.Marshal(extended)
-			req := &plugin.DeployRequest{AccessConfigJSON: string(accessJSON), ExtendedConfigJSON: string(extendedJSON), LogLevel: "DEBUG"}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   string(accessJSON),
+				ExtendedConfigJSON: string(extendedJSON),
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
+			}
 			var logs bytes.Buffer
 			logger := slog.New(slog.NewJSONHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug}))
-			deploy := func(ctx context.Context, req *plugin.DeployRequest) (*plugin.DeployResult, error) {
-				return manager.Deploy(ctx, dp, req, logger)
+			deploy := func(ctx context.Context, req *plugin.Request) (*plugin.Result, error) {
+				return deployViaSession(ctx, manager, dp, req, logger)
 			}
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
 				deploy = newB1WorkflowDeployer(t, dir, provider, workflowLifecycleTarget{
 					barrier: &fixture.barrier,
-					verify: func(request *plugin.DeployRequest) {
+					verify: func(request *plugin.Request) {
 						fixture.mu.Lock()
 						defer fixture.mu.Unlock()
-						if strings.TrimSpace(fixture.cert) != strings.TrimSpace(request.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(request.PrivateKeyPEM) {
+						if strings.TrimSpace(fixture.cert) != strings.TrimSpace(request.Deploy.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(request.Deploy.PrivateKeyPEM) {
 							t.Fatal("lifecycle deployment did not write the fresh certificate and private key to the target")
 						}
 					},
@@ -104,9 +110,9 @@ func TestB3PlatformDeploymentBatch(t *testing.T) {
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{"platform.example.com"}, false)
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"platform.example.com"}, false)
 						issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step
@@ -127,7 +133,7 @@ func TestB3PlatformDeploymentBatch(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					if strings.TrimSpace(fixture.cert) != strings.TrimSpace(req.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(req.PrivateKeyPEM) {
+					if strings.TrimSpace(fixture.cert) != strings.TrimSpace(req.Deploy.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(req.Deploy.PrivateKeyPEM) {
 						t.Fatal("target full certificate chain or key differs")
 					}
 					if step == "repeat" && provider != "vercel" && fixture.writes != before {
@@ -141,7 +147,7 @@ func TestB3PlatformDeploymentBatch(t *testing.T) {
 					if provider == "qingcloud-lb" && fixture.bindings["listener-1"] != fixture.certID() {
 						t.Fatal("listener certificate binding differs")
 					}
-					if strings.Contains(logs.String(), req.PrivateKeyPEM) || strings.Contains(logs.String(), "fixture-token") {
+					if strings.Contains(logs.String(), req.Deploy.PrivateKeyPEM) || strings.Contains(logs.String(), "fixture-token") {
 						t.Fatal("secret leaked into plugin log")
 					}
 				})
@@ -174,13 +180,13 @@ func TestB3PlatformDeploymentBatch(t *testing.T) {
 			if provider == "yandexcloud-certificatemanager" {
 				t.Run("replace-preserves-metadata", func(t *testing.T) {
 					req.ExtendedConfigJSON = `{"certificateId":"certificate-1"}`
-					req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{"renewed.example.com"}, false)
+					req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"renewed.example.com"}, false)
 					if _, err := deploy(ctx, req); err != nil {
 						t.Fatal(err)
 					}
 					fixture.mu.Lock()
 					defer fixture.mu.Unlock()
-					if strings.TrimSpace(fixture.cert) != strings.TrimSpace(req.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(req.PrivateKeyPEM) || !fixture.replaced {
+					if strings.TrimSpace(fixture.cert) != strings.TrimSpace(req.Deploy.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(req.Deploy.PrivateKeyPEM) || !fixture.replaced {
 						t.Fatal("replacement certificate or metadata differs")
 					}
 				})
@@ -562,7 +568,7 @@ func runB3PlatformLinux(t *testing.T) {
 func validateB3PlatformSchema(t *testing.T, schema *plugin.ConfigSchema, provider string, meta *plugin.Metadata) {
 	t.Helper()
 	var env map[string]any
-	if err := json.Unmarshal(schema.DeploySchemaJSON, &env); err != nil {
+	if err := json.Unmarshal(schema.ProviderSchemaJSON, &env); err != nil {
 		t.Fatal(err)
 	}
 	if env["provider"] != provider || env["category"] != "deploy" || env["schemaVersion"] != "form/v1" {
@@ -592,7 +598,7 @@ func validateB3PlatformSchema(t *testing.T, schema *plugin.ConfigSchema, provide
 	}
 	check(env)
 	for _, locale := range []string{"en", "zh"} {
-		if schema.I18n[locale][meta.DeployDisplayNameKey] == "" {
+		if schema.I18n[locale][meta.DisplayNameKey] == "" {
 			t.Errorf("missing %s display name", locale)
 		}
 	}

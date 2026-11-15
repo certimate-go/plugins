@@ -1,0 +1,6 @@
+{
+  "plugin.huaweicloud-waf-purger.name": "Huawei Cloud - WAF (Web Application Firewall) (Purge)",
+  "plugin.huaweicloud-waf-purger.purge.form.region.label": "Huawei Cloud region",
+  "plugin.huaweicloud-waf-purger.purge.form.region.placeholder": "Please enter Huawei Cloud WAF region (e.g. cn-north-1)",
+  "plugin.huaweicloud-waf-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/waf?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/waf</a>"
+}

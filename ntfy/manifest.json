@@ -5,7 +5,7 @@
   "description": "Send notifications to an ntfy topic.",
   "display_name_key": "plugin.ntfy.name",
   "icon": "icon.png",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "ntfy",
   "release": {
     "assets": {

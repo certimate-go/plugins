@@ -45,7 +45,7 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 	newB3EdgeProxy(t, fixture)
 	ctx, cancel := context.WithTimeout(context.Background(), 7*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, DeployTimeout: 15 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, ProcessTimeout: 15 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != len(b3EdgeProviders) {
 		t.Fatalf("discovery count=%d failures=%v", len(discovered), failures)
@@ -62,7 +62,7 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			if meta.ProviderType != provider || meta.AccessProviderType != dp.Manifest.AccessProviderType || meta.DeployCategory != dp.Manifest.DeployCategory {
+			if meta.ProviderType != provider || meta.AccessProviderType != dp.Manifest.AccessProviderType || meta.Category != dp.Manifest.Category {
 				t.Fatal("metadata mismatch")
 			}
 			if len(schema.AccessSchemaJSON) != 0 {
@@ -72,13 +72,13 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 				SchemaVersion, Provider, Category string
 				Schema                            struct{ Columns []json.RawMessage }
 			}
-			if err := json.Unmarshal(schema.DeploySchemaJSON, &envelope); err != nil {
+			if err := json.Unmarshal(schema.ProviderSchemaJSON, &envelope); err != nil {
 				t.Fatal(err)
 			}
 			if envelope.SchemaVersion != "form/v1" || envelope.Provider != provider || envelope.Category != "deploy" {
 				t.Fatal("deploy schema envelope mismatch")
 			}
-			if schema.I18n["en"][meta.DeployDisplayNameKey] == "" || schema.I18n["zh"][meta.DeployDisplayNameKey] == "" {
+			if schema.I18n["en"][meta.DisplayNameKey] == "" || schema.I18n["zh"][meta.DisplayNameKey] == "" {
 				t.Fatal("missing display translation")
 			}
 			access := map[string]any{"apiKey": "fixture-key", "apiToken": "fixture-token", "accessToken": "fixture-token", "username": "fixture-user", "serverUrl": server.URL, "allowInsecureConnections": "true"}
@@ -93,20 +93,26 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 			}
 			accessJSON, _ := json.Marshal(access)
 			extendedJSON, _ := json.Marshal(extended)
-			req := &plugin.DeployRequest{AccessConfigJSON: string(accessJSON), ExtendedConfigJSON: string(extendedJSON), LogLevel: "DEBUG"}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   string(accessJSON),
+				ExtendedConfigJSON: string(extendedJSON),
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
+			}
 			var logs bytes.Buffer
 			logger := slog.New(slog.NewJSONHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug}))
-			deploy := func(ctx context.Context, req *plugin.DeployRequest) (*plugin.DeployResult, error) {
-				return manager.Deploy(ctx, dp, req, logger)
+			deploy := func(ctx context.Context, req *plugin.Request) (*plugin.Result, error) {
+				return deployViaSession(ctx, manager, dp, req, logger)
 			}
 			workflow := os.Getenv("CERTIMATE_B1_CORE_BINARY") != ""
 			if workflow {
 				deploy = newB1WorkflowDeployer(t, dir, provider, workflowLifecycleTarget{
 					barrier: &fixture.barrier,
-					verify: func(request *plugin.DeployRequest) {
+					verify: func(request *plugin.Request) {
 						fixture.mu.Lock()
 						defer fixture.mu.Unlock()
-						if strings.TrimSpace(fixture.cert) != strings.TrimSpace(request.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(request.PrivateKeyPEM) {
+						if strings.TrimSpace(fixture.cert) != strings.TrimSpace(request.Deploy.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(request.Deploy.PrivateKeyPEM) {
 							t.Fatal("lifecycle deployment did not write the fresh certificate and private key to the target")
 						}
 					},
@@ -115,9 +121,9 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{"edge.example.com"}, false)
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"edge.example.com"}, false)
 						issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step
@@ -138,7 +144,7 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					if fixture.cert != req.CertificatePEM || fixture.key != req.PrivateKeyPEM {
+					if fixture.cert != req.Deploy.CertificatePEM || fixture.key != req.Deploy.PrivateKeyPEM {
 						t.Fatal("target certificate chain/private key mismatch")
 					}
 					if provider == "digitalocean-certificate" && (step == "repeat" || step == "recovery") {
@@ -162,7 +168,7 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 							t.Fatal("wrong cPanel domain")
 						}
 					}
-					for _, secret := range []string{req.PrivateKeyPEM, base64.StdEncoding.EncodeToString([]byte(req.PrivateKeyPEM)), "fixture-key", "fixture-token"} {
+					for _, secret := range []string{req.Deploy.PrivateKeyPEM, base64.StdEncoding.EncodeToString([]byte(req.Deploy.PrivateKeyPEM)), "fixture-key", "fixture-token"} {
 						if strings.Contains(logs.String(), secret) {
 							t.Fatal("secret leaked into plugin logs")
 						}
@@ -205,7 +211,7 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 					stop()
 				case err := <-completed:
 					t.Fatalf("deployment ended before the target was blocked: %v", err)
-				case <-time.After(cfg.DeployTimeout):
+				case <-time.After(cfg.ProcessTimeout):
 					t.Fatal("deployment did not reach the blocked target")
 				}
 				select {
@@ -213,7 +219,7 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 					if err == nil {
 						t.Fatal("canceled deployment reported success")
 					}
-				case <-time.After(cfg.DeployTimeout):
+				case <-time.After(cfg.ProcessTimeout):
 					t.Fatal("deployment did not stop after cancellation")
 				}
 				fixture.mu.Lock()
@@ -223,7 +229,7 @@ func TestB3EdgeDeploymentBatch(t *testing.T) {
 					t.Fatal(err)
 				}
 				fixture.mu.Lock()
-				recovered := fixture.cert == req.CertificatePEM && fixture.key == req.PrivateKeyPEM
+				recovered := fixture.cert == req.Deploy.CertificatePEM && fixture.key == req.Deploy.PrivateKeyPEM
 				fixture.mu.Unlock()
 				if !recovered {
 					t.Fatal("canceled plugin did not recover target certificate")

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "tencentcloud-tse-purger",
+  "category": "purge",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.tencentcloud-tse-purger.purge.form.endpoint.label",
+        "placeholderKey": "plugin.tencentcloud-tse-purger.purge.form.endpoint.placeholder",
+        "tooltipKey": "plugin.tencentcloud-tse-purger.purge.form.endpoint.tooltip",
+        "tooltipHtml": true,
+        "required": false
+      },
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.tencentcloud-tse-purger.purge.form.region.label",
+        "placeholderKey": "plugin.tencentcloud-tse-purger.purge.form.region.placeholder",
+        "tooltipKey": "plugin.tencentcloud-tse-purger.purge.form.region.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "serviceType",
+        "valueType": "select",
+        "labelKey": "plugin.tencentcloud-tse-purger.purge.form.serviceType.label",
+        "placeholderKey": "plugin.tencentcloud-tse-purger.purge.form.serviceType.placeholder",
+        "required": true,
+        "default": "cloudnative",
+        "options": [
+          {
+            "value": "cloudnative",
+            "labelKey": "plugin.tencentcloud-tse-purger.purge.form.serviceType.option.cloudnative.label"
+          }
+        ]
+      },
+      {
+        "name": "gatewayId",
+        "valueType": "text",
+        "labelKey": "plugin.tencentcloud-tse-purger.purge.form.gatewayId.label",
+        "placeholderKey": "plugin.tencentcloud-tse-purger.purge.form.gatewayId.placeholder",
+        "tooltipKey": "plugin.tencentcloud-tse-purger.purge.form.gatewayId.tooltip",
+        "tooltipHtml": true,
+        "required": true,
+        "dependencies": [
+          "serviceType"
+        ],
+        "visibleWhen": [
+          {
+            "field": "serviceType",
+            "op": "eq",
+            "values": [
+              "cloudnative"
+            ]
+          }
+        ],
+        "validateWhen": [
+          {
+            "field": "serviceType",
+            "op": "eq",
+            "values": [
+              "cloudnative"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

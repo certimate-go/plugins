@@ -2,13 +2,13 @@
   "access_provider_type": "cachefly",
   "binary": "cachefly",
   "capability": "deploy",
-  "deploy_category": "cdn",
+  "category": "cdn",
   "display_name_key": "plugin.cachefly.name",
   "icon": "cachefly.png",
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "cachefly",
   "release": {
     "assets": {

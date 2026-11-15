@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"os"
 	"strconv"
 	"sync"
@@ -34,30 +35,33 @@ type challengeConfig struct {
 	DisableFollowCNAME bool     `json:"disableFollowCNAME"`
 }
 
-func (s *server) Present(ctx context.Context, req *plugin.DnsRequest) error {
+func (s *server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
+	provider, err := s.dnsProvider(req)
+	if err != nil {
+		return nil, err
+	}
+	if err := provider.Present(ctx, req.Dns.Domain, req.Dns.Token, req.Dns.KeyAuth); err != nil {
+		return nil, err
+	}
+	return &plugin.Result{Dns: &plugin.DnsResult{}}, nil
+}
+
+func (s *server) PostProcess(ctx context.Context, req *plugin.Request, logger *slog.Logger) error {
 	provider, err := s.dnsProvider(req)
 	if err != nil {
 		return err
 	}
-	return provider.Present(ctx, req.Domain, req.Token, req.KeyAuth)
+	return provider.CleanUp(ctx, req.Dns.Domain, req.Dns.Token, req.Dns.KeyAuth)
 }
 
-func (s *server) CleanUp(ctx context.Context, req *plugin.DnsRequest) error {
-	provider, err := s.dnsProvider(req)
-	if err != nil {
-		return err
-	}
-	return provider.CleanUp(ctx, req.Domain, req.Token, req.KeyAuth)
-}
-
-func (s *server) dnsProvider(req *plugin.DnsRequest) (*gcloud.DNSProvider, error) {
+func (s *server) dnsProvider(req *plugin.Request) (*gcloud.DNSProvider, error) {
 	s.initOnce.Do(func() {
 		s.provider, s.initErr = newDNSProvider(req)
 	})
 	return s.provider, s.initErr
 }
 
-func newDNSProvider(req *plugin.DnsRequest) (*gcloud.DNSProvider, error) {
+func newDNSProvider(req *plugin.Request) (*gcloud.DNSProvider, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid Google Cloud access configuration: %w", err)

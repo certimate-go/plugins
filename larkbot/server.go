@@ -21,7 +21,7 @@ type accessConfig struct {
 	CustomPayload string `json:"customPayload,omitempty"`
 }
 
-func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.NotifyResult, error) {
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var config accessConfig
 	if err := notifier.DecodeAccess(req, &config); err != nil {
 		return nil, err
@@ -42,7 +42,7 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 	webhookData, err := notifier.WebhookPayload(req, config.CustomPayload, map[string]any{
 		"msg_type": "text",
 		"content": map[string]string{
-			"text": req.Subject + "\n\n" + req.Message,
+			"text": req.Notify.Subject + "\n\n" + req.Notify.Message,
 		},
 	})
 	if err != nil {
@@ -79,5 +79,5 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 		return nil, fmt.Errorf("lark api error: code='%d', msg='%s'", result.Code, result.Message)
 	}
 
-	return &plugin.NotifyResult{}, nil
+	return &plugin.Result{Notify: &plugin.NotifyResult{}}, nil
 }

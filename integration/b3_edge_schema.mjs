@@ -50,7 +50,7 @@ const cases = [
  ["digitalocean-certificate", {}, true],
 ];
 for (const [provider,value,expected] of cases) {
- const envelope=JSON.parse(fs.readFileSync(path.join(pluginRoot,provider,"schema/deploy.json")));
+ const envelope=JSON.parse(fs.readFileSync(path.join(pluginRoot,provider,"schema/config.json")));
  const result=deriveZodSchema(envelope).safeParse(value);
  assert.equal(result.success,expected,JSON.stringify({provider,value,issues:result.error?.issues}));
  if(result.success) for(const key of Object.keys(value)) assert.deepEqual(result.data[key],value[key]);

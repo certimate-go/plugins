@@ -1,0 +1,6 @@
+{
+  "plugin.ucloud-ussl-purger.name": "UCloud - USSL Certificate Service (Purge)",
+  "plugin.ucloud-ussl-purger.purge.form.endpoint.label": "UCloud API endpoint (Optional)",
+  "plugin.ucloud-ussl-purger.purge.form.endpoint.placeholder": "Please enter UCloud USSL API endpoint (e.g. api.ucloud-global.com)",
+  "plugin.ucloud-ussl-purger.purge.form.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>api.ucloud-global.com</strong> for UCloud Global</li><li><strong>api.ucloud.cn</strong> for UCloud in China (<em>Default</em>)</li></ul>"
+}

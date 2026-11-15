@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "aliyun-clb-purger",
+  "category": "purge",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.aliyun-clb-purger.purge.form.region.label",
+        "placeholderKey": "plugin.aliyun-clb-purger.purge.form.region.placeholder",
+        "tooltipKey": "plugin.aliyun-clb-purger.purge.form.region.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      }
+    ]
+  }
+}

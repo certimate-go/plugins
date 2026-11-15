@@ -1,0 +1,9 @@
+{
+  "plugin.aws-iam-purger.name": "AWS - 身份与访问权限管理器 IAM（过期清除）",
+  "plugin.aws-iam-purger.purge.form.region.label": "AWS 服务区域",
+  "plugin.aws-iam-purger.purge.form.region.placeholder": "请输入 AWS IAM 服务区域（例如：us-east-1）",
+  "plugin.aws-iam-purger.purge.form.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.aws.amazon.com/zh_cn/general/latest/gr/rande.html#regional-endpoints\" target=\"_blank\">https://docs.aws.amazon.com/zh_cn/general/latest/gr/rande.html#regional-endpoints</a>",
+  "plugin.aws-iam-purger.purge.form.certificatePath.label": "AWS IAM 证书路径（可选）",
+  "plugin.aws-iam-purger.purge.form.certificatePath.placeholder": "请输入 AWS IAM 证书路径",
+  "plugin.aws-iam-purger.purge.form.certificatePath.tooltip": "这是什么？请参阅 <a href=\"https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_identifiers.html\" target=\"_blank\">https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_identifiers.html</a>"
+}

@@ -5,7 +5,7 @@
   "description": "Send notifications via a DingTalk custom robot.",
   "display_name_key": "plugin.dingtalkbot.name",
   "icon": "dingtalk.svg",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "dingtalkbot",
   "release": {
     "assets": {

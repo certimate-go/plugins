@@ -50,7 +50,7 @@ func (d *deployment) SetLogger(logger *slog.Logger) {
 	}
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	if d.config.HostId == "" {
 		return nil, fmt.Errorf("config `hostId` is required")
 	}
@@ -69,7 +69,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 
 	d.logger.Debug("sdk request 'mvh.SetSSL' completed", slog.String("hostId", d.config.HostId), slog.Int64("domainId", d.config.DomainId))
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func createSDKClient(username, apiPassword string) (*mohuasdk.Client, error) {
@@ -97,21 +97,24 @@ const (
 	displayNameKey = "plugin.mohua-mvh.name"
 )
 
-type pluginDeployer struct{}
+type pluginDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*pluginDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "website",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "website",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.mohua.name",
 	}, nil
 }
 
 func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -123,10 +126,10 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{DeploySchemaJSON: deploySchema, AccessSchemaJSON: accessSchema, I18n: i18n}, nil
+	return &plugin.ConfigSchema{ProviderSchemaJSON: deploySchema, AccessSchemaJSON: accessSchema, I18n: i18n}, nil
 }
 
-func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*pluginDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -145,5 +148,5 @@ func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, lo
 		return nil, err
 	}
 	d.SetLogger(logger)
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

@@ -2,7 +2,7 @@
 
 English | [中文](README.zh.md)
 
-Out-of-process deployer plugins for [certimate](https://github.com/certimate-go/certimate). Each plugin is a standalone binary that certimate launches as a gRPC subprocess ([hashicorp/go-plugin](https://github.com/hashicorp/go-plugin)) to deploy certificates to a target platform. Adding a plugin requires **no changes to the certimate core**.
+Out-of-process provider plugins for [certimate](https://github.com/certimate-go/certimate). Each plugin is a standalone binary that certimate launches as a gRPC subprocess ([hashicorp/go-plugin](https://github.com/hashicorp/go-plugin)) to deploy, resolve, notify, or purge certificates. Adding a plugin requires **no changes to the certimate core**.
 
 This repository is also the plugin **market** source: it builds plugins, publishes them as GitHub Releases, and serves a market index (`index.json`) that certimate's plugin-market UI reads to list, install, and update plugins.
 
@@ -13,8 +13,8 @@ plugins/
 ├── <plugin-name>/        one directory per plugin
 │   ├── manifest.json       identity + market metadata
 │   ├── main.go             plugin.Serve entrypoint
-│   ├── server.go           Deployer interface implementation
-│   ├── schema/             form/v1 deploy (+ optional access) schema and i18n
+│   ├── server.go           unified Plugin interface implementation
+│   ├── schema/             form/v1 provider (+ optional access) schema and i18n
 │   └── *_test.go
 ├── _template/            scaffold for new plugins
 ├── cmd/
@@ -28,11 +28,12 @@ plugins/
 
 ## Plugin anatomy
 
-Each plugin implements the `Deployer` interface defined in `certimate/pkg/plugin`:
+Each plugin implements the unified `Plugin` interface defined in `certimate/pkg/plugin`:
 
-- `GetMetadata` — identity: provider type, access type, deploy category, display name.
-- `GetConfigSchema` — form/v1 deploy (and optionally access) schema + i18n.
-- `Deploy` — performs the deployment with access config, deploy config, and certificate PEM.
+- `GetMetadata` — identity: provider type, access type, capability, category, display name.
+- `GetConfigSchema` — form/v1 provider (and optionally access) schema + i18n.
+- `Process` — performs the capability's work with access config, provider config, and a typed payload.
+- `PostProcess` — finalization for the same execution (embed `plugin.NoopFinalizer` when the capability needs no cleanup).
 
 `manifest.json` carries the market metadata:
 
@@ -41,7 +42,8 @@ Each plugin implements the `Deployer` interface defined in `certimate/pkg/plugin
 | `provider_type` | unique plugin id (kebab-case); also the directory and binary name |
 | `access_provider_type` | the access credential type this plugin consumes |
 | `version` | semver; bumping it is what triggers a new release |
-| `deploy_category` | market grouping (e.g. `cdn`, `storage`, `other`) |
+| `capability` | one of `deploy`, `dns`, `notify`, `purge` |
+| `category` | market grouping (e.g. `cdn`, `storage`, `other`) |
 | `binary` | built binary name |
 | `icon` | icon filename shipped with the plugin |
 | `protocol_version` | must match the certimate plugin protocol |
@@ -50,11 +52,11 @@ Each plugin implements the `Deployer` interface defined in `certimate/pkg/plugin
 
 ## Add a plugin
 
-The repository includes a [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md) for AI coding assistants developing deploy, DNS, and notification plugins. It covers credential reuse, forms and Chinese/English translations, builds, and verification through the real host. From this repository, ask your assistant:
+The repository includes a [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md) for AI coding assistants developing deploy, DNS, notification, and purge plugins. It covers credential reuse, forms and Chinese/English translations, builds, and verification through the real host. From this repository, ask your assistant:
 
 ```text
-Read skills/certimate-plugin-dev/SKILL.md and develop a <deploy/dns/notify> plugin for <platform>.
-Expected behavior: <deployment target / DNS service / notification channel>; API docs: <URL>; credentials: <existing type or new>.
+Read skills/certimate-plugin-dev/SKILL.md and develop a <deploy/dns/notify/purge> plugin for <platform>.
+Expected behavior: <deployment target / DNS service / notification channel / expired-certificate purge>; API docs: <URL>; credentials: <existing type or new>.
 ```
 
 To install in Codex, run these commands from this repository root to copy the entire skill into your personal skills directory. Back up an existing installation with the same name before updating it.
@@ -70,7 +72,7 @@ Once installed, open your own project and ask: “Use `$certimate-plugin-dev` to
 make init PLUGIN=my-deployer          # scaffold from _template
 ```
 
-Then edit `my-deployer/manifest.json` (set `provider_type`, `access_provider_type`, `deploy_category`, `icon`, ...), implement `Deploy()` in `server.go`, and define `schema/deploy.json`. Drop the icon file (svg/png) into the plugin directory and point `manifest.icon` at it.
+Then edit `my-deployer/manifest.json` (set `provider_type`, `access_provider_type`, `capability`, `category`, `icon`, ...), implement `Process()` in `server.go`, and define `schema/config.json`. Drop the icon file (svg/png) into the plugin directory and point `manifest.icon` at it.
 
 A plugin may declare a **new** access type (add `schema/access.json`) or reuse an existing one (built-in or from another plugin).
 
@@ -94,6 +96,12 @@ Releases are **change-driven and version-gated**. On push to `main`, the `releas
 
 See [`docs/releasing.md`](docs/releasing.md) for the full flow and trust preconditions.
 
+## Upgrading from built-in purge providers
+
+The sixteen certificate purge providers that formerly shipped inside certimate core live in this repository as `purge` capability plugins: `aliyun-cas-purger`, `aliyun-clb-purger`, `aliyun-esa-purger`, `aws-acm-purger`, `aws-iam-purger`, `azure-keyvault-purger`, `baiducloud-cert-purger`, `huaweicloud-elb-purger`, `huaweicloud-scm-purger`, `huaweicloud-waf-purger`, `jdcloud-ssl-purger`, `tencentcloud-gaap-purger`, `tencentcloud-ssl-purger`, `tencentcloud-tse-purger`, `ucloud-ussl-purger`, and `volcengine-certcenter-purger`.
+
+A workflow node that references a legacy purge provider keeps working once the mapped plugin is installed — certimate resolves the legacy provider ids to these plugins automatically. Until the plugin is installed the node fails with a missing-provider error. certimate never downloads plugins or rewrites workflows unprompted: install the plugin explicitly from the plugin market (or a custom market), and re-save a workflow only if you want its node to carry the new provider id.
+
 ## Tooling
 
 - `make index` → `cmd/genindex` regenerates `index.json` from all manifests.
@@ -103,4 +111,4 @@ See [`docs/releasing.md`](docs/releasing.md) for the full flow and trust precond
 ## Requirements
 
 - Go 1.25+ (`GOTOOLCHAIN=auto` fetches the required toolchain).
-- Depends on `github.com/certimate-go/certimate/pkg/plugin` for the `Deployer` interface and handshake.
+- Depends on `github.com/certimate-go/certimate/pkg/plugin` for the `Plugin` interface and handshake.

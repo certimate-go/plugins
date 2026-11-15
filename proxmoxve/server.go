@@ -54,7 +54,7 @@ func (d *deployment) SetLogger(logger *slog.Logger) {
 	}
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	if d.config.NodeName == "" {
 		return nil, fmt.Errorf("config `nodeName` is required")
 	}
@@ -69,7 +69,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, fmt.Errorf("failed to execute sdk request 'node.UploadCustomCertificate': %w", err)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func createSDKClient(serverUrl, apiToken, apiTokenSecret string, skipTlsVerify bool) (*pvesdk.Client, error) {
@@ -98,10 +98,15 @@ type accessConfig struct {
 //go:embed schema
 var schemaFS embed.FS
 
-type pluginDeployer struct{}
+type pluginDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*pluginDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
-	return &plugin.Metadata{ProviderType: "proxmoxve", AccessProviderType: "proxmoxve", ProtocolVersion: plugin.ProtocolVersion, DeployCategory: "other", DeployDisplayNameKey: "provider.proxmoxve", AccessDisplayNameKey: "provider.proxmoxve"}, nil
+	return &plugin.Metadata{
+		ProviderType: "proxmoxve", AccessProviderType: "proxmoxve", ProtocolVersion: plugin.ProtocolVersion,
+		Capability: plugin.CapabilityDeploy, Category: "other", DisplayNameKey: "provider.proxmoxve", AccessDisplayNameKey: "provider.proxmoxve",
+	}, nil
 }
 
 func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
@@ -109,7 +114,7 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	deploy, err := plugin.LoadDeploySchema(schemaFS)
+	deploy, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -117,10 +122,10 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{AccessSchemaJSON: access, DeploySchemaJSON: deploy, I18n: i18n}, nil
+	return &plugin.ConfigSchema{AccessSchemaJSON: access, ProviderSchemaJSON: deploy, I18n: i18n}, nil
 }
 
-func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*pluginDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var rawAccess map[string]any
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &rawAccess); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -145,5 +150,5 @@ func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, lo
 		return nil, err
 	}
 	d.SetLogger(logger)
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

@@ -82,7 +82,7 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, DeployTimeout: 15 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, ProcessTimeout: 15 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != 7 {
 		t.Fatalf("discovery=%d failures=%v", len(discovered), failures)
@@ -96,7 +96,7 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 				t.Fatal(err)
 			}
 			validateSchema(t, schema, provider, strings.TrimSuffix(provider, "-console"), meta)
-			if meta.ProviderType != provider || meta.DeployCategory != dp.Manifest.DeployCategory || meta.ProtocolVersion != plugin.ProtocolVersion || meta.AccessProviderType != dp.Manifest.AccessProviderType || meta.DeployDisplayNameKey != dp.Manifest.DisplayNameKey {
+			if meta.ProviderType != provider || meta.Category != dp.Manifest.Category || meta.ProtocolVersion != plugin.ProtocolVersion || meta.AccessProviderType != dp.Manifest.AccessProviderType || meta.DisplayNameKey != dp.Manifest.DisplayNameKey {
 				t.Fatal("manifest and metadata differ")
 			}
 			if info, err := os.Stat(filepath.Join(dp.Dir, dp.Manifest.Icon)); err != nil || info.Size() == 0 {
@@ -122,12 +122,18 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 				}
 				return string(b)
 			}
-			req := plugin.DeployRequest{AccessConfigJSON: encode(access), ExtendedConfigJSON: encode(extended), LogLevel: "DEBUG"}
-			req.CertificatePEM, req.PrivateKeyPEM, _ = makeB2DeviceCertificate(t)
-			deploy := func(ctx context.Context, req *plugin.DeployRequest) (*plugin.DeployResult, error) {
+			req := plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   encode(access),
+				ExtendedConfigJSON: encode(extended),
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
+			}
+			req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeB2DeviceCertificate(t)
+			deploy := func(ctx context.Context, req *plugin.Request) (*plugin.Result, error) {
 				var logs bytes.Buffer
-				result, err := manager.Deploy(ctx, dp, req, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
-				for _, secret := range []string{"fixture-password", "fixture-secret", "fixture-access", strings.Split(req.PrivateKeyPEM, "\n")[1]} {
+				result, err := deployViaSession(ctx, manager, dp, req, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
+				for _, secret := range []string{"fixture-password", "fixture-secret", "fixture-access", strings.Split(req.Deploy.PrivateKeyPEM, "\n")[1]} {
 					if strings.Contains(logs.String(), secret) || err != nil && strings.Contains(err.Error(), secret) {
 						t.Error("secret leaked in deployment logs or errors")
 					}
@@ -135,13 +141,17 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 				return result, err
 			}
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
-				deploy = newB1WorkflowDeployer(t, dir, provider)
+				accessOwner := ""
+				if provider == "ratpanel-console" {
+					accessOwner = "ratpanel"
+				}
+				deploy = newB1WorkflowDeployerWithAccessOwner(t, dir, provider, accessOwner)
 			}
 			reset := func(mode string) {
 				fixture.mu.Lock()
 				fixture.mode = mode
-				fixture.cert = req.CertificatePEM
-				fixture.key = req.PrivateKeyPEM
+				fixture.cert = req.Deploy.CertificatePEM
+				fixture.key = req.Deploy.PrivateKeyPEM
 				fixture.writes = 0
 				fixture.restarts = 0
 				fixture.bindings = 0
@@ -152,7 +162,7 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 				t.Helper()
 				fixture.mu.Lock()
 				defer fixture.mu.Unlock()
-				if fixture.storedCert != req.CertificatePEM || fixture.storedKey != req.PrivateKeyPEM {
+				if fixture.storedCert != req.Deploy.CertificatePEM || fixture.storedKey != req.Deploy.PrivateKeyPEM {
 					t.Fatal("target certificate/key differ from deployment input")
 				}
 				if provider == "ratpanel" && strings.Contains(req.ExtendedConfigJSON, `"website"`) && (!fixture.sites["site-a"] || !fixture.sites["site-b"]) {
@@ -189,14 +199,14 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 				if provider == "dokploy" && fixture.writes != writes {
 					t.Fatal("duplicate certificate uploaded")
 				}
-				req.CertificatePEM, req.PrivateKeyPEM, _ = makeB2DeviceCertificate(t)
+				req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeB2DeviceCertificate(t)
 				reset("")
 				run(t, false)
 				assertStored(t)
 			})
 			for _, mode := range []string{"auth", "write"} {
 				t.Run(mode+"_failure_recovery", func(t *testing.T) {
-					req.CertificatePEM, req.PrivateKeyPEM, _ = makeB2DeviceCertificate(t)
+					req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeB2DeviceCertificate(t)
 					reset(mode)
 					run(t, true)
 					fixture.mu.Lock()
@@ -230,7 +240,10 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 				short, stop := context.WithCancel(ctx)
 				defer stop()
 				done := make(chan error, 1)
-				go func() { _, err := manager.Deploy(short, dp, &req, slog.New(slog.DiscardHandler)); done <- err }()
+				go func() {
+					_, err := deployViaSession(short, manager, dp, &req, slog.New(slog.DiscardHandler))
+					done <- err
+				}()
 				select {
 				case <-fixture.waitEntered:
 				case <-time.After(10 * time.Second):

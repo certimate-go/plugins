@@ -5,7 +5,7 @@
   "description": "Send notifications to a Matrix room.",
   "display_name_key": "plugin.matrix.name",
   "icon": "matrix.svg",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "matrix",
   "release": {
     "assets": {

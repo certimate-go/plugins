@@ -2,13 +2,13 @@
   "access_provider_type": "dokploy",
   "binary": "dokploy",
   "capability": "deploy",
-  "deploy_category": "website",
+  "category": "website",
   "display_name_key": "provider.dokploy",
   "icon": "dokploy.svg",
   "max_core_version": "",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "dokploy",
   "release": {
     "assets": {

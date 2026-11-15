@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log/slog"
 	"sync"
 
 	"github.com/go-acme/lego/v5/challenge/dns01"
@@ -39,14 +40,15 @@ type deleteRecords struct {
 	IDs []string `json:"recordIdList"`
 }
 
-func (s *server) Present(ctx context.Context, req *plugin.DnsRequest) error {
+func (s *server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var cfg challengeConfig
 	if err := json.Unmarshal([]byte(req.ExtendedConfigJSON), &cfg); err != nil {
-		return fmt.Errorf("invalid CMCC Cloud DNS challenge configuration: %w", err)
+		return nil, fmt.Errorf("invalid CMCC Cloud DNS challenge configuration: %w", err)
 	}
 	if cfg.RecordName == "" || cfg.RecordValue == "" {
-		return errors.New("CMCC Cloud DNS requires challenge record information from Certimate")
+		return nil, errors.New("CMCC Cloud DNS requires challenge record information from Certimate")
 	}
+
 	if cfg.TTL == 0 {
 		cfg.TTL = int32(env.GetOrDefaultInt("CMCCCLOUD_TTL", 600))
 	}
@@ -54,11 +56,11 @@ func (s *server) Present(ctx context.Context, req *plugin.DnsRequest) error {
 	client := dns01.NewClient(&dns01.Options{RecursiveNameservers: cfg.Nameservers})
 	zone, err := client.FindZoneByFqdn(ctx, cfg.RecordName)
 	if err != nil {
-		return fmt.Errorf("find CMCC Cloud DNS zone for %q: %w", cfg.RecordName, err)
+		return nil, fmt.Errorf("find CMCC Cloud DNS zone for %q: %w", cfg.RecordName, err)
 	}
 	name, err := dns01.ExtractSubDomain(cfg.RecordName, zone)
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	body, err := callDNS(ctx, req.AccessConfigJSON, "createRecordOpenapi", createRecord{
@@ -71,24 +73,25 @@ func (s *server) Present(ctx context.Context, req *plugin.DnsRequest) error {
 		TTL:         cfg.TTL,
 	})
 	if err != nil {
-		return err
+		return nil, err
 	}
+
 	var record struct {
 		ID string `json:"recordId"`
 	}
 	if err := json.Unmarshal(body, &record); err != nil || record.ID == "" {
-		return errors.New("CMCC Cloud DNS did not return a record ID")
+		return nil, errors.New("CMCC Cloud DNS did not return a record ID")
 	}
 
 	s.mu.Lock()
-	s.recordIDs[req.Token] = record.ID
+	s.recordIDs[req.Dns.Token] = record.ID
 	s.mu.Unlock()
-	return nil
+	return &plugin.Result{Dns: &plugin.DnsResult{}}, nil
 }
 
-func (s *server) CleanUp(ctx context.Context, req *plugin.DnsRequest) error {
+func (s *server) PostProcess(ctx context.Context, req *plugin.Request, logger *slog.Logger) error {
 	s.mu.Lock()
-	recordID := s.recordIDs[req.Token]
+	recordID := s.recordIDs[req.Dns.Token]
 	s.mu.Unlock()
 	if recordID == "" {
 		return nil
@@ -97,7 +100,7 @@ func (s *server) CleanUp(ctx context.Context, req *plugin.DnsRequest) error {
 		return err
 	}
 	s.mu.Lock()
-	delete(s.recordIDs, req.Token)
+	delete(s.recordIDs, req.Dns.Token)
 	s.mu.Unlock()
 	return nil
 }

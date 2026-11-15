@@ -1,0 +1,11 @@
+package main
+
+import (
+	githubplugin "github.com/hashicorp/go-plugin"
+
+	"github.com/certimate-go/certimate/pkg/plugin"
+)
+
+func main() {
+	githubplugin.Serve(plugin.ServeConfig(&pluginPurger{}))
+}

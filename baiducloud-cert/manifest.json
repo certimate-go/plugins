@@ -2,12 +2,12 @@
   "access_provider_type": "baiducloud",
   "binary": "baiducloud-cert",
   "capability": "deploy",
-  "deploy_category": "ssl",
+  "category": "ssl",
   "display_name_key": "plugin.baiducloud-cert.name",
   "icon": "baiducloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "baiducloud-cert",
   "release": {
     "assets": {

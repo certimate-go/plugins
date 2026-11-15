@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "aws-iam-purger",
+  "category": "purge",
+  "schema": {
+    "columns": [
+      {
+        "name": "region",
+        "valueType": "text",
+        "labelKey": "plugin.aws-iam-purger.purge.form.region.label",
+        "placeholderKey": "plugin.aws-iam-purger.purge.form.region.placeholder",
+        "tooltipKey": "plugin.aws-iam-purger.purge.form.region.tooltip",
+        "tooltipHtml": true,
+        "required": true
+      },
+      {
+        "name": "certificatePath",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.aws-iam-purger.purge.form.certificatePath.label",
+        "placeholderKey": "plugin.aws-iam-purger.purge.form.certificatePath.placeholder",
+        "tooltipKey": "plugin.aws-iam-purger.purge.form.certificatePath.tooltip",
+        "tooltipHtml": true,
+        "required": false,
+        "default": "/",
+        "defaultOnMissing": true,
+        "validateWhen": [
+          {
+            "field": "certificatePath",
+            "op": "ne",
+            "values": [
+              ""
+            ],
+            "validator": "regex",
+            "params": {
+              "pattern": "^/.*/$"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -42,12 +42,12 @@ type Deployer struct {
 
 var _ Provider = (*Deployer)(nil)
 
-func NewDeployer(config *DeployerConfig) (*Deployer, error) {
+func NewDeployer(ctx context.Context, config *DeployerConfig) (*Deployer, error) {
 	if config == nil {
 		return nil, fmt.Errorf("the configuration of the deployer provider is nil")
 	}
 
-	client, err := createSDKClient(config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
+	client, err := createSDKClient(ctx, config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
 	if err != nil {
 		return nil, fmt.Errorf("could not create client: %w", err)
 	}
@@ -94,7 +94,7 @@ func (d *Deployer) Deploy(ctx context.Context, certPEM, privkeyPEM string) (*Dep
 	return &DeployResult{}, nil
 }
 
-func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.UEWAFClient, error) {
+func createSDKClient(ctx context.Context, publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.UEWAFClient, error) {
 	if publicKey == "" {
 		return nil, fmt.Errorf("ucloud: invalid public key")
 	}
@@ -118,6 +118,6 @@ func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloud
 	credential.PublicKey = publicKey
 	credential.PrivateKey = privateKey
 
-	client := ucloudsdk.NewClient(&cfg, &credential)
+	client := ucloudsdk.NewClient(ctx, &cfg, &credential)
 	return client, nil
 }

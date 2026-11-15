@@ -5,7 +5,7 @@
   "description": "Send notifications to a Slack channel.",
   "display_name_key": "plugin.slackbot.name",
   "icon": "slack.svg",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "slackbot",
   "release": {
     "assets": {

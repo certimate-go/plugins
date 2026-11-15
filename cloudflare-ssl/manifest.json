@@ -2,11 +2,11 @@
   "access_provider_type": "cloudflare",
   "binary": "cloudflare-ssl",
   "capability": "deploy",
-  "deploy_category": "ssl",
+  "category": "ssl",
   "display_name_key": "plugin.cloudflare-ssl.name",
   "icon": "cloudflare.svg",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "cloudflare-ssl",
   "release": {
     "assets": {

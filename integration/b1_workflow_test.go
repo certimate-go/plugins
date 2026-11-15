@@ -115,12 +115,12 @@ func (a *b1WorkflowAPI) inspectLogs(ctx context.Context, runID, runError string,
 	return nil
 }
 
-func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string, targets ...workflowLifecycleTarget) func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error) {
+func newB1WorkflowDeployer(t *testing.T, binaryDir, provider string, targets ...workflowLifecycleTarget) func(context.Context, *plugin.Request) (*plugin.Result, error) {
 	t.Helper()
 	return newB1WorkflowDeployerWithAccessOwner(t, binaryDir, provider, "", targets...)
 }
 
-func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, accessOwner string, targets ...workflowLifecycleTarget) func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error) {
+func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, accessOwner string, targets ...workflowLifecycleTarget) func(context.Context, *plugin.Request) (*plugin.Result, error) {
 	t.Helper()
 	binary := os.Getenv("CERTIMATE_B1_CORE_BINARY")
 	if binary == "" {
@@ -299,9 +299,9 @@ func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, acc
 	accessProvider := strings.SplitN(provider, "-", 2)[0]
 	accessID := ""
 	workflowID := ""
-	var lastSuccess *plugin.DeployRequest
+	var lastSuccess *plugin.Request
 	replayOnly := false
-	deploy := func(ctx context.Context, request *plugin.DeployRequest) (*plugin.DeployResult, error) {
+	deploy := func(ctx context.Context, request *plugin.Request) (*plugin.Result, error) {
 		decode := func(raw, kind string) (map[string]any, error) {
 			if !json.Valid([]byte(raw)) {
 				return nil, fmt.Errorf("invalid %s config JSON", kind)
@@ -345,7 +345,7 @@ func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, acc
 			}
 			graph := map[string]any{"nodes": []any{
 				node("start", "start", map[string]any{}),
-				node("upload", "bizUpload", map[string]any{"source": "form", "certificate": request.CertificatePEM, "privateKey": request.PrivateKeyPEM}),
+				node("upload", "bizUpload", map[string]any{"source": "form", "certificate": request.Deploy.CertificatePEM, "privateKey": request.Deploy.PrivateKeyPEM}),
 				node("deploy", "bizDeploy", map[string]any{"certificateOutputNodeId": "upload", "provider": provider, "providerAccessId": access.ID, "providerConfig": deployConfig, "skipOnLastSucceeded": false}),
 				node("end", "end", map[string]any{}),
 			}}
@@ -388,7 +388,7 @@ func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, acc
 		}()
 		pollCtx, cancel := context.WithTimeout(ctx, 45*time.Second)
 		defer cancel()
-		secrets := []string{request.PrivateKeyPEM, base64.StdEncoding.EncodeToString([]byte(request.PrivateKeyPEM))}
+		secrets := []string{request.Deploy.PrivateKeyPEM, base64.StdEncoding.EncodeToString([]byte(request.Deploy.PrivateKeyPEM))}
 		for key, value := range accessConfig {
 			name := strings.ToLower(key)
 			if name == "accesstokenid" {
@@ -423,7 +423,7 @@ func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, acc
 					lastSuccess = &copy
 				}
 				t.Logf("%s workflow %s run %s succeeded", provider, workflow.ID, started.Data.RunID)
-				return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+				return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 			case "failed", "canceled":
 				completed = true
 				t.Logf("%s workflow %s run %s %s", provider, workflow.ID, started.Data.RunID, run.Status)
@@ -451,17 +451,17 @@ func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, acc
 			}
 			replayOnly = true
 			persistedAccessID, persistedWorkflowID := accessID, workflowID
-			deploySuccess := func(ctx context.Context, request *plugin.DeployRequest) (*plugin.DeployResult, error) {
+			deploySuccess := func(ctx context.Context, request *plugin.Request) (*plugin.Result, error) {
 				if len(targets) == 0 {
 					return deploy(ctx, request)
 				}
-				certificate, err := xcert.ParseCertificateFromPEM(request.CertificatePEM)
+				certificate, err := xcert.ParseCertificateFromPEM(request.Deploy.CertificatePEM)
 				if err != nil {
 					return nil, err
 				}
-				_, chain := pem.Decode([]byte(request.CertificatePEM))
-				request.CertificatePEM, request.PrivateKeyPEM, _ = makeCertificate(t, certificate.DNSNames, false)
-				request.CertificatePEM += string(chain)
+				_, chain := pem.Decode([]byte(request.Deploy.CertificatePEM))
+				request.Deploy.CertificatePEM, request.Deploy.PrivateKeyPEM, _ = makeCertificate(t, certificate.DNSNames, false)
+				request.Deploy.CertificatePEM += string(chain)
 				type savedWorkflow struct {
 					ID           string         `json:"id"`
 					GraphContent map[string]any `json:"graphContent"`
@@ -495,8 +495,8 @@ func newB1WorkflowDeployerWithAccessOwner(t *testing.T, binaryDir, provider, acc
 						if config == nil {
 							return nil, fmt.Errorf("saved upload node has no configuration")
 						}
-						config["certificate"] = request.CertificatePEM
-						config["privateKey"] = request.PrivateKeyPEM
+						config["certificate"] = request.Deploy.CertificatePEM
+						config["privateKey"] = request.Deploy.PrivateKeyPEM
 						updatedUploads++
 					}
 					if updatedUploads != 1 {

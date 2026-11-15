@@ -1,0 +1,19 @@
+{
+  "access_provider_type": "aws",
+  "binary": "aws-acm-purger",
+  "capability": "purge",
+  "category": "other",
+  "description": "",
+  "display_name_key": "plugin.aws-acm-purger.name",
+  "icon": "aws.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 4,
+  "provider_type": "aws-acm-purger",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

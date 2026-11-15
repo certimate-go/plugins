@@ -23,11 +23,11 @@ func TestGetMetadata(t *testing.T) {
 	if meta.ProtocolVersion != plugin.ProtocolVersion {
 		t.Fatalf("protocol version = %d", meta.ProtocolVersion)
 	}
-	if meta.DeployCategory != "storage" {
-		t.Fatalf("deploy category = %q, want storage", meta.DeployCategory)
+	if meta.Category != "storage" {
+		t.Fatalf("deploy category = %q, want storage", meta.Category)
 	}
-	if meta.DeployDisplayNameKey != displayNameKey {
-		t.Fatalf("display name key = %q", meta.DeployDisplayNameKey)
+	if meta.DisplayNameKey != displayNameKey {
+		t.Fatalf("display name key = %q", meta.DisplayNameKey)
 	}
 }
 
@@ -60,7 +60,7 @@ func TestGetConfigSchema(t *testing.T) {
 	}
 
 	var deployEnv envelope
-	if err := json.Unmarshal(schema.DeploySchemaJSON, &deployEnv); err != nil {
+	if err := json.Unmarshal(schema.ProviderSchemaJSON, &deployEnv); err != nil {
 		t.Fatalf("deploy envelope invalid: %v", err)
 	}
 	if deployEnv.SchemaVersion != "form/v1" || deployEnv.Provider != providerType || deployEnv.Category != "deploy" {
@@ -98,9 +98,11 @@ func TestGetConfigSchema(t *testing.T) {
 }
 
 func TestDeploy_InvalidAccessConfig(t *testing.T) {
-	_, err := (&upyunFileDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+	_, err := (&upyunFileDeployer{}).Process(context.Background(), &plugin.Request{
+		Capability:         plugin.CapabilityDeploy,
 		AccessConfigJSON:   `{not-json`,
 		ExtendedConfigJSON: `{"bucket":"b","domain":"example.com"}`,
+		Deploy:             &plugin.DeployPayload{},
 	}, nil)
 	if err == nil || !strings.Contains(err.Error(), "invalid access config") {
 		t.Fatalf("expected invalid access config error, got %v", err)
@@ -108,9 +110,11 @@ func TestDeploy_InvalidAccessConfig(t *testing.T) {
 }
 
 func TestDeploy_InvalidDeployConfig(t *testing.T) {
-	_, err := (&upyunFileDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+	_, err := (&upyunFileDeployer{}).Process(context.Background(), &plugin.Request{
+		Capability:         plugin.CapabilityDeploy,
 		AccessConfigJSON:   `{"username":"u","password":"p"}`,
 		ExtendedConfigJSON: `{not-json`,
+		Deploy:             &plugin.DeployPayload{},
 	}, nil)
 	if err == nil || !strings.Contains(err.Error(), "invalid deploy config") {
 		t.Fatalf("expected invalid deploy config error, got %v", err)
@@ -134,9 +138,11 @@ func TestDeploy_BranchValidation(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			_, err := (&upyunFileDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+			_, err := (&upyunFileDeployer{}).Process(context.Background(), &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
 				AccessConfigJSON:   tt.accessConfig,
 				ExtendedConfigJSON: tt.extendedConfig,
+				Deploy:             &plugin.DeployPayload{},
 			}, nil)
 			if err == nil || !strings.Contains(err.Error(), tt.wantErrSubstring) {
 				t.Fatalf("Deploy() error = %v, want error containing %q", err, tt.wantErrSubstring)

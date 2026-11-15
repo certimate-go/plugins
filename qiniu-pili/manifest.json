@@ -2,13 +2,13 @@
   "access_provider_type": "qiniu",
   "binary": "qiniu-pili",
   "capability": "deploy",
-  "deploy_category": "av",
+  "category": "av",
   "display_name_key": "plugin.qiniu-pili.name",
   "icon": "qiniu.svg",
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "qiniu-pili",
   "release": {
     "assets": {

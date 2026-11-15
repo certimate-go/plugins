@@ -15,8 +15,8 @@ import (
 	"github.com/certimate-go/certimate/pkg/plugin"
 	xcerthostname "github.com/certimate-go/certimate/pkg/utils/cert/hostname"
 	xloop "github.com/certimate-go/certimate/pkg/utils/loop"
-	qiniusslcert "github.com/certimate-go/plugins/internal/qiniusslcert"
 	qiniusdk "github.com/certimate-go/plugins/internal/qiniusdk"
+	qiniusslcert "github.com/certimate-go/plugins/internal/qiniusslcert"
 )
 
 //go:embed schema
@@ -32,20 +32,23 @@ const (
 	domainMatchPatternCertsan  = "certsan"
 )
 
-type qiniuCdnDeployer struct{}
+type qiniuCdnDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*qiniuCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "cdn",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*qiniuCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -55,9 +58,9 @@ func (*qiniuCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchem
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -71,7 +74,7 @@ type extendedConfig struct {
 	Domain             string `json:"domain"`
 }
 
-func (d *qiniuCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *qiniuCdnDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -96,7 +99,7 @@ func (d *qiniuCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest
 	}
 	certmgr.SetLogger(logger)
 
-	upres, err := certmgr.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	upres, err := certmgr.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 	}
@@ -138,7 +141,7 @@ func (d *qiniuCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest
 			return nil, err
 		}
 		domains = lo.Filter(domainCandidates, func(domain string, _ int) bool {
-			return xcerthostname.IsMatchByCertificatePEM(req.CertificatePEM, domain)
+			return xcerthostname.IsMatchByCertificatePEM(req.Deploy.CertificatePEM, domain)
 		})
 		if len(domains) == 0 {
 			return nil, fmt.Errorf("could not find any domains matched by certificate")
@@ -159,7 +162,7 @@ func (d *qiniuCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest
 		}
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func getAllCdnDomains(ctx context.Context, m *qiniusdk.CdnManager, logger *slog.Logger) ([]string, error) {

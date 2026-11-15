@@ -36,20 +36,23 @@ const (
 	domainMatchPatternCertsan  = "certsan"
 )
 
-type zenlayerCdnDeployer struct{}
+type zenlayerCdnDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*zenlayerCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "cdn",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*zenlayerCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -59,9 +62,9 @@ func (*zenlayerCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSc
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -78,7 +81,7 @@ type extendedConfig struct {
 	CertificateId      string `json:"certificateId,omitempty"`
 }
 
-func (d *zenlayerCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *zenlayerCdnDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -117,12 +120,12 @@ func (d *zenlayerCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequ
 
 	switch extended.DeployTarget {
 	case deployTargetDomain:
-		if err := runner.deployToDomain(ctx, req.CertificatePEM, req.PrivateKeyPEM); err != nil {
+		if err := runner.deployToDomain(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM); err != nil {
 			return nil, err
 		}
 
 	case deployTargetCertificate:
-		if err := runner.deployToCertificate(ctx, req.CertificatePEM, req.PrivateKeyPEM); err != nil {
+		if err := runner.deployToCertificate(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM); err != nil {
 			return nil, err
 		}
 
@@ -130,7 +133,7 @@ func (d *zenlayerCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequ
 		return nil, fmt.Errorf("unsupported deploy target '%s'", extended.DeployTarget)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 type cdnRunner struct {

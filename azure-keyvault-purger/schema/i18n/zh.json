@@ -1,0 +1,6 @@
+{
+  "plugin.azure-keyvault-purger.name": "Azure - KeyVault（过期清除）",
+  "plugin.azure-keyvault-purger.purge.form.keyvaultName.label": "Azure KeyVault 名称",
+  "plugin.azure-keyvault-purger.purge.form.keyvaultName.placeholder": "请输入 Azure KeyVault 名称",
+  "plugin.azure-keyvault-purger.purge.form.keyvaultName.tooltip": "这是什么？请参阅 <a href=\"https://learn.microsoft.com/zh-cn/azure/key-vault/general/about-keys-secrets-certificates\" target=\"_blank\">https://learn.microsoft.com/zh-cn/azure/key-vault/general/about-keys-secrets-certificates</a>"
+}

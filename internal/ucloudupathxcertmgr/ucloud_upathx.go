@@ -7,6 +7,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/certimate-go/plugins/internal/ucloudsdk/transport"
+
 	"github.com/ucloud/ucloud-sdk-go/services/uaccount"
 	"github.com/ucloud/ucloud-sdk-go/ucloud"
 	"github.com/ucloud/ucloud-sdk-go/ucloud/auth"
@@ -40,12 +42,12 @@ type Certmgr struct {
 
 var _ Provider = (*Certmgr)(nil)
 
-func NewCertmgr(config *CertmgrConfig) (*Certmgr, error) {
+func NewCertmgr(ctx context.Context, config *CertmgrConfig) (*Certmgr, error) {
 	if config == nil {
 		return nil, fmt.Errorf("the configuration of the certmgr provider is nil")
 	}
 
-	client, err := createSDKClient(config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
+	client, err := createSDKClient(ctx, config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
 	if err != nil {
 		return nil, fmt.Errorf("could not create client: %w", err)
 	}
@@ -170,7 +172,7 @@ func (c *Certmgr) tryGetResultIfCertExists(ctx context.Context, certPEM, privkey
 	return nil, false, nil
 }
 
-func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.UPathXClient, error) {
+func createSDKClient(ctx context.Context, publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.UPathXClient, error) {
 	if publicKey == "" {
 		return nil, fmt.Errorf("ucloud: invalid public key")
 	}
@@ -191,7 +193,7 @@ func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloud
 	}
 
 	if cfg.ProjectId == "" {
-		defaultProjectId, err := getSDKDefaultProjectId(publicKey, privateKey, endpoint)
+		defaultProjectId, err := getSDKDefaultProjectId(ctx, publicKey, privateKey, endpoint)
 		if err != nil {
 			return nil, err
 		}
@@ -203,11 +205,11 @@ func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloud
 	credential.PublicKey = publicKey
 	credential.PrivateKey = privateKey
 
-	client := ucloudsdk.NewClient(&cfg, &credential)
+	client := ucloudsdk.NewClient(ctx, &cfg, &credential)
 	return client, nil
 }
 
-func getSDKDefaultProjectId(publicKey, privateKey, endpoint string) (string, error) {
+func getSDKDefaultProjectId(ctx context.Context, publicKey, privateKey, endpoint string) (string, error) {
 	cfg := ucloud.NewConfig()
 	if endpoint != "" {
 		if strings.Contains(endpoint, "://") {
@@ -222,6 +224,7 @@ func getSDKDefaultProjectId(publicKey, privateKey, endpoint string) (string, err
 	credential.PublicKey = publicKey
 
 	client := uaccount.NewClient(&cfg, &credential)
+	client.SetTransport(transport.NewContextRoundTripper(ctx, nil))
 
 	request := client.NewGetProjectListRequest()
 	response, err := client.GetProjectList(request)

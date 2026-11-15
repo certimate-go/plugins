@@ -21,21 +21,24 @@ const (
 	displayNameKey = "plugin.ksyun-kcm.name"
 )
 
-type ksyunKcmDeployer struct{}
+type ksyunKcmDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*ksyunKcmDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "ssl",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "ssl",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.ksyun.name",
 	}, nil
 }
 
 func (*ksyunKcmDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -48,9 +51,9 @@ func (*ksyunKcmDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchem
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -61,7 +64,7 @@ type accessConfig struct {
 
 type extendedConfig struct{}
 
-func (d *ksyunKcmDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *ksyunKcmDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -85,12 +88,12 @@ func (d *ksyunKcmDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest
 	}
 	certmgr.SetLogger(logger)
 
-	upres, err := certmgr.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	upres, err := certmgr.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 	} else {
 		logger.Info("ssl certificate uploaded", slog.Any("result", upres))
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }

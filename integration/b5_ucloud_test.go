@@ -53,7 +53,7 @@ func TestB5UCloudWorkflow(t *testing.T) {
 			server := httptest.NewServer(http.HandlerFunc(target.serve))
 			target.url = server.URL
 			t.Cleanup(server.Close)
-			deploy := newB1WorkflowDeployer(t, dir, provider, workflowLifecycleTarget{barrier: &target.barrier, verify: func(req *plugin.DeployRequest) { target.verify(t, req) }})
+			deploy := newB1WorkflowDeployer(t, dir, provider, workflowLifecycleTarget{barrier: &target.barrier, verify: func(req *plugin.Request) { target.verify(t, req) }})
 			config := map[string]any{"endpoint": server.URL}
 			switch provider {
 			case "ucloud-ualb":
@@ -80,13 +80,18 @@ func TestB5UCloudWorkflow(t *testing.T) {
 				config["domain"] = b5UCloudDomain
 			}
 			rawConfig, _ := json.Marshal(config)
-			req := &plugin.DeployRequest{AccessConfigJSON: `{"publicKey":"` + b5UCloudPublicKey + `","privateKey":"` + b5UCloudPrivateKey + `","projectId":"project-fixture"}`, ExtendedConfigJSON: string(rawConfig)}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   `{"publicKey":"` + b5UCloudPublicKey + `","privateKey":"` + b5UCloudPrivateKey + `","projectId":"project-fixture"}`,
+				ExtendedConfigJSON: string(rawConfig),
+				Deploy:             &plugin.DeployPayload{},
+			}
 			issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "auth-recovery", "write-failure", "write-recovery", "upload-failure", "upload-recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" || strings.HasSuffix(step, "failure") {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{b5UCloudDomain}, false)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b5UCloudDomain}, false)
+						req.Deploy.CertificatePEM += issuer
 					}
 					target.mu.Lock()
 					target.mode = step
@@ -130,8 +135,8 @@ func TestB5UCloudWorkflow(t *testing.T) {
 			}
 			if provider == "ucloud-uclb" {
 				t.Run("bind-failure-after-unbind", func(t *testing.T) {
-					req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{b5UCloudDomain}, false)
-					req.CertificatePEM += issuer
+					req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b5UCloudDomain}, false)
+					req.Deploy.CertificatePEM += issuer
 					target.mu.Lock()
 					target.mode = "bind-failure"
 					target.mu.Unlock()
@@ -177,12 +182,12 @@ type b5UCloudTarget struct {
 	bindings                   int
 }
 
-func (f *b5UCloudTarget) verify(t *testing.T, req *plugin.DeployRequest) {
+func (f *b5UCloudTarget) verify(t *testing.T, req *plugin.Request) {
 	t.Helper()
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	got, ok := f.uploads[f.bound]
-	if !ok || strings.TrimSpace(got.PEM) != strings.TrimSpace(req.CertificatePEM) || strings.TrimSpace(got.Key) != strings.TrimSpace(req.PrivateKeyPEM) {
+	if !ok || strings.TrimSpace(got.PEM) != strings.TrimSpace(req.Deploy.CertificatePEM) || strings.TrimSpace(got.Key) != strings.TrimSpace(req.Deploy.PrivateKeyPEM) {
 		t.Fatal("target binding does not contain complete expected certificate chain and key")
 	}
 }

@@ -47,7 +47,7 @@ func TestB5JDCloudWorkflow(t *testing.T) {
 	for _, provider := range b5JDCloudProviders {
 		t.Run(provider, func(t *testing.T) {
 			fixture := startB5JDCloudFixture(t, provider)
-			deploy := newB1WorkflowDeployer(t, os.Getenv("CERTIMATE_B5_JDCLOUD_BINARIES"), provider, workflowLifecycleTarget{barrier: &fixture.barrier, verify: func(req *plugin.DeployRequest) { fixture.verify(t, req) }})
+			deploy := newB1WorkflowDeployer(t, os.Getenv("CERTIMATE_B5_JDCLOUD_BINARIES"), provider, workflowLifecycleTarget{barrier: &fixture.barrier, verify: func(req *plugin.Request) { fixture.verify(t, req) }})
 			config := map[string]any{}
 			switch provider {
 			case "jdcloud-alb":
@@ -59,13 +59,18 @@ func TestB5JDCloudWorkflow(t *testing.T) {
 			}
 			rawConfig, _ := json.Marshal(config)
 			rawAccess, _ := json.Marshal(map[string]string{"accessKeyId": b5JDCloudAccessKey, "accessKeySecret": b5JDCloudSecretKey})
-			req := &plugin.DeployRequest{AccessConfigJSON: string(rawAccess), ExtendedConfigJSON: string(rawConfig)}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   string(rawAccess),
+				ExtendedConfigJSON: string(rawConfig),
+				Deploy:             &plugin.DeployPayload{},
+			}
 			issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "auth-recovery", "write-failure", "write-recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" || step == "auth-failure" || step == "write-failure" {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{b5JDCloudDomain}, false)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b5JDCloudDomain}, false)
+						req.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step
@@ -149,13 +154,13 @@ func (f *b5JDCloudFixture) targetCertificate() b5JDCloudCertificate {
 	}
 }
 
-func (f *b5JDCloudFixture) verify(t *testing.T, req *plugin.DeployRequest) {
+func (f *b5JDCloudFixture) verify(t *testing.T, req *plugin.Request) {
 	t.Helper()
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	got := f.targetCertificate()
 	normalize := func(s string) string { return strings.TrimSpace(strings.ReplaceAll(s, "\r\n", "\n")) }
-	if normalize(got.PEM) != normalize(req.CertificatePEM) || normalize(got.Key) != normalize(req.PrivateKeyPEM) {
+	if normalize(got.PEM) != normalize(req.Deploy.CertificatePEM) || normalize(got.Key) != normalize(req.Deploy.PrivateKeyPEM) {
 		t.Fatal("target certificate chain, key or binding differs")
 	}
 }

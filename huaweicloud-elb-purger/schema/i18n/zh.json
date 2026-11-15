@@ -1,0 +1,6 @@
+{
+  "plugin.huaweicloud-elb-purger.name": "华为云 - 弹性负载均衡 ELB（过期清除）",
+  "plugin.huaweicloud-elb-purger.purge.form.region.label": "华为云服务区域",
+  "plugin.huaweicloud-elb-purger.purge.form.region.placeholder": "请输入华为云 ELB 服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-elb-purger.purge.form.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/elb\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/elb</a>"
+}

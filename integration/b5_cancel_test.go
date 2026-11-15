@@ -175,7 +175,10 @@ func TestB5WorkflowCancellation(t *testing.T) {
 	}
 	initial := startRun()
 	waitStatus(initial, "succeeded")
-	target.verify(t, &plugin.DeployRequest{CertificatePEM: certificate, PrivateKeyPEM: key})
+	target.verify(t, &plugin.Request{
+		Capability: plugin.CapabilityDeploy,
+		Deploy:     &plugin.DeployPayload{CertificatePEM: certificate, PrivateKeyPEM: key},
+	})
 	newCertificate, newKey, _ := makeCertificate(t, []string{b5UCloudDomain}, false)
 	newCertificate += issuer
 	uploadConfig["certificate"], uploadConfig["privateKey"] = newCertificate, newKey
@@ -204,7 +207,10 @@ func TestB5WorkflowCancellation(t *testing.T) {
 		t.Fatal("workflow cancellation did not close the target HTTP request")
 	}
 	waitStatus(interrupted, "canceled")
-	target.verify(t, &plugin.DeployRequest{CertificatePEM: certificate, PrivateKeyPEM: key})
+	target.verify(t, &plugin.Request{
+		Capability: plugin.CapabilityDeploy,
+		Deploy:     &plugin.DeployPayload{CertificatePEM: certificate, PrivateKeyPEM: key},
+	})
 	target.mu.Lock()
 	writes, bindings := len(target.uploads), target.bindings
 	target.mu.Unlock()
@@ -213,7 +219,10 @@ func TestB5WorkflowCancellation(t *testing.T) {
 	}
 	retry := startRun()
 	waitStatus(retry, "succeeded")
-	target.verify(t, &plugin.DeployRequest{CertificatePEM: newCertificate, PrivateKeyPEM: newKey})
+	target.verify(t, &plugin.Request{
+		Capability: plugin.CapabilityDeploy,
+		Deploy:     &plugin.DeployPayload{CertificatePEM: newCertificate, PrivateKeyPEM: newKey},
+	})
 	waitStatus(interrupted, "canceled")
 	t.Logf("CANCEL PASS %s workflow=%s initial=%s canceled=%s retry=%s; held HTTP request disconnected, old binding preserved, new chain and key deployed on retry", provider, workflow.ID, initial, interrupted, retry)
 }

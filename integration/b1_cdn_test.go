@@ -57,7 +57,7 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: binaryDir, StartTimeout: 15 * time.Second, DeployTimeout: 15 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: binaryDir, StartTimeout: 15 * time.Second, ProcessTimeout: 15 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != 3 {
 		t.Fatalf("discovery count=%d failures=%v", len(discovered), failures)
@@ -76,10 +76,14 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 				t.Fatal(err)
 			}
 			validateSchema(t, schema, provider, provider, meta)
-			if meta.ProviderType != provider || meta.AccessProviderType != provider || meta.DeployCategory != "cdn" || meta.ProtocolVersion != plugin.ProtocolVersion || dp.Manifest.DisplayNameKey != meta.DeployDisplayNameKey {
+			if meta.ProviderType != provider || meta.AccessProviderType != provider || meta.Category != "cdn" || meta.ProtocolVersion != plugin.ProtocolVersion || dp.Manifest.DisplayNameKey != meta.DisplayNameKey {
 				t.Fatalf("unexpected metadata %+v", meta)
 			}
-			req := plugin.DeployRequest{CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM, LogLevel: "DEBUG"}
+			req := plugin.Request{
+				Capability: plugin.CapabilityDeploy,
+				LogLevel:   "DEBUG",
+				Deploy:     &plugin.DeployPayload{CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM},
+			}
 			switch provider {
 			case "asiaispcdn":
 				req.AccessConfigJSON = `{"accessKeyId":"fixture-key","accessKeySecret":"fixture-secret"}`
@@ -91,21 +95,21 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 				req.AccessConfigJSON = fmt.Sprintf(`{"serverUrl":%q,"apiVersion":"v4","apiRole":"client","authMethod":"apikey","apiKey":"fixture-secret"}`, fixture.url)
 				req.ExtendedConfigJSON = `{"deployTarget":"certificate","certificateId":"42","clientId":""}`
 			}
-			var workflowDeploy func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error)
+			var workflowDeploy func(context.Context, *plugin.Request) (*plugin.Result, error)
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
 				workflowDeploy = newB1WorkflowDeployer(t, binaryDir, provider)
 			}
-			deploy := func(t *testing.T, request plugin.DeployRequest, wantError bool) {
+			deploy := func(t *testing.T, request plugin.Request, wantError bool) {
 				t.Helper()
 				var logs bytes.Buffer
-				var result *plugin.DeployResult
+				var result *plugin.Result
 				var err error
 				if workflowDeploy != nil {
 					result, err = workflowDeploy(ctx, &request)
 				} else {
-					result, err = manager.Deploy(ctx, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
+					result, err = deployViaSession(ctx, manager, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
 				}
-				for _, secret := range []string{strings.Split(request.PrivateKeyPEM, "\n")[1], base64.StdEncoding.EncodeToString([]byte(request.PrivateKeyPEM)), "fixture-secret", "fixture-session"} {
+				for _, secret := range []string{strings.Split(request.Deploy.PrivateKeyPEM, "\n")[1], base64.StdEncoding.EncodeToString([]byte(request.Deploy.PrivateKeyPEM)), "fixture-secret", "fixture-session"} {
 					if strings.Contains(logs.String(), secret) || err != nil && strings.Contains(err.Error(), secret) {
 						t.Fatal("secret leaked in logs or error")
 					}
@@ -123,9 +127,9 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 			t.Run("deploy_repeat_renew", func(t *testing.T) {
 				fixture.reset()
 				deploy(t, req, false)
-				fixture.assertBound(t, req.CertificatePEM)
+				fixture.assertBound(t, req.Deploy.CertificatePEM)
 				deploy(t, req, false)
-				fixture.assertBound(t, req.CertificatePEM)
+				fixture.assertBound(t, req.Deploy.CertificatePEM)
 				fixture.mu.Lock()
 				uploads := fixture.uploads
 				fixture.mu.Unlock()
@@ -133,11 +137,11 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 					t.Fatalf("repeat uploaded %d certificates", uploads)
 				}
 				renewed := req
-				renewed.CertificatePEM, renewed.PrivateKeyPEM, _ = makeCertificate(t, []string{"cdn.example.com"}, false)
-				fixture.setExpected(renewed.CertificatePEM, renewed.PrivateKeyPEM)
+				renewed.Deploy.CertificatePEM, renewed.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"cdn.example.com"}, false)
+				fixture.setExpected(renewed.Deploy.CertificatePEM, renewed.Deploy.PrivateKeyPEM)
 				deploy(t, renewed, false)
-				fixture.assertBound(t, renewed.CertificatePEM)
-				fixture.setExpected(req.CertificatePEM, req.PrivateKeyPEM)
+				fixture.assertBound(t, renewed.Deploy.CertificatePEM)
+				fixture.setExpected(req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 			})
 			for _, mode := range []string{"auth", "failure", "bind-failure"} {
 				t.Run(mode+"_recovery", func(t *testing.T) {
@@ -153,7 +157,7 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 					}
 					fixture.setMode("")
 					deploy(t, req, false)
-					fixture.assertBound(t, req.CertificatePEM)
+					fixture.assertBound(t, req.Deploy.CertificatePEM)
 				})
 			}
 
@@ -163,7 +167,10 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 				cancelCtx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 				defer cancel()
 				completed := make(chan error, 1)
-				go func() { _, err := manager.Deploy(cancelCtx, dp, &req, slog.New(slog.DiscardHandler)); completed <- err }()
+				go func() {
+					_, err := deployViaSession(cancelCtx, manager, dp, &req, slog.New(slog.DiscardHandler))
+					completed <- err
+				}()
 				select {
 				case <-fixture.requestStarted:
 					cancel()
@@ -176,7 +183,7 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 
 				fixture.setMode("")
 				deploy(t, req, false)
-				fixture.assertBound(t, req.CertificatePEM)
+				fixture.assertBound(t, req.Deploy.CertificatePEM)
 			})
 			if provider != "asiaispcdn" {
 				t.Run("tls_requires_opt_in", func(t *testing.T) {
@@ -186,7 +193,7 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 					deploy(t, request, true)
 					request.AccessConfigJSON = strings.TrimSuffix(request.AccessConfigJSON, "}") + `,"allowInsecureConnections":true}`
 					deploy(t, request, false)
-					fixture.assertBound(t, req.CertificatePEM)
+					fixture.assertBound(t, req.Deploy.CertificatePEM)
 				})
 			}
 			if provider == "asiaispcdn" {
@@ -196,7 +203,7 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 						request := req
 						request.ExtendedConfigJSON = fmt.Sprintf(`{"domainMatchPattern":%q,"domain":"*.example.com"}`, pattern)
 						deploy(t, request, false)
-						fixture.assertBound(t, req.CertificatePEM)
+						fixture.assertBound(t, req.Deploy.CertificatePEM)
 					})
 				}
 			}
@@ -224,7 +231,7 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 							fixture.expectedID = strings.Trim(id, `"`)
 							fixture.mu.Unlock()
 							deploy(t, request, false)
-							fixture.assertBound(t, req.CertificatePEM)
+							fixture.assertBound(t, req.Deploy.CertificatePEM)
 						})
 					}
 				}
@@ -239,7 +246,7 @@ func TestB1CDNDeploymentBatch(t *testing.T) {
 								request.AccessConfigJSON = fmt.Sprintf(`{"serverUrl":%q,"apiVersion":%q,"apiRole":%q,"authMethod":%q,"username":"fixture-user","password":"fixture-secret","apiKey":"fixture-secret"}`, fixture.url, version, role, method)
 								request.ExtendedConfigJSON = `{"deployTarget":"certificate","certificateId":42,"clientId":"7"}`
 								deploy(t, request, false)
-								fixture.assertBound(t, req.CertificatePEM)
+								fixture.assertBound(t, req.Deploy.CertificatePEM)
 								fixture.mu.Lock()
 								clientID := fixture.clientID
 								fixture.mu.Unlock()

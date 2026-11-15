@@ -42,7 +42,7 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 8*time.Minute)
 	defer cancel()
-	config := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, DeployTimeout: 20 * time.Second}
+	config := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, ProcessTimeout: 20 * time.Second}
 	discovered, failures := plugin.Discover(ctx, config)
 	if len(failures) != 0 || len(discovered) != len(b2PanelProviders) {
 		t.Fatalf("discovery count=%d failures=%v", len(discovered), failures)
@@ -66,14 +66,18 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 			} else if len(schema.AccessSchemaJSON) == 0 {
 				t.Fatal("panel plugin must provide its access schema")
 			}
-			if meta.ProviderType != provider || meta.AccessProviderType != family || meta.ProtocolVersion != plugin.ProtocolVersion || meta.DeployCategory != dp.Manifest.DeployCategory {
+			if meta.ProviderType != provider || meta.AccessProviderType != family || meta.ProtocolVersion != plugin.ProtocolVersion || meta.Category != dp.Manifest.Category {
 				t.Fatal("manifest and metadata differ")
 			}
 			f := &b2PanelFixture{}
 			server := httptest.NewServer(http.HandlerFunc(f.serve))
 			t.Cleanup(server.Close)
 			cert, key, _ := makeCertificate(t, []string{"app.example.com"}, false)
-			req := plugin.DeployRequest{LogLevel: "DEBUG", CertificatePEM: cert, PrivateKeyPEM: key}
+			req := plugin.Request{
+				Capability: plugin.CapabilityDeploy,
+				LogLevel:   "DEBUG",
+				Deploy:     &plugin.DeployPayload{CertificatePEM: cert, PrivateKeyPEM: key},
+			}
 			access := map[string]any{"allowInsecureConnections": "true", "serverUrl": server.URL, "apiKey": "panel-fixture-secret", "apiVersion": "v2"}
 			raw, _ := json.Marshal(access)
 			req.AccessConfigJSON = string(raw)
@@ -91,13 +95,13 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 				configs = []string{`{"siteNames":"app.example.com","sitePort":8443}`}
 			}
 			var logs bytes.Buffer
-			run := func(ctx context.Context, request *plugin.DeployRequest) (*plugin.DeployResult, error) {
-				return manager.Deploy(ctx, dp, request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
+			run := func(ctx context.Context, request *plugin.Request) (*plugin.Result, error) {
+				return deployViaSession(ctx, manager, dp, request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
 			}
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
 				run = newB1WorkflowDeployerWithAccessOwner(t, dir, provider, accessOwner)
 			}
-			deploy := func(t *testing.T, request plugin.DeployRequest, wantError bool) {
+			deploy := func(t *testing.T, request plugin.Request, wantError bool) {
 				t.Helper()
 				logs.Reset()
 				res, err := run(ctx, &request)
@@ -110,7 +114,7 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 				} else if res == nil {
 					t.Fatal("missing deployment result")
 				}
-				for _, secret := range []string{"panel-fixture-secret", request.PrivateKeyPEM, "BEGIN PRIVATE KEY"} {
+				for _, secret := range []string{"panel-fixture-secret", request.Deploy.PrivateKeyPEM, "BEGIN PRIVATE KEY"} {
 					if strings.Contains(logs.String(), secret) {
 						t.Fatal("deployment logs contain secret")
 					}
@@ -136,7 +140,7 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 						}
 					}
 					renew := req
-					renew.CertificatePEM, renew.PrivateKeyPEM, _ = makeCertificate(t, []string{"app.example.com"}, false)
+					renew.Deploy.CertificatePEM, renew.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"app.example.com"}, false)
 					f.expect(renew)
 					deploy(t, renew, false)
 					f.assertBound(t, renew)
@@ -174,7 +178,10 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 				cancelCtx, cancel := context.WithTimeout(ctx, 10*time.Second)
 				defer cancel()
 				result := make(chan error, 1)
-				go func() { _, err := manager.Deploy(cancelCtx, dp, &req, slog.New(slog.DiscardHandler)); result <- err }()
+				go func() {
+					_, err := deployViaSession(cancelCtx, manager, dp, &req, slog.New(slog.DiscardHandler))
+					result <- err
+				}()
 				select {
 				case <-f.started:
 					cancel()
@@ -203,12 +210,12 @@ func TestB2PanelsDeploymentBatch(t *testing.T) {
 	}
 }
 
-func (f *b2PanelFixture) reset(mode string, req plugin.DeployRequest) {
+func (f *b2PanelFixture) reset(mode string, req plugin.Request) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	f.mode = mode
-	f.cert = req.CertificatePEM
-	f.key = req.PrivateKeyPEM
+	f.cert = req.Deploy.CertificatePEM
+	f.key = req.Deploy.PrivateKeyPEM
 	f.uploadedCert = ""
 	f.uploadedKey = ""
 	f.boundCert = ""
@@ -219,18 +226,18 @@ func (f *b2PanelFixture) reset(mode string, req plugin.DeployRequest) {
 	f.cancelled = make(chan struct{}, 1)
 }
 
-func (f *b2PanelFixture) expect(req plugin.DeployRequest) {
+func (f *b2PanelFixture) expect(req plugin.Request) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	f.cert = req.CertificatePEM
-	f.key = req.PrivateKeyPEM
+	f.cert = req.Deploy.CertificatePEM
+	f.key = req.Deploy.PrivateKeyPEM
 }
 
-func (f *b2PanelFixture) assertBound(t *testing.T, req plugin.DeployRequest) {
+func (f *b2PanelFixture) assertBound(t *testing.T, req plugin.Request) {
 	t.Helper()
 	f.mu.Lock()
 	defer f.mu.Unlock()
-	if f.boundCert != req.CertificatePEM || f.boundKey != req.PrivateKeyPEM || f.bindings == 0 {
+	if f.boundCert != req.Deploy.CertificatePEM || f.boundKey != req.Deploy.PrivateKeyPEM || f.bindings == 0 {
 		t.Fatal("target certificate or private key does not match deployment")
 	}
 }

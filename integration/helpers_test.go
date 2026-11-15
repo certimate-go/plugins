@@ -1,6 +1,7 @@
 package integration
 
 import (
+	"context"
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
@@ -8,6 +9,8 @@ import (
 	"crypto/x509/pkix"
 	"encoding/json"
 	"encoding/pem"
+	"fmt"
+	"log/slog"
 	"math/big"
 	"strings"
 	"testing"
@@ -21,7 +24,7 @@ func validateSchema(t *testing.T, schema *plugin.ConfigSchema, provider, access 
 	for _, item := range []struct {
 		data               []byte
 		provider, category string
-	}{{schema.AccessSchemaJSON, access, "access"}, {schema.DeploySchemaJSON, provider, "deploy"}} {
+	}{{schema.AccessSchemaJSON, access, "access"}, {schema.ProviderSchemaJSON, provider, "deploy"}} {
 		if item.category == "access" && len(item.data) == 0 {
 			continue
 		}
@@ -57,7 +60,7 @@ func validateSchema(t *testing.T, schema *plugin.ConfigSchema, provider, access 
 		checkKeys(envelope)
 	}
 	for _, locale := range []string{"en", "zh"} {
-		for _, key := range []string{meta.AccessDisplayNameKey, meta.DeployDisplayNameKey} {
+		for _, key := range []string{meta.AccessDisplayNameKey, meta.DisplayNameKey} {
 			if key == "" || schema.I18n[locale][key] == "" {
 				t.Errorf("missing %s display name %q", locale, key)
 			}
@@ -92,4 +95,22 @@ func makeCertificate(t *testing.T, names []string, isCA bool) (string, string, *
 		t.Fatal(err)
 	}
 	return string(pem.EncodeToMemory(&pem.Block{Type: "CERTIFICATE", Bytes: der})), string(pem.EncodeToMemory(&pem.Block{Type: "PRIVATE KEY", Bytes: keyDER})), cert
+}
+
+func deployViaSession(ctx context.Context, manager *plugin.Manager, dp *plugin.DiscoveredPlugin, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
+	session, err := manager.StartSession(ctx, dp)
+	if err != nil {
+		return nil, err
+	}
+	defer session.Close()
+	res, err := session.Process(ctx, req, logger)
+	if req.ExecutionID != "" {
+		if ferr := session.PostProcess(ctx, req.ExecutionID, logger); ferr != nil {
+			if err != nil {
+				return nil, fmt.Errorf("%w; finalization also failed: %v", err, ferr)
+			}
+			err = ferr
+		}
+	}
+	return res, err
 }

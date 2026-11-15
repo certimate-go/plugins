@@ -36,20 +36,23 @@ const (
 	defaultSecretDataKeyCrt = "tls.crt"
 )
 
-type k8sSecretDeployer struct{}
+type k8sSecretDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*k8sSecretDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "other",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "other",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*k8sSecretDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -59,9 +62,9 @@ func (*k8sSecretDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSche
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -81,7 +84,7 @@ type extendedConfig struct {
 	SecretLabels                      string `json:"secretLabels,omitempty"`
 }
 
-func (d *k8sSecretDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *k8sSecretDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -122,12 +125,12 @@ func (d *k8sSecretDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 		return nil, fmt.Errorf("failed to parse kubernetes secret labels: %w", err)
 	}
 
-	certX509, err := xcert.ParseCertificateFromPEM(req.CertificatePEM)
+	certX509, err := xcert.ParseCertificateFromPEM(req.Deploy.CertificatePEM)
 	if err != nil {
 		return nil, err
 	}
 
-	serverCertPEM, issuerCertPEM, err := xcert.ExtractCertificatesFromPEM(req.CertificatePEM)
+	serverCertPEM, issuerCertPEM, err := xcert.ExtractCertificatesFromPEM(req.Deploy.CertificatePEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to extract certs: %w", err)
 	}
@@ -191,10 +194,10 @@ func (d *k8sSecretDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 		secretPayload.Data = make(map[string][]byte)
 	}
 	if extended.SecretDataKeyForKey != "" {
-		secretPayload.Data[extended.SecretDataKeyForKey] = []byte(req.PrivateKeyPEM)
+		secretPayload.Data[extended.SecretDataKeyForKey] = []byte(req.Deploy.PrivateKeyPEM)
 	}
 	if extended.SecretDataKeyForCrt != "" {
-		secretPayload.Data[extended.SecretDataKeyForCrt] = []byte(req.CertificatePEM)
+		secretPayload.Data[extended.SecretDataKeyForCrt] = []byte(req.Deploy.CertificatePEM)
 	}
 	if extended.SecretDataKeyForCrtOnlyServer != "" {
 		secretPayload.Data[extended.SecretDataKeyForCrtOnlyServer] = []byte(serverCertPEM)
@@ -229,7 +232,7 @@ func (d *k8sSecretDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 		}
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func createK8sClient(kubeConfig string) (*rest.RESTClient, error) {

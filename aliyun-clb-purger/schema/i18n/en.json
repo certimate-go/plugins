@@ -1,0 +1,6 @@
+{
+  "plugin.aliyun-clb-purger.name": "Alibaba Cloud - CLB (Classic Load Balancer) (Purge)",
+  "plugin.aliyun-clb-purger.purge.form.region.label": "Alibaba Cloud region",
+  "plugin.aliyun-clb-purger.purge.form.region.placeholder": "Please enter Alibaba Cloud CLB region (e.g. cn-hangzhou)",
+  "plugin.aliyun-clb-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://www.alibabacloud.com/help/en/slb/classic-load-balancer/product-overview/regions-that-support-clb\" target=\"_blank\">https://www.alibabacloud.com/help/en/slb/classic-load-balancer/product-overview/regions-that-support-clb</a>"
+}

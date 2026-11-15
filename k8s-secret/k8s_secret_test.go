@@ -23,11 +23,11 @@ func TestGetMetadata(t *testing.T) {
 	if meta.ProtocolVersion != plugin.ProtocolVersion {
 		t.Fatalf("protocol version = %d", meta.ProtocolVersion)
 	}
-	if meta.DeployCategory != "other" {
-		t.Fatalf("deploy category = %q, want other", meta.DeployCategory)
+	if meta.Category != "other" {
+		t.Fatalf("deploy category = %q, want other", meta.Category)
 	}
-	if meta.DeployDisplayNameKey != displayNameKey {
-		t.Fatalf("display name key = %q", meta.DeployDisplayNameKey)
+	if meta.DisplayNameKey != displayNameKey {
+		t.Fatalf("display name key = %q", meta.DisplayNameKey)
 	}
 }
 
@@ -62,7 +62,7 @@ func TestGetConfigSchema(t *testing.T) {
 	}
 
 	var deployEnv envelope
-	if err := json.Unmarshal(schema.DeploySchemaJSON, &deployEnv); err != nil {
+	if err := json.Unmarshal(schema.ProviderSchemaJSON, &deployEnv); err != nil {
 		t.Fatalf("deploy envelope invalid: %v", err)
 	}
 	if deployEnv.SchemaVersion != "form/v1" || deployEnv.Provider != providerType || deployEnv.Category != "deploy" {
@@ -92,9 +92,11 @@ func TestGetConfigSchema(t *testing.T) {
 }
 
 func TestDeploy_InvalidAccessConfig(t *testing.T) {
-	_, err := (&k8sSecretDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+	_, err := (&k8sSecretDeployer{}).Process(context.Background(), &plugin.Request{
+		Capability:         plugin.CapabilityDeploy,
 		AccessConfigJSON:   `{not-json`,
 		ExtendedConfigJSON: `{"namespace":"default","secretName":"test"}`,
+		Deploy:             &plugin.DeployPayload{},
 	}, nil)
 	if err == nil || !strings.Contains(err.Error(), "invalid access config") {
 		t.Fatalf("expected invalid access config error, got %v", err)

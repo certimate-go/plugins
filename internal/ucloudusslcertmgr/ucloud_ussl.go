@@ -15,6 +15,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/certimate-go/plugins/internal/ucloudsdk/transport"
+
 	"github.com/ucloud/ucloud-sdk-go/ucloud"
 	"github.com/ucloud/ucloud-sdk-go/ucloud/auth"
 
@@ -47,12 +49,12 @@ type Certmgr struct {
 
 var _ Provider = (*Certmgr)(nil)
 
-func NewCertmgr(config *CertmgrConfig) (*Certmgr, error) {
+func NewCertmgr(ctx context.Context, config *CertmgrConfig) (*Certmgr, error) {
 	if config == nil {
 		return nil, fmt.Errorf("the configuration of the certmgr provider is nil")
 	}
 
-	client, err := createSDKClient(config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
+	client, err := createSDKClient(ctx, config.PublicKey, config.PrivateKey, config.ProjectId, config.Endpoint)
 	if err != nil {
 		return nil, fmt.Errorf("could not create client: %w", err)
 	}
@@ -237,7 +239,7 @@ func (c *Certmgr) tryGetResultIfCertExists(ctx context.Context, certPEM string) 
 	return nil, false, nil
 }
 
-func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.USSLClient, error) {
+func createSDKClient(ctx context.Context, publicKey, privateKey, projectId, endpoint string) (*ucloudsdk.USSLClient, error) {
 	if publicKey == "" {
 		return nil, fmt.Errorf("ucloud: invalid public key")
 	}
@@ -262,6 +264,7 @@ func createSDKClient(publicKey, privateKey, projectId, endpoint string) (*ucloud
 	credential.PrivateKey = privateKey
 
 	client := ucloudsdk.NewClient(&cfg, &credential)
+	client.SetTransport(transport.NewContextRoundTripper(ctx, nil))
 	return client, nil
 }
 

@@ -5,8 +5,8 @@ package upyuncertmgr_test
 import (
 	"testing"
 
-	impl "github.com/certimate-go/plugins/internal/upyuncertmgr"
 	tester "github.com/certimate-go/certimate/pkg/core/certmgr/providers-tester"
+	impl "github.com/certimate-go/plugins/internal/upyuncertmgr"
 )
 
 var (

@@ -59,7 +59,7 @@ func (d *deployment) SetLogger(logger *slog.Logger) {
 	}
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	if len(d.config.SiteNames) == 0 {
 		return nil, fmt.Errorf("config `siteNames` is required")
 	}
@@ -76,7 +76,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, err
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func (d *deployment) findSiteByName(ctx context.Context, siteName string) (*btwafsdk.SiteData, error) {

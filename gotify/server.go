@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net/http"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
@@ -16,7 +17,7 @@ type accessConfig struct {
 	Token     string `json:"token"`
 }
 
-func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.NotifyResult, error) {
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid Gotify access configuration: %w", err)
@@ -31,9 +32,9 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 	payload := struct {
 		Title   string `json:"title"`
 		Message string `json:"message"`
-	}{Title: req.Subject, Message: req.Message}
+	}{Title: req.Notify.Subject, Message: req.Notify.Message}
 	if err := pluginhttp.SendJSON(ctx, http.MethodPost, endpoint.JoinPath("message"), "X-Gotify-Key", access.Token, payload); err != nil {
 		return nil, fmt.Errorf("Gotify publish failed: %w", err)
 	}
-	return &plugin.NotifyResult{}, nil
+	return &plugin.Result{Notify: &plugin.NotifyResult{}}, nil
 }

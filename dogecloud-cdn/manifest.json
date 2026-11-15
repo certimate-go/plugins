@@ -2,13 +2,13 @@
   "access_provider_type": "dogecloud",
   "binary": "dogecloud-cdn",
   "capability": "deploy",
-  "deploy_category": "cdn",
+  "category": "cdn",
   "display_name_key": "plugin.dogecloud-cdn.name",
   "icon": "dogecloud.png",
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "dogecloud-cdn",
   "release": {
     "assets": {

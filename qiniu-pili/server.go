@@ -29,20 +29,23 @@ const (
 	domainMatchPatternCertsan = "certsan"
 )
 
-type qiniuPiliDeployer struct{}
+type qiniuPiliDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*qiniuPiliDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "av",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "av",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*qiniuPiliDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -52,9 +55,9 @@ func (*qiniuPiliDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSche
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -69,7 +72,7 @@ type extendedConfig struct {
 	Domain             string `json:"domain"`
 }
 
-func (d *qiniuPiliDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *qiniuPiliDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -96,7 +99,7 @@ func (d *qiniuPiliDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 	}
 	certmgr.SetLogger(logger)
 
-	upres, err := certmgr.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	upres, err := certmgr.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 	}
@@ -115,7 +118,7 @@ func (d *qiniuPiliDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 			return nil, err
 		}
 		domains = lo.Filter(domainCandidates, func(domain string, _ int) bool {
-			return xcerthostname.IsMatchByCertificatePEM(req.CertificatePEM, domain)
+			return xcerthostname.IsMatchByCertificatePEM(req.Deploy.CertificatePEM, domain)
 		})
 		if len(domains) == 0 {
 			return nil, fmt.Errorf("could not find any domains matched by certificate")
@@ -136,7 +139,7 @@ func (d *qiniuPiliDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 		}
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func getAllPiliDomainsByHub(ctx context.Context, m *pili.Manager, logger *slog.Logger, hub string) ([]string, error) {

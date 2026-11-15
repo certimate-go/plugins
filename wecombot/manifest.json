@@ -5,7 +5,7 @@
   "description": "Send notifications via a WeCom group robot.",
   "display_name_key": "plugin.wecombot.name",
   "icon": "wecom.svg",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "wecombot",
   "release": {
     "assets": {

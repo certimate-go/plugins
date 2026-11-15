@@ -2,13 +2,13 @@
   "access_provider_type": "ksyun",
   "binary": "ksyun-slb",
   "capability": "deploy",
-  "deploy_category": "loadbalance",
+  "category": "loadbalance",
   "display_name_key": "plugin.ksyun-slb.name",
   "icon": "ksyun.svg",
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "ksyun-slb",
   "release": {
     "assets": {

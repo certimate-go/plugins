@@ -57,7 +57,7 @@ func (d *deployment) SetLogger(logger *slog.Logger) {
 	}
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	switch d.config.DeployTarget {
 	case DEPLOY_TARGET_CERTIFICATE:
 		if err := d.deployToCertificate(ctx, certPEM, privkeyPEM); err != nil {
@@ -68,7 +68,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, fmt.Errorf("unsupported deploy target '%s'", d.config.DeployTarget)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func (d *deployment) deployToCertificate(ctx context.Context, certPEM, privkeyPEM string) error {

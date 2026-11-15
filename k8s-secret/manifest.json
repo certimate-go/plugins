@@ -2,13 +2,13 @@
   "access_provider_type": "k8s",
   "binary": "k8s-secret",
   "capability": "deploy",
-  "deploy_category": "other",
+  "category": "other",
   "display_name_key": "plugin.k8s-secret.name",
   "icon": "kubernetes.svg",
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "k8s-secret",
   "release": {
     "assets": {

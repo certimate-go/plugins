@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"strconv"
 
@@ -32,15 +33,18 @@ type rrsetUpdate struct {
 	Records    []txtRecord `json:"records"`
 }
 
-func (*server) Present(ctx context.Context, req *plugin.DnsRequest) error {
-	return update(ctx, req, "EXTEND")
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
+	if err := update(ctx, req, "EXTEND"); err != nil {
+		return nil, err
+	}
+	return &plugin.Result{Dns: &plugin.DnsResult{}}, nil
 }
 
-func (*server) CleanUp(ctx context.Context, req *plugin.DnsRequest) error {
+func (*server) PostProcess(ctx context.Context, req *plugin.Request, logger *slog.Logger) error {
 	return update(ctx, req, "PRUNE")
 }
 
-func update(ctx context.Context, req *plugin.DnsRequest, change string) error {
+func update(ctx context.Context, req *plugin.Request, change string) error {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return fmt.Errorf("invalid PowerDNS access configuration: %w", err)

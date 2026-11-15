@@ -11,7 +11,7 @@ func main() {
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: map[string]githubplugin.Plugin{
-			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: deployer},
+			plugin.PluginName: &plugin.GRPCPlugin{Impl: deployer},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})

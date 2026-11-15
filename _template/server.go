@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"embed"
-	"fmt"
 	"log/slog"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
@@ -18,20 +17,23 @@ const (
 	displayNameKey = "plugin.__PLUGIN_NAME__.name"
 )
 
-type myDeployer struct{}
+type myDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*myDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "other",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "other",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*myDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -41,15 +43,15 @@ func (*myDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, err
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
-func (*myDeployer) Deploy(_ context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*myDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger != nil {
-		logger.Info("template deployer invoked")
+		logger.Info("template deployer invoked", slog.String("execution", req.ExecutionID))
 	}
-	return nil, fmt.Errorf("not implemented: implement the Deploy method")
+	return &plugin.Result{Deploy: &plugin.DeployResult{}}, nil
 }

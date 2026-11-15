@@ -33,21 +33,24 @@ const (
 	domainMatchPatternCertsan  = "certsan"
 )
 
-type ksyunCdnDeployer struct{}
+type ksyunCdnDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*ksyunCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "cdn",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.ksyun.name",
 	}, nil
 }
 
 func (*ksyunCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -60,9 +63,9 @@ func (*ksyunCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchem
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -79,7 +82,7 @@ type extendedConfig struct {
 	CertificateId      string `json:"certificateId,omitempty"`
 }
 
-func (d *ksyunCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *ksyunCdnDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -107,12 +110,12 @@ func (d *ksyunCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest
 
 	switch extended.DeployTarget {
 	case deployTargetDomain:
-		if err := runner.deployToDomain(ctx, req.CertificatePEM, req.PrivateKeyPEM); err != nil {
+		if err := runner.deployToDomain(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM); err != nil {
 			return nil, err
 		}
 
 	case deployTargetCertificate:
-		if err := runner.deployToCertificate(ctx, req.CertificatePEM, req.PrivateKeyPEM); err != nil {
+		if err := runner.deployToCertificate(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM); err != nil {
 			return nil, err
 		}
 
@@ -120,7 +123,7 @@ func (d *ksyunCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest
 		return nil, fmt.Errorf("unsupported deploy target '%s'", extended.DeployTarget)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 type cdnRunner struct {

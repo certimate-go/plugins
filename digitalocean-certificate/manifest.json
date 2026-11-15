@@ -2,11 +2,11 @@
   "access_provider_type": "digitalocean",
   "binary": "digitalocean-certificate",
   "capability": "deploy",
-  "deploy_category": "ssl",
+  "category": "ssl",
   "display_name_key": "plugin.digitalocean-certificate.name",
   "icon": "digitalocean.svg",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "digitalocean-certificate",
   "release": {
     "assets": {

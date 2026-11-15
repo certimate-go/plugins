@@ -5,7 +5,7 @@
   "description": "Send notifications to a Mattermost channel.",
   "display_name_key": "plugin.mattermost.name",
   "icon": "mattermost.svg",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "mattermost",
   "release": {
     "assets": {

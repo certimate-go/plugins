@@ -62,7 +62,7 @@ func TestB1AppsDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, DeployTimeout: 15 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, ProcessTimeout: 15 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != len(b1AppsProviders) {
 		t.Fatalf("discovery count=%d failures=%v", len(discovered), failures)
@@ -81,17 +81,21 @@ func TestB1AppsDeploymentBatch(t *testing.T) {
 				t.Fatal(err)
 			}
 			access := strings.Split(provider, "-")[0]
-			if meta.ProviderType != provider || meta.AccessProviderType != access || meta.DeployCategory != "website" || meta.ProtocolVersion != plugin.ProtocolVersion {
+			if meta.ProviderType != provider || meta.AccessProviderType != access || meta.Category != "website" || meta.ProtocolVersion != plugin.ProtocolVersion {
 				t.Fatalf("wrong metadata: %+v", meta)
 			}
-			if dp.Manifest.DisplayNameKey != meta.DeployDisplayNameKey || dp.Manifest.AccessProviderType != access || dp.Manifest.DeployCategory != meta.DeployCategory || dp.Manifest.ProtocolVersion != meta.ProtocolVersion {
+			if dp.Manifest.DisplayNameKey != meta.DisplayNameKey || dp.Manifest.AccessProviderType != access || dp.Manifest.Category != meta.Category || dp.Manifest.ProtocolVersion != meta.ProtocolVersion {
 				t.Fatal("manifest differs from metadata")
 			}
 			if info, e := os.Stat(filepath.Join(dp.Dir, dp.Manifest.Icon)); e != nil || info.Size() == 0 {
 				t.Fatalf("missing icon: %v", e)
 			}
 			validateSchema(t, schema, provider, access, meta)
-			req := plugin.DeployRequest{CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM, LogLevel: "DEBUG"}
+			req := plugin.Request{
+				Capability: plugin.CapabilityDeploy,
+				LogLevel:   "DEBUG",
+				Deploy:     &plugin.DeployPayload{CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM},
+			}
 			switch provider {
 			case "mohua-mvh":
 				req.AccessConfigJSON = `{"username":"fixture-user","apiPassword":"fixture-password"}`
@@ -103,21 +107,21 @@ func TestB1AppsDeploymentBatch(t *testing.T) {
 				req.AccessConfigJSON = `{"apiToken":"fixture-token"}`
 				req.ExtendedConfigJSON = `{"appName":"fixture-app","domain":"*.example.com"}`
 			}
-			var workflowDeploy func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error)
+			var workflowDeploy func(context.Context, *plugin.Request) (*plugin.Result, error)
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
 				workflowDeploy = newB1WorkflowDeployer(t, dir, provider)
 			}
-			deploy := func(t *testing.T, request plugin.DeployRequest, wantErr string) {
+			deploy := func(t *testing.T, request plugin.Request, wantErr string) {
 				t.Helper()
 				var logs bytes.Buffer
-				var result *plugin.DeployResult
+				var result *plugin.Result
 				var e error
 				if workflowDeploy != nil && json.Valid([]byte(request.AccessConfigJSON)) && json.Valid([]byte(request.ExtendedConfigJSON)) {
 					result, e = workflowDeploy(ctx, &request)
 				} else {
-					result, e = manager.Deploy(ctx, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
+					result, e = deployViaSession(ctx, manager, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
 				}
-				for _, secret := range []string{"fixture-token", "fixture-password", "fixture-jwt", "fixture-console", strings.Split(request.PrivateKeyPEM, "\n")[1]} {
+				for _, secret := range []string{"fixture-token", "fixture-password", "fixture-jwt", "fixture-console", strings.Split(request.Deploy.PrivateKeyPEM, "\n")[1]} {
 					if strings.Contains(logs.String(), secret) || e != nil && strings.Contains(e.Error(), secret) {
 						t.Fatal("secret leaked in host logs or errors")
 					}
@@ -148,7 +152,7 @@ func TestB1AppsDeploymentBatch(t *testing.T) {
 				deploy(t, req, "")
 				fixture.assertUpdates(t, 2)
 				renew := req
-				renew.CertificatePEM, renew.PrivateKeyPEM, _ = makeCertificate(t, []string{"app.example.com", "*.example.com"}, false)
+				renew.Deploy.CertificatePEM, renew.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"app.example.com", "*.example.com"}, false)
 				fixture.reset("normal", renew)
 				deploy(t, renew, "")
 				fixture.assertUpdates(t, 1)
@@ -182,7 +186,7 @@ func TestB1AppsDeploymentBatch(t *testing.T) {
 				defer cancel()
 				completed := make(chan error, 1)
 				go func() {
-					_, err := manager.Deploy(cancelCtx, dp, &req, slog.New(slog.DiscardHandler))
+					_, err := deployViaSession(cancelCtx, manager, dp, &req, slog.New(slog.DiscardHandler))
 					completed <- err
 				}()
 				select {
@@ -213,7 +217,7 @@ func TestB1AppsDeploymentBatch(t *testing.T) {
 	}
 }
 
-func (f *b1AppsFixture) reset(mode string, req plugin.DeployRequest) {
+func (f *b1AppsFixture) reset(mode string, req plugin.Request) {
 	f.mu.Lock()
 	defer f.mu.Unlock()
 	f.mode = mode
@@ -221,8 +225,8 @@ func (f *b1AppsFixture) reset(mode string, req plugin.DeployRequest) {
 	f.requestCanceled = make(chan struct{}, 1)
 	f.calls = 0
 	f.updates = 0
-	f.certPEM = req.CertificatePEM
-	f.keyPEM = req.PrivateKeyPEM
+	f.certPEM = req.Deploy.CertificatePEM
+	f.keyPEM = req.Deploy.PrivateKeyPEM
 }
 
 func (f *b1AppsFixture) assertCounts(t *testing.T, calls, updates int) {

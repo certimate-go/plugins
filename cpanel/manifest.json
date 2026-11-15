@@ -2,11 +2,11 @@
   "access_provider_type": "cpanel",
   "binary": "cpanel",
   "capability": "deploy",
-  "deploy_category": "website",
+  "category": "website",
   "display_name_key": "plugin.cpanel.name",
   "icon": "cpanel.svg",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "cpanel",
   "release": {
     "assets": {

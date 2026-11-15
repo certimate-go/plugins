@@ -101,7 +101,7 @@ func testB8CloudWorkflow(t *testing.T, cases []b8CloudCase, runInLinux func(*tes
 				t.Setenv("VOLC_HTTPS_PROXY", os.Getenv("HTTPS_PROXY"))
 				t.Setenv("VOLC_NO_PROXY", os.Getenv("NO_PROXY"))
 			}
-			verify := func(request *plugin.DeployRequest) {
+			verify := func(request *plugin.Request) {
 				t.Helper()
 				fixture.mu.Lock()
 				defer fixture.mu.Unlock()
@@ -110,15 +110,17 @@ func testB8CloudWorkflow(t *testing.T, cases []b8CloudCase, runInLinux func(*tes
 					id = fixture.uploaded
 				}
 				stored := fixture.certs[id]
-				if stored.CertificateChain != request.CertificatePEM || stored.PrivateKey != request.PrivateKeyPEM {
+				if stored.CertificateChain != request.Deploy.CertificatePEM || stored.PrivateKey != request.Deploy.PrivateKeyPEM {
 					t.Fatalf("%s did not store the expected certificate chain and key on its target", target.provider)
 				}
 			}
 			deploy := newB1WorkflowDeployer(t, dir, target.provider, workflowLifecycleTarget{barrier: &fixture.barrier, verify: verify})
-			request := &plugin.DeployRequest{
+			request := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
 				AccessConfigJSON:   `{"accessKeyId":"` + b8FixtureKeyID + `","secretAccessKey":"` + b8FixtureSecret + `","projectName":"` + b8FixtureProject + `"}`,
 				ExtendedConfigJSON: target.config,
 				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
 			}
 			issuer, _, _ := makeCertificate(t, []string{"b8-issuer.fixture.example"}, true)
 			type step struct {
@@ -159,8 +161,8 @@ func testB8CloudWorkflow(t *testing.T, cases []b8CloudCase, runInLinux func(*tes
 			for _, step := range steps {
 				t.Run(step.name, func(t *testing.T) {
 					if step.fresh {
-						request.CertificatePEM, request.PrivateKeyPEM, _ = makeCertificate(t, []string{b8FixtureDomain}, false)
-						request.CertificatePEM += issuer
+						request.Deploy.CertificatePEM, request.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b8FixtureDomain}, false)
+						request.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step.name

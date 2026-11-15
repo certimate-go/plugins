@@ -28,21 +28,24 @@ const (
 	domainMatchPatternExact = "exact"
 )
 
-type wangsuCdnDeployer struct{}
+type wangsuCdnDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*wangsuCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "cdn",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.wangsu.name",
 	}, nil
 }
 
 func (*wangsuCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -55,9 +58,9 @@ func (*wangsuCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSche
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -72,7 +75,7 @@ type extendedConfig struct {
 	Domains            string `json:"domains"`
 }
 
-func (d *wangsuCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *wangsuCdnDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -101,7 +104,7 @@ func (d *wangsuCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 	}
 	certmgr.SetLogger(logger)
 
-	upres, err := certmgr.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	upres, err := certmgr.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 	} else {
@@ -124,7 +127,7 @@ func (d *wangsuCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 		return nil, fmt.Errorf("failed to execute sdk request 'cdn.BatchUpdateCertificateConfig': %w", err)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func resolveDeployDomains(domainMatchPattern string, domainsRaw string) ([]string, error) {

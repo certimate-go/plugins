@@ -2,11 +2,11 @@
   "access_provider_type": "rainyun",
   "binary": "rainyun-sslcenter",
   "capability": "deploy",
-  "deploy_category": "ssl",
+  "category": "ssl",
   "display_name_key": "plugin.rainyun-sslcenter.name",
   "icon": "rainyun.svg",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "rainyun-sslcenter",
   "release": {
     "assets": {

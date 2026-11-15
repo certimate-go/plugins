@@ -5,7 +5,7 @@
   "description": "Send notifications via a Feishu or Lark custom bot.",
   "display_name_key": "plugin.larkbot.name",
   "icon": "lark.svg",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "larkbot",
   "release": {
     "assets": {

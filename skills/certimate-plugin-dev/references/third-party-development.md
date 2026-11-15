@@ -13,7 +13,7 @@ go get "github.com/certimate-go/certimate/pkg/plugin@$core_version"
 go list -f '{{.Dir}}' github.com/certimate-go/certimate/pkg/plugin
 ```
 
-The pin above is an example with deploy, DNS, and notify support. Choose the tag or commit corresponding to the actual host, and use the Go version required by that dependency. Run `go mod tidy` after the imports are in place. The protocol package builds from the published module. Go ignores dependency-module `replace` directives. If an imported SDK needs one, choose a published SDK or add a resolvable replacement in your own module. For local host development, put any checkout overrides in a temporary `go.work` outside the project and set `GOWORK` for that command.
+The pin above is an example with deploy, DNS, and notify support; the purge capability (`plugin.CapabilityPurge`) ships in newer hosts than that commit, so a purge plugin must pin a tag or commit whose `pkg/plugin` already declares it. Choose the tag or commit corresponding to the actual host, and use the Go version required by that dependency. Run `go mod tidy` after the imports are in place. The protocol package builds from the published module. Go ignores dependency-module `replace` directives. If an imported SDK needs one, choose a published SDK or add a resolvable replacement in your own module. For local host development, put any checkout overrides in a temporary `go.work` outside the project and set `GOWORK` for that command.
 
 ## Scaffold a capability
 
@@ -21,11 +21,12 @@ Create a directory named for the provider. Give it `main.go`, `server.go`, `mani
 
 | Capability | Adapter and plugin set key | Implement | Form loader |
 | --- | --- | --- | --- |
-| Deploy | `DeployerGRPCPlugin`, `PluginName` | `Deploy` | `LoadDeploySchema` |
-| DNS | `DnsGRPCPlugin`, `DnsPluginName` | `Present`, `CleanUp` | `LoadProviderSchema` |
-| Notify | `NotifyGRPCPlugin`, `NotifyPluginName` | `Notify` | `LoadProviderSchema` |
+| Deploy | `GRPCPlugin`, `PluginName` | `Process` | `LoadProviderSchema` |
+| DNS | `GRPCPlugin`, `PluginName` | `Process` creates the TXT, `PostProcess` removes it | `LoadProviderSchema` |
+| Notify | `GRPCPlugin`, `PluginName` | `Process` | `LoadProviderSchema` |
+| Purge | `GRPCPlugin`, `PluginName` | `Process` | `LoadProviderSchema` |
 
-Use the shared handshake and `githubplugin.DefaultGRPCServer`. For example, the deploy entrypoint is:
+Every capability registers under the same `plugin.PluginName` with the shared handshake; the capability differs only in the manifest, `GetMetadata`, and which payload `Process` receives (`req.Deploy`, `req.Dns`, `req.Notify`, or `req.Purge`). Capabilities without finalization embed `plugin.NoopFinalizer`. Use the shared handshake and `githubplugin.DefaultGRPCServer`. For example, the deploy entrypoint is:
 
 ```go
 package main
@@ -39,16 +40,16 @@ func main() {
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: plugin.PluginSet{
-			plugin.PluginName: &plugin.DeployerGRPCPlugin{Impl: &server{}},
+			plugin.PluginName: &plugin.GRPCPlugin{Impl: &server{}},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})
 }
 ```
 
-Implement `GetMetadata` and `GetConfigSchema` alongside the capability methods. Embed the schema files using the Go embed directive. Use `schema/deploy.json` for deploy forms and `schema/config.json` for DNS and notify forms. Return `form/v1` and use matching display-name and field keys in `schema/i18n/en.json` and `zh.json`. Read the request and result types in the resolved package source, including the deploy logger. Read `ProtocolVersion` and manifest validation in the pinned package. Set the manifest's provider, access provider, version, capability, binary, and protocol version to match the entrypoint. Resolve every sample name and unused field before building.
+Implement `GetMetadata` and `GetConfigSchema` alongside the capability methods. Embed the schema files using the Go embed directive. Use `schema/config.json` for the provider form regardless of capability. Return `form/v1` and use matching display-name and field keys in `schema/i18n/en.json` and `zh.json`. Read the request and result types in the resolved package source, including the deploy logger. Read `ProtocolVersion` and manifest validation in the pinned package. Set the manifest's provider, access provider, version, capability, binary, and protocol version to match the entrypoint. Resolve every sample name and unused field before building.
 
-For an upstream example, fetch an explicit tag or commit from the public `certimate-go/plugins` repository, inspect its core dependency, and verify it matches your target protocol. Its `_template`, `powerdns-dns`, and `ntfy` directories show deploy, DNS, and notify respectively. Copy only files you need and retain applicable licenses and notices.
+For an upstream example, fetch an explicit tag or commit from the public `certimate-go/plugins` repository, inspect its core dependency, and verify it matches your target protocol. Its `_template`, `powerdns-dns`, `ntfy`, and `baiducloud-cert-purger` directories show deploy, DNS, notify, and purge respectively. Copy only files you need and retain applicable licenses and notices.
 
 When defining an access type, return its access schema once. When reusing a built-in or another plugin's type, omit the access schema and read the existing credential fields. For cross-market reuse, document the owner's provider identifier and field contract. Install the owner before consumers and uninstall consumers before the owner. Removing an owner's market leaves the installed owner available. The host does not install dependencies automatically.
 
@@ -75,6 +76,7 @@ The manifest `binary` must match the staged executable. Keep the binary and dire
 - Deploy through a workflow using a test certificate. Check the target service for the uploaded certificate and binding. Repeat with a rejected request and verify the workflow reports the failure.
 - Run issuance against a fixture ACME server such as Pebble, with a DNS service the fixture CA can query and that the plugin can mutate. Verify that issuance succeeds, the target TXT value appears and is removed, and unrelated TXT values survive. Use a test zone and test credentials.
 - Send a notification test using a saved access record. Verify the target receives the expected message and credentials. Return an error from the target and check that the host reports the failure.
+- Run a purge workflow against a fixture that lists and deletes certificates. Seed expired and unexpired certificates, then verify only the ones beyond the configured expiry threshold are deleted, the rest survive, and the workflow log reports the deleted count. Repeat with a vendor delete failure and check that the workflow fails with the vendor's error.
 
 For a reused access type, repeat with the same credential record and the installed owner. Record the actual host version, command, and observed target behavior.
 

@@ -1,0 +1,19 @@
+{
+  "access_provider_type": "huaweicloud",
+  "binary": "huaweicloud-scm-purger",
+  "capability": "purge",
+  "category": "other",
+  "description": "",
+  "display_name_key": "plugin.huaweicloud-scm-purger.name",
+  "icon": "huaweicloud.svg",
+  "max_core_version": "",
+  "min_core_version": "",
+  "priority": 100,
+  "protocol_version": 4,
+  "provider_type": "huaweicloud-scm-purger",
+  "sha256": "",
+  "usages": [
+    "hosting"
+  ],
+  "version": "0.1.0"
+}

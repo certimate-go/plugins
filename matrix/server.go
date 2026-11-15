@@ -5,6 +5,7 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"fmt"
+	"log/slog"
 	"net/url"
 	"strings"
 	"time"
@@ -21,7 +22,7 @@ type accessConfig struct {
 	RoomID      string `json:"roomId"`
 }
 
-func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.NotifyResult, error) {
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var config accessConfig
 	if err := notifier.DecodeAccess(req, &config); err != nil {
 		return nil, err
@@ -51,7 +52,7 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 	path := fmt.Sprintf("/_matrix/client/v3/rooms/%s/send/m.room.message/%s", url.PathEscape(roomID), transactionID)
 	resp, err := client.R().
 		SetContext(ctx).
-		SetBody(map[string]string{"msgtype": "m.text", "body": req.Subject + "\n\n" + req.Message}).
+		SetBody(map[string]string{"msgtype": "m.text", "body": req.Notify.Subject + "\n\n" + req.Notify.Message}).
 		Put(path)
 	if err != nil {
 		return nil, fmt.Errorf("matrix: failed to send message: %w", err)
@@ -59,7 +60,7 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 	if resp.IsError() {
 		return nil, fmt.Errorf("matrix: send message returned HTTP %d", resp.StatusCode())
 	}
-	return &plugin.NotifyResult{}, nil
+	return &plugin.Result{Notify: &plugin.NotifyResult{}}, nil
 }
 
 func resolveHomeserver(ctx context.Context, client *resty.Client, serverURL string) string {

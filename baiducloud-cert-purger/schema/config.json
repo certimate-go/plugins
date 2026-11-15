@@ -1,0 +1,8 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "baiducloud-cert-purger",
+  "category": "purge",
+  "schema": {
+    "columns": []
+  }
+}

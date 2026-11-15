@@ -21,21 +21,24 @@ const (
 	displayNameKey = "plugin.wangsu-certificate.name"
 )
 
-type wangsuCertificateDeployer struct{}
+type wangsuCertificateDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*wangsuCertificateDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "ssl",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "ssl",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.wangsu.name",
 	}, nil
 }
 
 func (*wangsuCertificateDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -48,9 +51,9 @@ func (*wangsuCertificateDeployer) GetConfigSchema(_ context.Context) (*plugin.Co
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -64,7 +67,7 @@ type extendedConfig struct {
 	CertificateId string `json:"certificateId,omitempty"`
 }
 
-func (d *wangsuCertificateDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *wangsuCertificateDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -89,14 +92,14 @@ func (d *wangsuCertificateDeployer) Deploy(ctx context.Context, req *plugin.Depl
 	certmgr.SetLogger(logger)
 
 	if extended.CertificateId == "" {
-		upres, err := certmgr.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+		upres, err := certmgr.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 		if err != nil {
 			return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 		} else {
 			logger.Info("ssl certificate uploaded", slog.Any("result", upres))
 		}
 	} else {
-		rplres, err := certmgr.Replace(ctx, extended.CertificateId, req.CertificatePEM, req.PrivateKeyPEM)
+		rplres, err := certmgr.Replace(ctx, extended.CertificateId, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 		if err != nil {
 			return nil, fmt.Errorf("failed to replace certificate file: %w", err)
 		} else {
@@ -104,5 +107,5 @@ func (d *wangsuCertificateDeployer) Deploy(ctx context.Context, req *plugin.Depl
 		}
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }

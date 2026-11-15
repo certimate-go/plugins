@@ -16,7 +16,7 @@ type accessConfig struct {
 	CustomPayload string `json:"customPayload,omitempty"`
 }
 
-func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.NotifyResult, error) {
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var config accessConfig
 	if err := notifier.DecodeAccess(req, &config); err != nil {
 		return nil, err
@@ -36,7 +36,7 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 	webhookData, err := notifier.WebhookPayload(req, config.CustomPayload, map[string]any{
 		"msgtype": "text",
 		"text": map[string]string{
-			"content": req.Subject + "\n\n" + req.Message,
+			"content": req.Notify.Subject + "\n\n" + req.Notify.Message,
 		},
 	})
 	if err != nil {
@@ -61,5 +61,5 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 		return nil, fmt.Errorf("wecom api error: errcode='%d', errmsg='%s'", result.ErrorCode, result.ErrorMessage)
 	}
 
-	return &plugin.NotifyResult{}, nil
+	return &plugin.Result{Notify: &plugin.NotifyResult{}}, nil
 }

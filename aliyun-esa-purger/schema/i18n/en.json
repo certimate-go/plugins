@@ -1,0 +1,9 @@
+{
+  "plugin.aliyun-esa-purger.name": "Alibaba Cloud - ESA (Edge Security Acceleration) (Purge)",
+  "plugin.aliyun-esa-purger.purge.form.region.label": "Alibaba Cloud region",
+  "plugin.aliyun-esa-purger.purge.form.region.placeholder": "Please enter Alibaba Cloud ESA region (e.g. cn-hangzhou)",
+  "plugin.aliyun-esa-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/api-esa-2024-09-10-endpoint\" target=\"_blank\">https://www.alibabacloud.com/help/en/edge-security-acceleration/esa/api-esa-2024-09-10-endpoint</a>",
+  "plugin.aliyun-esa-purger.purge.form.siteId.label": "Alibaba Cloud ESA site ID",
+  "plugin.aliyun-esa-purger.purge.form.siteId.placeholder": "Please enter Alibaba Cloud ESA site ID",
+  "plugin.aliyun-esa-purger.purge.form.siteId.tooltip": "For more information, see <a href=\"https://esa.console.aliyun.com/siteManage/list\" target=\"_blank\">https://esa.console.aliyun.com/siteManage/list</a>"
+}

@@ -59,7 +59,7 @@ func (d *deployment) SetLogger(logger *slog.Logger) {
 	}
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	switch d.config.DeployTarget {
 	case DEPLOY_TARGET_WEBSITE:
 		if err := d.deployToWebsite(ctx, certPEM, privkeyPEM); err != nil {
@@ -75,7 +75,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, fmt.Errorf("unsupported deploy target '%s'", d.config.DeployTarget)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func (d *deployment) deployToWebsite(ctx context.Context, certPEM, privkeyPEM string) error {
@@ -159,10 +159,15 @@ type accessConfig struct {
 //go:embed schema
 var schemaFS embed.FS
 
-type pluginDeployer struct{}
+type pluginDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*pluginDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
-	return &plugin.Metadata{ProviderType: "ratpanel", AccessProviderType: "ratpanel", ProtocolVersion: plugin.ProtocolVersion, DeployCategory: "website", DeployDisplayNameKey: "provider.ratpanel_common", AccessDisplayNameKey: "provider.ratpanel"}, nil
+	return &plugin.Metadata{
+		ProviderType: "ratpanel", AccessProviderType: "ratpanel", ProtocolVersion: plugin.ProtocolVersion,
+		Capability: plugin.CapabilityDeploy, Category: "website", DisplayNameKey: "provider.ratpanel_common", AccessDisplayNameKey: "provider.ratpanel",
+	}, nil
 }
 
 func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
@@ -170,7 +175,7 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	deploy, err := plugin.LoadDeploySchema(schemaFS)
+	deploy, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -178,10 +183,10 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{AccessSchemaJSON: access, DeploySchemaJSON: deploy, I18n: i18n}, nil
+	return &plugin.ConfigSchema{AccessSchemaJSON: access, ProviderSchemaJSON: deploy, I18n: i18n}, nil
 }
 
-func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*pluginDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var rawAccess map[string]any
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &rawAccess); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -207,5 +212,5 @@ func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, lo
 		return nil, err
 	}
 	d.SetLogger(logger)
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

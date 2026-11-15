@@ -2,12 +2,12 @@
   "access_provider_type": "ucloud",
   "binary": "ucloud-us3",
   "capability": "deploy",
-  "deploy_category": "storage",
+  "category": "storage",
   "display_name_key": "plugin.ucloud-us3.name",
   "icon": "ucloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "ucloud-us3",
   "release": {
     "assets": {

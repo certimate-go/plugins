@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "ucloud-ussl-purger",
+  "category": "purge",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "allowClear": true,
+        "labelKey": "plugin.ucloud-ussl-purger.purge.form.endpoint.label",
+        "placeholderKey": "plugin.ucloud-ussl-purger.purge.form.endpoint.placeholder",
+        "tooltipKey": "plugin.ucloud-ussl-purger.purge.form.endpoint.tooltip",
+        "tooltipHtml": true,
+        "required": false
+      }
+    ]
+  }
+}

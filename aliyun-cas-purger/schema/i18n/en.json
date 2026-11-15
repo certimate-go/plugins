@@ -1,0 +1,6 @@
+{
+  "plugin.aliyun-cas-purger.name": "Alibaba Cloud - CAS (Certificate Management Service) (Purge)",
+  "plugin.aliyun-cas-purger.purge.form.region.label": "Alibaba Cloud region",
+  "plugin.aliyun-cas-purger.purge.form.region.placeholder": "Please enter Alibaba Cloud CAS region (e.g. cn-hangzhou)",
+  "plugin.aliyun-cas-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://www.alibabacloud.com/help/en/ssl-certificate/developer-reference/endpoints\" target=\"_blank\">https://www.alibabacloud.com/help/en/ssl-certificate/developer-reference/endpoints</a>"
+}

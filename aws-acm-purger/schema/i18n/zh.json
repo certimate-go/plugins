@@ -1,0 +1,6 @@
+{
+  "plugin.aws-acm-purger.name": "AWS - 证书管理器 ACM（过期清除）",
+  "plugin.aws-acm-purger.purge.form.region.label": "AWS 服务区域",
+  "plugin.aws-acm-purger.purge.form.region.placeholder": "请输入 AWS ACM 服务区域（例如：us-east-1）",
+  "plugin.aws-acm-purger.purge.form.region.tooltip": "这是什么？请参阅 <a href=\"https://docs.aws.amazon.com/zh_cn/general/latest/gr/rande.html#regional-endpoints\" target=\"_blank\">https://docs.aws.amazon.com/zh_cn/general/latest/gr/rande.html#regional-endpoints</a>"
+}

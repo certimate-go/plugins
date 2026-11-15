@@ -14,13 +14,15 @@ var schemaFS embed.FS
 
 const providerType = "discordbot"
 
-type server struct{}
+type server struct {
+	plugin.NoopFinalizer
+}
 
 func main() {
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: plugin.PluginSet{
-			plugin.NotifyPluginName: &plugin.NotifyGRPCPlugin{Impl: &server{}},
+			plugin.PluginName: &plugin.GRPCPlugin{Impl: &server{}},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})
@@ -31,7 +33,8 @@ func (*server) GetMetadata(context.Context) (*plugin.Metadata, error) {
 		ProviderType:         providerType,
 		AccessProviderType:   providerType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployDisplayNameKey: "plugin." + providerType + ".name",
+		Capability:           plugin.CapabilityNotify,
+		DisplayNameKey:       "plugin." + providerType + ".name",
 		AccessDisplayNameKey: "plugin." + providerType + ".name",
 	}, nil
 }
@@ -50,8 +53,8 @@ func (*server) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: access,
-		DeploySchemaJSON: config,
-		I18n:             i18n,
+		AccessSchemaJSON:   access,
+		ProviderSchemaJSON: config,
+		I18n:               i18n,
 	}, nil
 }

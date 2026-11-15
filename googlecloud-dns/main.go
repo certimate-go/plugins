@@ -18,7 +18,7 @@ func main() {
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
 		Plugins: plugin.PluginSet{
-			plugin.DnsPluginName: &plugin.DnsGRPCPlugin{Impl: &server{}},
+			plugin.PluginName: &plugin.GRPCPlugin{Impl: &server{}},
 		},
 		GRPCServer: githubplugin.DefaultGRPCServer,
 	})
@@ -26,10 +26,11 @@ func main() {
 
 func (*server) GetMetadata(context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   "googlecloud",
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployDisplayNameKey: "plugin." + providerType + ".name",
+		ProviderType:       providerType,
+		AccessProviderType: "googlecloud",
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDns,
+		DisplayNameKey:     "plugin." + providerType + ".name",
 	}, nil
 }
 
@@ -43,7 +44,7 @@ func (*server) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		DeploySchemaJSON: config,
-		I18n:             i18n,
+		ProviderSchemaJSON: config,
+		I18n:               i18n,
 	}, nil
 }

@@ -4,8 +4,10 @@ import (
 	"context"
 	"fmt"
 	"log/slog"
+	"net/http"
 	"time"
 
+	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	gcpcm "google.golang.org/api/certificatemanager/v1"
 	gcpoption "google.golang.org/api/option"
@@ -138,7 +140,8 @@ func createSDKClient(serviceAccountKey string) (*gcpcm.Service, error) {
 		return nil, fmt.Errorf("unable to acquire service account config: %w", err)
 	}
 
-	ctx := context.Background()
+	tokenClient := &http.Client{Timeout: 10 * time.Second}
+	ctx := context.WithValue(context.Background(), oauth2.HTTPClient, tokenClient)
 	tokenSource := gcpoption.WithTokenSource(saConf.TokenSource(ctx))
 	service, err := gcpcm.NewService(ctx, tokenSource)
 	if err != nil {

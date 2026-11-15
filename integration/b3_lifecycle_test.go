@@ -26,7 +26,7 @@ type workflowRequestBarrier struct {
 type workflowLifecycleTarget struct {
 	failureOnly bool
 	barrier     *workflowRequestBarrier
-	verify      func(*plugin.DeployRequest)
+	verify      func(*plugin.Request)
 }
 
 func (b *workflowRequestBarrier) arm() (<-chan struct{}, func()) {
@@ -72,7 +72,7 @@ func (b *workflowRequestBarrier) waitHTTP(r *http.Request) error {
 	})
 }
 
-func verifyWorkflowReloadLifecycle(t *testing.T, ctx context.Context, api *b1WorkflowAPI, provider, packageDir, accessID string, request *plugin.DeployRequest, deploy, deploySuccess func(context.Context, *plugin.DeployRequest) (*plugin.DeployResult, error), target workflowLifecycleTarget) {
+func verifyWorkflowReloadLifecycle(t *testing.T, ctx context.Context, api *b1WorkflowAPI, provider, packageDir, accessID string, request *plugin.Request, deploy, deploySuccess func(context.Context, *plugin.Request) (*plugin.Result, error), target workflowLifecycleTarget) {
 	t.Helper()
 	manifestPath := filepath.Join(packageDir, "manifest.json")
 	original, err := os.ReadFile(manifestPath)

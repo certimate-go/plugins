@@ -37,21 +37,24 @@ const (
 	environmentProduction = "production"
 )
 
-type wangsuCdnproDeployer struct{}
+type wangsuCdnproDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*wangsuCdnproDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "cdn",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.wangsu.name",
 	}, nil
 }
 
 func (*wangsuCdnproDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -64,9 +67,9 @@ func (*wangsuCdnproDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigS
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -97,7 +100,7 @@ func parseExtendedConfig(raw string) (*extendedConfig, error) {
 	return &extended, nil
 }
 
-func (d *wangsuCdnproDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *wangsuCdnproDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -128,13 +131,13 @@ func (d *wangsuCdnproDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 	}
 
 	timestamp := time.Now().Unix()
-	encryptedPrivateKey, err := encryptPrivateKey(req.PrivateKeyPEM, access.ApiKey, timestamp)
+	encryptedPrivateKey, err := encryptPrivateKey(req.Deploy.PrivateKeyPEM, access.ApiKey, timestamp)
 	if err != nil {
 		return nil, fmt.Errorf("failed to encrypt private key: %w", err)
 	}
 	certificateNewVersionInfo := &wangsucdnprosdk.CertificateVersion{
 		PrivateKey:  lo.ToPtr(encryptedPrivateKey),
-		Certificate: lo.ToPtr(req.CertificatePEM),
+		Certificate: lo.ToPtr(req.Deploy.CertificatePEM),
 	}
 
 	var wangsuCertUrl string
@@ -234,7 +237,7 @@ func (d *wangsuCdnproDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 		return nil, err
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func createSDKClient(accessKeyId, accessKeySecret string) (*wangsucdnprosdk.Client, error) {

@@ -102,18 +102,24 @@ func TestB6CloudWorkflow(t *testing.T) {
 			defer cancel()
 			fixture := &b6CloudTarget{provider: target.provider, bound: -1}
 			startB6CloudTarget(t, http.HandlerFunc(fixture.serve))
-			verify := func(req *plugin.DeployRequest) {
+			verify := func(req *plugin.Request) {
 				t.Helper()
 				fixture.mu.Lock()
 				defer fixture.mu.Unlock()
 				got := fixture.current
 				trim := strings.TrimSpace
-				if trim(got.Certificate+got.CertificateChain) != trim(req.CertificatePEM) || trim(got.PrivateKey) != trim(req.PrivateKeyPEM) {
+				if trim(got.Certificate+got.CertificateChain) != trim(req.Deploy.CertificatePEM) || trim(got.PrivateKey) != trim(req.Deploy.PrivateKeyPEM) {
 					t.Fatal("target did not store the expected certificate chain and private key")
 				}
 			}
 			deploy := newB1WorkflowDeployer(t, "/packages", target.provider, workflowLifecycleTarget{barrier: &fixture.barrier, verify: verify})
-			req := &plugin.DeployRequest{AccessConfigJSON: target.access, ExtendedConfigJSON: target.config, LogLevel: "DEBUG"}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   target.access,
+				ExtendedConfigJSON: target.config,
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
+			}
 			issuer, _, _ := makeCertificate(t, []string{"issuer.fixture.example"}, true)
 			for _, step := range []struct {
 				name       string
@@ -131,8 +137,8 @@ func TestB6CloudWorkflow(t *testing.T) {
 			} {
 				t.Run(step.name, func(t *testing.T) {
 					if step.newCert {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{b6Domain}, false)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b6Domain}, false)
+						req.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step.name

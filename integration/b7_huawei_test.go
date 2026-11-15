@@ -114,7 +114,7 @@ func TestB7HuaweiWorkflow(t *testing.T) {
 			f := &b7HuaweiTarget{}
 			binds := target.host != b7SCMHost
 			startB7HuaweiTarget(t, hosts, http.HandlerFunc(f.serve))
-			verify := func(req *plugin.DeployRequest) {
+			verify := func(req *plugin.Request) {
 				t.Helper()
 				f.mu.Lock()
 				defer f.mu.Unlock()
@@ -128,19 +128,21 @@ func TestB7HuaweiWorkflow(t *testing.T) {
 						t.Fatal("target did not bind the uploaded certificate")
 					}
 				}
-				if !b7SamePEM(cert.Certificate, req.CertificatePEM) || !b7SamePEM(cert.PrivateKey, req.PrivateKeyPEM) {
+				if !b7SamePEM(cert.Certificate, req.Deploy.CertificatePEM) || !b7SamePEM(cert.PrivateKey, req.Deploy.PrivateKeyPEM) {
 					t.Fatal("target did not store the supplied chain and private key")
 				}
-				if target.host == b7OBSHost && (f.binding.Name != cert.Name || !b7SamePEM(f.binding.Certificate, req.CertificatePEM) ||
-					!b7SamePEM(f.binding.CertificateChain, req.CertificatePEM) ||
-					!b7SamePEM(f.binding.PrivateKey, req.PrivateKeyPEM)) {
+				if target.host == b7OBSHost && (f.binding.Name != cert.Name || !b7SamePEM(f.binding.Certificate, req.Deploy.CertificatePEM) ||
+					!b7SamePEM(f.binding.CertificateChain, req.Deploy.CertificatePEM) ||
+					!b7SamePEM(f.binding.PrivateKey, req.Deploy.PrivateKeyPEM)) {
 					t.Fatal("OBS did not bind the supplied chain and key")
 				}
 			}
 			deploy := newB1WorkflowDeployer(t, dir, target.provider, workflowLifecycleTarget{barrier: &f.barrier, verify: verify})
-			req := &plugin.DeployRequest{
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
 				AccessConfigJSON:   `{"accessKeyId":"fixture-huawei-access","secretAccessKey":"fixture-huawei-secret","enterpriseProjectId":"fixture-project"}`,
 				ExtendedConfigJSON: target.config,
+				Deploy:             &plugin.DeployPayload{},
 			}
 			issuer, _, _ := makeCertificate(t, []string{"fixture-issuer.example"}, true)
 			type step struct {
@@ -166,8 +168,8 @@ func TestB7HuaweiWorkflow(t *testing.T) {
 			for _, step := range steps {
 				passed := t.Run(step.name, func(t *testing.T) {
 					if step.fresh {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{b7Domain}, false)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b7Domain}, false)
+						req.Deploy.CertificatePEM += issuer
 					}
 					f.mu.Lock()
 					f.rejectAuth, f.rejectBind = step.authFail, step.bindFail

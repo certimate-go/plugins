@@ -27,21 +27,24 @@ const (
 	displayNameKey = "plugin.cpanel.name"
 )
 
-type pluginDeployer struct{}
+type pluginDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*pluginDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "website",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "website",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "provider.cpanel",
 	}, nil
 }
 
 func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -50,10 +53,10 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{DeploySchemaJSON: deploySchema, I18n: i18n}, nil
+	return &plugin.ConfigSchema{ProviderSchemaJSON: deploySchema, I18n: i18n}, nil
 }
 
-func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*pluginDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var rawAccess map[string]any
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &rawAccess); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -78,5 +81,5 @@ func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, lo
 		return nil, err
 	}
 	d.SetLogger(logger)
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

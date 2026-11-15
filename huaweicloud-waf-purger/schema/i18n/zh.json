@@ -1,0 +1,6 @@
+{
+  "plugin.huaweicloud-waf-purger.name": "华为云 - Web 应用防火墙 WAF（过期清除）",
+  "plugin.huaweicloud-waf-purger.purge.form.region.label": "华为云服务区域",
+  "plugin.huaweicloud-waf-purger.purge.form.region.placeholder": "请输入华为云 WAF 服务区域（例如：cn-north-1）",
+  "plugin.huaweicloud-waf-purger.purge.form.region.tooltip": "这是什么？请参阅 <a href=\"https://console.huaweicloud.com/apiexplorer/#/endpoint/waf\" target=\"_blank\">https://console.huaweicloud.com/apiexplorer/#/endpoint/waf</a>"
+}

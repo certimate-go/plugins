@@ -19,14 +19,19 @@ const (
 	accessType   = "yandexcloud"
 )
 
-type pluginDeployer struct{}
+type pluginDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*pluginDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
-	return &plugin.Metadata{ProviderType: providerType, AccessProviderType: accessType, ProtocolVersion: plugin.ProtocolVersion, DeployCategory: "ssl", DeployDisplayNameKey: "plugin.yandexcloud-certificatemanager.name"}, nil
+	return &plugin.Metadata{
+		ProviderType: providerType, AccessProviderType: accessType, ProtocolVersion: plugin.ProtocolVersion,
+		Capability: plugin.CapabilityDeploy, Category: "ssl", DisplayNameKey: "plugin.yandexcloud-certificatemanager.name",
+	}, nil
 }
 
 func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploy, err := plugin.LoadDeploySchema(schemaFS)
+	deploy, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -34,7 +39,7 @@ func (*pluginDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, e
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{DeploySchemaJSON: deploy, I18n: i18n}, nil
+	return &plugin.ConfigSchema{ProviderSchemaJSON: deploy, I18n: i18n}, nil
 }
 
 type accessConfig struct {
@@ -42,7 +47,7 @@ type accessConfig struct {
 	ServiceAccountKey string `json:"serviceAccountKey"`
 }
 
-func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*pluginDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var rawAccess map[string]any
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &rawAccess); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -64,8 +69,8 @@ func (*pluginDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, lo
 		return nil, err
 	}
 	d.SetLogger(logger)
-	if _, err := d.Deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM); err != nil {
+	if _, err := d.Deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM); err != nil {
 		return nil, err
 	}
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }

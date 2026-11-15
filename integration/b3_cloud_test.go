@@ -49,7 +49,7 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 8*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, DeployTimeout: 15 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, ProcessTimeout: 15 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != len(b3CloudProviders) {
 		t.Fatalf("discovery count=%d failures=%v", len(discovered), failures)
@@ -70,10 +70,10 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 				Provider string `json:"provider"`
 				Category string `json:"category"`
 			}
-			if err := json.Unmarshal(schema.DeploySchemaJSON, &envelope); err != nil || envelope.Provider != provider || envelope.Category != "deploy" {
+			if err := json.Unmarshal(schema.ProviderSchemaJSON, &envelope); err != nil || envelope.Provider != provider || envelope.Category != "deploy" {
 				t.Fatal("deploy schema missing")
 			}
-			if schema.I18n["en"][meta.DeployDisplayNameKey] == "" || schema.I18n["zh"][meta.DeployDisplayNameKey] == "" {
+			if schema.I18n["en"][meta.DisplayNameKey] == "" || schema.I18n["zh"][meta.DisplayNameKey] == "" {
 				t.Fatal("display translations missing")
 			}
 			access := map[string]any{"apiToken": "fixture-cloud-token", "accessToken": "fixture-cloud-token"}
@@ -96,19 +96,25 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 			}
 			rawAccess, _ := json.Marshal(access)
 			rawExtended, _ := json.Marshal(extended)
-			req := &plugin.DeployRequest{AccessConfigJSON: string(rawAccess), ExtendedConfigJSON: string(rawExtended), LogLevel: "DEBUG"}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   string(rawAccess),
+				ExtendedConfigJSON: string(rawExtended),
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
+			}
 			var logs bytes.Buffer
 			logger := slog.New(slog.NewJSONHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug}))
-			deploy := func(ctx context.Context, req *plugin.DeployRequest) (*plugin.DeployResult, error) {
-				return manager.Deploy(ctx, dp, req, logger)
+			deploy := func(ctx context.Context, req *plugin.Request) (*plugin.Result, error) {
+				return deployViaSession(ctx, manager, dp, req, logger)
 			}
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
 				deploy = newB1WorkflowDeployer(t, dir, provider, workflowLifecycleTarget{
 					barrier: &fixture.barrier,
-					verify: func(request *plugin.DeployRequest) {
+					verify: func(request *plugin.Request) {
 						fixture.mu.Lock()
 						defer fixture.mu.Unlock()
-						if strings.TrimSpace(fixture.cert) != strings.TrimSpace(request.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(request.PrivateKeyPEM) {
+						if strings.TrimSpace(fixture.cert) != strings.TrimSpace(request.Deploy.CertificatePEM) || strings.TrimSpace(fixture.key) != strings.TrimSpace(request.Deploy.PrivateKeyPEM) {
 							t.Fatal("lifecycle deployment did not write the fresh certificate and private key to the target")
 						}
 					},
@@ -117,9 +123,9 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "recovery", "write-failure", "recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" || step == "write-failure" {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{"cloud.example.com"}, false)
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"cloud.example.com"}, false)
 						issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step
@@ -137,7 +143,7 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					if fixture.cert != req.CertificatePEM || fixture.key != req.PrivateKeyPEM {
+					if fixture.cert != req.Deploy.CertificatePEM || fixture.key != req.Deploy.PrivateKeyPEM {
 						t.Fatal("target certificate chain/private key mismatch")
 					}
 					if provider == "googlecloud-certificatemanager" && step == "repeat" && fixture.writes != before {
@@ -152,7 +158,7 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 					if provider == "linode-los" && step == "renew" && fixture.deletes == 0 {
 						t.Fatal("existing storage certificate was not replaced")
 					}
-					if strings.Contains(logs.String(), req.PrivateKeyPEM) || strings.Contains(logs.String(), "fixture-cloud-token") {
+					if strings.Contains(logs.String(), req.Deploy.PrivateKeyPEM) || strings.Contains(logs.String(), "fixture-cloud-token") {
 						t.Fatal("secret leaked into plugin logs")
 					}
 				})
@@ -167,13 +173,13 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 					cancelCtx, stop := context.WithCancel(ctx)
 					defer stop()
 					completed := make(chan error, 1)
-					go func() { _, err := manager.Deploy(cancelCtx, dp, req, logger); completed <- err }()
+					go func() { _, err := deployViaSession(cancelCtx, manager, dp, req, logger); completed <- err }()
 					select {
 					case <-entered:
 						stop()
 					case err := <-completed:
 						t.Fatalf("deployment ended before the target was blocked: %v", err)
-					case <-time.After(cfg.DeployTimeout):
+					case <-time.After(cfg.ProcessTimeout):
 						t.Fatal("deployment did not reach the blocked target")
 					}
 					select {
@@ -181,18 +187,18 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 						if err == nil {
 							t.Fatal("canceled deployment reported success")
 						}
-					case <-time.After(cfg.DeployTimeout):
+					case <-time.After(cfg.ProcessTimeout):
 						t.Fatal("deployment did not stop after cancellation")
 					}
 					fixture.mu.Lock()
 					fixture.mode = "recovery"
 					fixture.mu.Unlock()
-					if _, err := manager.Deploy(ctx, dp, req, logger); err != nil {
+					if _, err := deployViaSession(ctx, manager, dp, req, logger); err != nil {
 						t.Fatal(err)
 					}
 					fixture.mu.Lock()
 					defer fixture.mu.Unlock()
-					if fixture.cert != req.CertificatePEM || fixture.key != req.PrivateKeyPEM {
+					if fixture.cert != req.Deploy.CertificatePEM || fixture.key != req.Deploy.PrivateKeyPEM {
 						t.Fatal("canceled plugin did not recover")
 					}
 				})
@@ -227,7 +233,7 @@ func TestB3CloudDeploymentBatch(t *testing.T) {
 					}
 					fixture.mu.Lock()
 					defer fixture.mu.Unlock()
-					if fixture.certificateID != 42 || fixture.cert != req.CertificatePEM || fixture.key != req.PrivateKeyPEM {
+					if fixture.certificateID != 42 || fixture.cert != req.Deploy.CertificatePEM || fixture.key != req.Deploy.PrivateKeyPEM {
 						t.Fatal("new certificate was not bound")
 					}
 				})

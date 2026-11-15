@@ -12,8 +12,8 @@ import (
 	"github.com/qiniu/go-sdk/v7/auth"
 
 	"github.com/certimate-go/certimate/pkg/core"
-	qiniusdk "github.com/certimate-go/plugins/internal/qiniusdk"
 	xcert "github.com/certimate-go/certimate/pkg/utils/cert"
+	qiniusdk "github.com/certimate-go/plugins/internal/qiniusdk"
 )
 
 type (

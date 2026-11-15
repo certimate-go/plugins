@@ -52,18 +52,18 @@ func (d *envDeployTester) SetLogger(logger *slog.Logger) {
 }
 
 func (d *envDeployTester) Deploy(ctx context.Context, certPEM, privkeyPEM string) (*core.DeployerDeployResult, error) {
-	res, err := d.impl.Deploy(ctx, &plugin.DeployRequest{
+	res, err := d.impl.Process(ctx, &plugin.Request{
+		Capability:         plugin.CapabilityDeploy,
 		AccessConfigJSON:   d.accessConfigJSON,
 		ExtendedConfigJSON: d.extendedConfigJSON,
-		CertificatePEM:     certPEM,
-		PrivateKeyPEM:      privkeyPEM,
+		Deploy:             &plugin.DeployPayload{CertificatePEM: certPEM, PrivateKeyPEM: privkeyPEM},
 	}, d.logger)
 	if err != nil {
 		return nil, err
 	}
 
 	var extendedData map[string]any
-	if err := json.Unmarshal([]byte(res.ExtendedDataJSON), &extendedData); err != nil {
+	if err := json.Unmarshal([]byte(res.Deploy.ExtendedDataJSON), &extendedData); err != nil {
 		return nil, err
 	}
 	return &core.DeployerDeployResult{ExtendedData: extendedData}, nil

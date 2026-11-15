@@ -75,7 +75,7 @@ func TestB4RainyunWorkflow(t *testing.T) {
 				f.certs[41] = b4RainyunCertificate{oldCert, oldKey}
 			}
 			newB4CloudProxy(t, []string{"api.v2.rainyun.com"}, http.HandlerFunc(f.serve))
-			verify := func(req *plugin.DeployRequest) {
+			verify := func(req *plugin.Request) {
 				t.Helper()
 				f.mu.Lock()
 				defer f.mu.Unlock()
@@ -87,12 +87,18 @@ func TestB4RainyunWorkflow(t *testing.T) {
 					id = 41
 				}
 				got := f.certs[id]
-				if strings.TrimSpace(got.Cert) != strings.TrimSpace(req.CertificatePEM) || strings.TrimSpace(got.Key) != strings.TrimSpace(req.PrivateKeyPEM) {
+				if strings.TrimSpace(got.Cert) != strings.TrimSpace(req.Deploy.CertificatePEM) || strings.TrimSpace(got.Key) != strings.TrimSpace(req.Deploy.PrivateKeyPEM) {
 					t.Fatalf("target %s did not store the certificate chain and key at certificate ID %d", target.name, id)
 				}
 			}
 			deploy := newB1WorkflowDeployer(t, dir, target.provider, workflowLifecycleTarget{barrier: &f.barrier, verify: verify})
-			req := &plugin.DeployRequest{AccessConfigJSON: `{"apiKey":"` + b4RainyunKey + `"}`, ExtendedConfigJSON: target.config, LogLevel: "DEBUG"}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   `{"apiKey":"` + b4RainyunKey + `"}`,
+				ExtendedConfigJSON: target.config,
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
+			}
 			steps := []string{"initial", "repeat", "renew", "auth-failure", "auth-recovery"}
 			if target.name == "rcdn" {
 				steps = append(steps, "binding-failure", "binding-recovery")
@@ -101,9 +107,9 @@ func TestB4RainyunWorkflow(t *testing.T) {
 				t.Run(step, func(t *testing.T) {
 					fresh := step == "initial" || step == "renew" || step == "binding-failure"
 					if fresh {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{"fixture.example", "*.fixture.example"}, false)
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"fixture.example", "*.fixture.example"}, false)
 						issuer, _, _ := makeCertificate(t, []string{"fixture-issuer.example"}, true)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM += issuer
 					}
 					f.mu.Lock()
 					f.mode = step
@@ -315,7 +321,11 @@ func buildB4CloudPackages(t *testing.T, dir string, providers []string, goos, ar
 		if output, err := cmd.CombinedOutput(); err != nil {
 			t.Fatalf("build %s: %v\n%s", provider, err, output)
 		}
-		for _, name := range []string{"manifest.json", m.Icon} {
+		names := []string{"manifest.json"}
+		if m.Icon != "" {
+			names = append(names, m.Icon)
+		}
+		for _, name := range names {
 			raw, err := os.ReadFile(filepath.Join("..", provider, name))
 			if err != nil {
 				t.Fatal(err)

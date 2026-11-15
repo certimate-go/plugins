@@ -1,0 +1,9 @@
+{
+  "plugin.aws-iam-purger.name": "AWS - IAM (Identity and Access Management) (Purge)",
+  "plugin.aws-iam-purger.purge.form.region.label": "AWS Region",
+  "plugin.aws-iam-purger.purge.form.region.placeholder": "Please enter AWS IAM region (e.g. us-east-1)",
+  "plugin.aws-iam-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://docs.aws.amazon.com/en_us/general/latest/gr/rande.html#regional-endpoints\" target=\"_blank\">https://docs.aws.amazon.com/en_us/general/latest/gr/rande.html#regional-endpoints</a>",
+  "plugin.aws-iam-purger.purge.form.certificatePath.label": "AWS IAM certificate path (Optional)",
+  "plugin.aws-iam-purger.purge.form.certificatePath.placeholder": "Please enter AWS IAM certificate path",
+  "plugin.aws-iam-purger.purge.form.certificatePath.tooltip": "For more information, see <a href=\"https://docs.aws.amazon.com/en_us/IAM/latest/UserGuide/reference_identifiers.html\" target=\"_blank\">https://docs.aws.amazon.com/en_us/IAM/latest/UserGuide/reference_identifiers.html</a>"
+}

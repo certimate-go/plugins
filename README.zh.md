@@ -2,7 +2,7 @@
 
 [English](README.md) | 中文
 
-[certimate](https://github.com/certimate-go/certimate) 的外置 deployer 插件集合。每个插件是一个独立二进制，certimate 通过 [hashicorp/go-plugin](https://github.com/hashicorp/go-plugin) 以 gRPC 子进程的方式启动它，把证书部署到目标平台。新增插件**无需改动 certimate 核心**。
+[certimate](https://github.com/certimate-go/certimate) 的外置 provider 插件集合。每个插件是一个独立二进制，certimate 通过 [hashicorp/go-plugin](https://github.com/hashicorp/go-plugin) 以 gRPC 子进程的方式启动它，完成证书的部署、DNS 解析、通知或清除。新增插件**无需改动 certimate 核心**。
 
 本仓库同时也是插件**市场**源：构建插件、发布为 GitHub Release，并产出市场索引 `index.json`，供 certimate 的插件市场界面列出、安装、更新插件。
 
@@ -13,8 +13,8 @@ plugins/
 ├── <plugin-name>/        每个插件一个目录
 │   ├── manifest.json       身份与市场元数据
 │   ├── main.go             plugin.Serve 入口
-│   ├── server.go           Deployer 接口实现
-│   ├── schema/             form/v1 deploy（及可选 access）表单 schema 与 i18n
+│   ├── server.go           统一 Plugin 接口实现
+│   ├── schema/             form/v1 provider（及可选 access）表单 schema 与 i18n
 │   └── *_test.go
 ├── _template/            新插件脚手架
 ├── cmd/
@@ -28,11 +28,12 @@ plugins/
 
 ## 插件结构
 
-每个插件实现 `certimate/pkg/plugin` 中定义的 `Deployer` 接口：
+每个插件实现 `certimate/pkg/plugin` 中定义的统一 `Plugin` 接口：
 
-- `GetMetadata` —— 身份信息：provider type、access type、deploy category、显示名。
-- `GetConfigSchema` —— form/v1 deploy（及可选 access）schema + i18n。
-- `Deploy` —— 根据访问配置、部署配置和证书 PEM 执行部署。
+- `GetMetadata` —— 身份信息：provider type、access type、capability、category、显示名。
+- `GetConfigSchema` —— form/v1 provider（及可选 access）schema + i18n。
+- `Process` —— 根据访问配置、provider 配置和该能力的 typed payload 执行工作。
+- `PostProcess` —— 同一次执行的收尾（能力无需清理时嵌入 `plugin.NoopFinalizer`）。
 
 `manifest.json` 携带市场元数据：
 
@@ -41,7 +42,8 @@ plugins/
 | `provider_type` | 插件唯一 id（kebab-case）；同时也是目录名和二进制名 |
 | `access_provider_type` | 本插件消费的访问凭据类型 |
 | `version` | semver 版本号；**bump 它才会触发新发版** |
-| `deploy_category` | 市场分组（如 `cdn`、`storage`、`other`） |
+| `capability` | 四选一：`deploy`、`dns`、`notify`、`purge` |
+| `category` | 市场分组（如 `cdn`、`storage`、`other`） |
 | `binary` | 构建出的二进制名 |
 | `icon` | 随插件发布的图标文件名 |
 | `protocol_version` | 必须与 certimate 插件协议匹配 |
@@ -50,11 +52,11 @@ plugins/
 
 ## 新增插件
 
-仓库提供 [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md)，指导 AI 编程助手开发 deploy、dns、notify 插件，覆盖凭据复用、表单与中英文翻译、构建及真实宿主验证。在本仓库中使用时，可直接给助手以下指令：
+仓库提供 [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md)，指导 AI 编程助手开发 deploy、dns、notify、purge 插件，覆盖凭据复用、表单与中英文翻译、构建及真实宿主验证。在本仓库中使用时，可直接给助手以下指令：
 
 ```text
-请读取 skills/certimate-plugin-dev/SKILL.md，为 <目标平台> 开发一个 <deploy/dns/notify> 插件。
-目标行为：<部署目标 / DNS 服务 / 通知渠道>；API 文档：<文档地址>；凭据类型：<已有类型或新建>。
+请读取 skills/certimate-plugin-dev/SKILL.md，为 <目标平台> 开发一个 <deploy/dns/notify/purge> 插件。
+目标行为：<部署目标 / DNS 服务 / 通知渠道 / 过期证书清除>；API 文档：<文档地址>；凭据类型：<已有类型或新建>。
 ```
 
 安装到 Codex：在本仓库根目录执行以下命令，将整个 skill 目录复制到个人 skills 目录（如已安装同名 skill，请先备份再更新）：
@@ -70,7 +72,7 @@ cp -R skills/certimate-plugin-dev "${CODEX_HOME:-$HOME/.codex}/skills/"
 make init PLUGIN=my-deployer          # 从 _template 生成脚手架
 ```
 
-然后编辑 `my-deployer/manifest.json`（设置 `provider_type`、`access_provider_type`、`deploy_category`、`icon` 等），在 `server.go` 实现 `Deploy()`，并编写 `schema/deploy.json`。把图标文件（svg/png）放进插件目录，并在 `manifest.icon` 指向它。
+然后编辑 `my-deployer/manifest.json`（设置 `provider_type`、`access_provider_type`、`category`、`icon` 等），在 `server.go` 实现 `Process()`，并编写 `schema/config.json`。把图标文件（svg/png）放进插件目录，并在 `manifest.icon` 指向它。
 
 插件可以**声明新的** access 类型（添加 `schema/access.json`），也可以复用已有的（内置或来自其它插件）。
 
@@ -93,6 +95,12 @@ make test                             # go test ./...
 - 仅元数据改动（图标、显示名）只会重新生成索引，不发版。
 
 完整流程与信任前提见 [`docs/releasing.md`](docs/releasing.md)。
+
+## 从内置 purge provider 升级
+
+原先内置在 certimate 核心里的十六个证书清除 provider，已迁移为本仓库的 `purge` 能力插件：`aliyun-cas-purger`、`aliyun-clb-purger`、`aliyun-esa-purger`、`aws-acm-purger`、`aws-iam-purger`、`azure-keyvault-purger`、`baiducloud-cert-purger`、`huaweicloud-elb-purger`、`huaweicloud-scm-purger`、`huaweicloud-waf-purger`、`jdcloud-ssl-purger`、`tencentcloud-gaap-purger`、`tencentcloud-ssl-purger`、`tencentcloud-tse-purger`、`ucloud-ussl-purger`、`volcengine-certcenter-purger`。
+
+引用旧清除 provider 的工作流节点，在安装映射插件后即可继续工作 —— certimate 会把旧 provider id 自动解析到这些插件；插件安装前该节点会报缺少 provider 的错误。certimate 不会未经请求就下载插件或改写工作流：请从插件市场（或自定义市场）显式安装对应插件；仅当希望节点改用新 provider id 时才需要重新保存工作流。
 
 ## 工具
 

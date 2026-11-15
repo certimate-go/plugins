@@ -24,11 +24,11 @@ func TestGetMetadata(t *testing.T) {
 	if meta.ProtocolVersion != plugin.ProtocolVersion {
 		t.Fatalf("protocol version = %d", meta.ProtocolVersion)
 	}
-	if meta.DeployCategory != "cdn" {
-		t.Fatalf("deploy category = %q, want cdn", meta.DeployCategory)
+	if meta.Category != "cdn" {
+		t.Fatalf("deploy category = %q, want cdn", meta.Category)
 	}
-	if meta.DeployDisplayNameKey != displayNameKey {
-		t.Fatalf("display name key = %q", meta.DeployDisplayNameKey)
+	if meta.DisplayNameKey != displayNameKey {
+		t.Fatalf("display name key = %q", meta.DisplayNameKey)
 	}
 }
 
@@ -75,7 +75,7 @@ func TestGetConfigSchema(t *testing.T) {
 	}
 
 	var deployEnv envelope
-	if err := json.Unmarshal(schema.DeploySchemaJSON, &deployEnv); err != nil {
+	if err := json.Unmarshal(schema.ProviderSchemaJSON, &deployEnv); err != nil {
 		t.Fatalf("deploy envelope invalid: %v", err)
 	}
 	if deployEnv.SchemaVersion != "form/v1" || deployEnv.Provider != providerType || deployEnv.Category != "deploy" {
@@ -112,13 +112,13 @@ func TestGetConfigSchema(t *testing.T) {
 	}
 }
 
-func TestDeploySchema_DomainsColumnCarriesNoValidator(t *testing.T) {
+func TestProviderSchema_DomainsColumnCarriesNoValidator(t *testing.T) {
 	var deployEnv struct {
 		Schema struct {
 			Columns []map[string]any `json:"columns"`
 		} `json:"schema"`
 	}
-	if err := json.Unmarshal(mustLoadDeploySchemaJSON(t), &deployEnv); err != nil {
+	if err := json.Unmarshal(mustLoadProviderSchemaJSON(t), &deployEnv); err != nil {
 		t.Fatalf("deploy envelope invalid: %v", err)
 	}
 
@@ -135,20 +135,22 @@ func TestDeploySchema_DomainsColumnCarriesNoValidator(t *testing.T) {
 	t.Fatal("deploy schema has no domains column")
 }
 
-func mustLoadDeploySchemaJSON(t *testing.T) []byte {
+func mustLoadProviderSchemaJSON(t *testing.T) []byte {
 	t.Helper()
 
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	providerSchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		t.Fatal(err)
 	}
-	return deploySchema
+	return providerSchema
 }
 
 func TestDeploy_InvalidAccessConfig(t *testing.T) {
-	_, err := (&wangsuCdnDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+	_, err := (&wangsuCdnDeployer{}).Process(context.Background(), &plugin.Request{
+		Capability:         plugin.CapabilityDeploy,
 		AccessConfigJSON:   `{not-json`,
 		ExtendedConfigJSON: `{"domainMatchPattern":"exact","domains":"example.com"}`,
+		Deploy:             &plugin.DeployPayload{},
 	}, nil)
 	if err == nil || !strings.Contains(err.Error(), "invalid access config") {
 		t.Fatalf("expected invalid access config error, got %v", err)
@@ -156,9 +158,11 @@ func TestDeploy_InvalidAccessConfig(t *testing.T) {
 }
 
 func TestDeploy_InvalidDeployConfig(t *testing.T) {
-	_, err := (&wangsuCdnDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+	_, err := (&wangsuCdnDeployer{}).Process(context.Background(), &plugin.Request{
+		Capability:         plugin.CapabilityDeploy,
 		AccessConfigJSON:   `{"accessKeyId":"ak","accessKeySecret":"sk","apiKey":"api-key"}`,
 		ExtendedConfigJSON: `{not-json`,
+		Deploy:             &plugin.DeployPayload{},
 	}, nil)
 	if err == nil || !strings.Contains(err.Error(), "invalid deploy config") {
 		t.Fatalf("expected invalid deploy config error, got %v", err)
@@ -168,9 +172,11 @@ func TestDeploy_InvalidDeployConfig(t *testing.T) {
 func TestDeploy_BranchValidation(t *testing.T) {
 	accessConfigJSON := `{"accessKeyId":"","accessKeySecret":""}`
 
-	_, err := (&wangsuCdnDeployer{}).Deploy(context.Background(), &plugin.DeployRequest{
+	_, err := (&wangsuCdnDeployer{}).Process(context.Background(), &plugin.Request{
+		Capability:         plugin.CapabilityDeploy,
 		AccessConfigJSON:   accessConfigJSON,
 		ExtendedConfigJSON: `{"domainMatchPattern":"exact","domains":"example.com"}`,
+		Deploy:             &plugin.DeployPayload{},
 	}, nil)
 	if err == nil || !strings.Contains(err.Error(), "could not create client") {
 		t.Fatalf("expected client creation error, got %v", err)

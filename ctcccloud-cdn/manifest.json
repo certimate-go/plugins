@@ -2,12 +2,12 @@
   "access_provider_type": "ctcccloud",
   "binary": "ctcccloud-cdn",
   "capability": "deploy",
-  "deploy_category": "cdn",
+  "category": "cdn",
   "display_name_key": "plugin.ctcccloud-cdn.name",
   "icon": "ctcccloud.svg",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "ctcccloud-cdn",
   "release": {
     "assets": {

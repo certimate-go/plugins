@@ -57,7 +57,7 @@ func newDeployment(config *deploymentConfig, logger *slog.Logger) (*deployment, 
 	}, nil
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	switch d.config.DeployTarget {
 	case "certificate":
 		if err := d.deployToCertificate(ctx, certPEM, privkeyPEM); err != nil {
@@ -68,7 +68,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		return nil, fmt.Errorf("unsupported deploy target '%s'", d.config.DeployTarget)
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func (d *deployment) deployToCertificate(ctx context.Context, certPEM, privkeyPEM string) error {
@@ -125,21 +125,24 @@ const (
 	displayNameKey = "plugin.flexcdn.name"
 )
 
-type flexcdnDeployer struct{}
+type flexcdnDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*flexcdnDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "cdn",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.flexcdn.name",
 	}, nil
 }
 
 func (*flexcdnDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -151,10 +154,10 @@ func (*flexcdnDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, 
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, DeploySchemaJSON: deploySchema, I18n: i18n}, nil
+	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, ProviderSchemaJSON: deploySchema, I18n: i18n}, nil
 }
 
-func (*flexcdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*flexcdnDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -175,5 +178,5 @@ func (*flexcdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, l
 	if err != nil {
 		return nil, err
 	}
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

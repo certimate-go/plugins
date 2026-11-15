@@ -52,7 +52,7 @@ func newDeployment(config *deploymentConfig, logger *slog.Logger) (*deployment, 
 	}, nil
 }
 
-func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.DeployResult, error) {
+func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*plugin.Result, error) {
 	upres, err := d.sdkCertmgr.Upload(ctx, certPEM, privkeyPEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to upload certificate file: %w", err)
@@ -60,7 +60,7 @@ func (d *deployment) deploy(ctx context.Context, certPEM, privkeyPEM string) (*p
 		d.logger.Info("ssl certificate uploaded", slog.Any("result", upres))
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 //go:embed schema
@@ -72,21 +72,24 @@ const (
 	displayNameKey = "plugin.axisnow.name"
 )
 
-type axisnowDeployer struct{}
+type axisnowDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*axisnowDeployer) GetMetadata(context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
 		ProviderType:         providerType,
 		AccessProviderType:   accessType,
 		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		Capability:           plugin.CapabilityDeploy,
+		Category:             "cdn",
+		DisplayNameKey:       displayNameKey,
 		AccessDisplayNameKey: "plugin.axisnow.name",
 	}, nil
 }
 
 func (*axisnowDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -98,10 +101,10 @@ func (*axisnowDeployer) GetConfigSchema(context.Context) (*plugin.ConfigSchema, 
 	if err != nil {
 		return nil, err
 	}
-	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, DeploySchemaJSON: deploySchema, I18n: i18n}, nil
+	return &plugin.ConfigSchema{AccessSchemaJSON: accessSchema, ProviderSchemaJSON: deploySchema, I18n: i18n}, nil
 }
 
-func (*axisnowDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (*axisnowDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid access config: %w", err)
@@ -114,5 +117,5 @@ func (*axisnowDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, l
 	if err != nil {
 		return nil, err
 	}
-	return d.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	return d.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 }

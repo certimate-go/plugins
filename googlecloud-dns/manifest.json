@@ -5,7 +5,7 @@
   "description": "DNS-01 via Google Cloud DNS.",
   "display_name_key": "plugin.googlecloud-dns.name",
   "icon": "google.svg",
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "googlecloud-dns",
   "release": {
     "assets": {

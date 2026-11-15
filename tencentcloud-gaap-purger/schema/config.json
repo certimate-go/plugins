@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "form/v1",
+  "provider": "tencentcloud-gaap-purger",
+  "category": "purge",
+  "schema": {
+    "columns": [
+      {
+        "name": "endpoint",
+        "valueType": "text",
+        "labelKey": "plugin.tencentcloud-gaap-purger.purge.form.endpoint.label",
+        "placeholderKey": "plugin.tencentcloud-gaap-purger.purge.form.endpoint.placeholder",
+        "tooltipKey": "plugin.tencentcloud-gaap-purger.purge.form.endpoint.tooltip",
+        "tooltipHtml": true,
+        "required": false
+      }
+    ]
+  }
+}

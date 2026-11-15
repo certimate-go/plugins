@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net"
 	"strings"
 	"time"
@@ -24,15 +25,18 @@ type accessConfig struct {
 	Algorithm string `json:"algorithm"`
 }
 
-func (*server) Present(ctx context.Context, req *plugin.DnsRequest) error {
-	return update(ctx, req, (*dns.Msg).Insert)
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
+	if err := update(ctx, req, (*dns.Msg).Insert); err != nil {
+		return nil, err
+	}
+	return &plugin.Result{Dns: &plugin.DnsResult{}}, nil
 }
 
-func (*server) CleanUp(ctx context.Context, req *plugin.DnsRequest) error {
+func (*server) PostProcess(ctx context.Context, req *plugin.Request, logger *slog.Logger) error {
 	return update(ctx, req, (*dns.Msg).Remove)
 }
 
-func update(ctx context.Context, req *plugin.DnsRequest, change func(*dns.Msg, []dns.RR)) error {
+func update(ctx context.Context, req *plugin.Request, change func(*dns.Msg, []dns.RR)) error {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return fmt.Errorf("invalid RFC 2136 access configuration: %w", err)

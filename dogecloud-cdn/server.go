@@ -30,20 +30,23 @@ const (
 	domainMatchPatternCertsan = "certsan"
 )
 
-type dogeCloudCdnDeployer struct{}
+type dogeCloudCdnDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*dogeCloudCdnDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "cdn",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "cdn",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*dogeCloudCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -53,9 +56,9 @@ func (*dogeCloudCdnDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigS
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -69,7 +72,7 @@ type extendedConfig struct {
 	Domain             string `json:"domain"`
 }
 
-func (d *dogeCloudCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *dogeCloudCdnDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -98,7 +101,7 @@ func (d *dogeCloudCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 		return nil, fmt.Errorf("could not create client: %w", err)
 	}
 
-	upres, err := certmgr.Upload(ctx, req.CertificatePEM, req.PrivateKeyPEM)
+	upres, err := certmgr.Upload(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM)
 	if err != nil {
 		return nil, fmt.Errorf("failed to upload certificate file: %w", err)
 	}
@@ -120,7 +123,7 @@ func (d *dogeCloudCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 			return nil, err
 		}
 		domains = lo.Filter(domainCandidates, func(domain string, _ int) bool {
-			return xcerthostname.IsMatchByCertificatePEM(req.CertificatePEM, domain)
+			return xcerthostname.IsMatchByCertificatePEM(req.Deploy.CertificatePEM, domain)
 		})
 		if len(domains) == 0 {
 			return nil, fmt.Errorf("could not find any domains matched by certificate")
@@ -141,7 +144,7 @@ func (d *dogeCloudCdnDeployer) Deploy(ctx context.Context, req *plugin.DeployReq
 		}
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 func createSDKClient(accessKey, secretKey string) (*dogecloudsdk.Client, error) {

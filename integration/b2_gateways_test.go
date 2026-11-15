@@ -36,7 +36,7 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, DeployTimeout: 15 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: dir, StartTimeout: 15 * time.Second, ProcessTimeout: 15 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != len(b2GatewayProviders) {
 		t.Fatalf("discovery count=%d failures=%v", len(discovered), failures)
@@ -53,7 +53,7 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 				t.Fatal(err)
 			}
 			validateSchema(t, schema, provider, strings.Split(provider, "-")[0], meta)
-			if meta.ProviderType != dp.Manifest.ProviderType || meta.AccessProviderType != dp.Manifest.AccessProviderType || meta.DeployCategory != dp.Manifest.DeployCategory {
+			if meta.ProviderType != dp.Manifest.ProviderType || meta.AccessProviderType != dp.Manifest.AccessProviderType || meta.Category != dp.Manifest.Category {
 				t.Fatal("metadata mismatch")
 			}
 			access := map[string]any{"allowInsecureConnections": "true", "serverUrl": server.URL, "apiKey": "fixture-key", "apiToken": "fixture-token", "apiRole": "user", "accessKeyId": "fixture-id", "accessKey": "fixture-key", "authMethod": "token"}
@@ -69,21 +69,31 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 			}
 			accessJSON, _ := json.Marshal(access)
 			extendedJSON, _ := json.Marshal(extended)
-			req := &plugin.DeployRequest{AccessConfigJSON: string(accessJSON), ExtendedConfigJSON: string(extendedJSON), LogLevel: "DEBUG"}
+			req := &plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   string(accessJSON),
+				ExtendedConfigJSON: string(extendedJSON),
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{},
+			}
 			var logs bytes.Buffer
 			logger := slog.New(slog.NewJSONHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug}))
-			deploy := func(ctx context.Context, req *plugin.DeployRequest) (*plugin.DeployResult, error) {
-				return manager.Deploy(ctx, dp, req, logger)
+			deploy := func(ctx context.Context, req *plugin.Request) (*plugin.Result, error) {
+				return deployViaSession(ctx, manager, dp, req, logger)
 			}
 			if os.Getenv("CERTIMATE_B1_CORE_BINARY") != "" {
-				deploy = newB1WorkflowDeployer(t, dir, provider)
+				accessOwner := ""
+				if family := strings.TrimSuffix(provider, "-console"); family != provider {
+					accessOwner = family
+				}
+				deploy = newB1WorkflowDeployerWithAccessOwner(t, dir, provider, accessOwner)
 			}
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{"gateway.example.com"}, false)
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"gateway.example.com"}, false)
 						issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM += issuer
 					}
 					fixture.mu.Lock()
 					fixture.mode = step
@@ -104,7 +114,7 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 					if err != nil {
 						t.Fatal(err)
 					}
-					if fixture.writes <= before || fixture.cert != req.CertificatePEM || fixture.key != req.PrivateKeyPEM {
+					if fixture.writes <= before || fixture.cert != req.Deploy.CertificatePEM || fixture.key != req.Deploy.PrivateKeyPEM {
 						t.Fatal("remote certificate/private key mismatch")
 					}
 					if provider == "samwaf-console" && (!fixture.enabled || fixture.restarts == 0) {
@@ -113,7 +123,7 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 					if provider == "nginxproxymanager" && fixture.reloads == 0 {
 						t.Fatal("NPM reload missing")
 					}
-					if strings.Contains(logs.String(), req.PrivateKeyPEM) || strings.Contains(logs.String(), "fixture-key") || strings.Contains(logs.String(), "fixture-token") {
+					if strings.Contains(logs.String(), req.Deploy.PrivateKeyPEM) || strings.Contains(logs.String(), "fixture-key") || strings.Contains(logs.String(), "fixture-token") {
 						t.Fatal("secret leaked into logs")
 					}
 				})
@@ -147,9 +157,9 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 				req.AccessConfigJSON = string(accessJSON)
 				for _, hostType := range []string{"proxy", "redirection", "stream", "dead"} {
 					t.Run("host-"+hostType, func(t *testing.T) {
-						req.CertificatePEM, req.PrivateKeyPEM, _ = makeCertificate(t, []string{"gateway.example.com"}, false)
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{"gateway.example.com"}, false)
 						issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
-						req.CertificatePEM += issuer
+						req.Deploy.CertificatePEM += issuer
 						for _, pattern := range []string{"specified", "certsan"} {
 							values, _ := json.Marshal(map[string]any{"deployTarget": "host", "hostType": hostType, "hostId": "7", "hostMatchPattern": pattern})
 							req.ExtendedConfigJSON = string(values)
@@ -158,7 +168,7 @@ func TestB2GatewayDeploymentBatch(t *testing.T) {
 							}
 							fixture.mu.Lock()
 							writes := fixture.writes
-							if fixture.cert != req.CertificatePEM || fixture.key != req.PrivateKeyPEM || fixture.bindings[hostType] != fixture.nextCert {
+							if fixture.cert != req.Deploy.CertificatePEM || fixture.key != req.Deploy.PrivateKeyPEM || fixture.bindings[hostType] != fixture.nextCert {
 								t.Error("host did not bind uploaded certificate")
 							}
 							fixture.mu.Unlock()

@@ -2,13 +2,13 @@
   "access_provider_type": "yandexcloud",
   "binary": "yandexcloud-certificatemanager",
   "capability": "deploy",
-  "deploy_category": "ssl",
+  "category": "ssl",
   "display_name_key": "plugin.yandexcloud-certificatemanager.name",
   "icon": "yandexcloud.svg",
   "max_core_version": "",
   "min_core_version": "0.4.37",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "yandexcloud-certificatemanager",
   "release": {
     "assets": {

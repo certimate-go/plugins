@@ -24,20 +24,23 @@ const (
 	displayNameKey = "plugin.upyun-file.name"
 )
 
-type upyunFileDeployer struct{}
+type upyunFileDeployer struct {
+	plugin.NoopFinalizer
+}
 
 func (*upyunFileDeployer) GetMetadata(_ context.Context) (*plugin.Metadata, error) {
 	return &plugin.Metadata{
-		ProviderType:         providerType,
-		AccessProviderType:   accessType,
-		ProtocolVersion:      plugin.ProtocolVersion,
-		DeployCategory:       "storage",
-		DeployDisplayNameKey: displayNameKey,
+		ProviderType:       providerType,
+		AccessProviderType: accessType,
+		ProtocolVersion:    plugin.ProtocolVersion,
+		Capability:         plugin.CapabilityDeploy,
+		Category:           "storage",
+		DisplayNameKey:     displayNameKey,
 	}, nil
 }
 
 func (*upyunFileDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSchema, error) {
-	deploySchema, err := plugin.LoadDeploySchema(schemaFS)
+	deploySchema, err := plugin.LoadProviderSchema(schemaFS)
 	if err != nil {
 		return nil, err
 	}
@@ -47,9 +50,9 @@ func (*upyunFileDeployer) GetConfigSchema(_ context.Context) (*plugin.ConfigSche
 		return nil, err
 	}
 	return &plugin.ConfigSchema{
-		AccessSchemaJSON: accessSchema,
-		DeploySchemaJSON: deploySchema,
-		I18n:             i18n,
+		AccessSchemaJSON:   accessSchema,
+		ProviderSchemaJSON: deploySchema,
+		I18n:               i18n,
 	}, nil
 }
 
@@ -63,7 +66,7 @@ type extendedConfig struct {
 	Domain string `json:"domain"`
 }
 
-func (d *upyunFileDeployer) Deploy(ctx context.Context, req *plugin.DeployRequest, logger *slog.Logger) (*plugin.DeployResult, error) {
+func (d *upyunFileDeployer) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	if logger == nil {
 		logger = slog.New(slog.NewTextHandler(io.Discard, nil))
 	}
@@ -99,11 +102,11 @@ func (d *upyunFileDeployer) Deploy(ctx context.Context, req *plugin.DeployReques
 		sdkCertmgr: certmgr,
 	}
 
-	if err := runner.deploy(ctx, req.CertificatePEM, req.PrivateKeyPEM); err != nil {
+	if err := runner.deploy(ctx, req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM); err != nil {
 		return nil, err
 	}
 
-	return &plugin.DeployResult{ExtendedDataJSON: "{}"}, nil
+	return &plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: "{}"}}, nil
 }
 
 type fileRunner struct {

@@ -98,7 +98,7 @@ func TestCloudDeploymentBatch(t *testing.T) {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 8*time.Minute)
 	defer cancel()
-	cfg := plugin.PluginConfig{PluginDir: binaryDir, StartTimeout: 15 * time.Second, DeployTimeout: 45 * time.Second}
+	cfg := plugin.PluginConfig{PluginDir: binaryDir, StartTimeout: 15 * time.Second, ProcessTimeout: 45 * time.Second}
 	discovered, failures := plugin.Discover(ctx, cfg)
 	if len(failures) != 0 || len(discovered) != len(cloudBatch) {
 		t.Fatalf("discover seven packaged plugins: found=%d failures=%v", len(discovered), failures)
@@ -120,10 +120,10 @@ func TestCloudDeploymentBatch(t *testing.T) {
 			if err != nil {
 				t.Fatal(err)
 			}
-			if meta.ProviderType != entry.provider || meta.AccessProviderType != entry.access || meta.DeployCategory != entry.category || meta.ProtocolVersion != plugin.ProtocolVersion {
+			if meta.ProviderType != entry.provider || meta.AccessProviderType != entry.access || meta.Category != entry.category || meta.ProtocolVersion != plugin.ProtocolVersion {
 				t.Fatalf("unexpected metadata: %+v", meta)
 			}
-			if dp.Manifest.AccessProviderType != meta.AccessProviderType || dp.Manifest.DeployCategory != meta.DeployCategory || dp.Manifest.ProtocolVersion != meta.ProtocolVersion || dp.Manifest.DisplayNameKey != meta.DeployDisplayNameKey {
+			if dp.Manifest.AccessProviderType != meta.AccessProviderType || dp.Manifest.Category != meta.Category || dp.Manifest.ProtocolVersion != meta.ProtocolVersion || dp.Manifest.DisplayNameKey != meta.DisplayNameKey {
 				t.Fatalf("manifest differs from plugin metadata: %+v", dp.Manifest)
 			}
 			if info, err := os.Stat(filepath.Join(dp.Dir, dp.Manifest.Icon)); err != nil || info.IsDir() || info.Size() == 0 {
@@ -142,8 +142,8 @@ func TestCloudDeploymentBatch(t *testing.T) {
 				var empty struct {
 					Schema struct{ Columns []json.RawMessage } `json:"schema"`
 				}
-				if err := json.Unmarshal(schema.DeploySchemaJSON, &empty); err != nil || len(empty.Schema.Columns) != 0 {
-					t.Fatalf("KCM deployment form must be empty: %s", schema.DeploySchemaJSON)
+				if err := json.Unmarshal(schema.ProviderSchemaJSON, &empty); err != nil || len(empty.Schema.Columns) != 0 {
+					t.Fatalf("KCM deployment form must be empty: %s", schema.ProviderSchemaJSON)
 				}
 			}
 			access := map[string]string{
@@ -151,11 +151,17 @@ func TestCloudDeploymentBatch(t *testing.T) {
 				"wangsu":  `{"accessKeyId":"fixture-key","accessKeySecret":"fixture-secret","apiKey":"fixture-api-key"}`,
 				"baishan": `{"apiToken":"fixture-token"}`,
 			}[entry.access]
-			req := plugin.DeployRequest{AccessConfigJSON: access, ExtendedConfigJSON: entry.config, CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM, LogLevel: "DEBUG"}
-			deploy := func(t *testing.T, request plugin.DeployRequest, wantError string) {
+			req := plugin.Request{
+				Capability:         plugin.CapabilityDeploy,
+				AccessConfigJSON:   access,
+				ExtendedConfigJSON: entry.config,
+				LogLevel:           "DEBUG",
+				Deploy:             &plugin.DeployPayload{CertificatePEM: fixture.certPEM, PrivateKeyPEM: fixture.keyPEM},
+			}
+			deploy := func(t *testing.T, request plugin.Request, wantError string) {
 				t.Helper()
 				var logs bytes.Buffer
-				result, err := manager.Deploy(ctx, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
+				result, err := deployViaSession(ctx, manager, dp, &request, slog.New(slog.NewTextHandler(&logs, &slog.HandlerOptions{Level: slog.LevelDebug})))
 				for _, secret := range []string{fixture.keyPEM, strings.Split(fixture.keyPEM, "\n")[1], "fixture-secret", "fixture-api-key", "fixture-token"} {
 					if strings.Contains(logs.String(), secret) || (err != nil && strings.Contains(err.Error(), secret)) {
 						t.Fatal("unredacted secret in host logs or error")

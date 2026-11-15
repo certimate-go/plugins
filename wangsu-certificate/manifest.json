@@ -2,13 +2,13 @@
   "access_provider_type": "wangsu",
   "binary": "wangsu-certificate",
   "capability": "deploy",
-  "deploy_category": "ssl",
+  "category": "ssl",
   "display_name_key": "plugin.wangsu-certificate.name",
   "icon": "wangsu.svg",
   "max_core_version": "",
   "min_core_version": "",
   "priority": 100,
-  "protocol_version": 3,
+  "protocol_version": 4,
   "provider_type": "wangsu-certificate",
   "release": {
     "assets": {

@@ -13,6 +13,8 @@ func TestRenderIndexCarriesCapability(t *testing.T) {
 	root := t.TempDir()
 	mkdir(t, root, "dnsplugin")
 	writeFile(t, filepath.Join(root, "dnsplugin", "manifest.json"), `{"provider_type":"dnsplugin","version":"1.0.0","capability":"dns"}`)
+	mkdir(t, root, "purgeplugin")
+	writeFile(t, filepath.Join(root, "purgeplugin", "manifest.json"), `{"provider_type":"purgeplugin","version":"1.0.0","capability":"purge"}`)
 	mkdir(t, root, "deployplugin")
 	writeFile(t, filepath.Join(root, "deployplugin", "manifest.json"), `{"provider_type":"deployplugin","version":"1.0.0"}`)
 
@@ -30,11 +32,14 @@ func TestRenderIndexCarriesCapability(t *testing.T) {
 	for _, plugin := range catalog.Plugins {
 		capabilities[plugin.ProviderType] = plugin.Capability
 	}
-	if len(capabilities) != 2 {
-		t.Fatalf("want 2 entries, got %d: %s", len(capabilities), body)
+	if len(capabilities) != 3 {
+		t.Fatalf("want 3 entries, got %d: %s", len(capabilities), body)
 	}
 	if capabilities["dnsplugin"] == nil || *capabilities["dnsplugin"] != "dns" {
 		t.Fatalf("dnsplugin summary missing capability %q: %s", "dns", body)
+	}
+	if capabilities["purgeplugin"] == nil || *capabilities["purgeplugin"] != "purge" {
+		t.Fatalf("purgeplugin summary missing capability %q: %s", "purge", body)
 	}
 	if capabilities["deployplugin"] != nil {
 		t.Fatalf("deployplugin summary should omit capability: %s", body)

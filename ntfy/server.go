@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net/http"
 	"regexp"
 
@@ -20,7 +21,7 @@ type accessConfig struct {
 	Token     string `json:"token"`
 }
 
-func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.NotifyResult, error) {
+func (*server) Process(ctx context.Context, req *plugin.Request, logger *slog.Logger) (*plugin.Result, error) {
 	var access accessConfig
 	if err := json.Unmarshal([]byte(req.AccessConfigJSON), &access); err != nil {
 		return nil, fmt.Errorf("invalid ntfy access configuration: %w", err)
@@ -40,9 +41,9 @@ func (*server) Notify(ctx context.Context, req *plugin.NotifyRequest) (*plugin.N
 		Topic   string `json:"topic"`
 		Title   string `json:"title"`
 		Message string `json:"message"`
-	}{Topic: access.Topic, Title: req.Subject, Message: req.Message}
+	}{Topic: access.Topic, Title: req.Notify.Subject, Message: req.Notify.Message}
 	if err := pluginhttp.SendJSON(ctx, http.MethodPost, endpoint, "Authorization", credential, payload); err != nil {
 		return nil, fmt.Errorf("ntfy publish failed: %w", err)
 	}
-	return &plugin.NotifyResult{}, nil
+	return &plugin.Result{Notify: &plugin.NotifyResult{}}, nil
 }
