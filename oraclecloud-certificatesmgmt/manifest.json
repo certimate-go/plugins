@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "oraclecloud-certificatesmgmt",
+  "release": {
+    "assets": {
+      "darwin/amd64": "oraclecloud-certificatesmgmt_darwin_amd64.zip",
+      "darwin/arm64": "oraclecloud-certificatesmgmt_darwin_arm64.zip",
+      "linux/amd64": "oraclecloud-certificatesmgmt_linux_amd64.zip",
+      "linux/arm64": "oraclecloud-certificatesmgmt_linux_arm64.zip",
+      "windows/amd64": "oraclecloud-certificatesmgmt_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "ecf02998ec5f44047af6226351c2455201a27991922a398e39762a3c8ad432df",
+      "darwin/arm64": "adb3f095971bb2c22c8f7f09de27fced83ffcdc89b5ae4972b02c5b7093f0c7c",
+      "linux/amd64": "3490f01d655c5386f4669c7e10b6d24adc301c31e7c640e7f9bfd4ea953c1b90",
+      "linux/arm64": "2a2d9886bb3d3ad499ca4e4a4e4137325e9d357ab301027f3fb02a870a421be6",
+      "windows/amd64": "186dd4a294b3a2cbf62c01a7821f5892de96ea5ab9bd50150ed5eea1b7d07d9d"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "oraclecloud-certificatesmgmt/v0.2.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
