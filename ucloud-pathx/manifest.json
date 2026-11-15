@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "ucloud-pathx",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ucloud-pathx_darwin_amd64.zip",
+      "darwin/arm64": "ucloud-pathx_darwin_arm64.zip",
+      "linux/amd64": "ucloud-pathx_linux_amd64.zip",
+      "linux/arm64": "ucloud-pathx_linux_arm64.zip",
+      "windows/amd64": "ucloud-pathx_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "d575fee5dd6c603ed7058ada472ef538a8b90d8ec5faea42081705ce14b3db8a",
+      "darwin/arm64": "c5f770739573adf9f6abde08f404e2bfc2bdf2e475ae9629de7cb4daeea2a499",
+      "linux/amd64": "8ef5511357de7de582b9d26154ca7a2abe909a7c2cd92b1ab5fd3bd5c5f4c177",
+      "linux/arm64": "e6e4c9b131bca2a66550c03822037bd635beb2b9edc106a85557f7cad5971ab5",
+      "windows/amd64": "8c52f8a717a2d4ef6e52af8275e66030aad6f2cf6855bd4a500f34b011a135b4"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ucloud-pathx/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
