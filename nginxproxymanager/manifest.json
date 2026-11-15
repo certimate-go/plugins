@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "nginxproxymanager",
+  "release": {
+    "assets": {
+      "darwin/amd64": "nginxproxymanager_darwin_amd64.zip",
+      "darwin/arm64": "nginxproxymanager_darwin_arm64.zip",
+      "linux/amd64": "nginxproxymanager_linux_amd64.zip",
+      "linux/arm64": "nginxproxymanager_linux_arm64.zip",
+      "windows/amd64": "nginxproxymanager_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "9d3f2173b8118ccdfa60b6c4d55af4f504805b144791b0c2b05ec8a0d3cbd88c",
+      "darwin/arm64": "8f42106cc2cbac49ed5fe095a16698ee819ffda998d9ce84fa361ce06666b6f4",
+      "linux/amd64": "9b8ff94f57ee23b092630d71c2695afbce518cb0b70bc5583b8baa466f71fa91",
+      "linux/arm64": "f8e90d862bfb608f7bdd597ba7f0bb5179455490da4ab038c54877dd8af8f8db",
+      "windows/amd64": "b098ac575a0bb995f2490a66a4294176e8dec19cbc3b15679ff0647299aea926"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "nginxproxymanager/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
