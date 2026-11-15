@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "volcengine-apig",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-apig_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-apig_darwin_arm64.zip",
+      "linux/amd64": "volcengine-apig_linux_amd64.zip",
+      "linux/arm64": "volcengine-apig_linux_arm64.zip",
+      "windows/amd64": "volcengine-apig_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "be78287d4db5c475eaa8480dbecf87fb458c5765bd666abd2187cc138abc8621",
+      "darwin/arm64": "83ad9764f8edd1ba21823619afd4b570939c9da6441ce7cdbbae075efbdd2b24",
+      "linux/amd64": "4f2ae90bf5b835cb3a6a99959a73895419afa40bb1a321abfea7758ed167814e",
+      "linux/arm64": "8a9f0f765b3e7a490ceaa838f257146e53982a29fd8dc8b7cfa9bc2c4042c831",
+      "windows/amd64": "0b421f58601b6e1cec7466c9bfa98becb899f2e61802183b5bf95c92ec971bb9"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-apig/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
