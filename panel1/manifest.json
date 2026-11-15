@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "1panel",
+  "release": {
+    "assets": {
+      "darwin/amd64": "panel1_darwin_amd64.zip",
+      "darwin/arm64": "panel1_darwin_arm64.zip",
+      "linux/amd64": "panel1_linux_amd64.zip",
+      "linux/arm64": "panel1_linux_arm64.zip",
+      "windows/amd64": "panel1_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "c1a79020f48ba4134d3c84b5767330591df82e296771f03794185eafc2e74fcd",
+      "darwin/arm64": "1bcfd3db3165fa8cc8a05734d0922299b1ed9bc038ff191b8144fce252526433",
+      "linux/amd64": "d4d172d08e67a2f18a3a5b48ba8590566f18b2cca5004bffe6863f2a37b44658",
+      "linux/arm64": "995bb76c42e8f10c76219ec1811216f6a1ac31687f7138df40352b859e75e539",
+      "windows/amd64": "92aee8b41aecba9686ecd2e2e59efa30fe61b591fb9a22605fc6afba6faa5bbd"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "panel1/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
