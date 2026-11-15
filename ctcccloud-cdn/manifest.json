@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "ctcccloud-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ctcccloud-cdn_darwin_amd64.zip",
+      "darwin/arm64": "ctcccloud-cdn_darwin_arm64.zip",
+      "linux/amd64": "ctcccloud-cdn_linux_amd64.zip",
+      "linux/arm64": "ctcccloud-cdn_linux_arm64.zip",
+      "windows/amd64": "ctcccloud-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "650ae6f98ae7b78f11563d51ea11c95354d076a6626c98f6b244deee36e66a62",
+      "darwin/arm64": "9797003a528594a840ff92368d6550fa2889f3bbf5e977714496a882c9cb5d9e",
+      "linux/amd64": "5969c20b12e29124aaf310596f53734b4771819159aa981748924d16f0f592f0",
+      "linux/arm64": "d7f6eddbaa26f326e35f6ce3bb0297feb7f9503827bae747676431b7c22884ac",
+      "windows/amd64": "600040520351a8599b99c33f24a40293652afebcc7c247df868c8d6784cf8e24"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ctcccloud-cdn/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
