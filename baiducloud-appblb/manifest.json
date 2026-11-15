@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "baiducloud-appblb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baiducloud-appblb_darwin_amd64.zip",
+      "darwin/arm64": "baiducloud-appblb_darwin_arm64.zip",
+      "linux/amd64": "baiducloud-appblb_linux_amd64.zip",
+      "linux/arm64": "baiducloud-appblb_linux_arm64.zip",
+      "windows/amd64": "baiducloud-appblb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "4e27fc173fd219ec42b908bd6e8c98fb4f697521d709ba9e6c233437782e4d68",
+      "darwin/arm64": "d6b226abfb1104e0b7348debb29546bc32a8e61291c177abb3a10eed99d0f96e",
+      "linux/amd64": "cf0ce4387f53c46e0a25660563c6b536cd1f2615fc5a6ddfee2c4c964c928624",
+      "linux/arm64": "06c8bb202fae328e2cf18dee809228fcff228fce926f4ef36a25ac0cad4c88aa",
+      "windows/amd64": "c23bd22b2dfb6f88419b023393cd72d3b1cc2a13178c4a549db7304b27fcecd2"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baiducloud-appblb/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
