@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "cmcccloud-vlb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "cmcccloud-vlb_darwin_amd64.zip",
+      "darwin/arm64": "cmcccloud-vlb_darwin_arm64.zip",
+      "linux/amd64": "cmcccloud-vlb_linux_amd64.zip",
+      "linux/arm64": "cmcccloud-vlb_linux_arm64.zip",
+      "windows/amd64": "cmcccloud-vlb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "d05346d421a7ed9ffeacd3e6ee3a14bfa8a134cd1889542e67982a87791ec352",
+      "darwin/arm64": "fafd6989c836c24fe01c050912a637171e431c49afdbb853c64e4a70cf0b831d",
+      "linux/amd64": "1b886903dab6a913112b960f71e4d373a639a06e4f90c010add5c560fdc2e5ed",
+      "linux/arm64": "db8d083d890a5154a7dd1a952fe94251b577a2d135d5bc6e3c4e6adc412dac70",
+      "windows/amd64": "ca8023ac4b564f5d08ea2939a934565ac6cf5292f5c1af238b088b7dc9848710"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "cmcccloud-vlb/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
