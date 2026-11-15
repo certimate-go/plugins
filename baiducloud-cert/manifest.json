@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "baiducloud-cert",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baiducloud-cert_darwin_amd64.zip",
+      "darwin/arm64": "baiducloud-cert_darwin_arm64.zip",
+      "linux/amd64": "baiducloud-cert_linux_amd64.zip",
+      "linux/arm64": "baiducloud-cert_linux_arm64.zip",
+      "windows/amd64": "baiducloud-cert_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "aa0be303ef6963756b37df106dec2edd623725b23eb264008714e379e668b2da",
+      "darwin/arm64": "b1c2286450acd0f4826ca84c17b649f396f2deaccfca164b384e7f479547d022",
+      "linux/amd64": "14ab420b115ce0728e76270f4b19c9e9e181f3defb87e934cd067d6d64c93fd8",
+      "linux/arm64": "4153a1912c1eb7922895b013c514647d9567d7b406a19d97a6a823719a2e5817",
+      "windows/amd64": "671d7932fbde644f3502f9da812ee009cbe38d19b5a1b3e438a21ed28a260540"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baiducloud-cert/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
