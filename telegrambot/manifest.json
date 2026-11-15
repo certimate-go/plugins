@@ -5,11 +5,29 @@
   "description": "Send notifications to a Telegram chat.",
   "display_name_key": "plugin.telegrambot.name",
   "icon": "telegram.svg",
+  "min_core_version": "",
   "protocol_version": 4,
   "provider_type": "telegrambot",
+  "release": {
+    "assets": {
+      "darwin/amd64": "telegrambot_darwin_amd64.zip",
+      "darwin/arm64": "telegrambot_darwin_arm64.zip",
+      "linux/amd64": "telegrambot_linux_amd64.zip",
+      "linux/arm64": "telegrambot_linux_arm64.zip",
+      "windows/amd64": "telegrambot_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "345919ffb59989b3b00ab3c871e4ae609ee475fa83522d6cab50421b2ba69288",
+      "darwin/arm64": "b274863ba2bd419ef0161e0915b490436b7fd4b347b97e369bcea50b53e31500",
+      "linux/amd64": "e05ab02456907bb28947e559d55fcf4133bf777b73fb020690981e8a9807df73",
+      "linux/arm64": "86b8f9ecb144081a2f613db849e2988a03b9730864248e22f72b50c42894afd2",
+      "windows/amd64": "4501a20c97c72e9952e3d457ab606b025a4aaa1bcad4916a01a6efe127f52130"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "telegrambot/v0.2.0"
+  },
   "usages": [
     "notification"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
