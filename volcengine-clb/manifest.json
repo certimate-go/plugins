@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "volcengine-clb",
+  "release": {
+    "assets": {
+      "darwin/amd64": "volcengine-clb_darwin_amd64.zip",
+      "darwin/arm64": "volcengine-clb_darwin_arm64.zip",
+      "linux/amd64": "volcengine-clb_linux_amd64.zip",
+      "linux/arm64": "volcengine-clb_linux_arm64.zip",
+      "windows/amd64": "volcengine-clb_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "6cc421dc799c2cd024cfe2d870ab17032fce2db4fe52849ff90347c1f75a4cfc",
+      "darwin/arm64": "cbb851b93231703cf7248275173b31b5b649e0c836e66f443a6e501b4edcd375",
+      "linux/amd64": "7e8570028a887366275bb0eb9e5e44bf9ecdbed1eb05d548e0fa795127a61722",
+      "linux/arm64": "da5f1439d393490b7a5f25bc009bf96af6e5365a8a5dfb38f8a2c5cbd1806f05",
+      "windows/amd64": "a88e044a5bd5a79d52c8d4b20fe1efb8938747ca7d4348e7deb09f135ed25917"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "volcengine-clb/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
