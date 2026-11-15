@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "flexcdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "flexcdn_darwin_amd64.zip",
+      "darwin/arm64": "flexcdn_darwin_arm64.zip",
+      "linux/amd64": "flexcdn_linux_amd64.zip",
+      "linux/arm64": "flexcdn_linux_arm64.zip",
+      "windows/amd64": "flexcdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "f174f3b36e1d127b1f65795d9cd904f15636db6edd3bb0d426547fb9d87c08f2",
+      "darwin/arm64": "0804fa1931797a87672192a31c8585e7eeca5b73c307bc379cd6b1fcab2114bd",
+      "linux/amd64": "7d3e1d71c1bca4d42a9af8c7cefe23becb6e13093c45407d7c34dfdfb7b06a58",
+      "linux/arm64": "e6c5c96484e007c00d710a1ae3b3868d340c8f34df311fd772d3887e9c8388fa",
+      "windows/amd64": "2f060a5e936f3606bfc4f6d42846f086b1bf459d2aa94b3d68048af797b4ef5c"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "flexcdn/v0.2.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
