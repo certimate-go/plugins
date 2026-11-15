@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "huaweicloud-scm",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-scm_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-scm_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-scm_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-scm_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-scm_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "d1ba0e197f90f7726d663f0654f484b95afa969ffd079d255ac8131ed3c31ad2",
+      "darwin/arm64": "51b6af6a1e4b66ee7c8471ff6c25e186c8976cd26f625d1b2c6e0f49b2ace979",
+      "linux/amd64": "23da108064e0062f52fc6fbe0f4296b7a96da19d7c7c23dbe3c3368b53ab4445",
+      "linux/arm64": "8ff39676579203bebb022e089b87021687d6dbae1f349b0c1409934505cd73ab",
+      "windows/amd64": "e1136a34e7e49f5bc8bb02944eb30d929ed6cb42b0275c4a4b71d501d446a221"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-scm/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
