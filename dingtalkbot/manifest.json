@@ -5,11 +5,29 @@
   "description": "Send notifications via a DingTalk custom robot.",
   "display_name_key": "plugin.dingtalkbot.name",
   "icon": "dingtalk.svg",
+  "min_core_version": "",
   "protocol_version": 4,
   "provider_type": "dingtalkbot",
+  "release": {
+    "assets": {
+      "darwin/amd64": "dingtalkbot_darwin_amd64.zip",
+      "darwin/arm64": "dingtalkbot_darwin_arm64.zip",
+      "linux/amd64": "dingtalkbot_linux_amd64.zip",
+      "linux/arm64": "dingtalkbot_linux_arm64.zip",
+      "windows/amd64": "dingtalkbot_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "c0b5304e2bbdc1b6d5a822b7f54926dd1a77625c0bcd24eb4286502ba761577c",
+      "darwin/arm64": "54f5e58c398c8cd6a14ed34eded30a4d3ee66dbf62d7738e18ccca3e76ff0d01",
+      "linux/amd64": "a67c520f6b9d24594ddf2906a05c780a24c5aeab347bfa56a37fdb7df5e7b69b",
+      "linux/arm64": "6506449f68c12a6ab309510c127bbfadb274e9103a58a75b9fd9356e5b983e8a",
+      "windows/amd64": "577a13c14afff9416a132fec033a1f13a4438f4c1a09dd10b57ee4d67bf3bde4"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "dingtalkbot/v0.2.0"
+  },
   "usages": [
     "notification"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
