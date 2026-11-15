@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "ksyun-cdn",
+  "release": {
+    "assets": {
+      "darwin/amd64": "ksyun-cdn_darwin_amd64.zip",
+      "darwin/arm64": "ksyun-cdn_darwin_arm64.zip",
+      "linux/amd64": "ksyun-cdn_linux_amd64.zip",
+      "linux/arm64": "ksyun-cdn_linux_arm64.zip",
+      "windows/amd64": "ksyun-cdn_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "b221d86791b3ffd53224fa4105820dc6706da2cd8971b9f92d15cfc8a7d14b0d",
+      "darwin/arm64": "8dcaad99c286eedc5957a47be1c328c7dde980ff182901be3030105c0c275b64",
+      "linux/amd64": "1d8dbdb3a2daf152a9316587bcb6b44bd5079cde9bfa471b2fc0d31161c83497",
+      "linux/arm64": "5fb9a94193b7790afa6aec38c65872e3cb18fda0ae1ea3b1aeab039a1419199b",
+      "windows/amd64": "2ff659043589dbe1b0592d667f4d25c28896d1da708e7e5c5ce0024b8ed0dc60"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "ksyun-cdn/v0.2.0"
+  },
   "sha256": "",
   "usages": [
     "hosting"
