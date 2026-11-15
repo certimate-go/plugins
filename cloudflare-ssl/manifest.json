@@ -5,12 +5,30 @@
   "category": "ssl",
   "display_name_key": "plugin.cloudflare-ssl.name",
   "icon": "cloudflare.svg",
+  "min_core_version": "",
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "cloudflare-ssl",
+  "release": {
+    "assets": {
+      "darwin/amd64": "cloudflare-ssl_darwin_amd64.zip",
+      "darwin/arm64": "cloudflare-ssl_darwin_arm64.zip",
+      "linux/amd64": "cloudflare-ssl_linux_amd64.zip",
+      "linux/arm64": "cloudflare-ssl_linux_arm64.zip",
+      "windows/amd64": "cloudflare-ssl_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "dd08d6a68962f09618c29c6963524fe80ccd9b5dcfe4a254f8206658ab4ad933",
+      "darwin/arm64": "b135d6f7d8209ecbe7022c6b95d1e9459a7428f00d7fe797a31cd997f5acd10b",
+      "linux/amd64": "d39d0f7fb2c193813b85a9297a3cde49203170fc73a9fb0df8e8655755ba9057",
+      "linux/arm64": "300a3348716793ef13e455ab994f0b04d046d32ce4cebe1fdb80c3b26a223fc8",
+      "windows/amd64": "ed4cb6c52b2e6a3e0abf4b592282653423ddbb7058f6a7877adfae9d4d1d2cd6"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "cloudflare-ssl/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
