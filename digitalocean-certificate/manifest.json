@@ -5,12 +5,30 @@
   "category": "ssl",
   "display_name_key": "plugin.digitalocean-certificate.name",
   "icon": "digitalocean.svg",
+  "min_core_version": "",
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "digitalocean-certificate",
+  "release": {
+    "assets": {
+      "darwin/amd64": "digitalocean-certificate_darwin_amd64.zip",
+      "darwin/arm64": "digitalocean-certificate_darwin_arm64.zip",
+      "linux/amd64": "digitalocean-certificate_linux_amd64.zip",
+      "linux/arm64": "digitalocean-certificate_linux_arm64.zip",
+      "windows/amd64": "digitalocean-certificate_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "17400fd784876c6a80085cde8933548088a0fbe0b4c007143776abd70c146b86",
+      "darwin/arm64": "6b9cffc7c1bb694c04e750b843ee11e75bf26847b372e6835de99f0e340d2c05",
+      "linux/amd64": "09aaafa845593ba7bd7f73177a7a5df113dc8b5afbfaf1ec808ddfdd116fbab2",
+      "linux/arm64": "1f4d9897a8b758904200c8930b8010c53dec89643121241734947a820136de85",
+      "windows/amd64": "9acede21bcc52034b4750634d7bf7f6d9865cfc8109dd96b3b778ec62732f4af"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "digitalocean-certificate/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0",
-  "min_core_version": ""
+  "version": "0.2.0"
 }
