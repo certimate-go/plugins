@@ -9,6 +9,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "huaweicloud-obs",
+  "release": {
+    "assets": {
+      "darwin/amd64": "huaweicloud-obs_darwin_amd64.zip",
+      "darwin/arm64": "huaweicloud-obs_darwin_arm64.zip",
+      "linux/amd64": "huaweicloud-obs_linux_amd64.zip",
+      "linux/arm64": "huaweicloud-obs_linux_arm64.zip",
+      "windows/amd64": "huaweicloud-obs_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "d0c9e98104345c61cb9dc5bf9968282796daf1d8b9ce42e3c49d39bb7468ddee",
+      "darwin/arm64": "d1c13bbeed83356e831e3bbb75fdfb7c4baf360fad259ed122660f6a7488eb3e",
+      "linux/amd64": "5b464c4a172aa8490a0918138e4626f841e20aa3084c44f61c89d1e1176d7afc",
+      "linux/arm64": "2e1df6caaefca651ccfde23a2d6d96ef0343a3214630e5b95af761d3d189b41b",
+      "windows/amd64": "1ebf8857a60fc3912d91f27c71adcd6c4871f4222641ecdad55cca657d924531"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "huaweicloud-obs/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
