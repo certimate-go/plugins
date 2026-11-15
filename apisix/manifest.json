@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "apisix",
+  "release": {
+    "assets": {
+      "darwin/amd64": "apisix_darwin_amd64.zip",
+      "darwin/arm64": "apisix_darwin_arm64.zip",
+      "linux/amd64": "apisix_linux_amd64.zip",
+      "linux/arm64": "apisix_linux_arm64.zip",
+      "windows/amd64": "apisix_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "eaf095945be59d8ab88e2ff64331522bc902420b32f88a6a49343d2962d66ab8",
+      "darwin/arm64": "2c4357a3e1f6fac9bac26373b25af940be83733183543a1a0a2f8df6d4c1753a",
+      "linux/amd64": "7cb423bdcdae22407449780e81aa4f2ac5d2db97c3205d4630ae002bfefee5ae",
+      "linux/arm64": "06d84f65a3f6137320a0ad8ef58df162cbbbb3bdf2173f953da22b01ca9beff2",
+      "windows/amd64": "130e3798afa73bb448a2e10163d2311f49e02f03cbdce1536f0d4a6a243cc631"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "apisix/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
