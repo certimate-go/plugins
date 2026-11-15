@@ -10,6 +10,24 @@
   "priority": 100,
   "protocol_version": 4,
   "provider_type": "baotapanelgo-console",
+  "release": {
+    "assets": {
+      "darwin/amd64": "baotapanelgo-console_darwin_amd64.zip",
+      "darwin/arm64": "baotapanelgo-console_darwin_arm64.zip",
+      "linux/amd64": "baotapanelgo-console_linux_amd64.zip",
+      "linux/arm64": "baotapanelgo-console_linux_arm64.zip",
+      "windows/amd64": "baotapanelgo-console_windows_amd64.zip"
+    },
+    "checksums": {
+      "darwin/amd64": "8d8ecf779a6d032e57acbaed02bd66a3b0ea0400e163aec59e09df203d2f727f",
+      "darwin/arm64": "b6502e1fd6651106131be90c773fbdd49748ccae954b7e9353450d3d414b36dc",
+      "linux/amd64": "f455f3071cd023ed49109555b98ffb8b24515438b8a75ce6d76c794ecfa049b6",
+      "linux/arm64": "23899b97954a9aba6f28a884f528785e04b7b4035e33be103c7effde1aed3667",
+      "windows/amd64": "0d51cf98c77a2f69b7b885f8498c44d748f078073758aac42268197771d20877"
+    },
+    "repo": "certimate-go/plugins",
+    "tag": "baotapanelgo-console/v0.2.0"
+  },
   "usages": [
     "hosting"
   ],
