@@ -41,8 +41,17 @@
       },
       {
         "name": "algorithm",
-        "valueType": "text",
-        "labelKey": "plugin.rfc2136-dns.access.algorithm"
+        "valueType": "select",
+        "labelKey": "plugin.rfc2136-dns.access.algorithm",
+        "default": "hmac-sha256",
+        "allowCustomValue": true,
+        "options": [
+          { "value": "hmac-sha1" },
+          { "value": "hmac-sha224" },
+          { "value": "hmac-sha256" },
+          { "value": "hmac-sha384" },
+          { "value": "hmac-sha512" }
+        ]
       }
     ]
   }
