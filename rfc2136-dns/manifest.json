@@ -17,14 +17,14 @@
       "windows/amd64": "rfc2136-dns_windows_amd64.zip"
     },
     "checksums": {
-      "darwin/amd64": "87e0de8c0d7787c36f713ab29cdcd9625b06a0aae3c7a54cf36d2cbe3ad404c0",
-      "darwin/arm64": "7966b09c2feae6ec023f31a8e191c905b8fcb8e4bcd29a7d28fa57590545f4d4",
-      "linux/amd64": "0dbfbb6db5b98c5a43881af3ddff7ea15abcd21e3c7e05602ab904be5469c821",
-      "linux/arm64": "dbae9714cc1d95946eb9051616823110529f5d162f06c87067da8ed649da21c2",
-      "windows/amd64": "98eb4a04bf4327c4ad69dee1ffccae65c88759fafab47d3f94997d1e025bed80"
+      "darwin/amd64": "4d68d634c7eee77fe6472a8c2eab8fe7d8c3bcf9ca7fdac32a3d2ae977753aa2",
+      "darwin/arm64": "9817f480df9da17f777ecbbbae7ceada6bcadbc54be86735ea733a005cf7a682",
+      "linux/amd64": "694b43b006a4e49f1e152051ed0c94308773a0e4347815b6b60a8322ff1ed582",
+      "linux/arm64": "a6a871366cc33aab3ac8a0a9dc5f00d8fbee1a0f9f892253b62a50249a19ddda",
+      "windows/amd64": "bad16f9f978fad566c86598ab3ea0f6633725e7e3cccef6739f9dea163c9ad5a"
     },
     "repo": "certimate-go/plugins",
-    "tag": "rfc2136-dns/v0.2.0"
+    "tag": "rfc2136-dns/v0.2.1"
   },
   "usages": [
     "dns"
