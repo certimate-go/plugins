@@ -422,7 +422,7 @@ func (f *cdnFixture) handle(w http.ResponseWriter, r *http.Request) {
 			} else if f.state.mode == cdnReuse || f.state.mode == cdnPaginatedReuse && page == "2" {
 				certs = append(certs, map[string]any{"uuid": "existing-cert", "name": "existing", "certificate": f.certPEM})
 			}
-			respond(map[string]any{"success": true, "result": certs, "result_info": map[string]any{"total_count": 101}})
+			respond(map[string]any{"success": true, "result": certs, "result_info": map[string]any{"total_count": 101, "subscribed_total": "1000"}})
 		} else if r.Method == http.MethodPost {
 			check("type", body["type"], "upload")
 			check("certificate", body["certificate"], f.certPEM)

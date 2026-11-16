@@ -17,6 +17,7 @@ import (
 
 	"github.com/certimate-go/plugins/internal/ucloudsdk/transport"
 
+	"github.com/samber/lo"
 	"github.com/ucloud/ucloud-sdk-go/ucloud"
 	"github.com/ucloud/ucloud-sdk-go/ucloud/auth"
 
@@ -145,8 +146,10 @@ func (c *Certmgr) tryGetResultIfCertExists(ctx context.Context, certPEM string) 
 		}
 
 		for _, certItem := range getCertificateListResp.CertificateList {
-
-			if len(certX509.DNSNames) == 0 || certItem.Domains != strings.Join(certX509.DNSNames, ",") {
+			domains := lo.Map(strings.Split(certItem.Domains, ","), func(domain string, _ int) string {
+				return strings.TrimSpace(domain)
+			})
+			if !lo.ElementsMatch(domains, certX509.DNSNames) {
 				continue
 			}
 

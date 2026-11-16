@@ -15,6 +15,7 @@ import (
 	"os"
 	"os/signal"
 	"runtime"
+	"slices"
 	"strconv"
 	"strings"
 	"sync"
@@ -86,11 +87,15 @@ func TestB5UCloudWorkflow(t *testing.T) {
 				ExtendedConfigJSON: string(rawConfig),
 				Deploy:             &plugin.DeployPayload{},
 			}
+			names := []string{b5UCloudDomain}
+			if provider == "ucloud-ucdn" || provider == "ucloud-us3" {
+				names = append(names, "alt.b5.example.com")
+			}
 			issuer, _, _ := makeCertificate(t, []string{"issuer.example.com"}, true)
 			for _, step := range []string{"initial", "repeat", "renew", "auth-failure", "auth-recovery", "write-failure", "write-recovery", "upload-failure", "upload-recovery"} {
 				t.Run(step, func(t *testing.T) {
 					if step == "initial" || step == "renew" || strings.HasSuffix(step, "failure") {
-						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b5UCloudDomain}, false)
+						req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, names, false)
 						req.Deploy.CertificatePEM += issuer
 					}
 					target.mu.Lock()
@@ -135,7 +140,7 @@ func TestB5UCloudWorkflow(t *testing.T) {
 			}
 			if provider == "ucloud-uclb" {
 				t.Run("bind-failure-after-unbind", func(t *testing.T) {
-					req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, []string{b5UCloudDomain}, false)
+					req.Deploy.CertificatePEM, req.Deploy.PrivateKeyPEM, _ = makeCertificate(t, names, false)
 					req.Deploy.CertificatePEM += issuer
 					target.mu.Lock()
 					target.mode = "bind-failure"
@@ -364,8 +369,10 @@ func (f *b5UCloudTarget) serve(w http.ResponseWriter, r *http.Request) {
 				fail("invalid stored certificate")
 				return
 			}
+			domains := slices.Clone(leaf.DNSNames)
+			slices.Reverse(domains)
 			n, _ := strconv.Atoi(id)
-			list = append(list, map[string]any{"CertificateID": n, "CertificateSN": "resource-" + id, "Name": c.Name, "Domains": strings.Join(leaf.DNSNames, ","), "NotBefore": leaf.NotBefore.UnixMilli(), "NotAfter": leaf.NotAfter.UnixMilli()})
+			list = append(list, map[string]any{"CertificateID": n, "CertificateSN": "resource-" + id, "Name": c.Name, "Domains": strings.Join(domains, ", "), "NotBefore": leaf.NotBefore.UnixMilli(), "NotAfter": leaf.NotAfter.UnixMilli()})
 		}
 		write(map[string]any{"CertificateList": list, "TotalCount": len(list)})
 		return
