@@ -14,8 +14,6 @@ var schemaFS embed.FS
 
 const providerType = "rfc2136-dns"
 
-type server struct{}
-
 func main() {
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,

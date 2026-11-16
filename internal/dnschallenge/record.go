@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
+	"strconv"
 	"strings"
 
 	"github.com/go-acme/lego/v5/challenge/dns01"
@@ -18,6 +20,26 @@ type Record struct {
 	Name  string
 	Value string
 	TTL   uint32
+}
+
+func ConfigureResolver(req *plugin.Request) (int, error) {
+	var settings struct {
+		Nameservers        []string `json:"nameservers"`
+		DisableFollowCNAME *bool    `json:"disableFollowCNAME"`
+		TTL                int      `json:"ttl"`
+	}
+	if req.ExtendedConfigJSON != "" {
+		if err := json.Unmarshal([]byte(req.ExtendedConfigJSON), &settings); err != nil {
+			return 0, fmt.Errorf("invalid DNS challenge configuration: %w", err)
+		}
+	}
+	if settings.DisableFollowCNAME != nil {
+		if err := os.Setenv("LEGO_DISABLE_CNAME_SUPPORT", strconv.FormatBool(*settings.DisableFollowCNAME)); err != nil {
+			return 0, err
+		}
+	}
+	dns01.SetDefaultClient(dns01.NewClient(&dns01.Options{RecursiveNameservers: settings.Nameservers}))
+	return settings.TTL, nil
 }
 
 func ForZone(ctx context.Context, zone string, req *plugin.Request) (Record, error) {

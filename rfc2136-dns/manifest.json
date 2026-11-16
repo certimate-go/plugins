@@ -4,7 +4,7 @@
   "capability": "dns",
   "description": "DNS-01 via RFC 2136 dynamic updates with optional TSIG authentication.",
   "display_name_key": "plugin.rfc2136-dns.name",
-  "icon": "icon.png",
+  "icon": "icon.svg",
   "min_core_version": "",
   "protocol_version": 4,
   "provider_type": "rfc2136-dns",
@@ -29,5 +29,5 @@
   "usages": [
     "dns"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
