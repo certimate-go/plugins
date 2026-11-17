@@ -14,8 +14,6 @@ var schemaFS embed.FS
 
 const providerType = "powerdns-dns"
 
-type server struct{}
-
 func main() {
 	githubplugin.Serve(&githubplugin.ServeConfig{
 		HandshakeConfig: plugin.HandshakeConfig,
