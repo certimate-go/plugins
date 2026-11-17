@@ -24,6 +24,7 @@ Every capability implements the same unified `Plugin` interface (`GetMetadata`, 
 | `dns` | `powerdns-dns` | `GRPCPlugin`, `Process` creates the TXT, `PostProcess` removes it, `schema/config.json` |
 | `notify` | `slackbot` and the closest existing notify plugin | `GRPCPlugin`, `Process` (+ `NoopFinalizer`), `schema/config.json` |
 | `purge` | `baiducloud-cert-purger` | `GRPCPlugin`, `Process` (+ `NoopFinalizer`), `schema/config.json` |
+| access check (optional) | `apisix` | `AccessChecker` (`CheckAccess`), auto-detected by the host |
 
 ## Create or modify a plugin
 
@@ -62,6 +63,7 @@ Parse and validate configuration at the plugin boundary before calling platform 
 - For dns plugins, `PostProcess` must remove only the TXT value for the current challenge while preserving other values at the same name. Cover retries and recovery during cleanup; the host gives finalization an independent budget, so keep it bounded.
 - For notify plugins, handle destination overrides and platform failures. Verify the actual recipient and message content, and account for duplicate delivery when designing retries.
 - For purge plugins, never expand the deletion scope beyond expired candidates meeting the threshold; report the actual deleted count and keep `PostProcess` empty.
+- Optionally implement `plugin.AccessChecker` (`CheckAccess`) on any capability that consumes credentials, so the UI can run an access connectivity test. The host detects the implementation automatically — no manifest or metadata change. Validate the config first, probe with the cheapest read-only authenticated call, and classify the outcome: overall `passed`/`failed`/`inconclusive` status, a machine-readable `ReasonCode` (see `apisix/access_check.go` for the reference taxonomy), per-aspect items (`connect`, `auth`; `passed`/`failed`/`skipped`), and secret-free `Diagnostics`. Return a result instead of an error for every checkable outcome, and reserve transport errors for host-side infrastructure failures. Cover it in verification like any user-facing path (`integration/apisix_access_check_test.go` is the reference).
 - Format changed files with `gofumpt`. Express intent through names and structure without adding explanatory code comments. Preserve compiler directives such as `go:embed`.
 
 ## Build and verify

@@ -67,6 +67,14 @@ type Plugin interface {
   Deserialize the config segments with your own structs and return a `Result` with the matching result arm, e.g. `&plugin.Result{Deploy: &plugin.DeployResult{ExtendedDataJSON: ...}}`. A `nil` result is a protocol violation even on success.
 - **PostProcess** finalizes the same execution. The host calls it exactly once per execution after `Process` returns or its stream is cancelled, with a context detached from caller cancellation (default budget 30s). Embed `plugin.NoopFinalizer` when your capability needs no cleanup — that is the common case for deploy, notify, and purge. DNS providers implement it to remove the TXT record created in `Process`.
 
+A provider may additionally implement `plugin.AccessChecker` to support the access connectivity test introduced with protocol v4:
+
+```go
+CheckAccess(ctx context.Context, req *plugin.AccessCheckRequest, logger *slog.Logger) (*plugin.AccessCheckResult, error)
+```
+
+The core detects the implementation automatically and exposes the test button in the UI — no manifest or metadata change is needed. `req` carries only `AccessConfigJSON`. Return an `AccessCheckResult` with an overall `Status` (`passed`, `failed`, `inconclusive`), an optional machine-readable `ReasonCode`, per-aspect `Items` (conventionally `connect` and `auth`, each `passed`/`failed`/`skipped`), and human-readable `Diagnostics` that never contain secrets. Validate the config first, probe with the cheapest read-only authenticated API call, and classify failures (connectivity, TLS, authentication, remote error, timeout, cancellation) so the UI can attribute the cause; return a result rather than an error for every checkable outcome. The host redacts secrets from logs and error messages. See `apisix/access_check.go` for the reference implementation and `integration/apisix_access_check_test.go` for its end-to-end coverage.
+
 Honor `ctx` in both methods: when the caller cancels, the host still waits (bounded by the finalization budget) for your handler to return.
 
 ### Access types: new vs. reused

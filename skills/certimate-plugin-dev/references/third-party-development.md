@@ -25,8 +25,9 @@ Create a directory named for the provider. Give it `main.go`, `server.go`, `mani
 | DNS | `GRPCPlugin`, `PluginName` | `Process` creates the TXT, `PostProcess` removes it | `LoadProviderSchema` |
 | Notify | `GRPCPlugin`, `PluginName` | `Process` | `LoadProviderSchema` |
 | Purge | `GRPCPlugin`, `PluginName` | `Process` | `LoadProviderSchema` |
+| Access check (optional) | same `GRPCPlugin` | `CheckAccess` | — |
 
-Every capability registers under the same `plugin.PluginName` with the shared handshake; the capability differs only in the manifest, `GetMetadata`, and which payload `Process` receives (`req.Deploy`, `req.Dns`, `req.Notify`, or `req.Purge`). Capabilities without finalization embed `plugin.NoopFinalizer`. Use the shared handshake and `githubplugin.DefaultGRPCServer`. For example, the deploy entrypoint is:
+Every capability registers under the same `plugin.PluginName` with the shared handshake; the capability differs only in the manifest, `GetMetadata`, and which payload `Process` receives (`req.Deploy`, `req.Dns`, `req.Notify`, or `req.Purge`). Capabilities without finalization embed `plugin.NoopFinalizer`. A provider that consumes credentials may additionally implement `plugin.AccessChecker` (`CheckAccess`); the host detects it automatically and exposes the access connectivity test in the UI, with no manifest or metadata change. Use the shared handshake and `githubplugin.DefaultGRPCServer`. For example, the deploy entrypoint is:
 
 ```go
 package main
@@ -49,7 +50,7 @@ func main() {
 
 Implement `GetMetadata` and `GetConfigSchema` alongside the capability methods. Embed the schema files using the Go embed directive. Use `schema/config.json` for the provider form regardless of capability. Return `form/v1` and use matching display-name and field keys in `schema/i18n/en.json` and `zh.json`. Read the request and result types in the resolved package source, including the deploy logger. Read `ProtocolVersion` and manifest validation in the pinned package. Set the manifest's provider, access provider, version, capability, binary, and protocol version to match the entrypoint. Resolve every sample name and unused field before building.
 
-For an upstream example, fetch an explicit tag or commit from the public `certimate-go/plugins` repository, inspect its core dependency, and verify it matches your target protocol. Its `_template`, `powerdns-dns`, `ntfy`, and `baiducloud-cert-purger` directories show deploy, DNS, notify, and purge respectively. Copy only files you need and retain applicable licenses and notices.
+For an upstream example, fetch an explicit tag or commit from the public `certimate-go/plugins` repository, inspect its core dependency, and verify it matches your target protocol. Its `_template`, `powerdns-dns`, `ntfy`, and `baiducloud-cert-purger` directories show deploy, DNS, notify, and purge respectively, and `apisix` shows the optional access connectivity check. Copy only files you need and retain applicable licenses and notices.
 
 When defining an access type, return its access schema once. When reusing a built-in or another plugin's type, omit the access schema and read the existing credential fields. For cross-market reuse, document the owner's provider identifier and field contract. Install the owner before consumers and uninstall consumers before the owner. Removing an owner's market leaves the installed owner available. The host does not install dependencies automatically.
 
@@ -77,6 +78,7 @@ The manifest `binary` must match the staged executable. Keep the binary and dire
 - Run issuance against a fixture ACME server such as Pebble, with a DNS service the fixture CA can query and that the plugin can mutate. Verify that issuance succeeds, the target TXT value appears and is removed, and unrelated TXT values survive. Use a test zone and test credentials.
 - Send a notification test using a saved access record. Verify the target receives the expected message and credentials. Return an error from the target and check that the host reports the failure.
 - Run a purge workflow against a fixture that lists and deletes certificates. Seed expired and unexpired certificates, then verify only the ones beyond the configured expiry threshold are deleted, the rest survive, and the workflow log reports the deleted count. Repeat with a vendor delete failure and check that the workflow fails with the vendor's error.
+- If the provider implements the access connectivity check, run the test from the access form using a saved record: a correct credential passes, a wrong credential is attributed to authentication, and an unreachable endpoint is attributed to connectivity, with no secrets in the reported diagnostics.
 
 For a reused access type, repeat with the same credential record and the installed owner. Record the actual host version, command, and observed target behavior.
 
