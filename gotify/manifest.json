@@ -13,18 +13,24 @@
       "darwin/amd64": "gotify_darwin_amd64.zip",
       "darwin/arm64": "gotify_darwin_arm64.zip",
       "linux/amd64": "gotify_linux_amd64.zip",
+      "linux/arm": "gotify_linux_arm.zip",
       "linux/arm64": "gotify_linux_arm64.zip",
-      "windows/amd64": "gotify_windows_amd64.zip"
+      "windows/386": "gotify_windows_386.zip",
+      "windows/amd64": "gotify_windows_amd64.zip",
+      "windows/arm64": "gotify_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "be74ebfcba726c44b0e0624ad9911b850c716353b71b94cf61df796c2ac2a261",
-      "darwin/arm64": "2856f3544a01279d526190c9d62332bae03fd941027914046dd23dd52c826f1c",
-      "linux/amd64": "ff2b93773846a1c87137e8faa9e7844d5ce761c2a9d7aeeb5accd5ce80e26881",
-      "linux/arm64": "c6d17ca30ba6805742b9d086b4b69d203aa33d5acc1d7ba3152be13f6d8fba4f",
-      "windows/amd64": "13d5bc3b8a4249b151f1fa3c94e6dee81f6d90ee76df1f0b888f2feeebc999da"
+      "darwin/amd64": "39a46531de66f96653352021766314c44a331cb96a0a2dd3cdae4a1997cca94a",
+      "darwin/arm64": "d36c700af6225a0e147f03ececd808da72e77bad7d57cf0b822e75ad977c1916",
+      "linux/amd64": "120c2cc08d1c125f83635c16f53d3d9ec632c3a1dafad7396d94218ab547fa4d",
+      "linux/arm": "314ba627413216fccd2067aa00f80a76c49fd46585c6cc7a3a6a42e129a81d2e",
+      "linux/arm64": "2229d377e6a693fa8c9569802a3d8f33d1b0bef4e03fec0ae399c4b6eb88a164",
+      "windows/386": "966ff9df653a5e13e481f8cff9ba9a27df22ca1e4c2a0dad55b545a1289b322a",
+      "windows/amd64": "e715cc7bb94aded091dcd77cc113740be18eb79f618c869809938dbb5062ac30",
+      "windows/arm64": "f498416b3fffb30c45c55df4e52f0908a7cf9076b64a8b2817d954df1c07286d"
     },
     "repo": "certimate-go/plugins",
-    "tag": "gotify/v0.2.0"
+    "tag": "gotify/v0.2.1"
   },
   "usages": [
     "notification"
