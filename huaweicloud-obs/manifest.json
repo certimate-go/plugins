@@ -14,18 +14,24 @@
       "darwin/amd64": "huaweicloud-obs_darwin_amd64.zip",
       "darwin/arm64": "huaweicloud-obs_darwin_arm64.zip",
       "linux/amd64": "huaweicloud-obs_linux_amd64.zip",
+      "linux/arm": "huaweicloud-obs_linux_arm.zip",
       "linux/arm64": "huaweicloud-obs_linux_arm64.zip",
-      "windows/amd64": "huaweicloud-obs_windows_amd64.zip"
+      "windows/386": "huaweicloud-obs_windows_386.zip",
+      "windows/amd64": "huaweicloud-obs_windows_amd64.zip",
+      "windows/arm64": "huaweicloud-obs_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "d0c9e98104345c61cb9dc5bf9968282796daf1d8b9ce42e3c49d39bb7468ddee",
-      "darwin/arm64": "d1c13bbeed83356e831e3bbb75fdfb7c4baf360fad259ed122660f6a7488eb3e",
-      "linux/amd64": "5b464c4a172aa8490a0918138e4626f841e20aa3084c44f61c89d1e1176d7afc",
-      "linux/arm64": "2e1df6caaefca651ccfde23a2d6d96ef0343a3214630e5b95af761d3d189b41b",
-      "windows/amd64": "1ebf8857a60fc3912d91f27c71adcd6c4871f4222641ecdad55cca657d924531"
+      "darwin/amd64": "cce44e00ccdc5d908e73a7e3ddc185c3ba6faa3f94a4bfc1e006384428cdf672",
+      "darwin/arm64": "085fb8ef0635577bd1ea1ef3d8b3feeab6c993667eb4267f49ca23dd908c6559",
+      "linux/amd64": "f4b0c8ff021664f39614ebebbd922b6474d33f48f4baa88c06495a16e254aa4f",
+      "linux/arm": "a007a2db0556dd3dce00ea78c540503ab463073756b7f8e2069162b03f8f38cb",
+      "linux/arm64": "ad464dca14ff80df3903b37d5deef9bb8c9fa61f160007e77f1808822c296b4f",
+      "windows/386": "2bb9194c2ec5dd39227aa270d053f035f69488820849bfac73d7d74005de8133",
+      "windows/amd64": "9c9e90a8558a2aeabfa95a8ba7935b5ece82cb46357c40237888f7da129319cc",
+      "windows/arm64": "12dd03979bff3b9fe16768543a09837c58d52fb3e9bbb057ceb2bc3974ee4c1b"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-obs/v0.2.0"
+    "tag": "huaweicloud-obs/v0.2.1"
   },
   "usages": [
     "hosting"
