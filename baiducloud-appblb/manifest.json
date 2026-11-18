@@ -14,18 +14,24 @@
       "darwin/amd64": "baiducloud-appblb_darwin_amd64.zip",
       "darwin/arm64": "baiducloud-appblb_darwin_arm64.zip",
       "linux/amd64": "baiducloud-appblb_linux_amd64.zip",
+      "linux/arm": "baiducloud-appblb_linux_arm.zip",
       "linux/arm64": "baiducloud-appblb_linux_arm64.zip",
-      "windows/amd64": "baiducloud-appblb_windows_amd64.zip"
+      "windows/386": "baiducloud-appblb_windows_386.zip",
+      "windows/amd64": "baiducloud-appblb_windows_amd64.zip",
+      "windows/arm64": "baiducloud-appblb_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "4e27fc173fd219ec42b908bd6e8c98fb4f697521d709ba9e6c233437782e4d68",
-      "darwin/arm64": "d6b226abfb1104e0b7348debb29546bc32a8e61291c177abb3a10eed99d0f96e",
-      "linux/amd64": "cf0ce4387f53c46e0a25660563c6b536cd1f2615fc5a6ddfee2c4c964c928624",
-      "linux/arm64": "06c8bb202fae328e2cf18dee809228fcff228fce926f4ef36a25ac0cad4c88aa",
-      "windows/amd64": "c23bd22b2dfb6f88419b023393cd72d3b1cc2a13178c4a549db7304b27fcecd2"
+      "darwin/amd64": "312e6a9898e55cdd3e79237af75327ce4dca4d3421f473bac78f2c25b55569f4",
+      "darwin/arm64": "fcc7f254a538d5f4e10c696433cac51f7059b85050a1a1cdbf128e51deb7fb37",
+      "linux/amd64": "09d21724ef9ad00ba37dfbe4bdad765cb2c3697bd748fed788068db63804616d",
+      "linux/arm": "619e810394a27dcdd2163626766113906cffed13b576668e7c0e5b2aa42b8f48",
+      "linux/arm64": "e0bfc73238edb21be1807187d9ef8e8ce8248043f011b9d3bd17d07354deae61",
+      "windows/386": "102826849c182125bc8718b767e42619bc0539991b13b0c7ddeab0d05a980964",
+      "windows/amd64": "f4a4f543459bce453784f7283806bf97fa726bd098d48986ce76acd331b63cb7",
+      "windows/arm64": "0e8a52a1d7862235f4e6eb55ebd4fd9589d565ba6bf72e15d768db3485c2ba95"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baiducloud-appblb/v0.2.0"
+    "tag": "baiducloud-appblb/v0.2.1"
   },
   "usages": [
     "hosting"
