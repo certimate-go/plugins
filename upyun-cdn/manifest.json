@@ -15,18 +15,24 @@
       "darwin/amd64": "upyun-cdn_darwin_amd64.zip",
       "darwin/arm64": "upyun-cdn_darwin_arm64.zip",
       "linux/amd64": "upyun-cdn_linux_amd64.zip",
+      "linux/arm": "upyun-cdn_linux_arm.zip",
       "linux/arm64": "upyun-cdn_linux_arm64.zip",
-      "windows/amd64": "upyun-cdn_windows_amd64.zip"
+      "windows/386": "upyun-cdn_windows_386.zip",
+      "windows/amd64": "upyun-cdn_windows_amd64.zip",
+      "windows/arm64": "upyun-cdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "7c2693165538cbe91a6e007cfdefb81f6848962168a92172d5e1bd3dd33c9224",
-      "darwin/arm64": "b195c38dff9443a9cf457b684ae37736fec10c55e15e2b76f70e9f1e8c4e575f",
-      "linux/amd64": "b026c1ebebc7444781f27234917037b7428b30479e33a0d61d52b1385506ecc5",
-      "linux/arm64": "8d116791060947076d9b12075ec922cdc1c9c80ff0ef8595ab59aeb6ee255712",
-      "windows/amd64": "dc9457843591e0cfa2ff32f0330fa7af6a0e0081870707f3f40e318e44736d4e"
+      "darwin/amd64": "0b40cc17fec0f320b994b953003a70ae2296228b310476e24848b83b2169dde5",
+      "darwin/arm64": "1f11b2c3dd959e31b7171787482ed2cb819c81867ffd015fc7d37046f1962b55",
+      "linux/amd64": "4e2ee56e61efe7b2b5c32927e14be41af31363ca173ec8742c483672fc2f4c49",
+      "linux/arm": "bb372c04e62e0cc5bfa28530bd10f360c7df69c0d33d03dddf859e2beccc4a2d",
+      "linux/arm64": "51c81982253ec7f559d6d6396b4f2e00f1997008b323e79d8a6b3755f9704e7f",
+      "windows/386": "4a5bc4f9842ccea9b6549c626ff9b31d4e8792322bf88295e951483c942e55b3",
+      "windows/amd64": "374dacb70436f27419d147cd7f7a9b6606c7134cefbd34d97dd8607d04c5e870",
+      "windows/arm64": "d9cf41bcd3467495100f599415e905cf84e956c1b63989545d3bf012c33d2080"
     },
     "repo": "certimate-go/plugins",
-    "tag": "upyun-cdn/v0.2.0"
+    "tag": "upyun-cdn/v0.2.1"
   },
   "sha256": "",
   "usages": [
