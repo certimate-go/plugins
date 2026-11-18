@@ -14,18 +14,24 @@
       "darwin/amd64": "ucloud-uewaf_darwin_amd64.zip",
       "darwin/arm64": "ucloud-uewaf_darwin_arm64.zip",
       "linux/amd64": "ucloud-uewaf_linux_amd64.zip",
+      "linux/arm": "ucloud-uewaf_linux_arm.zip",
       "linux/arm64": "ucloud-uewaf_linux_arm64.zip",
-      "windows/amd64": "ucloud-uewaf_windows_amd64.zip"
+      "windows/386": "ucloud-uewaf_windows_386.zip",
+      "windows/amd64": "ucloud-uewaf_windows_amd64.zip",
+      "windows/arm64": "ucloud-uewaf_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "8be3f7333b7cf44b3680bc875ccd45b9d7b04cdf7542a62bef4bdb87b34b6221",
-      "darwin/arm64": "d02e6286a33c3bef2ae81ca1e1b1ab0afabeb74a757d5a9664001a7953f23f7e",
-      "linux/amd64": "e05f13a8e4db4a59b85730b04df8b8de32708137fe1abcf9ba466eaad462b994",
-      "linux/arm64": "9a79b02144f60179c48e23e6568c0557c92cbc0257fd8e671d104a480652064c",
-      "windows/amd64": "50ef8a762a44ac0d6cd6df98f0709ee3339f03991cb6812a602fbf1c2da94bbb"
+      "darwin/amd64": "aa55ff85ea71d6f144738f7917e980fd9bd75b00613c3771c0557469a3648113",
+      "darwin/arm64": "f2d1a0914bb58017b39c4382a4e17bef3121ad546c37555ac82239e17913fa8a",
+      "linux/amd64": "2f3aa89f683681143b8d0239656ad2a3d17bc594759707097c9ea493b6f563c6",
+      "linux/arm": "ca19a36961c038013b1cb4af7a1c988c8acd3d0dddf6d00617a435836f0acd87",
+      "linux/arm64": "a5b81d21bb0c2c210f06a3eff9dfa13f7e6751d9bdadbb679f15695e3047461f",
+      "windows/386": "f9b556d61a9a16d5a75312dbd69537ffcffc7a4dc3125b8ac5d61c1f2a2864b2",
+      "windows/amd64": "613bdd73bdcd6989b0cb86141efe57193f2cf535f48d5fb5ff821abf88338eed",
+      "windows/arm64": "067ace5ecf073a467419782748d3058d4542ac6527ab864dbb50fc30630345b1"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ucloud-uewaf/v0.2.0"
+    "tag": "ucloud-uewaf/v0.2.1"
   },
   "usages": [
     "hosting"
