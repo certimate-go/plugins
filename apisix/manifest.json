@@ -15,18 +15,24 @@
       "darwin/amd64": "apisix_darwin_amd64.zip",
       "darwin/arm64": "apisix_darwin_arm64.zip",
       "linux/amd64": "apisix_linux_amd64.zip",
+      "linux/arm": "apisix_linux_arm.zip",
       "linux/arm64": "apisix_linux_arm64.zip",
-      "windows/amd64": "apisix_windows_amd64.zip"
+      "windows/386": "apisix_windows_386.zip",
+      "windows/amd64": "apisix_windows_amd64.zip",
+      "windows/arm64": "apisix_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "eaf095945be59d8ab88e2ff64331522bc902420b32f88a6a49343d2962d66ab8",
-      "darwin/arm64": "2c4357a3e1f6fac9bac26373b25af940be83733183543a1a0a2f8df6d4c1753a",
-      "linux/amd64": "7cb423bdcdae22407449780e81aa4f2ac5d2db97c3205d4630ae002bfefee5ae",
-      "linux/arm64": "06d84f65a3f6137320a0ad8ef58df162cbbbb3bdf2173f953da22b01ca9beff2",
-      "windows/amd64": "130e3798afa73bb448a2e10163d2311f49e02f03cbdce1536f0d4a6a243cc631"
+      "darwin/amd64": "9a2effaf46a9c75f5773c2893633bd1d673f6f316bc2a4a6559ee8d36eb9550d",
+      "darwin/arm64": "a17f17467377e7cffb21ed937ef4d7a7012e492547214aee6d22d52b09325f1f",
+      "linux/amd64": "d75b222c6806c56b7499de4aeef6be21761b3f39e68fadd80e21a29bdfb85f22",
+      "linux/arm": "4740bd81fc1bf58a710e72cff3166c42e42edb512fa9492dc592c5b0281407c1",
+      "linux/arm64": "531f9551b6dbb2ab871140a45a22dae93242325675b4435b81f662dfefa0d84d",
+      "windows/386": "5a7121950b57af7ac1677a9a478cb21a81a89ce896b25b19e71dae9cba315f6d",
+      "windows/amd64": "240609aa20cedf21de8bbbad5294a057624bc0a9f3be929ab5fceae3cb86fbde",
+      "windows/arm64": "2848b5c245dfb60617b6267bb17f907b0b80376fe8313ce438d1b5f2bcd0a404"
     },
     "repo": "certimate-go/plugins",
-    "tag": "apisix/v0.2.0"
+    "tag": "apisix/v0.2.1"
   },
   "usages": [
     "hosting"
