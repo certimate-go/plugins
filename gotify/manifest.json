@@ -20,17 +20,17 @@
       "windows/arm64": "gotify_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "39a46531de66f96653352021766314c44a331cb96a0a2dd3cdae4a1997cca94a",
-      "darwin/arm64": "d36c700af6225a0e147f03ececd808da72e77bad7d57cf0b822e75ad977c1916",
-      "linux/amd64": "120c2cc08d1c125f83635c16f53d3d9ec632c3a1dafad7396d94218ab547fa4d",
-      "linux/arm": "314ba627413216fccd2067aa00f80a76c49fd46585c6cc7a3a6a42e129a81d2e",
-      "linux/arm64": "2229d377e6a693fa8c9569802a3d8f33d1b0bef4e03fec0ae399c4b6eb88a164",
-      "windows/386": "966ff9df653a5e13e481f8cff9ba9a27df22ca1e4c2a0dad55b545a1289b322a",
-      "windows/amd64": "e715cc7bb94aded091dcd77cc113740be18eb79f618c869809938dbb5062ac30",
-      "windows/arm64": "f498416b3fffb30c45c55df4e52f0908a7cf9076b64a8b2817d954df1c07286d"
+      "darwin/amd64": "24451d6403de1f47bd0e43baf66fa16e8d566e831c9974a11a4a23e582c93f2b",
+      "darwin/arm64": "9428c4e05c694beb7978d37f40291a63b4ed257b2255ea5b19db8937cad41a93",
+      "linux/amd64": "3928ba3acc0352c93ae2c8f874a269ef58a8aaec81c4d1ad7dd885606169f791",
+      "linux/arm": "9fc4861638d1ea17d6604c9fe73a154b29d5f22b6285ef9df2b002caf6e6aa63",
+      "linux/arm64": "432be3d0e98faad843a230f4aa9d4a21fa928f1fe2d6778d5e19c10130f1df56",
+      "windows/386": "a8765e7abbaee77f41e379b6abea08a7059da71517d1fe6d64d4383474e50c17",
+      "windows/amd64": "e200467502fc03e4ee5e2978f0f193bd843be51b3b4a3857e9057c0e4413bdae",
+      "windows/arm64": "4fa909f2b8ce5fc1961f650748a7f269ac2d4cae61615f1b5139b205180c915b"
     },
     "repo": "certimate-go/plugins",
-    "tag": "gotify/v0.2.1"
+    "tag": "gotify/v0.2.2"
   },
   "usages": [
     "notification"
