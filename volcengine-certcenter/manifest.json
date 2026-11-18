@@ -14,18 +14,24 @@
       "darwin/amd64": "volcengine-certcenter_darwin_amd64.zip",
       "darwin/arm64": "volcengine-certcenter_darwin_arm64.zip",
       "linux/amd64": "volcengine-certcenter_linux_amd64.zip",
+      "linux/arm": "volcengine-certcenter_linux_arm.zip",
       "linux/arm64": "volcengine-certcenter_linux_arm64.zip",
-      "windows/amd64": "volcengine-certcenter_windows_amd64.zip"
+      "windows/386": "volcengine-certcenter_windows_386.zip",
+      "windows/amd64": "volcengine-certcenter_windows_amd64.zip",
+      "windows/arm64": "volcengine-certcenter_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "4f49fab8219c8ebee9f3f1005e87a29fe0262afb532f0484dbe8505fd12bf30d",
-      "darwin/arm64": "4c0d3d55d3289a61d0f0c2dc8d50f16c7446e7e09f00177e30ca643b6c7c9542",
-      "linux/amd64": "2e69e90585f9b60a35513731f1b89f60ef528702a02c4168e95b144896159961",
-      "linux/arm64": "92a5320b60d2e035905cbdf9550c2c51cd6b372aed98f58cc7180bc425683cdc",
-      "windows/amd64": "d72ee78e6818339e84f524ca96547c619050607cbf1527593994e86b90ce5e31"
+      "darwin/amd64": "f9267aa95d14b00bcbd2b53e3f3ce7928fb1365d10dcc5f706da765b11752ddb",
+      "darwin/arm64": "6b68229fbd2eaf9a6f5eee7ff45e4f09dc52576beb4cb922a20c0a4836e3ca8d",
+      "linux/amd64": "120739bb439749ab4f8030a47498d760d1974e2f513cb26e15aa9eaf4cb80928",
+      "linux/arm": "5da755f6f1f05f58e73a4f34d9eb5fb5169c3c303263be014d6a83c975ff818d",
+      "linux/arm64": "55917bab32ed2a4becff2f226461805c5dd7efb05f64fdaad3f87129f53adffe",
+      "windows/386": "af1156c7e2846fa16213d38a41ec0030002328b614462b612474ce54324c8eaa",
+      "windows/amd64": "164613928b81e56f79ac524b35efb5f27b92ef210188ca03cb38e412ed27d134",
+      "windows/arm64": "24d7612a2c04670f9d733152ca1f6e05b88f4471db4f9b7e1c670f5105c90de8"
     },
     "repo": "certimate-go/plugins",
-    "tag": "volcengine-certcenter/v0.2.0"
+    "tag": "volcengine-certcenter/v0.2.1"
   },
   "usages": [
     "hosting"
