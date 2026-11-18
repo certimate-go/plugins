@@ -15,18 +15,24 @@
       "darwin/amd64": "baishan-cdn_darwin_amd64.zip",
       "darwin/arm64": "baishan-cdn_darwin_arm64.zip",
       "linux/amd64": "baishan-cdn_linux_amd64.zip",
+      "linux/arm": "baishan-cdn_linux_arm.zip",
       "linux/arm64": "baishan-cdn_linux_arm64.zip",
-      "windows/amd64": "baishan-cdn_windows_amd64.zip"
+      "windows/386": "baishan-cdn_windows_386.zip",
+      "windows/amd64": "baishan-cdn_windows_amd64.zip",
+      "windows/arm64": "baishan-cdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "e2cf37991d218fff558086a0041c6dce8663598870eba2d551c1b5e91aa4559a",
-      "darwin/arm64": "963578d8cddf18079db50638643edcc3c64910b0e6a542401ac5dc3972d6682f",
-      "linux/amd64": "f0eefa41c459ae45404a8adc3d6839cd6869f513262d8867b654fdd94cae5ebe",
-      "linux/arm64": "7e915eb9010ef8d220f02cb11a2298ad251091d6a969883e648a8c254a0c3f23",
-      "windows/amd64": "a1e85e832e18eb2798c64d25f3b0ed548f5c664fcd3a97fbbbe51d1ed925b475"
+      "darwin/amd64": "9438b7fb8000529a2a51e27b59d2453dd528a08efdd90225bca7bdbf52925c00",
+      "darwin/arm64": "8fe31dd52587fadb4436de6efe6d49a75eb7b22373bd3bb35b5ce974db3fde55",
+      "linux/amd64": "e7da79c4e127573c0aa0ada038975f646f819c699604f59e3e68bfc249f188d8",
+      "linux/arm": "706b7c19dbad96a196dfdf6a5c2a77d74946294654adcddb8613febb15ca6886",
+      "linux/arm64": "3ff4fffb6ead6ceaa0294fd67f3dc75dadb9554b7f05d02d959b4c0b849babed",
+      "windows/386": "3cafabc4820821483ce43958a52fe3bcda48efbb99c1e6737f5ffcaa84bc6938",
+      "windows/amd64": "b9c3bbbc9eceba1a1da6954b584a6c188e9c2f428a5a4e78d67af8924c49af54",
+      "windows/arm64": "2b4f4384bfae63a5cac8b67e36d4e23bbeeb34eef6c37cfdfdada479eef5ab53"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baishan-cdn/v0.2.0"
+    "tag": "baishan-cdn/v0.2.1"
   },
   "sha256": "",
   "usages": [
