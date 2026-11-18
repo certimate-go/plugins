@@ -14,18 +14,24 @@
       "darwin/amd64": "gcore-cdn_darwin_amd64.zip",
       "darwin/arm64": "gcore-cdn_darwin_arm64.zip",
       "linux/amd64": "gcore-cdn_linux_amd64.zip",
+      "linux/arm": "gcore-cdn_linux_arm.zip",
       "linux/arm64": "gcore-cdn_linux_arm64.zip",
-      "windows/amd64": "gcore-cdn_windows_amd64.zip"
+      "windows/386": "gcore-cdn_windows_386.zip",
+      "windows/amd64": "gcore-cdn_windows_amd64.zip",
+      "windows/arm64": "gcore-cdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "855574a480d2fb440e2115be36bc8cde264dca48ff833ec9fc17b4aeb8657aa0",
-      "darwin/arm64": "bd76e8e67d5eff735062e862f35515c7eeb7433e0ab70ea8a6af5da6cc332bc5",
-      "linux/amd64": "dcd026180b64a88e6dfc275af4491609320b2f2e43142b319ff2e75be0afd7e9",
-      "linux/arm64": "62aa297f298935cd31ab6573bc9695c3128b7a2407a1f42639d5b24bdbb95ccc",
-      "windows/amd64": "3eedf95cf7ff3d16f2d29eb784cf07e947a36f8daa73ab85bffe1ea092fd09b2"
+      "darwin/amd64": "1dbfe9dd3d53ce9d4467b21841f1dc1b550fdb7b435b75c567e54aa504955f4a",
+      "darwin/arm64": "0d5eb849bdf799af202cd1c8c7413b0b90a0ae0727cd279896e75a54d20fe4af",
+      "linux/amd64": "17c1b9f3064b61f9304bba09e268dc5f76e05bbe027cc9c8cd166542803057fd",
+      "linux/arm": "1df0efb999c5acc32878f493de4bc23f6d9c8475ed0c81b438a936e18a923963",
+      "linux/arm64": "4ce712f31e898381ffce6d548b0ab2f1d185742f7a883f18f104dc6a2243d7a1",
+      "windows/386": "6661c87c49a5f2574e8c78c17ec9420db8158dcbb09cb6064ab8738b550f5c9e",
+      "windows/amd64": "e51fbc99a9d17649c1128175968243e79493f8bea680a3f0298d0222fc9507a2",
+      "windows/arm64": "7e23b7d9d62a528e6e1eedb0a321e62b77a9c980f41ad47cc9575e1ae5b8b64f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "gcore-cdn/v0.2.0"
+    "tag": "gcore-cdn/v0.2.1"
   },
   "usages": [
     "hosting"
