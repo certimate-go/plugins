@@ -15,18 +15,24 @@
       "darwin/amd64": "safeline_darwin_amd64.zip",
       "darwin/arm64": "safeline_darwin_arm64.zip",
       "linux/amd64": "safeline_linux_amd64.zip",
+      "linux/arm": "safeline_linux_arm.zip",
       "linux/arm64": "safeline_linux_arm64.zip",
-      "windows/amd64": "safeline_windows_amd64.zip"
+      "windows/386": "safeline_windows_386.zip",
+      "windows/amd64": "safeline_windows_amd64.zip",
+      "windows/arm64": "safeline_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c3c7a7ea67eb72bf37de142cc79ec5ab2168ec9c61feacec2c647cfab97576a7",
-      "darwin/arm64": "7b3179478b3190937d8998374d2889252f2c7143260e970abd16f8fc84aad8b7",
-      "linux/amd64": "479586a2fa4a4f109da70088d5e44fcfa4e3b6dcf1aa383e2bfc74575e89d51b",
-      "linux/arm64": "8aca76674dd1f43ec60108d8a81458bfb56ffd2c4f9a1d558c208f51ae57d204",
-      "windows/amd64": "ce0e0e26a12358047a066a50aa09e71b16b209de9ab744ea088de4023cd8fc5f"
+      "darwin/amd64": "feb2052c09dd60baf3ea77c434d7bf17c9a326ddc6af1ec9b5b42ec0f660a589",
+      "darwin/arm64": "e8eb6d9ca3df962d534b4b49b13f0672b6b56a7246e8d90f5452cef96c53a7b6",
+      "linux/amd64": "226c285d1022f756c6782d35d31dfeae0e22735661fae3fa2d7f7cbf361a7d14",
+      "linux/arm": "a259da77e7b076c86a0504c0fb119934ee2588c3b51c8760778e775b8bf9272f",
+      "linux/arm64": "987765a69a025d66b30dcdcb7fd8ce9d7bb84e347894aed68f50271cc6e065be",
+      "windows/386": "be53ad9f1b9cd4f723dde06d522969f480c121e4e10020453a971354e75b70f5",
+      "windows/amd64": "01718d14ff28f6543c44bd39eebdb48deb28d9fcea50494a2cf5c6c3e459eff9",
+      "windows/arm64": "6fd57d5a58a9e39c422ddb3860dcf6cc6139d967bcd2ecac5615c466157e43f2"
     },
     "repo": "certimate-go/plugins",
-    "tag": "safeline/v0.2.0"
+    "tag": "safeline/v0.2.1"
   },
   "usages": [
     "hosting"
