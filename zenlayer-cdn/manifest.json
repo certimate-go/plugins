@@ -15,18 +15,24 @@
       "darwin/amd64": "zenlayer-cdn_darwin_amd64.zip",
       "darwin/arm64": "zenlayer-cdn_darwin_arm64.zip",
       "linux/amd64": "zenlayer-cdn_linux_amd64.zip",
+      "linux/arm": "zenlayer-cdn_linux_arm.zip",
       "linux/arm64": "zenlayer-cdn_linux_arm64.zip",
-      "windows/amd64": "zenlayer-cdn_windows_amd64.zip"
+      "windows/386": "zenlayer-cdn_windows_386.zip",
+      "windows/amd64": "zenlayer-cdn_windows_amd64.zip",
+      "windows/arm64": "zenlayer-cdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "d0fa1e94c0e5c4104eb36e172b33454ba28e4dc5e2863136c5c803f6914ee769",
-      "darwin/arm64": "6e098b8fd993efb3b2389014c3c0d03e9ad03d66e85125a2e5e35582f82963c8",
-      "linux/amd64": "47fb7e5d7c14c4cebcf3b4cb2ad9557aa3344219a9d3a58b0ee1f675094dcf8d",
-      "linux/arm64": "a625e818419dc3de529a5fcfa6688976480bdb86c18cc7e6eb05642885da3524",
-      "windows/amd64": "f1b2ebe9be4e30b1cb564ee88bd8867316ae04dc0af0254bd276f4d2fbdb1ab5"
+      "darwin/amd64": "6ff893b793289d91186de125923dca5bc58927a18a3f72d373d309b60a70dd89",
+      "darwin/arm64": "19483dffad23d233c0bbb29f8932d37b0d8b905eed255730e73873a820c99f73",
+      "linux/amd64": "75f801f037909b8d4a8077e9c851dd1725abb1c30bc00b39f70d54a63a384e00",
+      "linux/arm": "2c00ea6086f349b134b3091d02b007c5d750b05d5cc73728b5778621520a04ef",
+      "linux/arm64": "7b2c64973591295f6f9c329c894046ac6fa8a20e26f61e19a870c9b6f03e038c",
+      "windows/386": "2fb6bf2a9ae7f7a2c23bd0add614f72e275be8f4f082bf01a89cc6536b9a9b47",
+      "windows/amd64": "e1802918e8211585a58f54b81e4438ced11dd1e693b142f51c1689692c087fb5",
+      "windows/arm64": "98b5d0e654e5127e53527fe46bdd2e6c34aa05a7e82f7c1931dc58e77e9bbf2a"
     },
     "repo": "certimate-go/plugins",
-    "tag": "zenlayer-cdn/v0.2.0"
+    "tag": "zenlayer-cdn/v0.2.1"
   },
   "sha256": "",
   "usages": [
