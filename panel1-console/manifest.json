@@ -15,18 +15,24 @@
       "darwin/amd64": "panel1-console_darwin_amd64.zip",
       "darwin/arm64": "panel1-console_darwin_arm64.zip",
       "linux/amd64": "panel1-console_linux_amd64.zip",
+      "linux/arm": "panel1-console_linux_arm.zip",
       "linux/arm64": "panel1-console_linux_arm64.zip",
-      "windows/amd64": "panel1-console_windows_amd64.zip"
+      "windows/386": "panel1-console_windows_386.zip",
+      "windows/amd64": "panel1-console_windows_amd64.zip",
+      "windows/arm64": "panel1-console_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "0527efb446b372b204a2499084f1d4fc3ea1cb3790ffbe02c2f272390b045644",
-      "darwin/arm64": "703c3205da84622ea677c2ead02348a123a511efa71c09d8684a9a50777d3ed9",
-      "linux/amd64": "88c6116ad8c1f4a945fc44de5b10160447b2eef56d1725f936f895ced91a478b",
-      "linux/arm64": "30f2c549f960278e4b2e5a31407fd59489bec5828cef1e60ee4cda9729de03d6",
-      "windows/amd64": "dc13a28aa97ab4c462cc64405f8e49fad591f0c9f575f8705a54e995191237a7"
+      "darwin/amd64": "3f80a1ac55678294078ccfa76524c8b6c6b41c6972c86e4c7c649d857ee894cb",
+      "darwin/arm64": "07e87f42cf06b7526d3b748d88fe9f05d7dbd5dc303e5dc11a9666c89ff56cb4",
+      "linux/amd64": "e23a997bbda380e87831488d9d38b6604fb23e89dca4df81f189eb66c5f8fd54",
+      "linux/arm": "5a39d5b824daa5bf89d095c89fe247e2131f127af208997969e927655da2f2ac",
+      "linux/arm64": "cd2314e5d2658b985255db3d8c72de1877db97f51bddd6bfd14b8e7645f30fcd",
+      "windows/386": "1dc18cde96667ec6c025072b4da1a4240b73fb6c2304f2ef93c8dceca83eb6ad",
+      "windows/amd64": "23ebf0d44a6bcf1f745bdfc6c9985ad23298c156aa2aa29a9b3806a646e26efe",
+      "windows/arm64": "e3818fcf2101e08bc2eaf3ac33738a838eb357dce6203af4e87848284e20d0a5"
     },
     "repo": "certimate-go/plugins",
-    "tag": "panel1-console/v0.2.0"
+    "tag": "panel1-console/v0.2.1"
   },
   "usages": [
     "hosting"
