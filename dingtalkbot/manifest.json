@@ -13,18 +13,24 @@
       "darwin/amd64": "dingtalkbot_darwin_amd64.zip",
       "darwin/arm64": "dingtalkbot_darwin_arm64.zip",
       "linux/amd64": "dingtalkbot_linux_amd64.zip",
+      "linux/arm": "dingtalkbot_linux_arm.zip",
       "linux/arm64": "dingtalkbot_linux_arm64.zip",
-      "windows/amd64": "dingtalkbot_windows_amd64.zip"
+      "windows/386": "dingtalkbot_windows_386.zip",
+      "windows/amd64": "dingtalkbot_windows_amd64.zip",
+      "windows/arm64": "dingtalkbot_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c0b5304e2bbdc1b6d5a822b7f54926dd1a77625c0bcd24eb4286502ba761577c",
-      "darwin/arm64": "54f5e58c398c8cd6a14ed34eded30a4d3ee66dbf62d7738e18ccca3e76ff0d01",
-      "linux/amd64": "a67c520f6b9d24594ddf2906a05c780a24c5aeab347bfa56a37fdb7df5e7b69b",
-      "linux/arm64": "6506449f68c12a6ab309510c127bbfadb274e9103a58a75b9fd9356e5b983e8a",
-      "windows/amd64": "577a13c14afff9416a132fec033a1f13a4438f4c1a09dd10b57ee4d67bf3bde4"
+      "darwin/amd64": "f255e5e5dd2f88234073917c5f743b0549d354281340cf53b9076fa9431fb911",
+      "darwin/arm64": "0702e900b5f2880879f5e4967b1349304bd297a12b345aa1deef7ceca9eab0df",
+      "linux/amd64": "5a3f03faf4735e1cca03bf65221059ecc66120d297a873a2a01f2271620531f2",
+      "linux/arm": "124f5cc0e324d639646f80fcbe8eb3144eda7b429b88451eed4ac2bc05b423b4",
+      "linux/arm64": "b9ebf05321887fd0ce6c863916d5af10e9d537513acdde54b4d21631e6b97bfe",
+      "windows/386": "4258e7b3fab1642543a5d546503f4df59e84b6a4630a19b5202478c1e4f3d215",
+      "windows/amd64": "d6b98832edd5591c93be87c54a9f8f7e6b95c8a3f1534eda1df32c3935e009a4",
+      "windows/arm64": "3bc4ff9bcd7d7800b7b2e1292b5371ca7b129a51b6b2e149cf5a61671df3ff8f"
     },
     "repo": "certimate-go/plugins",
-    "tag": "dingtalkbot/v0.2.0"
+    "tag": "dingtalkbot/v0.2.1"
   },
   "usages": [
     "notification"
