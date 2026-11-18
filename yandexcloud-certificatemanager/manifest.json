@@ -15,18 +15,24 @@
       "darwin/amd64": "yandexcloud-certificatemanager_darwin_amd64.zip",
       "darwin/arm64": "yandexcloud-certificatemanager_darwin_arm64.zip",
       "linux/amd64": "yandexcloud-certificatemanager_linux_amd64.zip",
+      "linux/arm": "yandexcloud-certificatemanager_linux_arm.zip",
       "linux/arm64": "yandexcloud-certificatemanager_linux_arm64.zip",
-      "windows/amd64": "yandexcloud-certificatemanager_windows_amd64.zip"
+      "windows/386": "yandexcloud-certificatemanager_windows_386.zip",
+      "windows/amd64": "yandexcloud-certificatemanager_windows_amd64.zip",
+      "windows/arm64": "yandexcloud-certificatemanager_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "6ac671fe52ea85a0a338a6b1b4b0d5d77f17bfea9a0b9b2f41da98649084e3ea",
-      "darwin/arm64": "2794a290f11907ffd4ba6220c5db9730f658048cbf07afb80001ff9e59798dd9",
-      "linux/amd64": "34fad4d6fa217206b28aa6ddb4898da088d7030b4a663ba7506872d54080b876",
-      "linux/arm64": "96760517fd1a0ce5d8ad676df3027b7e67a00f7858a25582eaf68fffb6efba62",
-      "windows/amd64": "b16585af663667b5480f6416664baa7fa193529b26eb8fdc786acb6ae5c61402"
+      "darwin/amd64": "7b4d3e1bec993056d80cbdd46c96da7eb1f9518015aaaa9b1c5447beb9ee7813",
+      "darwin/arm64": "0b82a0d6a19df3ae0a1e483fc1b39b4904f0f1785cc6f6ea77cf4557f0334326",
+      "linux/amd64": "36ed3ea61bba5b4e7090d8725ef982efedead718d451d69e8700ae33b1fccd34",
+      "linux/arm": "b9673ee097a05e2e2f561c3cb8e3edce7efc7b50b8f7f6e123675a4ddf8d465f",
+      "linux/arm64": "38c2d4b50ce4b83b95e3b4b830ed61d8d23d7ef2e2329fad73d3ca9e1a814298",
+      "windows/386": "88ed9fa7459b6649051e514add248c70601b51e55205bf88ee197ed09a14605f",
+      "windows/amd64": "466f630c664b3679c64e27f56c7c78009ca7389c40dad4c15d083570c4b08064",
+      "windows/arm64": "9cb865109a9f0670679f95079cbf940002fbb00ed69d2177abe400048d551165"
     },
     "repo": "certimate-go/plugins",
-    "tag": "yandexcloud-certificatemanager/v0.2.0"
+    "tag": "yandexcloud-certificatemanager/v0.2.1"
   },
   "sha256": "",
   "usages": [
