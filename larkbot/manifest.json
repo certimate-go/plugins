@@ -20,17 +20,17 @@
       "windows/arm64": "larkbot_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "665a7d65973129d6aabd1589c364caa34b53e7841b4c2bf2abe5cd936ee56ba4",
-      "darwin/arm64": "9c571db6868f633ddb0cb6106400688a9fc0996a52bbdb4ace0716ea4306f8bd",
-      "linux/amd64": "10bd13422201aaf24f899e393e199201253d023922f5884a77a8852dd8479982",
-      "linux/arm": "0c8f452c354571d2a300aceb57f5ff60baf17d3d970166deaf733cce6734274c",
-      "linux/arm64": "133d97ae98d2ca90774e3520fd583dc55c89bfe6c1d4aa17e08c1b197118fabc",
-      "windows/386": "1cedf06a64e513609f72a9446085268d0cee6bc5bb394935cb6dbb61b982d84a",
-      "windows/amd64": "b291885d3db8fedf1334bb1c72c6916df1cdf857268d3e013487ec1d4828ee36",
-      "windows/arm64": "7a323303451ff40fc93211742e7f9f894aa5841d31aafd1867e1cf11d5f09220"
+      "darwin/amd64": "9fec898877e0de953d62f11c3ab50ad6f8271ebea4205543f78720d120d68033",
+      "darwin/arm64": "c89579c1a714820f69e15c23859669144dd7afb78aa72d3eb602d9b178fd3d16",
+      "linux/amd64": "46d6b01bedddb2d24785d4ef0f65e537448c8048110a0f5c6f48dfebcb1151b4",
+      "linux/arm": "a47e1a3a1693421f0193ee34865214a2b03e3084e5d8fcd1011cba6168042614",
+      "linux/arm64": "0742b83e4d56477320677c40ab11a620bed1a4645698e66bd855ed42dc010568",
+      "windows/386": "bbd6fd9a89691b389fb434f68dcdf6ea759132dd64b3f5f813250a9b4e30814d",
+      "windows/amd64": "9c9848c1c092307d0d4fe259e015a25c97a7b267ad97730ffb932f3b46b39137",
+      "windows/arm64": "05a2e3f40dc3cd2198083534ce5abb1657cb973e606c6589431712d44f447f70"
     },
     "repo": "certimate-go/plugins",
-    "tag": "larkbot/v0.2.1"
+    "tag": "larkbot/v0.2.2"
   },
   "usages": [
     "notification"
