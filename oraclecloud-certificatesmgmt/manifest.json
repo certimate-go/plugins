@@ -15,18 +15,24 @@
       "darwin/amd64": "oraclecloud-certificatesmgmt_darwin_amd64.zip",
       "darwin/arm64": "oraclecloud-certificatesmgmt_darwin_arm64.zip",
       "linux/amd64": "oraclecloud-certificatesmgmt_linux_amd64.zip",
+      "linux/arm": "oraclecloud-certificatesmgmt_linux_arm.zip",
       "linux/arm64": "oraclecloud-certificatesmgmt_linux_arm64.zip",
-      "windows/amd64": "oraclecloud-certificatesmgmt_windows_amd64.zip"
+      "windows/386": "oraclecloud-certificatesmgmt_windows_386.zip",
+      "windows/amd64": "oraclecloud-certificatesmgmt_windows_amd64.zip",
+      "windows/arm64": "oraclecloud-certificatesmgmt_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ecf02998ec5f44047af6226351c2455201a27991922a398e39762a3c8ad432df",
-      "darwin/arm64": "adb3f095971bb2c22c8f7f09de27fced83ffcdc89b5ae4972b02c5b7093f0c7c",
-      "linux/amd64": "3490f01d655c5386f4669c7e10b6d24adc301c31e7c640e7f9bfd4ea953c1b90",
-      "linux/arm64": "2a2d9886bb3d3ad499ca4e4a4e4137325e9d357ab301027f3fb02a870a421be6",
-      "windows/amd64": "186dd4a294b3a2cbf62c01a7821f5892de96ea5ab9bd50150ed5eea1b7d07d9d"
+      "darwin/amd64": "68eeff89a419b5d37aa6e8974cac2108bb357f650514ef8dd2229675c8e1eaf0",
+      "darwin/arm64": "d233657863456656aa456529919aeabbf19a08634a1662c69c8838043af4f3ab",
+      "linux/amd64": "b63cf6ff6c1465708200741e61cb70ee59861f2ca848f32fb182e1c8b4fac026",
+      "linux/arm": "853d32632fdb800f14e1e71f3c43f620178e27fd9529c05fecc4bfdaa38de412",
+      "linux/arm64": "78c71536fdb1687f250c37e310055bf07e85e265117fd054d501336916a3f923",
+      "windows/386": "9393f58e7096dcaf5a0922e3a26190a7745e11274d40f57920158917800d7079",
+      "windows/amd64": "05f1ccdcd8b99cfb22af06f94c37ac9fd98d93b16dd16e362a2cfba8dc19944c",
+      "windows/arm64": "08148aea7a8217df58c95734f8c0d5bfb071002479d54811ab119eb574f06e5d"
     },
     "repo": "certimate-go/plugins",
-    "tag": "oraclecloud-certificatesmgmt/v0.2.0"
+    "tag": "oraclecloud-certificatesmgmt/v0.2.1"
   },
   "sha256": "",
   "usages": [
