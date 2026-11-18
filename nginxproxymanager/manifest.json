@@ -15,18 +15,24 @@
       "darwin/amd64": "nginxproxymanager_darwin_amd64.zip",
       "darwin/arm64": "nginxproxymanager_darwin_arm64.zip",
       "linux/amd64": "nginxproxymanager_linux_amd64.zip",
+      "linux/arm": "nginxproxymanager_linux_arm.zip",
       "linux/arm64": "nginxproxymanager_linux_arm64.zip",
-      "windows/amd64": "nginxproxymanager_windows_amd64.zip"
+      "windows/386": "nginxproxymanager_windows_386.zip",
+      "windows/amd64": "nginxproxymanager_windows_amd64.zip",
+      "windows/arm64": "nginxproxymanager_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "9d3f2173b8118ccdfa60b6c4d55af4f504805b144791b0c2b05ec8a0d3cbd88c",
-      "darwin/arm64": "8f42106cc2cbac49ed5fe095a16698ee819ffda998d9ce84fa361ce06666b6f4",
-      "linux/amd64": "9b8ff94f57ee23b092630d71c2695afbce518cb0b70bc5583b8baa466f71fa91",
-      "linux/arm64": "f8e90d862bfb608f7bdd597ba7f0bb5179455490da4ab038c54877dd8af8f8db",
-      "windows/amd64": "b098ac575a0bb995f2490a66a4294176e8dec19cbc3b15679ff0647299aea926"
+      "darwin/amd64": "ce4c7960976bf50997582baa8634863cb2e19909be15fbc471c3bd1d80c795f8",
+      "darwin/arm64": "13ad641bb0433d4137a4eabea414e37960ea1612db6024abacf292cbba968fdd",
+      "linux/amd64": "09701be1eb9d5ee7f2d6530edd7818ad121dd7a401943a3e2f240999ba400195",
+      "linux/arm": "6a8b494c5eccafdaccdde92d7d29bc691b2f63d8b7bb5dad6b1f7c6536086eba",
+      "linux/arm64": "d972cf3df03bdd275f7681b5a95989d3db419a1cd5dbcc312ce048c608fb52c7",
+      "windows/386": "71ce7408a07554fff1d1830cf097353b7922c0023a1d87ae442b3f16311b452e",
+      "windows/amd64": "31c4b7115d2c6fa46051382016510d71162524b365219dba45924404d5e82a4a",
+      "windows/arm64": "09b0e404358c3c9ef07df2d3811e6da9e058ab373ce487536069c2a412b37340"
     },
     "repo": "certimate-go/plugins",
-    "tag": "nginxproxymanager/v0.2.0"
+    "tag": "nginxproxymanager/v0.2.1"
   },
   "usages": [
     "hosting"
