@@ -13,18 +13,24 @@
       "darwin/amd64": "discordbot_darwin_amd64.zip",
       "darwin/arm64": "discordbot_darwin_arm64.zip",
       "linux/amd64": "discordbot_linux_amd64.zip",
+      "linux/arm": "discordbot_linux_arm.zip",
       "linux/arm64": "discordbot_linux_arm64.zip",
-      "windows/amd64": "discordbot_windows_amd64.zip"
+      "windows/386": "discordbot_windows_386.zip",
+      "windows/amd64": "discordbot_windows_amd64.zip",
+      "windows/arm64": "discordbot_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "28be2b239c35b50b4b9e78e5086ecbd06cdcb4ca4e708b83d4c1a273e5b87d4d",
-      "darwin/arm64": "dd640844a47453755ae6a727c65b28327dd972bd1fa72f0c0c569b05e5d015fd",
-      "linux/amd64": "86df49c289f5b3d8f1b3c2a5bf1fe3f16a5a3060ed3533f9154098b9db43a51a",
-      "linux/arm64": "babd55231a879db638bac0738ff17bbb820b35cce0e63cc58f09123cf3b4b443",
-      "windows/amd64": "2c0035468411cafc528458b18ad43e33c856ae2bd9eefe7bd128cfa69393614d"
+      "darwin/amd64": "7076003f954c588807d696eade00025473c1c5326f0afe7e120e3fae428eb001",
+      "darwin/arm64": "c32a6cf50a01f71f61a86c2c4a3c75cbe3f7b7500c54cb81ed008801375ce9f6",
+      "linux/amd64": "0142f044178caa5ec04743ec5637dc6969ba033dbb9b083bfe8c589c0e536b3f",
+      "linux/arm": "3aff072c96133fad3fbd6876f67789b0c74a46300c030dc75696b47f5ba9f675",
+      "linux/arm64": "09a2249b8b6ba6d2f62193eda4b639d28c0a0331e348481622ffd998aaa71fe4",
+      "windows/386": "72f1a41610c2bcb63e8a469491fc348466fa748ccb387ed74f5b63af88a41447",
+      "windows/amd64": "f1450bd90c45345985218c2538d774ae73b5592581991a2abd16c88faf8a69ee",
+      "windows/arm64": "f06e5930184cc6ec626a138cc9ffb4d67b8096e6c37084d18d61695889bf78ca"
     },
     "repo": "certimate-go/plugins",
-    "tag": "discordbot/v0.2.0"
+    "tag": "discordbot/v0.2.1"
   },
   "usages": [
     "notification"
