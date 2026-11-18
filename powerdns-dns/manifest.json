@@ -13,18 +13,24 @@
       "darwin/amd64": "powerdns-dns_darwin_amd64.zip",
       "darwin/arm64": "powerdns-dns_darwin_arm64.zip",
       "linux/amd64": "powerdns-dns_linux_amd64.zip",
+      "linux/arm": "powerdns-dns_linux_arm.zip",
       "linux/arm64": "powerdns-dns_linux_arm64.zip",
-      "windows/amd64": "powerdns-dns_windows_amd64.zip"
+      "windows/386": "powerdns-dns_windows_386.zip",
+      "windows/amd64": "powerdns-dns_windows_amd64.zip",
+      "windows/arm64": "powerdns-dns_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "4af05a313051728e940a2a5609527d000bb1a522dc701f8fae7820b560060c6b",
-      "darwin/arm64": "9bf7eeae62621a1483d77284f0bf36edbc877535af8968c9c7ccfaa21bf759ab",
-      "linux/amd64": "bd8b5850f2f2657cf0cf2b1e7832caa5eb530ffc7b3706868d8bd33e4ab3f650",
-      "linux/arm64": "0c2318f5089a3fc07abc9c989ccb94c45f49e8853c3aed10441abc68e84f0e13",
-      "windows/amd64": "529f98821bbf1baa952056d9023a87d21930fc083825210edbf28b2b63d85226"
+      "darwin/amd64": "0ffcdec8d027aee35ff0511e1c7cf5fe984beb7fe6c120a08dff6de18e054ab9",
+      "darwin/arm64": "ba5ea74237c91175178e9f937fe2b21879354f07ebeb1078d5969402e96810af",
+      "linux/amd64": "de8c71f76d72028cc5ad7eab01ddf4e6813d2f46218a23d7654243f7f47c8bbf",
+      "linux/arm": "69e929966ac717f6249e407b83f89b706782d781ddc7fe78071d21956ec0fbf2",
+      "linux/arm64": "2f8d37869be05c360658b1c047576a62b6337843d2e7184c5e927e740595f512",
+      "windows/386": "ef1be25da782116026430627ab2c9a485e59fa672104916e12be810ac54d45f0",
+      "windows/amd64": "aacd1aeb2654357b7ba86333789cd3a1314a4dabc2d84e6d7ec0441216fce3a2",
+      "windows/arm64": "39e64768cf67d3f1ea1adf049450c827dfdb0dd3e04baf8d91b1ffb72a4c665d"
     },
     "repo": "certimate-go/plugins",
-    "tag": "powerdns-dns/v0.2.1"
+    "tag": "powerdns-dns/v0.2.2"
   },
   "usages": [
     "dns"
