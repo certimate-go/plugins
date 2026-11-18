@@ -14,18 +14,24 @@
       "darwin/amd64": "byteplus-certcenter_darwin_amd64.zip",
       "darwin/arm64": "byteplus-certcenter_darwin_arm64.zip",
       "linux/amd64": "byteplus-certcenter_linux_amd64.zip",
+      "linux/arm": "byteplus-certcenter_linux_arm.zip",
       "linux/arm64": "byteplus-certcenter_linux_arm64.zip",
-      "windows/amd64": "byteplus-certcenter_windows_amd64.zip"
+      "windows/386": "byteplus-certcenter_windows_386.zip",
+      "windows/amd64": "byteplus-certcenter_windows_amd64.zip",
+      "windows/arm64": "byteplus-certcenter_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c13994b86a3734eb1e2f3da36e06b0a06723e1a1ba53cb753dacf7d445180765",
-      "darwin/arm64": "7586a272383e73a747bbb458ef82f639039bfcf21d970992100eeee0a6096f2a",
-      "linux/amd64": "f1957f8dd08e76d83269932bb8d254e261c1e068d909424a08d2a631bcc38c21",
-      "linux/arm64": "f217eb69d3cced9757889d80ab0848f50884a24db1061da79c871943fd503be3",
-      "windows/amd64": "3142cb12313d72918c8dd3bd985a318d3c09c21e778db125a770fe58cd96a008"
+      "darwin/amd64": "27e375034dce432bc9667b9856658e177506542dc55c2e053ee7e16b48f02c59",
+      "darwin/arm64": "56aa5a19c5ff5d9328db6d652161d90f7b5f878e920636e51c23495d9d82f22f",
+      "linux/amd64": "ff643f164add58255d330ff472d52a5718590530a2f6a3521d77e4d88f94b382",
+      "linux/arm": "9327a9e8b0f540e0783d696a8a1ffc4823626723707a66acd5672ce0f20b69b0",
+      "linux/arm64": "cf0d654562f10ae30aed41a81d355b058adce4d8a47871d18492516e89d06d4e",
+      "windows/386": "482ac001aaaafc2e41d20730d319214f27c66326b87fdf084c09edb5ff2796de",
+      "windows/amd64": "6d3db94cb1f16eba45e31c01e3aeec7e95952521d5094589a68b91755bdff933",
+      "windows/arm64": "a2bcbc30305b9964e4f55336bff65f2eba6bf1cec72dd6ebfc75531f2dd0f0d7"
     },
     "repo": "certimate-go/plugins",
-    "tag": "byteplus-certcenter/v0.2.0"
+    "tag": "byteplus-certcenter/v0.2.1"
   },
   "usages": [
     "hosting"
