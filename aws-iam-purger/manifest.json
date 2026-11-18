@@ -16,18 +16,24 @@
       "darwin/amd64": "aws-iam-purger_darwin_amd64.zip",
       "darwin/arm64": "aws-iam-purger_darwin_arm64.zip",
       "linux/amd64": "aws-iam-purger_linux_amd64.zip",
+      "linux/arm": "aws-iam-purger_linux_arm.zip",
       "linux/arm64": "aws-iam-purger_linux_arm64.zip",
-      "windows/amd64": "aws-iam-purger_windows_amd64.zip"
+      "windows/386": "aws-iam-purger_windows_386.zip",
+      "windows/amd64": "aws-iam-purger_windows_amd64.zip",
+      "windows/arm64": "aws-iam-purger_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "54eeec87f2e3b51dea1ea00f9694705e9d52e13924896fe67b3ce28069a66e2d",
-      "darwin/arm64": "07cae2b88edb918ee606f2d9e545b02ac18075bd472dd7e25c1e5fbbef38c172",
-      "linux/amd64": "adfede7f38514598b8a09a974e88c0e2e422d0756140d10ecbe140589e54e7b8",
-      "linux/arm64": "d3b7eb78fbc2cefb18eaee5219645a5d25564601125f5c36d0c49ce9ff2a1a50",
-      "windows/amd64": "4d99576b87b7eb83552e879b6a5033642bccd54517e92297850d67d99c3f4aad"
+      "darwin/amd64": "cbe58566f18037d7210d15e397d7e72b8749ed1f90647d63bdb7732cdd8834ec",
+      "darwin/arm64": "39111ecd37671bf4232fc312356b09b96b8df70bc659d425aa0b52b4315ff969",
+      "linux/amd64": "22bc31e3b392770fff73d6760ff71c64bc7a78918c47908a9ac7b254c8c09cf9",
+      "linux/arm": "de567a7ec7d4be11f5dae8b5d011b5ad53ea5f0d0e796fa1a1e11425765908a2",
+      "linux/arm64": "a1bc496c9ce30380238da18194346a1763bac52e71b11476af7ff118747f0737",
+      "windows/386": "07a6124eca13d1304e88e99262ae4562b973e1f1438fbf99830b2aa0160b6d61",
+      "windows/amd64": "1f302380ab9f3e44c01c404a7f0e1413c218a9589ebae3a6f920ef1112cf0134",
+      "windows/arm64": "6640cc5d54b7a5fad7361870af1abbd7d3b3c3778c0dfaffbace87068bdb298e"
     },
     "repo": "certimate-go/plugins",
-    "tag": "aws-iam-purger/v0.1.0"
+    "tag": "aws-iam-purger/v0.1.1"
   },
   "sha256": "",
   "usages": [
