@@ -14,18 +14,24 @@
       "darwin/amd64": "huaweicloud-live_darwin_amd64.zip",
       "darwin/arm64": "huaweicloud-live_darwin_arm64.zip",
       "linux/amd64": "huaweicloud-live_linux_amd64.zip",
+      "linux/arm": "huaweicloud-live_linux_arm.zip",
       "linux/arm64": "huaweicloud-live_linux_arm64.zip",
-      "windows/amd64": "huaweicloud-live_windows_amd64.zip"
+      "windows/386": "huaweicloud-live_windows_386.zip",
+      "windows/amd64": "huaweicloud-live_windows_amd64.zip",
+      "windows/arm64": "huaweicloud-live_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "6fbb6f120536d0795c0ff4e26c6b07f0c16649015f842fcec559785b2fa1b811",
-      "darwin/arm64": "48427ed25031be1cc9131ab4f195592aa908e44778fa56131780f731ac993241",
-      "linux/amd64": "adcb0f39f8df9fbc28bec3b3be7ea6761806753d9ce031a741661dafed8e0718",
-      "linux/arm64": "9681ee3cacf0331c57882881537a021cc8e85fe25c470dc180338df781654e51",
-      "windows/amd64": "59989a7a06c19c4d4c3beb0f18bb1d07ba9f8f4e60d6ba0fe2b2fe6f6066db72"
+      "darwin/amd64": "44901d8ca440927b571320c207e91744ac2b58ce4f85909281be6e88200b33ee",
+      "darwin/arm64": "fd1f9ab32906aede463aaca95dfaa0ff323d51b0a3525abaa23d6909514b5022",
+      "linux/amd64": "209d40a2053c2954be35d98081c31874e045f11a076cbaf8e4da4cae5e13f9be",
+      "linux/arm": "6f701820a22504183beff6d6e5a2a8cdf78bdf6651ecea0f5b8c86cc144d4395",
+      "linux/arm64": "475c240d07cd5942ed7f29169e8e72d7c843acd0edded476f4e624708fa60316",
+      "windows/386": "b35f68d6116f511e57922a1cbb833f0b7d1a2709c9df89081a3f8742ed72311a",
+      "windows/amd64": "d92df425fcb3a23a3ace8227ece8c19f408ee47c793c29c50f1d234d9818267e",
+      "windows/arm64": "0cc9e43e6dad97e08923c106ab499ae8e935465df9505578da7b70077fd27874"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-live/v0.2.0"
+    "tag": "huaweicloud-live/v0.2.1"
   },
   "usages": [
     "hosting"
