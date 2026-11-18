@@ -14,18 +14,24 @@
       "darwin/amd64": "volcengine-dcdn_darwin_amd64.zip",
       "darwin/arm64": "volcengine-dcdn_darwin_arm64.zip",
       "linux/amd64": "volcengine-dcdn_linux_amd64.zip",
+      "linux/arm": "volcengine-dcdn_linux_arm.zip",
       "linux/arm64": "volcengine-dcdn_linux_arm64.zip",
-      "windows/amd64": "volcengine-dcdn_windows_amd64.zip"
+      "windows/386": "volcengine-dcdn_windows_386.zip",
+      "windows/amd64": "volcengine-dcdn_windows_amd64.zip",
+      "windows/arm64": "volcengine-dcdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "f7284ae65077b71dc916129116e9b5b21b9053914b01bf98edd27ef2238cfcbf",
-      "darwin/arm64": "225945edb4cdec270aa4cfc62014338d90b527b32c9ba58232c6a58a23fc5263",
-      "linux/amd64": "7cc4531eda86a5d2786d4acd46674c25ad4c5b50d04877fd33dfb5d70645ee32",
-      "linux/arm64": "883a00196e4c6e91cdc1a1aebb8e6b9e4531f5b63368b79783775402dc4dde88",
-      "windows/amd64": "3b50f60791236681e9b55337d8e222211bb5bfa03197625e80d4536a0143f292"
+      "darwin/amd64": "1a1b471398485f66f42142e3dcc50319baddc514e3d5cb3e3baeba2a76b0b0e4",
+      "darwin/arm64": "26c6978f58c3b9dcec31d46aebfa0e2c7a0b4ac851d533d1e26f2f461a958619",
+      "linux/amd64": "160e8c5c2c8d7604acbcd437de91f2072be4629140269c2fdeea1f1cecdf7bf4",
+      "linux/arm": "bf907d82e458e6372062e1d0d3559243ab537954b0f5dde77c14709be2f431cb",
+      "linux/arm64": "7697975c64b7611b7c66c0b467c63e10bbf6400cf28967600480692c476a00e8",
+      "windows/386": "85aa914ca24bcfc980fd10f492335fb5178b97c23639d63138054e8ced9cbe27",
+      "windows/amd64": "71143878b574785eb88fcd9a3111d883c5fa1f08d7bd2ed03735efb9f08e13f8",
+      "windows/arm64": "0998ab7542668555bb027bcc24973bc24f8bd69ec19eac17c762e48e2d146c06"
     },
     "repo": "certimate-go/plugins",
-    "tag": "volcengine-dcdn/v0.2.0"
+    "tag": "volcengine-dcdn/v0.2.1"
   },
   "usages": [
     "hosting"
