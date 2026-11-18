@@ -20,17 +20,17 @@
       "windows/arm64": "slackbot_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "a48ee93f3dab61638480d69252d93e0afc96b54afec557a2a1e2b62ce9237f76",
-      "darwin/arm64": "021c430525b9cf2c61e2abc1890be1c83b2e501e72096813e7bf703b03eb8435",
-      "linux/amd64": "7a332006932414276451791a75bd697c74479ad15c89641eab190852ec170ef0",
-      "linux/arm": "d52f95f92c643bcae8671ac4911511cb3690df24771f9afa47692c12b1643364",
-      "linux/arm64": "299c32d6c6b87ce6c22db19c0bc876eb18eff4adc8a46092a7ec68f411cc4e1b",
-      "windows/386": "b05fef6276381fee811a9273ef66a6657359435640241b130f395dd63a53afd3",
-      "windows/amd64": "2ca4790ffe2b7a0dc7141dacbf838737f83cd223299507c3c94b6164afa94586",
-      "windows/arm64": "c8dabfff5136f231930191591522eea2b6b43278ad27497dbbe367db252308bc"
+      "darwin/amd64": "d33d45b6bc25e164eaaf54e28e710b3a3b8b6e3d5cc66e019c414687682e4fdd",
+      "darwin/arm64": "541e12ad8baf3a4918b034bb790558e430da367ff933412fc1d7dd0055b4ac2b",
+      "linux/amd64": "388f1737aeeab13c8a4be4f5a059dadb10dec06c38dc9f8d0b623394d80c1e62",
+      "linux/arm": "1cac2c7899c3185d3d6668991b375364c874665c7baec3ec42a24f5f373c3ac9",
+      "linux/arm64": "be5037cf39e95eee939e053a4f5d1c9d9f6da6a822177f77474789a8afb03f72",
+      "windows/386": "416155fce9f36e21ffbfa7aba418b5ff79e98b6d7a522a7fd758331c1a91f37f",
+      "windows/amd64": "395d34b9a1cc4bea116cc84f6ceaefc5abad54e8a70e4756849751078b7efbcf",
+      "windows/arm64": "df993a41f58c559fd3c9da76c1beb1e7e969ba9b02e8364105c4d93492fa5c59"
     },
     "repo": "certimate-go/plugins",
-    "tag": "slackbot/v0.2.1"
+    "tag": "slackbot/v0.2.2"
   },
   "usages": [
     "notification"
