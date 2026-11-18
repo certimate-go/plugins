@@ -20,17 +20,17 @@
       "windows/arm64": "dingtalkbot_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "f255e5e5dd2f88234073917c5f743b0549d354281340cf53b9076fa9431fb911",
-      "darwin/arm64": "0702e900b5f2880879f5e4967b1349304bd297a12b345aa1deef7ceca9eab0df",
-      "linux/amd64": "5a3f03faf4735e1cca03bf65221059ecc66120d297a873a2a01f2271620531f2",
-      "linux/arm": "124f5cc0e324d639646f80fcbe8eb3144eda7b429b88451eed4ac2bc05b423b4",
-      "linux/arm64": "b9ebf05321887fd0ce6c863916d5af10e9d537513acdde54b4d21631e6b97bfe",
-      "windows/386": "4258e7b3fab1642543a5d546503f4df59e84b6a4630a19b5202478c1e4f3d215",
-      "windows/amd64": "d6b98832edd5591c93be87c54a9f8f7e6b95c8a3f1534eda1df32c3935e009a4",
-      "windows/arm64": "3bc4ff9bcd7d7800b7b2e1292b5371ca7b129a51b6b2e149cf5a61671df3ff8f"
+      "darwin/amd64": "323538f178834c766de31c664d3f94fb9504bc17fbe870f3f72abeffdd238c72",
+      "darwin/arm64": "eb76164d21e89fe294be0470dcd354f2113e9e3f2f972797052ebc1bdb4c0574",
+      "linux/amd64": "7a7368ece03121a64984cf1ebacce960997ac66980031dee3f4c016ab6f1e47b",
+      "linux/arm": "d3083927031004c7afd0caadd82a7caba2a309b30fa03b39b3730feea7af615f",
+      "linux/arm64": "0c331ac1f069bd95da8c765169d6190728e6152ef74d461d0034f514cb93c927",
+      "windows/386": "dc4a49bde617e20f13cb423f9ec5210d4a8d754e722f933994a58afcddcede5b",
+      "windows/amd64": "9157e34e66107808ce5e7c821614df5c6de14aef22a3ddaeb0d94003eabb1014",
+      "windows/arm64": "f0b04abac3160eade6874431bb9b4301d81ea793b099635e8cfdf167b5b1a5cd"
     },
     "repo": "certimate-go/plugins",
-    "tag": "dingtalkbot/v0.2.1"
+    "tag": "dingtalkbot/v0.2.2"
   },
   "usages": [
     "notification"
