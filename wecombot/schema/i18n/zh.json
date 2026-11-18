@@ -5,5 +5,6 @@
   "plugin.wecombot.access.webhookUrl.placeholder": "请输入企业微信群机器人 Webhook 地址",
   "plugin.wecombot.access.customPayload.label": "企业微信群机器人消息格式（可选）",
   "plugin.wecombot.access.customPayload.placeholder": "请输入自定义的企业微信群机器人消息格式",
-  "plugin.wecombot.access.customPayload.help": "用 ${CERTIMATE_NOTIFIER_SUBJECT} 和 ${CERTIMATE_NOTIFIER_MESSAGE} 引用通知标题和正文。留空时使用默认消息格式。"
+  "plugin.wecombot.access.customPayload.help": "用 ${CERTIMATE_NOTIFIER_SUBJECT} 和 ${CERTIMATE_NOTIFIER_MESSAGE} 引用通知标题和正文。留空时使用默认消息格式。",
+  "plugin.wecombot.description": "通过企业微信群机器人发送通知。"
 }

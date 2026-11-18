@@ -113,6 +113,7 @@ Edit `schema/i18n/zh.json` and `schema/i18n/en.json` — flat key-value JSON fil
 
 ```
 plugin.my-provider.name                       → display name
+plugin.my-provider.description                → market description
 plugin.my-provider.access.apiKey.label        → access field label
 plugin.my-provider.deploy.target.label        → provider field label
 ```
@@ -120,6 +121,8 @@ plugin.my-provider.deploy.target.label        → provider field label
 To add a new locale, create a new JSON file in `schema/i18n/` (e.g., `ja.json`) — no Go code changes needed. The `plugin.LoadI18n` helper discovers locales at runtime by reading the directory.
 
 The core injects these into the SPA's i18n store under the default namespace at the `plugin.<type>` path, so `t("plugin.<type>.foo")` resolves in pickers and dynamic forms. Missing locale/key falls back to the raw key (graceful degradation).
+
+For a market description, add `plugin.<providerType>.description` in each language file and keep the English text in `manifest.json` as the `description` fallback. Run `make index` to include the translated name and description in the market catalog. The generator reads the name through `display_name_key` and excludes form translations from the catalog. Users can read these translations and search by name before installing the plugin. The host selects the requested locale, its base language, then English, and falls back to the provider identifier or manifest description when a translation is absent.
 
 ## 4. Write the manifest
 

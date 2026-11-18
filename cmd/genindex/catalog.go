@@ -44,6 +44,9 @@ func renderIndex(root string, plugins []catalogManifest) ([]byte, error) {
 				summary[key] = value
 			}
 		}
+		if len(entry.translations) > 0 {
+			summary["i18n"] = entry.translations
+		}
 
 		if icon, ok := manifest["icon"].(string); ok && icon != "" {
 			if !fs.ValidPath(icon) || icon == "." {

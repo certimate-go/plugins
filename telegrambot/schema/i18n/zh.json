@@ -9,5 +9,6 @@
   "plugin.telegrambot.access.chatId.help": "提示：可在工作流中覆盖此设置。",
   "plugin.telegrambot.notify.chatId.label": "Telegram 会话 ID（可选）",
   "plugin.telegrambot.notify.chatId.placeholder": "请输入 Telegram 会话 ID",
-  "plugin.telegrambot.notify.chatId.help": "提示：不填写时，将使用所选通知渠道授权的默认会话 ID。"
+  "plugin.telegrambot.notify.chatId.help": "提示：不填写时，将使用所选通知渠道授权的默认会话 ID。",
+  "plugin.telegrambot.description": "向 Telegram 聊天发送通知。"
 }

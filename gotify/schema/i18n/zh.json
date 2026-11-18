@@ -1,5 +1,6 @@
 {
   "plugin.gotify.name": "Gotify",
   "plugin.gotify.access.serverUrl": "Gotify 服务地址",
-  "plugin.gotify.access.token": "应用令牌"
+  "plugin.gotify.access.token": "应用令牌",
+  "plugin.gotify.description": "通过 Gotify 应用发送通知。"
 }

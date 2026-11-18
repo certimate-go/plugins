@@ -12,5 +12,6 @@
   "plugin.mattermost.access.channelId.help": "Notes: It can be overrided in the workflows.",
   "plugin.mattermost.notify.channelId.label": "Mattermost channel ID (Optional)",
   "plugin.mattermost.notify.channelId.placeholder": "Please enter Mattermost channel ID",
-  "plugin.mattermost.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential."
+  "plugin.mattermost.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential.",
+  "plugin.mattermost.description": "Send notifications to a Mattermost channel."
 }

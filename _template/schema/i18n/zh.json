@@ -4,5 +4,6 @@
   "plugin.__PLUGIN_NAME__.deploy.exampleField.placeholder": "请输入",
   "plugin.__PLUGIN_NAME__.deploy.exampleSelect.label": "示例选项",
   "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option1": "选项1",
-  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option2": "选项2"
+  "plugin.__PLUGIN_NAME__.deploy.exampleSelect.option2": "选项2",
+  "plugin.__PLUGIN_NAME__.access.exampleApiKey.label": "示例 API 密钥"
 }

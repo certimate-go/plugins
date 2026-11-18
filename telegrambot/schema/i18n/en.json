@@ -9,5 +9,6 @@
   "plugin.telegrambot.access.chatId.help": "Notes: It can be overrided in the workflows.",
   "plugin.telegrambot.notify.chatId.label": "Telegram chat ID (Optional)",
   "plugin.telegrambot.notify.chatId.placeholder": "Please enter Telegram chat ID",
-  "plugin.telegrambot.notify.chatId.help": "Notes: Leave it blank to use the default chat ID provided by the selected credential."
+  "plugin.telegrambot.notify.chatId.help": "Notes: Leave it blank to use the default chat ID provided by the selected credential.",
+  "plugin.telegrambot.description": "Send notifications to a Telegram chat."
 }

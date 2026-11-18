@@ -9,5 +9,6 @@
   "plugin.discordbot.access.channelId.help": "Notes: It can be overrided in the workflows.",
   "plugin.discordbot.notify.channelId.label": "Discord channel ID (Optional)",
   "plugin.discordbot.notify.channelId.placeholder": "Please enter Discord channel ID",
-  "plugin.discordbot.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential."
+  "plugin.discordbot.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential.",
+  "plugin.discordbot.description": "Send notifications to a Discord channel."
 }

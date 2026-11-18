@@ -14,8 +14,14 @@ import (
 var providerTypePattern = regexp.MustCompile(`^[a-z0-9][a-z0-9_.-]*$`)
 
 type catalogManifest struct {
-	directory string
-	fields    map[string]any
+	directory    string
+	fields       map[string]any
+	translations map[string]catalogTranslation
+}
+
+type catalogTranslation struct {
+	Name        string `json:"name,omitempty"`
+	Description string `json:"description,omitempty"`
 }
 
 func buildIndex(rootDir string) ([]catalogManifest, error) {
@@ -44,12 +50,47 @@ func buildIndex(rootDir string) ([]catalogManifest, error) {
 		if !providerTypePattern.MatchString(pt) {
 			continue
 		}
-		plugins = append(plugins, catalogManifest{directory: e.Name(), fields: m})
+		nameKey, _ := m["display_name_key"].(string)
+		translations, err := readTranslations(filepath.Join(rootDir, e.Name(), "schema", "i18n"), nameKey, "plugin."+pt+".description")
+		if err != nil {
+			return nil, err
+		}
+		plugins = append(plugins, catalogManifest{directory: e.Name(), fields: m, translations: translations})
 	}
 	sort.Slice(plugins, func(i, j int) bool {
 		return plugins[i].fields["provider_type"].(string) < plugins[j].fields["provider_type"].(string)
 	})
 	return plugins, nil
+}
+
+func readTranslations(dir, nameKey, descriptionKey string) (map[string]catalogTranslation, error) {
+	entries, err := os.ReadDir(dir)
+	if os.IsNotExist(err) {
+		return nil, nil
+	}
+	if err != nil {
+		return nil, fmt.Errorf("read translations %q: %w", dir, err)
+	}
+	translations := make(map[string]catalogTranslation)
+	for _, entry := range entries {
+		if entry.IsDir() || filepath.Ext(entry.Name()) != ".json" {
+			continue
+		}
+		path := filepath.Join(dir, entry.Name())
+		body, err := os.ReadFile(path)
+		if err != nil {
+			return nil, fmt.Errorf("read translation %q: %w", path, err)
+		}
+		var bundle map[string]string
+		if err := json.Unmarshal(body, &bundle); err != nil {
+			return nil, fmt.Errorf("parse translation %q: %w", path, err)
+		}
+		translation := catalogTranslation{Name: bundle[nameKey], Description: bundle[descriptionKey]}
+		if translation.Name != "" || translation.Description != "" {
+			translations[strings.TrimSuffix(entry.Name(), ".json")] = translation
+		}
+	}
+	return translations, nil
 }
 
 func main() {

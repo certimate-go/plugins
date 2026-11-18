@@ -9,5 +9,6 @@
   "plugin.slackbot.access.channelId.help": "Notes: It can be overrided in the workflows.",
   "plugin.slackbot.notify.channelId.label": "Slack channel ID (Optional)",
   "plugin.slackbot.notify.channelId.placeholder": "Please enter Slack channel ID",
-  "plugin.slackbot.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential."
+  "plugin.slackbot.notify.channelId.help": "Notes: Leave it blank to use the default channel ID provided by the selected credential.",
+  "plugin.slackbot.description": "Send notifications to a Slack channel."
 }

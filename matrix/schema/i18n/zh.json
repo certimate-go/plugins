@@ -14,5 +14,6 @@
   "plugin.matrix.access.roomId.help": "提示：可在工作流中覆盖此设置。请先将机器人邀请进房间。",
   "plugin.matrix.notify.roomId.label": "Matrix 房间 ID（可选）",
   "plugin.matrix.notify.roomId.placeholder": "请输入 Matrix 房间 ID",
-  "plugin.matrix.notify.roomId.help": "提示：不填写时，将使用所选通知渠道授权的默认房间 ID。"
+  "plugin.matrix.notify.roomId.help": "提示：不填写时，将使用所选通知渠道授权的默认房间 ID。",
+  "plugin.matrix.description": "向 Matrix 房间发送通知。"
 }

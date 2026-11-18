@@ -9,5 +9,6 @@
   "plugin.discordbot.access.channelId.help": "提示：可在工作流中覆盖此设置。",
   "plugin.discordbot.notify.channelId.label": "Discord 频道 ID（可选）",
   "plugin.discordbot.notify.channelId.placeholder": "请输入 Discord 频道 ID",
-  "plugin.discordbot.notify.channelId.help": "提示：不填写时，将使用所选通知渠道授权的默认频道 ID。"
+  "plugin.discordbot.notify.channelId.help": "提示：不填写时，将使用所选通知渠道授权的默认频道 ID。",
+  "plugin.discordbot.description": "向 Discord 频道发送通知。"
 }

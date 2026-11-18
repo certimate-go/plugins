@@ -8,5 +8,6 @@
   "plugin.larkbot.access.secret.placeholder": "Please enter Lark bot secret",
   "plugin.larkbot.access.customPayload.label": "Lark bot message payload (Optional)",
   "plugin.larkbot.access.customPayload.placeholder": "Please enter custom Lark bot message payload",
-  "plugin.larkbot.access.customPayload.help": "Use ${CERTIMATE_NOTIFIER_SUBJECT} and ${CERTIMATE_NOTIFIER_MESSAGE} for the notification subject and message. Leave blank to use the default payload."
+  "plugin.larkbot.access.customPayload.help": "Use ${CERTIMATE_NOTIFIER_SUBJECT} and ${CERTIMATE_NOTIFIER_MESSAGE} for the notification subject and message. Leave blank to use the default payload.",
+  "plugin.larkbot.description": "Send notifications via a Feishu or Lark custom bot."
 }
