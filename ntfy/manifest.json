@@ -20,17 +20,17 @@
       "windows/arm64": "ntfy_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "6b92827a51aeac404c1f5ce9f62955c4db03934714c71cd4181c022d35ce522f",
-      "darwin/arm64": "b3a867474aeb12dc19ba4ae74df423a63b8cd931cf16075649dc5fd89f1ba7e8",
-      "linux/amd64": "e2d044afeef85076eff0eacf74c83fa2d9f8b4f012498e4d74a19e7ad62c8d86",
-      "linux/arm": "52c098a3a9adc246a2d4e3dbeac0e843f598c442f775e946b4b89151f995e3b4",
-      "linux/arm64": "eaf63ed74b4a18169222d78ca7f083c63219ebf5c98e34b8643c199f4ed3581e",
-      "windows/386": "9ecc17994027a754e9028f19982b93853f6653c4814384905589b2947192bdbc",
-      "windows/amd64": "2e64a3d217072d729ebcef9ed00b29db830a83beaeeecbd8a0f90021a0f1d507",
-      "windows/arm64": "03078ef1e54bc63502837d3de6fc9d138258d8e92fc8f05a3d81341782f687d2"
+      "darwin/amd64": "c6d81d779aba1f2a51a847dab83fae6f536fb4c47463f56ef8d0b67d4eef9139",
+      "darwin/arm64": "21085ea0f143b14cc65a5111281c8f481f707375e1b264b1b43f5742aa5668c4",
+      "linux/amd64": "9d1125f84e81b10a927269721dddb3681ec9e9473e41ab953075bc959155d60e",
+      "linux/arm": "1b622eaee35da664f7724eb3a5342f7af7d72f09c51c7adfe5bb5c9694d7fca1",
+      "linux/arm64": "8423b9c3b5e9767636e09e48b037e9e6e6ef7ce13b4536db2cec4e4450cc5d7c",
+      "windows/386": "80eaea3a96b58cda526da483b5b4747a5d8a7ec4e1911988c0bec30aebe27bf0",
+      "windows/amd64": "3ae4de18590f401a3a701267c26ffb16bafeea3d1878e9f27de2d2143334589d",
+      "windows/arm64": "6df6743ce80dba516141214b59ddbf18988edccfd4a550c497fe9e42338f8af1"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ntfy/v0.2.1"
+    "tag": "ntfy/v0.2.2"
   },
   "usages": [
     "notification"
