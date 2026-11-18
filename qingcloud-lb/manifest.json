@@ -15,18 +15,24 @@
       "darwin/amd64": "qingcloud-lb_darwin_amd64.zip",
       "darwin/arm64": "qingcloud-lb_darwin_arm64.zip",
       "linux/amd64": "qingcloud-lb_linux_amd64.zip",
+      "linux/arm": "qingcloud-lb_linux_arm.zip",
       "linux/arm64": "qingcloud-lb_linux_arm64.zip",
-      "windows/amd64": "qingcloud-lb_windows_amd64.zip"
+      "windows/386": "qingcloud-lb_windows_386.zip",
+      "windows/amd64": "qingcloud-lb_windows_amd64.zip",
+      "windows/arm64": "qingcloud-lb_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "b533d21f2ce9e5f733d68ae51ccf1d6bfc5e66d808e76c8cdb3916a7d564f414",
-      "darwin/arm64": "7c4045583dc5bf8767d1c8c7716be5a1a7f9a5791df0300e7b73ef8cdc728876",
-      "linux/amd64": "a58d9cfe66a980d5b747ca896b8be3d1733891cde1b419e2569721fef3d81e84",
-      "linux/arm64": "2696a85eab3f23b0f5bbd57669e6c42e4f5aa8f44331206d5b933973be33f8d9",
-      "windows/amd64": "a58a34032a41f7ddad10f03d4b678512cbbcfb96bfd47a2443c983dcd84b993e"
+      "darwin/amd64": "8a65f90e806089da80e5136e02004d1c81614b0da8c68c0f94d275f81eb3726a",
+      "darwin/arm64": "a281d7d3a08fb5a3b8996ba72060a20e90a04220b81d4b3e69362c9de2d2360b",
+      "linux/amd64": "19909b482e2aaa97f2502fbf071b2d0b8c565a060cd20398b23f899885b5ebfc",
+      "linux/arm": "9ebb7e9872fa0b7ff90a62441dc083b06c8b710bc51d9b1122279f124a85c5d7",
+      "linux/arm64": "c18531a03746a8d6ed31e73f4b8df668510003a3ddb103f1c9d1ce409b552d88",
+      "windows/386": "d45e7cf4377a4319d209f8a27b47b2a649bc54c2ba488f3019e5bc773e7dfdcd",
+      "windows/amd64": "7323251a9fa18687556df8456b9d55b9779216fb9bc0cec2dc625c6b20b895ef",
+      "windows/arm64": "8a524195c6accd61cf6c2aec025dfaf62faa20c98931f8ffe0b36c29956d16ca"
     },
     "repo": "certimate-go/plugins",
-    "tag": "qingcloud-lb/v0.2.0"
+    "tag": "qingcloud-lb/v0.2.1"
   },
   "sha256": "",
   "usages": [
