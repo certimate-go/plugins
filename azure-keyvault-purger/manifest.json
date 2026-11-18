@@ -16,18 +16,24 @@
       "darwin/amd64": "azure-keyvault-purger_darwin_amd64.zip",
       "darwin/arm64": "azure-keyvault-purger_darwin_arm64.zip",
       "linux/amd64": "azure-keyvault-purger_linux_amd64.zip",
+      "linux/arm": "azure-keyvault-purger_linux_arm.zip",
       "linux/arm64": "azure-keyvault-purger_linux_arm64.zip",
-      "windows/amd64": "azure-keyvault-purger_windows_amd64.zip"
+      "windows/386": "azure-keyvault-purger_windows_386.zip",
+      "windows/amd64": "azure-keyvault-purger_windows_amd64.zip",
+      "windows/arm64": "azure-keyvault-purger_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "277c14524b6e7160cb2b01a084a1ca16e8549be2e8e751acfdb43d04f1d3fed5",
-      "darwin/arm64": "6383bf9c19bc076fa1f063e60e5eb659138f36473a85db6948bc29b8b6527f71",
-      "linux/amd64": "55cb5bd82e2db717ed9bba457e9f245e6769a90de76f18cde8fe41cfcc46e934",
-      "linux/arm64": "dae12fdb4d9a1776fe05b9f0f89bce6069b60d6cbce9a4f7bbf0fc6df20eaf85",
-      "windows/amd64": "4cf36426389472ce74e84b7c44e32958e8482464033285c58c72d21d0074bfe6"
+      "darwin/amd64": "5d4276c2cf48b0bf7ac84954094cf99b6663c010fe0b7ea84a9654ac1411368b",
+      "darwin/arm64": "41bbb780dcae87163c6a29d06d45a47c93d96d557c5d005ce64cd0193c537a7a",
+      "linux/amd64": "5b9ac438c739b736a8460ee79a926a44fd024655c817a86c7ecbd2b887e02903",
+      "linux/arm": "850a9743c9e695295881ca09a6fcc8b5b7a588d094c2abac25a0584506e9ad56",
+      "linux/arm64": "b11fd835123827930248d4bce62d6ce2000439a765b088e3634c1f2480e0b26d",
+      "windows/386": "c67546cb9fdb1ae808d33d9d85716e05b4c37dd165e9fc43e84491765c96aef1",
+      "windows/amd64": "b966ef834b7682d9e28fc10bd3e4acaf0dba7e6790e000133a69df3f571c3eba",
+      "windows/arm64": "ac8d926ee546a9660f86deb87be7416b77e9987d871edccff6cf0f9baa0b75bb"
     },
     "repo": "certimate-go/plugins",
-    "tag": "azure-keyvault-purger/v0.1.0"
+    "tag": "azure-keyvault-purger/v0.1.1"
   },
   "sha256": "",
   "usages": [
