@@ -15,18 +15,24 @@
       "darwin/amd64": "mohua-mvh_darwin_amd64.zip",
       "darwin/arm64": "mohua-mvh_darwin_arm64.zip",
       "linux/amd64": "mohua-mvh_linux_amd64.zip",
+      "linux/arm": "mohua-mvh_linux_arm.zip",
       "linux/arm64": "mohua-mvh_linux_arm64.zip",
-      "windows/amd64": "mohua-mvh_windows_amd64.zip"
+      "windows/386": "mohua-mvh_windows_386.zip",
+      "windows/amd64": "mohua-mvh_windows_amd64.zip",
+      "windows/arm64": "mohua-mvh_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "aa16667a9a7eda3ba841df62fb28db63f49e11a113b9b117355b4a33cae29ca0",
-      "darwin/arm64": "49345eeec2acbf7eb7ec66bd7a3818eefd638c1240317476286ede43867f705b",
-      "linux/amd64": "b043cd33d6abba909ddf777a3a22b60459a64c7140d74c4247d71d08581c428b",
-      "linux/arm64": "77104618e1648f43dbaf1911ad615feb6db390617c028fa281f1a7bd96f088b4",
-      "windows/amd64": "c67d56dceb3559a45cd563f6c3d83bd46f17df3181b1010784bbd88d2aa66da7"
+      "darwin/amd64": "2e16e445d8bb21beb3099589a8d90110fdc5f8d3f4751ab7c6f21820bbbb985f",
+      "darwin/arm64": "e793c4cd9ed08647f419feb1f6486d7b419b5a07036dfb8652fdac096e7f6741",
+      "linux/amd64": "3eef6a606621d95d44981fc4971ddc9625c0baee27d505d706c5ca7572e152db",
+      "linux/arm": "3bb3bb866ebc351130883c791d6ff3c9a23650d33170823f3b71e9ff14b30d26",
+      "linux/arm64": "15ebab3a8529af2283e2d6b56f09b58ba8168547e7d07c2c3d269243295065f8",
+      "windows/386": "8061eac8964afa40c3dcb877f97fb4660d7484c17919b8431e7081743a34cd87",
+      "windows/amd64": "7938fbc65a45eca67e597a8d68afc73f21486769732d492422f4f09f4af03a0d",
+      "windows/arm64": "8b7b935a7bceb19179e5caacfd5102b0ec94781dd147836487bd3afbd9bf131b"
     },
     "repo": "certimate-go/plugins",
-    "tag": "mohua-mvh/v0.2.0"
+    "tag": "mohua-mvh/v0.2.1"
   },
   "usages": [
     "hosting"
