@@ -16,18 +16,24 @@
       "darwin/amd64": "tencentcloud-tse-purger_darwin_amd64.zip",
       "darwin/arm64": "tencentcloud-tse-purger_darwin_arm64.zip",
       "linux/amd64": "tencentcloud-tse-purger_linux_amd64.zip",
+      "linux/arm": "tencentcloud-tse-purger_linux_arm.zip",
       "linux/arm64": "tencentcloud-tse-purger_linux_arm64.zip",
-      "windows/amd64": "tencentcloud-tse-purger_windows_amd64.zip"
+      "windows/386": "tencentcloud-tse-purger_windows_386.zip",
+      "windows/amd64": "tencentcloud-tse-purger_windows_amd64.zip",
+      "windows/arm64": "tencentcloud-tse-purger_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "353c463c39792a0e0edc713e5a827d5f66285e7fbfbfb039ba228e3fe10c5227",
-      "darwin/arm64": "489fcb4c311e12afdcea77234a542c26f04ae365de4116516171fd3b852e218d",
-      "linux/amd64": "99278071d6f46dedb0b2100745aef9ecbefd206586040af32d54f10c59022551",
-      "linux/arm64": "6d8ef4262701f272fe13b1e5cae27ca9b52bf93b44feac12ebd5253d3454e31f",
-      "windows/amd64": "fcc6da69d2592f915732be7435ad5b61f8f03fd160890e8fa6fcb9b9c4b02367"
+      "darwin/amd64": "5a7a8287d4b216014be0cae12f55d1c558aa42cde81f7b493f6ef48278bebf15",
+      "darwin/arm64": "368cde96d8c90bfb7460d50f522da493e43d751ef918aabc5ec190743d976553",
+      "linux/amd64": "3ce6915d292256da8dd730d1cbf13dfd9eedb27d57a2f7bb833f78f23e0e8d44",
+      "linux/arm": "a5608c087ac3e2b487f6da91ea2981ae284497716284e4c9d3f3d2e6486754e2",
+      "linux/arm64": "04c84729e04d332723f4484c0a7666e58701370b22824f8ad5b7b33a904fc819",
+      "windows/386": "f82043f474215dcc5eb6168e810e369e8660cdfff76e852f81314b438f25e668",
+      "windows/amd64": "ef760a2279406fc8a16f27b13f046f4d2321c2d51a8a2ccea9adae674fc01214",
+      "windows/arm64": "7b9f1320211f9984df2f9ade88c435295f6f7d9da29a671552d69ee6c2e0128c"
     },
     "repo": "certimate-go/plugins",
-    "tag": "tencentcloud-tse-purger/v0.1.0"
+    "tag": "tencentcloud-tse-purger/v0.1.1"
   },
   "sha256": "",
   "usages": [
