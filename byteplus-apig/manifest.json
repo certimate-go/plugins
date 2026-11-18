@@ -14,18 +14,24 @@
       "darwin/amd64": "byteplus-apig_darwin_amd64.zip",
       "darwin/arm64": "byteplus-apig_darwin_arm64.zip",
       "linux/amd64": "byteplus-apig_linux_amd64.zip",
+      "linux/arm": "byteplus-apig_linux_arm.zip",
       "linux/arm64": "byteplus-apig_linux_arm64.zip",
-      "windows/amd64": "byteplus-apig_windows_amd64.zip"
+      "windows/386": "byteplus-apig_windows_386.zip",
+      "windows/amd64": "byteplus-apig_windows_amd64.zip",
+      "windows/arm64": "byteplus-apig_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "187794e54fa1362cc6a6fbc65e6a95bf5cf09d5ad2f9e3d991d370786f7e667a",
-      "darwin/arm64": "aa18dfc0fe953dcb1e421441d229f6b7ca044e133f8e79efce7a835d458aabdd",
-      "linux/amd64": "a7fd9e4ea54d8b4ecd5c05da77f107f401541c7a829082ac8b628dfeebc59682",
-      "linux/arm64": "0b42dceb39f0334a529e0d9588cc31838e6004b9dffbc0ab67382d6f03080a4a",
-      "windows/amd64": "8c3a15161d6350aa7bd8a6d8e10b0f62f8800d2b265d106f112bf5f0e2747014"
+      "darwin/amd64": "eb6eefc35d3f07539095234452541861ede4c00db2113668323797bef5dccc6c",
+      "darwin/arm64": "5966bacef9a87b97a19a8fbc59c27c678e3248ccb24928a45d2d125efe69eed2",
+      "linux/amd64": "3e721645eb45e91ac71dfb80539ad38647616fa65881880f3ded6791ffd0d996",
+      "linux/arm": "36aeb4913256f97ab271a46d44a852f9ac19be46508b31960b7df0855086ae2b",
+      "linux/arm64": "65bc94d6dc9781e3b825e8dedd8f8bb4a366690d1ef22b957cb1f7c3e11e499b",
+      "windows/386": "d7ef6dbce0607f1931d3bf4bd6b4bfd711b8fd15ead8474c9a8d0fe52ff607db",
+      "windows/amd64": "0e1ad856bc11399544089093bc2c40bc9f19e5dc77f804f074ab759c1093a350",
+      "windows/arm64": "6602cea1fb5c8c218a0fabb82548aa42ab79061e4859dc512a545c799c8ca5f3"
     },
     "repo": "certimate-go/plugins",
-    "tag": "byteplus-apig/v0.2.0"
+    "tag": "byteplus-apig/v0.2.1"
   },
   "usages": [
     "hosting"
