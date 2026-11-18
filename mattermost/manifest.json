@@ -13,18 +13,24 @@
       "darwin/amd64": "mattermost_darwin_amd64.zip",
       "darwin/arm64": "mattermost_darwin_arm64.zip",
       "linux/amd64": "mattermost_linux_amd64.zip",
+      "linux/arm": "mattermost_linux_arm.zip",
       "linux/arm64": "mattermost_linux_arm64.zip",
-      "windows/amd64": "mattermost_windows_amd64.zip"
+      "windows/386": "mattermost_windows_386.zip",
+      "windows/amd64": "mattermost_windows_amd64.zip",
+      "windows/arm64": "mattermost_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "bc88b642cda5964b1a7492ee86e2a8cf31179aef10f94535a385b0877ad3df74",
-      "darwin/arm64": "309e281f463625ecd02681a6842c9584eb3a79bb005612ad5b74b820e53914e6",
-      "linux/amd64": "87155248c7344d08cd7e49ce63f20c66fdf68822dd80d4d5362df9290ca8c5be",
-      "linux/arm64": "b617db8308f6b9fdfc77754b6b15a2a326f0c8b84f733cb2bd1ae099017a5128",
-      "windows/amd64": "b9a4c46b0922cc25812e4da3acb1b7a125b55ba9e637223a6bbcbe546b0cc873"
+      "darwin/amd64": "f0f34121be87df668b7b0afadab3d24e23d70dc7f9b2469c69b4ed7d952cf803",
+      "darwin/arm64": "de664810be7555746e4dc9a573cc0c5640e02e23522f9e0d0574f652f65eefed",
+      "linux/amd64": "98985fd107186a3a3425fd77e17162a65ab62c730a559687a15d5c01cf86ee69",
+      "linux/arm": "77e7bfd62263d644041a665f028e81fd6c07a79aae64db0877a0b97d91fd3c82",
+      "linux/arm64": "c7be4a62e0f98728f223de6f839e1aaea0e10366bdeffbd43408e8ef278a637b",
+      "windows/386": "9e0c4dea50734e0d41c4c8eb1d5695364be63d42a51e8473e9ad43071983fd53",
+      "windows/amd64": "85509079f24cbc0aea29d4bc16884eaf1f17f1d250c988c28f90c37babb1c73e",
+      "windows/arm64": "e648dd12d6791611c943c2af37b75d650e52fdcb1aea4a58cfcb4c153fae60da"
     },
     "repo": "certimate-go/plugins",
-    "tag": "mattermost/v0.2.0"
+    "tag": "mattermost/v0.2.1"
   },
   "usages": [
     "notification"
