@@ -14,18 +14,24 @@
       "darwin/amd64": "cloudflare-ssl_darwin_amd64.zip",
       "darwin/arm64": "cloudflare-ssl_darwin_arm64.zip",
       "linux/amd64": "cloudflare-ssl_linux_amd64.zip",
+      "linux/arm": "cloudflare-ssl_linux_arm.zip",
       "linux/arm64": "cloudflare-ssl_linux_arm64.zip",
-      "windows/amd64": "cloudflare-ssl_windows_amd64.zip"
+      "windows/386": "cloudflare-ssl_windows_386.zip",
+      "windows/amd64": "cloudflare-ssl_windows_amd64.zip",
+      "windows/arm64": "cloudflare-ssl_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "dd08d6a68962f09618c29c6963524fe80ccd9b5dcfe4a254f8206658ab4ad933",
-      "darwin/arm64": "b135d6f7d8209ecbe7022c6b95d1e9459a7428f00d7fe797a31cd997f5acd10b",
-      "linux/amd64": "d39d0f7fb2c193813b85a9297a3cde49203170fc73a9fb0df8e8655755ba9057",
-      "linux/arm64": "300a3348716793ef13e455ab994f0b04d046d32ce4cebe1fdb80c3b26a223fc8",
-      "windows/amd64": "ed4cb6c52b2e6a3e0abf4b592282653423ddbb7058f6a7877adfae9d4d1d2cd6"
+      "darwin/amd64": "54c7a3a2d5a39d85866869b05caeac390d566c468c2029672bf99751b89132e1",
+      "darwin/arm64": "dbb72924eacdedf1753f1cf9af243d6cbdc9cce5f79753fb62501139c5b31bf0",
+      "linux/amd64": "251014a6fcbe12cc7afde84c73028b884a2b982d388235ee8efb67516161a1a9",
+      "linux/arm": "c732094e3653364ef2dca70b53d8900c525135daed93109ca36f198f815b57b0",
+      "linux/arm64": "b33f223e6dbdb6f5936e6d4b4908c9175f1822a916aeeebf7a19831746aba4a4",
+      "windows/386": "a3e7dadef4a5537f755030925b4d0ba26f740ba77f35b1abf6adeacdf984678b",
+      "windows/amd64": "3682c8ed48a92d18877e8f9f5694f86960ee0612a21e358e60e9503b8aea0170",
+      "windows/arm64": "0ce21c3c967229bb3e7d10dfb6a07590f9258d7e506226dbeb259e41229e6da0"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cloudflare-ssl/v0.2.0"
+    "tag": "cloudflare-ssl/v0.2.1"
   },
   "usages": [
     "hosting"
