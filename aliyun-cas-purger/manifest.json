@@ -16,18 +16,24 @@
       "darwin/amd64": "aliyun-cas-purger_darwin_amd64.zip",
       "darwin/arm64": "aliyun-cas-purger_darwin_arm64.zip",
       "linux/amd64": "aliyun-cas-purger_linux_amd64.zip",
+      "linux/arm": "aliyun-cas-purger_linux_arm.zip",
       "linux/arm64": "aliyun-cas-purger_linux_arm64.zip",
-      "windows/amd64": "aliyun-cas-purger_windows_amd64.zip"
+      "windows/386": "aliyun-cas-purger_windows_386.zip",
+      "windows/amd64": "aliyun-cas-purger_windows_amd64.zip",
+      "windows/arm64": "aliyun-cas-purger_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "b815e3f07040c9c9424a8b9658916ae5657203a8325d38d6a28c13bde207de7d",
-      "darwin/arm64": "d909fb93e03cff0e3525699b431c9fa3191caff363ae45577bacf39aee34407b",
-      "linux/amd64": "8eec55a1559304ef0a67d542edf810fd4eadc5d8b6e09eee882ec19888a21d12",
-      "linux/arm64": "6ec2ec54ba1a29b2c5fc9912b5eb5427b0de9b0de604615e2bee3fdc6d277ca7",
-      "windows/amd64": "3ee0280ab553183c7ae3f3cab5325d01a168a1ea5e4abbf497afa91d0069c4fa"
+      "darwin/amd64": "2bd5074f7927d98eec49a039f834cb17a32043d9db3b0e088e6d4f57acba49b1",
+      "darwin/arm64": "e7a122499fba6ee587dd383a3f6e8a6e9f893f3ea91a0709674b026d39e5c225",
+      "linux/amd64": "f6eeb1c356d3f358b3a8ac6cd4cd2f519efa49293fbd1a37a24db769feb99234",
+      "linux/arm": "1ee0ce98d550b92853482201ad22caf65ac4a25885fa406974720cf9e3484f3e",
+      "linux/arm64": "8c0bd4f64561cdc7409f91ced927898f43aade840b233a67f90e557e8fbf72ce",
+      "windows/386": "e3afd6f1e7de9da02e31c4be761718d1f487a1ed0ef261c532090a33b088390b",
+      "windows/amd64": "3678cef4aad8846aa671327c76a01060546f5485417db246f4fad39ed10bf4e6",
+      "windows/arm64": "1dc56317b01e1801f943356403e38386bb65aed469ea6b33e541cc79fb518ef3"
     },
     "repo": "certimate-go/plugins",
-    "tag": "aliyun-cas-purger/v0.1.0"
+    "tag": "aliyun-cas-purger/v0.1.1"
   },
   "sha256": "",
   "usages": [
