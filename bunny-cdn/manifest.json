@@ -14,18 +14,24 @@
       "darwin/amd64": "bunny-cdn_darwin_amd64.zip",
       "darwin/arm64": "bunny-cdn_darwin_arm64.zip",
       "linux/amd64": "bunny-cdn_linux_amd64.zip",
+      "linux/arm": "bunny-cdn_linux_arm.zip",
       "linux/arm64": "bunny-cdn_linux_arm64.zip",
-      "windows/amd64": "bunny-cdn_windows_amd64.zip"
+      "windows/386": "bunny-cdn_windows_386.zip",
+      "windows/amd64": "bunny-cdn_windows_amd64.zip",
+      "windows/arm64": "bunny-cdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "11b852579485b8b27422692d350ab2def1198f087044d3700a1e65f7c4e9b1be",
-      "darwin/arm64": "037ecdcc814c8444e3fa8c6d9ef512b6ecaa99cc409890dc09ac3c24e816ee32",
-      "linux/amd64": "13dc8f62c0b27ffab42deeec73a0b645c6652e1935138d04270ecd8882e2d290",
-      "linux/arm64": "8b6813c228b01039fe41ec0cb67d18555a32585be2372b98b79f7e9ec4769ef7",
-      "windows/amd64": "07baa7739011066668a1690dca19d5e047f414e65422f0261f4f0bff39c2fa05"
+      "darwin/amd64": "e5ee6f58ae9657ef17ccb720423ef12e0cc01b9d9449e5ceb69098ab296e754d",
+      "darwin/arm64": "cf80a967df5e8a54dd8b22d129a891a56853959ce9ccc297045dc83ebf697942",
+      "linux/amd64": "f5495eb75c1c72b51ffce6a1bb0598f6e8c71525753289f9f541a3f6d52aade6",
+      "linux/arm": "8a52eea3d5a618b710cc7b8092c7611e2f29d266023248bab82433d6c4f8f03e",
+      "linux/arm64": "3fc30516ea1907a8c4905dd21d4a58d3adef8c5f5043c7d2f0d403f678c39371",
+      "windows/386": "9a57de5db2454701c76e06e701f89165a722f58ba09c0a2279509374f382ecae",
+      "windows/amd64": "d0fbb6eca90a0b5141f78c51879595802da0a61dcec3cbc8567a50b0f2f4c185",
+      "windows/arm64": "62bfd96e8c71e50f315a3ff50da4abeb3b27d1637a64d35ff51aadf7e8410e64"
     },
     "repo": "certimate-go/plugins",
-    "tag": "bunny-cdn/v0.2.0"
+    "tag": "bunny-cdn/v0.2.1"
   },
   "usages": [
     "hosting"
