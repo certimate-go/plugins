@@ -1,6 +1,6 @@
 {
   "access_provider_type": "ucloud",
-  "binary": "ucloud-uclb",
+  "binary": "ucloud-uclb.exe",
   "capability": "deploy",
   "category": "loadbalance",
   "display_name_key": "plugin.ucloud-uclb.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

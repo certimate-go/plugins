@@ -32,13 +32,15 @@ build-all:
 	@set -eu; \
 	bin='$(BINARY)'; \
 	if [ -z "$$bin" ] || [ "$$bin" = "null" ]; then echo "Error: $(PLUGIN)/manifest.json has no binary field"; exit 1; fi; \
+	case "$$bin" in *.exe) ;; *) echo "Error: $(PLUGIN)/manifest.json binary must end in .exe for Windows"; exit 1 ;; esac; \
 	icon='$(ICON)'; \
 	mkdir -p $(OUTPUT_DIR); \
-	for pair in linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64; do \
+	for pair in linux/amd64 linux/arm64 linux/arm darwin/amd64 darwin/arm64 windows/amd64 windows/arm64 windows/386; do \
 	  os=$${pair%/*}; arch=$${pair#*/}; \
+	  goarm=; if [ "$$arch" = arm ]; then goarm=7; fi; \
 	  echo "building $(PLUGIN) $$os/$$arch"; \
 	  raw=$$(mktemp); \
-	  GOOS=$$os GOARCH=$$arch CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o $$raw ./$(PLUGIN); \
+	  GOOS=$$os GOARCH=$$arch GOARM=$$goarm CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o $$raw ./$(PLUGIN); \
 	  stage=$$(mktemp -d); \
 	  cp $$raw "$$stage/$$bin"; \
 	  rm -f $$raw; \

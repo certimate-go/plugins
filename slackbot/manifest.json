@@ -1,6 +1,6 @@
 {
   "access_provider_type": "slackbot",
-  "binary": "slackbot",
+  "binary": "slackbot.exe",
   "capability": "notify",
   "description": "Send notifications to a Slack channel.",
   "display_name_key": "plugin.slackbot.name",
@@ -29,5 +29,5 @@
   "usages": [
     "notification"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

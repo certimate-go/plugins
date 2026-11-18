@@ -1,6 +1,6 @@
 {
   "access_provider_type": "cpanel",
-  "binary": "cpanel",
+  "binary": "cpanel.exe",
   "capability": "deploy",
   "category": "website",
   "display_name_key": "plugin.cpanel.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

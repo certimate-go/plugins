@@ -1,6 +1,6 @@
 {
   "access_provider_type": "samwaf",
-  "binary": "samwaf-console",
+  "binary": "samwaf-console.exe",
   "capability": "deploy",
   "category": "other",
   "display_name_key": "plugin.samwaf-console.name",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

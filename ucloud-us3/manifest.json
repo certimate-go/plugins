@@ -1,6 +1,6 @@
 {
   "access_provider_type": "ucloud",
-  "binary": "ucloud-us3",
+  "binary": "ucloud-us3.exe",
   "capability": "deploy",
   "category": "storage",
   "display_name_key": "plugin.ucloud-us3.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.1"
+  "version": "0.2.2"
 }

@@ -1,6 +1,6 @@
 {
   "access_provider_type": "matrix",
-  "binary": "matrix",
+  "binary": "matrix.exe",
   "capability": "notify",
   "description": "Send notifications to a Matrix room.",
   "display_name_key": "plugin.matrix.name",
@@ -29,5 +29,5 @@
   "usages": [
     "notification"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

@@ -1,6 +1,6 @@
 {
   "access_provider_type": "__ACCESS_TYPE__",
-  "binary": "__PLUGIN_NAME__",
+  "binary": "__PLUGIN_NAME__.exe",
   "capability": "deploy",
   "category": "other",
   "description": "",

@@ -1,6 +1,6 @@
 {
   "access_provider_type": "baotawaf",
-  "binary": "baotawaf",
+  "binary": "baotawaf.exe",
   "capability": "deploy",
   "category": "firewall",
   "display_name_key": "plugin.baotawaf.name",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

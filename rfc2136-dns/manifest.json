@@ -1,6 +1,6 @@
 {
   "access_provider_type": "rfc2136-dns",
-  "binary": "rfc2136-dns",
+  "binary": "rfc2136-dns.exe",
   "capability": "dns",
   "description": "DNS-01 via RFC 2136 dynamic updates with optional TSIG authentication.",
   "display_name_key": "plugin.rfc2136-dns.name",
@@ -29,5 +29,5 @@
   "usages": [
     "dns"
   ],
-  "version": "0.2.2"
+  "version": "0.2.3"
 }

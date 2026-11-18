@@ -1,6 +1,6 @@
 {
   "access_provider_type": "goedge",
-  "binary": "goedge",
+  "binary": "goedge.exe",
   "capability": "deploy",
   "category": "cdn",
   "display_name_key": "plugin.goedge.name",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

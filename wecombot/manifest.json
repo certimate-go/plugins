@@ -1,6 +1,6 @@
 {
   "access_provider_type": "wecombot",
-  "binary": "wecombot",
+  "binary": "wecombot.exe",
   "capability": "notify",
   "description": "Send notifications via a WeCom group robot.",
   "display_name_key": "plugin.wecombot.name",
@@ -29,5 +29,5 @@
   "usages": [
     "notification"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

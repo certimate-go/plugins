@@ -1,6 +1,6 @@
 {
   "access_provider_type": "vercel",
-  "binary": "vercel",
+  "binary": "vercel.exe",
   "capability": "deploy",
   "category": "website",
   "display_name_key": "plugin.vercel.name",
@@ -32,5 +32,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

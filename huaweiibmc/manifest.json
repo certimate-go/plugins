@@ -1,6 +1,6 @@
 {
   "access_provider_type": "huaweiibmc",
-  "binary": "huaweiibmc",
+  "binary": "huaweiibmc.exe",
   "capability": "deploy",
   "category": "other",
   "display_name_key": "provider.huaweiibmc",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

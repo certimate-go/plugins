@@ -1,6 +1,6 @@
 {
   "access_provider_type": "ucloud",
-  "binary": "ucloud-ucdn",
+  "binary": "ucloud-ucdn.exe",
   "capability": "deploy",
   "category": "cdn",
   "display_name_key": "plugin.ucloud-ucdn.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.1"
+  "version": "0.2.2"
 }

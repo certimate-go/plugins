@@ -1,6 +1,6 @@
 {
   "access_provider_type": "qingcloud",
-  "binary": "qingcloud-lb",
+  "binary": "qingcloud-lb.exe",
   "capability": "deploy",
   "category": "loadbalance",
   "display_name_key": "plugin.qingcloud-lb.name",
@@ -32,5 +32,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

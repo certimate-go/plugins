@@ -1,6 +1,6 @@
 {
   "access_provider_type": "safeline",
-  "binary": "safeline",
+  "binary": "safeline.exe",
   "capability": "deploy",
   "category": "firewall",
   "display_name_key": "plugin.safeline.name",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

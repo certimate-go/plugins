@@ -1,6 +1,6 @@
 {
   "access_provider_type": "aliyun",
-  "binary": "aliyun-esa-purger",
+  "binary": "aliyun-esa-purger.exe",
   "capability": "purge",
   "category": "other",
   "description": "",
@@ -33,5 +33,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

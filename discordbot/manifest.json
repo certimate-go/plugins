@@ -1,6 +1,6 @@
 {
   "access_provider_type": "discordbot",
-  "binary": "discordbot",
+  "binary": "discordbot.exe",
   "capability": "notify",
   "description": "Send notifications to a Discord channel.",
   "display_name_key": "plugin.discordbot.name",
@@ -29,5 +29,5 @@
   "usages": [
     "notification"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

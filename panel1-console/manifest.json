@@ -1,6 +1,6 @@
 {
   "access_provider_type": "1panel",
-  "binary": "panel1-console",
+  "binary": "panel1-console.exe",
   "capability": "deploy",
   "category": "other",
   "display_name_key": "plugin.1panel-console.name",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

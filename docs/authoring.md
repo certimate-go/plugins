@@ -182,7 +182,7 @@ dist/my-provider/
   icon.svg          # copied when manifest.icon is set
 ```
 
-`make build-all PLUGIN=my-provider` cross-compiles release ZIPs for linux/amd64, linux/arm64, darwin/amd64, darwin/arm64, and windows/amd64. Each ZIP keeps the binary name from the manifest (no platform suffix inside the archive).
+`make build-all PLUGIN=my-provider` cross-compiles release ZIPs for `linux/amd64`, `linux/arm64`, `linux/arm` (ARMv7), `darwin/amd64`, `darwin/arm64`, `windows/amd64`, `windows/arm64`, and `windows/386`. Use a `binary` name ending in `.exe` in the manifest. Each ZIP uses that name on its target platform.
 
 Copy that directory into the core plugin root under a per-provider subdirectory:
 

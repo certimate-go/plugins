@@ -1,6 +1,6 @@
 {
   "access_provider_type": "1panel",
-  "binary": "panel1",
+  "binary": "panel1.exe",
   "capability": "deploy",
   "category": "website",
   "display_name_key": "plugin.1panel.name",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

@@ -1,6 +1,6 @@
 {
   "access_provider_type": "cdnfly",
-  "binary": "cdnfly",
+  "binary": "cdnfly.exe",
   "capability": "deploy",
   "category": "cdn",
   "display_name_key": "plugin.cdnfly.name",
@@ -32,5 +32,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

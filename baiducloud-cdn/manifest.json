@@ -1,6 +1,6 @@
 {
   "access_provider_type": "baiducloud",
-  "binary": "baiducloud-cdn",
+  "binary": "baiducloud-cdn.exe",
   "capability": "deploy",
   "category": "cdn",
   "display_name_key": "plugin.baiducloud-cdn.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

@@ -1,6 +1,6 @@
 {
   "access_provider_type": "qiniu",
-  "binary": "qiniu-pili",
+  "binary": "qiniu-pili.exe",
   "capability": "deploy",
   "category": "av",
   "display_name_key": "plugin.qiniu-pili.name",
@@ -32,5 +32,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

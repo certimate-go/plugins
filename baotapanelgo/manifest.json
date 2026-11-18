@@ -1,6 +1,6 @@
 {
   "access_provider_type": "baotapanelgo",
-  "binary": "baotapanelgo",
+  "binary": "baotapanelgo.exe",
   "capability": "deploy",
   "category": "website",
   "display_name_key": "plugin.baotapanelgo.name",
@@ -31,5 +31,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

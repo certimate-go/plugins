@@ -1,6 +1,6 @@
 {
   "access_provider_type": "baiducloud",
-  "binary": "baiducloud-cert-purger",
+  "binary": "baiducloud-cert-purger.exe",
   "capability": "purge",
   "category": "other",
   "description": "",
@@ -33,5 +33,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

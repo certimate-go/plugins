@@ -72,14 +72,23 @@ func TestApplyRelease_HappyPath(t *testing.T) {
 		t.Fatalf("tag: want alpha/v1.2.0, got %v", rel["tag"])
 	}
 	assets, _ := rel["assets"].(map[string]any)
-	if assets["linux/amd64"] != "alpha_linux_amd64.zip" {
-		t.Fatalf("assets[linux/amd64]: want alpha_linux_amd64.zip, got %v", assets["linux/amd64"])
+	wantAssets := map[string]string{
+		"linux/amd64":   "alpha_linux_amd64.zip",
+		"linux/arm64":   "alpha_linux_arm64.zip",
+		"linux/arm":     "alpha_linux_arm.zip",
+		"darwin/amd64":  "alpha_darwin_amd64.zip",
+		"darwin/arm64":  "alpha_darwin_arm64.zip",
+		"windows/amd64": "alpha_windows_amd64.zip",
+		"windows/arm64": "alpha_windows_arm64.zip",
+		"windows/386":   "alpha_windows_386.zip",
 	}
-	if assets["windows/amd64"] != "alpha_windows_amd64.zip" {
-		t.Fatalf("assets[windows/amd64]: want alpha_windows_amd64.zip, got %v", assets["windows/amd64"])
+	if len(assets) != len(wantAssets) {
+		t.Fatalf("assets: want %d entries, got %d", len(wantAssets), len(assets))
 	}
-	if len(assets) != len(targets) {
-		t.Fatalf("assets: want %d entries, got %d", len(targets), len(assets))
+	for key, want := range wantAssets {
+		if got := assets[key]; got != want {
+			t.Fatalf("assets[%s]: want %s, got %v", key, want, got)
+		}
 	}
 	checksums, _ := rel["checksums"].(map[string]any)
 	if len(checksums) != len(targets) {

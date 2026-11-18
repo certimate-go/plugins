@@ -1,6 +1,6 @@
 {
   "access_provider_type": "ksyun",
-  "binary": "ksyun-slb",
+  "binary": "ksyun-slb.exe",
   "capability": "deploy",
   "category": "loadbalance",
   "display_name_key": "plugin.ksyun-slb.name",
@@ -32,5 +32,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

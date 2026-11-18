@@ -1,6 +1,6 @@
 {
   "access_provider_type": "ctcccloud",
-  "binary": "ctcccloud-lvdn",
+  "binary": "ctcccloud-lvdn.exe",
   "capability": "deploy",
   "category": "av",
   "display_name_key": "plugin.ctcccloud-lvdn.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

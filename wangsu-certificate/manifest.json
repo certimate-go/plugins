@@ -1,6 +1,6 @@
 {
   "access_provider_type": "wangsu",
-  "binary": "wangsu-certificate",
+  "binary": "wangsu-certificate.exe",
   "capability": "deploy",
   "category": "ssl",
   "display_name_key": "plugin.wangsu-certificate.name",
@@ -32,5 +32,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

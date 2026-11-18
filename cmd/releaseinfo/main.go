@@ -16,9 +16,12 @@ type target struct{ goos, goarch string }
 var targets = []target{
 	{"linux", "amd64"},
 	{"linux", "arm64"},
+	{"linux", "arm"},
 	{"darwin", "amd64"},
 	{"darwin", "arm64"},
 	{"windows", "amd64"},
+	{"windows", "arm64"},
+	{"windows", "386"},
 }
 
 var (

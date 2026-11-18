@@ -18,7 +18,7 @@ require (
 	github.com/baidubce/bce-sdk-go v0.9.277
 	github.com/byteplus-sdk/byteplus-go-sdk-v2 v1.0.80
 	github.com/byteplus-sdk/byteplus-sdk-golang v1.0.73
-	github.com/certimate-go/certimate v0.4.38-0.20261115072429-2ca4e0b46a82
+	github.com/certimate-go/certimate v0.4.39-0.20261117024256-d35882e429db
 	github.com/go-acme/lego/v5 v5.6.0
 	github.com/go-resty/resty/v2 v2.17.2
 	github.com/google/go-querystring v1.2.0

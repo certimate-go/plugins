@@ -1,6 +1,6 @@
 {
   "access_provider_type": "volcengine",
-  "binary": "volcengine-imagex",
+  "binary": "volcengine-imagex.exe",
   "capability": "deploy",
   "category": "storage",
   "display_name_key": "plugin.volcengine-imagex.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }

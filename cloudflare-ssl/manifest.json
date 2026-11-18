@@ -1,6 +1,6 @@
 {
   "access_provider_type": "cloudflare",
-  "binary": "cloudflare-ssl",
+  "binary": "cloudflare-ssl.exe",
   "capability": "deploy",
   "category": "ssl",
   "display_name_key": "plugin.cloudflare-ssl.name",
@@ -30,5 +30,5 @@
   "usages": [
     "hosting"
   ],
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
