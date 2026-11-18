@@ -14,18 +14,24 @@
       "darwin/amd64": "huaweicloud-vod_darwin_amd64.zip",
       "darwin/arm64": "huaweicloud-vod_darwin_arm64.zip",
       "linux/amd64": "huaweicloud-vod_linux_amd64.zip",
+      "linux/arm": "huaweicloud-vod_linux_arm.zip",
       "linux/arm64": "huaweicloud-vod_linux_arm64.zip",
-      "windows/amd64": "huaweicloud-vod_windows_amd64.zip"
+      "windows/386": "huaweicloud-vod_windows_386.zip",
+      "windows/amd64": "huaweicloud-vod_windows_amd64.zip",
+      "windows/arm64": "huaweicloud-vod_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "cb085b3cd19bc2c17e3faa6aded47746f63184ca7825a0a6d22ca832387641dd",
-      "darwin/arm64": "eedb4dfa24f2faf0555fc3347d6217203aa570daeef695ae569b549bf2152e14",
-      "linux/amd64": "e934986b1613cae37e058221b23bd5ce430f3364ebf26c1c5539bb524f4df09a",
-      "linux/arm64": "9ada5763b3bac267d0feaf9a34ce7c6b410eb20788b6a1c58a00628d6fdf8f7e",
-      "windows/amd64": "9452552a4d6a46aeeae2075e374af46dcdda2ab0726f189243673dc17112b6cd"
+      "darwin/amd64": "d9d743e8952579780b70b5dcf8a4e17779d719411f32d84f892ae03b67ae32a5",
+      "darwin/arm64": "36fe6aea69cd32c554032e924ddfa84ba4d6185532b893d2173ed24506f1ac1e",
+      "linux/amd64": "c1a6a35cabf099f2e71cbaa68139e9f22326fb947b64717de6b4dfe422913fca",
+      "linux/arm": "affd43c61470a993187e7e1afc8fb39e97ec35d0c0b7eea79a214ace30768a31",
+      "linux/arm64": "5baab74f29db38b945ad284d7c3c643e3898f7a020dc89db03fb582c2b9b0498",
+      "windows/386": "ebcf2ea2725cc42969e4377d702d9edc048934e78b44f41906b900ff5f4c283f",
+      "windows/amd64": "bbabe00388463865871b9b0a70039e2563b61ea4bb5298adc34b59341bd373bd",
+      "windows/arm64": "fd92dca7ccec59f023dcb84af24a346c7b11b3cdfc7def8fc0653c3f1e570034"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-vod/v0.2.0"
+    "tag": "huaweicloud-vod/v0.2.1"
   },
   "usages": [
     "hosting"
