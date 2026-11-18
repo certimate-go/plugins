@@ -15,18 +15,24 @@
       "darwin/amd64": "ratpanel_darwin_amd64.zip",
       "darwin/arm64": "ratpanel_darwin_arm64.zip",
       "linux/amd64": "ratpanel_linux_amd64.zip",
+      "linux/arm": "ratpanel_linux_arm.zip",
       "linux/arm64": "ratpanel_linux_arm64.zip",
-      "windows/amd64": "ratpanel_windows_amd64.zip"
+      "windows/386": "ratpanel_windows_386.zip",
+      "windows/amd64": "ratpanel_windows_amd64.zip",
+      "windows/arm64": "ratpanel_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "dc4f01ad7360e9031eeebec8440e3d152b27b19007de2759484b35dd0b32bc4b",
-      "darwin/arm64": "0b65cbad062f82e45b27dd2cd5861c71795c21f1be7d69ee799e2f1666d14038",
-      "linux/amd64": "81eedc971ae995c1afca9d168bd094dc927a2395ee64ca27e30352c391dee82a",
-      "linux/arm64": "4e1df1f8b841d77c3b6af0569b73f073595a99ceb06da84b1be48270bc094f59",
-      "windows/amd64": "45364a8672c83bd90f214bd9370921901c8660f7364aa4c243ecb517d6ac782f"
+      "darwin/amd64": "9022653329dbcc4c38969789d062e291eeb7c6f4bf23f19c92ee186c3b555eb3",
+      "darwin/arm64": "266d840250c3ab3d37b441c7305053064a97d2ee2ce550467c50d54ec6d9b575",
+      "linux/amd64": "20e60f3e193a7a6086a36581cc54fa7a1eb414bd0077d52a193679ff557c0511",
+      "linux/arm": "7903530ef7253c7d7eb40e8a6137fef68eb8b230a48745e03013f63fac381b0b",
+      "linux/arm64": "130c2bd77ccf923d7c18465a826b1eaaccb442fbdbf2fda47a51f79588af0d83",
+      "windows/386": "841cb9d015b43f4ed5c9a2f87c12cc3e32db904099958ae19ea0107c1edc1f23",
+      "windows/amd64": "bf749ec489d37ee85339fd95e54353b98afaeae5f2d52366aab63e02ad7781e8",
+      "windows/arm64": "9392be5d1dbbbcca15ee6e8bce4000e8c35ae9b3d2329e3818b044d26c770968"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ratpanel/v0.2.0"
+    "tag": "ratpanel/v0.2.1"
   },
   "usages": [
     "hosting"
