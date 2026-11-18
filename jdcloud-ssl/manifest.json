@@ -14,18 +14,24 @@
       "darwin/amd64": "jdcloud-ssl_darwin_amd64.zip",
       "darwin/arm64": "jdcloud-ssl_darwin_arm64.zip",
       "linux/amd64": "jdcloud-ssl_linux_amd64.zip",
+      "linux/arm": "jdcloud-ssl_linux_arm.zip",
       "linux/arm64": "jdcloud-ssl_linux_arm64.zip",
-      "windows/amd64": "jdcloud-ssl_windows_amd64.zip"
+      "windows/386": "jdcloud-ssl_windows_386.zip",
+      "windows/amd64": "jdcloud-ssl_windows_amd64.zip",
+      "windows/arm64": "jdcloud-ssl_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "e54be1b9679c6303671571ae6e74087c6931f0312ee068b773da5811c1c66158",
-      "darwin/arm64": "6cdcc72c0f044b1cdee4d4ce2fc7d2d994c28ea106e2a593360f239b51d6b919",
-      "linux/amd64": "7735a138cd0964e22454831dfb1b7637fd0c88412da99c7a61ad3a9f1c25e04b",
-      "linux/arm64": "f06718642b63312a1145f76f5d2100e6f3427d68c9916c79b2d4a3a588a0bdff",
-      "windows/amd64": "ef1702e956d83a45dde09282d278d13ea4d10a1d810c03fb104866c8931ff682"
+      "darwin/amd64": "572acba0979a5c949b220e70068009222f2b1f69e9761cb7b98ddfd31f913a0d",
+      "darwin/arm64": "e7933203c18266fc1907fa9c2de9d0d11e135e090495a083cbef55bb6384af9a",
+      "linux/amd64": "c03ef21d1dfc7b55b32de28e4e8ed42eee104f09f34952d5937a7398b520c4fc",
+      "linux/arm": "9b5381ad6502e4f1c70753b0791fa09388f4caa2796205f677a4718253829ffe",
+      "linux/arm64": "54d305332a0f9d41d17b79c34b2e322c34326e7112fa9430e631fbc6e611b57b",
+      "windows/386": "4067e1460281fcd5c78577f3b7a500e1ca424e715bf542b4ed497cee38e84e50",
+      "windows/amd64": "b2f6d3ab8185d9e7d77e2746207877652853c133bd0293ff148661c53fce1a71",
+      "windows/arm64": "1e5771b5280a6c8ab8c2144f9277a801a51020be60dd3314862c2bad19032c12"
     },
     "repo": "certimate-go/plugins",
-    "tag": "jdcloud-ssl/v0.2.0"
+    "tag": "jdcloud-ssl/v0.2.1"
   },
   "usages": [
     "hosting"
