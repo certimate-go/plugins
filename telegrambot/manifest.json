@@ -13,18 +13,24 @@
       "darwin/amd64": "telegrambot_darwin_amd64.zip",
       "darwin/arm64": "telegrambot_darwin_arm64.zip",
       "linux/amd64": "telegrambot_linux_amd64.zip",
+      "linux/arm": "telegrambot_linux_arm.zip",
       "linux/arm64": "telegrambot_linux_arm64.zip",
-      "windows/amd64": "telegrambot_windows_amd64.zip"
+      "windows/386": "telegrambot_windows_386.zip",
+      "windows/amd64": "telegrambot_windows_amd64.zip",
+      "windows/arm64": "telegrambot_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "345919ffb59989b3b00ab3c871e4ae609ee475fa83522d6cab50421b2ba69288",
-      "darwin/arm64": "b274863ba2bd419ef0161e0915b490436b7fd4b347b97e369bcea50b53e31500",
-      "linux/amd64": "e05ab02456907bb28947e559d55fcf4133bf777b73fb020690981e8a9807df73",
-      "linux/arm64": "86b8f9ecb144081a2f613db849e2988a03b9730864248e22f72b50c42894afd2",
-      "windows/amd64": "4501a20c97c72e9952e3d457ab606b025a4aaa1bcad4916a01a6efe127f52130"
+      "darwin/amd64": "f24c0a787e752ee8611c462947f82527b1f5b33fcdf2b985d6e39cdcd31f9b16",
+      "darwin/arm64": "7f5d29956b2d7a80608e27272990647b76c60948843d163863c73a038a262d1d",
+      "linux/amd64": "354731168cc5a00906016260d5ed4eba0d0fc98b71370200f5f63574bc9edab6",
+      "linux/arm": "2f861d07b530aee00774c35c55a9008da10b375c96ad74255be65fc1ba8ef0e7",
+      "linux/arm64": "46d9162f3c5d1fa03347b14df38b0d0763426d7e55c987ef40023c477042d01f",
+      "windows/386": "7063a79b7a009408639b4a0880fd5fb0c1957374b6f232bfb8bb9ebf067322b7",
+      "windows/amd64": "228fcc7f6be094b6c9cb938b8cae563374e453ef158fe464dbca0557c00e939c",
+      "windows/arm64": "258d33737793ad5d7492c2110f9647ec8d493c272a84f9466fcbd9dd9825fbf6"
     },
     "repo": "certimate-go/plugins",
-    "tag": "telegrambot/v0.2.0"
+    "tag": "telegrambot/v0.2.1"
   },
   "usages": [
     "notification"
