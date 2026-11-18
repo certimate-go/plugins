@@ -15,18 +15,24 @@
       "darwin/amd64": "k8s-secret_darwin_amd64.zip",
       "darwin/arm64": "k8s-secret_darwin_arm64.zip",
       "linux/amd64": "k8s-secret_linux_amd64.zip",
+      "linux/arm": "k8s-secret_linux_arm.zip",
       "linux/arm64": "k8s-secret_linux_arm64.zip",
-      "windows/amd64": "k8s-secret_windows_amd64.zip"
+      "windows/386": "k8s-secret_windows_386.zip",
+      "windows/amd64": "k8s-secret_windows_amd64.zip",
+      "windows/arm64": "k8s-secret_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "d865d1800fac7034910d698e38e0d08454544b13a019a1d1455dd57ea2cea101",
-      "darwin/arm64": "2edf7085310ec6fd2d0f7eae7a1eb997bf596a908f654b1fabba626b1f946399",
-      "linux/amd64": "3c24d6bb83234fc25d8901219d14182a18fa9258c63d6810a28c45b8baffd772",
-      "linux/arm64": "ba06992498fadd22f2334546bb47210dbccb36ba969cb2b10644f850b08a92af",
-      "windows/amd64": "9054ded5bb45095d04f535923be906b3f69cf64c35020167cd9a6ad2149c4728"
+      "darwin/amd64": "aa033de25cf0d8274fa3f58bb043171d0b9c023d9bdf2f985c420218216ccbd3",
+      "darwin/arm64": "ef1dee8b51835a20eb40262154d66c4061a8bd56fe7bb29ccb60e01694d3a81a",
+      "linux/amd64": "bfabd34e55a1c1457c014db5aa586d1153dc0bfc3b3ade74aee4a98b1301150b",
+      "linux/arm": "c7b094364aeafea5bc74bedaa12d884e3ebc9e887762bf3c85ccc50f91a87651",
+      "linux/arm64": "8c50e1e5fc4e0ab7f1c810be7ff36bf5bf1b25cd0fcc663ab4fff0d853e0153b",
+      "windows/386": "f0c1f2046e90cbfaa8ff86e0e3c58559d10a27b7a53f01b37bf5784eb6e9bef6",
+      "windows/amd64": "040059b61bdfb196d94384bc84f52c447be3c923501cce372dea250140bba584",
+      "windows/arm64": "86de2d814121a83248317068ca31fdd3837912df3e8c1c729ca1b17ba748612d"
     },
     "repo": "certimate-go/plugins",
-    "tag": "k8s-secret/v0.2.0"
+    "tag": "k8s-secret/v0.2.1"
   },
   "sha256": "",
   "usages": [
