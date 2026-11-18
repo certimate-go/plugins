@@ -14,18 +14,24 @@
       "darwin/amd64": "cmcccloud-vlb_darwin_amd64.zip",
       "darwin/arm64": "cmcccloud-vlb_darwin_arm64.zip",
       "linux/amd64": "cmcccloud-vlb_linux_amd64.zip",
+      "linux/arm": "cmcccloud-vlb_linux_arm.zip",
       "linux/arm64": "cmcccloud-vlb_linux_arm64.zip",
-      "windows/amd64": "cmcccloud-vlb_windows_amd64.zip"
+      "windows/386": "cmcccloud-vlb_windows_386.zip",
+      "windows/amd64": "cmcccloud-vlb_windows_amd64.zip",
+      "windows/arm64": "cmcccloud-vlb_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "d05346d421a7ed9ffeacd3e6ee3a14bfa8a134cd1889542e67982a87791ec352",
-      "darwin/arm64": "fafd6989c836c24fe01c050912a637171e431c49afdbb853c64e4a70cf0b831d",
-      "linux/amd64": "1b886903dab6a913112b960f71e4d373a639a06e4f90c010add5c560fdc2e5ed",
-      "linux/arm64": "db8d083d890a5154a7dd1a952fe94251b577a2d135d5bc6e3c4e6adc412dac70",
-      "windows/amd64": "ca8023ac4b564f5d08ea2939a934565ac6cf5292f5c1af238b088b7dc9848710"
+      "darwin/amd64": "d40ae92010d44e78360f8714bd08e0703938e7f266b4d0d4f619023f4152aee4",
+      "darwin/arm64": "ae5ed50a447d9102b3f56445ce9eb9eaba66aa49972f181e516051ee2dbdaa4a",
+      "linux/amd64": "5724a4762c99b1ee772ccdb637fa2c874e191ca1a5fa667c30c8999c9a56e401",
+      "linux/arm": "4870e84b72def92d80f07eea2571f5f8f613dc1dc6e5dfed884bb38e47e4ad77",
+      "linux/arm64": "57881a35ec79b56c93e0010eba3805d99d0116214697906935a589563d540d06",
+      "windows/386": "98b090483adb39fad38853594102f2d5eab4ef9537845beea1a3e837b0059c1b",
+      "windows/amd64": "75fe3efd7e0f0659f291e915b96f100dded46ab407fd42117530bdbcc1a51221",
+      "windows/arm64": "613823739245a269b4193fcafe118a9b683bae8decc1f531f035e14c5b99eb32"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cmcccloud-vlb/v0.2.0"
+    "tag": "cmcccloud-vlb/v0.2.1"
   },
   "usages": [
     "hosting"
