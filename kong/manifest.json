@@ -15,18 +15,24 @@
       "darwin/amd64": "kong_darwin_amd64.zip",
       "darwin/arm64": "kong_darwin_arm64.zip",
       "linux/amd64": "kong_linux_amd64.zip",
+      "linux/arm": "kong_linux_arm.zip",
       "linux/arm64": "kong_linux_arm64.zip",
-      "windows/amd64": "kong_windows_amd64.zip"
+      "windows/386": "kong_windows_386.zip",
+      "windows/amd64": "kong_windows_amd64.zip",
+      "windows/arm64": "kong_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "798e744931d6e2190b62571df98ee33542c2964516a8f41b4163f70d4166cb5e",
-      "darwin/arm64": "aa9bef89df324e9f15b59f62cda2f06227d0e3999e9eb2ab52db06a89c08776f",
-      "linux/amd64": "9a94210b185f0ca1f75238748a4274b7134b2c805c56f59345b8ec77770e4c30",
-      "linux/arm64": "2390775d168d0c81cbc8652bddce4f46e657da1507340bbb878cf3e265540464",
-      "windows/amd64": "5380f16dfa61252e0e0a0d025ddfbd84676c5bccf75b48eac4dddb1e5667d1e1"
+      "darwin/amd64": "242baf2eb6dad28249c24f9a0fd2ebf78a05365a8aef0af4057e75148b06d3a6",
+      "darwin/arm64": "1c24ee139f6aa46175d3acc41228b8dc09ede2a2ee0793d2521473e626ca7811",
+      "linux/amd64": "df207ac441ef8daade4318ed88eb9ab4eb5299a81d7170b53b9c8ba17e928833",
+      "linux/arm": "e1e0b5168a0a9571e6e9e472e2abbda4adf7a4adcb71bc5c0545e1223c26fcbe",
+      "linux/arm64": "052e06521e6930ebe82ef96657be037cabab1c744474b5b89c6e546286e0ac3e",
+      "windows/386": "c4489fb86794ca264ad41e6a297774dcc114ec2277ae36dabaec8241776eeb27",
+      "windows/amd64": "466f3dd4bce10ebaf7fb8d1bc2e95c107531820c527b41f3f09c52c7f8131092",
+      "windows/arm64": "2e58140e22921fe740782fbdddf39c7cae5b9530128c5f7de03a5fb44192109d"
     },
     "repo": "certimate-go/plugins",
-    "tag": "kong/v0.2.0"
+    "tag": "kong/v0.2.1"
   },
   "usages": [
     "hosting"
