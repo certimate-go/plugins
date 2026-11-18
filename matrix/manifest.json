@@ -20,17 +20,17 @@
       "windows/arm64": "matrix_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "f4d08b045eb82aef1a4bccb1f0aa80a0fa9340d4125229ef6374f41a38ae8442",
-      "darwin/arm64": "8c020dc4c01f6eb64a7e90412314c9054a7daa8307389374048629d0fc36390c",
-      "linux/amd64": "6ab3084decc6a302f08759cb83b6d9b25841f5929cfd1bb98e5f34dfc73384ce",
-      "linux/arm": "2c9079c3bdc7a4723324ee4e7173d812cea0c2b04216d65a2e6ba002f10a8f4d",
-      "linux/arm64": "a2445ab8ef95e5b2ef146742bf02ae1669fca022e8a135c728dbeac102050c50",
-      "windows/386": "679ce318d99e76a18df48f33daea8be355833fe1925b2cc37d5e9ab0bea48917",
-      "windows/amd64": "b0af6aac3f44a9788103e743ba8c9126d3eba2aeded2d685ca734de77bc61be0",
-      "windows/arm64": "b97eb9d63769567734aa8003231d2eb3301c45ee534816e2108ccdd4a427057f"
+      "darwin/amd64": "fe109595db1f3211c69d5466e0b6c48f1b7441901a97a1c1f78c8d55ced020f8",
+      "darwin/arm64": "591322c1d55c82517d5c1163fde5456c2b16c52d389352f11e83d0d9107eabc8",
+      "linux/amd64": "68adc1f96f2b5bd8fa976f5622534a8ddfce81dbb4338a7ae96178e5174f5e9b",
+      "linux/arm": "008f064f8eb6ee85553363113b109ad1f744c3592d0f51027e9799d93895a561",
+      "linux/arm64": "a7a4b7159336618c48375db08f27ef7050a998a46c9b3a05799e727daa238e5b",
+      "windows/386": "ddc3632e34697915de63607c09dc22d449415028bdac66f6c0519737d0bc3979",
+      "windows/amd64": "7a2c67711814f0ccb5e00db2ca547beb6d9660aec74857bff88dc29a06f999ff",
+      "windows/arm64": "1c90b3e9573541f197b33446182b43e9bae9f03d7bc2f831a944568c6025cbee"
     },
     "repo": "certimate-go/plugins",
-    "tag": "matrix/v0.2.1"
+    "tag": "matrix/v0.2.2"
   },
   "usages": [
     "notification"
