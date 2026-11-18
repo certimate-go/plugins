@@ -20,17 +20,17 @@
       "windows/arm64": "cmcccloud-dns_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "f0f37a3b456693291635f72840952d5df0cb68274e3512b12c902d1c62e847b3",
-      "darwin/arm64": "00661a556ca04e0e13bcb41ff2bad85853c5cf7910984c65974f79bb23e9281d",
-      "linux/amd64": "4eadc55100af29f1aa3e355b1f2366d9ec1f775e9eb368a836a1ed6df0aef901",
-      "linux/arm": "8916c70ef4d691ad3411fccdcc09f2c648eaae03b25251324961626fd6df0730",
-      "linux/arm64": "01ab48323788534a585e0f3c885a8bde0bbac6007881dcabada81990350b03ee",
-      "windows/386": "ab340579a89491a3c8efdcc1763bd3952425593c6297b2265a3e04f3c99dcc30",
-      "windows/amd64": "5e9eb6e62a4523aac4cdad16f5317b5ffb52cd00e529d7eb63977da8442000da",
-      "windows/arm64": "dc908d6f0b2e5145a2a935317fb6afd2c4941f2c32ccc7bd4328a51cb2aea7cd"
+      "darwin/amd64": "cf9a3268a73c480e1faf164d1b2d79a6bcc6744da2d35d1b101903f2a7d87f93",
+      "darwin/arm64": "98674081498edb4b13f00fabc710dba92d7c0d7365b7dff4ddf7fbc21e87630c",
+      "linux/amd64": "ba4ee0f83d13cd241c2aaaef82e51658ff68f3b873840f9f03443fc5e7787ed4",
+      "linux/arm": "bfa155ec413658cbc64b3345aebe7bfe82e12ed7ceadc8be49f8b6df5c1572e2",
+      "linux/arm64": "65f45c0a4262c1ce90ad7cf3e4ab60364444cf06709c33cda66830af1848717c",
+      "windows/386": "8a8436d4abb800c0050afd26272d5d3333a9e4760db53f3bbdb2f23d2e8ef010",
+      "windows/amd64": "7d9e71a798b6d142d05c490f3bf4445bce53b7a3f41e86a03a52d4ba7204f1dd",
+      "windows/arm64": "182bdf5ff556acda44ec9d3426f5eb50250c6a3fa694e2ede98f9876fbf2d70a"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cmcccloud-dns/v0.2.1"
+    "tag": "cmcccloud-dns/v0.2.2"
   },
   "usages": [
     "dns"
