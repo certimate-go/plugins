@@ -14,18 +14,24 @@
       "darwin/amd64": "digitalocean-certificate_darwin_amd64.zip",
       "darwin/arm64": "digitalocean-certificate_darwin_arm64.zip",
       "linux/amd64": "digitalocean-certificate_linux_amd64.zip",
+      "linux/arm": "digitalocean-certificate_linux_arm.zip",
       "linux/arm64": "digitalocean-certificate_linux_arm64.zip",
-      "windows/amd64": "digitalocean-certificate_windows_amd64.zip"
+      "windows/386": "digitalocean-certificate_windows_386.zip",
+      "windows/amd64": "digitalocean-certificate_windows_amd64.zip",
+      "windows/arm64": "digitalocean-certificate_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "17400fd784876c6a80085cde8933548088a0fbe0b4c007143776abd70c146b86",
-      "darwin/arm64": "6b9cffc7c1bb694c04e750b843ee11e75bf26847b372e6835de99f0e340d2c05",
-      "linux/amd64": "09aaafa845593ba7bd7f73177a7a5df113dc8b5afbfaf1ec808ddfdd116fbab2",
-      "linux/arm64": "1f4d9897a8b758904200c8930b8010c53dec89643121241734947a820136de85",
-      "windows/amd64": "9acede21bcc52034b4750634d7bf7f6d9865cfc8109dd96b3b778ec62732f4af"
+      "darwin/amd64": "c7cf82f13c46c804524583b73269dedc76866b1636832a1742eaf4b07623f6f6",
+      "darwin/arm64": "25bb7b01880252beada32e783b8a971da8f07254c991022ce32bf9675338507e",
+      "linux/amd64": "acbac64d22e6fef2fcdcd82c8bc188f48766ae9158d877bd8a8c5b8a917f39ca",
+      "linux/arm": "94e162b4d9360bb908f375624012d636b91c879f17807331c79cfefe52303b29",
+      "linux/arm64": "fd00e6e45d203f29ff16a6f3181f005011f1118509e453446cb7d0b466edf22b",
+      "windows/386": "2c95d2496668f3fa4d814e850e181f137bfef8d0d472fc47c3eef26f84e05c0f",
+      "windows/amd64": "44d3d6c7cbbc656dfc6d58c0f79cb33e826fcbe71a584cf5fa72ea19a8d0610f",
+      "windows/arm64": "68c0c92e777f2a01e3f95a58dc1208f09ab0d35ce1915cc24ffc5cee7872e6f5"
     },
     "repo": "certimate-go/plugins",
-    "tag": "digitalocean-certificate/v0.2.0"
+    "tag": "digitalocean-certificate/v0.2.1"
   },
   "usages": [
     "hosting"
