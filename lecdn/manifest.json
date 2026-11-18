@@ -15,18 +15,24 @@
       "darwin/amd64": "lecdn_darwin_amd64.zip",
       "darwin/arm64": "lecdn_darwin_arm64.zip",
       "linux/amd64": "lecdn_linux_amd64.zip",
+      "linux/arm": "lecdn_linux_arm.zip",
       "linux/arm64": "lecdn_linux_arm64.zip",
-      "windows/amd64": "lecdn_windows_amd64.zip"
+      "windows/386": "lecdn_windows_386.zip",
+      "windows/amd64": "lecdn_windows_amd64.zip",
+      "windows/arm64": "lecdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "33c192937cc5a901f6ab98000c21532e81e208f6146b7034696eb71acd645630",
-      "darwin/arm64": "f094c2bff83689c028113ef7fd6065df0cd0db97ca3125dadb8f8fc4a69aa5fa",
-      "linux/amd64": "1a20884d75ad650e874067b2fed0314fe9fcdae69ed798782b81ef8a5256a3b1",
-      "linux/arm64": "739f2ed2bdd852f1d43f0fb370553088f24aaf29d441946ada6682e96658fbba",
-      "windows/amd64": "10559c6ce9ab71465209c6412ac391d9eda906c39af1fd5b16af98457f421991"
+      "darwin/amd64": "14667d6e63ab716afc4bc28f6a1b730ad6ac79e0bbfc34b755a99a67102b2099",
+      "darwin/arm64": "62a9ac61982f3fc3b1e6ffa4217953dfeba9236818936c3fa9e2f7e21bc7bba0",
+      "linux/amd64": "52d730ec4490293d723642a3da2750269c9a88800e833847b188d66cf5aa4999",
+      "linux/arm": "687eb581b44bc6563ef320c055da8a0489d8895c63ef7a3127b49dc72821ce80",
+      "linux/arm64": "9a66bfa877ea06817c3f6174155db4f28b5e754bf60a7858ecd799cb2eec6a0f",
+      "windows/386": "e1ef7afd434314f4710003cb8917b1b5c0185f16c6d30c0a158195474e96ee8d",
+      "windows/amd64": "6e0918a6ede0b6086382bd27c4fb2aec56132a2e74d4ac5e10c7f1f88e4a8f6b",
+      "windows/arm64": "2a29f4d290b7bd19ba3fd83a8a08281c0e686c32417a1ebff3de471a9aa70f91"
     },
     "repo": "certimate-go/plugins",
-    "tag": "lecdn/v0.2.0"
+    "tag": "lecdn/v0.2.1"
   },
   "sha256": "",
   "usages": [
