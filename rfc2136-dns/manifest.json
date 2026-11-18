@@ -20,17 +20,17 @@
       "windows/arm64": "rfc2136-dns_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "5abdce4a16776403e8abc35685808955f1c6fb6ef1a938edaf22654e8ebd64ff",
-      "darwin/arm64": "c80fe1ca0e613de9643754ea5f4de72c6d7ab37b7f47512f5bcffd55592a1117",
-      "linux/amd64": "8d5b96c9ca572d9b5683c66830985ca968c1453b7c731cee785b7858b966a2e0",
-      "linux/arm": "4a4eb78faf3759159fefde8e5d2661b425750d3401628968872da54f93041273",
-      "linux/arm64": "cfeef80a70684d3d177b8ea310fd7f3656407c6b2517ca1a14b0a19d176d6ab9",
-      "windows/386": "fbc1a3246a33aeaffda4a1de62b32e3d194fa50d4517664921e04368415fc70e",
-      "windows/amd64": "582d6861d73ff32680d1115eb5984de37a3befbd82bae2eed54b974ad036bae5",
-      "windows/arm64": "2959de4c0e68a7ea225c3812612b09c89f5f60dd8bc19516e3bf8de21a37ebec"
+      "darwin/amd64": "a11168327eb0d6f9c25e9d06dac903c73e4cc5d99ffa0ff632c149a470eea096",
+      "darwin/arm64": "d712a98a6b4ae3ba246eb1617b87e115c8ef567fbd8dae1e800872597e761fb4",
+      "linux/amd64": "b68dd6eeb967506a4aa4a259a7d4fa61274c749756c8dd6bf9b10491390024a8",
+      "linux/arm": "be152555b1093ead7fe957e0c53234d4ee7da926f8fa475bcc23e32ee65ea2e6",
+      "linux/arm64": "1b53071160c881f6ca4c0decbca391106f59230451c66fc66b9af1f9a8882303",
+      "windows/386": "e4bc0f77a480b36c2e6af0cb5bd344e81208b47e1fbe0836a5a263cff046e33f",
+      "windows/amd64": "5c632346b19cee523d99f8581b645939db5c11bd86188bda40934f369a8cd911",
+      "windows/arm64": "f395f2486c1c9fab6cee14590fefcaccfdb3de14be4a071d4067398fa38247ab"
     },
     "repo": "certimate-go/plugins",
-    "tag": "rfc2136-dns/v0.2.3"
+    "tag": "rfc2136-dns/v0.2.4"
   },
   "usages": [
     "dns"
