@@ -14,18 +14,24 @@
       "darwin/amd64": "baiducloud-cdn_darwin_amd64.zip",
       "darwin/arm64": "baiducloud-cdn_darwin_arm64.zip",
       "linux/amd64": "baiducloud-cdn_linux_amd64.zip",
+      "linux/arm": "baiducloud-cdn_linux_arm.zip",
       "linux/arm64": "baiducloud-cdn_linux_arm64.zip",
-      "windows/amd64": "baiducloud-cdn_windows_amd64.zip"
+      "windows/386": "baiducloud-cdn_windows_386.zip",
+      "windows/amd64": "baiducloud-cdn_windows_amd64.zip",
+      "windows/arm64": "baiducloud-cdn_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "3168df32892d61e5caa9cd0b5187223a4443e563cfe93c0acb0d01698f543b63",
-      "darwin/arm64": "d8c59dd39b765a2f1fb18e2802e2a2556a54d71def155155fd2a84e7db49901e",
-      "linux/amd64": "874f4dd9f02924cf5cd0a9ecec727a621aa5235d690c1432e730cd3e07acc7f8",
-      "linux/arm64": "d6e2488f6159ac5598efb8a8cb88f640d2b553bca62392fa786e797fea6f0270",
-      "windows/amd64": "48451507d2427e83dd5460af5e9c39f88f40f9ac18d3a8d7f06a3af1ec96bbbd"
+      "darwin/amd64": "3973838cec854b23dae5ff198855e05ac4e713d2ed2b6ad21c7d4d2ad9fb3d17",
+      "darwin/arm64": "26201a5fa403e9c474be29eaf006185816deca49314fc28a5ee03438ba301dcf",
+      "linux/amd64": "929958758c0fe3259ae50bd223997da344560caa5f0b3100974ad3ce80b16b08",
+      "linux/arm": "e8e54b56452fdeaf2db0274b5e5bbaf5569623614b949231ff3617093c8f2590",
+      "linux/arm64": "c51026c20ce9c4521dad814f1cf67ebfa531bea793b504cd9579da489ab01416",
+      "windows/386": "783a9d3b84b3e70dbd41c06b609989a3a9d04fe58c8526b27a9cd546d67d2828",
+      "windows/amd64": "378a4cd880c76314e52f426a1672e02fc75077d236879ca8c6b95534203a862b",
+      "windows/arm64": "f8a4da20f5de90da0674516171c1d6a8ad1b47cc6dbe99e099fd8f9b2fa08077"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baiducloud-cdn/v0.2.0"
+    "tag": "baiducloud-cdn/v0.2.1"
   },
   "usages": [
     "hosting"
