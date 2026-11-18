@@ -14,18 +14,24 @@
       "darwin/amd64": "cpanel_darwin_amd64.zip",
       "darwin/arm64": "cpanel_darwin_arm64.zip",
       "linux/amd64": "cpanel_linux_amd64.zip",
+      "linux/arm": "cpanel_linux_arm.zip",
       "linux/arm64": "cpanel_linux_arm64.zip",
-      "windows/amd64": "cpanel_windows_amd64.zip"
+      "windows/386": "cpanel_windows_386.zip",
+      "windows/amd64": "cpanel_windows_amd64.zip",
+      "windows/arm64": "cpanel_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "528948131d957782ce48856c700bfbd2b687e1a1b4528d50f2cd7e679df0e0f3",
-      "darwin/arm64": "069cf606a9d4018c69f1b705c68f7427595cf52dfbbaeec414ba127c52556a9b",
-      "linux/amd64": "022b772ea41b025d6e49a4b98f4500cf31a9ea7e3498611c5aa5042093062890",
-      "linux/arm64": "7518f5335255bd42c22ec0d07eb2e2614fae4e6f03c39c18805c2316554b0421",
-      "windows/amd64": "0a0cd3dc1f91de235effb6776a066cdccc79407d1dc8efe2d4f122b07c7fb0f3"
+      "darwin/amd64": "1cac4a4e156cc9fa321db31551700b3babf83f364532f172261f522a0df5b9f8",
+      "darwin/arm64": "c7ad3fc6750cce76cdd6466aa4f84b5161b1a9c1cd6c6457e77ba038d8e9b128",
+      "linux/amd64": "cf1dd176eae9e5e9f2db2aeadfb9757db536f56d666567262fb4e73c14156dbe",
+      "linux/arm": "5ae18f2296c75932c72b040fccbd689b6fe92e3b4d12a4217e860a06f5d5a6e2",
+      "linux/arm64": "4938e6ccb6446efc3a235a7c41b68f328696eaba21df1a584e666bb80c9d489f",
+      "windows/386": "998076bcecbe71b221aba3eac97224da041bf0c1f62a09159bcaceac103ef349",
+      "windows/amd64": "6b79f47d148fc730aa1fb3620127310ae241eaa14caf5629036adc31847bee34",
+      "windows/arm64": "9dfc9f06fcbcffbd47d960798bb580bcba47a91cb5dbf1739567b938849becea"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cpanel/v0.2.0"
+    "tag": "cpanel/v0.2.1"
   },
   "usages": [
     "hosting"
