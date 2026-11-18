@@ -14,18 +14,24 @@
       "darwin/amd64": "ucloud-ualb_darwin_amd64.zip",
       "darwin/arm64": "ucloud-ualb_darwin_arm64.zip",
       "linux/amd64": "ucloud-ualb_linux_amd64.zip",
+      "linux/arm": "ucloud-ualb_linux_arm.zip",
       "linux/arm64": "ucloud-ualb_linux_arm64.zip",
-      "windows/amd64": "ucloud-ualb_windows_amd64.zip"
+      "windows/386": "ucloud-ualb_windows_386.zip",
+      "windows/amd64": "ucloud-ualb_windows_amd64.zip",
+      "windows/arm64": "ucloud-ualb_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "301b964ad455d6588dc0593469907326b75813282b2f0527009eba5aa9eb4c91",
-      "darwin/arm64": "8d54be135c71b5e8874b0a51240981b5c42b86d3f6ea764f90ec5f2576993ccb",
-      "linux/amd64": "7cea6f615723a106b68b94076b74b22b486d175d3155f47454287fcca3c6ceb1",
-      "linux/arm64": "ead81e09c1ebe98c1bb406713a75abb953ed6cd3c2f8900c97f21fe568decd70",
-      "windows/amd64": "098b62143d07f8dd4949f6a3d57af84988e97d3003b2969a349e9ba8aea21934"
+      "darwin/amd64": "e1f4df54b8998c715744f5363d0d037c90338abd439887b6165edf2892d2f62c",
+      "darwin/arm64": "5e53007b3cb4598da61747e68c0a6511a63d0ceeafa2034bb3d754411e690f9f",
+      "linux/amd64": "e663b1c2ff14221cc9752b38afede8e1ccba4bde4926127d7892fb9a332537ea",
+      "linux/arm": "fd5455de6c709e9373c558cefdd801bc740e0946b98906c641b5db5d07677403",
+      "linux/arm64": "705f7c233d68c4304eb861c1123aa0d05b7d71c326ddc8a252df21c2368f7d7b",
+      "windows/386": "477792c0297da5285f841cda5cda886d63ba54f2bc1b67f181c8e50f2eeca1ba",
+      "windows/amd64": "2b5666c9eebcb42776f5a13f20999020b5a944c1a7203fc5da7a8143bb351ed6",
+      "windows/arm64": "4bd41ad2eccaae76380641a7ba3a9947757508fbe5dfc726507d09804da954cd"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ucloud-ualb/v0.2.0"
+    "tag": "ucloud-ualb/v0.2.1"
   },
   "usages": [
     "hosting"
