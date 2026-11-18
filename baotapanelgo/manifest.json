@@ -15,18 +15,24 @@
       "darwin/amd64": "baotapanelgo_darwin_amd64.zip",
       "darwin/arm64": "baotapanelgo_darwin_arm64.zip",
       "linux/amd64": "baotapanelgo_linux_amd64.zip",
+      "linux/arm": "baotapanelgo_linux_arm.zip",
       "linux/arm64": "baotapanelgo_linux_arm64.zip",
-      "windows/amd64": "baotapanelgo_windows_amd64.zip"
+      "windows/386": "baotapanelgo_windows_386.zip",
+      "windows/amd64": "baotapanelgo_windows_amd64.zip",
+      "windows/arm64": "baotapanelgo_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "906577861181ca2461f08987aa3e7c65b43d472a6e3e56e2ebc359375e1f9bd9",
-      "darwin/arm64": "30e2dd7739e309aa8179ea487b6138f44623cfa78d648d514b1a1c35cfe36ca5",
-      "linux/amd64": "e2705a9594350c1503c1f3cecf7993f23841a396a9f57893819650ec9f1c2820",
-      "linux/arm64": "6b7091f1748b4705e1ca803f486cf1c3ebdc19a4fcfa8245967940bc93947789",
-      "windows/amd64": "8fcab2f682f6ae977767ffbb10e5fced51fe0b554d250261147e11eb6a31f9db"
+      "darwin/amd64": "0876f09e7b163678516c14f53bc3331ce6d8c0603cb83b0ad6f06ac6cfe1f752",
+      "darwin/arm64": "f8335bf35edc406524cf70890042053730125117ff593bb914c928011882167b",
+      "linux/amd64": "d8536ba47cb9f535a2a43abf8060616a56664023304c5553a85607e36a9caf77",
+      "linux/arm": "bc008777e6ee4b303701fd0fae7838f2e7f45210f74361a6d78a044d369346ae",
+      "linux/arm64": "1aafcc7dfc128ebc61c31a694e0334d0a5211cdfba0f51691828e490db9ac03f",
+      "windows/386": "8cfd3ce66cb2ed30b2f4a974b93abb29421e6648698c33c84c0f79c10e7e0104",
+      "windows/amd64": "8ca4fe664a5fa0447fdb8ec6f468462d7988eb17410c494704c7b6b9650b6a7a",
+      "windows/arm64": "43bb76da24fb2cd449ddecd3673fd4df60f4187315334c2b3607912c0ce6b552"
     },
     "repo": "certimate-go/plugins",
-    "tag": "baotapanelgo/v0.2.0"
+    "tag": "baotapanelgo/v0.2.1"
   },
   "usages": [
     "hosting"
