@@ -15,18 +15,24 @@
       "darwin/amd64": "goedge_darwin_amd64.zip",
       "darwin/arm64": "goedge_darwin_arm64.zip",
       "linux/amd64": "goedge_linux_amd64.zip",
+      "linux/arm": "goedge_linux_arm.zip",
       "linux/arm64": "goedge_linux_arm64.zip",
-      "windows/amd64": "goedge_windows_amd64.zip"
+      "windows/386": "goedge_windows_386.zip",
+      "windows/amd64": "goedge_windows_amd64.zip",
+      "windows/arm64": "goedge_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ec8d004da4ce949037e75503e44474cf59de664e08286dea2948f66dfc7bd6ba",
-      "darwin/arm64": "cef9530235db519db8b06d1f6d2a1ccfbe7af9de89996077ea5e7867f6091635",
-      "linux/amd64": "d8a398a7a522c1afcaaf5fd79e70afa377a4751d4207a350a84194ebef1dda33",
-      "linux/arm64": "8cf1f7761be6581715cb16df0d54d7510f95cc204f19b8c6e5454383116b488b",
-      "windows/amd64": "cefc96699188321ffcf17d7ad6545a90d206a9eb0591f41dfcd3ec2eded2990a"
+      "darwin/amd64": "25e0735811851d9bf7f960a5be3d87f812dbf3870950fc8ee0165130ecb4a9dd",
+      "darwin/arm64": "122bedc9173ffb55eb929163dcfaae4a718f918223dbd468452c8b68573c8575",
+      "linux/amd64": "2eec78f94dab222944e8ff1fa7b980c3946770c26457f40520ab44c92f5e9ff2",
+      "linux/arm": "ef87151e0b9458ac4d4ae02bb59cb238161b801b21ecce46fc7b4021ae8865a2",
+      "linux/arm64": "60a64305446b9790340d1453b42242b09c4227e291047be0450808ee51c06bd7",
+      "windows/386": "8f8194c796199b1adb9d4fcc9add9e33b51bd223349fce11eff6c3f29b8029be",
+      "windows/amd64": "b8ea86972c7a27d9d8708f87fff850b8e839048fdb69a22133a23c63f7b01272",
+      "windows/arm64": "7b00ace6bc91f77bb5457c5dce330bb6e3bc124a352c6a757ef03381fed9fb65"
     },
     "repo": "certimate-go/plugins",
-    "tag": "goedge/v0.2.0"
+    "tag": "goedge/v0.2.1"
   },
   "usages": [
     "hosting"
