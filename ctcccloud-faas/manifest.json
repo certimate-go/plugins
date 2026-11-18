@@ -14,18 +14,24 @@
       "darwin/amd64": "ctcccloud-faas_darwin_amd64.zip",
       "darwin/arm64": "ctcccloud-faas_darwin_arm64.zip",
       "linux/amd64": "ctcccloud-faas_linux_amd64.zip",
+      "linux/arm": "ctcccloud-faas_linux_arm.zip",
       "linux/arm64": "ctcccloud-faas_linux_arm64.zip",
-      "windows/amd64": "ctcccloud-faas_windows_amd64.zip"
+      "windows/386": "ctcccloud-faas_windows_386.zip",
+      "windows/amd64": "ctcccloud-faas_windows_amd64.zip",
+      "windows/arm64": "ctcccloud-faas_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "b38ae85188c655d2c574985ba2a32c3067bd686bbe78def11b475842cbe4170f",
-      "darwin/arm64": "a7694eb45f92c4317260edaab9fbb9005d9ab774b7e2bc85ce58c428ee4040b7",
-      "linux/amd64": "841667c3798cb8db47bc65d108110196fd52add9365487b3daa8a864b8c0dc2f",
-      "linux/arm64": "67fa4410f1880c82789fd738d4191626d6d5d0b6505981cba892abbd701ddff9",
-      "windows/amd64": "53a050275f8bf5537a8d9ed85c898a80450501ff080e3fcb6e10aa29965c0f27"
+      "darwin/amd64": "da52617f33fefbf5f2de8a7b06b29abe6c853a4750a6728b6b1f561713370062",
+      "darwin/arm64": "9d7ed6c2419d0653b75e35ce3493d165a012acd5f5099a4a7e988c8d95ae27dc",
+      "linux/amd64": "cfd57cf0573de7e20ae8afbd33ce9e7858b00885130a2e21bd05f925d0b4bd70",
+      "linux/arm": "43bd9ed4dc8f26362fe85bfe420cd465be5d2df063f4826ea5e42155149f986a",
+      "linux/arm64": "775fc7c55416bc73730f867440746f7f5c1eb5a7d00bf5ce8fcd4e68b8a532c9",
+      "windows/386": "b6d0b4665b2ef88e5fe98fadc4e354007d18929c50640888b8864c5885d2ebde",
+      "windows/amd64": "9293b892e249f3ffe5362342a144575af5f216defee768f5993a55ec5f56404e",
+      "windows/arm64": "686edabc4d5d653201e9c3f30c7b00a7d8a5514ff0fa684dac7f5086a11f2f79"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ctcccloud-faas/v0.2.0"
+    "tag": "ctcccloud-faas/v0.2.1"
   },
   "usages": [
     "hosting"
