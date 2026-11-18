@@ -14,18 +14,24 @@
       "darwin/amd64": "ctcccloud-cms_darwin_amd64.zip",
       "darwin/arm64": "ctcccloud-cms_darwin_arm64.zip",
       "linux/amd64": "ctcccloud-cms_linux_amd64.zip",
+      "linux/arm": "ctcccloud-cms_linux_arm.zip",
       "linux/arm64": "ctcccloud-cms_linux_arm64.zip",
-      "windows/amd64": "ctcccloud-cms_windows_amd64.zip"
+      "windows/386": "ctcccloud-cms_windows_386.zip",
+      "windows/amd64": "ctcccloud-cms_windows_amd64.zip",
+      "windows/arm64": "ctcccloud-cms_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "ae47fcd44107147ecedf8d641a8238f9ce79cec6165d9f31878c625ca6c5e3bd",
-      "darwin/arm64": "60250e68c5546199817760c455df929687ade0ef63049a1a4c094388bdd859a8",
-      "linux/amd64": "8cacabb88337962dc993ae50230a0a0ffacf5fc926c2064f3147e7bc29165aba",
-      "linux/arm64": "579bfa981807402c9cdc732682ee8bbc4a14b5eb66dd2be40be5f29718d15ee4",
-      "windows/amd64": "1b2000e14e97e67f86e8a8a6ea67cad7d005e0d6e030fe0365b94512ed042cb2"
+      "darwin/amd64": "3e35767e3c25d1375c240d62a1beebf2f838b543f6331e57d8381ee300577bc5",
+      "darwin/arm64": "abf7d81221b5e79116a6758fce07422a57f92f94d17d939cd395aea302d400ab",
+      "linux/amd64": "5d64a26b4ed5622acbc4ac8fec28e648e9fe9c005ea591821bad9357c76b1bc6",
+      "linux/arm": "9f01fc13bd7a3221db7e43bccb28bef84a9b3717d1471542208c2909ef9ad03f",
+      "linux/arm64": "d8abe259532e2957aadca7ba260dec8ea5aa7dfa8b94de5c180513f00a74356c",
+      "windows/386": "09e8ae118ce08ac745ac4865727829fbb34a494ea70efe790b86ea7bb4c1c77c",
+      "windows/amd64": "0137a2c5d84e280e73735ca936a5ba9145db73bdd2f714e8802b10c960ed2561",
+      "windows/arm64": "69b579e06cd62dd2909c1353dac46ccd355822f6ec09ed0c845b069853b5e475"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ctcccloud-cms/v0.2.0"
+    "tag": "ctcccloud-cms/v0.2.1"
   },
   "usages": [
     "hosting"
