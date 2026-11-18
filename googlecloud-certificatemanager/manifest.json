@@ -14,18 +14,24 @@
       "darwin/amd64": "googlecloud-certificatemanager_darwin_amd64.zip",
       "darwin/arm64": "googlecloud-certificatemanager_darwin_arm64.zip",
       "linux/amd64": "googlecloud-certificatemanager_linux_amd64.zip",
+      "linux/arm": "googlecloud-certificatemanager_linux_arm.zip",
       "linux/arm64": "googlecloud-certificatemanager_linux_arm64.zip",
-      "windows/amd64": "googlecloud-certificatemanager_windows_amd64.zip"
+      "windows/386": "googlecloud-certificatemanager_windows_386.zip",
+      "windows/amd64": "googlecloud-certificatemanager_windows_amd64.zip",
+      "windows/arm64": "googlecloud-certificatemanager_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "c3965b529472072a299778d9a330032ad35d688a906949cd3b4e1c3b3014acb5",
-      "darwin/arm64": "514c4324f55238ebc3d2d158a6997ad943eb6ad5f6343d61d697164c1f005169",
-      "linux/amd64": "0e825cfe0f079105fbf7e5466cf577f8b0c205813ebec589110e557f4a07fd60",
-      "linux/arm64": "c54741c29dc5182814f4156b0482131bbd262c5622de0efa31827ff992b733da",
-      "windows/amd64": "88617810da8ae97f413d48a193485addcdf9b6ecedf16b5b2d47bc7e9d580c1a"
+      "darwin/amd64": "9f09ae706f8abeeae10dca2dfbcf93464a31dfa491bd798ce4fa272d3789e85e",
+      "darwin/arm64": "4a53d1c242f385682ef9b04e3e3223219f6369dc57bca04e9b27f43bb8d505c6",
+      "linux/amd64": "3abd8a50ffbb6f9b93b9f460cc3a7e9f34c94d2f01fc84ddcde67f365fcff795",
+      "linux/arm": "f39f823763c74829947f6f09be59098cb77bda30b11e90ffe16779c864f2b596",
+      "linux/arm64": "932029296a3fdcdfdeb1633b790b35e75c47cb20efc1d5345bdaaabab94ec904",
+      "windows/386": "81fa79f9d9b27775b638018dddb08a8bac046621ed7b9fe9c3e08f44aa90ef8f",
+      "windows/amd64": "fb1cfe29a5eeb4f47d55de8964ba8a54ad4aaba23d31a8e3124471988d7fb7cc",
+      "windows/arm64": "1f630cbb552ba8b35a329ceaf365f84690c5b3ada82d8724a4950dd16234f453"
     },
     "repo": "certimate-go/plugins",
-    "tag": "googlecloud-certificatemanager/v0.2.0"
+    "tag": "googlecloud-certificatemanager/v0.2.1"
   },
   "usages": [
     "hosting"
