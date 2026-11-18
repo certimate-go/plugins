@@ -15,18 +15,24 @@
       "darwin/amd64": "cachefly_darwin_amd64.zip",
       "darwin/arm64": "cachefly_darwin_arm64.zip",
       "linux/amd64": "cachefly_linux_amd64.zip",
+      "linux/arm": "cachefly_linux_arm.zip",
       "linux/arm64": "cachefly_linux_arm64.zip",
-      "windows/amd64": "cachefly_windows_amd64.zip"
+      "windows/386": "cachefly_windows_386.zip",
+      "windows/amd64": "cachefly_windows_amd64.zip",
+      "windows/arm64": "cachefly_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "60e4965c162af0500d8a833a042d8c208d3eee97050b216480edcc2a17be971b",
-      "darwin/arm64": "fef79a3158e2e7ee9aea8b650dd93a4c82a4629cc3c3e069f6c351b81ccc70b5",
-      "linux/amd64": "55525156fa11c4a6c4799b7df64284081fba20e9365f89381d7b58c5ded689df",
-      "linux/arm64": "cbe07910fdd389b369ee4125a763b75c94fb121b00d812122c41dc8c5e816953",
-      "windows/amd64": "d147618b2112c7d8c7b7482217207b74af263213ec594e58b52fcd4e97830e19"
+      "darwin/amd64": "d542d549e945ecd0bb3382f788fba521310d923cd628d9abcdbfe5b4c3ecabf8",
+      "darwin/arm64": "1b93f92cf790f2b0240887ec6c7e684b54828f64fb0b13ca65e3bfa385c973aa",
+      "linux/amd64": "28ac9a5063f5e9b80db1300ebb59a84dd4c84c170779c278ed6f5fe65ee48dc2",
+      "linux/arm": "5162ca686fbb82a6dfed8a14036e7e3cd578da23c679fd2361bb6bf115f6388c",
+      "linux/arm64": "438a0d1f25a9dbdd39009a9a01b51e94f3bf1d9dbc1fe4037a0587a615a43df1",
+      "windows/386": "abd1c4bda83befc9c3d66b39e64c324d1ccf162e5bfaf3b2cd1d2a625ee7b294",
+      "windows/amd64": "e8d2fe50b769ba2d2c329dc612b5fbe34d1d42907dfa928eeaf45b9ca8759b56",
+      "windows/arm64": "c1bddb23e3cd86a49ef844d1a78aa55224175c7af8ab09ddb547612c1f4f01d6"
     },
     "repo": "certimate-go/plugins",
-    "tag": "cachefly/v0.2.0"
+    "tag": "cachefly/v0.2.1"
   },
   "sha256": "",
   "usages": [
