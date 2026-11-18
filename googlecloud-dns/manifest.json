@@ -20,17 +20,17 @@
       "windows/arm64": "googlecloud-dns_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "7aec2670e90821089213c111649fbfa9a93974b91e27adf449f5d8d9f113bf0c",
-      "darwin/arm64": "662ee28dbcc64fb3a4b02e4ac15004809797c92875118d8468cef55ec9055564",
-      "linux/amd64": "69e1cf65c3e90327d89ea98113bfecfe99bd8fc34835657e69565e1d0f9ae674",
-      "linux/arm": "9bb2e5a31431ad7671445cda55ecddee013d13772c2df1cb3741c748649f68f5",
-      "linux/arm64": "d727533cdc71ae03618d1cf8629e53e9457f999af51cfdf6257cbbb410063f98",
-      "windows/386": "4453cc475e28cd880b8ef573b3d4ff0fafe7ba5cc79724347b3b78986f2749b9",
-      "windows/amd64": "ae72b4f35fe06960e8246bf4dfff3e1b70aab26ff7fd26dd0bad4096a4fd9a33",
-      "windows/arm64": "d80fa53d4c48aa010109d2a8821c48bce9e6b066e92ae940843907f1bf24f05b"
+      "darwin/amd64": "61db89f64bbb7a839b7b6a0d71a8bec8dd5a3dab8ff9570750d1e8b7901a4362",
+      "darwin/arm64": "0bfd70c06769ae7dd5d789c9bd97ea102ddb5ddd988c41304173b00e421a2e10",
+      "linux/amd64": "552f1476000451005fe567561af6f161166c97a01e777eecb8522d8980dc58a3",
+      "linux/arm": "0d1a752d953bc9de2956db87a09a4af848624f11a67b92e6457901b8ecddda87",
+      "linux/arm64": "32fd9e2b9ff522121e35e76b446945a4c1df0df1e12172e3eddb0bbcd8c0bc34",
+      "windows/386": "e3a113773446890eb0a939af2f66eb2ead002597b8624b2cd17019a47dd01e6e",
+      "windows/amd64": "ea252555c09acdcea524ccfc4bce39d83af96fd6c697dbac6cdf92caf0e94a88",
+      "windows/arm64": "29c395a54163ea2e9aa5042ee6b1866cb14160c815e31e361661e4230c7680a2"
     },
     "repo": "certimate-go/plugins",
-    "tag": "googlecloud-dns/v0.2.1"
+    "tag": "googlecloud-dns/v0.2.2"
   },
   "usages": [
     "dns"
