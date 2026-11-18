@@ -15,18 +15,24 @@
       "darwin/amd64": "ksyun-kcm_darwin_amd64.zip",
       "darwin/arm64": "ksyun-kcm_darwin_arm64.zip",
       "linux/amd64": "ksyun-kcm_linux_amd64.zip",
+      "linux/arm": "ksyun-kcm_linux_arm.zip",
       "linux/arm64": "ksyun-kcm_linux_arm64.zip",
-      "windows/amd64": "ksyun-kcm_windows_amd64.zip"
+      "windows/386": "ksyun-kcm_windows_386.zip",
+      "windows/amd64": "ksyun-kcm_windows_amd64.zip",
+      "windows/arm64": "ksyun-kcm_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "863527dc08e79628a5b68c6a9cb9ea209ed29ce372df3593df3164f278da74e2",
-      "darwin/arm64": "d16f40414963a9e040dd72e80e752ea3e14914e16059181f9e582a9fb2c447bc",
-      "linux/amd64": "30e57b10a60f8dc01f6fdfab10b9f893d8c0f9ba0c520576b6901438b2d6ab5e",
-      "linux/arm64": "23c5fdfb8012adf2d68a5f46b2733452feaf30fb9405cf4422ecd248ac7c7ae0",
-      "windows/amd64": "2c844d5dddfb241770a6985f6d792fcfb315ed0aa946ecf1bccf05c0737cee03"
+      "darwin/amd64": "8d5f4a5441a00c8952033fbaf552f27e40282e7bd3e45f39001e65bd0fae4356",
+      "darwin/arm64": "9d7324f7c6ed0e3909429f456b088b6a98b79c8fa32e8a2c2a5b907cf515773d",
+      "linux/amd64": "612cdf0351e46627f9a279d27fd2f7695df9dee8169b960acc0a4727b787fdf1",
+      "linux/arm": "718a6dc538fd6c8dbcf4d5c2a7c4958f45d5d35293e02ab8947a7fafb36e9291",
+      "linux/arm64": "3e47ea3722743955c49a6b19c5485502407bce35adc15ea908014c3a7d38fc1d",
+      "windows/386": "8b79c08afad17dd40d0f9e52803375cbd6983e880d71ad5ea5e34e56f2a9372d",
+      "windows/amd64": "93060317f8f3815740223a1e480062a5d9853229ceebf50b4a9ec7dceeef5bf4",
+      "windows/arm64": "afd7fe6a54be28e453612ee5159715ec805cb89a7e821507e26c7af9f467f150"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ksyun-kcm/v0.2.0"
+    "tag": "ksyun-kcm/v0.2.1"
   },
   "sha256": "",
   "usages": [
