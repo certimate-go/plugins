@@ -16,18 +16,24 @@
       "darwin/amd64": "huaweicloud-elb-purger_darwin_amd64.zip",
       "darwin/arm64": "huaweicloud-elb-purger_darwin_arm64.zip",
       "linux/amd64": "huaweicloud-elb-purger_linux_amd64.zip",
+      "linux/arm": "huaweicloud-elb-purger_linux_arm.zip",
       "linux/arm64": "huaweicloud-elb-purger_linux_arm64.zip",
-      "windows/amd64": "huaweicloud-elb-purger_windows_amd64.zip"
+      "windows/386": "huaweicloud-elb-purger_windows_386.zip",
+      "windows/amd64": "huaweicloud-elb-purger_windows_amd64.zip",
+      "windows/arm64": "huaweicloud-elb-purger_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "1b3e10f88453e52aaa71c7d62c02740a0b0fef89eb8224a3de2a333f6c93706a",
-      "darwin/arm64": "43de68689854ffe63303992bd9f06b4099c15a80e4bdead91656a56c839188c1",
-      "linux/amd64": "55066df8e46fd19f8a3e5e0aadae46af88983b11d84e0af9a70f9328e569d7ff",
-      "linux/arm64": "1ee39c08fdc3d0429fd2030a77aa5fbb0d75f00b4d46ec48f6c4f9bd284abb26",
-      "windows/amd64": "1970a8753e8bca414f7d9d6f5e013ff7e48f62238e8c3aa6cd7cf9a2f0a50360"
+      "darwin/amd64": "c284045493dccaa0dfa96e49219d3fcbbae3bc01f644011724c1cdffd31a7b8b",
+      "darwin/arm64": "70a63951da3578a19a5103cb1ddbd65ef60cc3cca569332527b60d09ef6d07c0",
+      "linux/amd64": "36204d31e8d8bd82e213e9b5f0a82174a9b8fc3f61f16ad563ea2f508a6516e0",
+      "linux/arm": "f711a1a9792b65f17852fb3334c53a31241ff8f02e272a901ee7777816e4cb29",
+      "linux/arm64": "0d0e6f7d3d63a92bf53e415b530bec098f2e70d92441d30ea394b20c090c6ec6",
+      "windows/386": "5565869702ce0babdb48b947d9167aac886dfd889186f4d66e7f9eb5655ccbb2",
+      "windows/amd64": "dbc47295c8ca4727453b4cf5bd6355d6c6375db7a20a6f47e83ced6470ab2b87",
+      "windows/arm64": "e875ce9b0ceecf85d499fbce4d5fbb35d5c2b52163757511a271f80da79e85e2"
     },
     "repo": "certimate-go/plugins",
-    "tag": "huaweicloud-elb-purger/v0.1.0"
+    "tag": "huaweicloud-elb-purger/v0.1.1"
   },
   "sha256": "",
   "usages": [
