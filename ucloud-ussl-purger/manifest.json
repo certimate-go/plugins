@@ -16,18 +16,24 @@
       "darwin/amd64": "ucloud-ussl-purger_darwin_amd64.zip",
       "darwin/arm64": "ucloud-ussl-purger_darwin_arm64.zip",
       "linux/amd64": "ucloud-ussl-purger_linux_amd64.zip",
+      "linux/arm": "ucloud-ussl-purger_linux_arm.zip",
       "linux/arm64": "ucloud-ussl-purger_linux_arm64.zip",
-      "windows/amd64": "ucloud-ussl-purger_windows_amd64.zip"
+      "windows/386": "ucloud-ussl-purger_windows_386.zip",
+      "windows/amd64": "ucloud-ussl-purger_windows_amd64.zip",
+      "windows/arm64": "ucloud-ussl-purger_windows_arm64.zip"
     },
     "checksums": {
-      "darwin/amd64": "58c54edd6e7736c8d3bb70e993869ba464fec3dda37b99d8dc6e76b977d7c22a",
-      "darwin/arm64": "aaa1006cbc230c31caee931abecd11b4f66efe7198406cc3ebdeaf1529c1d2e1",
-      "linux/amd64": "2bbf32b56829cef62c47e3e87a4f537e29637562d8e0d1e7de6f48b29e20fe14",
-      "linux/arm64": "006bd4414952fa341f03cde5017c61710a4c4967bea65acdd04ef066fd8eafc2",
-      "windows/amd64": "fd85bb9234896b2d1bcc9debc7ae50540209c1d7190cff8856703800b0eb12cb"
+      "darwin/amd64": "9f40c1bfd5b772798bd74a70001d36be96af4fadd723c45bd6b478e0456bd5b0",
+      "darwin/arm64": "08277ca9647d7197d5de8f2490c32e698f057ebc008fea0b767ce80170c0fd07",
+      "linux/amd64": "ed287b36b6837b5579e908ffd399186321da6af142c268ef6110d2969d295f2e",
+      "linux/arm": "7d3049b05733b76b4686f68c48e58c48ac9584ec5484260295778a830ee6f858",
+      "linux/arm64": "9dc70570d51508851a6aa49115786aeea99954c0c9fce3740df9229475f11637",
+      "windows/386": "14b31ad8a5e39c27e91ed1d54f7050f8c2cc3351c79368bfacec1059fbfb2c10",
+      "windows/amd64": "8441a504214038d791b69b458ad9ca9673b3adf88e0ae43ee7a6b215bd02ef1a",
+      "windows/arm64": "72883fe9e559dbc7b19a280f1746475ebbbc5494fc9207545d4ecc1472233067"
     },
     "repo": "certimate-go/plugins",
-    "tag": "ucloud-ussl-purger/v0.1.0"
+    "tag": "ucloud-ussl-purger/v0.1.1"
   },
   "sha256": "",
   "usages": [
