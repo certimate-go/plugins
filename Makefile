@@ -1,9 +1,12 @@
-.PHONY: init build build-all test tidy clean index
+.PHONY: init build build-all dev release-provider test tidy clean index
 
 PLUGIN := qiniu-cdn
 OUTPUT_DIR := dist
+PLUGIN_ROOT ?= $(CURDIR)/$(OUTPUT_DIR)/local-plugins
 BINARY := $(shell jq -r .binary $(PLUGIN)/manifest.json 2>/dev/null)
 ICON := $(shell jq -r .icon $(PLUGIN)/manifest.json 2>/dev/null)
+
+export PROVIDER_DIR PLUGIN_ROOT REPOSITORY VERSION DRY_RUN
 
 init:
 	@# Validate plugin name
@@ -27,6 +30,12 @@ build:
 	go build -o $(OUTPUT_DIR)/$(PLUGIN)/$(BINARY) ./$(PLUGIN)
 	cp $(PLUGIN)/manifest.json $(OUTPUT_DIR)/$(PLUGIN)/manifest.json
 	@if [ -n "$(ICON)" ] && [ "$(ICON)" != "null" ]; then cp $(PLUGIN)/$(ICON) $(OUTPUT_DIR)/$(PLUGIN)/$(ICON); fi
+
+dev:
+	@bash .github/scripts/provider-dev.sh
+
+release-provider:
+	@bash .github/scripts/request-provider-release.sh
 
 build-all:
 	@set -eu; \

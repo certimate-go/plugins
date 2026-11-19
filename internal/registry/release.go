@@ -145,6 +145,11 @@ type releaseGit struct {
 	checkout string
 }
 
+func (git releaseGit) ancestor(ancestor, descendant string) bool {
+	_, err := git.output("merge-base", "--is-ancestor", ancestor, descendant)
+	return err == nil
+}
+
 func (git releaseGit) output(arguments ...string) ([]byte, error) {
 	command := exec.CommandContext(git.ctx, "git", append([]string{"--no-replace-objects"}, arguments...)...)
 	command.Dir = git.checkout

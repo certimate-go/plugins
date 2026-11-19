@@ -4,7 +4,7 @@
 
 [certimate](https://github.com/certimate-go/certimate) 的外置 provider 插件集合。每个插件是一个独立二进制，certimate 通过 [hashicorp/go-plugin](https://github.com/hashicorp/go-plugin) 以 gRPC 子进程的方式启动它，完成证书的部署、DNS 解析、通知或清除。新增插件**无需改动 certimate 核心**。
 
-本仓库同时也是插件**市场**源：构建插件、发布为 GitHub Release，并产出市场索引 `index.json`，供 certimate 的插件市场界面列出、安装、更新插件。
+本仓库维护官方插件索引。各 provider 仓库自行构建和发布。Certimate 从 CDN 读取 [签名索引](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json)。
 
 ## 仓库结构
 
@@ -88,13 +88,7 @@ make test                             # go test ./...
 
 ## 发版
 
-发版是 **change-driven（按改动驱动）+ version-gated（按版本号卡控）**。push 到 `main` 时，`release` 工作流检测哪些插件发生了变化；对每个 build-affecting 改动且已 bump `version` 的插件，跨平台编译、发布 GitHub Release（tag `<provider_type>/v<version>`）、计算各平台 SHA256 校验、并把 release 块写入 manifest。随后 `genindex` 重新生成 `index.json`，让 certimate 市场能解析和校验下载。
-
-- 发一个改动：改代码、在插件 `manifest.json` 里 **bump `version`**、push 到 `main`。
-- build-affecting 改动（Go 源码、`go.mod`/`go.sum`、`schema/`）不 bump 版本会让本次运行失败。
-- 仅元数据改动（图标、显示名）只会重新生成索引，不发版。
-
-完整流程与信任前提见 [`docs/releasing.md`](docs/releasing.md)。
+在 provider 仓库推送发版请求标签。正式标签出现后，本仓库为该版本开 PR。合并后，签名索引自动发布到 `main`。 [官方发布指南](docs/releasing.md)
 
 ## 从内置 purge provider 升级
 

@@ -2,6 +2,16 @@
 
 A provider plugin is a standalone Go binary that Certimate's core loads at runtime over gRPC (via `hashicorp/go-plugin`). Every capability — `deploy`, `dns`, `notify`, `purge` — uses the same interface and the same wire contract. Adding a new provider requires **zero changes to the core** — you only write the plugin and drop it into the plugin directory.
 
+## Run a standalone plugin locally
+
+From the `plugins` checkout, build a neighboring provider repository into a local plugin directory. Initialize its submodules first if it uses any.
+
+```sh
+make dev PROVIDER_DIR=../plugin-provider-volcengine-dns-acmedns01challenger
+```
+
+The command prints the absolute `CERTIMATE_PLUGIN_DIR` to use when starting Core with a test data directory. Rerun the same command after editing the provider. To use another development plugin directory, set `PLUGIN_ROOT`. Run `go test ./...` in the provider repository when you need its tests. Provider CI checks the source PR.
+
 This guide walks through the full author flow using `_template/` as the reference.
 
 ## Prerequisites

@@ -42,7 +42,6 @@ func registryFixture(t *testing.T) (records, observations string) {
 	root := t.TempDir()
 	records = mkdir(t, root, "registry")
 	policy := mkdir(t, records, "_policy")
-	writeFile(t, filepath.Join(policy, "admissions.json"), `{"alpha":"certimate-go/plugin-provider-alpha","beta":"certimate-go/plugin-provider-beta"}`)
 	writeFile(t, filepath.Join(policy, "withdrawals.json"), "[]")
 	observations = filepath.Join(root, "observations.json")
 	writeFile(t, observations, "[]")
@@ -217,7 +216,7 @@ func TestRegistryCatalogRefusesInvalidRecords(t *testing.T) {
 		}, "observed commit differs"},
 		{"wrong-repository", func(record *registry.Version, ready *registry.ReadyRelease) {
 			record.Repository = "attacker/plugin-provider-alpha"
-		}, "does not match path or admission"},
+		}, "invalid official provider repository"},
 		{"invalid-download-path", func(record *registry.Version, ready *registry.ReadyRelease) {
 			record.Artifacts[0].Path = "../wrong.zip"
 		}, "invalid or duplicate artifact"},
