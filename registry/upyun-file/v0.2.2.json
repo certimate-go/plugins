@@ -1,0 +1,97 @@
+{
+  "provider_type": "upyun-file",
+  "repository": "certimate-go/plugin-provider-upyun-file-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "31055a7e77c50d80a7af020321421dc64a93e5ee",
+  "build_run_id": "44514063240",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6212649,
+      "sha256": "f60fd2755987ab96269d4b5612f75e47af8373432eaa7a8895d087e1461047e5"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5845204,
+      "sha256": "d9387939d4b7bb07057ace6f987ff22b74108bc22cff2a2c7f6348a29319e0fc"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6171000,
+      "sha256": "9132066714dc7876910941a1f250f5447442e5afcab4d2c8a93d38a76adb3db0"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5850987,
+      "sha256": "01165251aea5b3e4aa192f22349ca11673fc86ae3422b70aa3671f0656a79e79"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5596177,
+      "sha256": "9245065678400cafa27cbb1fb91b9cc7124ae4cc5c8dc0d8ec760e5cdc2edf8b"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5945110,
+      "sha256": "6be6be74eb7167a2ec89b75b8cbd8cf125df12733615da3a5609c61b373f7e41"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6343547,
+      "sha256": "6a7e54472aa2fc98e549e6f7850072006bcba0709c16d2daeddfc80daee3e782"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5684808,
+      "sha256": "903051171c4711f7aa65fb7f1b970a974f034b157e96f1529d09804bfb81a8f3"
+    }
+  ],
+  "release_commit": "7bea21d2336bdb6a13d093360f20de6862ee06d2",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "upyun-file",
+    "access_provider_type": "upyun",
+    "capability": "deploy",
+    "display_name_key": "plugin.upyun-file.name",
+    "category": "storage",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "upyun-file.exe",
+    "icon": "upyun.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "UPYUN - USS (Storage Service)"
+    },
+    "zh": {
+      "name": "又拍云 - 云存储 USS"
+    }
+  },
+  "icon": "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"
+}
