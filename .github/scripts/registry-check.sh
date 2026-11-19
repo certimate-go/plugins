@@ -31,7 +31,8 @@ if [[ -n "$pull_id" ]]; then
 fi
 
 scratch="$(mktemp -d)"
-mkdir "$scratch/providers" "$scratch/evidence"
+trap 'rm -rf "$scratch"' EXIT
+mkdir "$scratch/providers" "$scratch/evidence" "$scratch/evidence/admission-batches"
 go build -mod=readonly -o "$scratch/registryctl" ./cmd/registryctl
 common=(-checkout "$PWD" -base "$base" -candidate "$candidate")
 if [[ -n "${PUBLIC_KEYS:-}" ]]; then
@@ -41,6 +42,29 @@ fi
 if [[ -z "$pull_id" ]]; then
     common+=(-queue)
 fi
+git --no-replace-objects diff --name-only -z "$base" "$candidate" >"$scratch/paths"
+while IFS= read -r -d '' path; do
+    if [[ ! "$path" =~ ^registry/_policy/admission-batches/([1-9][0-9]{0,19})-([1-9][0-9]{0,8})\.json$ ]]; then
+        continue
+    fi
+    run_id="${BASH_REMATCH[1]}"
+    attempt="${BASH_REMATCH[2]}"
+    run_path="repos/$GITHUB_REPOSITORY/actions/runs/$run_id/attempts/$attempt"
+    source="$(gh api "$run_path" | jq -er --arg repo "$GITHUB_REPOSITORY" --arg run "$run_id" --arg attempt "$attempt" '
+        select((.id | tostring) == $run and (.run_attempt | tostring) == $attempt and
+            .repository.full_name == $repo and .head_repository.full_name == $repo and
+            .head_branch == "main" and .event == "workflow_dispatch" and
+            .path == ".github/workflows/registry-admit.yml")
+        | .head_sha | select(test("^[0-9a-f]{40}$"))
+    ')"
+    git --no-replace-objects merge-base --is-ancestor "$source" "$base" || die 'Migration workflow did not run on protected history'
+    gh api "$run_path/jobs?per_page=100" |
+        jq -e '.jobs | any(.name == "Prepare migration batch" and .conclusion == "success")' >/dev/null
+    gh run download "$run_id" --repo "$GITHUB_REPOSITORY" --name "migration-batch-$attempt" --dir "$scratch/batch-$run_id-$attempt"
+    cp "$scratch/batch-$run_id-$attempt/batch.json" "$scratch/evidence/admission-batches/$run_id-$attempt.json"
+done <"$scratch/paths"
+
+common+=(-evidence "$scratch/evidence")
 "$scratch/registryctl" registration-changes "${common[@]}" >"$scratch/changes.json"
 jq -r '.[] | [.provider_type, .repository, .tag, .build_run_id] | @tsv' "$scratch/changes.json" >"$scratch/changes.tsv"
 while IFS=$'\t' read -r provider repository tag run_id; do
@@ -58,7 +82,7 @@ while IFS=$'\t' read -r provider repository tag run_id; do
     GH_TOKEN="$EVIDENCE_TOKEN" gh api --paginate --slurp "repos/$repository/actions/runs/$run_id/jobs?filter=all&per_page=100" |
         jq -ce '{jobs: [.[].jobs[]]}' >"$proof/$tag-jobs.json"
 done <"$scratch/changes.tsv"
-"$scratch/registryctl" verify-registrations "${common[@]}" -providers "$scratch/providers" -evidence "$scratch/evidence"
+"$scratch/registryctl" verify-registrations "${common[@]}" -providers "$scratch/providers"
 
 actual="$(git ls-remote --exit-code --refs origin "$CANDIDATE_REF" | cut -f1)"
 actual_base="$(git ls-remote --exit-code --refs origin refs/heads/main | cut -f1)"

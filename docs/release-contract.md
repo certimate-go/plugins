@@ -355,3 +355,45 @@ publisher uses its read-only Actions token to check that the legacy workflow
 is manually disabled and its runs have drained. It repeats the check before
 proposing the publication PR. Remove the legacy workflow as part of the completed
 migration.
+
+## Batch migration for existing official plugins
+
+Prepare one standalone checkout per provider. Use the official CI and release
+templates and commit the initial source on local `main`. The batch input is a
+JSON array. Each entry includes `provider_type`, `repository`, `source_commit`,
+`source_path`, `target_commit`, `target_tree`, and `version`. Use a full commit
+hash from the registry's protected history and the legacy plugin directory as
+the source. Use `git rev-parse HEAD` and `git rev-parse 'HEAD^{tree}'` in the
+standalone checkout to obtain the target hashes.
+
+Refresh the registry checkout from `main`. In the following command,
+`--providers-dir` is the parent directory of the standalone repositories.
+Without `--apply`, the provisioner verifies the input and local Git objects.
+With `--apply --dispatch`, it provisions the repositories, waits for source CI,
+and submits the ready entries to the protected migration workflow.
+
+```sh
+python3 .github/scripts/provision-migration.py batch.json \
+    --providers-dir /path/to/provider-checkouts --apply --dispatch
+```
+
+Use an organization admin credential that can manage repositories and the
+release App's selected repositories. Point
+`REGISTRY_RELEASE_APP_PRIVATE_KEY_FILE` to the release App key available to the
+operator. The provisioner reads the key only in apply mode and passes it to
+`gh secret set` over standard input.
+
+The protected workflow validates each target and saves its exact batch as an
+Actions artifact. The bot opens a PR with the new admission mappings and a
+receipt tied to the workflow attempt. The existing required check verifies
+the receipt against the trusted artifact when testing the PR and the merge
+queue commit. On merge, each provider gets its pinned `-detach` tag. The
+normal registration and signed publication workflows take it from there.
+Rerun provisioning with the same batch to resume. Existing formal tags are
+immutable.
+
+Verify that the new version is present in the signed CDN catalog and that
+Certimate can install it from the official market. Then remove the
+corresponding legacy source directory from the registry repository. Check
+consumers before removing a shared helper. If a provider fails verification,
+keep its legacy source and record the failed step.

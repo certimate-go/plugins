@@ -24,11 +24,12 @@ const (
 )
 
 type RegistrationOptions struct {
-	Checkout   string
-	Base       string
-	Candidate  string
-	Queue      bool
-	PublicKeys map[string]ed25519.PublicKey
+	Checkout          string
+	Base              string
+	Candidate         string
+	Queue             bool
+	PublicKeys        map[string]ed25519.PublicKey
+	AdmissionEvidence fs.FS
 }
 
 type Registration struct {
@@ -48,15 +49,8 @@ func RegistrationChanges(ctx context.Context, options RegistrationOptions) ([]Re
 	if !git.ancestor(options.Base, options.Candidate) {
 		return nil, errors.New("registration candidate does not contain the protected base")
 	}
-	policy, err := git.blob(options.Base, "registry/_policy/admissions.json", maxPolicyBytes)
+	admissions, err := git.admissions(options.Base)
 	if err != nil {
-		return nil, err
-	}
-	var admissions map[string]string
-	if err := decodeJSON(policy, &admissions); err != nil || admissions == nil {
-		return nil, errors.New("invalid admission policy at protected base")
-	}
-	if err := validateAdmissions(admissions); err != nil {
 		return nil, err
 	}
 	diff, err := git.output("diff-tree", "--no-commit-id", "-r", "-z", "--no-renames", "--name-status", options.Base, options.Candidate)
@@ -73,9 +67,15 @@ func RegistrationChanges(ctx context.Context, options RegistrationOptions) ([]Re
 	}
 	changes := make([]Registration, 0, limit)
 	marketChanges := make(map[string]string)
+	admissionChanges := make(map[string]string)
+	var migrationSources map[Identity]string
 	for index := 0; index < len(fields); index += 2 {
 		filename := string(fields[index+1])
 		status := string(fields[index])
+		if filename == admissionPolicyPath || admissionReceiptPath.MatchString(filename) {
+			admissionChanges[filename] = status
+			continue
+		}
 		if filename == marketIndexPath || strings.HasPrefix(filename, "registry/market/") {
 			marketChanges[filename] = status
 			continue
@@ -110,7 +110,24 @@ func RegistrationChanges(ctx context.Context, options RegistrationOptions) ([]Re
 		if err := version.Validate(); err != nil {
 			return nil, fmt.Errorf("%s: %w", filename, err)
 		}
+		if migrationSources == nil {
+			migrationSources, err = git.migrationSources(options.Base)
+			if err != nil {
+				return nil, err
+			}
+		}
+		if source := migrationSources[Identity{provider, version.Version}]; source != "" && source != version.SourceCommit {
+			return nil, fmt.Errorf("registration %q does not match the migration source commit", filename)
+		}
 		changes = append(changes, Registration{provider, repository, tag, version.BuildRunID, filename, content})
+	}
+	if len(admissionChanges) != 0 {
+		if !options.Queue && (len(marketChanges) != 0 || len(changes) != 0) {
+			return nil, errors.New("admission requires a separate pull request")
+		}
+		if err := git.verifyAdmissionChanges(options, admissions, admissionChanges, options.AdmissionEvidence); err != nil {
+			return nil, err
+		}
 	}
 	if len(marketChanges) != 0 {
 		if !options.Queue && len(changes) != 0 {
@@ -170,6 +187,7 @@ func verifyMarketChanges(git releaseGit, options RegistrationOptions, changes ma
 }
 
 func VerifyRegistrations(ctx context.Context, options RegistrationOptions, sources string, evidence fs.FS) ([]Registration, error) {
+	options.AdmissionEvidence = evidence
 	registrations, err := RegistrationChanges(ctx, options)
 	if err != nil {
 		return nil, err

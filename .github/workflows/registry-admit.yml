@@ -1,0 +1,149 @@
+name: Migrate admitted plugin sources
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch:
+        description: JSON array of prepared official provider migration entries
+        type: string
+        required: true
+  push:
+    branches: [main]
+    paths: ['registry/_policy/admission-batches/*.json']
+  schedule:
+    - cron: '18,48 * * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    if: github.event_name == 'workflow_dispatch' && github.repository == 'certimate-go/plugins' && github.ref == 'refs/heads/main' && github.ref_protected
+    name: Prepare migration batch
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      ready: ${{ steps.plan.outputs.ready }}
+      attempt: ${{ steps.plan.outputs.attempt }}
+      artifact: ${{ steps.batch.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: go.mod
+          cache: false
+      - name: Verify the source and protected target revisions
+        id: plan
+        env:
+          MIGRATION_BATCH: ${{ inputs.batch }}
+          GH_TOKEN: ${{ github.token }}
+          GOWORK: "off"
+          GOTOOLCHAIN: local
+        run: bash .github/scripts/registry-admit.sh plan "$RUNNER_TEMP/migration"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        id: batch
+        if: steps.plan.outputs.ready == 'true'
+        with:
+          name: migration-batch-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/migration/artifact/
+          if-no-files-found: error
+          retention-days: 30
+
+  propose:
+    needs: prepare
+    if: needs.prepare.outputs.ready == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: registry-reconcile
+    permissions:
+      contents: read
+      actions: write
+    concurrency:
+      group: registry-admission-proposals
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          artifact-ids: ${{ needs.prepare.outputs.artifact }}
+          path: ${{ runner.temp }}/admission
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        id: registrar
+        with:
+          owner: certimate-go
+          repositories: plugins
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
+          permission-contents: write
+          permission-pull-requests: write
+      - name: Open the batch admission pull request
+        env:
+          GH_TOKEN: ${{ steps.registrar.outputs.token }}
+          PREPARE_ATTEMPT: ${{ needs.prepare.outputs.attempt }}
+        run: bash .github/scripts/registry-admit.sh propose "$RUNNER_TEMP/admission"
+      - name: Request automatic reconciliation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run registry-reconcile.yml --repo "$GITHUB_REPOSITORY" --ref main
+
+  pending:
+    if: github.event_name != 'workflow_dispatch' && github.repository == 'certimate-go/plugins' && github.ref == 'refs/heads/main' && github.ref_protected
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    outputs:
+      requests: ${{ steps.plan.outputs.requests }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Find admitted migrations awaiting release
+        id: plan
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/scripts/registry-admit.sh pending "$RUNNER_TEMP"
+
+  release:
+    needs: pending
+    if: needs.pending.outputs.requests != '[]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment: registry-reconcile
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        entry: ${{ fromJSON(needs.pending.outputs.requests) }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Resolve the admitted repository
+        id: provider
+        env:
+          REPOSITORY: ${{ matrix.entry.repository }}
+        run: |
+          [[ "$REPOSITORY" =~ ^certimate-go/plugin-provider-[a-z0-9][a-z0-9_.-]*$ ]]
+          printf 'repository=%s\n' "${REPOSITORY#certimate-go/}" >>"$GITHUB_OUTPUT"
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        id: provider-token
+        with:
+          owner: certimate-go
+          repositories: ${{ steps.provider.outputs.repository }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
+          permission-contents: write
+      - name: Create the first release request
+        env:
+          ENTRY: ${{ toJSON(matrix.entry) }}
+          GH_TOKEN: ${{ steps.provider-token.outputs.token }}
+        run: bash .github/scripts/registry-admit.sh request
