@@ -43,7 +43,7 @@ var purgePackagingPurgers = []string{
 	"volcengine-certcenter-purger",
 }
 
-var purgePackagingOldSamples = []string{"mockdns", "mocknotify", "baiducloud-cert"}
+var purgePackagingOldSamples = []string{"powerdns-dns", "ntfy", "baiducloud-cert"}
 
 type purgePackagingMarket struct {
 	t     *testing.T
@@ -74,7 +74,11 @@ func newPurgePackagingMarket(t *testing.T, fixturesDir string) *purgePackagingMa
 	}
 	m.stageProtocolFixture(fixturesDir)
 	for _, name := range m.staged() {
-		for _, platform := range [][2]string{{"linux", "amd64"}, {"linux", "arm64"}, {"darwin", "amd64"}, {"darwin", "arm64"}, {"windows", "amd64"}} {
+		for _, platform := range [][2]string{
+			{"linux", "amd64"}, {"linux", "arm64"}, {"linux", "arm"},
+			{"darwin", "amd64"}, {"darwin", "arm64"},
+			{"windows", "amd64"}, {"windows", "arm64"}, {"windows", "386"},
+		} {
 			target := filepath.Join(m.dist, fmt.Sprintf("%s_%s_%s.zip", name, platform[0], platform[1]))
 			if platform[0] == "linux" && platform[1] == runtime.GOARCH {
 				m.zipStagedDir(name, target)
@@ -422,10 +426,10 @@ func runPurgePackagingScenarios(t *testing.T, fixturesDir string) {
 			if !ok {
 				t.Fatalf("index missing purge entry %s", provider)
 			}
-			if entry.Capability != "purge" || entry.ProtocolVersion != 4 || entry.Version != "0.1.0" {
+			if entry.Capability != "purge" || entry.ProtocolVersion != 4 || entry.Version != "0.1.1" {
 				t.Fatalf("purge entry %s: %+v", provider, entry)
 			}
-			if entry.Detail == nil || entry.Detail.Repo != purgePackagingReleaseRepo || len(entry.Detail.Platforms) != 5 {
+			if entry.Detail == nil || entry.Detail.Repo != purgePackagingReleaseRepo || len(entry.Detail.Platforms) != 8 {
 				t.Fatalf("purge entry %s detail: %+v", provider, entry.Detail)
 			}
 			detailPath := filepath.Join(market.root, "market", "details", entry.Detail.SHA256+".json")
@@ -437,11 +441,11 @@ func runPurgePackagingScenarios(t *testing.T, fixturesDir string) {
 				t.Fatalf("detail checksum mismatch for %s", provider)
 			}
 		}
-		if capability := entries["mockdns"].Capability; capability != "dns" {
-			t.Fatalf("mockdns capability %q", capability)
+		if capability := entries["powerdns-dns"].Capability; capability != "dns" {
+			t.Fatalf("powerdns-dns capability %q", capability)
 		}
-		if capability := entries["mocknotify"].Capability; capability != "notify" {
-			t.Fatalf("mocknotify capability %q", capability)
+		if capability := entries["ntfy"].Capability; capability != "notify" {
+			t.Fatalf("ntfy capability %q", capability)
 		}
 		if capability := entries["baiducloud-cert"].Capability; capability != "deploy" {
 			t.Fatalf("baiducloud-cert capability %q", capability)
@@ -500,15 +504,15 @@ func runPurgePackagingScenarios(t *testing.T, fixturesDir string) {
 		for _, card := range client.page(ctx, "?capability=dns&perPage=100") {
 			dnsProviders[card.ProviderType] = true
 		}
-		if !dnsProviders["mockdns"] {
-			t.Fatalf("capability=dns selection missing mockdns: %v", dnsProviders)
+		if !dnsProviders["powerdns-dns"] {
+			t.Fatalf("capability=dns selection missing powerdns-dns: %v", dnsProviders)
 		}
 		notifyProviders := map[string]bool{}
 		for _, card := range client.page(ctx, "?capability=notify&perPage=100") {
 			notifyProviders[card.ProviderType] = true
 		}
-		if !notifyProviders["mocknotify"] {
-			t.Fatalf("capability=notify selection missing mocknotify: %v", notifyProviders)
+		if !notifyProviders["ntfy"] {
+			t.Fatalf("capability=notify selection missing ntfy: %v", notifyProviders)
 		}
 	})
 
@@ -518,13 +522,13 @@ func runPurgePackagingScenarios(t *testing.T, fixturesDir string) {
 			client.waitJob(ctx, provider, sourceID, "installed")
 			core.assertCatalogEntry(provider, "purge", true)
 		}
-		for provider, capability := range map[string]string{"mockdns": "dns", "mocknotify": "notify", "baiducloud-cert": "deploy"} {
+		for provider, capability := range map[string]string{"powerdns-dns": "dns", "ntfy": "notify", "baiducloud-cert": "deploy"} {
 			client.install(ctx, provider, sourceID)
 			client.waitJob(ctx, provider, sourceID, "installed")
 			core.assertCatalogEntry(provider, capability, true)
 		}
-		if version := purgePackagingInstalledVersion(t, core, purgePackagingUCloud); version != "0.1.0" {
-			t.Fatalf("installed ucloud version %q, want 0.1.0", version)
+		if version := purgePackagingInstalledVersion(t, core, purgePackagingUCloud); version != "0.1.1" {
+			t.Fatalf("installed ucloud version %q, want 0.1.1", version)
 		}
 	})
 
@@ -584,7 +588,7 @@ func runPurgePackagingScenarios(t *testing.T, fixturesDir string) {
 		if code == 0 || !strings.Contains(msg, "checksum") {
 			t.Fatalf("checksum-mismatch update: code=%d message=%s", code, msg)
 		}
-		if version := purgePackagingInstalledVersion(t, core, purgePackagingUCloud); version != "0.1.0" {
+		if version := purgePackagingInstalledVersion(t, core, purgePackagingUCloud); version != "0.1.1" {
 			t.Fatalf("failed update changed installed version to %q", version)
 		}
 		core.assertCatalogEntry(purgePackagingUCloud, "purge", true)
@@ -599,7 +603,7 @@ func runPurgePackagingScenarios(t *testing.T, fixturesDir string) {
 		if code == 0 {
 			t.Fatalf("corrupt-archive update unexpectedly succeeded: %+v", msg)
 		}
-		if version := purgePackagingInstalledVersion(t, core, purgePackagingUCloud); version != "0.1.0" {
+		if version := purgePackagingInstalledVersion(t, core, purgePackagingUCloud); version != "0.1.1" {
 			t.Fatalf("corrupt update changed installed version to %q", version)
 		}
 		core.assertCatalogEntry(purgePackagingUCloud, "purge", true)

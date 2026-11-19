@@ -22,12 +22,12 @@
 | --- | --- | --- | --- | --- |
 | `volcengine-alb` | `plugin-provider-volcengine-alb-deployer` | 待分配 | 证书中心共享子模块、仓内 SDK | 源码已拆分，待发布验收 |
 | `volcengine-apig` | `plugin-provider-volcengine-apig-deployer` | 待分配 | 证书中心共享子模块、仓内 SDK、`internal/volcengineapig` | 源码已拆分，待发布验收 |
-| `volcengine-cdn` | `plugin-provider-volcengine-cdn-deployer` | 待分配 | 仓内 SDK、`internal/certmgr/volcengine-cdn` | 公开源码已推送，待发布验收 |
+| `volcengine-cdn` | `plugin-provider-volcengine-cdn-deployer` | 待分配 | 仓内 SDK、`internal/certmgr/volcengine-cdn` | 已切换至独立仓库，已发布 `v0.2.1` |
 | `volcengine-certcenter` | `plugin-provider-volcengine-certcenter-deployer` | 待分配 | 证书中心共享子模块 | 源码已拆分，待发布验收 |
-| `volcengine-certcenter-purger` | `plugin-provider-volcengine-certcenter-purger` | 待分配 | 仓内 SDK | 公开源码已推送，待发布验收 |
+| `volcengine-certcenter-purger` | `plugin-provider-volcengine-certcenter-purger` | 待分配 | 仓内 SDK | 已切换至独立仓库，已发布 `v0.1.1` |
 | `volcengine-clb` | `plugin-provider-volcengine-clb-deployer` | 待分配 | 证书中心共享子模块、仓内 SDK | 源码已拆分，待发布验收 |
 | `volcengine-dcdn` | `plugin-provider-volcengine-dcdn-deployer` | 待分配 | 证书中心共享子模块、仓内 SDK | 源码已拆分，待发布验收 |
-| `volcengine-dns` | `plugin-provider-volcengine-dns-acmedns01challenger` | 待分配 | Go 模块 | 公开源码已推送，待发布验收 |
+| `volcengine-dns` | `plugin-provider-volcengine-dns-acmedns01challenger` | 待分配 | Go 模块 | 已切换至独立仓库，已发布 `v0.1.1` |
 | `volcengine-imagex` | `plugin-provider-volcengine-imagex-deployer` | 待分配 | 证书中心共享子模块 | 源码已拆分，待发布验收 |
 | `volcengine-live` | `plugin-provider-volcengine-live-deployer` | 待分配 | `internal/certmgr/volcengine-live` | 源码已拆分，待发布验收 |
 | `volcengine-tos` | `plugin-provider-volcengine-tos-deployer` | 待分配 | 证书中心共享子模块、仓内 SDK | 源码已拆分，待发布验收 |
@@ -94,7 +94,7 @@
 | `goedge` | `plugin-provider-goedge-deployer` | 待分配 | `internal/goedgesdk` | 源码已拆分，待发布验收 |
 | `googlecloud-certificatemanager` | `plugin-provider-googlecloud-certificatemanager-deployer` | 待分配 | `internal/googlecloudcertmgr` | 源码已拆分，待发布验收 |
 | `googlecloud-dns` | `plugin-provider-googlecloud-dns-acmedns01challenger` | 待分配 | Go 模块 | 源码已拆分，待发布验收 |
-| `gotify` | `plugin-provider-gotify-notifier` | 待分配 | `internal/pluginhttp` | 源码已拆分，待发布验收 |
+| `gotify` | `plugin-provider-gotify-notifier` | 待分配 | `internal/pluginhttp` | 已切换至独立仓库，已发布 `v0.2.2` |
 | `huaweicloud-aad` | `plugin-provider-huaweicloud-aad-deployer` | 待分配 | 仓内 SDK | 源码已拆分，待发布验收 |
 | `huaweicloud-apig` | `plugin-provider-huaweicloud-apig-deployer` | 待分配 | 仓内 SDK | 源码已拆分，待发布验收 |
 | `huaweicloud-cdn` | `plugin-provider-huaweicloud-cdn-deployer` | 待分配 | 仓内 SDK、`internal/certmgr/huaweicloud-scm` | 源码已拆分，待发布验收 |
@@ -128,7 +128,7 @@
 | `mohua-mvh` | `plugin-provider-mohua-mvh-deployer` | 待分配 | `internal/mohuasdk` | 源码已拆分，待发布验收 |
 | `netlify` | `plugin-provider-netlify-deployer` | 待分配 | `internal/netlifysdk` | 源码已拆分，待发布验收 |
 | `nginxproxymanager` | `plugin-provider-nginxproxymanager-deployer` | 待分配 | `internal/nginxproxymanagercertmgr`、`internal/nginxproxymanagersdk` | 源码已拆分，待发布验收 |
-| `ntfy` | `plugin-provider-ntfy-notifier` | 待分配 | `internal/pluginhttp` | 源码已拆分，待发布验收 |
+| `ntfy` | `plugin-provider-ntfy-notifier` | 待分配 | `internal/pluginhttp` | 已切换至独立仓库，已发布 `v0.2.2` |
 | `oraclecloud-certificatesmgmt` | `plugin-provider-oraclecloud-certificatesmgmt-deployer` | 待分配 | `internal/oraclecloudcertmgr` | 源码已拆分，待发布验收 |
 | `powerdns` | `plugin-provider-powerdns-dns-acmedns01challenger` | 待分配 | `internal/dnschallenge`、`internal/pluginhttp` | 源码已拆分，待发布验收 |
 | `proxmoxbs` | `plugin-provider-proxmoxbs-deployer` | 待分配 | `internal/proxmoxbssdk` | 源码已拆分，待发布验收 |

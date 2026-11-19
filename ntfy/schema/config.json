@@ -1,8 +1,0 @@
-{
-  "schemaVersion": "form/v1",
-  "provider": "ntfy",
-  "category": "notify",
-  "schema": {
-    "columns": []
-  }
-}

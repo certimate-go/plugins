@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net"
@@ -304,6 +305,10 @@ func buildB4CloudPackages(t *testing.T, dir string, providers []string, goos, ar
 	t.Helper()
 	for _, provider := range providers {
 		manifest, err := os.ReadFile(filepath.Join("..", provider, "manifest.json"))
+		if errors.Is(err, os.ErrNotExist) {
+			installPublishedFixture(t, filepath.Join(dir, provider), provider, goos, arch)
+			continue
+		}
 		if err != nil {
 			t.Fatal(err)
 		}

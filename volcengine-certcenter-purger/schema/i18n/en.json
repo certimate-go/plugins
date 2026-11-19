@@ -1,6 +1,0 @@
-{
-  "plugin.volcengine-certcenter-purger.name": "VolcEngine - Certificate Center (Purge)",
-  "plugin.volcengine-certcenter-purger.purge.form.region.label": "VolcEngine region",
-  "plugin.volcengine-certcenter-purger.purge.form.region.placeholder": "Please enter VolcEngine Certificate Center region (e.g. cn-beijing)",
-  "plugin.volcengine-certcenter-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://docs.volcengine.com/docs/6638/1413343\" target=\"_blank\">https://docs.volcengine.com/docs/6638/1413343</a>"
-}
