@@ -1,0 +1,97 @@
+{
+  "provider_type": "kong",
+  "repository": "certimate-go/plugin-provider-kong-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "af1b3aba77818341791f07272e53007659318de0",
+  "build_run_id": "44512381719",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6247276,
+      "sha256": "b095efff2845244ebd786351024fff8d781172583966dc373415717a10376a9d"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5876957,
+      "sha256": "0c89582720ad318dd44cc090177670a1f75c894e1b990bd09d5f91a8bee14498"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6217419,
+      "sha256": "f3902a7d6b88c0d2076a50d53a3b2030c237a76e5e2ccb230aa296a38183b3ca"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5894930,
+      "sha256": "16dfbf0cc7b007bfefb61c096b33d569984c0fbc85722450b41fc56d90700ccb"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5619189,
+      "sha256": "d13fba1a5928cd50ae7797f56a45900458f4fee3cad39bd67266f27b5d2f8871"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5984147,
+      "sha256": "5cd8d730a49fa3f8f01430fc912d55ce515125f13bda9c41ed2c88719689cfe7"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6359491,
+      "sha256": "cf141e8585e072da305706c5ed0b4d5b50fdaf894c97629b9622cf75256797f0"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5709302,
+      "sha256": "df26def57c8a256781dc3059a8e536ea72152be701fdd24303254841157466dc"
+    }
+  ],
+  "release_commit": "4a2b3437d81b16a55f5745d8c66a066e58a631ee",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "kong",
+    "access_provider_type": "kong",
+    "capability": "deploy",
+    "display_name_key": "plugin.kong.name",
+    "category": "apigw",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "kong.exe",
+    "icon": "kong.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Kong"
+    },
+    "zh": {
+      "name": "Kong"
+    }
+  },
+  "icon": "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"
+}
