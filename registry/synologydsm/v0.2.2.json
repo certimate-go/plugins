@@ -1,0 +1,97 @@
+{
+  "provider_type": "synologydsm",
+  "repository": "certimate-go/plugin-provider-synologydsm-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "a33f8bd185f29a51f2b22e2dccb378688205d624",
+  "build_run_id": "44512453641",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6288288,
+      "sha256": "9046b4cbc7f22deb9d1f3cdeac0a9da57b6ba2d97a3b52e854a13f890be156ec"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5919429,
+      "sha256": "fe52969cfd68a8bed9d9fe7e676bf352cabb15675672a905db839e9c485f8084"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6264455,
+      "sha256": "aa1e3af1bfee7b0bcf16dad18007262bf96778ebc3c12e1cea02f2c61a2654b8"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5911449,
+      "sha256": "6a835902e94098e228a561d99bc381cee7e6fef8adea688e63b98f52c382aa61"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5663679,
+      "sha256": "295284214ab8b7b25294287e59ab2626a14cb577430b2fedfe1add1320effaf4"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6019548,
+      "sha256": "a0e97855858fdc58eb68c7c41e95cf67893a0642e95c11601e7ad2fc98b74527"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6418645,
+      "sha256": "284aeab4a600a1ecf3ae2307441d6e80c02e3ea43e0f037fad738593067a1459"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5777586,
+      "sha256": "4dce9e072bbe9d51fb6dec5967c59a042b6ff0f752e1b5cb74af38b0aa6ee1cc"
+    }
+  ],
+  "release_commit": "8696100399704ae4c2a6326c908355df67054853",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "synologydsm",
+    "access_provider_type": "synologydsm",
+    "capability": "deploy",
+    "display_name_key": "provider.synologydsm",
+    "category": "other",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "synologydsm.exe",
+    "icon": "synologydsm.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Synology DSM"
+    },
+    "zh": {
+      "name": "群晖 DSM"
+    }
+  },
+  "icon": "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"
+}
