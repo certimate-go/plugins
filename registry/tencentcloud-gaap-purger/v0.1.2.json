@@ -1,0 +1,97 @@
+{
+  "provider_type": "tencentcloud-gaap-purger",
+  "repository": "certimate-go/plugin-provider-tencentcloud-gaap-purger",
+  "version": "0.1.2",
+  "tag": "v0.1.2",
+  "source_commit": "cb25f6103f83c73ab4a8138c2a2437fd167e5780",
+  "build_run_id": "44510130174",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6111387,
+      "sha256": "e7cadca546437833f6756d079650ef1618bd0a94c4f522bb9ad40648625469de"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5772963,
+      "sha256": "6b4e8eb0ab2e5ad1d3ea8a49e0115c23c45c7ddab4b03f027e3c2081ecc57921"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6102307,
+      "sha256": "d8366bd300aa71d0c7757eb562cd946e8c308b66a06ec8a10f75d5e96f7b819b"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5756352,
+      "sha256": "971e37641aae9b3eabf301b3ed97da16f005b7a9e423489103204527dfc35847"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5514396,
+      "sha256": "1e592830b6f3d112b482b292195b1ed03b0118324650fe6195c4b70ebc169485"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5871313,
+      "sha256": "b38ee0a637f7ffed3d93fc361ba811ac1d3a307816c87c1d3756ff9b46c9b51d"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6248453,
+      "sha256": "78d096e28ce27ffe3d3db88761dc5dedb9d30f52259e9d0b474a5e9d77c4341b"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5596141,
+      "sha256": "85665f16d6fe46e88a7bbb586bd474f3751a25007dbeb4ab4624515ef79b9645"
+    }
+  ],
+  "release_commit": "a110579e2583454caa85315e4ad5b8baae4fd531",
+  "manifest": {
+    "version": "0.1.2",
+    "provider_type": "tencentcloud-gaap-purger",
+    "access_provider_type": "tencentcloud",
+    "capability": "purge",
+    "display_name_key": "plugin.tencentcloud-gaap-purger.name",
+    "category": "other",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "tencentcloud-gaap-purger.exe",
+    "icon": "tencentcloud.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Tencent Cloud - GAAP (Global Application Acceleration Platform) (Purge)"
+    },
+    "zh": {
+      "name": "腾讯云 - 全球应用加速 GAAP（过期清除）"
+    }
+  },
+  "icon": "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"
+}
