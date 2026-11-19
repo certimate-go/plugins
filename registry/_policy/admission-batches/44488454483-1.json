@@ -1,0 +1,20 @@
+[
+  {
+    "provider_type": "gotify",
+    "repository": "certimate-go/plugin-provider-gotify-notifier",
+    "source_commit": "936f0b7b6551205f1d292c00826bdb19041f184a",
+    "source_path": "gotify",
+    "target_commit": "835fada550073812dec6518ff42fc156e5ce6b69",
+    "target_tree": "22c633b5c2885bc218a99d733d5d00229660cfb9",
+    "version": "0.2.2"
+  },
+  {
+    "provider_type": "ntfy",
+    "repository": "certimate-go/plugin-provider-ntfy-notifier",
+    "source_commit": "936f0b7b6551205f1d292c00826bdb19041f184a",
+    "source_path": "ntfy",
+    "target_commit": "5fd1b4d868c9bdaa6b4dbc4d8b2445e4582c2a7c",
+    "target_tree": "febb0b52c5fd95eb28c77ccc2ec80b64d4aa0a5c",
+    "version": "0.2.2"
+  }
+]
