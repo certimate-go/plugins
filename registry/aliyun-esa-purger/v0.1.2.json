@@ -1,0 +1,97 @@
+{
+  "provider_type": "aliyun-esa-purger",
+  "repository": "certimate-go/plugin-provider-aliyun-esa-purger",
+  "version": "0.1.2",
+  "tag": "v0.1.2",
+  "source_commit": "98c6994e6d4ff165968e84a6167f621c89f103f9",
+  "build_run_id": "44510024522",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6640700,
+      "sha256": "57f009b25a212140c42cf3d83b91864038748d3f411fe7f070711835639278dc"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6247858,
+      "sha256": "c1cde947eb2d09ca9ebe49aa7d1ab77e725b75b39da686b7edc29eec74e82fdd"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6630454,
+      "sha256": "a09f6384c52936bcb83d701ccfb0265e5de21543bca2f175134e6a899c49740e"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6273060,
+      "sha256": "f5177928ec1ed2479f2786b4deba7fc92cab86ea2a969ebe1616e742cff24ee2"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5983085,
+      "sha256": "8c514cfacf3b2af3f84759d6f58d4846d781c845f3f2c93e3a97e0eeb1c2bca6"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6378817,
+      "sha256": "2dc49595509533d7732636cce1c1640665285a75b7e9bbc2fc69f5bf8c0c68ac"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6795249,
+      "sha256": "655a29512d89028fa345b044e2e793f233e002436bc789c9565c4e1fede18704"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 6087436,
+      "sha256": "d5b2cbd02bdf94fbea25a5e27580723362160226bbbfda5dfb9bff507f9fd7a5"
+    }
+  ],
+  "release_commit": "2558f993f80800bda53096a326e47a62c901dad0",
+  "manifest": {
+    "version": "0.1.2",
+    "provider_type": "aliyun-esa-purger",
+    "access_provider_type": "aliyun",
+    "capability": "purge",
+    "display_name_key": "plugin.aliyun-esa-purger.name",
+    "category": "other",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "aliyun-esa-purger.exe",
+    "icon": "aliyun.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Alibaba Cloud - ESA (Edge Security Acceleration) (Purge)"
+    },
+    "zh": {
+      "name": "阿里云 - 边缘安全加速 ESA（过期清除）"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAOmklEQVR4nO2dP2xb1xXGz1VqA+liJh5TQAzQdKzpLZupjtVAGs0amFoyxAVEAVkyNKG1ZClgCogLtEtoaE1hanBWU1s6ic7YFBANOGMQamkAuzXzfY+kTFH88/jeu/fd93h+wNG9CpJYMn885577Lt8zosxl8LGU5A25Jq+kIAPML1OUIT2ZxkhXNqQv/5cz8zfMlZkYxFozqEsRkmwiyiKYG8QgmCePkQ7+3z2hsG9g/oY8M03M1xiDWCuCrCZyC1EWCeZFSZeeSJAhOyJyvG7Z0iByDTJcQV5KBZmnim/LIvjeb/qIDl6ZtlyRI9MMvs8tuRQQ0hXlBaQzkM5WOXXFsGy35WogY09yhkHkhsFduYMXq4opI4+08Yq1zAM5wjwXZF7AINu9lF2IVxP/y2tS9PHKtVCiD0zGs6JBZJLBn1FaXyHjSSDeOtOSDXlovkSpziCZEzAQbyCfI8qivIZrRSP3siZiZgRU8UKSMRG9FzBY472Q+5hWEUp42DnvGc/XiAbhJRCP+3fMeHV8q0TFSFOuICN6up/opYAot1U0GMx6RVGSoIdGZQ9luY25VxiENyDrabm1i3dl2SC8YJT1vsK0gFDs0Uc23PElG6YuILJeYZT1aqK4pDXKhn3MUyNVAUcnUx4hiqKkQU9Ebqd5AscgUgHy1USCzFdAKOnRR+xBwpakQCoCDu5CPN1e8Qts15gHsoeZU5wKOFrvsdGoIhT/YJe8YxyuC50JOJLvCaYlhOIvXUi45UpCJwJivVfC8BWCo+I/lPA2JOyJZawLOJLvCaKAULJDH7GF5qSL0RpWBVT5Mk8fYVVCawKqfLmhj7AmoRUBVb7c0cea8KaNNWHiAmq3m1u6kDDx7jhRAVW+3JO4hMkK+HFwXbeKUPJLG+vB2xgTITEBIV8Twy5CyT8HkLCOMTaJCAj5ajLcaFbWhx1I2JKYxBYQ8pUwnCCU9aKP2IKEXYyRiSXgqOmgfEVR1pHYTYlBRAbZj2W3Jso6E2s9GFnA0Wc4HmGqrDsbcjvqZ0wiCYjSy0+vnWBaQChKH6U40pUSg1gZlN5HGKoIRRkTaX9wZQG19CpziVCKVxIQpVe7XmURvVEp7mMeCoMIDUpvE8MuQlHmsVJXHFpAZD82HqeYKspirsq7yII9CYFBhALZ7xGGKkJRlhG6IQklIBoP3g73CaaKEo4NXCEJcZPMcALehXx6Z1JlFYx0zAPZwmwhBrEQzX5KZEJkweUCavZTohIiCxrEXLzJfu/dQpQl4HpR5G2EK/5zLPK4IZH4TUnkT/cxccj3HQn4sTf82TmmyZIsaBBzQfZrIfvdwdQ9N6oiv68gMP66gH+QEl/viTxpYhKRBwN8SZHnXZGnbZF/PUxHRiMPkQVrMgeDmElq+37MdH/8XOR3GH3gi5vDFzEq9Q5+p1viBY8beDMdiPzcF6cs2Bc0iJk4z35vFkQ+uC/yfk284eczkU/wc8VhuzF8Q/nCf/si/9wT+bYlDpl7dWS+gB/LTxgKCPtwXffRo+GaySe+PxZpliUW75WRBZ+IdzxuiHxzTxzRh4BvYbyEQVwC8tXE1YeMKN3uk3TXefPgC/S4IbFJex04D2bBwx1xwpyTMgZxCQjIf7GCsAvLLrMDJfSR5hayYEdi49M6cJpv7iXzJlvOEbJgFeMFDOICTpsPZj5fmo1Z3DX4kgDbDb/WgdMc7gyzoW2uyltm6qiWQVwAzUcdzcd9TO3CZuPDr8Rbklj/jfF1HTiGjcln76LpwmgTI3vYkmlido5BXADl9wRDCWEPlt79Uz/XfWOSLk2+rgPHfPsQmbAmljlGGS7LBAZxDsovTzz/hKldthv+liRmvudd7Jc1k924Zcbn5vo7JXT9m+IlzIJJ/s6zmCrDBnEOsl9NXHS/+6d4EYqSOj8+E/mhK/LvzlC6JBqOMPB3Z+PF0hyMt8QLuEn9dR0Tq+wgC7ZkhEGcAwHbGCoIe/Av/NMTTFKA2Y2SUTZKZ3vNswr8ezkXEmMaWZLZj1nQJlOX5gziHAj4E4YCwh4fNEW2djGxzPOniO5r4RhZgutkyshdAgrJ+ZvXxDpxLz0u58Km9LmAkK+E4QRhFxt7YrxkNhaNmY3zPEIJxxFIeUMSJ+nmazY3IWEX44SArrZf9k9RXooSCwr3tC3yHYLSsXSsKxSRWZKnhpIQ0oWAE9sxBhGADNjGUEHYJe52BEtrswwJ+6JMwU77g2a8Uv3dkcjfq5hYZGIdOCngKYai2CaOgOxaPyuKsgBu9fBgR1TYqPENbpceSvC7GMUguP/n7vJbHAH/cXtYepXFfNqNXo7dCMj9wOCMoMHU7dH7OAJ+8paW3jBsN6Jv9LsScHRU32DK8tsQkYg/8YrEETCpwwF5JwsCitxDGW4YTNgBt9AB38HUPiqgfbIg4KgRMZgyA3ZE5BbCPiqgfbIg4OhggsGEAg4wuEEFtE82BAyuiBhMVMC8kQ0BBQIaA/lKmJ8g3KAC2me7kQkBwU3jdAuGqID2yYqA3IqBgG7v+awC2me7kRUBb7MEN8TVHiBRAe2TFQG5F6gC5hAVcAEqoH1UwAVkRUAebXp7UxKDL6yrg7Iq4AIeDPAlIi4FTPrktouDnmMyJmAbkwrCDSqgfbYb2RCQ14OdHkQgWREwy2RFQN62DRmwIVqC80V2BLynAuYRFXABKqB9VMAFqID2UQEXoALaJ1MC6mGE/LHdyIaAwWEEPY6VP7Ij4BZLcAnTE4QbVED7bDeyISAPpOKLHsnPGxkRMDiSj1EFzBsZFLAj+rHM/JANASc+lunyenAcAXn3znW+FVtYPmyJvH9HIuFKQB5EmPhgekNc7QXGEdDliZKswjur7p9GfwKBKwG5B3h+aw6XWzFxBOTzLA62JLgppTIbPnuFh2mj4kpAbsGc35zI5e3Z9nsS6wbclJB3cufzb5XX8La9XPfx/oBxcPO8kIu3ZyMowz0R2UTYJamDnhSRmZDH3IPxeL1u3Ubh3rkxvD0v54wkcLPMeYbyWxRgEAEQsI2hgrBLnAXyMtigUEZGIObTfEjJdR3ftJTsvfJwjLrGW8bhDrJgS6wyakAEGEQAOmE3NylniYhzC9lVoYyTwUzpO2PZGBTuelGc4eImoHNuUl7CcIKwz1/7eFdfwyQl+CgHysj44elwTAvK9dsJ4VhS04IV4wv8DPa5/JgGAgn7GOybYbMMR4VSBmW7O5SS5TxpWEp572ZmNcrG0VYpjcLXexI8I88uZ5CvgDFgWsA2hgrCLnzX75+K1xzuJLsW8v3ZyHz2yl+KGPtilYn1HzGIcyBgTVw8rJBsN4bbBr6S5HbEOr7h5rODDNiSEQZxDvYD3TyulbAc8XECcfYEbcISzEt/ScCNYW4Q+4q7tR/3/+Y/rpWgG+6iG76BqX24DuK+YJoNySIoIEWMi49r3jEsvc0yJOyKA46R/coygUFcAALWIeB9TN3geltmFQ53kilLLL/Xi+Ilza1h8+WCie2XMQZxAZRhd5flxlBCZgnfMmES60CKRwF9g5mPlzSTeIOFZar8EoO4BJqRNoYKwh0sxx+18YJt4htPYPllGY6Dj+s/ytcsuyq7Y45QfqsYL2AQl4CANXHVDU/CxuQPdb+6YwpIEaPCzO7T+o9ZnZnP9nbLNPwE3JdBYruAQcwEEvYxXEO453oREjaGpTntsny4gxetJZHZPx3+PmnDS5CPGxg7kgJnyH4FjJcwiJmgGWmhGbmDabpQQj6MmS8iy7RrIZkxDmsSCf7MFDAtuL3CNw8f7B0ni8fnAALWMV7CIGaSSjOSN7ik4JvGNc+77kvsIq4Oz/7JDAxiLt5kQSW7TF16m2axgC6P6iv5ZHT0XuawUECCZqQjrj6yqeSNS1c+plkuoGZBJSpLsh9ZKiDRLKhEYGn2I+EE1CyorEqI7EdCCUiQBdsYKghFWcySzneS8ALqvqASlqvz9/2mMYjQIAs2MewiFGUec696zGI1AYcnpruYbiIUZZpnyH4lZL8+5qFYSUCChsTtPaWV7DDnxMsiVhaQoBTzD6kgFGXMEUpvFeNKRBNw2JB0Mb2GUJSzUentyYoYRCS0FCvnRCi9YyILSPS0jAIOUHrrGCMRT0DtitcbI0/lipTNCl3vNLEEJGhIShhOEMp6cYYoI/t1MUYmtoAEEtYkjQ8xKWmyA/laEpNEBCSQsIlhF6Hkn1jrvkkSE5BAwjaGCkLJL0eQr4oxEZIVkE3JS+mgM76Bb5W8kUDTMU2iAhKVMKdYkI8kLiBBKS5h6IheKckLka90LMOKgEQlzA2JbLfMw5qARCXMPFblI1YFJCphZrEuH7EuIEFjUkRj0tbGJCMMG46qsbDmm8YgnAAJtTvOAkP5Eu925+FMQBJI+CK4fFNBKP5xJFel5ko+4lTAMVgXNjHsIhR/OMB6r47RKakISCBhTSQQ8RpCSQ82G3XI15IUSE1AAglLGNqITYTiGq73Bii5ljvdRaQqIAnWhS+RCfVktWsOsN5rGIfrvVmkLuCY0WdMWqIl2TZnsoGsF/EzHEnjjYAE2ZCftmtiWkEoyXOErFczKWe9SQzCO0bZsInpJkKJzzNkvbovWW8SLwUkyIbcM2yIbtfE5R6yXtN4lPUm8VbAMRBRy3I0WG7rEK8nHmMQmQBlmTfJbIjeqXUZxyi3DZTbjmSAzAg4RkWcS6bEG5M5AccEImITFXEH364vRh4iWlkTb0xmBRwzWiPWMa3J+uwh8vJZC2u8pu9rvGUYRG5AVuT2TU3y27Acocwy27UxzwW5EnBMkBVfQsYBIvtrxWO8Sm25Im2T8Ww3C4PINZCR+4kUkVEW/8v0GV6VNt48HZRYStfHP8stuRdwmuAEjoGIA4Rgnv7Vlmf4eToi0sXP1EnzZEoarJ2A0yBDFuV/iFcQ0mAcIOyV7WP8GT38GT3ZgHS/kh4yXE/WGINQ5hBkyw2UcEG8wnwaCkso1DQbQSbr47/rr1tWW4VfANXsegdP2ZRZAAAAAElFTkSuQmCC"
+}
