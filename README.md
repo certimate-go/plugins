@@ -4,7 +4,7 @@ English | [中文](README.zh.md)
 
 Out-of-process provider plugins for [certimate](https://github.com/certimate-go/certimate). Each plugin is a standalone binary that certimate launches as a gRPC subprocess ([hashicorp/go-plugin](https://github.com/hashicorp/go-plugin)) to deploy, resolve, notify, or purge certificates. Adding a plugin requires **no changes to the certimate core**.
 
-This repository is also the plugin **market** source: it builds plugins, publishes them as GitHub Releases, and serves a market index (`index.json`) that certimate's plugin-market UI reads to list, install, and update plugins.
+This repository indexes official plugins. Provider repositories build and publish their own releases. Certimate reads the [signed index](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json).
 
 ## Repository layout
 
@@ -88,13 +88,7 @@ make test                             # go test ./...
 
 ## Releasing
 
-Releases are **change-driven and version-gated**. On push to `main`, the `release` workflow detects which plugins changed; for each build-affecting change whose `version` was bumped, it cross-compiles the plugin, publishes a GitHub Release tagged `<provider_type>/v<version>`, computes per-platform SHA256 checksums, and writes a `release` block into the manifest. `genindex` then regenerates `index.json` so the certimate market can resolve and verify downloads.
-
-- To ship a change: change the code, **bump `version`** in the plugin's `manifest.json`, push to `main`.
-- A build-affecting change (Go source, `go.mod`/`go.sum`, `schema/`) without a version bump fails the run.
-- Metadata-only changes (icon, display name) only regenerate the index; no release.
-
-See [`docs/releasing.md`](docs/releasing.md) for the full flow and trust preconditions.
+Push a release request tag in the provider repository. After its formal tag appears, this registry opens a version PR. Merging it triggers publication to `main`. [Official release guide](docs/releasing.md)
 
 ## Upgrading from built-in purge providers
 

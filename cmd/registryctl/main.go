@@ -6,7 +6,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/fs"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -39,43 +38,17 @@ func run(ctx context.Context, arguments []string, output io.Writer) error {
 			return signIndex(arguments, output)
 		case "stage-publication", "observe-publication":
 			return publishMarket(ctx, arguments, output)
-		case "registration-changes", "verify-registrations":
-			return checkRegistrations(ctx, arguments, output)
-		case "plan-admission":
-			return planAdmission(ctx, arguments, output)
 		case "plan-provider":
 			return planProvider(arguments, output)
 		}
 	}
-	return fmt.Errorf("usage: registryctl <inspect-release|stage-release|observe-release|audit-mirror|sign-index|stage-publication|observe-publication|registration-changes|verify-registrations|plan-admission|plan-provider> [flags]")
-}
-
-func planAdmission(ctx context.Context, arguments []string, output io.Writer) error {
-	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
-	checkout := flags.String("checkout", ".", "protected registry checkout")
-	base := flags.String("base", "", "protected registry base commit")
-	batch := flags.String("batch", "", "JSON file describing the migration")
-	if err := flags.Parse(arguments[1:]); err != nil {
-		return err
-	}
-	if flags.NArg() != 0 || *batch == "" {
-		return fmt.Errorf("-batch is required")
-	}
-	body, err := os.ReadFile(*batch)
-	if err != nil {
-		return err
-	}
-	plan, err := registry.PlanAdmissions(ctx, *checkout, *base, body)
-	if err != nil {
-		return err
-	}
-	return json.NewEncoder(output).Encode(plan)
+	return fmt.Errorf("usage: registryctl <inspect-release|stage-release|observe-release|audit-mirror|sign-index|stage-publication|observe-publication|plan-provider> [flags]")
 }
 
 func planProvider(arguments []string, output io.Writer) error {
 	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
 	directory := flags.String("registry", "registry", "protected registry checkout")
-	repository := flags.String("repository", "", "admitted provider repository")
+	repository := flags.String("repository", "", "official provider repository")
 	refsPath := flags.String("refs", "", "complete git ls-remote --tags output for the provider")
 	if err := flags.Parse(arguments[1:]); err != nil {
 		return err
@@ -98,56 +71,6 @@ func planProvider(arguments []string, output io.Writer) error {
 		return err
 	}
 	return json.NewEncoder(output).Encode(plan)
-}
-
-func checkRegistrations(ctx context.Context, arguments []string, output io.Writer) error {
-	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
-	options := registry.RegistrationOptions{}
-	flags.StringVar(&options.Checkout, "checkout", ".", "trusted registry checkout with fetched candidate Git objects")
-	flags.StringVar(&options.Base, "base", "", "protected registry base commit")
-	flags.StringVar(&options.Candidate, "candidate", "", "commit to verify without checking it out")
-	flags.BoolVar(&options.Queue, "queue", false, "accept independently verified registrations and publications in a merge group")
-	keys := flags.String("public-keys", "", "trusted index signing keys for market publications")
-	sources := flags.String("providers", "", "directory with a bare Git repository per provider")
-	proof := flags.String("evidence", "", "directory with GitHub workflow and branch API evidence")
-	if err := flags.Parse(arguments[1:]); err != nil {
-		return err
-	}
-	if flags.NArg() != 0 {
-		return fmt.Errorf("unexpected positional arguments")
-	}
-	if *keys != "" {
-		publicKeys, err := readPublicKeys(*keys)
-		if err != nil {
-			return err
-		}
-		options.PublicKeys = publicKeys
-	}
-	var evidence fs.FS
-	if *proof != "" {
-		root, err := os.OpenRoot(*proof)
-		if err != nil {
-			return err
-		}
-		defer root.Close()
-		evidence = root.FS()
-	}
-	if arguments[0] == "registration-changes" {
-		options.AdmissionEvidence = evidence
-		changes, err := registry.RegistrationChanges(ctx, options)
-		if err != nil {
-			return err
-		}
-		return json.NewEncoder(output).Encode(changes)
-	}
-	if *sources == "" || evidence == nil {
-		return fmt.Errorf("-providers and -evidence are required")
-	}
-	changes, err := registry.VerifyRegistrations(ctx, options, *sources, evidence)
-	if err != nil {
-		return err
-	}
-	return json.NewEncoder(output).Encode(changes)
 }
 
 func stageRelease(ctx context.Context, arguments []string, output io.Writer) error {
@@ -176,7 +99,7 @@ func stageRelease(ctx context.Context, arguments []string, output io.Writer) err
 func inspectRelease(ctx context.Context, arguments []string, output io.Writer) error {
 	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
 	checkout := flags.String("checkout", ".", "checkout with the formal tag and its source history")
-	repository := flags.String("repository", "", "admitted provider repository from trusted policy")
+	repository := flags.String("repository", "", "official provider repository")
 	tag := flags.String("tag", "", "immutable formal release tag")
 	if err := flags.Parse(arguments[1:]); err != nil {
 		return err

@@ -6,8 +6,6 @@
 /internal/providerrelease/ @usual2970 @listentomeha @fudiwei
 /internal/registry/ @usual2970 @listentomeha @fudiwei
 /registry/_policy/ @usual2970 @listentomeha @fudiwei
-/registry/_policy/admissions.json
-/registry/_policy/admission-batches/
 /go.mod @usual2970 @listentomeha @fudiwei
 /go.sum @usual2970 @listentomeha @fudiwei
 /Makefile @usual2970 @listentomeha @fudiwei

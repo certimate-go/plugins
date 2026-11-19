@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
+	"maps"
 	"math"
 	"os"
 	"path"
@@ -160,7 +161,7 @@ type observationResult struct {
 }
 
 func observeCatalog(ctx context.Context, records fs.FS, previous Catalog, renew bool, observe releaseObserver) ([]ReadyRelease, []string, error) {
-	admissions, withdrawals, err := loadPolicy(records)
+	registered, withdrawals, err := loadRegistry(records)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -168,17 +169,9 @@ func observeCatalog(ctx context.Context, records fs.FS, previous Catalog, renew 
 	for _, summary := range previous.Plugins {
 		previousByProvider[summary.ProviderType] = summary
 	}
-	names := make([]string, 0, len(admissions))
-	for name := range admissions {
-		names = append(names, name)
-	}
-	slices.Sort(names)
-	providers := make([]publicationProvider, 0, len(names))
-	for _, name := range names {
-		versions, err := loadProvider(records, name, admissions[name])
-		if err != nil && !errors.Is(err, fs.ErrNotExist) {
-			return nil, nil, err
-		}
+	providers := make([]publicationProvider, 0, len(registered))
+	for _, name := range slices.Sorted(maps.Keys(registered)) {
+		versions := registered[name]
 		var eligible publicationProvider
 		var legacyFound bool
 		legacy, hadLegacy := previousByProvider[name]
@@ -204,7 +197,11 @@ func observeCatalog(ctx context.Context, records fs.FS, previous Catalog, renew 
 		if hadLegacy && !legacyFound {
 			return nil, nil, fmt.Errorf("published provider %q is missing its immutable registration", name)
 		}
+		delete(previousByProvider, name)
 		providers = append(providers, eligible)
+	}
+	if len(previousByProvider) != 0 {
+		return nil, nil, errors.New("published provider is missing its immutable registration")
 	}
 	results := make([]observationResult, len(providers))
 	const workers = 6

@@ -26,7 +26,6 @@ func TestSignIndexCommand(t *testing.T) {
 	observations := filepath.Join(root, "observations.json")
 	key := filepath.Join(root, "seed")
 	for file, content := range map[string]string{
-		filepath.Join(policy, "admissions.json"):  "{}",
 		filepath.Join(policy, "withdrawals.json"): "[]",
 		observations: "[]",
 		key:          base64.StdEncoding.EncodeToString(seed),
@@ -159,13 +158,8 @@ func TestInspectReleaseCommand(t *testing.T) {
 		version.Translations["zh"] != (registry.Translation{Name: "样板", Description: "用于验证。"}) {
 		t.Fatalf("unexpected version record: %+v", version)
 	}
-	t.Run("registration-check", func(t *testing.T) {
+	t.Run("plan provider registration", func(t *testing.T) {
 		registryDir := t.TempDir()
-		providerDirectory := t.TempDir()
-		evidenceDirectory := t.TempDir()
-		git("-C", registryDir, "init", "-q")
-		git("clone", "--bare", root, filepath.Join(providerDirectory, version.ProviderType))
-		git("-C", filepath.Join(providerDirectory, version.ProviderType), "update-ref", "refs/remotes/origin/main", source)
 		writeJSONFile := func(directory, relative string, content []byte) {
 			t.Helper()
 			path := filepath.Join(directory, relative)
@@ -176,70 +170,8 @@ func TestInspectReleaseCommand(t *testing.T) {
 				t.Fatal(err)
 			}
 		}
-		writeJSONFile(registryDir, "registry/_policy/admissions.json", []byte(`{"fixture-dns":"`+repository+`"}`))
 		writeJSONFile(registryDir, "registry/_policy/withdrawals.json", []byte(`[{"provider_type":"fixture-dns","version":"1.2.4","reason":"withdrawn on purpose"}]`))
-		git("-C", registryDir, "add", ".")
-		base := git("-C", registryDir, "commit-tree", git("-C", registryDir, "write-tree"), "-m", "Protected registry")
-		git("-C", registryDir, "update-ref", "HEAD", base)
 		writeJSONFile(registryDir, "registry/fixture-dns/v1.2.3.json", bytes.Clone(output.Bytes()))
-		git("-C", registryDir, "add", "registry")
-		candidate := git("-C", registryDir, "commit-tree", git("-C", registryDir, "write-tree"), "-p", base, "-m", "Register release")
-		writeJSONFile(evidenceDirectory, "fixture-dns/main.json", []byte(`{"name":"main","protected":true,"commit":{"sha":"`+source+`"}}`))
-		proof := []byte(`{
-			"id":12,"display_title":"Release v1.2.3-detach","event":"workflow_dispatch","status":"completed","conclusion":"success",
-			"head_branch":"main","head_sha":"` + source + `","path":".github/workflows/release.yml@main",
-			"repository":{"full_name":"` + repository + `"},"head_repository":{"full_name":"` + repository + `"},
-			"referenced_workflows":[{"path":"certimate-go/plugins/.github/workflows/provider-release.yml@main","ref":"refs/heads/main","sha":"` + base + `"}]}`)
-		proofFile := "fixture-dns/v1.2.3.json"
-		writeJSONFile(evidenceDirectory, proofFile, proof)
-		jobsFile := "fixture-dns/v1.2.3-jobs.json"
-		publishedJob := `{"name":"release / publish","run_id":12,"run_attempt":1,"head_sha":"` + source + `","status":"completed",
-			"steps":[{"name":"Create the immutable formal tag","status":"completed","conclusion":"success"}]}`
-		skippedJob := `{"name":"release / publish","run_id":12,"run_attempt":2,"head_sha":"` + source + `","status":"completed","steps":[]}`
-		jobs := []byte(`{"jobs":[` + skippedJob + `,` + publishedJob + `]}`)
-		writeJSONFile(evidenceDirectory, jobsFile, jobs)
-		checkArgs := func(sha string) []string {
-			return []string{
-				"verify-registrations", "-checkout", registryDir, "-base", base, "-candidate", sha,
-				"-providers", providerDirectory, "-evidence", evidenceDirectory,
-			}
-		}
-		var checkOutput bytes.Buffer
-		if err := run(t.Context(), checkArgs(candidate), &checkOutput); err != nil || !bytes.Contains(checkOutput.Bytes(), []byte(repository)) {
-			t.Fatalf("valid release not registered: %v %s", err, checkOutput.Bytes())
-		}
-		writeJSONFile(evidenceDirectory, jobsFile, []byte(`{"jobs":[`+skippedJob+`]}`))
-		if err := run(t.Context(), checkArgs(candidate), &bytes.Buffer{}); err == nil || !strings.Contains(err.Error(), "successful publish step") {
-			t.Fatalf("a run that only skipped publishing passed: %v", err)
-		}
-		writeJSONFile(evidenceDirectory, jobsFile, jobs)
-		writeJSONFile(evidenceDirectory, proofFile, bytes.Replace(proof, []byte(`Release v1.2.3-detach`), []byte(`Release v1.2.4-detach`), 1))
-		if err := run(t.Context(), checkArgs(candidate), &bytes.Buffer{}); err == nil || !strings.Contains(err.Error(), "protected provider workflow") {
-			t.Fatalf("a run for a different release passed: %v", err)
-		}
-		writeJSONFile(evidenceDirectory, proofFile, bytes.Replace(proof, []byte(base), []byte(strings.Repeat("c", 40)), 1))
-		if err := run(t.Context(), checkArgs(candidate), &bytes.Buffer{}); err == nil || !strings.Contains(err.Error(), "trusted registry controller") {
-			t.Fatalf("foreign reusable workflow passed: %v", err)
-		}
-		writeJSONFile(evidenceDirectory, proofFile, bytes.Replace(proof, []byte(`"workflow_dispatch"`), []byte(`"push"`), 1))
-		if err := run(t.Context(), checkArgs(candidate), &bytes.Buffer{}); err == nil || !strings.Contains(err.Error(), "protected provider workflow") {
-			t.Fatalf("ineligible workflow launch passed: %v", err)
-		}
-		writeJSONFile(evidenceDirectory, proofFile, proof)
-		writeJSONFile(registryDir, ".github/workflows/check.yml", []byte("malicious change"))
-		git("-C", registryDir, "add", ".github")
-		withWorkflow := git("-C", registryDir, "commit-tree", git("-C", registryDir, "write-tree"), "-p", base, "-m", "Change check")
-		if err := run(t.Context(), append(checkArgs(withWorkflow), "-queue"), &bytes.Buffer{}); err == nil || !strings.Contains(err.Error(), "unexpected registration change") {
-			t.Fatalf("queue accepted a workflow change: %v", err)
-		}
-		git("-C", registryDir, "rm", "-f", ".github/workflows/check.yml")
-		writeJSONFile(registryDir, "registry/fixture-dns/v1.2.3.json", append(bytes.Clone(output.Bytes()), '\n'))
-		git("-C", registryDir, "add", "registry")
-		altered := git("-C", registryDir, "commit-tree", git("-C", registryDir, "write-tree"), "-p", base, "-m", "Alter record")
-		if err := run(t.Context(), checkArgs(altered), &bytes.Buffer{}); err == nil || !strings.Contains(err.Error(), "canonical verified release") {
-			t.Fatalf("altered candidate matched the signed release facts: %v", err)
-		}
-
 		tagLines := strings.Join([]string{
 			source + "\trefs/tags/v1.2.3-detach",
 			source + "\trefs/tags/v1.2.4-detach",
@@ -257,7 +189,7 @@ func TestInspectReleaseCommand(t *testing.T) {
 		if err := run(t.Context(), planArgs, &plan); err != nil {
 			t.Fatal(err)
 		}
-		want := `{"dispatch":["v1.9.0-detach","v1.10.0-detach"],"register":[{"tag":"v2.0.0","release_commit":"` + strings.Repeat("2", 40) + `"}]}`
+		want := `{"register":[{"tag":"v2.0.0","release_commit":"` + strings.Repeat("2", 40) + `"}]}`
 		if strings.TrimSpace(plan.String()) != want {
 			t.Fatalf("reconciliation output: %s, want %s", plan.String(), want)
 		}

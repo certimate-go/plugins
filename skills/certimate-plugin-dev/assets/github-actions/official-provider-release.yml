@@ -10,6 +10,10 @@ on:
         description: Release request tag, vX.Y.Z-detach
         required: true
         type: string
+      rebuild:
+        description: Rebuild an existing formal version without replacing it
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -34,7 +38,9 @@ jobs:
 
   release:
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' && github.ref_protected
+    permissions:
+      contents: write
     uses: certimate-go/plugins/.github/workflows/provider-release.yml@main
-    secrets: inherit
     with:
       trigger_tag: ${{ inputs.trigger_tag }}
+      rebuild: ${{ inputs.rebuild }}
