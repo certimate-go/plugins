@@ -1,0 +1,97 @@
+{
+  "provider_type": "vercel",
+  "repository": "certimate-go/plugin-provider-vercel-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "fd98fe9cbe2b8f26f4dddf4e11878cb3a119ea63",
+  "build_run_id": "44513829999",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6139642,
+      "sha256": "df98e0c1c5120409dbb017ea8efce98a2a649251888c2c17fb16f92435900eef"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5778775,
+      "sha256": "25bc0e99e6d580233a4beecd54a9f10ec6f6bc704a42e96e6c582150ef77ec0b"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6099705,
+      "sha256": "d10479471b9d321250f5f91ef7bdb5d9a467d9773faf538aa917822cd85e52f0"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5769532,
+      "sha256": "ce5c9275b42263eda1a73fce7a0650f084ea12c0b0d4db098986b62ce2c01cf2"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5525876,
+      "sha256": "683a03064c9a0050fb5efbfa6dc236c843b463a2a832ec32942f47ec3cb8463f"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5901463,
+      "sha256": "79b4c9d655717acaa65431ec7db8018f397bd2ec16e7911991ae09bb9c47ca7c"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6263678,
+      "sha256": "344fb540258795c666a4cc208e229489d7f0aed0780480ea5b6bba0baa705c18"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5621425,
+      "sha256": "efe2786ac9c0f3e7902178e4a767d19f870bc628e474824e0a19763e71697b80"
+    }
+  ],
+  "release_commit": "bdf8d3943e24317191ec9540af192be56a5ed8f6",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "vercel",
+    "access_provider_type": "vercel",
+    "capability": "deploy",
+    "display_name_key": "plugin.vercel.name",
+    "category": "website",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "vercel.exe",
+    "icon": "vercel.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Vercel"
+    },
+    "zh": {
+      "name": "Vercel"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAH1klEQVR4nO3c21EbSRgF4GnZVTxaIei3TJUfIQNPBnYEy0aAiGC9ESAiWG8EdgY7GZhHqrhoQoBHqrjsGRhjEJJ6Lj19PV9VuzuAU7/Rqe5RGZFDDCA5xQCSUwwgOcUAklMMIDnFAJJTDCA5xQCSUwxgDx8/fpxkcHJyUmbUCQPYg4h8y2CxWOxl1AkD2NGHDx8+3d7e/odj9ubNm/zs7KzIqDUGsCMRqcL3KXtUYArm2KklhUUtTafTvbu7u39wfDIajb6cn5//wJFaYAA7EJEFtkn2UokpKNipBYVFLbx///7r/f39Xzi+opT6++Li4mtGjTGALezs7Iyvrq4WOI6xVrl89+6dHB8fX+JMDTCALchj7fIH1ib/4r/ivYwaYQAb2t7e3rm5ufmJo9bbt293T09Pj3EkDQawIXlZu+gUmII5dtJQWKTxvHRuiuV0MwxgA7K6dtEpMQUFO22gsGgD1C4z1C6HOLaGWuYAtcwcR1qDAdygQe2iw1pGgwHcANNvjum3j2NnmIJHmIIzHGkFBnCN6q7f9fV1Nf1629raEt4ZXI0BXEPa1S46BX6Q5NhpicKiJV1qFx3WMqsxgCuIyE9sO1gmHWMK7mKnZxjAJavu+pkyGo3+PD8//5bREwbwGQO1iw5rmSUM4DOoXdbe9TMFtQzvDD7DANZM1i46rGV+YwBrmH7fMf0+42gD7wzWGEAYonbRYS3ziAEEMVs6N8VyGhRW0oasXXRYyyQewLp2qUrnSeZGiVpmN+VaRmElCz88Bq9ddFKvZZINYF27VNNvjOXSJWqZ3VRrmWQDKM2eWNqSbC2TZABd1C46qT7lTDKA4qZ20UmyllFYSUHt8hm1y3ccvYNaJrkvbCUXQOn2xNKWElNQsCdDYSXDh9pFJ7VaJpkA1qXzAscxls+SujOYTADFr9pFJ5laJokA1qXzAsdgoJxO4s5gEgEUP2sXnQJTMMceNYUVNR9L56ZSuDMYfQDF79pFp8QUFOzRUljRQu0yQ+1yiGOwUMscoJaZ4xilaAMYUO2iE3UtE20AMf3mmH77OAYPU/AIU3CGY3SiDGCItYtOrLVMlAHE9LP5xNIKTMEfmIJfcIxKdAEMuXbRibGWiS6AMsyXrXwR3Re2ogrgdOruiaUto8ieckYTwIhqF52oaploAogfHt7f9TMFP0iiuTMYRQBjrF00onnKGUUAJay7fqZEcWcw+ADGXLvoxFDLBB9ACfOunykFpmCOPVgKK1gp1C46odcywQawrl2q0nmSpS3oL2wprCClVLvohFzLBBnAunappt8Yi1DLYAoGWU4HGUBJs3bRCbKWCS6A29vbOzc3N9X0oyUhfmEruABK2rWLTnC1jMIKBmoXb79s5QvUMkF9YSuoAErYTyxtKTEFBXsQFFYQWLs0F1ItE0QA69J5geMYi/SCqWWCCCCmXzRPLG3BFAziKaf3AaxL52r6UUtbATzl9D6AwtqljwI/SHLs3lJY3kr5rp8pvt8Z9DqAwtrFhBJTULB7SWF5CT88ZvjhcYgj9YQfJAf4QTLH0TteBpC1i3He1jJeBhDTj6WzYZiCXpbT3gWQtctwfKxlvAsgpl90X7byBaagd1/Y8iqArF2G51st41UAJe4vW/nCqy9seRPA6ZRPLG0ZefSU04sAsnaxzpunnF4EED88WLtYhh8kXtQyzgNY1y7V335jLLLHiy9sOQ+g8ImlS86fcjoNIGsX91zXMk4DKLzr54MCUzDH7oTCcoK1iz9c1jJOAljXLtUPj0lGPigxBQW7dQrLOtYu/nFVy1gPYD39FjiydvGLkzuD1gMorF18Zr2WsRpAftnKf7a/sGU1gMLaJQQFpmCO3QqFZQVqF37ZKhCoZax9YctaAIVPLENSYgoK9sEprMGhduETy8CglrHylHPwALJ2CZaVWmbwAGL6zTH99nGkwGAKHmEKznAczKABrO/6VdOPArU18FPOQQMorF1iUOAHSY59EAprELzrF48h7wwOFkBh7RKTElNQsBunsIxD6cy7fpFBOT3InUHjAWTtEq1BahnjAUTtwrt+kUItY/zOoNEAsnaJn+laxmgAMf34ZavIYQoa/cKWsQCydkmHyVrGWACFX7ZKSYFaJsfem8LqjbVLekzVMr0DWNcu1fSbZJQSI1/YUli94IcHa5dE4QdJ71qmVwDr2qWafmMsSk/vL2z1CqDwiSX1fMrZOYCsXeiXPrVM5wAK7/rRb51rGYXVGmsXWoZaptNTzk4BFN71o9dKTEHB3orCaoW1C63TpZZpFcC6dF7gOMYiWtb6zmCrAAprF9JrVcs0DiC/bEVNtfnCVuMACmsXaq7AFMyxayksLZbO1FbTcrpRAIW1C7VXYgoK9o0U1kaoXWaoXQ5xJGoFtcwBapk5jmttDCBrF+pJW8tsDCCm3xzTbx9Hok4wBY8wBWc4rrQ2gPVdv2r6EfWyteEp59oACmsXMqfAD5Ic+ysK6xXWLmTaulpmZQCFTyzJvGNMwV3sL7wKIO/60VBGK55yvgggaxca2Kta5kUAUbvwrh8NCrXMizuDTwFk7UK2PK9lngKI6ccvW5EtT3cGHwLI2oVs+1XLPARQWDqTfQ/ltGLtQq5UtYySx3cek4zIvlLhHyJnGEByigEkpxhAcooBJKcYQHKKASSnGEByigEkp/4H3nH+mtUEqpMAAAAASUVORK5CYII="
+}
