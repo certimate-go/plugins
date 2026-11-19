@@ -1,0 +1,99 @@
+{
+  "provider_type": "vercel-dns",
+  "repository": "certimate-go/plugin-provider-vercel-dns-acmedns01challenger",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "source_commit": "b61510d1e618a6e499f01401eb4240cacea2a159",
+  "build_run_id": "44540317815",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6215729,
+      "sha256": "b4c4a9b8bbb3a687b70087ccec7e4a93ee2f762689f4496a481c1587d11e90c5"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5844104,
+      "sha256": "9e5c7df4037adbf8e5d915ce9e210a4711f261fcac917393b3ace2b8b7197adb"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6172489,
+      "sha256": "44d992f37e40b420ff7ce7d2a98f0f5c2e4923c95da77359fb8b66eb576b3eab"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5837300,
+      "sha256": "720e7f72d0857ebf3369c079cefca14dead6f2ffca7d7d4f2b7376899a783b86"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5569231,
+      "sha256": "504bcca68ac81cbc51ef2eb83f61e89a52e4ce4ebefed3a65d12f16427422feb"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5953686,
+      "sha256": "bc45f73ecead0db30908884afa565fe82d545bce90242940162be4bbeaf2f7e9"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6328523,
+      "sha256": "d68dc0ad8019f59fd52362e2d04bea3d36baeb69e828fb0b8cdfeb432d0e0c28"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5677051,
+      "sha256": "d9926320a0781c43100685868161d32f977e59e363f1e32473bd1efb5a534fdd"
+    }
+  ],
+  "release_commit": "9c5f783df6b3cc8e78dedd7d8dffb0729460c7cd",
+  "manifest": {
+    "version": "0.1.0",
+    "provider_type": "vercel-dns",
+    "access_provider_type": "vercel",
+    "capability": "dns",
+    "display_name_key": "plugin.vercel-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "vercel-dns.exe",
+    "icon": "icon.svg",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via Vercel."
+  },
+  "i18n": {
+    "en": {
+      "name": "Vercel",
+      "description": "ACME DNS-01 via Vercel."
+    },
+    "zh": {
+      "name": "Vercel",
+      "description": "通过 Vercel 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "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"
+}
