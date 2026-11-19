@@ -36,11 +36,6 @@ def api(endpoint, method="GET", body=None, allow_missing=False):
     return json.loads(response) if response else None
 
 
-def github_list(endpoint):
-    output = run(["gh", "api", "--paginate", "--slurp", endpoint])
-    return json.loads(output)
-
-
 def rule_templates():
     rules = api(f"repos/{SAMPLE}/rulesets")
     templates = {
@@ -85,16 +80,7 @@ def protected_environment(repo, private_key, client_id):
         )
 
 
-def installed_repositories(installation_id):
-    endpoint = f"user/installations/{installation_id}/repositories?per_page=100"
-    return {
-        item["id"]
-        for page in github_list(endpoint)
-        for item in page["repositories"]
-    }
-
-
-def provision(entry, directory, templates, installation_id, installed, client_id, private_key):
+def provision(entry, directory, templates, installation_id, client_id, private_key):
     repo = entry["repository"]
     name = repo.split("/", 1)[1]
     endpoint = f"repos/{repo}"
@@ -123,9 +109,7 @@ def provision(entry, directory, templates, installation_id, installed, client_id
         if {field: remote[field] for field in RULE_FIELDS} != template:
             raise RuntimeError(f"Unexpected ruleset {name} in {repo}")
 
-    if metadata["id"] not in installed:
-        api(f"user/installations/{installation_id}/repositories/{metadata['id']}", "PUT")
-        installed.add(metadata["id"])
+    api(f"user/installations/{installation_id}/repositories/{metadata['id']}", "PUT")
     protected_environment(repo, private_key, client_id)
     branch = api(endpoint + "/branches/main")
     if not branch["protected"] or branch["commit"]["sha"] != entry["target_commit"]:
@@ -184,7 +168,6 @@ def main():
         if not client_id:
             raise RuntimeError("Missing protected release App client ID")
         private_key = Path(os.environ["REGISTRY_RELEASE_APP_PRIVATE_KEY_FILE"]).read_text()
-        installed = installed_repositories(app["id"])
         templates = rule_templates()
     ready = []
     for entry in entries:
@@ -196,7 +179,7 @@ def main():
             if run(["git", "-C", str(directory), "rev-parse", f"{commit}^{{tree}}"]).strip() != entry["target_tree"]:
                 raise RuntimeError("The local tree does not match the migration manifest")
             if args.apply:
-                provision(entry, directory, templates, app["id"], installed, client_id, private_key)
+                provision(entry, directory, templates, app["id"], client_id, private_key)
             ready.append(entry)
         except (OSError, RuntimeError, subprocess.TimeoutExpired) as error:
             print(f"{entry['repository']}: {error}", file=sys.stderr)
