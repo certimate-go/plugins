@@ -1,0 +1,99 @@
+{
+  "provider_type": "arvancloud-dns",
+  "repository": "certimate-go/plugin-provider-arvancloud-dns-acmedns01challenger",
+  "version": "0.1.1",
+  "tag": "v0.1.1",
+  "source_commit": "130a9bc303ff2de3fb20a6668a98e2919777d2f7",
+  "build_run_id": "44538649073",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6202075,
+      "sha256": "b176b940436b4760c2b87eca0508a4bec4c7f3a61da615ee61ebfcc7bb29d13c"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5842051,
+      "sha256": "b56507afa800f7de81983f47591ef17e65595a7a5197d19d01098cf517805ce5"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6196641,
+      "sha256": "7835b9eabf01ff2c30122c7d2a41e1f6ba87667f7a544d2ff1061c3b04b65e0f"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5839076,
+      "sha256": "0e8875574e639fea70a444c6369b77c565b806ed6170bb0054ed9d897c4b03af"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5589043,
+      "sha256": "24607eb3867193b8c050db6435fd376f5893b3be52675c182dbe0e4f7bab383f"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5954725,
+      "sha256": "4dd8886f6106868af8d43a93dc0dcfbe01c03e5a828b6cec04284601fc6b20e4"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6350142,
+      "sha256": "adf116f593569f4a13870b0b9c68661077463edea6920e32c4061ef616b5a917"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5684974,
+      "sha256": "2de7bb9af39bba0c21ea13517cc75c159aedd3e9935e73210399d521b85662dd"
+    }
+  ],
+  "release_commit": "feb8ce438eee8040f769699427ac2c279cacfdc4",
+  "manifest": {
+    "version": "0.1.1",
+    "provider_type": "arvancloud-dns",
+    "access_provider_type": "arvancloud",
+    "capability": "dns",
+    "display_name_key": "plugin.arvancloud-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "arvancloud-dns.exe",
+    "icon": "icon.svg",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via ArvanCloud."
+  },
+  "i18n": {
+    "en": {
+      "name": "ArvanCloud",
+      "description": "ACME DNS-01 via ArvanCloud."
+    },
+    "zh": {
+      "name": "ArvanCloud",
+      "description": "通过 ArvanCloud 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "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"
+}
