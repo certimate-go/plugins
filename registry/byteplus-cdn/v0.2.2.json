@@ -1,0 +1,97 @@
+{
+  "provider_type": "byteplus-cdn",
+  "repository": "certimate-go/plugin-provider-byteplus-cdn-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "b22b300c8c5f839b2b8ee64a1ef045a8e1a2ac1b",
+  "build_run_id": "44509772238",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6096877,
+      "sha256": "547d4eb6e8a66617a35d2fb42baafa1276020ee21f579c46f1459982642a95ce"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5759718,
+      "sha256": "57c7ac3ab0b189546c512946aebe188d2c64d59794c771f12966d8cd1698260f"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6072885,
+      "sha256": "0bf4471dbca91261ed3103a20afd1bb15488ab4bf110ec70cb0c2e73380faf65"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5775205,
+      "sha256": "3d53ea554fc878fa78c7842c40ac9f0384bc1321e9148603c2bfffc82000a2c9"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5516406,
+      "sha256": "83e92cffff679f26a2f071d50ac53079ed17af9d3e337833b1e59a88d3e517de"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5851448,
+      "sha256": "9824bdd6affd5f62009e1cb4d5c6e8e6d88c434fd0c821e454c761fbdad9e491"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6231139,
+      "sha256": "81c46c25a830b7789dd6ff3d4a6ec0330e298c1e9d1102a56570a4ab2a500b52"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5590564,
+      "sha256": "12c844d88b8846ef88bd4057c4c84264ea84e316302aabdb5f28ff565b807cc8"
+    }
+  ],
+  "release_commit": "dff38104b0fac5f236ea17f2deeeaef11ab80f1c",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "byteplus-cdn",
+    "access_provider_type": "byteplus",
+    "capability": "deploy",
+    "display_name_key": "plugin.byteplus-cdn.name",
+    "category": "cdn",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "byteplus-cdn.exe",
+    "icon": "byteplus.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "BytePlus - CDN (Content Delivery Network)"
+    },
+    "zh": {
+      "name": "BytePlus - 内容分发网络 CDN"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAJVElEQVR4nO3d8VXbWBoF8M8QTP6ZWaeCZTsgFYStIN4KRqkgbAU4FcBWgF1BSAXJVLBDBTtTwYbJ/gEGrL3PSBnbSLY+Se99T5r7O8fHYs7R4Kt3kd6TTRgIkSEWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUCkikWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUCkikWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUCkikWkEyxgGSKBQxg/93dW0klSUVORGSEhyymhzz2wIPg2Yvk/mQhi8/YXNP1Ar5M0qMHuX+fyuI4FTlClY7qZFLvQDp9LOB+MsfZPD2X7Gyeq5NJvQPtNkrS0e9y9xMO7jiVgRukYzzW7Mne3x+mB1+kY/aSuzM8TaQACxiBg2R+/CiLjzi0R7JFFwu4n9xdpiKJlGABjZVdmop0rYB7ye2pyMBlK8UCGsIAvcfhvMBmJd0r4N1ERM7wKMUCGtl1aSrSlQJmU4o3KIqbz57IFixgYG6x8U3mrnxjfKkSewHdbZZ7cT9YgxOpiAUMyJXvd5l/xuYxHmoxFzC7dfQRmyM8KgtawBfv7t/gybuHy4Of8RSVp8tS+hmbqgFaFWsBs4XUpdQQrIAvkvnFQtL32PQutoGqe3bYFFsuBwuNMzxNpKZgBcQLTfEUBF7g7HF6mEgEmpwdNiHXP5DrCptRqLOQ2tTLAsJXBHuFZ1M465/jrH+KzbZ8QK6JGGs6l12FPOo+qXfILkHuBQczlOHfbqeDX8WAGyCsdM9TkUTaZV5At9Kdy9xNJxqXz0EedZ/UO1gU0Gq+1PYAbTAtYBsLqU3Io+6Teoc/SwF9DNAGswJmc9lzaTkb8qj7pN7BooB4kUEn7NkAXYpfJgX0mQ15MFQ66h0sCgjBBquN1WBFwTLlfGdDHnWf1Dv0tYBusdHWarAi75lyLts3ufuoeVutDuRR90m9Qx8LGGC+V8RrptxTtsVHDPWReIY86j6pd+hbAbM50bmELZ/jLVMOl9xxKnIpgbIhj7pP6h36UsCny5KX+3uV4MB7fYcHbxac4WkiAWGMEEtHvUMfCujKF3i+98xA0p8fpy9PpGUuG36w3GJjjC+Dwhip+6TeoesFDDkn2sZHAT3fON8JY6Tuk3oHiwLiRX7C5WqMzcZwaZrIjo+Wh9B2AbNxceUb4WGixwVsb7D6WEBkcnkmYowF3MK97lQWP6VPc6MRHqbayGQ53yvCAhZwrzeVxzPfN2G1mmRyXPmsF1KbWMANHj7D15q6mXL7ye0X/FC9kYiwgJkYzw6btJk2sYABaQbr6TZL6l7fCI9oaTKtcj9c3wb3b9N0McH/5Ugi0tsCwi8I9xrPWxm+rVbHV2R6hedK3A/WQlLMZeNYcBRBHnWf1DsYFXBnuJjne2V2ZcqFfk+3rqp5Vql3iK2Ay0uSzC/TiM8MZcoyrYrlHl8VVfJsUu8QUwFd+WJfbGxTlCnnsuEHy+zDEnVsy1NGvUMsBXRzoi4sNrbZzJSzfk+3rrI826h3iKGAfSifs5op1+VsRXl2Ue8QQwExL5pIBO/nNrWayclW8ZfSUZt5qlDvwAK2ZzUTVrpuIZVIh63mqUq9g1UB3e8Gp4P0r5Km7pbEGP+p89yAPS02/P/CUAguD55U1DtYFbCP9mXwOoYPx7aFBSRTQQroLhm49/ZfbBKtCVJAB4uAFE9Ea1hAMsUCkikWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUCkikWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUC1neDx1/woAZYwHqu92WQPEr6b2xTAyygEsJ/+kGGydfp4GtfMlliAXXW/vhNTzI5mE6kEwztuQSG46nuk3oHp+ODdYPQyeP08Arb33U8U+76RxmeCFj86iy+9yt3NcFmZRgLvQ4P1nK+dz8d/oLtNR3OtISBnGE6cZoXwCKP++dTHqYHX0QBr1vPIlxTCPp9vocvn+liphVr0wnHIg8LWO7ZAG3qYCYH04nB6eN0OJUNFnlYwOcwQM/ne0U6lCl3g+nESdF0wrHIwwL+4QMeggG6KhugTR3ItGq52CibTjgWeVjADC636lyxZ8oh2Na5bM4iDwu4lP62mL48EqW4My0t7+8h2wW2d7LIwwJWuDSViTiTYJBmBzKc3E4Hv0pFFn9L7k9dQASpdGkqE2Gm5RlvKIdXmuLlWMCAEGKGlW4iDcSXqd4fM8yxgIHgPti7ovtgWjFlcljALSIZrBsEHmsDl4kkU+56KMNxnUtvjgX0q/EAbYogU672QmoVC+gJXnCjxUYZy0w5ZJs1ncvmWEA/PuAm80Q8MMy01NZcNref3F0h0FsJqMcFTH/bx3yv6ttqdYTP9N3W93TrQp6JBP5zZn0s4DXODBdtnhnKBMy0qvW5bA55JsIC1uZtYMoEyLQGB37tA6RtQ56JsID1NL0HVofvTOvSf1Z9T7cu5JkIC1gPXtQnrAbH2AzGd6bMDbJV+nxiU8gzERZQDy9ohgFKJDCfmTLXWGwkbS82yiDPRFhANW+3WXbxmEnclOIHORz7mu8V2UtuT/Gdz7EZTJcLGOzSVMZDpiXkMjmjW/xZ3a4WMPiKt0jLmTL+FxtlWMAK8M29vK1WR1uZMuZndIsCYo77WjvHxXHSa2mwzOZ7RVrK5NxgIE60A9E2iwJiPNV9Uu/gNBwsnB2Kf5fVUsNMuVY+ydKGl0l6NJf5f7AZyg0KOMKzSugCRnF2KNIg0xIO5AzTidMYypd7kcwvFpK+x6Z3ezL418N0eIpNFRw3vZqDFc3ZoUjNTEs4iCYr3SpGSTr6nzwcY9Mr7eIjh2Onpx0sfJNoByinzZTDdOJdbNOJLkE39DSDhW8wi718jiZTBnNZ25VuH+AY6lUdrLrzAgtVM2Winct2jbcCdu3SVCVTJuq5bNd4KWDXyufsyuTgYEVz47wvcEz1tgxWZ+dFWzItIdcMuRKhVuG46hUPlv/f2/CpONN3Ub1r0ye1Cuh+5U9WYOSufpTDaZcvTWUF7OJ0oktqFbCPCgrIlW4ALGBmpYDXeOCMPrzo8hm9K1hAMsUCkikWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUCkikWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUCkikWkEyxgGSKBSRTLCCZYgHJFAtIplhAMsUCkikWkEz9H19avOx6DvtnAAAAAElFTkSuQmCC"
+}
