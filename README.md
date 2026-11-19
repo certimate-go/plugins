@@ -92,7 +92,7 @@ Push a release request tag in the provider repository. After its formal tag appe
 
 ## Upgrading from built-in purge providers
 
-The sixteen certificate purge providers that formerly shipped inside certimate core live in this repository as `purge` capability plugins: `aliyun-cas-purger`, `aliyun-clb-purger`, `aliyun-esa-purger`, `aws-acm-purger`, `aws-iam-purger`, `azure-keyvault-purger`, `baiducloud-cert-purger`, `huaweicloud-elb-purger`, `huaweicloud-scm-purger`, `huaweicloud-waf-purger`, `jdcloud-ssl-purger`, `tencentcloud-gaap-purger`, `tencentcloud-ssl-purger`, `tencentcloud-tse-purger`, `ucloud-ussl-purger`, and `volcengine-certcenter-purger`.
+The sixteen certificate purge providers that formerly shipped inside certimate core are available as `purge` capability plugins: `aliyun-cas-purger`, `aliyun-clb-purger`, `aliyun-esa-purger`, `aws-acm-purger`, `aws-iam-purger`, `azure-keyvault-purger`, `baiducloud-cert-purger`, `huaweicloud-elb-purger`, `huaweicloud-scm-purger`, `huaweicloud-waf-purger`, `jdcloud-ssl-purger`, `tencentcloud-gaap-purger`, `tencentcloud-ssl-purger`, `tencentcloud-tse-purger`, `ucloud-ussl-purger`, and `volcengine-certcenter-purger`.
 
 A workflow node that references a legacy purge provider keeps working once the mapped plugin is installed — certimate resolves the legacy provider ids to these plugins automatically. Until the plugin is installed the node fails with a missing-provider error. certimate never downloads plugins or rewrites workflows unprompted: install the plugin explicitly from the plugin market (or a custom market), and re-save a workflow only if you want its node to carry the new provider id.
 
