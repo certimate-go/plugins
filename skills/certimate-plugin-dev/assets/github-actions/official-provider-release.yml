@@ -1,0 +1,39 @@
+name: Release provider
+run-name: ${{ github.event_name == 'push' && format('Request release {0}', github.ref_name) || format('Release {0}', inputs.trigger_tag) }}
+
+on:
+  push:
+    tags: ['v*-detach']
+  workflow_dispatch:
+    inputs:
+      trigger_tag:
+        description: Release request tag, vX.Y.Z-detach
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  dispatch:
+    if: github.event_name == 'push' && !github.event.deleted
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Request a release on main
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [[ ! "$GITHUB_REF_NAME" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)-detach$ ]]; then
+            printf 'Invalid release request tag: %s\n' "$GITHUB_REF_NAME" >&2
+            exit 1
+          fi
+          gh workflow run release.yml --repo "$GITHUB_REPOSITORY" --ref main -f "trigger_tag=$GITHUB_REF_NAME"
+
+  release:
+    if: github.event_name == 'workflow_dispatch'
+    uses: certimate-go/plugins/.github/workflows/provider-release.yml@main
+    with:
+      trigger_tag: ${{ inputs.trigger_tag }}

@@ -1,0 +1,13 @@
+name: Provider CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    uses: certimate-go/plugins/.github/workflows/provider-ci.yml@main

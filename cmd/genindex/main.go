@@ -6,118 +6,59 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
-	"sort"
-	"strings"
+	"slices"
+
+	"github.com/certimate-go/plugins/internal/registry"
 )
 
-var providerTypePattern = regexp.MustCompile(`^[a-z0-9][a-z0-9_.-]*$`)
-
-type catalogManifest struct {
-	directory    string
-	fields       map[string]any
-	translations map[string]catalogTranslation
-}
-
-type catalogTranslation struct {
-	Name        string `json:"name,omitempty"`
-	Description string `json:"description,omitempty"`
-}
-
-func buildIndex(rootDir string) ([]catalogManifest, error) {
-	entries, err := os.ReadDir(rootDir)
-	if err != nil {
-		return nil, fmt.Errorf("read repo root %q: %w", rootDir, err)
-	}
-	plugins := make([]catalogManifest, 0)
-	for _, e := range entries {
-		if !e.IsDir() || e.Name() == "_template" || strings.HasPrefix(e.Name(), ".") {
-			continue
-		}
-		manifestPath := filepath.Join(rootDir, e.Name(), "manifest.json")
-		data, err := os.ReadFile(manifestPath)
-		if err != nil {
-			if os.IsNotExist(err) {
-				continue
-			}
-			return nil, fmt.Errorf("read manifest %q: %w", manifestPath, err)
-		}
-		var m map[string]any
-		if err := json.Unmarshal(data, &m); err != nil {
-			return nil, fmt.Errorf("parse manifest %q: %w", manifestPath, err)
-		}
-		pt, _ := m["provider_type"].(string)
-		if !providerTypePattern.MatchString(pt) {
-			continue
-		}
-		nameKey, _ := m["display_name_key"].(string)
-		translations, err := readTranslations(filepath.Join(rootDir, e.Name(), "schema", "i18n"), nameKey, "plugin."+pt+".description")
-		if err != nil {
-			return nil, err
-		}
-		plugins = append(plugins, catalogManifest{directory: e.Name(), fields: m, translations: translations})
-	}
-	sort.Slice(plugins, func(i, j int) bool {
-		return plugins[i].fields["provider_type"].(string) < plugins[j].fields["provider_type"].(string)
-	})
-	return plugins, nil
-}
-
-func readTranslations(dir, nameKey, descriptionKey string) (map[string]catalogTranslation, error) {
-	entries, err := os.ReadDir(dir)
-	if os.IsNotExist(err) {
-		return nil, nil
-	}
-	if err != nil {
-		return nil, fmt.Errorf("read translations %q: %w", dir, err)
-	}
-	translations := make(map[string]catalogTranslation)
-	for _, entry := range entries {
-		if entry.IsDir() || filepath.Ext(entry.Name()) != ".json" {
-			continue
-		}
-		path := filepath.Join(dir, entry.Name())
-		body, err := os.ReadFile(path)
-		if err != nil {
-			return nil, fmt.Errorf("read translation %q: %w", path, err)
-		}
-		var bundle map[string]string
-		if err := json.Unmarshal(body, &bundle); err != nil {
-			return nil, fmt.Errorf("parse translation %q: %w", path, err)
-		}
-		translation := catalogTranslation{Name: bundle[nameKey], Description: bundle[descriptionKey]}
-		if translation.Name != "" || translation.Description != "" {
-			translations[strings.TrimSuffix(entry.Name(), ".json")] = translation
-		}
-	}
-	return translations, nil
-}
-
 func main() {
-	rootDir := flag.String("root", ".", "plugins repo root directory")
-	out := flag.String("o", "", "output file (defaults to stdout)")
+	records := flag.String("registry", "registry", "directory with registered version records and policy")
+	ready := flag.String("ready", "", "trusted CDN observations JSON file")
+	destination := flag.String("out-dir", "", "staging directory for catalog.json and its addressed assets")
 	flag.Parse()
+	if err := generateRegisteredCatalog(*records, *ready, *destination); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
 
-	plugins, err := buildIndex(*rootDir)
+func generateRegisteredCatalog(records, ready, destination string) error {
+	if ready == "" || destination == "" {
+		return fmt.Errorf("-ready and -out-dir are required")
+	}
+	observations, err := registry.ReadObservations(os.DirFS(filepath.Dir(ready)), filepath.Base(ready))
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		return err
 	}
-	destination := *rootDir
-	if *out != "" {
-		destination = filepath.Dir(*out)
-	}
-	buf, err := renderIndex(destination, plugins)
+	source, err := os.OpenRoot(records)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		return err
 	}
-	if *out == "" {
-		_, _ = os.Stdout.Write(buf)
-		return
+	defer source.Close()
+	snapshot, err := registry.Generate(source.FS(), observations)
+	if err != nil {
+		return err
 	}
-	if err := os.WriteFile(*out, buf, 0o644); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+	catalog, err := json.Marshal(snapshot.Catalog)
+	if err != nil {
+		return err
 	}
+	names := make([]string, 0, len(snapshot.Files))
+	for name := range snapshot.Files {
+		names = append(names, name)
+	}
+	slices.Sort(names)
+	for _, name := range names {
+		target := filepath.Join(destination, filepath.FromSlash(name))
+		if err := os.MkdirAll(filepath.Dir(target), 0o755); err != nil {
+			return err
+		}
+		if err := os.WriteFile(target, snapshot.Files[name], 0o644); err != nil {
+			return err
+		}
+	}
+	if err := os.MkdirAll(destination, 0o755); err != nil {
+		return err
+	}
+	return os.WriteFile(filepath.Join(destination, "catalog.json"), append(catalog, '\n'), 0o644)
 }

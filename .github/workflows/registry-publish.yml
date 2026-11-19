@@ -1,0 +1,72 @@
+name: Publish signed plugin market
+
+on:
+  push:
+    branches: [main]
+    paths: ['registry/**']
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: registry-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    environment: registry-publish
+    env:
+      GOWORK: "off"
+      GOTOOLCHAIN: local
+      GIT_TERMINAL_PROMPT: "0"
+      PUBLIC_KEYS: ${{ vars.REGISTRY_INDEX_PUBLIC_KEYS_JSON }}
+      REGISTRY_ACTIONS_TOKEN: ${{ github.token }}
+    steps:
+      - name: Require the registry protected branch
+        run: |
+          [[ "$GITHUB_REPOSITORY" == certimate-go/plugins && "$GITHUB_REF" == refs/heads/main && "$GITHUB_REF_PROTECTED" == true ]]
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: go.mod
+          cache: false
+      - name: Prepare trusted registry tooling
+        run: go build -mod=readonly -o "$RUNNER_TEMP/registryctl" ./cmd/registryctl
+      - name: Observe candidate ZIPs and stage a signed snapshot
+        id: stage
+        env:
+          INDEX_KEY_ID: ${{ vars.REGISTRY_INDEX_KEY_ID }}
+          INDEX_EPOCH: ${{ vars.REGISTRY_INDEX_EPOCH }}
+          INDEX_LIFETIME: ${{ vars.REGISTRY_INDEX_LIFETIME }}
+          INDEX_RENEW_BEFORE: ${{ vars.REGISTRY_INDEX_RENEW_BEFORE }}
+          INDEX_SEED: ${{ secrets.REGISTRY_INDEX_SEED }}
+        run: bash .github/scripts/registry-publish.sh stage
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        id: publisher
+        if: steps.stage.outputs.changed == 'true'
+        with:
+          owner: certimate-go
+          repositories: plugins
+          client-id: ${{ vars.REGISTRY_MARKET_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_MARKET_APP_PRIVATE_KEY }}
+          permission-contents: write
+      - name: Fast-forward the protected market branch
+        if: steps.stage.outputs.changed == 'true'
+        env:
+          MARKET_BASE: ${{ steps.stage.outputs.market_base }}
+          MARKET_COMMIT: ${{ steps.stage.outputs.market_commit }}
+          GH_TOKEN: ${{ steps.publisher.outputs.token }}
+        run: bash .github/scripts/registry-publish.sh push
+      - name: Confirm this snapshot and assets on the default CDN
+        id: cdn
+        env:
+          MARKET_COMMIT: ${{ steps.stage.outputs.market_commit }}
+        run: bash .github/scripts/registry-publish.sh observe

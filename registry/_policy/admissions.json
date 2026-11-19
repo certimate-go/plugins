@@ -1,0 +1,5 @@
+{
+  "volcengine-cdn": "certimate-go/plugin-provider-volcengine-cdn-deployer",
+  "volcengine-certcenter-purger": "certimate-go/plugin-provider-volcengine-certcenter-purger",
+  "volcengine-dns": "certimate-go/plugin-provider-volcengine-dns-acmedns01challenger"
+}
