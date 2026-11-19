@@ -1,6 +1,5 @@
 import argparse
 import json
-import os
 from pathlib import Path
 import subprocess
 import sys
@@ -51,36 +50,7 @@ def rule_templates():
     }
 
 
-def protected_environment(repo, private_key, client_id):
-    endpoint = f"repos/{repo}/environments/provider-release"
-    policy = {"protected_branches": False, "custom_branch_policies": True}
-    environment = api(endpoint, allow_missing=True)
-    if environment is None:
-        api(endpoint, "PUT", {"deployment_branch_policy": policy})
-    elif environment.get("deployment_branch_policy") != policy or any(
-        rule["type"] != "branch_policy" for rule in environment["protection_rules"]
-    ):
-        raise RuntimeError(f"Unexpected provider-release environment in {repo}")
-    branches = api(endpoint + "/deployment-branch-policies")
-    existing = {(row["name"], row["type"]) for row in branches["branch_policies"]}
-    if existing - {("main", "branch")}:
-        raise RuntimeError(f"Unexpected deployment branch policy in {repo}")
-    if not existing:
-        api(endpoint + "/deployment-branch-policies", "POST", {"name": "main", "type": "branch"})
-    variable = api(endpoint + "/variables/REGISTRY_RELEASE_APP_CLIENT_ID", allow_missing=True)
-    if variable is None:
-        api(endpoint + "/variables", "POST", {"name": "REGISTRY_RELEASE_APP_CLIENT_ID", "value": client_id})
-    elif variable["value"] != client_id:
-        raise RuntimeError(f"Unexpected release App client ID in {repo}")
-    secrets = api(endpoint + "/secrets")
-    if not any(secret["name"] == "REGISTRY_RELEASE_APP_PRIVATE_KEY" for secret in secrets["secrets"]):
-        run(
-            ["gh", "secret", "set", "REGISTRY_RELEASE_APP_PRIVATE_KEY", "--repo", repo, "--env", "provider-release"],
-            private_key,
-        )
-
-
-def provision(entry, directory, templates, installation_id, client_id, private_key):
+def provision(entry, directory, templates, installation_id):
     repo = entry["repository"]
     name = repo.split("/", 1)[1]
     endpoint = f"repos/{repo}"
@@ -96,6 +66,14 @@ def provision(entry, directory, templates, installation_id, client_id, private_k
     elif branch["commit"]["sha"] != entry["target_commit"]:
         raise RuntimeError(f"Protected source commit differs for {repo}")
 
+    installation_denied = False
+    try:
+        api(f"user/installations/{installation_id}/repositories/{metadata['id']}", "PUT")
+    except RuntimeError as error:
+        if "HTTP 403" not in str(error):
+            raise
+        installation_denied = True
+
     existing = {
         rule["name"]: rule["id"]
         for rule in api(endpoint + "/rulesets")
@@ -103,14 +81,17 @@ def provision(entry, directory, templates, installation_id, client_id, private_k
     }
     for name, template in templates.items():
         if name not in existing:
-            api(endpoint + "/rulesets", "POST", template)
+            try:
+                api(endpoint + "/rulesets", "POST", template)
+            except RuntimeError as error:
+                if name == "Formal plugin tag writer" and installation_denied and "HTTP 422" in str(error):
+                    raise RuntimeError(f"Select {repo} in the release App installation, then rerun") from error
+                raise
             continue
         remote = api(f"{endpoint}/rulesets/{existing[name]}")
         if {field: remote[field] for field in RULE_FIELDS} != template:
             raise RuntimeError(f"Unexpected ruleset {name} in {repo}")
 
-    api(f"user/installations/{installation_id}/repositories/{metadata['id']}", "PUT")
-    protected_environment(repo, private_key, client_id)
     branch = api(endpoint + "/branches/main")
     if not branch["protected"] or branch["commit"]["sha"] != entry["target_commit"]:
         raise RuntimeError(f"Expected protected target revision in {repo}")
@@ -161,13 +142,6 @@ def main():
             item for item in api("orgs/certimate-go/installations")["installations"]
             if item["app_slug"] == "certimate-plugin-dispatcher"
         )
-        client_id = run([
-            "gh", "variable", "get", "REGISTRY_RELEASE_APP_CLIENT_ID", "--repo",
-            REGISTRY, "--env", "registry-reconcile", "--json", "value", "--jq", ".value"
-        ]).strip()
-        if not client_id:
-            raise RuntimeError("Missing protected release App client ID")
-        private_key = Path(os.environ["REGISTRY_RELEASE_APP_PRIVATE_KEY_FILE"]).read_text()
         templates = rule_templates()
     ready = []
     for entry in entries:
@@ -179,7 +153,7 @@ def main():
             if run(["git", "-C", str(directory), "rev-parse", f"{commit}^{{tree}}"]).strip() != entry["target_tree"]:
                 raise RuntimeError("The local tree does not match the migration manifest")
             if args.apply:
-                provision(entry, directory, templates, app["id"], client_id, private_key)
+                provision(entry, directory, templates, app["id"])
             ready.append(entry)
         except (OSError, RuntimeError, subprocess.TimeoutExpired) as error:
             print(f"{entry['repository']}: {error}", file=sys.stderr)

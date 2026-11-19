@@ -66,8 +66,8 @@ done <"$scratch/paths"
 
 common+=(-evidence "$scratch/evidence")
 "$scratch/registryctl" registration-changes "${common[@]}" >"$scratch/changes.json"
-jq -r '.[] | [.provider_type, .repository, .tag, .build_run_id] | @tsv' "$scratch/changes.json" >"$scratch/changes.tsv"
-while IFS=$'\t' read -r provider repository tag run_id; do
+jq -r '.[] | [.provider_type, .repository, .tag, .build_run_id, .build_repository] | @tsv' "$scratch/changes.json" >"$scratch/changes.tsv"
+while IFS=$'\t' read -r provider repository tag run_id build_repo; do
     git_dir="$scratch/providers/$provider"
     proof="$scratch/evidence/$provider"
     mkdir -p "$proof"
@@ -78,8 +78,12 @@ while IFS=$'\t' read -r provider repository tag run_id; do
         git -C "$git_dir" fetch --no-tags origin refs/heads/main:refs/remotes/origin/main
     fi
     git -C "$git_dir" fetch --no-tags origin "refs/tags/$tag:refs/tags/$tag"
-    GH_TOKEN="$EVIDENCE_TOKEN" gh api "repos/$repository/actions/runs/$run_id" >"$proof/$tag.json"
-    GH_TOKEN="$EVIDENCE_TOKEN" gh api --paginate --slurp "repos/$repository/actions/runs/$run_id/jobs?filter=all&per_page=100" |
+    actions_token="$EVIDENCE_TOKEN"
+    if [[ "$build_repo" == "$GITHUB_REPOSITORY" ]]; then
+        actions_token="$GH_TOKEN"
+    fi
+    GH_TOKEN="$actions_token" gh api "repos/$build_repo/actions/runs/$run_id" >"$proof/$tag.json"
+    GH_TOKEN="$actions_token" gh api --paginate --slurp "repos/$build_repo/actions/runs/$run_id/jobs?filter=all&per_page=100" |
         jq -ce '{jobs: [.[].jobs[]]}' >"$proof/$tag-jobs.json"
 done <"$scratch/changes.tsv"
 "$scratch/registryctl" verify-registrations "${common[@]}" -providers "$scratch/providers"

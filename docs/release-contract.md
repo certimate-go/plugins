@@ -62,21 +62,19 @@ for source checks after `.github/workflows/provider-ci.yml` lands on the registr
 `GITHUB_REPOSITORY` and runs the module tests with pinned submodules and Go
 workspace mode off.
 
-Install the [official release workflow](../skills/certimate-plugin-dev/assets/github-actions/official-provider-release.yml)
-as `.github/workflows/release.yml` and protect `main` in both repositories.
-Pushing `vX.Y.Z-detach` starts a job with Actions write permission that
-dispatches the same workflow on `main` with the tag as `trigger_tag`.
-The job on `main` calls the registry's
-`.github/workflows/provider-release.yml@main`. The reusable workflow resolves
-the tag and checks ancestry relative to the protected dispatch commit.
-The build runs with read permissions only.
+Protect `main` in the registry and provider repositories. To request a
+release, push `vX.Y.Z-detach` in the provider repository. Central reconciliation
+discovers the request and dispatches `provider-release.yml` on the registry's
+protected `main`. The workflow resolves the tag, verifies the provider's
+protected branch and builds the checked source with read-only permissions.
 
 Install the private `certimate-plugin-dispatcher` GitHub App on the registry and
 the admitted provider repositories. Give it Actions, Contents and Pull requests
-write permissions. Configure `REGISTRY_RELEASE_APP_CLIENT_ID` and
-`REGISTRY_RELEASE_APP_PRIVATE_KEY` in the protected `provider-release`
-environment on each provider. The caller uses `secrets: inherit` so the
-publish job can read the environment secret.
+write permissions. Keep `REGISTRY_RELEASE_APP_CLIENT_ID` and
+`REGISTRY_RELEASE_APP_PRIVATE_KEY` in the registry's protected
+`registry-reconcile` environment. The central publish job creates a short-lived
+Contents write token scoped to the target provider. A new provider repository
+needs its source CI and branch and tag protection.
 
 Allow only this App to create formal tags. Prevent updates and deletion with
 separate rulesets that apply to every identity. Protect trigger tags from
@@ -117,11 +115,11 @@ recorded artifact commit. There is no time cursor to drift past pending work.
 
 ### Registration reconciliation
 
-The provider workflow dispatches `registry-reconcile.yml` on
-`certimate-go/plugins@main`. The same workflow runs every ten minutes and can
-be triggered manually. It scans admitted provider tags, opens registration PRs
-for verified releases, and retries outstanding work. It checks for queued
-builds before dispatching a pending tag again.
+The central publish job dispatches `registry-reconcile.yml` on
+`certimate-go/plugins@main`. Reconciliation runs every ten minutes and can be
+triggered manually. It scans admitted provider tags, dispatches pending releases
+centrally, opens registration PRs for verified releases, and retries outstanding
+work. It checks for queued builds before dispatching a pending tag again.
 
 For an independent schedule, the [private scheduler example](examples/registry-scheduler.yml)
 can also dispatch the registry workflows. Configure the same release App
@@ -130,8 +128,8 @@ with Actions write on the registry and records both dispatched runs.
 [GitHub workflow dispatch API](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)
 
 Set `REGISTRY_RELEASE_APP_CLIENT_ID` and `REGISTRY_RELEASE_APP_PRIVATE_KEY` in the
-protected `registry-reconcile` environment. Dispatch requests use Actions write
-and Contents read on admitted providers. Registration requests use Contents
+protected `registry-reconcile` environment. Central dispatch uses the registry workflow token. Provider evidence uses
+Actions read and Contents read on admitted providers. Registration requests use Contents
 and Pull requests write on the registry. The App has no bypass on registry
 `main`. Keep the organization policy for Actions-created pull requests.
 
@@ -152,10 +150,12 @@ checks only Git objects and compares the complete candidate tree with the
 trusted base. It accepts one canonical version record added by the registrar
 in a pull request, or a group of independently verified version additions at
 the queue SHA. It checks the provider's formal tag, all ZIPs, protected branch
-ancestry and the successful provider run's referenced reusable-workflow
-revision against the trusted registry history. It also matches the run title
-to the trigger version and requires a completed tag publication step from
-that run. It reads jobs across run attempts so a later no-op rerun cannot
+ancestry, and a successful protected run that created the formal tag. Central
+releases identify the build repository as `certimate-go/plugins`. Their run
+title names the provider repository and version, and the controller commit
+must come from the protected registry's history. For existing releases with
+provider-local runs, the checker verifies the referenced reusable workflow
+revision against the same registry history. It reads jobs across run attempts so a later no-op rerun cannot
 prove the release or hide an earlier successful tag write. The verifier reads
 the candidate as Git data.
 [GitHub workflow jobs API](https://docs.github.com/en/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run)
@@ -358,8 +358,7 @@ migration.
 
 ## Batch migration for existing official plugins
 
-Prepare one standalone checkout per provider. Use the official CI and release
-templates and commit the initial source on local `main`. The batch input is a
+Prepare one standalone checkout per provider. Use the official CI template and commit the initial source on local `main`. The batch input is a
 JSON array. Each entry includes `provider_type`, `repository`, `source_commit`,
 `source_path`, `target_commit`, `target_tree`, and `version`. Use a full commit
 hash from the registry's protected history and the legacy plugin directory as
@@ -378,10 +377,10 @@ python3 .github/scripts/provision-migration.py batch.json \
 ```
 
 Use an organization admin credential that can manage repositories and the
-release App's selected repositories. Point
-`REGISTRY_RELEASE_APP_PRIVATE_KEY_FILE` to the release App key available to the
-operator. The provisioner reads the key only in apply mode and passes it to
-`gh secret set` over standard input.
+release App's selected repositories. Provisioning gives the App access to
+each provider repository. If the API denies that operation, select the
+provider repositories in the existing App installation and rerun provisioning.
+The protected release job obtains its credential from the registry environment.
 
 The protected workflow validates each target and saves its exact batch as an
 Actions artifact. The bot opens a PR with the new admission mappings and a

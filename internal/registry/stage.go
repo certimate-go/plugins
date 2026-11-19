@@ -17,12 +17,13 @@ import (
 )
 
 type StageReleaseOptions struct {
-	Checkout     string
-	ArtifactsDir string
-	Repository   string
-	Tag          string
-	SourceCommit string
-	BuildRunID   string
+	Checkout        string
+	ArtifactsDir    string
+	Repository      string
+	Tag             string
+	SourceCommit    string
+	BuildRunID      string
+	BuildRepository string
 }
 
 type StagedRelease struct {
@@ -32,6 +33,9 @@ type StagedRelease struct {
 
 func StageRelease(ctx context.Context, options StageReleaseOptions) (StagedRelease, error) {
 	if err := providerrelease.ValidateRepository(options.Repository); err != nil {
+		return StagedRelease{}, err
+	}
+	if err := providerrelease.ValidateBuildRepository(options.BuildRepository); err != nil {
 		return StagedRelease{}, err
 	}
 	if err := validateReleaseTag(options.Tag); err != nil {
@@ -79,7 +83,7 @@ func StageRelease(ctx context.Context, options StageReleaseOptions) (StagedRelea
 	targets := providerrelease.Targets()
 	if record.Tag != options.Tag || record.Version != strings.TrimPrefix(options.Tag, "v") ||
 		record.SourceCommit != options.SourceCommit || record.Repository != options.Repository || options.BuildRunID == "" ||
-		record.BuildRunID != options.BuildRunID || len(record.Artifacts) != len(targets) || len(entries) != len(targets)+1 {
+		record.BuildRunID != options.BuildRunID || record.BuildRepository != options.BuildRepository || len(record.Artifacts) != len(targets) || len(entries) != len(targets)+1 {
 		return StagedRelease{}, errors.New("build record does not match the trusted run, source, or platform matrix")
 	}
 	expectedFiles := map[string]bool{providerrelease.RecordName: true}

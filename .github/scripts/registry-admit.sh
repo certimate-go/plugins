@@ -18,7 +18,7 @@ remote_main() {
 }
 
 verify_target() {
-    local entry="$1" repo source tree provider version config control remote_value refs
+    local entry="$1" repo source tree provider version refs
     repo="$(jq -er .repository <<<"$entry")"
     source="$(jq -er .target_commit <<<"$entry")"
     tree="$(jq -er .target_tree <<<"$entry")"
@@ -34,11 +34,9 @@ verify_target() {
             '.provider_type == $provider and .version == $version and (has("release") | not)' >/dev/null || return
     refs="$(git ls-remote --refs "https://github.com/$repo.git" "refs/tags/v$version" "refs/tags/v$version-detach")" || return
     [[ -z "$refs" ]] || return 1
-    for config in release ci; do
-        control="skills/certimate-plugin-dev/assets/github-actions/official-provider-$config.yml"
-        remote_value="$(gh api -H 'Accept: application/vnd.github.raw+json' "repos/$repo/contents/.github/workflows/$config.yml?ref=$source")" || return
-        [[ "$remote_value" == "$(cat "$control")" ]] || return 1
-    done
+    local ci
+    ci="$(gh api -H 'Accept: application/vnd.github.raw+json' "repos/$repo/contents/.github/workflows/ci.yml?ref=$source")" || return
+    [[ "$ci" == "$(cat skills/certimate-plugin-dev/assets/github-actions/official-provider-ci.yml)" ]] || return 1
     gh api "repos/$repo/actions/workflows/ci.yml/runs?branch=main&event=push&head_sha=$source&status=success&per_page=1" |
         jq -e --arg source "$source" '.workflow_runs | any(.head_sha == $source and .conclusion == "success")' >/dev/null
 }

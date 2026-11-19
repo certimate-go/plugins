@@ -258,6 +258,9 @@ func (version *Version) Validate() error {
 		!commitPattern.MatchString(version.ReleaseCommit) || version.SourceCommit == version.ReleaseCommit {
 		return errors.New("invalid tag, source commit or artifact commit")
 	}
+	if err := providerrelease.ValidateBuildRepository(version.BuildRepository); err != nil {
+		return err
+	}
 	if runID, err := strconv.ParseUint(version.BuildRunID, 10, 64); err != nil || runID == 0 || strconv.FormatUint(runID, 10) != version.BuildRunID {
 		return errors.New("invalid trusted build run ID")
 	}
