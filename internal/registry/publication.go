@@ -150,6 +150,24 @@ func sameCatalog(before, after Catalog) bool {
 	return bytes.Equal(oldBytes, newBytes)
 }
 
+func publishedSnapshot(version *Version, summary Summary) (Snapshot, error) {
+	encodings := []string{""}
+	if version.BuildRepository != "" {
+		encodings = append(encodings, version.BuildRepository)
+	}
+	expected := Catalog{Plugins: []Summary{summary}}
+	for _, buildRepository := range encodings {
+		snapshot := Snapshot{Files: make(map[string][]byte)}
+		if err := snapshot.add(version, buildRepository); err != nil {
+			return Snapshot{}, err
+		}
+		if sameCatalog(expected, snapshot.Catalog) {
+			return snapshot, nil
+		}
+	}
+	return Snapshot{}, fmt.Errorf("registered version %s %s differs from the published index", version.ProviderType, version.Version)
+}
+
 type publicationProvider struct {
 	versions []*Version
 	previous *Version
@@ -178,12 +196,8 @@ func observeCatalog(ctx context.Context, records fs.FS, previous Catalog, renew 
 		for _, version := range versions {
 			id := Identity{version.ProviderType, version.Version}
 			if hadLegacy && legacy.Identity == id {
-				reconstructed := Snapshot{Files: make(map[string][]byte)}
-				if err := reconstructed.add(version); err != nil {
+				if _, err := publishedSnapshot(version, legacy); err != nil {
 					return nil, nil, err
-				}
-				if !sameCatalog(Catalog{Plugins: []Summary{legacy}}, reconstructed.Catalog) {
-					return nil, nil, fmt.Errorf("registered version %s %s changed after publication", version.ProviderType, version.Version)
 				}
 				legacyFound = true
 				if !withdrawals[id] {

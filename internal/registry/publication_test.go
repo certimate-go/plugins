@@ -25,6 +25,28 @@ import (
 	"github.com/certimate-go/plugins/internal/providerrelease"
 )
 
+func TestPublishedDetailOmitsBuildRepository(t *testing.T) {
+	version := newPublicationVersion("example", "1.0.0", "a")
+	version.BuildRepository = providerrelease.RegistryRepository
+	legacy := Snapshot{Files: make(map[string][]byte)}
+	if err := legacy.add(&version, version.BuildRepository); err != nil {
+		t.Fatal(err)
+	}
+	current := Snapshot{Files: make(map[string][]byte)}
+	if err := current.add(&version, ""); err != nil {
+		t.Fatal(err)
+	}
+	for _, published := range []Snapshot{legacy, current} {
+		if _, err := publishedSnapshot(&version, published.Catalog.Plugins[0]); err != nil {
+			t.Fatal(err)
+		}
+	}
+	old, next := legacy.Catalog.Plugins[0].Detail, current.Catalog.Plugins[0].Detail
+	if old == next || bytes.Contains(current.Files["market/details/"+next.SHA256+".json"], []byte("build_repository")) {
+		t.Fatal("public detail includes the build repository")
+	}
+}
+
 func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 	dir := t.TempDir()
 	git := func(arguments ...string) string {

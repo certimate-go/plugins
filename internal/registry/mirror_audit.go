@@ -191,12 +191,9 @@ func auditFiles(git releaseGit, source string, listed map[string]Summary, provid
 		if err := version.Validate(); err != nil {
 			return nil, fmt.Errorf("validate %s registry entry: %w", provider, err)
 		}
-		snapshot := Snapshot{Files: map[string][]byte{}}
-		if err := snapshot.add(&version); err != nil {
+		snapshot, err := publishedSnapshot(&version, summary)
+		if err != nil {
 			return nil, err
-		}
-		if !sameCatalog(Catalog{Plugins: []Summary{summary}}, snapshot.Catalog) {
-			return nil, fmt.Errorf("registry entry for %s differs from the signed index", provider)
 		}
 		for file, body := range snapshot.Files {
 			location := marketCDNPath + "registry/" + file
