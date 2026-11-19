@@ -1,0 +1,97 @@
+{
+  "provider_type": "oraclecloud-certificatesmgmt",
+  "repository": "certimate-go/plugin-provider-oraclecloud-certificatesmgmt-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "c822a1decf26757dccbf446ac0e7fd4cdc73796b",
+  "build_run_id": "44513774276",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6415016,
+      "sha256": "c4a4d3c70dcf1f548c2407e0a91762a3223b76855683f658ee64d2c128116827"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6046282,
+      "sha256": "fc58ddf70de3a62e0e80a054498ed72b8845cadb729930e1e67d1699032263b1"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6413359,
+      "sha256": "175e978c5e83890b8b08b70e802f5a5ffe24441ea637e109a5497030ca3391a5"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6046193,
+      "sha256": "48b893308fb35192beb28fa3a350350a6b366e29e5be9e8309ed2312189f5de5"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5777898,
+      "sha256": "c7b7260175d1560558135076d38ad40cc3628a70649ea5536bf1e27e0ae794b3"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6144340,
+      "sha256": "36e9f80cc91a02d383e49f489bb162989a833e3f7738b5a4c89b4f173d28c187"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6549798,
+      "sha256": "d8446643c6dafb257d6f24684a7e16079f48463dcdd74e155af8af460f5a54b7"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5882149,
+      "sha256": "aeaeea2c0a21308eb41000de17aee51f11164da7dd12d699e9e6623e3a382b96"
+    }
+  ],
+  "release_commit": "0fab09fb70e2e56efe8b4a9cd7a5ce3125582a59",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "oraclecloud-certificatesmgmt",
+    "access_provider_type": "oraclecloud",
+    "capability": "deploy",
+    "display_name_key": "plugin.oraclecloud-certificatesmgmt.name",
+    "category": "ssl",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "oraclecloud-certificatesmgmt.exe",
+    "icon": "oraclecloud.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Oracle Cloud - Certificates Management"
+    },
+    "zh": {
+      "name": "Oracle Cloud - 证书管理服务"
+    }
+  },
+  "icon": "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"
+}
