@@ -1,0 +1,99 @@
+{
+  "provider_type": "namesilo-dns",
+  "repository": "certimate-go/plugin-provider-namesilo-dns-acmedns01challenger",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "source_commit": "596c9eed29f4d2f370d0b996dc9a52eb2741fdee",
+  "build_run_id": "44539269479",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6293174,
+      "sha256": "0c3b93970e024c9da5fc929d451c7d6dbf5bdf224482922bc7303a258a74d5cf"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5950976,
+      "sha256": "0c62679392395e4fc56ab5841d690d5b3d6995264d34995a7db39301a2f254dc"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6286780,
+      "sha256": "18958909dc0950bd64064d2aef75530919b09b4a9107101751e5c604b00a5a3e"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5916452,
+      "sha256": "b429288315552e47e99b92beec89b3a6c03aca1c60652a7b42ebc7a8a5167f2c"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5696076,
+      "sha256": "25fec8f6662aa80e58ac3cd45a92e782d78fa0e918aaa60fc7c3dfa8a9cfdd9a"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6034971,
+      "sha256": "bc25e7664188117106268cf4f560e0876ed23e8316155cb71ace806cea14ecdc"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6442120,
+      "sha256": "5aa7fa92d6ebabc133182186a1bf4a9d71c4c5a50a4c7ef4eda63b975d542c6b"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5761437,
+      "sha256": "940c782ede97ebc6ba6db36365751ba749fdb9dd78c1071ae27c021fbc88d5a2"
+    }
+  ],
+  "release_commit": "4a610068963989c2887cf4f210a27003f0fe620a",
+  "manifest": {
+    "version": "0.1.0",
+    "provider_type": "namesilo-dns",
+    "access_provider_type": "namesilo",
+    "capability": "dns",
+    "display_name_key": "plugin.namesilo-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "namesilo-dns.exe",
+    "icon": "icon.svg",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via NameSilo."
+  },
+  "i18n": {
+    "en": {
+      "name": "NameSilo",
+      "description": "ACME DNS-01 via NameSilo."
+    },
+    "zh": {
+      "name": "NameSilo",
+      "description": "通过 NameSilo 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAAOjklEQVR4nOydCVxVVR7Hf+dewA1BUZBNUREQcRcVXEolBxVwmbKcplnKmpoms4mayan8mI1ZTotTaU45MzKVlvZJEwXNLPcdFxREBBEVEFFCQZDlvTvnfxEjNkEWz3nvfj+f88677737xHf+55z/+S/n2KAp8ZjWCaUmD6hwV4GumgJXaPzKoIkw55o17ELWhsNoIhgag+f0Noq5eCaDFqqBBTOGTjBodjQgj2naTv6bf2suVD5D3ro83CF3JgAd73NU2rSZzW9/1mj0u4+mIcoM81xkbjiHBtJgAVDcI+byKpIx5gADoeCC8KGZqfOQsfZKfe+pvwB4hA9QNPY5b/gAGAgLF4IC/hBpzor+uD6fr5cAKO7hLzGmLISBTKwxZax/8HYfuq0A8CF/Je/1v4KBfGjYaYI2AZnRhbV9RKnrfsVj8mKj8SWGYTRfg6+v6yO1rtF5z3+TN34kDOSGsZ7Mwc9Vyz+1saa3axQAxX3yM7zxF8DAIuDzfKBi73tGK0iOr+G9KriE9VRslQQG1hoGFoVJ0/y5PpBU+bVqOoBqqy43Gt8yURmiqr1W+UJxi/gDH/pnwcBCYR7M3vcinwribr3y05vTVcXjxiXe+51gYLFwP0KWOaNVVzIT0PWtKUB1K55hNL7lw3u8m+pe9FDFtVLpnadhYB0w5eFbT/VH58m9VDuchoHVYLqudCQ3sj4CKHbaQzCwKtS2ZaFU6wLANDYGBlaFBjaeaqX8QhsBA6uCK/z+VNvAbZIXX/u3hYFVwTu9N9U2UFRvGFgdvNN3odqGF6P3Wyvk94GZlcEKmTohCH96NAweblYc06qqTgxuYaGqom6ClfDEI6GYF/kwXDo73npt6YqNmPPG/1BYVAxrwlTGghQ+GWiwAnx7umNP9CIsXfjHnzU+8fTvw3Bi2xKMG9Uf1gZfBqpmWDB2djZ4/S+P4Oh372PoQN9aP9fVvTM2r5qPj//xDBwd2sEqYCZNoQdYKGNG9EPCtqV4adYDsLW1qdc9j864j9+zBOHjh8IaUMgOCAujs5MDPl8SiS1fvo7uXV3QULo4d8Da/7yMTz94Hh072MNyYXwEMFmWAJCSl7TzIzw4eTQay4yp9yBx+1JMjxgFS4WPAGaLEIABfXpg38a3dSWvKedwGk1WLn0BXy2fA1eXjrA0pJ8C2rVtjcXzn8CB2HcwpH8vNBdTQofrusFTv50Ii4HRFCDxMvDX94/BqV3LdIOOoihobhzat8UHC57E7vWL0Le3FywBhYKFIRnBgb1xcNN7WLH4OV1ha2mGDfLFwdh38ebLv0PbNq0gM1KNAD493LFuxSvYsfZNDAzogbuJjY2KyKemIWH7EkwcNwRyQnYAKMILgFOH9rqBJnHHUoSFBEIkPN06Y33Uq1jzyUtSKol8BDALbQn07u6mm3DJQCMy5FwiJfGZx8IhD6QECrwKGBHoj0Ob3tWFQAZISXzvtcex65tFaG/fBjKgoEzMKaBNazus+uhF2LeT44eszPDBvnh59m33ZhACYX0Bv5k+Du6u8uapjB0pgWeRKZqNqFPAtInBkJlOHdtDBmxEXQYO6tsTMqOqzW+YajSsTBPWECRLD6oN1sg9OFsKYVcB1wtvQGbKTCbIgEKKAATkXEYOZKboRgnER9GENQQlpVyAzJzPvAwZUFAq5giwev0uyMy+uCTIgLDOoK827Ebs93GQkfyCIixdEQPhKaUpAGXCmoJnPLUIq9Zuh0xs3nYYg38xG5dzr0EGGFwjAlSVnYDAeHm66HF5k0KGYPRw8faqLrhexAV1B6LWbMX+w8mQBVMZ688FYEofVdUSIBjjuCl196GTKC4u/dnr5HCZEhrEffCDETSktx7P35Jcyy9EXHwqL6dx4tQ5HEtIw4mk9Gqfuze4L7bvFbpf3RQAtzB/VVETIRibVr2GwP69ELX6eyz+5JtatWoK2x7SzxuD+WfJekieQzful28K33zq2SwcSzyL+MQ0HD6eqjf07bR7MmHPfX6GbgcYOuF5iEy5ALhH9FYZOwnBiPl8HsbfM1B/buYr1egtB7EsKgbf7TxW7+8gIXB17ggnLiQ0cthzF61929a6h5G8jTR05127jqu85OYV6MobXeddLcCVH/Pr/e8MHeiDB8JH4v6wEfp0RcTFpyAo7AWIjKnM1E9YZ1BZ2U+WNAr4pKhcKjlXrmLbnuN8eE3AgSOncOTEmVq/4+KlH/XS1PTz98KoYQFcH+mDkNED9IilqpSWyWEJtCGHQPk2AWJRUlpz1rpzJ0ddIaycrHEm/SIST59HIp+Tk1IykJKWqWvhOblXeW++joZC04qzk6OeE0CJpJ147dzJQQ87vzeob72yhUwmCVIudXdwiY0ZdhCOsgb0oJ5ernoJv+/2+Xw0gpBwUDHfzIlhjOnTBAlXU0UZl8kzApTyX8EWokGN0hxQI1NpbqRwB0Mf+8U0BTM5vKm1Ymcr3rRaHZoCBPUGUty9zNhKIQC6L0AVUgAc7OXeu6p1K/Gm1WroEUGsREgBkCWsujZa2UkgANCVQDGnANlz7uSZAiDmFCDLMqo2yMooPEwRdwqI5zZ4mZEnIkhQlq/8FjKzLCoWMiCsAOzcn4BXF30GGXnlrc+48+oAxIdpDB4TPVXYnoegBHOf/6vcvVrhGRQVihNYG7sXb3+0VpqAVpOG3sILQAVkGBo+yBfjRg3A2JH9+HM/fRPIuwnFB1DcIpU9h07K4QCqRLkAuE/pqjLtHATjb88+iOQzGdj43cEaY+zJnz98sB/6+HaDn7c7fHp6wN/HU9+woak5e/4SL9k4lXqBN/o5JHCvY/zJs3ocQU1QUAjtIfT6e19AZIQWAMqxpzRranzqYTS8Rn97oF4ZQ7Q5pJuLk74TOGUYd3S0RweHdrpxiYJBqCZ3c3JqBl+ulX8fbRR9raCQN2oh8nlN3kLS5OsTT0DCGMY9kb+cFIxJIYH6zmXHEtMQGPpniAwJgPDWCvpx6YelQmzZcRT7D5/CkeOp2H8kGdk5edXuKe+xl9BcUDwA6SaD+3nrG0ZJu0cQNwXLYa6qBCmDlRXCrOxcHIpP4QJxRm/09AvZet0UqWU0gnT3dEE3XmhUoc0oKfyrm4czLAXpBKAqbl2cEDF+mF6qkn6BBCJHnzaoFN0o5nWxPtzTNY0uNFyT2bmipkKRxrJsS9NYuACYmMDmgEZBAZoVQZoGNWOZLW9Qb6SfAgwage4MMrBqDAGwchRoZsnDLw0ag7A6QGmZVR5n2OIIKwCy5NfXhlmGg1iKBVYCZcqzr4mk08I7WHWEFYB/fRqLlLQsyMh67rR6bu5yyABXAu2EVAIpVTs44gW89eFXDUrVvlvQ3/vOsrXoMexx3D/zDeTmif83EwyuU7urqjkNgkMmXfL3Uzr2uJED0L9Pd9xtyOm0Y98JrIvdJ0kI2M8xlcBHWAEg587xpLO1unUpwTN07GA9SsjP2xMBft2qnQncVFDvptiA1PQsHDqagkPHTuPA0eRaU88pKGXYIB98HbMXImMqLe0lrABs+3ohRg71x+m0TGz6Pg6btx3BD3viUVJS+/KQzgvs49OVu2+d4eHaSS8UEEJ5/lWzjWkDB/IOFhWVewcp8KTcS1iMrEu5OMe9iBkXr+gNT/F+dUHhaqOG9cEELpATxg7RhZHCxQaNnw2RIQEQ3hdAB0X5zHTHrJkRuMEbaeeBRH2HkF37E/U4vMpQiNbeuCS9NDe0H9HooAD9fGLa0IrcyZWRYhkIsgNo5A6WwxjYmvvvqwaEbN11TBeG3QcTcSY9W48BaGoo5qBH1y56iNqo4QEYyxtd9tzFCqT3BoaMGqCXylA0kB4MQqFhvK4Y2isCQWjYL+A1ZfCWB4JUBIWUB4Z48GnDizc4RQP16nFngSEaZBkBLBAK2aIi4qaSomHEA1g1irhBobJvESMLwrqDW+Iw6OZEliNjxB0BJPkBZceYApoJJsl/QGABkFsCpPjzmcBKYG1bxcqCSewzuW/BNS0xlcBjCWcgMwlJwuXb1oiwqvaCf65G2rlsyAh5MOcsjIIMCCsAly5fxYCQWXhx/n+lOUPwwJFk/PXvKxAUFonMi7mQAQaXid6qrW0KBCcsJBBTJwZh6oRgdHBsB1Egt+/q6F34Yt0O6UYsk0npIY0AVIZcsSOG+us+eIoZIG9dS0H7/9AOIcdPnsWX63dKG7dIlAuAJCFhdUFHw/Tr7YUAPy/9NI/u3JNHh0/TMTGOvFBdX2i6uZB1GZdz85F96UdkZufiVGoGEpPLt4axJMoFwG2Sl6rYnIWB1UECYMMdQnLvyWrQCIqv0+HRhTCwOjQOLsbmKLiwuemP1TIQH4ZMqsgOwEVBk2PRatBkMI3pyxfl5oXYZ5waNDm80+vJl8rNC/nSWgwaBWPaZqp1ATBrbCsMrAqTxmKorvAEMsU9Ipv74C1nB0SDWuELgDhzZnQgPa9wBml8TJAjn9mg8TC2suLpLW+gWdPe5ZJh2AQsHL7ku2LOKF1Scf3T6Yz5yYXM3o9CsUJgYMGY52j5MXsqrqpFA3FdIJ0LQTcYWBx8tZdhzoj2rPxatYAQPhVM04BSGFgU1KZmmMKrvl79gN6C5Czm4JPDwMJhYDEwmB/TMjZurvp6jSc0a/nJh1h7Xxc+FQyFgfRw5f59c+aGt2p6r66IYKa6R2zmWuF4GEiJ7vED5vE1//zaPlNXUKhmMhVP41UMDKSEj+AP1dX4hFrXm7ieWsqng5V8eWjDGO6BgRTwjp/ElflQLTP6tib++ieFuIaPUVT2b64c9oSBkPDxvoS3/gJzZuZCIK5eK7kGZwVxO8FcXkXy4cUBBkLAZ/p87tP/xsy0+biw4XRD7r2ztLDOk9srdtqT/PbH+dTgB4MWhw/z6bzaYoa2Bpkb7vik7cbnBXae7K7aYQK3Mg3hwtCbe5X8+Zdax5FbLQjv5Yn8cSv/bfeaSk0/ICfmIpoAYxcGK+f/AAAA//9cZaXoAAAABklEQVQDAN8YPJvOTgNaAAAAAElFTkSuQmCC"
+}
