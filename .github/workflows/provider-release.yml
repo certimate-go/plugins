@@ -124,8 +124,8 @@ jobs:
         with:
           owner: ${{ github.repository_owner }}
           repositories: ${{ github.event.repository.name }}
-          client-id: ${{ vars.PROVIDER_RELEASE_APP_CLIENT_ID }}
-          private-key: ${{ secrets.PROVIDER_RELEASE_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-contents: write
       - name: Create the immutable formal tag
         if: steps.stage.outputs.present == 'false'
@@ -134,3 +134,19 @@ jobs:
           SOURCE_SHA: ${{ needs.prepare.outputs.source }}
           GH_TOKEN: ${{ steps.token.outputs.token }}
         run: bash controller/.github/scripts/provider-release.sh push
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        id: registry
+        if: steps.stage.outputs.present == 'false'
+        continue-on-error: true
+        with:
+          owner: certimate-go
+          repositories: plugins
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
+          permission-actions: write
+      - name: Dispatch registry reconciliation
+        if: steps.registry.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ steps.registry.outputs.token }}
+        run: gh workflow run registry-reconcile.yml --repo certimate-go/plugins --ref main

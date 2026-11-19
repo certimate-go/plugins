@@ -71,16 +71,16 @@ The job on `main` calls the registry's
 the tag and checks ancestry relative to the protected dispatch commit.
 The build runs with read permissions only.
 
-Configure an environment named `provider-release` restricted to the protected
-default branch with `PROVIDER_RELEASE_APP_CLIENT_ID` and
-`PROVIDER_RELEASE_APP_PRIVATE_KEY`. The provider caller uses `secrets: inherit`
-so the reusable publish job can read the environment secret.
-Install the tag-writing App on the provider
-repositories with Contents write, not on the registry. Require its identity
-for formal tag creation and prevent tag updates and deletion with separate
-rulesets, so creation bypass does not grant a way to rewrite a tag. Protect the
-trigger tags from update; the publisher also rechecks the trigger commit before
-staging and before pushing.
+Install the private `certimate-plugin-dispatcher` GitHub App on the registry and
+the admitted provider repositories. Give it Actions, Contents and Pull requests
+write permissions. Configure `REGISTRY_RELEASE_APP_CLIENT_ID` and
+`REGISTRY_RELEASE_APP_PRIVATE_KEY` in the protected `provider-release`
+environment on each provider. The caller uses `secrets: inherit` so the
+publish job can read the environment secret.
+
+Allow only this App to create formal tags. Prevent updates and deletion with
+separate rulesets that apply to every identity. Protect trigger tags from
+update. The publisher rechecks the trigger commit before staging and pushing.
 
 Upload the ZIPs and record as one immutable workflow artifact, then download by
 its run-scoped artifact ID into a different runner. The writer runs
@@ -88,7 +88,9 @@ its run-scoped artifact ID into a different runner. The writer runs
 validates the source, run ID, archive contents and full release tree, and
 returns an unreferenced commit. It does not execute provider code, change a
 branch, or push. The workflow issues the App token only after staging and
-pushes the commit directly to the formal tag without force. If the formal tag
+pushes the commit directly to the formal tag without force. A separate token
+with Actions write on the registry dispatches reconciliation after publication.
+If the formal tag
 already points to a valid release of the same source, a rerun leaves it alone;
 a version sourced from any other commit fails.
 
@@ -115,44 +117,31 @@ recorded artifact commit. There is no time cursor to drift past pending work.
 
 ### Registration reconciliation
 
-Use the organization's private scheduler to dispatch
-`registry-reconcile.yml` on `certimate-go/plugins@main`. The controller
-processes all admitted providers, opens a registration PR for each verified
-release, and retries outstanding work on the next scan. It checks for queued
-builds before dispatching a pending tag again. The same workflow can be
-triggered manually.
+The provider workflow dispatches `registry-reconcile.yml` on
+`certimate-go/plugins@main`. The same workflow runs every ten minutes and can
+be triggered manually. It scans admitted provider tags, opens registration PRs
+for verified releases, and retries outstanding work. It checks for queued
+builds before dispatching a pending tag again.
 
-For GitHub Actions, install the [private scheduler workflow](examples/registry-scheduler.yml)
-as `.github/workflows/registry-scheduler.yml` in the organization's private
-operations repository. Configure its `registry-scheduler` environment for
-the protected default branch. Set `REGISTRY_SCHEDULER_APP_CLIENT_ID` and
-`REGISTRY_SCHEDULER_APP_PRIVATE_KEY` for a dedicated App installed only on
-`certimate-go/plugins` with Actions write. The scheduler dispatches the two
-central workflows independently and records both run URLs. Open each linked
-run to check its result. A successful dispatch confirms that GitHub accepted
-the request. The target workflow has its own verification and result.
-
-The template starts at ten-minute intervals. Adjust the interval for the
-measured renewal window and registration check timeouts. After a manual
-dispatch passes, verify a scheduled run and its downstream results with no
-public-repository schedule enabled.
+For an independent schedule, the [private scheduler example](examples/registry-scheduler.yml)
+can also dispatch the registry workflows. Configure the same release App
+credential in its protected environment. The scheduler requests a token
+with Actions write on the registry and records both dispatched runs.
 [GitHub workflow dispatch API](https://docs.github.com/en/rest/actions/workflows#create-a-workflow-dispatch-event)
 
-The `registry-reconcile` environment needs two Apps:
-
-- `REGISTRY_DISPATCH_APP_CLIENT_ID` / `REGISTRY_DISPATCH_APP_PRIVATE_KEY`:
-  installed only on admitted providers, with Actions write for dispatch and
-  Contents read. It must not be able to publish tags.
-- `REGISTRY_REGISTRATION_APP_CLIENT_ID` /
-  `REGISTRY_REGISTRATION_APP_PRIVATE_KEY`: installed only on the registry,
-  with Contents and Pull requests write. It must not bypass protections on
-  `main`, modify policy, or write required check runs.
+Set `REGISTRY_RELEASE_APP_CLIENT_ID` and `REGISTRY_RELEASE_APP_PRIVATE_KEY` in the
+protected `registry-reconcile` environment. Dispatch requests use Actions write
+and Contents read on admitted providers. Registration requests use Contents
+and Pull requests write on the registry. The App has no bypass on registry
+`main`. Keep the organization policy for Actions-created pull requests.
 
 Each validated release gets one stable `registry/<provider>/<tag>` branch and
 one PR. A rerun reuses an identical pending branch and PR; it does not overwrite
-conflicting contents or reopen a deliberately closed PR. GitHub auto-merge
-uses the PR head guard and the required independent check. Reconciliation also
-dispatches verification for live server-generated merge queue refs.
+conflicting contents or reopen a deliberately closed PR. After the independent
+check passes on the test merge commit, reconciliation requests entry into the
+merge queue with the verified PR head as a precondition. GitHub enforces the
+required check from GitHub Actions. The merge group triggers verification on
+protected `main`. Reconciliation also discovers live queue refs during its scan.
 
 ### Required registration check
 
@@ -171,16 +160,13 @@ prove the release or hide an earlier successful tag write. The verifier reads
 the candidate as Git data.
 [GitHub workflow jobs API](https://docs.github.com/en/rest/actions/workflow-jobs#list-jobs-for-a-workflow-run)
 
-Set `REGISTRY_REGISTRATION_BOT` to the registrar App login including
-`[bot]`. Configure the `registry-check` environment for protected
-`main` only, with `REGISTRY_CHECK_APP_CLIENT_ID` and
-`REGISTRY_CHECK_APP_PRIVATE_KEY`. Give the independent check App Checks
-write on the registry. The App reports `plugin-registration` on the exact
-commit it inspected: GitHub's test merge commit before enqueueing and the
-merge queue commit after enqueueing. If the candidate or the protected base
-moves during verification, the workflow emits no successful check.
+Restrict the `registry-check` environment to protected `main`. Its reporting
+job uses `GITHUB_TOKEN` with Checks write to report `plugin-registration` on
+the exact test merge or merge queue commit it inspected. If the candidate or
+the protected base moves during verification, the workflow emits no successful
+check.
 
-Enable repository auto-merge. Use two active rulesets on `main` so the
+Use two active rulesets on `main` so the
 registration requirement can be kept separate from maintainer review:
 
 - Require pull requests, prevent force pushes and branch deletion, and require
@@ -188,9 +174,9 @@ registration requirement can be kept separate from maintainer review:
   Assign those paths, including `CODEOWNERS` itself, to the designated
   maintainers. Leave the general approval count at zero so registration files
   can merge automatically after verification.
-- Require the merge queue and `plugin-registration` from the independent check
-  App. Start with build concurrency of two and allow enough time for the next
-  private scheduler dispatch and ZIP verification. The checker accepts at most
+- Require the merge queue and `plugin-registration` from GitHub Actions
+  (integration ID `15368`). Start with build concurrency of two and allow
+  enough time for reconciliation and ZIP verification. The checker accepts at most
   32 registry additions per queue commit. GitHub's downstream merge limit
   does not cap the commits sent for checks. Give only the maintainer team a
   pull-request-only bypass in this ruleset so reviewed policy and workflow
@@ -204,9 +190,8 @@ maintainer after review.
 · [GitHub merge queue](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue)
 · [GitHub required checks](https://docs.github.com/en/pull-requests/how-tos/merge-and-close-pull-requests/troubleshooting-required-status-checks#conflicts-between-head-commit-and-test-merge-commit)
 
-The `registry-evidence` environment uses the dispatcher App with downgraded
-Actions read and Contents read permissions to read provider run and branch
-evidence. Its token cannot update provider repositories.
+Configure the same App credential in `registry-evidence`. The evidence job
+requests Actions read and Contents read for provider runs and branches.
 
 `registry/_policy/withdrawals.json` is a protected array of provider, version
 and reason records. Generate with
@@ -237,10 +222,8 @@ from the approved records and observations and emits the envelope.
 ### Signed market publication
 
 `registry-publish.yml` runs when registry records or policy change on
-protected `main`. Use the organization's private scheduler to dispatch
-this workflow as well as `registry-reconcile.yml` on `main`. Scheduled
-runs retry pending CDN observations and renew the index even when registry
-records stay the same.
+protected `main`. Runs at minutes 3 and 33 of each hour retry pending CDN
+observations and renew the index even when registry records stay the same.
 
 The publisher checks each provider's candidate ZIPs on the default CDN.
 A candidate still propagating does not hold up updates or withdrawals for
@@ -261,9 +244,9 @@ ship new trust keys to Core before signing with them. Configure
 propagation on the default CDN and mainland mirrors before setting the
 renewal window and dispatch interval.
 
-Set `REGISTRY_MARKET_APP_CLIENT_ID` and `REGISTRY_MARKET_APP_PRIVATE_KEY`
-for a dedicated App installed only on the registry. Configure branch rules
-to limit its writes to `market` and forbid force pushes and deletions. The
+Set `REGISTRY_RELEASE_APP_CLIENT_ID` and `REGISTRY_RELEASE_APP_PRIVATE_KEY`
+in the same environment. Allow only the release App to write `market` and
+forbid force pushes and deletion with a separate ruleset. The
 workflow rechecks `main` and the verified `market` tip before pushing one
 fast-forward commit containing the index and all addressed assets. The job
 reports `published` only after verifying that exact signed index and every

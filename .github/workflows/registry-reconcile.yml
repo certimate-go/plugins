@@ -2,10 +2,13 @@ name: Reconcile provider registrations
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '7-57/10 * * * *'
 
 permissions:
   contents: read
   actions: write
+  checks: read
 
 concurrency:
   group: registry-reconcile
@@ -40,8 +43,8 @@ jobs:
         with:
           owner: certimate-go
           repositories: ${{ steps.providers.outputs.names }}
-          client-id: ${{ vars.REGISTRY_DISPATCH_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_DISPATCH_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-actions: write
           permission-contents: read
       - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
@@ -49,16 +52,15 @@ jobs:
         with:
           owner: certimate-go
           repositories: plugins
-          client-id: ${{ vars.REGISTRY_REGISTRATION_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_REGISTRATION_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-contents: write
           permission-pull-requests: write
       - name: Reconcile release requests and registrations
         env:
           DISPATCH_TOKEN: ${{ steps.dispatcher.outputs.token }}
           REGISTRATION_TOKEN: ${{ steps.registrar.outputs.token }}
-          CHECK_DISPATCH_TOKEN: ${{ github.token }}
-          REGISTRATION_BOT: ${{ vars.REGISTRY_REGISTRATION_BOT }}
+          GH_TOKEN: ${{ github.token }}
           GOWORK: "off"
           GOTOOLCHAIN: local
           GIT_TERMINAL_PROMPT: "0"

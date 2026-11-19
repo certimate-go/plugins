@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths: ['registry/**']
   workflow_dispatch:
+  schedule:
+    - cron: '3,33 * * * *'
 
 permissions:
   actions: read
@@ -55,8 +57,8 @@ jobs:
         with:
           owner: certimate-go
           repositories: plugins
-          client-id: ${{ vars.REGISTRY_MARKET_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_MARKET_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-contents: write
       - name: Fast-forward the protected market branch
         if: steps.stage.outputs.changed == 'true'

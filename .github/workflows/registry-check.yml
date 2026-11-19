@@ -1,6 +1,8 @@
 name: Check automatic registration
 
 on:
+  merge_group:
+    types: [checks_requested]
   workflow_dispatch:
     inputs:
       candidate_ref:
@@ -14,11 +16,27 @@ permissions:
   pull-requests: read
 
 concurrency:
-  group: registry-check-${{ inputs.candidate_ref }}
+  group: registry-check-${{ inputs.candidate_ref || github.event.merge_group.head_ref }}
   cancel-in-progress: false
 
 jobs:
+  relay:
+    if: github.event_name == 'merge_group' && github.repository == 'certimate-go/plugins' && github.event.merge_group.base_ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: write
+    steps:
+      - name: Dispatch a protected check for the merge group
+        env:
+          CANDIDATE_REF: ${{ github.event.merge_group.head_ref }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [[ "$CANDIDATE_REF" =~ ^refs/heads/gh-readonly-queue/main/pr-[1-9][0-9]*-[0-9a-f]{7,40}$ ]]
+          gh workflow run registry-check.yml --repo "$GITHUB_REPOSITORY" --ref main -f "candidate_ref=$CANDIDATE_REF"
+
   verify:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     environment: registry-evidence
@@ -48,15 +66,14 @@ jobs:
         with:
           owner: certimate-go
           repositories: ${{ steps.providers.outputs.names }}
-          client-id: ${{ vars.REGISTRY_DISPATCH_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_DISPATCH_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-actions: read
           permission-contents: read
       - name: Verify the GitHub candidate without checking it out
         id: verify
         env:
           CANDIDATE_REF: ${{ inputs.candidate_ref }}
-          REGISTRATION_BOT: ${{ vars.REGISTRY_REGISTRATION_BOT }}
           GH_TOKEN: ${{ github.token }}
           EVIDENCE_TOKEN: ${{ steps.evidence.outputs.token }}
           GOWORK: "off"
@@ -68,21 +85,22 @@ jobs:
     timeout-minutes: 5
     needs: verify
     environment: registry-check
+    permissions:
+      checks: write
+      actions: write
     steps:
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
-        id: token
-        with:
-          owner: certimate-go
-          repositories: plugins
-          client-id: ${{ vars.REGISTRY_CHECK_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_CHECK_APP_PRIVATE_KEY }}
-          permission-checks: write
       - name: Report a check for the verified SHA only
         env:
           SHA: ${{ needs.verify.outputs.sha }}
-          GH_TOKEN: ${{ steps.token.outputs.token }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           [[ "$SHA" =~ ^[0-9a-f]{40}$ ]]
           jq -cn --arg sha "$SHA" --arg details "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
             '{name:"plugin-registration",head_sha:$sha,status:"completed",conclusion:"success",details_url:$details}' |
             gh api --method POST "repos/$GITHUB_REPOSITORY/check-runs" --input - --jq .html_url
+      - name: Reconcile the verified pull request
+        if: startsWith(inputs.candidate_ref, 'refs/pull/')
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run registry-reconcile.yml --repo "$GITHUB_REPOSITORY" --ref main
