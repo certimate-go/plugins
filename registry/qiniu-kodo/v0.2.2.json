@@ -1,0 +1,97 @@
+{
+  "provider_type": "qiniu-kodo",
+  "repository": "certimate-go/plugin-provider-qiniu-kodo-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "044ddffb648b043d9772e1c11360341c5d4a1ac6",
+  "build_run_id": "44513864946",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 5934478,
+      "sha256": "3c6ba986e68e3178d0aabb4bd45cdcf845977e0d24c64cf3650428dc0ac2d143"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5609553,
+      "sha256": "50bccf9e01379b9328020ac646ecc90c7c706d79f9266a2b2d8592e55084143d"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 5914903,
+      "sha256": "41952296803dd48dbe2a84f5846d3f1dba641f934fb5d52f91ba0c7908a3d50d"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5580669,
+      "sha256": "ee72503e0347ac3da377c6012f2bff975f7757f2c06768830cd2817620733c29"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5338576,
+      "sha256": "3a6859e35cdbf5a9c83613262d3a3b5a97eca9d7e3473ea1da4cac4cbffe0c79"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5690624,
+      "sha256": "17792283f4edc95b12066ce07807bd92b106b6b9bb5ce60142083be41f29c5ef"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6060252,
+      "sha256": "5f203564d368f08e14ffec3b9654579cd964d4807088510584e83fa849977a9e"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5451419,
+      "sha256": "f3e6cddbdea366ecb4f3ef1fe343f4e58f69ded5382b2664b7650a04005a5797"
+    }
+  ],
+  "release_commit": "af9d41d4fa719f3703d91cb17e5e2630eb364951",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "qiniu-kodo",
+    "access_provider_type": "qiniu",
+    "capability": "deploy",
+    "display_name_key": "plugin.qiniu-kodo.name",
+    "category": "storage",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "qiniu-kodo.exe",
+    "icon": "qiniu.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Qiniu - Kodo"
+    },
+    "zh": {
+      "name": "七牛云 - 对象存储 Kodo"
+    }
+  },
+  "icon": "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"
+}
