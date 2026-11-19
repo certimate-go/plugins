@@ -13,7 +13,6 @@ elif [[ ! "$CANDIDATE_REF" =~ ^refs/heads/gh-readonly-queue/main/pr-[1-9][0-9]*-
     die 'Not a GitHub pull merge or merge-queue ref'
 fi
 
-[[ -n "$REGISTRATION_BOT" ]] || die 'REGISTRY_REGISTRATION_BOT must name the registrar App bot'
 [[ -n "$EVIDENCE_TOKEN" ]] || die 'Missing read-only provider evidence token'
 [[ "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]] || die 'Invalid protected registry revision'
 git --no-replace-objects fetch --no-tags origin refs/heads/main:refs/remotes/origin/main
@@ -23,8 +22,8 @@ base="$(git --no-replace-objects rev-parse --verify 'refs/remotes/origin/main^{c
 [[ "$base" == "$GITHUB_SHA" ]] || die 'Protected registry changed; dispatch the check again from main'
 if [[ -n "$pull_id" ]]; then
     pull="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$pull_id")"
-    head="$(jq -er --arg repo "$GITHUB_REPOSITORY" --arg bot "$REGISTRATION_BOT" '
-        select(.state == "open" and .draft == false and .user.login == $bot and .base.ref == "main" and
+    head="$(jq -er --arg repo "$GITHUB_REPOSITORY" '
+        select(.state == "open" and .draft == false and .user.login == "certimate-plugin-dispatcher[bot]" and .base.ref == "main" and
             .base.repo.full_name == $repo and .head.repo.full_name == $repo) | .head.sha' <<<"$pull")"
     [[ "$head" =~ ^[0-9a-f]{40}$ ]] || die 'Invalid registrar pull request head'
     actual_parents="$(git --no-replace-objects rev-list -n 1 --parents "$candidate")"

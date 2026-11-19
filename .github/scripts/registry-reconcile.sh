@@ -7,7 +7,7 @@ die() {
 }
 
 [[ "$GITHUB_REPOSITORY" == certimate-go/plugins && "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]] || die 'Expected protected registry checkout'
-[[ -n "$DISPATCH_TOKEN" && -n "$REGISTRATION_TOKEN" && -n "$CHECK_DISPATCH_TOKEN" && -n "$REGISTRATION_BOT" ]] || die 'Missing scoped registry credentials'
+[[ -n "${DISPATCH_TOKEN:-}" && -n "${REGISTRATION_TOKEN:-}" && -n "${GH_TOKEN:-}" ]] || die 'Missing scoped registry credentials'
 policy=registry/_policy/admissions.json
 registry_git() { git --no-replace-objects "$@"; }
 
@@ -23,7 +23,6 @@ existing_ref() {
 
 provider_api() { GH_TOKEN="$DISPATCH_TOKEN" gh api "$@"; }
 registrar_api() { GH_TOKEN="$REGISTRATION_TOKEN" gh api "$@"; }
-registry_api() { GH_TOKEN="$CHECK_DISPATCH_TOKEN" gh api "$@"; }
 
 dispatch_request() {
     local repo="$1" trigger="$2" title="Release " status active
@@ -43,7 +42,7 @@ dispatch_request() {
 queue_or_check_registration() {
     local pull_id="$1" commit="$2" pull node queued candidate approved
     local candidate_ref="refs/pull/$pull_id/merge"
-    pull="$(registrar_api "repos/$GITHUB_REPOSITORY/pulls/$pull_id")"
+    pull="$(gh api "repos/$GITHUB_REPOSITORY/pulls/$pull_id")"
     node="$(jq -er --arg sha "$commit" '
         select(.state == "open" and .draft == false and .head.sha == $sha) | .node_id
     ' <<<"$pull")" || die 'Registration pull request head changed'
@@ -57,9 +56,9 @@ queue_or_check_registration() {
     candidate="$(existing_ref origin "$candidate_ref")"
     if [[ -n "$candidate" ]]; then
         [[ "$candidate" =~ ^[0-9a-f]{40}$ ]] || die 'Invalid registration merge candidate'
-        approved="$(registry_api --paginate --slurp \
+        approved="$(gh api --paginate --slurp \
             "repos/$GITHUB_REPOSITORY/commits/$candidate/check-runs?check_name=plugin-registration&status=completed&per_page=100" |
-            jq '[.[].check_runs[] | select(.conclusion == "success")] | length > 0')"
+            jq '[.[].check_runs[] | select(.app.slug == "github-actions" and .conclusion == "success")] | length > 0')"
         if [[ "$approved" == true ]]; then
             [[ "$(existing_ref origin "$candidate_ref")" == "$candidate" &&
                "$(existing_ref origin refs/heads/main)" == "$GITHUB_SHA" ]] || die 'Registration merge candidate changed'
@@ -68,7 +67,7 @@ queue_or_check_registration() {
             return
         fi
     fi
-    GH_TOKEN="$CHECK_DISPATCH_TOKEN" gh workflow run registry-check.yml --repo "$GITHUB_REPOSITORY" --ref main \
+    gh workflow run registry-check.yml --repo "$GITHUB_REPOSITORY" --ref main \
         -f "candidate_ref=$candidate_ref"
 }
 
@@ -119,10 +118,10 @@ register_release() {
         commit="$current"
     fi
 
-    pull="$(registrar_api "repos/$GITHUB_REPOSITORY/pulls?state=all&head=certimate-go:$branch&base=main&per_page=10")"
-    pull_id="$(jq -er --arg sha "$commit" --arg bot "$REGISTRATION_BOT" '
+    pull="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=all&head=certimate-go:$branch&base=main&per_page=10")"
+    pull_id="$(jq -er --arg sha "$commit" '
         if length == 0 then "" else
-        .[0] | select(.state == "open" and .head.sha == $sha and .user.login == $bot) | .number
+        .[0] | select(.state == "open" and .head.sha == $sha and .user.login == "certimate-plugin-dispatcher[bot]") | .number
         end' <<<"$pull")" || die 'Existing registration pull request is closed or conflicts with this release'
     if [[ -z "$pull_id" ]]; then
         pull_id="$(registrar_api --method POST "repos/$GITHUB_REPOSITORY/pulls" \
@@ -149,7 +148,7 @@ case "${1:-}" in
         git ls-remote --heads --refs origin 'refs/heads/gh-readonly-queue/main/*' >"$scratch/queue"
         while IFS=$'\t' read -r _ ref; do
             if [[ "$ref" =~ ^refs/heads/gh-readonly-queue/main/pr-[1-9][0-9]*-[0-9a-f]{7,40}$ ]]; then
-                GH_TOKEN="$CHECK_DISPATCH_TOKEN" gh workflow run registry-check.yml --repo "$GITHUB_REPOSITORY" --ref main \
+                gh workflow run registry-check.yml --repo "$GITHUB_REPOSITORY" --ref main \
                     -f "candidate_ref=$ref" || result=1
             fi
         done <"$scratch/queue"

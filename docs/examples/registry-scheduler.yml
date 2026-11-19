@@ -28,8 +28,8 @@ jobs:
         with:
           owner: certimate-go
           repositories: plugins
-          client-id: ${{ vars.REGISTRY_SCHEDULER_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_SCHEDULER_APP_PRIVATE_KEY }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-actions: write
       - name: Dispatch and record the central workflow run
         env:
