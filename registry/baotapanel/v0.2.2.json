@@ -1,0 +1,97 @@
+{
+  "provider_type": "baotapanel",
+  "repository": "certimate-go/plugin-provider-baotapanel-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "0d23b18fa1f2f65f251e0002c42a92ee76f873b2",
+  "build_run_id": "44512113856",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6271400,
+      "sha256": "72ff29155bb9a37df9742b931e172cc49d59b3f539d2011da3d78807b9d44eb4"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5905004,
+      "sha256": "c0eeb3548e5a37d8bcd4403c02ba12864daeb31838439e47ac5f9fda5436e446"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6224892,
+      "sha256": "f8a78710d100d71e9d4419f86ec9a970338946a134420f89fc3da61b29187ffb"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5872499,
+      "sha256": "b74438fcb619b04da40e6c38a5c24908411b3b69fb9a23ceb6e947d26d0138b4"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5622522,
+      "sha256": "4480e724763834af4888fc2ea81bdb34af387257f0d8d41ab671f290a9265dbd"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5997113,
+      "sha256": "09301b231938104379744fb2e4488de95e49cfe6ec34c1f11ff6da859f0850e8"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6369290,
+      "sha256": "cf7b4df63d2d5b46a59d2ba365cb239c9a7c8ec82ee253a6a17eda988ffe6fae"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5733813,
+      "sha256": "bf62155df1af85810d8a3e62b7b217727f7575d50954983dfab1e02220045d01"
+    }
+  ],
+  "release_commit": "1f174a345ca979e20002a8b46c8c9b01c9e71250",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "baotapanel",
+    "access_provider_type": "baotapanel",
+    "capability": "deploy",
+    "display_name_key": "plugin.baotapanel.name",
+    "category": "website",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "baotapanel.exe",
+    "icon": "baota.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "aaPanel"
+    },
+    "zh": {
+      "name": "宝塔面板"
+    }
+  },
+  "icon": "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"
+}
