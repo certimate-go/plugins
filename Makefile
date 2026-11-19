@@ -58,7 +58,7 @@ tidy:
 	go mod tidy
 
 index:
-	go run ./cmd/genindex -o index.json
+	go run ./cmd/genindex -ready "$(READY)" -out-dir "$(INDEX_STAGE)"
 
 clean:
 	rm -rf $(OUTPUT_DIR)

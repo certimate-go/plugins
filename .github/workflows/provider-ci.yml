@@ -1,0 +1,43 @@
+name: Test provider source
+
+on: workflow_call
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GOWORK: "off"
+      GOTOOLCHAIN: local
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          persist-credentials: false
+          sparse-checkout: cmd/pluginlint
+          path: controller
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          fetch-depth: 1
+          fetch-tags: false
+          persist-credentials: false
+          submodules: recursive
+          path: provider
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: controller/go.mod
+          cache: false
+      - name: Lint provider metadata and repository name
+        working-directory: controller
+        run: go run -mod=readonly ./cmd/pluginlint -repository "${GITHUB_REPOSITORY:?}" ../provider
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: provider/go.mod
+          cache-dependency-path: provider/go.sum
+      - name: Test provider
+        working-directory: provider
+        run: go test -mod=readonly ./...

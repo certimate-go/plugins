@@ -1,61 +1,28 @@
 # Releasing a plugin
 
-Plugins are released automatically by the `release` workflow on every push to
-`main`. There is no manual release step.
+## Releasing an official provider
 
-## How to ship a change
+1. Update `manifest.json` in the provider repository. Give every change to
+   the package or its metadata a new stable `major.minor.patch` version.
+2. Merge the release source into the protected `main` branch. Create and
+   push `vX.Y.Z-detach` at that source commit.
+3. In GitHub Actions, follow the **Release provider** run. The tag push
+   dispatches the build on protected `main`. The workflow builds eight
+   platform ZIPs and creates the immutable `vX.Y.Z` tag with the ZIPs and
+   release metadata under `build/`.
+4. The registry reconciliation workflow verifies the release and opens a PR
+   with the version metadata. After the PR merges, the publication workflow
+   generates the signed `index.json` and verifies it on the default CDN.
 
-1. Make your code change in the plugin directory.
-2. Bump the `version` field in `<plugin>/manifest.json` (semver: `major.minor.patch`).
-3. Push to `main` (via a pull request).
+You can delete the `-detach` tag after the registration PR merges.
+Retry a pending release through the protected reconciliation workflow. To
+fix an already tagged version, release a new version. The market publication
+job verifies the exact signed generation on the default CDN and reports
+`published` when it can be read.
 
-The workflow detects the changed plugin, cross-compiles it for every supported
-platform, packages each platform build as a ZIP archive (`<plugin>_<os>_<arch>.zip`)
-containing the plugin binary (named per the manifest `binary` field), the
-plugin's `manifest.json`, and its icon, computes a per-ZIP SHA256 checksum,
-publishes a GitHub Release tagged `<provider_type>/v<version>` with the ZIPs as
-assets, writes a `release` block into the plugin's `manifest.json`, and
-regenerates `index.json`. The certimate market consumer reads that index to
-resolve, verify, and extract downloads.
-
-## The version-bump rule
-
-A build-affecting change (Go source, `go.mod`/`go.sum`, anything under
-`schema/`) **must** bump the plugin's `version`. If it does not, the workflow
-fails the run with an actionable message, because the release tag
-`<provider_type>/v<version>` already exists. A forgotten bump must never result
-in a changed plugin silently not shipping.
-
-Changes to the root `go.mod`, `go.sum`, `Makefile`, or shared `internal/` and
-`pkg/` code select every tracked plugin for rebuilding. Bump every affected
-plugin version before pushing those changes. Local test fixtures are excluded.
-
-Protocol 4 plugins are built against the core `next` branch. Existing plugins
-move to version `0.2.0`; the sixteen new purge plugins start at `0.1.0`. Their
-minimum core version stays empty while `next` still reports `0.4.37`;
-`protocol_version: 4` rejects incompatible hosts. Pin the minimum version when
-the first protocol 4 core release is available. A plugin without a matching
-release block is selected for its first publication on the next workflow run.
-
-## Metadata-only changes
-
-Changes that do not affect the compiled binary — display name, icon, `usages`,
-`priority` — do **not** need a version bump. The workflow regenerates
-`index.json` so the metadata update is reflected, but no new release is cut.
-
-## Trust preconditions
-
-The whole integrity model rests on `main` staying trusted: the workflow
-auto-publishes executable binaries and auto-commits the consumer-fetched
-`index.json` on every push. Keep `main` under branch protection — no direct
-pushes, pull requests require review, and tag pushing is restricted. The bot
-commits use the default `GITHUB_TOKEN`, which does not re-trigger the workflow.
-
-## Force a release
-
-To release one or more plugins without a code change, run the workflow from the
-Actions tab (`workflow_dispatch`) and pass the plugin directories in the
-`plugins` input.
+See the [migration inventory](provider-migration.md) for provider status and
+the [release contract](release-contract.md) for protected workflows, GitHub
+Apps, and the signature policy.
 
 ## Distributing from your own market
 

@@ -1,0 +1,152 @@
+name: Build and publish provider artifacts
+
+on:
+  workflow_call:
+    inputs:
+      trigger_tag:
+        description: Release request tag, vX.Y.Z-detach
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: provider-artifacts-${{ github.repository }}-${{ inputs.trigger_tag }}
+  cancel-in-progress: false
+
+env:
+  GOWORK: "off"
+  GOTOOLCHAIN: local
+  TRIGGER_TAG: ${{ inputs.trigger_tag }}
+  DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+  GIT_TERMINAL_PROMPT: "0"
+
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    outputs:
+      source: ${{ steps.trigger.outputs.source }}
+      present: ${{ steps.trigger.outputs.present }}
+    steps:
+      - name: Require the protected default workflow
+        env:
+          CONTROLLER_REF: ${{ job.workflow_ref }}
+        run: |
+          [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]
+          [[ "$DEFAULT_BRANCH" == main && "$GITHUB_REF" == refs/heads/main && "$GITHUB_REF_PROTECTED" == true ]]
+          [[ "$CONTROLLER_REF" == certimate-go/plugins/.github/workflows/provider-release.yml@refs/heads/main ]]
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          persist-credentials: false
+          path: controller
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: controller/go.mod
+          cache: false
+      - name: Resolve trigger and check existing formal tag
+        id: trigger
+        run: bash controller/.github/scripts/provider-release.sh prepare
+
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    needs: prepare
+    if: needs.prepare.outputs.present == 'false'
+    outputs:
+      artifact: ${{ steps.transfer.outputs.artifact-id }}
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          persist-credentials: false
+          path: controller
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ needs.prepare.outputs.source }}
+          persist-credentials: false
+          submodules: recursive
+          path: provider
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: controller/go.mod
+          cache: false
+      - name: Build platform ZIPs without release credentials
+        working-directory: controller
+        env:
+          SOURCE_SHA: ${{ needs.prepare.outputs.source }}
+        run: |
+          go run ./cmd/providerrelease -source-dir ../provider -repository "$GITHUB_REPOSITORY" \
+            -trigger-tag "$TRIGGER_TAG" -source-sha "$SOURCE_SHA" -run-id "$GITHUB_RUN_ID"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        id: transfer
+        with:
+          name: provider-release-${{ github.run_id }}-${{ github.run_attempt }}
+          path: provider/build/
+          if-no-files-found: error
+          retention-days: 3
+          compression-level: 0
+
+  publish:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    needs: [prepare, build]
+    if: needs.build.result == 'success' && needs.prepare.outputs.present == 'false'
+    environment: provider-release
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: ${{ job.workflow_repository }}
+          ref: ${{ job.workflow_sha }}
+          persist-credentials: false
+          path: controller
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
+        with:
+          go-version-file: controller/go.mod
+          cache: false
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333
+        with:
+          artifact-ids: ${{ needs.build.outputs.artifact }}
+          path: validated-output
+          digest-mismatch: error
+      - name: Build the release tree without checking out provider source
+        id: stage
+        env:
+          SOURCE_SHA: ${{ needs.prepare.outputs.source }}
+        run: bash controller/.github/scripts/provider-release.sh stage
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        id: token
+        if: steps.stage.outputs.present == 'false'
+        with:
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.event.repository.name }}
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
+          permission-contents: write
+      - name: Create the immutable formal tag
+        if: steps.stage.outputs.present == 'false'
+        env:
+          RELEASE_SHA: ${{ steps.stage.outputs.release }}
+          SOURCE_SHA: ${{ needs.prepare.outputs.source }}
+          GH_TOKEN: ${{ steps.token.outputs.token }}
+        run: bash controller/.github/scripts/provider-release.sh push
+      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
+        id: registry
+        if: steps.stage.outputs.present == 'false'
+        continue-on-error: true
+        with:
+          owner: certimate-go
+          repositories: plugins
+          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
+          permission-actions: write
+      - name: Dispatch registry reconciliation
+        if: steps.registry.outcome == 'success'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ steps.registry.outputs.token }}
+        run: gh workflow run registry-reconcile.yml --repo certimate-go/plugins --ref main
