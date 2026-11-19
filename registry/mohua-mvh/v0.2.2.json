@@ -1,0 +1,97 @@
+{
+  "provider_type": "mohua-mvh",
+  "repository": "certimate-go/plugin-provider-mohua-mvh-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "95f021d9a22ef6f62d3e63dd54ebe11c0d419ec5",
+  "build_run_id": "44513741413",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6080904,
+      "sha256": "a4f4199437eac514c6ece19df94e7043fc5ce26958a7bf8a858c30b4fa8c8c65"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5735057,
+      "sha256": "c98dc3ebb9e4b5ef70eef01945f16548ff1c8fc23af9fa52a1a47bbb48faf5b1"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6053124,
+      "sha256": "c4c08716b4ade5f6169dae05656e975fa3a73e7cd4a740ae4309189b7735cf02"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5729481,
+      "sha256": "1adf9fdfe26ec07554ca137a1959b7fab704201ec747502e15e098b0b5d66e76"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5471271,
+      "sha256": "19977482e343fd0553626bdbfa986039f11d161e3311a66957a4f7ff458b6183"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5835536,
+      "sha256": "e91243e719f3e5f27f03a9a1a994a9e6304199b9d4edfd7a2a6982a53515859e"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6197180,
+      "sha256": "d8fb98ad41691fbb900b4ba2f46a177e05a998721e2e6d2cee41cdc779c686c3"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5564356,
+      "sha256": "53b8585c71fbc7e45d911747b8819656cd6645528c1f656d593e8413eec6292b"
+    }
+  ],
+  "release_commit": "30ebc2951193c7edbb4428b4c06eb584ef026339",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "mohua-mvh",
+    "access_provider_type": "mohua",
+    "capability": "deploy",
+    "display_name_key": "plugin.mohua-mvh.name",
+    "category": "website",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "mohua-mvh.exe",
+    "icon": "mohua.png",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Mohua - MVH (Virtual Host)"
+    },
+    "zh": {
+      "name": "嘿华云 - 虚拟主机 MVH "
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAwBQTFRFRsHBdpLDhZ/K2uDgEN7eZo/Rsr/TLnTp6OrutsHU0tbdt9LSFW7/2+LvZcnJANbWAFn7KnbyvcbVyc7VpLLKbZbbJHLzNnrtQ3nV3eDkXIzb/f39vsTOVondDmn/KdraztLZ2dzhCt7eEm3/v8bRCuXl9fb3w8nUC+npY+rqtLzKC2z/larLUYPYTYLa6ersscbpeZzWY53/4OPnRX/j1Njfmq7Ro7XS////1trgiaPNHm7y+/v7Gmz/5Obq4ubmBOLiGnH/N33z8PHy3+XlPX3mM3bl6PPzQX3jqrnS+Pj4BGH/RoDk7e/xHXL+Fd7ePXriUobcYY7a6u3tF3D/OHvqr7zSb5TShaDOWNHRAFn/gZ7QF234MHft6+zv5+ns4uXoxM7dvMbYrrvQco/B297kgZvHc5fSeZTDVofYTobkdZfPSYLkCWr/BGX/C2v/Cmn/AGD/pr3k/f7/CWT/IXT/SH3VCmj/Cmb/BNvbCmf/ZJHc2+zsCmr/eZXEC2r/OHfhCmv/C2j/7O3vZ5Pd8/T0C2n/CWb/EGv/q7jPCWj/AF//Ct3dTIThv8naIGXlzdPcbozHG2nvy9Lc1+T619vhVc/Pd5PCdZrYapLUiKHL5ujrdJTIwszcp7/9n7LQoK/IL+HhKXb5+fn5InL7JHT42+PvntTURXrYDGz/IHH23O3tDODgD+bmInT+Xpj/XuXlnrf2eZrQF2r1vMTUuMTXOoDzE9PTuL/M2d/fQ4Lq2OLicNbWYpDcmMH7qLbNSsPDjMbGqrzZCtvbLXn0jafSfJfF2OvrZJv5ytDabJjewdn8xdLnztXeF+Hh3Oj+PnbT3N/kUMHBWcfHdJHCp77jxMvZ1+Tk9vn5d5jQnq3Hm63MVYrj0dnn3eLiGXD6CGD4HnL75PLyfZjGIHb9C+3tDunpCufnapHTbJHP6+7ubpTVkKjRjaTKjaTN4+jo6evup77kPn3h6OzzcpPLd6DicJPOeZTHepXESX3WSn7WwMrbN9XVCtzcCmX/////RdVYHwAAAQB0Uk5T////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AFP3ByUAAAUdSURBVHja7N15WBR1HMdxowKhTVtAETaQZYO2hsOCLAjFZaWsuFRcVEAUNEXFWTqcaYymBVQELTvIysqKqLTbtLvsPuy+79PK7KTL8ilmEnt4noIeZn7ym9/QPJ/3w5888Hvt7AzsfH/P7hDVIg0BBBBAAAEEEEAAAQQQQAABBBBAAAFkfyAn33mUdg/dNNGoBXU+/uuzx2p2x/OakGeGn6PdhAm3DptqBCN7evmSJadpN/MRTci5w7v0tHrndW/Td3hTOVHRU90ZtCBdXYmjqR8TRwqvKMwhXe5htCFjOcUMSNeXD9J1JF0vmQNxP0YXEh5QzIEkvk4XksWbBaH81/Q8QAABBBBAAAEEEEAAAQQQQAABBJD/D+QWq0A+swrknXsTrAFRX0u0COSQL8yCLKALUWe4nzAHslumC/n6T7c5kMl+uhB16gx3YsLqBM120oUsHylRhuw9Ty4b/VJRUdFB/Xfbo1QhPv2niG7I3ofnh5yciR8d2G/351AdIOYJRkDYN3ajYglI5sciCeTHwQpJr/ArJJAxgxTylr2BxKG0fjgoIY1lrhYih3hx0qCDJK0Pf7eDV8jiflPpQNYmX9W0rJ+atpfOXfD06UFZ318ZFLRjx+/r3pg7YvuIpmUPT4mJqalJSUnds3TUqFeK78nNzbWPq5VFQofQMYsKpG0Nz/H+/pP5Xskr+nyPIHVHqlAUyVWl0oCEfV6vmJjE2UNVGpD2aX5GSxZlvr5PcRVlaSoViI9j5Kjv2LXh6J7uO+Lvjmxr/+9lkUOmyGwOR2D+LJJlEUMcURITSCCZbF3EEO+JTCByqWowpNImsrg0bWo0GpJ2N4sjIu9WDYeUszgi3CmGQ4aWMLn0hlsE4j8cEEAAAQQQQAABhKBOq0Bmu5i8PtxqOCScyb0g/jvDId8wufcgTDIaMo/J6ypF2RhsLKT9AYGJQ5FGjjcSUlDD5qZW93Vr2jyjII709ytq2d3jFT7NcmYPFOKtXhS7cHFG8aT8jO6Kz+8uxMZLCsNE3hWy7xcXZ/S0eOEHu45P0w/ZYOd5v9A7SVRYJ/VZhCBzm7IcOiGXcwN75MWelH1fvaIwV6g5VRfkKfLb7cI/5joBSZIa4ppdNpvHU1hY6PF4Smw2m6s5Li6uoXuwIwT4wL9GQAKxjftKD8TpIvzBoiznlX77XuS2VdXBoVV/zImIiA/LdEanj69sLPAWNHZWrp+dHv2qsy0zLCw+PiIiYs7VF1RtDQ0Orl61LTLy2uRF+TaelMJt0QG5iHAyKbiuWDuweWj09MIVhNfmm7Uh2ReSnSBy3osUtgvEEj6dPxmqCfn5MLL/7mKWU5lSbyZ7HtS9oAm5kQhSH+ugNG/fTHRMWsfQhUhPeqntHFhDMmPVsTuICML76G2BcJJMkChDGvJpbuaYL5sGIR/H9LsRodksiFieRhPiiBJMgkhRdDcKxfhNgviX0oX8IlsEso63COQAQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABhClkD12IeXsaY+lCgsyC8GV0IT6zIPXP0YU0ekRTIHKqSrljODMgUkkbbYhX9xua6oAcqhPit4Wq1DvOrvOzHeve1IRcOvMs7Va2BH66RDWg9Mm1LSt1LKD1Lk3Iy+PO1uz2kBhftmpMWw4+6QbtFXiu0YSccKaeVAPbvxXgQ7QBAQQQQAABBBBAAAEEEEAAAQQQQPT0lwADAJDIXzmo6YKuAAAAAElFTkSuQmCC"
+}
