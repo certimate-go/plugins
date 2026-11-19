@@ -1,0 +1,97 @@
+{
+  "provider_type": "baotawaf",
+  "repository": "certimate-go/plugin-provider-baotawaf-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "ed381745812f4c9e92cec1376603a2fb9151bf9e",
+  "build_run_id": "44512545492",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6252570,
+      "sha256": "38705fa12190ba8a8987b0fcbfd9489e31d5831059ebbb1b48cff31a0a0f1ff8"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5875927,
+      "sha256": "af3fb84ae65162ec389e6b4d57725bdc321f4b8358c5a5bbaaefaf0d4f577ef6"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6223910,
+      "sha256": "ed9206fdf2c203a79e73ea35e92089f2b5553e500f0e056195fd72673a00ab18"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5881204,
+      "sha256": "ebde7fe972ac8de56578859ed93eb97ff183c4ec4c4e3ce8ed2c3e734109f109"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5635680,
+      "sha256": "1c09c491341ee05c385837af76164a65f860b4a0fa42edac646cf437e897c92d"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5982000,
+      "sha256": "829f899573067f419beeffb7ecd0c595cfa85857e3aeeb678f6c81dbf9f61e68"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6377716,
+      "sha256": "e11ea1824b1a256b588e902ab65ac5c8293ffa55ef65efdd2a9c343326dc9cc2"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5728958,
+      "sha256": "44bdaaa96aad9bbac97e78271bcee53fa297347db3a548173265ae52d06adfe3"
+    }
+  ],
+  "release_commit": "5bd4896eb8a8b3744cf5b45267690aba51f192a5",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "baotawaf",
+    "access_provider_type": "baotawaf",
+    "capability": "deploy",
+    "display_name_key": "plugin.baotawaf.name",
+    "category": "firewall",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "baotawaf.exe",
+    "icon": "baota.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "aaWAF"
+    },
+    "zh": {
+      "name": "堡塔云 WAF"
+    }
+  },
+  "icon": "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"
+}
