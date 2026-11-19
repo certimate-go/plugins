@@ -378,8 +378,9 @@ python3 .github/scripts/provision-migration.py batch.json \
 
 Use an organization admin credential that can manage repositories and the
 release App's selected repositories. Provisioning gives the App access to
-each provider repository. The protected release job obtains its credential
-from the registry environment.
+each provider repository. If the API denies that operation, select the
+provider repositories in the existing App installation and rerun provisioning.
+The protected release job obtains its credential from the registry environment.
 
 The protected workflow validates each target and saves its exact batch as an
 Actions artifact. The bot opens a PR with the new admission mappings and a

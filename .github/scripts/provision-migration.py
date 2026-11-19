@@ -66,6 +66,14 @@ def provision(entry, directory, templates, installation_id):
     elif branch["commit"]["sha"] != entry["target_commit"]:
         raise RuntimeError(f"Protected source commit differs for {repo}")
 
+    installation_denied = False
+    try:
+        api(f"user/installations/{installation_id}/repositories/{metadata['id']}", "PUT")
+    except RuntimeError as error:
+        if "HTTP 403" not in str(error):
+            raise
+        installation_denied = True
+
     existing = {
         rule["name"]: rule["id"]
         for rule in api(endpoint + "/rulesets")
@@ -73,13 +81,17 @@ def provision(entry, directory, templates, installation_id):
     }
     for name, template in templates.items():
         if name not in existing:
-            api(endpoint + "/rulesets", "POST", template)
+            try:
+                api(endpoint + "/rulesets", "POST", template)
+            except RuntimeError as error:
+                if name == "Formal plugin tag writer" and installation_denied and "HTTP 422" in str(error):
+                    raise RuntimeError(f"Select {repo} in the release App installation, then rerun") from error
+                raise
             continue
         remote = api(f"{endpoint}/rulesets/{existing[name]}")
         if {field: remote[field] for field in RULE_FIELDS} != template:
             raise RuntimeError(f"Unexpected ruleset {name} in {repo}")
 
-    api(f"user/installations/{installation_id}/repositories/{metadata['id']}", "PUT")
     branch = api(endpoint + "/branches/main")
     if not branch["protected"] or branch["commit"]["sha"] != entry["target_commit"]:
         raise RuntimeError(f"Expected protected target revision in {repo}")
