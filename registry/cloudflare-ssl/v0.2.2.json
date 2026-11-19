@@ -1,0 +1,97 @@
+{
+  "provider_type": "cloudflare-ssl",
+  "repository": "certimate-go/plugin-provider-cloudflare-ssl-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "fb19f72890060d91c9bb9735ec1b6c6c1bc94892",
+  "build_run_id": "44513663033",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6259624,
+      "sha256": "3f1fd18a6b8b6f011c788f3651d4ee6d2e11ed97d058d7eace6a4425a2b56b1a"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5885685,
+      "sha256": "269f2d7130f90fab1406ee6f6b25ada32311d72c32a568348c5392100ff50a09"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6213640,
+      "sha256": "2860e7b757275c46c70d0f6907f155f5d13418e9102fcdec0983d526adc4519a"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5884867,
+      "sha256": "0a50b8e6197bcf2f3a10baab8ab820a7f2d548dadc9310086ad4e517008d84d2"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5612422,
+      "sha256": "bfc834b45cd7660aa841a3417354d8ae8dcd14a38323e5ea9ac12d2955b32993"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5979018,
+      "sha256": "4859b17148ee5ed409b3501663a899bb2bbcb40f55f5d40935bf3c6a2f7cb485"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6370963,
+      "sha256": "4a487decc87b81cd1587075c7cc362848c57fc26269a565f446a6c33aea2c847"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5699786,
+      "sha256": "d6d410dc31d8d1e8a3b1fca653671bae7b1982485bdf2b28362b3e50a348d897"
+    }
+  ],
+  "release_commit": "13df2defb2ca7f56beac37976e2ebf885806b803",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "cloudflare-ssl",
+    "access_provider_type": "cloudflare",
+    "capability": "deploy",
+    "display_name_key": "plugin.cloudflare-ssl.name",
+    "category": "ssl",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "cloudflare-ssl.exe",
+    "icon": "cloudflare.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Cloudflare - Edge Certificates"
+    },
+    "zh": {
+      "name": "Cloudflare - 边缘证书"
+    }
+  },
+  "icon": "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"
+}
