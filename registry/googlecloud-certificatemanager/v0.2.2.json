@@ -1,0 +1,97 @@
+{
+  "provider_type": "googlecloud-certificatemanager",
+  "repository": "certimate-go/plugin-provider-googlecloud-certificatemanager-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "879a20f36de2facf54972df889fb530510961ece",
+  "build_run_id": "44513765826",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6829282,
+      "sha256": "248b195fc1b90f00d9e57ab4f45972d44c02dcd462dfe4ab0d536e15cb46803c"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6452403,
+      "sha256": "ef62cc6d34c85e6bc7f66655775257ee622d461521daf6b2f0d811bb0ed8e7b1"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6814883,
+      "sha256": "0933ed63c366529acf35aa488a8330160ff4177f384e1de4c6195938817d1f34"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6413509,
+      "sha256": "3181c6643e65fedc660f75b87fd9f667965dfcc34f75efc82fbdb01752081b6e"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 6168202,
+      "sha256": "5df13ca44918be07b2a7d416f8e7863ae30382cab21c551a5658210b0adbf689"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6537805,
+      "sha256": "8597716d87dd4d1e5837e2e5873256e4c098fe67427732df6cf5e2a4cd619032"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6960197,
+      "sha256": "6ecc2b6cb24cd5f600d4ad05e96aa5f89b4742ab9d5553a99b989cb3e214f69a"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 6262572,
+      "sha256": "311065dd14f16a3f18998913b812fdddeccdc21463c854a467996aa061b5072f"
+    }
+  ],
+  "release_commit": "e93339b8c22bcd0ba3efb546255a5720ebab1c40",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "googlecloud-certificatemanager",
+    "access_provider_type": "googlecloud",
+    "capability": "deploy",
+    "display_name_key": "plugin.googlecloud-certificatemanager.name",
+    "category": "ssl",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "googlecloud-certificatemanager.exe",
+    "icon": "google.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Google Cloud - Certificate Manager"
+    },
+    "zh": {
+      "name": "Google Cloud - 证书管理器"
+    }
+  },
+  "icon": "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"
+}
