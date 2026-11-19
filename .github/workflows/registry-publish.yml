@@ -9,7 +9,7 @@ on:
     - cron: '3,33 * * * *'
 
 permissions:
-  actions: read
+  actions: write
   contents: read
 
 concurrency:
@@ -60,14 +60,17 @@ jobs:
           client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
           private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-contents: write
-      - name: Fast-forward the protected market branch
+          permission-pull-requests: write
+      - name: Propose the signed snapshot on main
         if: steps.stage.outputs.changed == 'true'
         env:
-          MARKET_BASE: ${{ steps.stage.outputs.market_base }}
+          INDEX_EPOCH: ${{ steps.stage.outputs.epoch }}
+          INDEX_GENERATION: ${{ steps.stage.outputs.generation }}
           MARKET_COMMIT: ${{ steps.stage.outputs.market_commit }}
           GH_TOKEN: ${{ steps.publisher.outputs.token }}
-        run: bash .github/scripts/registry-publish.sh push
+        run: bash .github/scripts/registry-publish.sh propose
       - name: Confirm this snapshot and assets on the default CDN
+        if: steps.stage.outputs.changed == 'false'
         id: cdn
         env:
           MARKET_COMMIT: ${{ steps.stage.outputs.market_commit }}

@@ -133,7 +133,8 @@ func Generate(records fs.FS, ready []ReadyRelease) (Snapshot, error) {
 	}
 
 	for _, dir := range dirs {
-		if dir.Name() == "_policy" && dir.IsDir() {
+		if (dir.Name() == "_policy" || dir.Name() == "market") && dir.IsDir() ||
+			dir.Name() == "index.json" && dir.Type().IsRegular() {
 			continue
 		}
 		if !dir.IsDir() || admitted[dir.Name()] == "" {

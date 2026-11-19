@@ -177,7 +177,7 @@ registration requirement can be kept separate from maintainer review:
 - Require the merge queue and `plugin-registration` from GitHub Actions
   (integration ID `15368`). Start with build concurrency of two and allow
   enough time for reconciliation and ZIP verification. The checker accepts at most
-  32 registry additions per queue commit. GitHub's downstream merge limit
+  32 version registrations per queue commit, along with a verified signed publication. GitHub's downstream merge limit
   does not cap the commits sent for checks. Give only the maintainer team a
   pull-request-only bypass in this ruleset so reviewed policy and workflow
   changes can merge. The registrar has no bypass in either ruleset.
@@ -237,7 +237,7 @@ Restrict the `registry-publish` environment to protected `main`. Set
 `REGISTRY_INDEX_PUBLIC_KEYS_JSON` to the map of key IDs to base64 Ed25519
 public keys and `REGISTRY_INDEX_KEY_ID` to the active key ID. Store its
 base64 Ed25519 seed in the `REGISTRY_INDEX_SEED` environment secret. Keep
-keys needed to verify the current market tip in the map during rotation, and
+keys needed to verify the current publication on `main` in the map during rotation, and
 ship new trust keys to Core before signing with them. Configure
 `REGISTRY_INDEX_EPOCH`, `REGISTRY_INDEX_LIFETIME` and
 `REGISTRY_INDEX_RENEW_BEFORE` to match the host's trust policy. Measure
@@ -245,13 +245,18 @@ propagation on the default CDN and mainland mirrors before setting the
 renewal window and dispatch interval.
 
 Set `REGISTRY_RELEASE_APP_CLIENT_ID` and `REGISTRY_RELEASE_APP_PRIVATE_KEY`
-in the same environment. Allow only the release App to write `market` and
-forbid force pushes and deletion with a separate ruleset. The
-workflow rechecks `main` and the verified `market` tip before pushing one
-fast-forward commit containing the index and all addressed assets. The job
-reports `published` only after verifying that exact signed index and every
-asset it references on the default CDN. A job that reports `propagating`
-must be observed again.
+in the same environment. The release App opens a PR with the signed index and its addressed assets.
+The trusted checker reads `REGISTRY_INDEX_PUBLIC_KEYS_JSON` from the
+`registry-evidence` environment. Keep that map in sync with the publisher's
+map. The checker verifies the signature, current protected source commit,
+advancing generation, and asset digests before allowing the PR through the
+merge queue. When `main` advances, the publisher can propose a new snapshot
+for the current source. A scheduled run also retries publication.
+
+After the PR merges, the publisher checks
+`https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json`
+and its referenced assets. The job reports `published` when their bytes match
+the signed snapshot, or `propagating` while the CDN catches up.
 
 ### Withdrawal and recovery
 
@@ -268,9 +273,8 @@ plugins are neither removed nor downgraded by a catalog withdrawal.
 If an enabled mirror cannot serve the verified index or its files, switch the
 Core mirror setting to a healthy origin serving the current generation and
 refresh the official market. If publication is stale or failed, correct the
-problem and dispatch from current protected `main` against the current
-`market` tip. Keep the signed-index state in the Core database. Reverting the
-market ref, resetting the generation, or clearing the database could defeat
+problem and dispatch from current protected `main`. Keep the signed-index state in the Core database. Reverting the
+signed index, resetting the generation, or clearing the database could defeat
 the protection against stale snapshots.
 
 ### Signing key rotation
@@ -278,29 +282,29 @@ the protection against stale snapshots.
 For a scheduled rotation, the key custodian generates a new Ed25519 key under
 a new key ID. Add its public key alongside the current one to Core's built-in
 trust map and deploy that Core release to the affected environments. Keep the
-epoch. Add the new public key to `REGISTRY_INDEX_PUBLIC_KEYS_JSON`. Quiesce
+epoch. Add the new public key to `REGISTRY_INDEX_PUBLIC_KEYS_JSON` in both environments. Quiesce
 publisher runs while the custodian updates `REGISTRY_INDEX_KEY_ID` and
 `REGISTRY_INDEX_SEED`, then dispatch the publisher. The first snapshot signed
 by the new key increments the previous generation. Once mirror audits show
 the new snapshot and the old snapshot's validity window closes, remove the
-retired key from the publisher's map and a subsequent Core release.
+retired key from both environment maps and a subsequent Core release.
 
 If a key may have been exposed, stop publisher dispatches, disable the publish
-workflow, and cancel any in-flight signing runs. Confirm the current `market`
-tip and `main` ancestry using GitHub audit evidence. If the market ref itself
+workflow, and cancel any in-flight signing runs. Confirm the current signed index on `main` and its source ancestry using GitHub
+audit evidence. If the signed index
 may have been changed by an unauthorized actor, investigate and identify the
 last trusted publication before proceeding. Prepare a Core release which
 increments the built-in epoch and excludes the affected key. Configure the new
 key and matching epoch for the publisher and keep the old public key in the
-publisher's map temporarily to verify the protected market tip. Re-enable
+publisher and checker maps temporarily to verify the previous index. Re-enable
 publication, then verify a fast-forward snapshot at generation 1 of the new
 epoch on the default CDN and enabled mirrors. Roll out the updated Core. Core
 trusts a single epoch, so installations and updates may be unavailable during
 propagation and rollout. Previously installed plugins can continue to run.
-After the new tip is verified, remove the old public key from the publisher's
-map and keep the evidence with the incident record.
+After the new tip is verified, remove the old public key from both environment
+maps and keep the evidence with the incident record.
 
-For both procedures, retain the signing key ID, source and market commits,
+For both procedures, retain the signing key ID, signed source and publication commits,
 epoch, generation, expiration time, workflow run and mirror reports. Verify
 with an upgraded Core using an existing cache. For emergency rotation, confirm
 that the new epoch is accepted even if the cached old epoch has a higher
@@ -310,7 +314,7 @@ or update through the verified mirror.
 ### Mirror admission
 
 Run `registryctl audit-mirror` with trusted Git objects for the expected
-`market` commit and its signed source commit. Use the public key map
+publication commit on `main` and its signed source commit. Use the public key map
 from the signing environment. Run the command from each deployment network
 and supply a network label that identifies where the request originated.
 
@@ -329,7 +333,7 @@ redirect destination host and errors. An incomplete observation exits nonzero
 and still emits its report. An older index leaves a failed index observation;
 the command begins file downloads once the expected index is available.
 
-To measure withdrawal propagation, pass the new `market` commit and add
+To measure withdrawal propagation, pass the new publication commit on `main` and add
 `-withdrawn provider@vX.Y.Z` for each version being withdrawn. The command
 checks that the exact version is covered by the withdrawal policy in the
 signed source commit. It marks the withdrawal `confirmed` after the mirror
@@ -349,5 +353,5 @@ Do not merge the new index command while the old automatic Release workflow
 is enabled or still running. While its file is tracked on `main`, the signed
 publisher uses its read-only Actions token to check that the legacy workflow
 is manually disabled and its runs have drained. It repeats the check before
-writing `market`. Remove the legacy workflow as part of the completed
+proposing the publication PR. Remove the legacy workflow as part of the completed
 migration.

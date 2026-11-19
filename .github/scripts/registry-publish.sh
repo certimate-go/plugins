@@ -9,7 +9,7 @@ die() {
 [[ "$GITHUB_REPOSITORY" == certimate-go/plugins && "$GITHUB_SHA" =~ ^[0-9a-f]{40}$ ]] || die 'Expected protected registry checkout'
 [[ -n "$PUBLIC_KEYS" ]] || die 'Index trust keys are not configured'
 tools="$RUNNER_TEMP/registryctl"
-market_ref=refs/heads/market
+main_ref=refs/heads/main
 
 remote_ref() {
     local response code
@@ -23,7 +23,7 @@ remote_ref() {
 
 require_current_source() {
     [[ "$(git rev-parse --verify HEAD)" == "$GITHUB_SHA" &&
-       "$(remote_ref refs/heads/main)" == "$GITHUB_SHA" ]] || die 'Registry main advanced; rerun from the latest protected main'
+       "$(remote_ref "$main_ref")" == "$GITHUB_SHA" ]] || die 'Registry main advanced; rerun from the latest protected main'
 }
 
 require_legacy_release_stopped() {
@@ -52,35 +52,56 @@ case "${1:-}" in
         unset INDEX_SEED
         require_current_source
         require_legacy_release_stopped
-        market="$(remote_ref "$market_ref")"
-        if [[ -n "$market" ]]; then
-            git fetch --no-tags origin "$market_ref"
-            [[ "$(git rev-parse --verify 'FETCH_HEAD^{commit}')" == "$market" ]] || die 'Market moved while being fetched; retry'
-        fi
         [[ -n "$signing_seed" ]] || die 'Missing protected index signing seed'
         printf '%s' "$signing_seed" >"$working/seed"
         unset signing_seed
-        publication="$("$tools" stage-publication -source-sha "$GITHUB_SHA" -market-sha "$market" \
+        publication="$("$tools" stage-publication -source-sha "$GITHUB_SHA" -market-sha "$GITHUB_SHA" \
             -key-id "$INDEX_KEY_ID" -epoch "$INDEX_EPOCH" -public-keys "$working/keys.json" -key-file "$working/seed" \
             -lifetime "$INDEX_LIFETIME" -renew-before "$INDEX_RENEW_BEFORE")"
-        printf 'market_base=%s\nmarket_commit=%s\nchanged=%s\n' \
-            "$market" "$(jq -er .commit <<<"$publication")" "$(jq -r .changed <<<"$publication")" >>"$GITHUB_OUTPUT"
+        printf 'market_commit=%s\nchanged=%s\nepoch=%s\ngeneration=%s\n' \
+            "$(jq -er .commit <<<"$publication")" "$(jq -r .changed <<<"$publication")" \
+            "$(jq -er .epoch <<<"$publication")" "$(jq -er .generation <<<"$publication")" >>"$GITHUB_OUTPUT"
         jq -c '{commit,source_commit,key_id,epoch,generation,expires_at,changed,pending}' <<<"$publication"
         ;;
-    push)
-        [[ "$MARKET_COMMIT" =~ ^[0-9a-f]{40}$ && -n "$GH_TOKEN" ]] || die 'Missing staged snapshot or market App token'
+    propose)
+        [[ "$MARKET_COMMIT" =~ ^[0-9a-f]{40}$ && "$INDEX_EPOCH" =~ ^[1-9][0-9]*$ &&
+           "$INDEX_GENERATION" =~ ^[1-9][0-9]*$ && -n "$GH_TOKEN" ]] || die 'Missing staged snapshot or release App token'
         require_current_source
         require_legacy_release_stopped
-        remote_market="$(remote_ref "$market_ref")"
-        [[ "$remote_market" == "$MARKET_BASE" ]] || die 'Market advanced; recompute against its new generation'
-        actual_parents="$(git --no-replace-objects rev-list -n 1 --parents "$MARKET_COMMIT")"
-        [[ "$actual_parents" == "$MARKET_COMMIT${MARKET_BASE:+ $MARKET_BASE}" ]] || die 'Snapshot is not a child of the verified market tip'
-        GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=credential.https://github.com.helper GIT_CONFIG_VALUE_0='!gh auth git-credential' \
-            git push origin "$MARKET_COMMIT:$market_ref"
+        branch="registry/_publish/$GITHUB_SHA/$INDEX_EPOCH-$INDEX_GENERATION"
+        branch_ref="refs/heads/$branch"
+        current="$(remote_ref "$branch_ref")"
+        if [[ -z "$current" ]]; then
+            actual_parents="$(git --no-replace-objects rev-list -n 1 --parents "$MARKET_COMMIT")"
+            [[ "$actual_parents" == "$MARKET_COMMIT $GITHUB_SHA" ]] || die 'Snapshot is not a child of the protected source'
+            GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=credential.https://github.com.helper GIT_CONFIG_VALUE_0='!gh auth git-credential' \
+                git push origin "$MARKET_COMMIT:$branch_ref"
+            current="$MARKET_COMMIT"
+        else
+            [[ "$current" =~ ^[0-9a-f]{40}$ ]] || die 'Invalid publication branch commit'
+            git fetch --no-tags origin "$branch_ref"
+            [[ "$(git rev-parse --verify 'FETCH_HEAD^{commit}')" == "$current" ]] || die 'Publication branch changed'
+        fi
+        "$tools" registration-changes -base "$GITHUB_SHA" -candidate "$current" -public-keys "$working/keys.json" |
+            jq -e 'length == 0' >/dev/null
+        pull="$(gh api "repos/$GITHUB_REPOSITORY/pulls?state=open&head=certimate-go:$branch&base=main")"
+        pull_id="$(jq -er --arg sha "$current" '
+            if length == 0 then "" else
+            .[0] | select(.head.sha == $sha and .user.login == "certimate-plugin-dispatcher[bot]") | .number
+            end' <<<"$pull")" || die 'Existing publication pull request has an unexpected author or head'
+        if [[ -z "$pull_id" ]]; then
+            pull_id="$(gh api --method POST "repos/$GITHUB_REPOSITORY/pulls" \
+                -f "title=Publish signed market index $INDEX_EPOCH/$INDEX_GENERATION" -f 'base=main' -f "head=$branch" \
+                -f "body=Signed catalog from protected source $GITHUB_SHA." --jq .number)"
+        fi
+        [[ "$pull_id" =~ ^[1-9][0-9]*$ ]] || die 'Invalid publication pull request number'
+        printf '### Signed index awaiting merge\n\n%s/%s/pull/%s\n' \
+            "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$pull_id" >>"$GITHUB_STEP_SUMMARY"
+        GH_TOKEN="$REGISTRY_ACTIONS_TOKEN" gh workflow run registry-reconcile.yml --repo "$GITHUB_REPOSITORY" --ref main
         ;;
     observe)
-        [[ "$MARKET_COMMIT" =~ ^[0-9a-f]{40}$ && "$(remote_ref "$market_ref")" == "$MARKET_COMMIT" ]] ||
-            die 'This run is not observing the current market commit'
+        [[ "$MARKET_COMMIT" =~ ^[0-9a-f]{40}$ && "$(remote_ref "$main_ref")" == "$MARKET_COMMIT" ]] ||
+            die 'This run is not observing the current protected main'
         observed="$("$tools" observe-publication -market-sha "$MARKET_COMMIT" -public-keys "$working/keys.json")"
         jq -c '{commit,source_commit,key_id,epoch,generation,expires_at,pending}' <<<"$observed"
         if jq -e '(.pending // []) | length == 0' <<<"$observed" >/dev/null; then
@@ -92,6 +113,6 @@ case "${1:-}" in
         fi
         ;;
     *)
-        die 'Usage: registry-publish.sh stage|push|observe'
+        die 'Usage: registry-publish.sh stage|propose|observe'
         ;;
 esac

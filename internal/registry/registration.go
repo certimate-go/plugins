@@ -3,6 +3,8 @@ package registry
 import (
 	"bytes"
 	"context"
+	"crypto/ed25519"
+	"crypto/sha256"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -11,6 +13,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 )
 
 const (
@@ -21,10 +24,11 @@ const (
 )
 
 type RegistrationOptions struct {
-	Checkout  string
-	Base      string
-	Candidate string
-	Queue     bool
+	Checkout   string
+	Base       string
+	Candidate  string
+	Queue      bool
+	PublicKeys map[string]ed25519.PublicKey
 }
 
 type Registration struct {
@@ -64,14 +68,23 @@ func RegistrationChanges(ctx context.Context, options RegistrationOptions) ([]Re
 	if options.Queue {
 		limit = maxQueueChanges
 	}
-	if len(fields)%2 != 0 || len(fields) > 2*limit {
+	if len(fields)%2 != 0 {
 		return nil, errors.New("automatic registration must only add immutable version records")
 	}
-	changes := make([]Registration, 0, len(fields)/2)
+	changes := make([]Registration, 0, limit)
+	marketChanges := make(map[string]string)
 	for index := 0; index < len(fields); index += 2 {
 		filename := string(fields[index+1])
+		status := string(fields[index])
+		if filename == marketIndexPath || strings.HasPrefix(filename, "registry/market/") {
+			marketChanges[filename] = status
+			continue
+		}
+		if len(changes) == limit {
+			return nil, errors.New("too many version records in the registration candidate")
+		}
 		parts := strings.Split(filename, "/")
-		if string(fields[index]) != "A" || len(parts) != 3 || parts[0] != "registry" {
+		if status != "A" || len(parts) != 3 || parts[0] != "registry" {
 			return nil, fmt.Errorf("unexpected registration change %q", filename)
 		}
 		provider := parts[1]
@@ -99,7 +112,61 @@ func RegistrationChanges(ctx context.Context, options RegistrationOptions) ([]Re
 		}
 		changes = append(changes, Registration{provider, repository, tag, version.BuildRunID, filename, content})
 	}
+	if len(marketChanges) != 0 {
+		if !options.Queue && len(changes) != 0 {
+			return nil, errors.New("publication and version registration require separate pull requests")
+		}
+		if err := verifyMarketChanges(git, options, marketChanges); err != nil {
+			return nil, err
+		}
+	}
 	return changes, nil
+}
+
+func verifyMarketChanges(git releaseGit, options RegistrationOptions, changes map[string]string) error {
+	indexChange := changes[marketIndexPath]
+	if indexChange != "A" && indexChange != "M" {
+		return errors.New("market changes require a new signed index")
+	}
+	_, payload, _, err := readPublishedIndex(git, options.Candidate, options.PublicKeys, time.Now())
+	if err != nil {
+		return fmt.Errorf("verify candidate market index: %w", err)
+	}
+	if payload.SourceCommit != options.Base {
+		return errors.New("market index must be signed from the current protected main")
+	}
+	if indexChange == "M" {
+		previousBytes, err := git.blob(options.Base, marketIndexPath, MaxIndexEnvelope)
+		if err != nil {
+			return err
+		}
+		previous, _, err := VerifyIndex(previousBytes, options.PublicKeys)
+		if err != nil {
+			return fmt.Errorf("verify previous market index: %w", err)
+		}
+		if payload.Epoch < previous.Epoch || payload.Epoch == previous.Epoch && payload.Generation <= previous.Generation {
+			return errors.New("market index must advance the epoch or generation")
+		}
+	}
+	assets, err := signedAssetDigests(payload)
+	if err != nil {
+		return err
+	}
+	for filename, status := range changes {
+		if filename != marketIndexPath && (status != "A" || assets[filename] == "") {
+			return fmt.Errorf("unexpected change to market asset %q", filename)
+		}
+	}
+	for filename, digest := range assets {
+		body, err := git.blob(options.Candidate, filename, maxRecordBytes)
+		if err != nil {
+			return err
+		}
+		if fmt.Sprintf("%x", sha256.Sum256(body)) != digest {
+			return fmt.Errorf("market asset %q does not match its signed digest", filename)
+		}
+	}
+	return nil
 }
 
 func VerifyRegistrations(ctx context.Context, options RegistrationOptions, sources string, evidence fs.FS) ([]Registration, error) {

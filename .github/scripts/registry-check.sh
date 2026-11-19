@@ -34,11 +34,15 @@ scratch="$(mktemp -d)"
 mkdir "$scratch/providers" "$scratch/evidence"
 go build -mod=readonly -o "$scratch/registryctl" ./cmd/registryctl
 common=(-checkout "$PWD" -base "$base" -candidate "$candidate")
+if [[ -n "${PUBLIC_KEYS:-}" ]]; then
+    printf '%s\n' "$PUBLIC_KEYS" >"$scratch/keys.json"
+    common+=(-public-keys "$scratch/keys.json")
+fi
 if [[ -z "$pull_id" ]]; then
     common+=(-queue)
 fi
 "$scratch/registryctl" registration-changes "${common[@]}" >"$scratch/changes.json"
-jq -er '.[] | [.provider_type, .repository, .tag, .build_run_id] | @tsv' "$scratch/changes.json" >"$scratch/changes.tsv"
+jq -r '.[] | [.provider_type, .repository, .tag, .build_run_id] | @tsv' "$scratch/changes.json" >"$scratch/changes.tsv"
 while IFS=$'\t' read -r provider repository tag run_id; do
     git_dir="$scratch/providers/$provider"
     proof="$scratch/evidence/$provider"

@@ -171,7 +171,7 @@ func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 		t.Fatalf("lease renewal: %+v, %v", renewed, err)
 	}
 	renewedEnvelope, renewedPayload := index(renewed.Commit)
-	const marketPath = "/gh/certimate-go/plugins@market/"
+	const marketPath = "/gh/certimate-go/plugins@main/"
 	setCDN := func(path string, body []byte) {
 		mu.Lock()
 		defer mu.Unlock()
@@ -327,6 +327,39 @@ func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 	if _, err := stagePublication(t.Context(), options, observe); err == nil || !strings.Contains(err.Error(), "older source") {
 		t.Fatalf("old registry source could claim a new publication generation: %v", err)
 	}
+
+	t.Run("renew a signed index on main", func(t *testing.T) {
+		git("checkout", "main")
+		git("reset", "--hard", firstSource)
+		git("restore", "--source", first.Commit, "--worktree", "--", marketIndexPath, "registry/market")
+		base := save(firstSource)
+		candidateOptions := PublishOptions{
+			Checkout: dir, SourceCommit: base, MarketCommit: base, Epoch: 2, KeyID: "fixture", Seed: seed,
+			PublicKeys: keys, Now: now, Lifetime: 48 * time.Hour, RenewBefore: 24 * time.Hour,
+		}
+		candidate, err := stagePublication(t.Context(), candidateOptions, observe)
+		if err != nil || !candidate.Changed || candidate.Generation != 1 {
+			t.Fatalf("stage signed index on main: %+v, %v", candidate, err)
+		}
+		check := RegistrationOptions{Checkout: dir, Base: base, Candidate: candidate.Commit, PublicKeys: keys}
+		if registrations, err := RegistrationChanges(t.Context(), check); err != nil || len(registrations) != 0 {
+			t.Fatalf("verify signed publication: %+v, %v", registrations, err)
+		}
+		check.PublicKeys = nil
+		if _, err := RegistrationChanges(t.Context(), check); err == nil {
+			t.Fatal("accepted a publication without a trusted signing key")
+		}
+		check.PublicKeys = keys
+		_, candidatePayload := index(candidate.Commit)
+		asset := "market/details/" + candidatePayload.Plugins[0].Detail.SHA256 + ".json"
+		git("reset", "--hard", candidate.Commit)
+		write(asset, "changed signed asset")
+		check.Candidate = save(candidate.Commit)
+		if _, err := RegistrationChanges(t.Context(), check); err == nil || !strings.Contains(err.Error(), "unexpected change to market asset") {
+			t.Fatalf("accepted a publication that modified a published asset: %v", err)
+		}
+	})
+
 }
 
 func newPublicationVersion(provider, version, hash string) Version {
