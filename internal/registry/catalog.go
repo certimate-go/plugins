@@ -177,6 +177,9 @@ func loadPolicy(records fs.FS) (map[string]string, map[Identity]bool, error) {
 		return nil, nil, err
 	}
 	for _, entry := range policyEntries {
+		if entry.Name() == admissionBatchName && entry.IsDir() {
+			continue
+		}
 		if !entry.Type().IsRegular() || (entry.Name() != "admissions.json" && entry.Name() != "withdrawals.json") {
 			return nil, nil, fmt.Errorf("unexpected policy path %q", entry.Name())
 		}

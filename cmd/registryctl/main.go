@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"io/fs"
 	"os"
 	"os/signal"
 	"path/filepath"
@@ -40,11 +41,35 @@ func run(ctx context.Context, arguments []string, output io.Writer) error {
 			return publishMarket(ctx, arguments, output)
 		case "registration-changes", "verify-registrations":
 			return checkRegistrations(ctx, arguments, output)
+		case "plan-admission":
+			return planAdmission(ctx, arguments, output)
 		case "plan-provider":
 			return planProvider(arguments, output)
 		}
 	}
-	return fmt.Errorf("usage: registryctl <inspect-release|stage-release|observe-release|audit-mirror|sign-index|stage-publication|observe-publication|registration-changes|verify-registrations|plan-provider> [flags]")
+	return fmt.Errorf("usage: registryctl <inspect-release|stage-release|observe-release|audit-mirror|sign-index|stage-publication|observe-publication|registration-changes|verify-registrations|plan-admission|plan-provider> [flags]")
+}
+
+func planAdmission(ctx context.Context, arguments []string, output io.Writer) error {
+	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
+	checkout := flags.String("checkout", ".", "protected registry checkout")
+	base := flags.String("base", "", "protected registry base commit")
+	batch := flags.String("batch", "", "JSON file describing the migration")
+	if err := flags.Parse(arguments[1:]); err != nil {
+		return err
+	}
+	if flags.NArg() != 0 || *batch == "" {
+		return fmt.Errorf("-batch is required")
+	}
+	body, err := os.ReadFile(*batch)
+	if err != nil {
+		return err
+	}
+	plan, err := registry.PlanAdmissions(ctx, *checkout, *base, body)
+	if err != nil {
+		return err
+	}
+	return json.NewEncoder(output).Encode(plan)
 }
 
 func planProvider(arguments []string, output io.Writer) error {
@@ -98,22 +123,27 @@ func checkRegistrations(ctx context.Context, arguments []string, output io.Write
 		}
 		options.PublicKeys = publicKeys
 	}
+	var evidence fs.FS
+	if *proof != "" {
+		root, err := os.OpenRoot(*proof)
+		if err != nil {
+			return err
+		}
+		defer root.Close()
+		evidence = root.FS()
+	}
 	if arguments[0] == "registration-changes" {
+		options.AdmissionEvidence = evidence
 		changes, err := registry.RegistrationChanges(ctx, options)
 		if err != nil {
 			return err
 		}
 		return json.NewEncoder(output).Encode(changes)
 	}
-	if *sources == "" || *proof == "" {
+	if *sources == "" || evidence == nil {
 		return fmt.Errorf("-providers and -evidence are required")
 	}
-	root, err := os.OpenRoot(*proof)
-	if err != nil {
-		return err
-	}
-	defer root.Close()
-	changes, err := registry.VerifyRegistrations(ctx, options, *sources, root.FS())
+	changes, err := registry.VerifyRegistrations(ctx, options, *sources, evidence)
 	if err != nil {
 		return err
 	}

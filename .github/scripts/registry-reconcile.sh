@@ -148,11 +148,12 @@ case "${1:-}" in
         gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/pulls?state=open&base=main&per_page=100" |
             jq -r --arg repo "$GITHUB_REPOSITORY" --arg source "$GITHUB_SHA" '
                 .[][] | select(.user.login == "certimate-plugin-dispatcher[bot]" and .draft == false and
-                    .head.repo.full_name == $repo and (.head.ref | startswith("registry/_publish/" + $source + "/"))) |
-                [.number, .head.sha] | @tsv' >"$scratch/publications"
+                    .head.repo.full_name == $repo and (.head.ref | startswith("registry/_publish/" + $source + "/") or
+                        test("^registry/_admit/[0-9a-f]{64}$"))) |
+                [.number, .head.sha] | @tsv' >"$scratch/registry-prs"
         while IFS=$'\t' read -r pull_id commit; do
             queue_or_check_registration "$pull_id" "$commit" || result=1
-        done <"$scratch/publications"
+        done <"$scratch/registry-prs"
         git ls-remote --heads --refs origin 'refs/heads/gh-readonly-queue/main/*' >"$scratch/queue"
         while IFS=$'\t' read -r _ ref; do
             if [[ "$ref" =~ ^refs/heads/gh-readonly-queue/main/pr-[1-9][0-9]*-[0-9a-f]{7,40}$ ]]; then
