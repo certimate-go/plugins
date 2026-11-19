@@ -1,0 +1,99 @@
+{
+  "provider_type": "beget-dns",
+  "repository": "certimate-go/plugin-provider-beget-dns-acmedns01challenger",
+  "version": "0.1.1",
+  "tag": "v0.1.1",
+  "source_commit": "126d7b935cbcf879ac22581a0d53d7fb765cb738",
+  "build_run_id": "44538655931",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6226451,
+      "sha256": "2bcf301b303aa9e63410cd1c23bac0e4b43a2b1b5c7b6ca167c3429c1a8189d1"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5832501,
+      "sha256": "b1034d74580c1f12178eb14bad5dd34d47ea9f0555612344e50d9922b3283b05"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6188512,
+      "sha256": "844bd60a7e47e06d52535f7aaa62c673e2f1fa52738283107593806f9596f87e"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5853946,
+      "sha256": "e1591e418dce853a41adda76c59e809d5dcdf357d53994848c3fe4723408a62b"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5579670,
+      "sha256": "f7a0491d60d6aeb3938ba792b07b1c870c031922576e757872cf7af09fe6239e"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5951112,
+      "sha256": "6f3229dd9e6f0bfcb69ea031b353b15849b3b0208dbda1d98026f2374864752e"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6344449,
+      "sha256": "337fb5774616d20871ab54b8ebf631e34823ab9f44be0ce52e6b91cb7d72272c"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5696827,
+      "sha256": "f473e68e94fef6f44c32cd2427be0190f10e8aad500189f26e072276fe48d379"
+    }
+  ],
+  "release_commit": "6da094bd2f3bb2a000c30b05e0b585ceece4aaab",
+  "manifest": {
+    "version": "0.1.1",
+    "provider_type": "beget-dns",
+    "access_provider_type": "beget",
+    "capability": "dns",
+    "display_name_key": "plugin.beget-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "beget-dns.exe",
+    "icon": "icon.svg",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via Бегет (Beget)."
+  },
+  "i18n": {
+    "en": {
+      "name": "Бегет (Beget)",
+      "description": "ACME DNS-01 via Бегет (Beget)."
+    },
+    "zh": {
+      "name": "Бегет（Beget）",
+      "description": "通过 Бегет（Beget） 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "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"
+}
