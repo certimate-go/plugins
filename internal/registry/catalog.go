@@ -144,7 +144,7 @@ func Generate(records fs.FS, ready []ReadyRelease) (Snapshot, error) {
 			}
 		}
 		if current != nil {
-			if err := catalog.add(current); err != nil {
+			if err := catalog.add(current, ""); err != nil {
 				return Snapshot{}, err
 			}
 		}
@@ -309,7 +309,7 @@ func (version *Version) Validate() error {
 	return nil
 }
 
-func (snapshot *Snapshot) add(version *Version) error {
+func (snapshot *Snapshot) add(version *Version, buildRepository string) error {
 	assets := slices.Clone(version.Artifacts)
 	slices.SortFunc(assets, func(left, right providerrelease.Artifact) int {
 		return strings.Compare(left.OS+"/"+left.Arch, right.OS+"/"+right.Arch)
@@ -329,6 +329,7 @@ func (snapshot *Snapshot) add(version *Version) error {
 		snapshot.Files["market/icons/"+digest+"."+format] = version.Icon
 	}
 	record := version.Record
+	record.BuildRepository = buildRepository
 	record.Artifacts = assets
 	manifest := version.Manifest
 	manifest.MinCoreVersion = coreVersion(manifest.MinCoreVersion)
