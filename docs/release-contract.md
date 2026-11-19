@@ -73,7 +73,9 @@ The build runs with read permissions only.
 
 Configure an environment named `provider-release` restricted to the protected
 default branch with `PROVIDER_RELEASE_APP_CLIENT_ID` and
-`PROVIDER_RELEASE_APP_PRIVATE_KEY`. Install the tag-writing App on the provider
+`PROVIDER_RELEASE_APP_PRIVATE_KEY`. The provider caller uses `secrets: inherit`
+so the reusable publish job can read the environment secret.
+Install the tag-writing App on the provider
 repositories with Contents write, not on the registry. Require its identity
 for formal tag creation and prevent tag updates and deletion with separate
 rulesets, so creation bypass does not grant a way to rewrite a tag. Protect the
