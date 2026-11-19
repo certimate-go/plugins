@@ -1,0 +1,99 @@
+{
+  "provider_type": "51dnscom-dns",
+  "repository": "certimate-go/plugin-provider-51dnscom-dns-acmedns01challenger",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "source_commit": "761424119fb2672d49614d8744a525a169864b36",
+  "build_run_id": "44537671444",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6244831,
+      "sha256": "5f0ac6e53920d7249d1ff4e2c746c3513b2743120e800051b06de8d1900c8936"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5846035,
+      "sha256": "29498a7b8e890c2695fd4f470f0cae53c9b48e8cf7b3912dad2531e3fc95544d"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6207728,
+      "sha256": "ec04bdd78a34781c05c878d181b057d33b891d8c5485fef1d342e031b7042b08"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5863396,
+      "sha256": "881ef2d224438d73f481e34cb87e3f82e8e0213422acf8fcb4514d1fe757589f"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5608975,
+      "sha256": "1f70fc5c0295d995af44c15516bcce6e72874993b28a229fa6be955e281acac5"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5962780,
+      "sha256": "9b1640d4157886351cee5b0d815f951a481662f37e7b7cfcba7c4eaccbbcf60f"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6353668,
+      "sha256": "b03ce96e67793fb20c68a18ef14742e61f2d632795465bd7d842c3f4bdfcf9b7"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5699391,
+      "sha256": "30758d459f71febbec30e2c291d88b9d9c808a274d0d7844928462dd332df7ac"
+    }
+  ],
+  "release_commit": "e520d0d057eba29a12f75dbc92f28ed601c52247",
+  "manifest": {
+    "version": "0.1.0",
+    "provider_type": "51dnscom-dns",
+    "access_provider_type": "51dnscom",
+    "capability": "dns",
+    "display_name_key": "plugin.51dnscom-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "51dnscom-dns.exe",
+    "icon": "icon.png",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via 51DNS.com."
+  },
+  "i18n": {
+    "en": {
+      "name": "51DNS.com",
+      "description": "ACME DNS-01 via 51DNS.com."
+    },
+    "zh": {
+      "name": "帝恩思（51DNS）",
+      "description": "通过 帝恩思（51DNS） 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAwBQTFRF2NjY6ufi/bk+0dHR//793d3d4t7X/+Kt/9Z+1Mm2ycnJ9PHt/rlL/8hO6+vr/LQ85OTk//Xh//PT1tbW0tLS9fTz/81h/81d/LI9/8lR/81l39/f/8ZS/8dO/9V7/MZz/bpF+/n3+Pf3//fq8/Lx8O7q/O3W4+He/+KZ/+WS+9qn/9+W2tbS+cBn/8JC/8FD/LA7/vXn+601/f39x8fH//37/cl5+Pj4+fn5+7A8/9eA7u3r9MFz39zX/8lU+vr6/rZG79ex/Pz8+687+/v7/v7+9/f3+6469fX17u7u5+fn6Ojo8PDw7+/v9PT08/Pz7Ozs9vb28fHx4eHh8vLy1NTU4ODg+7E929vb4+Pj9/Tv5ubm/8pX/+ak7+7s4uLi2tra1M3C393Y6enp7e3t/Mh3/r4/zse86uHS/bMw/9mK/bNA/LE72Mqw+NGB///+69Sl9/Tx5+DV+vjz/9Ft9fPwxrKS/8Rd3tbJ/v3768SH5tGp8Ovk9/Dk9MJ0/Pjx99WK+/r5+7RF+fj49u3f6eLY/9R4/LdB/rVB+Pj3/9yG3drV28qm+OvY/+mWysrKtra2+6os/+ip5OPi5uXl7+vm6uno07N79uPH8ufR/+3D/dWY782Z3tjN/vXl/+qn//fm6NW37ujf/Pr3+7E+97RM+7I/8deg1dLM29C+39bG8O/s/8pU+qwy6N/M+7I89/b1/eOx98Ny/8ZF8fDv/+ad+a87//Pd/tSG9/f29vX07tWt2M/A/8hh+OjI/+mE/9WO1s7A/+Cd48mU+Pbz+7JD/dqj0MnA6ejn7+rjxsbG7day97dS+vn46r11879u/bs//9x/+Nqa/92fxLWgybum/sBA7Ovp/8NC/8la/8pc/8NZ/8Ff/+KE/7xD9+vZ/9Nm/7xI+fn46OTe/9d7/8hJzMzM6efl5uLb/7xR/8l0/LRC/cVs/rVD7+3r/8JS4Mui//vz/70/y8S5/s50/9iJ39nQ/9uI/9x0/9qC+7lQ/9B0/9Ry+7A7////////yd9T4AAAAQB0Uk5T////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////AFP3ByUAAAVqSURBVHja7Nl3lNREHAfwA+4ETuAQQRABAUVAwBZ0FxWj2Xp7u3e3uKcivVmxi733XrH33nvvvfeOvffe621MspnJ/CbJZe49fe7zfX//7e8mmXx2flOyV2P+T6IGEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQSQ/xiy0/lrqsZKF1ntvz+XpKoGcvBpW6+lGNd8u69pLupxopi7dJlqgRz6XqJdMRqetdrP6T1JzN36RLVA9h6u6mjvdYHV/ruuJDehWkrr4aOUB6R99/1Nc9QLtH33aoH8spyy44i9rPaP9Sa5r0f9e4+ppWOhkdbLEmTHw5Uh759umiMfalgo5r6o3KXPxKjIaVazevapvm2K9NSFyt+On+1+buw/sVTuMChk6d9ppSxcMn2DkLh6wh2m2eW+odPfyfDmiTOdu0wpR0ab1SyVEhKxAoHE3LThfGpujb4jhcyhlbJG98vnTg6L0Vb7kaOPnrvVT970v9O5y8bR3c72e4vNAiRZyTVVHOVyZyGXNRDIqkrF+zNvf7/zWS9Edxuz+5VypUZ+y7SbcjJZBcZUOtk//ItOg0ef2sgXd70rOXYezCurX6Weo/vtZn/PMV+6aLj3bHITKaHKOoxGCtnyJgo5aMOA6PX52bUi5JXVWfM3K8WhR/e72GqWC8gXi84dsknv8fqqOCpziUOeefE6pfVq26/29ByLtufr1ktJO2Eo9Kt500Aquax9i/nuJ+uDFlceEA+y1GDFlXdTYfLs8QavLHrOMuJy8EXA7rEl+JH0FnvL8GYwHzdnwQ6IpHVjXdoQf1yiuodc4t3oZV5Zf5acfStlaHYYK8hdxjXxC9yMFYU0gimNL2ctQjMrHxwp/85+1a+TOgg6JKuwi08ZxpM36OIOUPa95vDFzOlbrLIUwfCHj1t/6hZdV7NkSJcDnls/LPa78Y9gyN1DWG61x+malZchvOc6e/MX1n9rfQhaIFrMgDU6KDbp1BviNiLk4mPdbGoGPwoMu9kUy1v3VRaZ0G0EErjU6eJC3GGkOwG5YogIeZqlP9uVpQbdS84W/GviwR/pSfG5DWkvFyZLkuyNkduhGmTEmIwIOYvle77KUkMXk4nQnJXukOfd2ueOOmlAxBFzI+meukrRkDoRoq382nqhsc9Jj4iOQYe4nR94C/Mlxg0gE6FecrSS0k+yOZwXFtWs//RUmXXLTlObJBXIzON6rBsa95DxaH+L9TGZv740nEFn9Hzd2z/0fE76+vL+AbG++1b/Zm2m43FxnQiOJhFyzhbKbyLee2BPftHAk+kSGxoFewz6By4JOf+A5FXmek6c7Eeel1F2fLmL2/OAsbyyZlxPl9jQsFflGIOUwurPhehKB62p4vJ76kBlR2Ic63j88iw3XKqs0IiTr74YDnEmzzwVxzxDgGhXPq/sOGwEO01txy7K/PapmkOnb17JsCXaraycynbYLO7s2bGqlZX4aHN24cy32UVdj/nAVDj5Gk10r5GXaOHdso/qHtI3Tc5aF6r9nJX54fUx3GFey0fx4/HSsTD4dcodgJpQiE7XLIVtvSD9HHTbiusoxILbd3tAuLAfu2jBg99EVZZ2Qhs/fDHILP/JfBqpwahfMeo+Scu/a9WurRQ7kF69i2qjp7r4C1XAJsLObqS5wg8O+P8IIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggg/0j8LcAAs/+zsfnH3W0AAAAASUVORK5CYII="
+}
