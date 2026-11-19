@@ -24,18 +24,26 @@ existing_ref() {
 provider_api() { GH_TOKEN="$DISPATCH_TOKEN" gh api "$@"; }
 registrar_api() { GH_TOKEN="$REGISTRATION_TOKEN" gh api "$@"; }
 
-dispatch_request() {
-    local repo="$1" trigger="$2" title="Release " status active
-    title+="$trigger"
+load_active_releases() {
+    local status
     for status in queued in_progress waiting requested pending; do
-        active="$(provider_api --paginate "repos/$repo/actions/workflows/release.yml/runs?branch=main&event=workflow_dispatch&status=$status&per_page=100" \
-            --jq '.workflow_runs[].display_title')"
-        if grep -Fxq -- "$title" <<<"$active"; then
-            printf '%s %s already has a pending run\n' "$repo" "$trigger"
-            return
-        fi
+        gh api --paginate "repos/$GITHUB_REPOSITORY/actions/workflows/provider-release.yml/runs?branch=main&event=workflow_dispatch&status=$status&per_page=100" \
+            --jq '.workflow_runs[].display_title'
     done
-    GH_TOKEN="$DISPATCH_TOKEN" gh workflow run release.yml --repo "$repo" --ref main -f "trigger_tag=$trigger"
+}
+
+dispatch_request() {
+    local repo="$1" trigger="$2" title="Release $1 $2"
+    if [[ -z "${ACTIVE_RELEASES:-}" ]]; then
+        ACTIVE_RELEASES="$(mktemp)"
+        load_active_releases >"$ACTIVE_RELEASES"
+    fi
+    if grep -Fxq -- "$title" "$ACTIVE_RELEASES"; then
+        printf '%s %s already has a pending run\n' "$repo" "$trigger"
+        return
+    fi
+    gh workflow run provider-release.yml --repo "$GITHUB_REPOSITORY" --ref main \
+        -f "provider_repository=$repo" -f "trigger_tag=$trigger"
     printf 'Dispatched %s %s\n' "$repo" "$trigger"
 }
 
@@ -75,7 +83,7 @@ register_release() {
     local directory="$1" provider="$2" repo="$3" tag="$4" expected="$5"
     local record="$directory/release.json" source_repo="$directory/providers/$provider" proof="$directory/evidence/$provider"
     local receipt="registry/$provider/$tag.json" branch="registry/$provider/$tag"
-    local branch_ref="refs/heads/$branch" run_id commit current pull pull_id actor source_commit
+    local branch_ref="refs/heads/$branch" run_id build_repo commit current pull pull_id actor source_commit
     mkdir -p "$proof"
     git init --bare -q "$source_repo"
     git -C "$source_repo" fetch --no-tags "https://github.com/$repo.git" \
@@ -85,8 +93,13 @@ register_release() {
     run_id="$(jq -er .build_run_id "$record")"
     source_commit="$(jq -er .source_commit "$record")"
     provider_api "repos/$repo/branches/main" >"$proof/main.json"
-    provider_api "repos/$repo/actions/runs/$run_id" >"$proof/$tag.json"
-    provider_api --paginate --slurp "repos/$repo/actions/runs/$run_id/jobs?filter=all&per_page=100" |
+    build_repo="$(jq -er '.build_repository // .repository' "$record")"
+    local actions_token="$DISPATCH_TOKEN"
+    if [[ "$build_repo" == "$GITHUB_REPOSITORY" ]]; then
+        actions_token="$GH_TOKEN"
+    fi
+    GH_TOKEN="$actions_token" gh api "repos/$build_repo/actions/runs/$run_id" >"$proof/$tag.json"
+    GH_TOKEN="$actions_token" gh api --paginate --slurp "repos/$build_repo/actions/runs/$run_id/jobs?filter=all&per_page=100" |
         jq -ce '{jobs: [.[].jobs[]]}' >"$proof/$tag-jobs.json"
     actor="$(jq -r '.triggering_actor.login // .actor.login // "(unavailable)"' "$proof/$tag.json")"
 
@@ -139,6 +152,8 @@ case "${1:-}" in
         [[ "$(existing_ref origin refs/heads/main)" == "$GITHUB_SHA" ]] || die 'Registry main changed; dispatch reconciliation again'
         scratch="$(mktemp -d)"
         export REGISTRYCTL="$scratch/registryctl"
+        export ACTIVE_RELEASES="$scratch/active-releases"
+        load_active_releases >"$ACTIVE_RELEASES"
         go build -mod=readonly -o "$REGISTRYCTL" ./cmd/registryctl
         jq -er 'to_entries | .[] | [.key,.value] | @tsv' "$policy" >"$scratch/admissions.tsv"
         result=0

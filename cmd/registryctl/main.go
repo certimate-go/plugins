@@ -159,6 +159,7 @@ func stageRelease(ctx context.Context, arguments []string, output io.Writer) err
 	flags.StringVar(&options.Tag, "tag", "", "formal release tag")
 	flags.StringVar(&options.SourceCommit, "source-sha", "", "source commit already checked for protected-branch ancestry")
 	flags.StringVar(&options.BuildRunID, "run-id", "", "current trusted build workflow run")
+	flags.StringVar(&options.BuildRepository, "build-repository", "", "protected registry repository for centrally built releases")
 	if err := flags.Parse(arguments[1:]); err != nil {
 		return err
 	}

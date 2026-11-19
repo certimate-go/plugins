@@ -14,6 +14,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/certimate-go/plugins/internal/providerrelease"
 )
 
 const (
@@ -33,12 +35,13 @@ type RegistrationOptions struct {
 }
 
 type Registration struct {
-	Provider   string `json:"provider_type"`
-	Repository string `json:"repository"`
-	Tag        string `json:"tag"`
-	BuildRunID string `json:"build_run_id"`
-	path       string
-	content    []byte
+	Provider        string `json:"provider_type"`
+	Repository      string `json:"repository"`
+	Tag             string `json:"tag"`
+	BuildRunID      string `json:"build_run_id"`
+	BuildRepository string `json:"build_repository"`
+	path            string
+	content         []byte
 }
 
 func RegistrationChanges(ctx context.Context, options RegistrationOptions) ([]Registration, error) {
@@ -119,7 +122,7 @@ func RegistrationChanges(ctx context.Context, options RegistrationOptions) ([]Re
 		if source := migrationSources[Identity{provider, version.Version}]; source != "" && source != version.SourceCommit {
 			return nil, fmt.Errorf("registration %q does not match the migration source commit", filename)
 		}
-		changes = append(changes, Registration{provider, repository, tag, version.BuildRunID, filename, content})
+		changes = append(changes, Registration{provider, repository, tag, version.BuildRunID, version.RunRepository(), filename, content})
 	}
 	if len(admissionChanges) != 0 {
 		if !options.Queue && (len(marketChanges) != 0 || len(changes) != 0) {
@@ -259,14 +262,26 @@ func verifyBuildProvenance(registryGit, providerGit releaseGit, base string, evi
 	if err := readEvidence(evidence, version.ProviderType+"/"+version.Tag+".json", &run); err != nil {
 		return err
 	}
+	runRepository := version.RunRepository()
 	runPath, runRef, _ := strings.Cut(run.Path, "@")
-	runPath = strings.TrimPrefix(runPath, version.Repository+"/")
-	if strconv.FormatUint(run.ID, 10) != version.BuildRunID || run.Title != "Release "+version.Tag+"-detach" ||
+	runPath = strings.TrimPrefix(runPath, runRepository+"/")
+	if strconv.FormatUint(run.ID, 10) != version.BuildRunID ||
 		run.Event != "workflow_dispatch" || run.Status != "completed" ||
-		run.Conclusion != "success" || run.Branch != "main" || run.Repository.Name != version.Repository || run.HeadRepository.Name != version.Repository ||
-		runPath != ".github/workflows/release.yml" || (runRef != "" && !isMainRef(runRef)) ||
-		!commitPattern.MatchString(run.Commit) || !providerGit.ancestor(run.Commit, branch.Commit.SHA) ||
-		!providerGit.ancestor(version.SourceCommit, run.Commit) {
+		run.Conclusion != "success" || run.Branch != "main" || run.Repository.Name != runRepository || run.HeadRepository.Name != runRepository ||
+		(runRef != "" && !isMainRef(runRef)) || !commitPattern.MatchString(run.Commit) ||
+		!providerGit.ancestor(version.SourceCommit, branch.Commit.SHA) {
+		return errors.New("formal tag does not have a successful protected provider workflow for its source")
+	}
+	jobsPath := version.ProviderType + "/" + version.Tag + "-jobs.json"
+	if runRepository == providerrelease.RegistryRepository {
+		if run.Title != "Release "+version.Repository+" "+version.Tag+"-detach" || runPath != ".github/workflows/provider-release.yml" ||
+			!registryGit.ancestor(run.Commit, base) {
+			return errors.New("formal tag does not have a trusted central release run for this provider and version")
+		}
+		return verifyTagPublication(evidence, jobsPath, run)
+	}
+	if run.Title != "Release "+version.Tag+"-detach" || runPath != ".github/workflows/release.yml" ||
+		!providerGit.ancestor(run.Commit, branch.Commit.SHA) || !providerGit.ancestor(version.SourceCommit, run.Commit) {
 		return errors.New("formal tag does not have a successful protected provider workflow for its source")
 	}
 	for _, workflow := range run.Referenced {
@@ -277,7 +292,7 @@ func verifyBuildProvenance(registryGit, providerGit releaseGit, base string, evi
 		}
 		if workflowPath == controllerWorkflow && commitPattern.MatchString(workflow.Commit) &&
 			registryGit.ancestor(workflow.Commit, base) {
-			return verifyTagPublication(evidence, version.ProviderType+"/"+version.Tag+"-jobs.json", run)
+			return verifyTagPublication(evidence, jobsPath, run)
 		}
 	}
 	return errors.New("provider run did not use a trusted registry controller revision")

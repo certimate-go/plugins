@@ -1,4 +1,5 @@
 name: Build and publish provider artifacts
+run-name: ${{ inputs.provider_repository && format('Release {0} {1}', inputs.provider_repository, inputs.trigger_tag) || github.workflow }}
 
 on:
   workflow_call:
@@ -8,17 +9,30 @@ on:
         required: true
         type: string
 
+  workflow_dispatch:
+    inputs:
+      provider_repository:
+        description: Admitted provider repository
+        required: true
+        type: string
+      trigger_tag:
+        description: Release request tag, vX.Y.Z-detach
+        required: true
+        type: string
+
 permissions:
   contents: read
 
 concurrency:
-  group: provider-artifacts-${{ github.repository }}-${{ inputs.trigger_tag }}
+  group: provider-artifacts-${{ inputs.provider_repository || github.repository }}-${{ inputs.trigger_tag }}
   cancel-in-progress: false
 
 env:
   GOWORK: "off"
   GOTOOLCHAIN: local
   TRIGGER_TAG: ${{ inputs.trigger_tag }}
+  PROVIDER_REPOSITORY: ${{ inputs.provider_repository || github.repository }}
+  BUILD_REPOSITORY: ${{ github.repository == 'certimate-go/plugins' && github.repository || '' }}
   DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
   GIT_TERMINAL_PROMPT: "0"
 
@@ -37,6 +51,11 @@ jobs:
           [[ "$GITHUB_EVENT_NAME" == workflow_dispatch ]]
           [[ "$DEFAULT_BRANCH" == main && "$GITHUB_REF" == refs/heads/main && "$GITHUB_REF_PROTECTED" == true ]]
           [[ "$CONTROLLER_REF" == certimate-go/plugins/.github/workflows/provider-release.yml@refs/heads/main ]]
+          if [[ "$GITHUB_REPOSITORY" == certimate-go/plugins ]]; then
+            [[ "$PROVIDER_REPOSITORY" != "$GITHUB_REPOSITORY" ]]
+          else
+            [[ "$PROVIDER_REPOSITORY" == "$GITHUB_REPOSITORY" ]]
+          fi
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
           repository: ${{ job.workflow_repository }}
@@ -49,6 +68,8 @@ jobs:
           cache: false
       - name: Resolve trigger and check existing formal tag
         id: trigger
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: bash controller/.github/scripts/provider-release.sh prepare
 
   build:
@@ -67,6 +88,7 @@ jobs:
           path: controller
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
+          repository: ${{ inputs.provider_repository || github.repository }}
           ref: ${{ needs.prepare.outputs.source }}
           persist-credentials: false
           submodules: recursive
@@ -80,8 +102,9 @@ jobs:
         env:
           SOURCE_SHA: ${{ needs.prepare.outputs.source }}
         run: |
-          go run ./cmd/providerrelease -source-dir ../provider -repository "$GITHUB_REPOSITORY" \
-            -trigger-tag "$TRIGGER_TAG" -source-sha "$SOURCE_SHA" -run-id "$GITHUB_RUN_ID"
+          go run ./cmd/providerrelease -source-dir ../provider -repository "$PROVIDER_REPOSITORY" \
+            -trigger-tag "$TRIGGER_TAG" -source-sha "$SOURCE_SHA" -run-id "$GITHUB_RUN_ID" \
+            -build-repository "$BUILD_REPOSITORY"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         id: transfer
         with:
@@ -96,7 +119,7 @@ jobs:
     timeout-minutes: 15
     needs: [prepare, build]
     if: needs.build.result == 'success' && needs.prepare.outputs.present == 'false'
-    environment: provider-release
+    environment: ${{ github.repository == 'certimate-go/plugins' && 'registry-reconcile' || 'provider-release' }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
@@ -117,13 +140,14 @@ jobs:
         id: stage
         env:
           SOURCE_SHA: ${{ needs.prepare.outputs.source }}
+          GH_TOKEN: ${{ github.token }}
         run: bash controller/.github/scripts/provider-release.sh stage
       - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
         id: token
         if: steps.stage.outputs.present == 'false'
         with:
           owner: ${{ github.repository_owner }}
-          repositories: ${{ github.event.repository.name }}
+          repositories: ${{ github.repository == 'certimate-go/plugins' && steps.stage.outputs.repository_name || github.event.repository.name }}
           client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
           private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
           permission-contents: write
