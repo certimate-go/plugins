@@ -115,7 +115,7 @@ func auditMirror(ctx context.Context, options MirrorAuditOptions, client *http.C
 	if err != nil {
 		return MirrorAudit{}, err
 	}
-	first := checksumFile("/gh/certimate-go/plugins@market/"+marketIndexPath, index)
+	first := checksumFile(marketCDNPath+marketIndexPath, index)
 	probe, err := measureDownload(ctx, client, base+first.path, first.size, first.sha)
 	report.Probes = append(report.Probes, probe)
 	if err != nil {
@@ -199,7 +199,7 @@ func auditFiles(git releaseGit, source string, listed map[string]Summary, provid
 			return nil, fmt.Errorf("registry entry for %s differs from the signed index", provider)
 		}
 		for file, body := range snapshot.Files {
-			location := "/gh/certimate-go/plugins@market/registry/" + file
+			location := marketCDNPath + "registry/" + file
 			files[location] = checksumFile(location, body)
 		}
 		for _, artifact := range version.Artifacts {

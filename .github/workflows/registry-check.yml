@@ -75,6 +75,7 @@ jobs:
         env:
           CANDIDATE_REF: ${{ inputs.candidate_ref }}
           GH_TOKEN: ${{ github.token }}
+          PUBLIC_KEYS: ${{ vars.REGISTRY_INDEX_PUBLIC_KEYS_JSON }}
           EVIDENCE_TOKEN: ${{ steps.evidence.outputs.token }}
           GOWORK: "off"
           GOTOOLCHAIN: local

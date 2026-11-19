@@ -81,7 +81,8 @@ func checkRegistrations(ctx context.Context, arguments []string, output io.Write
 	flags.StringVar(&options.Checkout, "checkout", ".", "trusted registry checkout with fetched candidate Git objects")
 	flags.StringVar(&options.Base, "base", "", "protected registry base commit")
 	flags.StringVar(&options.Candidate, "candidate", "", "commit to verify without checking it out")
-	flags.BoolVar(&options.Queue, "queue", false, "accept several independently verified version additions in a merge group")
+	flags.BoolVar(&options.Queue, "queue", false, "accept independently verified registrations and publications in a merge group")
+	keys := flags.String("public-keys", "", "trusted index signing keys for market publications")
 	sources := flags.String("providers", "", "directory with a bare Git repository per provider")
 	proof := flags.String("evidence", "", "directory with GitHub workflow and branch API evidence")
 	if err := flags.Parse(arguments[1:]); err != nil {
@@ -89,6 +90,13 @@ func checkRegistrations(ctx context.Context, arguments []string, output io.Write
 	}
 	if flags.NArg() != 0 {
 		return fmt.Errorf("unexpected positional arguments")
+	}
+	if *keys != "" {
+		publicKeys, err := readPublicKeys(*keys)
+		if err != nil {
+			return err
+		}
+		options.PublicKeys = publicKeys
 	}
 	if arguments[0] == "registration-changes" {
 		changes, err := registry.RegistrationChanges(ctx, options)

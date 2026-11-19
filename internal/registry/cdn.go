@@ -12,7 +12,10 @@ import (
 	"time"
 )
 
-const defaultCDN = "https://cdn.jsdelivr.net"
+const (
+	defaultCDN    = "https://cdn.jsdelivr.net"
+	marketCDNPath = "/gh/certimate-go/plugins@main/"
+)
 
 func ObserveDefaultCDN(ctx context.Context, version Version) (ReadyRelease, error) {
 	return observeRelease(ctx, cdnHTTPClient(), defaultCDN, version)
@@ -38,23 +41,14 @@ func observePublishedIndex(ctx context.Context, checkout, commit string, keys ma
 		return Publication{}, err
 	}
 	result := Publication{Commit: commit, SourceCommit: payload.SourceCommit, KeyID: keyID, Epoch: payload.Epoch, Generation: payload.Generation, ExpiresAt: payload.ExpiresAt}
-	base := origin + "/gh/certimate-go/plugins@market/"
+	base := origin + marketCDNPath
 	if err := checkDownload(ctx, client, base+marketIndexPath, int64(len(index)), fmt.Sprintf("%x", sha256.Sum256(index))); err != nil {
 		result.Pending = append(result.Pending, fmt.Sprintf("signed index not observable: %v", err))
 		return result, nil
 	}
-	assets := make(map[string]string)
-	for _, provider := range payload.Plugins {
-		if !digestPattern.MatchString(provider.Detail.SHA256) {
-			return Publication{}, fmt.Errorf("invalid signed detail digest for %s", provider.ProviderType)
-		}
-		assets["registry/market/details/"+provider.Detail.SHA256+".json"] = provider.Detail.SHA256
-		if icon := provider.Icon; icon != nil {
-			if !digestPattern.MatchString(icon.SHA256) || (icon.Format != "png" && icon.Format != "jpeg") {
-				return Publication{}, fmt.Errorf("invalid signed icon for %s", provider.ProviderType)
-			}
-			assets["registry/market/icons/"+icon.SHA256+"."+icon.Format] = icon.SHA256
-		}
+	assets, err := signedAssetDigests(payload)
+	if err != nil {
+		return Publication{}, err
 	}
 	for _, path := range slices.Sorted(maps.Keys(assets)) {
 		digest := assets[path]
@@ -70,6 +64,23 @@ func observePublishedIndex(ctx context.Context, checkout, commit string, keys ma
 		}
 	}
 	return result, nil
+}
+
+func signedAssetDigests(payload IndexPayload) (map[string]string, error) {
+	assets := make(map[string]string)
+	for _, provider := range payload.Plugins {
+		if !digestPattern.MatchString(provider.Detail.SHA256) {
+			return nil, fmt.Errorf("invalid signed detail digest for %s", provider.ProviderType)
+		}
+		assets["registry/market/details/"+provider.Detail.SHA256+".json"] = provider.Detail.SHA256
+		if icon := provider.Icon; icon != nil {
+			if !digestPattern.MatchString(icon.SHA256) || (icon.Format != "png" && icon.Format != "jpeg") {
+				return nil, fmt.Errorf("invalid signed icon for %s", provider.ProviderType)
+			}
+			assets["registry/market/icons/"+icon.SHA256+"."+icon.Format] = icon.SHA256
+		}
+	}
+	return assets, nil
 }
 
 func readPublishedIndex(git releaseGit, commit string, keys map[string]ed25519.PublicKey, now time.Time) ([]byte, IndexPayload, string, error) {
