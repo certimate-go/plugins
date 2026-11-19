@@ -1,0 +1,97 @@
+{
+  "provider_type": "flexcdn",
+  "repository": "certimate-go/plugin-provider-flexcdn-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "5950cf9bc23ebebb2ea93e9c2061a155b04a029f",
+  "build_run_id": "44513800562",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6088326,
+      "sha256": "738bc13bf57185416712fded25fae9f3183d20ca1c57628dce8398e6adaf9a45"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5741546,
+      "sha256": "cb5fa9486e214ad05a0af8005e018fc0ce753b39d9e049729fb5b3b8881e173c"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6060405,
+      "sha256": "d7392134a6b19460fca5d4b2b200b1767f3da1698c115eda24cf576db8bf2c25"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5732577,
+      "sha256": "96f7bf26b7e6c159d84d52f75274e7cf49cef0d217a354f12ecf913c0c21687a"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5509239,
+      "sha256": "99b0e6a2f79cbe18651caa27c0a392df121e5e5501ce5dbc99a1a92aaf4fa7bd"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5844343,
+      "sha256": "a533593bc590d30602393379a3f32e0d1a8a35f98794e33f03d727ffca6b11f2"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6206646,
+      "sha256": "678ce792318862dd399d550f7c1ff235d31b562556b1e5e6804dcc5c7aa63897"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5585088,
+      "sha256": "46d48fcd164a5b097d9d72b9f529a902cf8bcd77acb2b9820225f0b40040717e"
+    }
+  ],
+  "release_commit": "3d1c143aad5b85c743ad990325667ca6ac1a7cf1",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "flexcdn",
+    "access_provider_type": "flexcdn",
+    "capability": "deploy",
+    "display_name_key": "plugin.flexcdn.name",
+    "category": "cdn",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "flexcdn.exe",
+    "icon": "flexcdn.png",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "FlexCDN"
+    },
+    "zh": {
+      "name": "FlexCDN"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFwMDAQUFBjo6Orq6u7Ozsmpqa5OTkJSUlKSkpxcXF1NTUoKCgqKioNTU13d3dHR0dOTk5SUlJtra2srKyhISE0dHRyMjIsLCwzMzMq6urLS0tfn5+vLy8nZ2dERERZGRkISEhbGxstLS00NDQBAQEWFhYbm5urKysurq6eHh4FhYWdnZ2xsbGenp6kZGRUlJSoqKiZmZmgICAcnJyVlZWGRkZgoKCYGBgcHBwpaWlYmJipqamDQ0NdHR0np6eCAgIW1tbMDAwuLi4Pj4+RkZGMjIyioqKlpaWXV1dk5OTRERETExMh4eHVFRUOzs73t7evr6+T09PlJSUaWlphoaGfHx8jIyMampqXl5emJiYTk5O+fn57u7u+Pj48/Pz6urq6Ojo/f399PT0+/v78vLy4uLi/Pz8+vr68PDw8fHx2NjYwsLC2tra19fX2dnZ4+Pjw8PD5ubmz8/P4eHh9vb26+vr7+/vzs7O29vb1tbW9fX19/f34ODg5+fnAAAA////lFxRHwAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAANzklEQVR42uyd+V9SWxeHEQdMMRzICWUosMQc0ciiAEEtNXt9fe+93UQFnGcbHJrO/tff8lbu+ax9OAfwfli/FQfk4exhrfXdax0b+peYrQJSAamAVEAqIBWQCkgFpAJSATEKsnpWl127+SCH9rQr7m169mD9RoPUBbzaT/O/+vv29k0FeeDQcItVeXo+30SQDq9GW7B+2bl100AaWI4rC8/bO1duEEiuShNaMBlpzd4UkDZNbq5Q7fHGTQAZ1nQtlnp0a63cQb64NIjFHdGuD2UNko1rUJtomXn/uWxBPmgqFmyKtNWUJ8hXTdVc0d6Gch9arhiMxVu1cOu8zEA+T2Bf0PNppiUMvDGO0RLPfnr5TWFfLv393ydOnyMIvDFpe+dq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"
+}
