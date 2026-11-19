@@ -4,27 +4,15 @@ English | [中文](README.zh.md)
 
 Out-of-process provider plugins for [certimate](https://github.com/certimate-go/certimate). Each plugin is a standalone binary that certimate launches as a gRPC subprocess ([hashicorp/go-plugin](https://github.com/hashicorp/go-plugin)) to deploy, resolve, notify, or purge certificates. Adding a plugin requires **no changes to the certimate core**.
 
-This repository is also the plugin **market** source: it builds plugins, publishes them as GitHub Releases, and serves a market index (`index.json`) that certimate's plugin-market UI reads to list, install, and update plugins.
+This repository runs the official plugin registry. Admitted plugins publish ZIPs from their own provider repositories. Certimate reads the signed `registry/index.json` on `main` through the CDN and downloads ZIPs from each provider's pinned release commit. [Signed index](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json)
 
-## Repository layout
+## Contribute a plugin
 
-```
-plugins/
-├── <plugin-name>/        one directory per plugin
-│   ├── manifest.json       identity + market metadata
-│   ├── main.go             plugin.Serve entrypoint
-│   ├── server.go           unified Plugin interface implementation
-│   ├── schema/             form/v1 provider (+ optional access) schema and i18n
-│   └── *_test.go
-├── _template/            scaffold for new plugins
-├── cmd/
-│   ├── genindex/           regenerates index.json from manifests
-│   └── releaseinfo/        writes the release block (sha256/assets) into a manifest
-├── internal/ pkg/        shared plugin helpers
-├── docs/releasing.md     how releases work
-├── index.json            generated market index (consumed by certimate)
-└── Makefile
-```
+For an existing official plugin, find its repository in the admissions list, fork it to your personal account, and open a pull request against its `main` branch. [Official admissions](https://github.com/certimate-go/plugins/blob/main/registry/_policy/admissions.json)
+
+For a new official plugin, open an issue with the target service, plugin capability, proposed `provider_type`, and how you tested it or plan to test it. If you have code, include the public repository, commit, and license. If the maintainers accept the proposal, they create and configure the official repository. Fork that repository and submit your source in a pull request. Maintainers handle admission and the first release after merging the source. [Request official inclusion](https://github.com/certimate-go/plugins/issues/new)
+
+To publish independently from your own repository, follow the [custom market guide](skills/certimate-plugin-dev/references/third-party-development.md).
 
 ## Plugin anatomy
 
@@ -35,22 +23,21 @@ Each plugin implements the unified `Plugin` interface defined in `certimate/pkg/
 - `Process` — performs the capability's work with access config, provider config, and a typed payload.
 - `PostProcess` — finalization for the same execution (embed `plugin.NoopFinalizer` when the capability needs no cleanup).
 
-`manifest.json` carries the market metadata:
+The source `manifest.json` describes the plugin.
 
 | field | meaning |
 |---|---|
-| `provider_type` | unique plugin id (kebab-case); also the directory and binary name |
+| `provider_type` | Stable plugin ID in kebab case |
 | `access_provider_type` | the access credential type this plugin consumes |
-| `version` | semver; bumping it is what triggers a new release |
+| `version` | Semantic version that must match the official release trigger tag |
 | `capability` | one of `deploy`, `dns`, `notify`, `purge` |
 | `category` | market grouping (e.g. `cdn`, `storage`, `other`) |
 | `binary` | built binary name |
 | `icon` | icon filename shipped with the plugin |
 | `protocol_version` | must match the certimate plugin protocol |
 | `usages` / `priority` | market display hints |
-| `release` | generated pointer to the GitHub Release (repo/tag/assets/checksums) |
 
-## Add a plugin
+## Develop a plugin
 
 The repository includes a [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md) for AI coding assistants developing deploy, DNS, notification, and purge plugins. It covers credential reuse, forms and Chinese/English translations, builds, and verification through the real host. From this repository, ask your assistant:
 
@@ -68,15 +55,11 @@ cp -R skills/certimate-plugin-dev "${CODEX_HOME:-$HOME/.codex}/skills/"
 
 Once installed, open your own project and ask: “Use `$certimate-plugin-dev` to build a DNS plugin for my provider and prepare this repository as a custom market.” For other assistants supporting `SKILL.md`, copy the entire directory into their skills directory. See the [custom market setup](docs/releasing.md#distributing-from-your-own-market).
 
-```bash
-make init PLUGIN=my-deployer          # scaffold from _template
-```
-
-Then edit `my-deployer/manifest.json` (set `provider_type`, `access_provider_type`, `capability`, `category`, `icon`, ...), implement `Process()` in `server.go`, and define `schema/config.json`. Drop the icon file (svg/png) into the plugin directory and point `manifest.icon` at it.
+Use `_template` as a source example. For an official provider, place `go.mod`, `manifest.json`, the Go entry point, and `schema/` at the root of its repository. Put the icon file there and set `manifest.icon` to its filename. Run `go test ./...` in the provider repository.
 
 A plugin may declare a **new** access type (add `schema/access.json`) or reuse an existing one (built-in or from another plugin).
 
-## Build & test
+## Build plugins still in this repository
 
 ```bash
 make build PLUGIN=my-deployer         # installable host package -> dist/<plugin>/
@@ -84,17 +67,9 @@ make build-all PLUGIN=my-deployer     # cross-compile the release matrix
 make test                             # go test ./...
 ```
 
-`build-all` produces stripped, reproducible binaries (`CGO_ENABLED=0 -trimpath -ldflags='-s -w'`) named the way the certimate market downloads them — `<plugin>_<os>_<arch>` (`<plugin>_windows_amd64.exe` on Windows) — for `linux/amd64`, `linux/arm64`, `darwin/amd64`, `darwin/arm64`, `windows/amd64`.
+## Release an official plugin
 
-## Releasing
-
-Releases are **change-driven and version-gated**. On push to `main`, the `release` workflow detects which plugins changed; for each build-affecting change whose `version` was bumped, it cross-compiles the plugin, publishes a GitHub Release tagged `<provider_type>/v<version>`, computes per-platform SHA256 checksums, and writes a `release` block into the manifest. `genindex` then regenerates `index.json` so the certimate market can resolve and verify downloads.
-
-- To ship a change: change the code, **bump `version`** in the plugin's `manifest.json`, push to `main`.
-- A build-affecting change (Go source, `go.mod`/`go.sum`, `schema/`) without a version bump fails the run.
-- Metadata-only changes (icon, display name) only regenerate the index; no release.
-
-See [`docs/releasing.md`](docs/releasing.md) for the full flow and trust preconditions.
+After the source PR and any first-time admission PR merge, a maintainer pushes a `vX.Y.Z-detach` tag pointing to the provider's protected `main` revision, matching the version in `manifest.json`. The release workflow builds eight platform ZIPs and publishes an immutable `vX.Y.Z` tag containing `build/`. The registry merges a version registration PR, then a separate PR with the signed market snapshot. The release is available in the market when the CDN serves the verified snapshot. [Official release contract](https://github.com/certimate-go/plugins/blob/main/docs/release-contract.md)
 
 ## Upgrading from built-in purge providers
 
@@ -104,8 +79,8 @@ A workflow node that references a legacy purge provider keeps working once the m
 
 ## Tooling
 
-- `make index` → `cmd/genindex` regenerates `index.json` from all manifests.
-- `cmd/releaseinfo` computes checksums and writes the `release` block (used by the release workflow).
+- `cmd/registryctl` handles official release verification, registration, and signed index publication.
+- `cmd/releaseinfo` writes Release asset metadata for custom markets.
 - `make clean` removes `dist/`.
 
 ## Requirements

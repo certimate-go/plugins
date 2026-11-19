@@ -8,6 +8,7 @@
   "min_core_version": "",
   "protocol_version": 4,
   "provider_type": "cmcccloud-dns",
+  "provider_aliases": ["cmcccloud"],
   "release": {
     "assets": {
       "darwin/amd64": "cmcccloud-dns_darwin_amd64.zip",

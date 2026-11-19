@@ -58,6 +58,12 @@ When defining an access type, return its access schema once. When reusing a buil
 
 From the project root, build a standalone provider and stage it under a temporary plugin directory. This example targets the local Unix host. Use the manifest’s exact binary name when staging the executable. The GitHub release template uses one manifest across all targets and requires a binary name ending in `.exe` to support Windows. That name also works on Linux and macOS.
 
+From a checkout of `certimate-go/plugins`, run `pluginlint` on the standalone plugin directory. Exit 0 means the directory has an icon file and `schema/i18n/zh.json` and `en.json` cover the schema keys.
+
+```sh
+go run ./cmd/pluginlint /path/to/plugin
+```
+
 ```sh
 provider=example-widget-deploy
 fixture_dir=$(mktemp -d)

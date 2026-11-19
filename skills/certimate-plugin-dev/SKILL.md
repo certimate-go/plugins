@@ -45,12 +45,12 @@ Ordinary plugin development requires no core `init()` registration, static provi
 ## Keep identity, credentials, and forms consistent
 
 - Declare exactly one manifest `capability`: `deploy`, `dns`, `notify`, or `purge`. Register `&plugin.GRPCPlugin{Impl: ...}` under the shared `plugin.PluginName` in the entrypoint with the shared handshake configuration.
-- Keep provider and access identities consistent across the manifest, `GetMetadata`, and schemas. Match `protocol_version` to the current `plugin.ProtocolVersion`, `binary` to the build artifact, and any icon path to an actual packaged file.
+- Keep provider and access identities consistent across the manifest, `GetMetadata`, and schemas. Match `protocol_version` to the current `plugin.ProtocolVersion` and `binary` to the build artifact.
 - `usages` describes credential usage. Select `hosting`, `dns`, `notification`, or `ca` according to the actual consumers; it is not a declaration of multiple capabilities.
 - Prefer reusing an access type with a compatible contract and parse its actual JSON fields. Do not declare a separate access schema when reusing a type. If another plugin owns that type, document the credential fields you share. Install the owner first and remove dependents before removing the owner. This applies across markets. For a new type, provide `schema/access.json` and its display name.
 - Use the `form/v1` envelope and match field names to JSON tags in Go configuration structs. Put credentials in access configuration and target resources or operation options in provider configuration. Use the `secret` field type and masking flag for secrets.
 - Use `LoadProviderSchema` for every capability; the returned `ProviderSchemaJSON` is capability-neutral. Access schemas use `LoadAccessSchema` and are required only when declaring a new access type.
-- Use flat translation keys under `plugin.<provider_type>.*` in `schema/i18n/zh.json` and `en.json`. Check all keys referenced by display names, labels, placeholders, tooltips, nested options, and conditional fields.
+- Use flat translation keys under `plugin.<provider_type>.*` in `schema/i18n/zh.json` and `en.json`.
 - Return diagnostic errors for malformed schema files. Allow an absent access schema only when explicitly reusing an access type.
 
 ## Implement platform behavior
@@ -74,7 +74,10 @@ In the official collection, run the relevant checks below. For an independent re
 go test ./my-deployer -count=1
 go test . -run '^TestAllPluginManifestsSatisfyCoreContract$' -count=1
 make build PLUGIN=my-deployer
+go run ./cmd/pluginlint ./my-deployer
 ```
+
+`pluginlint` checks the manifest, icon, schemas, and Chinese and English translations. For an official repository, pass `-repository certimate-go/<repository>` before the plugin directory. The linter checks `plugin-provider-<service>-<role>` with the suffix matching the manifest capability (`deployer`, `purger`, `notifier`, or `acmedns01challenger`) and checks that `go.mod` uses the matching GitHub module path. A checkout directory beginning with `plugin-provider-` lets the linter infer the repository name.
 
 `make build` requires `jq` and outputs `dist/<plugin>/`. Verify that the manifest, binary, and optional icon are present. The directory and binary must not be group- or world-writable. Place this directory under a separate plugin root for testing and point `CERTIMATE_PLUGIN_DIR` at that root.
 

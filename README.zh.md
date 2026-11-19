@@ -4,27 +4,15 @@
 
 [certimate](https://github.com/certimate-go/certimate) 的外置 provider 插件集合。每个插件是一个独立二进制，certimate 通过 [hashicorp/go-plugin](https://github.com/hashicorp/go-plugin) 以 gRPC 子进程的方式启动它，完成证书的部署、DNS 解析、通知或清除。新增插件**无需改动 certimate 核心**。
 
-本仓库同时也是插件**市场**源：构建插件、发布为 GitHub Release，并产出市场索引 `index.json`，供 certimate 的插件市场界面列出、安装、更新插件。
+本仓库维护官方插件注册表。已准入的插件从各自的 provider 仓库发布 ZIP。Certimate 经 CDN 读取 `main` 上的签名索引 `registry/index.json`，再从各 provider 的正式产物提交下载 ZIP。 [签名索引](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json)
 
-## 仓库结构
+## 贡献插件
 
-```
-plugins/
-├── <plugin-name>/        每个插件一个目录
-│   ├── manifest.json       身份与市场元数据
-│   ├── main.go             plugin.Serve 入口
-│   ├── server.go           统一 Plugin 接口实现
-│   ├── schema/             form/v1 provider（及可选 access）表单 schema 与 i18n
-│   └── *_test.go
-├── _template/            新插件脚手架
-├── cmd/
-│   ├── genindex/           从各 manifest 重新生成 index.json
-│   └── releaseinfo/        把 release 块（sha256/assets）写进 manifest
-├── internal/ pkg/        插件共享工具
-├── docs/releasing.md     发版机制说明
-├── index.json            生成的市场索引（certimate 消费）
-└── Makefile
-```
+修改已有官方插件时，从准入清单找到对应仓库，将它 fork 到个人账号，再向官方仓库的 `main` 提交 PR。 [官方准入清单](https://github.com/certimate-go/plugins/blob/main/registry/_policy/admissions.json)
+
+申请收录新插件时，先在本仓库提 Issue，写明目标服务、插件能力、拟用的 `provider_type` 和验证方式。已有源码时，附上公开仓库、待审提交和许可证。维护者同意收录后会创建并配置官方仓库。收到仓库链接后，从个人 fork 提交源码 PR。维护者在合并源码后完成准入和首次发布。 [申请官方收录](https://github.com/certimate-go/plugins/issues/new)
+
+如果要在自己的仓库独立发布，请按[自定义市场指南](skills/certimate-plugin-dev/references/third-party-development.md)操作。
 
 ## 插件结构
 
@@ -35,22 +23,21 @@ plugins/
 - `Process` —— 根据访问配置、provider 配置和该能力的 typed payload 执行工作。
 - `PostProcess` —— 同一次执行的收尾（能力无需清理时嵌入 `plugin.NoopFinalizer`）。
 
-`manifest.json` 携带市场元数据：
+源码中的 `manifest.json` 描述插件。
 
 | 字段 | 含义 |
 |---|---|
-| `provider_type` | 插件唯一 id（kebab-case）；同时也是目录名和二进制名 |
+| `provider_type` | 稳定的插件标识，使用 kebab-case |
 | `access_provider_type` | 本插件消费的访问凭据类型 |
-| `version` | semver 版本号；**bump 它才会触发新发版** |
+| `version` | SemVer 版本号，须与官方发布触发标签对应 |
 | `capability` | 四选一：`deploy`、`dns`、`notify`、`purge` |
 | `category` | 市场分组（如 `cdn`、`storage`、`other`） |
 | `binary` | 构建出的二进制名 |
 | `icon` | 随插件发布的图标文件名 |
 | `protocol_version` | 必须与 certimate 插件协议匹配 |
 | `usages` / `priority` | 市场展示提示 |
-| `release` | 生成的 GitHub Release 指针（repo/tag/assets/checksums） |
 
-## 新增插件
+## 开发插件
 
 仓库提供 [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md)，指导 AI 编程助手开发 deploy、dns、notify、purge 插件，覆盖凭据复用、表单与中英文翻译、构建及真实宿主验证。在本仓库中使用时，可直接给助手以下指令：
 
@@ -68,15 +55,11 @@ cp -R skills/certimate-plugin-dev "${CODEX_HOME:-$HOME/.codex}/skills/"
 
 安装后，在你自己的项目中调用：“用 `$certimate-plugin-dev` 为我的服务开发 DNS 插件，并把本仓库配置成自定义市场。”其他支持 `SKILL.md` 的助手可将整个目录复制到各自的 skills 目录。参见[自定义市场发布指南](docs/releasing.md#distributing-from-your-own-market)。
 
-```bash
-make init PLUGIN=my-deployer          # 从 _template 生成脚手架
-```
-
-然后编辑 `my-deployer/manifest.json`（设置 `provider_type`、`access_provider_type`、`category`、`icon` 等），在 `server.go` 实现 `Process()`，并编写 `schema/config.json`。把图标文件（svg/png）放进插件目录，并在 `manifest.icon` 指向它。
+参考 `_template` 中的示例。官方 provider 的 `go.mod`、`manifest.json`、Go 入口和 `schema/` 放在各自仓库根目录。将图标一并放在根目录，并把文件名填入 `manifest.icon`。在 provider 仓库运行 `go test ./...`。
 
 插件可以**声明新的** access 类型（添加 `schema/access.json`），也可以复用已有的（内置或来自其它插件）。
 
-## 构建与测试
+## 构建仍位于本仓库的插件
 
 ```bash
 make build PLUGIN=my-deployer         # 当前主机平台安装目录 -> dist/<plugin>/
@@ -84,17 +67,9 @@ make build-all PLUGIN=my-deployer     # 跨平台编译出发布矩阵
 make test                             # go test ./...
 ```
 
-`build-all` 产出剥离符号、可复现的二进制（`CGO_ENABLED=0 -trimpath -ldflags='-s -w'`），命名方式与 certimate 市场下载一致：`<plugin>_<os>_<arch>`（Windows 为 `<plugin>_windows_amd64.exe`），覆盖 `linux/amd64`、`linux/arm64`、`darwin/amd64`、`darwin/arm64`、`windows/amd64`。
+## 发布官方插件
 
-## 发版
-
-发版是 **change-driven（按改动驱动）+ version-gated（按版本号卡控）**。push 到 `main` 时，`release` 工作流检测哪些插件发生了变化；对每个 build-affecting 改动且已 bump `version` 的插件，跨平台编译、发布 GitHub Release（tag `<provider_type>/v<version>`）、计算各平台 SHA256 校验、并把 release 块写入 manifest。随后 `genindex` 重新生成 `index.json`，让 certimate 市场能解析和校验下载。
-
-- 发一个改动：改代码、在插件 `manifest.json` 里 **bump `version`**、push 到 `main`。
-- build-affecting 改动（Go 源码、`go.mod`/`go.sum`、`schema/`）不 bump 版本会让本次运行失败。
-- 仅元数据改动（图标、显示名）只会重新生成索引，不发版。
-
-完整流程与信任前提见 [`docs/releasing.md`](docs/releasing.md)。
+源码 PR 和首次准入 PR 合并后，维护者将 `vX.Y.Z-detach` 标签推到 provider 仓库，指向受保护的 `main` 中与 `manifest.json` 版本对应的源码提交。发布工作流构建 8 个平台的 ZIP，并将 `build/` 写入不可改的正式标签 `vX.Y.Z`。注册表先合并版本登记 PR，再单独合并签名索引发布 PR。CDN 提供通过验证的签名索引后，该版本可从官方市场获取。 [官方发布契约](https://github.com/certimate-go/plugins/blob/main/docs/release-contract.md)
 
 ## 从内置 purge provider 升级
 
@@ -104,11 +79,11 @@ make test                             # go test ./...
 
 ## 工具
 
-- `make index` → `cmd/genindex` 从所有 manifest 重新生成 `index.json`。
-- `cmd/releaseinfo` 计算校验和并写入 release 块（发版工作流使用）。
+- `cmd/registryctl` 用于校验和登记官方版本，以及发布签名索引。
+- `cmd/releaseinfo` 为自定义市场生成 Release 附件元数据。
 - `make clean` 清除 `dist/`。
 
 ## 环境要求
 
 - Go 1.25+（`GOTOOLCHAIN=auto` 会自动拉取所需工具链）。
-- 依赖 `github.com/certimate-go/certimate/pkg/plugin` 提供 `Deployer` 接口与握手协议。
+- 依赖 `github.com/certimate-go/certimate/pkg/plugin` 提供 `Plugin` 接口与握手协议。

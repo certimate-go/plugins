@@ -43,45 +43,6 @@ func TestGetConfigSchema_ReturnsParseableDeploySchema(t *testing.T) {
 	}
 }
 
-func TestGetConfigSchema_I18nCoverage(t *testing.T) {
-	d := &myDeployer{}
-	cs, err := d.GetConfigSchema(context.Background())
-	if err != nil {
-		t.Fatalf("GetConfigSchema: %v", err)
-	}
-
-	var env struct {
-		Schema struct {
-			Columns []struct {
-				LabelKey       string `json:"labelKey,omitempty"`
-				PlaceholderKey string `json:"placeholderKey,omitempty"`
-				TooltipKey     string `json:"tooltipKey,omitempty"`
-			} `json:"columns"`
-		} `json:"schema"`
-	}
-	if err := json.Unmarshal(cs.ProviderSchemaJSON, &env); err != nil {
-		t.Fatalf("deploy schema not valid JSON: %v", err)
-	}
-
-	locales := []string{"zh", "en"}
-	for _, col := range env.Schema.Columns {
-		for _, key := range []string{col.LabelKey, col.PlaceholderKey, col.TooltipKey} {
-			if key == "" {
-				continue
-			}
-			for _, locale := range locales {
-				if cs.I18n[locale] == nil {
-					t.Errorf("locale %q not found in i18n", locale)
-					continue
-				}
-				if cs.I18n[locale][key] == "" {
-					t.Errorf("i18n key %q missing for locale %q", key, locale)
-				}
-			}
-		}
-	}
-}
-
 func TestProcess_ReturnsDeployResult(t *testing.T) {
 	d := &myDeployer{}
 	res, err := d.Process(context.Background(), &plugin.Request{
