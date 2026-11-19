@@ -1,0 +1,97 @@
+{
+  "provider_type": "aws-acm-purger",
+  "repository": "certimate-go/plugin-provider-aws-acm-purger",
+  "version": "0.1.2",
+  "tag": "v0.1.2",
+  "source_commit": "db8cd6b8d0bc1aa6481b08dd36cb1410ad819c53",
+  "build_run_id": "44510040344",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 7382642,
+      "sha256": "a48fcc7c975595ff7734c4852ad06437fd1583d40a833451bcd2a4366590dbd1"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6933431,
+      "sha256": "207121c9e94871e8f0f8c37782f1c7b964c5c1fab2a39ad744240d55bb6936d6"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 7361641,
+      "sha256": "04cce1fe0689fc2dad774aa6c820e6494db5cb8094e2f739cdab871dc38f11e6"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6930658,
+      "sha256": "7227bf0317ae2c0dee08ca1337789f12f59ea1f2d3aad0988d268f55508decaa"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 6631571,
+      "sha256": "05f1bdbb6d82951d9d3f765c4a2dd1fd27174289abe7062aa909bb1229de1896"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 7007927,
+      "sha256": "07274b22242a203c7d31a2b18baebcd83a2b2dbbd91bc56e19dcdb9f5588ecc9"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 7521411,
+      "sha256": "7af2aba209842766f1f682825fb698cbdb4625e92daccbb60b2c112127707c03"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 6715718,
+      "sha256": "792d849c992b436e18ee332af3b9566eccedb43e4c5b04d66719e9218d269c0d"
+    }
+  ],
+  "release_commit": "be86e674105935690f25abd91eb994254c19b291",
+  "manifest": {
+    "version": "0.1.2",
+    "provider_type": "aws-acm-purger",
+    "access_provider_type": "aws",
+    "capability": "purge",
+    "display_name_key": "plugin.aws-acm-purger.name",
+    "category": "other",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "aws-acm-purger.exe",
+    "icon": "aws.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "AWS - ACM (Amazon Certificate Manager) (Purge)"
+    },
+    "zh": {
+      "name": "AWS - 证书管理器 ACM（过期清除）"
+    }
+  },
+  "icon": "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"
+}
