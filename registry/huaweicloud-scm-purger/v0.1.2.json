@@ -1,0 +1,97 @@
+{
+  "provider_type": "huaweicloud-scm-purger",
+  "repository": "certimate-go/plugin-provider-huaweicloud-scm-purger",
+  "version": "0.1.2",
+  "tag": "v0.1.2",
+  "source_commit": "b357731aac8800505e430e6155d49212d022bfd9",
+  "build_run_id": "44510074691",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 7059366,
+      "sha256": "61d98f33ab2f5217055c6d2a523484218ffa2ff69133d136f0935594068d42fb"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6641138,
+      "sha256": "27df77e2d58aecccd2925363df50a815cb0ae6ec40522cd121cbb1989ef00133"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 7010491,
+      "sha256": "6f8fa4a4a2825cf7dd1c29a2d7623df4c0284e8c45fea09e85b60c2d6fbb91ee"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6626164,
+      "sha256": "4085d0e8821e6e2c6139ffc5192d1801ddbe9784f09eb1764b78ca68c814bace"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 6335300,
+      "sha256": "4e730accd705902d0f9121d3957aeddc51bc670c00c558640560f0799cd7c456"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6759093,
+      "sha256": "0f27de9c3ef8396f2c1105492fe2a999b9521ac1aff54f6f4db49737a7cf0e4f"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 7175033,
+      "sha256": "c30f1f9a3262fffa231d343bef9bbf9c8812609a06829e3ecff26729cd4f8ac0"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 6435740,
+      "sha256": "08842b5eac2690c2e0263a98cd61cbb140126d605b5004ddd80ec17fa8b62cea"
+    }
+  ],
+  "release_commit": "552831d0c1b4be81812c92f5c37ef359734371e6",
+  "manifest": {
+    "version": "0.1.2",
+    "provider_type": "huaweicloud-scm-purger",
+    "access_provider_type": "huaweicloud",
+    "capability": "purge",
+    "display_name_key": "plugin.huaweicloud-scm-purger.name",
+    "category": "other",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "huaweicloud-scm-purger.exe",
+    "icon": "huaweicloud.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Huawei Cloud - CCM (Cloud Certificate Manager) (Purge)"
+    },
+    "zh": {
+      "name": "华为云 - 云证书与管理服务 CCM（过期清除）"
+    }
+  },
+  "icon": "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"
+}
