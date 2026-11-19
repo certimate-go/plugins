@@ -1,0 +1,97 @@
+{
+  "provider_type": "ctcccloud-cms",
+  "repository": "certimate-go/plugin-provider-ctcccloud-cms-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "0a87b9a34f189a75009a88df921957932ff5e5e8",
+  "build_run_id": "44511774126",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6264909,
+      "sha256": "cc8fbad383d5bf52683a9e63f1a68d203fa16b082893638199a4b1d0feded661"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5911598,
+      "sha256": "ae87af2e729c4de7158daa184d8409190a43edfaacf883beaa0440dd39641a2a"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6250715,
+      "sha256": "d92f53792f53de4e622e78e715e8990cba83dc13a794c8380a1417f7c90da136"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5898382,
+      "sha256": "a7ff5f2a677415cfa8a4723b45a9f6c53cbad7b8258204006dd619dee6e098c8"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5655247,
+      "sha256": "bc47ea103cc08ae4d30f35e1836ade90926a7d097f22311d1cfa396b823a7767"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5996208,
+      "sha256": "95abeb044b182044bce16ac9d2242f70eaf65edb7b30d25cb7dfaa9c40acd206"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6394405,
+      "sha256": "2be5bc2388a155a186d016093bd7e587b8606f1c610781b8b93581944c694b39"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5766431,
+      "sha256": "8830028877f5be8d88da760e32af91a058b1b823478ff0d1da2fe6bb557d87f9"
+    }
+  ],
+  "release_commit": "c2e1c8e55ef7677a61418da9b125df63dddda756",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "ctcccloud-cms",
+    "access_provider_type": "ctcccloud",
+    "capability": "deploy",
+    "display_name_key": "plugin.ctcccloud-cms.name",
+    "category": "ssl",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "ctcccloud-cms.exe",
+    "icon": "ctcccloud.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "China Telecom StateCloud - Upload to Certificate Management Service"
+    },
+    "zh": {
+      "name": "天翼云 - 上传到证书管理服务 CMS"
+    }
+  },
+  "icon": "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"
+}
