@@ -17,7 +17,6 @@
 | `cmd/` | 插件和注册表工具 |
 | `_template/` | 插件脚手架 |
 | `integration/` | 使用独立 provider checkout 的 Core 集成测试 |
-| `index.json` 和 `market/` | 历史市场元数据 |
 
 ## 插件结构
 

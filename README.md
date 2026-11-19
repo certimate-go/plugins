@@ -17,7 +17,6 @@ Official provider source lives in its own `certimate-go/plugin-provider-*` repos
 | `cmd/` | Plugin and registry tooling |
 | `_template/` | Plugin scaffold |
 | `integration/` | Core-to-plugin tests using standalone workspace checkouts |
-| `index.json` and `market/` | Historical marketplace metadata |
 
 ## Plugin anatomy
 
