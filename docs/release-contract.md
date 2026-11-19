@@ -150,9 +150,11 @@ The `registry-reconcile` environment needs two Apps:
 
 Each validated release gets one stable `registry/<provider>/<tag>` branch and
 one PR. A rerun reuses an identical pending branch and PR; it does not overwrite
-conflicting contents or reopen a deliberately closed PR. GitHub auto-merge
-uses the PR head guard and the required independent check. Reconciliation also
-dispatches verification for live server-generated merge queue refs.
+conflicting contents or reopen a deliberately closed PR. After the independent
+check passes on the test merge commit, reconciliation requests entry into the
+merge queue with the verified PR head as a precondition. GitHub enforces the
+required check from the check App. Reconciliation dispatches verification for
+live server-generated merge queue refs.
 
 ### Required registration check
 
@@ -180,7 +182,7 @@ commit it inspected: GitHub's test merge commit before enqueueing and the
 merge queue commit after enqueueing. If the candidate or the protected base
 moves during verification, the workflow emits no successful check.
 
-Enable repository auto-merge. Use two active rulesets on `main` so the
+Use two active rulesets on `main` so the
 registration requirement can be kept separate from maintainer review:
 
 - Require pull requests, prevent force pushes and branch deletion, and require

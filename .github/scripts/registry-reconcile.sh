@@ -23,6 +23,7 @@ existing_ref() {
 
 provider_api() { GH_TOKEN="$DISPATCH_TOKEN" gh api "$@"; }
 registrar_api() { GH_TOKEN="$REGISTRATION_TOKEN" gh api "$@"; }
+registry_api() { GH_TOKEN="$CHECK_DISPATCH_TOKEN" gh api "$@"; }
 
 dispatch_request() {
     local repo="$1" trigger="$2" title="Release " status active
@@ -37,6 +38,38 @@ dispatch_request() {
     done
     GH_TOKEN="$DISPATCH_TOKEN" gh workflow run release.yml --repo "$repo" --ref main -f "trigger_tag=$trigger"
     printf 'Dispatched %s %s\n' "$repo" "$trigger"
+}
+
+queue_or_check_registration() {
+    local pull_id="$1" commit="$2" pull node queued candidate approved
+    local candidate_ref="refs/pull/$pull_id/merge"
+    pull="$(registrar_api "repos/$GITHUB_REPOSITORY/pulls/$pull_id")"
+    node="$(jq -er --arg sha "$commit" '
+        select(.state == "open" and .draft == false and .head.sha == $sha) | .node_id
+    ' <<<"$pull")" || die 'Registration pull request head changed'
+    queued="$(registrar_api graphql -f 'query=query($pr: ID!) { node(id: $pr) { ... on PullRequest { isInMergeQueue } } }' \
+        -f "pr=$node" --jq '.data.node.isInMergeQueue')"
+    if [[ "$queued" == true ]]; then
+        return
+    fi
+    [[ "$queued" == false ]] || die 'Cannot determine registration queue state'
+
+    candidate="$(existing_ref origin "$candidate_ref")"
+    if [[ -n "$candidate" ]]; then
+        [[ "$candidate" =~ ^[0-9a-f]{40}$ ]] || die 'Invalid registration merge candidate'
+        approved="$(registry_api --paginate --slurp \
+            "repos/$GITHUB_REPOSITORY/commits/$candidate/check-runs?check_name=plugin-registration&status=completed&per_page=100" |
+            jq '[.[].check_runs[] | select(.conclusion == "success")] | length > 0')"
+        if [[ "$approved" == true ]]; then
+            [[ "$(existing_ref origin "$candidate_ref")" == "$candidate" &&
+               "$(existing_ref origin refs/heads/main)" == "$GITHUB_SHA" ]] || die 'Registration merge candidate changed'
+            registrar_api graphql -f 'query=mutation($pr: ID!, $head: GitObjectID!) { enqueuePullRequest(input: {pullRequestId: $pr, expectedHeadOid: $head}) { mergeQueueEntry { position } } }' \
+                -f "pr=$node" -f "head=$commit" --jq '.data.enqueuePullRequest.mergeQueueEntry.position'
+            return
+        fi
+    fi
+    GH_TOKEN="$CHECK_DISPATCH_TOKEN" gh workflow run registry-check.yml --repo "$GITHUB_REPOSITORY" --ref main \
+        -f "candidate_ref=$candidate_ref"
 }
 
 register_release() {
@@ -97,10 +130,8 @@ register_release() {
             -f "body=Provider: $repo; formal tag: $tag; artifact commit: $expected; build run: $run_id." --jq .number)"
     fi
     [[ "$pull_id" =~ ^[1-9][0-9]*$ ]] || die 'Invalid registration pull request number'
-    GH_TOKEN="$CHECK_DISPATCH_TOKEN" gh workflow run registry-check.yml --repo "$GITHUB_REPOSITORY" --ref main \
-        -f "candidate_ref=refs/pull/$pull_id/merge"
-    GH_TOKEN="$REGISTRATION_TOKEN" gh pr merge "$pull_id" --repo "$GITHUB_REPOSITORY" --auto --match-head-commit "$commit"
-    printf 'Registration queued: %s %s PR #%s, source %s, artifacts %s, run %s, actor %s\n' \
+    queue_or_check_registration "$pull_id" "$commit"
+    printf 'Registration reconciled: %s %s PR #%s, source %s, artifacts %s, run %s, actor %s\n' \
         "$repo" "$tag" "$pull_id" "$source_commit" "$expected" "$run_id" "$actor"
 }
 
