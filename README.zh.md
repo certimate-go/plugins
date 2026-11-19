@@ -8,23 +8,16 @@
 
 ## 仓库结构
 
-```
-plugins/
-├── <plugin-name>/        每个插件一个目录
-│   ├── manifest.json       身份与市场元数据
-│   ├── main.go             plugin.Serve 入口
-│   ├── server.go           统一 Plugin 接口实现
-│   ├── schema/             form/v1 provider（及可选 access）表单 schema 与 i18n
-│   └── *_test.go
-├── _template/            新插件脚手架
-├── cmd/
-│   ├── genindex/           从各 manifest 重新生成 index.json
-│   └── releaseinfo/        把 release 块（sha256/assets）写进 manifest
-├── internal/ pkg/        插件共享工具
-├── docs/releasing.md     发版机制说明
-├── index.json            生成的市场索引（certimate 消费）
-└── Makefile
-```
+官方 provider 源码在各自的 `certimate-go/plugin-provider-*` 仓库。通过版本回执的 `repository` 字段定位源码。
+
+| 路径 | 用途 |
+| --- | --- |
+| `registry/` | 版本回执、签名目录、详情和图标 |
+| `.github/workflows/` | 可复用的 provider CI、打包、登记和签名发布 |
+| `cmd/` | 插件和注册表工具 |
+| `_template/` | 插件脚手架 |
+| `integration/` | 使用独立 provider checkout 的 Core 集成测试 |
+| `index.json` 和 `market/` | 历史市场元数据 |
 
 ## 插件结构
 
@@ -72,19 +65,19 @@ cp -R skills/certimate-plugin-dev "${CODEX_HOME:-$HOME/.codex}/skills/"
 make init PLUGIN=my-deployer          # 从 _template 生成脚手架
 ```
 
-然后编辑 `my-deployer/manifest.json`（设置 `provider_type`、`access_provider_type`、`category`、`icon` 等），在 `server.go` 实现 `Process()`，并编写 `schema/config.json`。把图标文件（svg/png）放进插件目录，并在 `manifest.icon` 指向它。
+将脚手架复制到独立 Go 模块，再编辑 `my-deployer/manifest.json`（设置 `provider_type`、`access_provider_type`、`category`、`icon` 等），在 `server.go` 实现 `Process()`，并编写 `schema/config.json`。把图标文件（svg/png）放进插件目录，并在 `manifest.icon` 指向它。
 
 插件可以**声明新的** access 类型（添加 `schema/access.json`），也可以复用已有的（内置或来自其它插件）。
 
 ## 构建与测试
 
-```bash
-make build PLUGIN=my-deployer         # 当前主机平台安装目录 -> dist/<plugin>/
-make build-all PLUGIN=my-deployer     # 跨平台编译出发布矩阵
-make test                             # go test ./...
+初始化 provider 自己的 Git 子模块，然后构建到本地 Core 插件目录。
+
+```sh
+make dev PROVIDER_DIR=../plugin-provider-volcengine-dns-acmedns01challenger
 ```
 
-`build-all` 产出剥离符号、可复现的二进制（`CGO_ENABLED=0 -trimpath -ldflags='-s -w'`），命名方式与 certimate 市场下载一致：`<plugin>_<os>_<arch>`（Windows 为 `<plugin>_windows_amd64.exe`），覆盖 `linux/amd64`、`linux/arm64`、`darwin/amd64`、`darwin/arm64`、`windows/amd64`。
+在 provider 仓库运行 `go test ./...`。在注册表仓库运行 `make test` 前，先初始化 workspace 的独立 provider 子模块，或将 `CERTIMATE_PLUGIN_WORKSPACE` 指向这些 checkout。 [集成测试](integration/README.md)
 
 ## 发版
 
@@ -98,9 +91,9 @@ make test                             # go test ./...
 
 ## 工具
 
-- `make index` → `cmd/genindex` 从所有 manifest 重新生成 `index.json`。
-- `cmd/releaseinfo` 计算校验和并写入 release 块（发版工作流使用）。
-- `make clean` 清除 `dist/`。
+- `make index` 使用注册表回执和 `READY` 指定的 CDN 工件观测结果暂存目录。
+- [第三方发布模板](docs/releasing.md#distributing-from-your-own-market)固定其使用的 `releaseinfo` 和 `genindex` 工具版本。
+- `make clean` 清除本地 `dist/` 输出。
 
 ## 环境要求
 

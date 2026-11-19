@@ -1,5 +1,7 @@
 # Verify the cloud deployment plugins
 
+The integration fixtures build standalone provider modules from the workspace next to the registry checkout. Initialize the top-level Git submodules recursively, or set `CERTIMATE_PLUGIN_WORKSPACE` to a workspace with those checkouts. The optional Core workflows also require the Core executable described for each suite.
+
 Run the production-process tests from the repository root.
 
 ```sh

@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"testing"
@@ -45,31 +45,7 @@ func (f *apisixAccessCheckFixture) serve(w http.ResponseWriter, r *http.Request)
 
 func buildApisixPlugin(t *testing.T, dir string) {
 	t.Helper()
-	root, err := filepath.Abs("..")
-	if err != nil {
-		t.Fatal(err)
-	}
-	out := filepath.Join(dir, "apisix")
-	if err := os.MkdirAll(out, 0o755); err != nil {
-		t.Fatal(err)
-	}
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Minute)
-	defer cancel()
-	cmd := exec.CommandContext(ctx, "go", "build", "-o", filepath.Join(out, "apisix"), "./apisix")
-	cmd.Dir = root
-	cmd.Env = append(os.Environ(), "CGO_ENABLED=0")
-	if output, err := cmd.CombinedOutput(); err != nil {
-		t.Fatalf("build apisix: %v\n%s", err, output)
-	}
-	for _, name := range []string{"manifest.json", "apisix.svg"} {
-		data, err := os.ReadFile(filepath.Join(root, "apisix", name))
-		if err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(filepath.Join(out, name), data, 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	stageStandaloneProviders(t, dir, []string{"apisix"}, runtime.GOOS, runtime.GOARCH)
 }
 
 func TestApisixAccessCheckSubprocess(t *testing.T) {

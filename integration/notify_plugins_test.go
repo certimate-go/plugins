@@ -113,7 +113,7 @@ func TestExternalNotificationPlugins(t *testing.T) {
 
 func buildAndStartNotificationCore(t *testing.T, ctx context.Context, names ...string) *b1WorkflowAPI {
 	t.Helper()
-	core := filepath.Join("..", "..", "certimate")
+	core := filepath.Join(standaloneTestWorkspace(), "certimate")
 	if _, err := os.Stat(filepath.Join(core, "go.mod")); os.IsNotExist(err) {
 		t.Skip("requires the sibling certimate checkout")
 	} else if err != nil {

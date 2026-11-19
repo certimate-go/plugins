@@ -8,23 +8,16 @@ This repository indexes official plugins. Provider repositories build and publis
 
 ## Repository layout
 
-```
-plugins/
-├── <plugin-name>/        one directory per plugin
-│   ├── manifest.json       identity + market metadata
-│   ├── main.go             plugin.Serve entrypoint
-│   ├── server.go           unified Plugin interface implementation
-│   ├── schema/             form/v1 provider (+ optional access) schema and i18n
-│   └── *_test.go
-├── _template/            scaffold for new plugins
-├── cmd/
-│   ├── genindex/           regenerates index.json from manifests
-│   └── releaseinfo/        writes the release block (sha256/assets) into a manifest
-├── internal/ pkg/        shared plugin helpers
-├── docs/releasing.md     how releases work
-├── index.json            generated market index (consumed by certimate)
-└── Makefile
-```
+Official provider source lives in its own `certimate-go/plugin-provider-*` repository. Find it through the `repository` field in each version receipt.
+
+| Path | Purpose |
+| --- | --- |
+| `registry/` | Version receipts, signed catalog, and addressable details and icons |
+| `.github/workflows/` | Shared provider CI and release, registration, and catalog publication |
+| `cmd/` | Plugin and registry tooling |
+| `_template/` | Plugin scaffold |
+| `integration/` | Core-to-plugin tests using standalone workspace checkouts |
+| `index.json` and `market/` | Historical marketplace metadata |
 
 ## Plugin anatomy
 
@@ -72,19 +65,19 @@ Once installed, open your own project and ask: “Use `$certimate-plugin-dev` to
 make init PLUGIN=my-deployer          # scaffold from _template
 ```
 
-Then edit `my-deployer/manifest.json` (set `provider_type`, `access_provider_type`, `capability`, `category`, `icon`, ...), implement `Process()` in `server.go`, and define `schema/config.json`. Drop the icon file (svg/png) into the plugin directory and point `manifest.icon` at it.
+Copy the scaffold into your standalone Go module. Then edit `my-deployer/manifest.json` (set `provider_type`, `access_provider_type`, `capability`, `category`, `icon`, ...), implement `Process()` in `server.go`, and define `schema/config.json`. Drop the icon file (svg/png) into the plugin directory and point `manifest.icon` at it.
 
 A plugin may declare a **new** access type (add `schema/access.json`) or reuse an existing one (built-in or from another plugin).
 
 ## Build & test
 
-```bash
-make build PLUGIN=my-deployer         # installable host package -> dist/<plugin>/
-make build-all PLUGIN=my-deployer     # cross-compile the release matrix
-make test                             # go test ./...
+Initialize the provider's Git submodules and build it into a local Core plugin directory.
+
+```sh
+make dev PROVIDER_DIR=../plugin-provider-volcengine-dns-acmedns01challenger
 ```
 
-`build-all` produces stripped, reproducible binaries (`CGO_ENABLED=0 -trimpath -ldflags='-s -w'`) named the way the certimate market downloads them — `<plugin>_<os>_<arch>` (`<plugin>_windows_amd64.exe` on Windows) — for `linux/amd64`, `linux/arm64`, `darwin/amd64`, `darwin/arm64`, `windows/amd64`.
+Run `go test ./...` in the provider repository. For `make test` in this registry, initialize the sibling workspace provider submodules or point `CERTIMATE_PLUGIN_WORKSPACE` at those checkouts. [Integration tests](integration/README.md)
 
 ## Releasing
 
@@ -98,9 +91,9 @@ A workflow node that references a legacy purge provider keeps working once the m
 
 ## Tooling
 
-- `make index` → `cmd/genindex` regenerates `index.json` from all manifests.
-- `cmd/releaseinfo` computes checksums and writes the `release` block (used by the release workflow).
-- `make clean` removes `dist/`.
+- `make index` stages the catalog from registry receipts and `READY` CDN observations.
+- The [independent release template](docs/releasing.md#distributing-from-your-own-market) pins its `releaseinfo` and `genindex` tools.
+- `make clean` removes local `dist/` output.
 
 ## Requirements
 

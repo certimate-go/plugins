@@ -18,8 +18,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"testing"
@@ -47,38 +47,7 @@ func TestB2DevicesDeploymentBatch(t *testing.T) {
 	dir := os.Getenv("CERTIMATE_B2_DEVICES_BINARIES")
 	if dir == "" {
 		dir = t.TempDir()
-		root, err := filepath.Abs("..")
-		if err != nil {
-			t.Fatal(err)
-		}
-		for _, name := range b2DeviceProviders {
-			dest := filepath.Join(dir, name)
-			if err := os.MkdirAll(dest, 0o755); err != nil {
-				t.Fatal(err)
-			}
-			cmd := exec.Command("go", "build", "-p", "2", "-o", filepath.Join(dest, name), "./"+name)
-			cmd.Dir = root
-			if out, err := cmd.CombinedOutput(); err != nil {
-				t.Fatalf("build %s: %v\n%s", name, err, out)
-			}
-			data, err := os.ReadFile(filepath.Join(root, name, "manifest.json"))
-			if err != nil {
-				t.Fatal(err)
-			}
-			m, err := plugin.ParseManifest(data)
-			if err != nil {
-				t.Fatal(err)
-			}
-			for _, file := range []string{"manifest.json", m.Icon} {
-				data, err := os.ReadFile(filepath.Join(root, name, file))
-				if err != nil {
-					t.Fatal(err)
-				}
-				if err := os.WriteFile(filepath.Join(dest, file), data, 0o644); err != nil {
-					t.Fatal(err)
-				}
-			}
-		}
+		stageStandaloneProviders(t, dir, b2DeviceProviders, runtime.GOOS, runtime.GOARCH)
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Minute)
 	defer cancel()

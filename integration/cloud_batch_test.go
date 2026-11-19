@@ -316,42 +316,11 @@ func TestCloudDeploymentBatch(t *testing.T) {
 
 func buildCloudBatch(t *testing.T, dir, arch string) {
 	t.Helper()
-	root, err := filepath.Abs("..")
-	if err != nil {
-		t.Fatal(err)
-	}
+	providers := make([]string, 0, len(cloudBatch))
 	for _, entry := range cloudBatch {
-		out := filepath.Join(dir, entry.provider)
-		if err := os.MkdirAll(out, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		ctx, cancel := context.WithTimeout(context.Background(), 3*time.Minute)
-		cmd := exec.CommandContext(ctx, "go", "build", "-o", filepath.Join(out, entry.provider), "./"+entry.provider)
-		cmd.Dir = root
-		cmd.Env = append(os.Environ(), "GOOS=linux", "GOARCH="+arch, "CGO_ENABLED=0")
-		output, err := cmd.CombinedOutput()
-		cancel()
-		if err != nil {
-			t.Fatalf("build %s: %v\n%s", entry.provider, err, output)
-		}
-		manifestBytes, err := os.ReadFile(filepath.Join(root, entry.provider, "manifest.json"))
-		if err != nil {
-			t.Fatal(err)
-		}
-		manifest, err := plugin.ParseManifest(manifestBytes)
-		if err != nil {
-			t.Fatal(err)
-		}
-		for _, name := range []string{"manifest.json", manifest.Icon} {
-			data, err := os.ReadFile(filepath.Join(root, entry.provider, name))
-			if err != nil {
-				t.Fatal(err)
-			}
-			if err := os.WriteFile(filepath.Join(out, name), data, 0o644); err != nil {
-				t.Fatal(err)
-			}
-		}
+		providers = append(providers, entry.provider)
 	}
+	stageStandaloneProviders(t, dir, providers, "linux", arch)
 }
 
 func runCloudBatchInLinux(t *testing.T) {

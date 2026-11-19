@@ -1,6 +1,0 @@
-{
-  "plugin.aliyun-clb-purger.name": "阿里云 - 传统型负载均衡 CLB（过期清除）",
-  "plugin.aliyun-clb-purger.purge.form.region.label": "阿里云服务地域",
-  "plugin.aliyun-clb-purger.purge.form.region.placeholder": "请输入阿里云 CLB 服务地域（例如：cn-hangzhou）",
-  "plugin.aliyun-clb-purger.purge.form.region.tooltip": "这是什么？请参阅 <a href=\"https://help.aliyun.com/zh/slb/classic-load-balancer/product-overview/regions-that-support-clb\" target=\"_blank\">https://help.aliyun.com/zh/slb/classic-load-balancer/product-overview/regions-that-support-clb</a>"
-}

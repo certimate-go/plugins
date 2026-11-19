@@ -1,6 +1,0 @@
-{
-  "plugin.huaweicloud-elb-purger.name": "Huawei Cloud - ELB (Elastic Load Balance) (Purge)",
-  "plugin.huaweicloud-elb-purger.purge.form.region.label": "Huawei Cloud region",
-  "plugin.huaweicloud-elb-purger.purge.form.region.placeholder": "Please enter Huawei Cloud ELB region (e.g. cn-north-1)",
-  "plugin.huaweicloud-elb-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/elb?locale=en-us\" target=\"_blank\">https://console-intl.huaweicloud.com/apiexplorer/#/endpoint/elb</a>"
-}

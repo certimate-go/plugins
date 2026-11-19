@@ -1,6 +1,0 @@
-{
-  "plugin.azure-keyvault-purger.name": "Azure - KeyVault (Purge)",
-  "plugin.azure-keyvault-purger.purge.form.keyvaultName.label": "Azure KeyVault name",
-  "plugin.azure-keyvault-purger.purge.form.keyvaultName.placeholder": "Please enter Azure KeyVault name",
-  "plugin.azure-keyvault-purger.purge.form.keyvaultName.tooltip": "For more information, see <a href=\"https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates\" target=\"_blank\">https://learn.microsoft.com/en-us/azure/key-vault/general/about-keys-secrets-certificates</a>"
-}

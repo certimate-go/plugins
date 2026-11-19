@@ -444,41 +444,7 @@ func newB3CloudFixture(t *testing.T, provider string) *b3CloudFixture {
 
 func buildB3Cloud(t *testing.T, dir, arch string) {
 	t.Helper()
-	root, err := filepath.Abs("..")
-	if err != nil {
-		t.Fatal(err)
-	}
-	for _, provider := range b3CloudProviders {
-		out := filepath.Join(dir, provider)
-		if err := os.MkdirAll(out, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		cmd := exec.Command("go", "build", "-o", filepath.Join(out, provider), "./"+provider)
-		cmd.Dir = root
-		cmd.Env = append(os.Environ(), "GOOS=linux", "GOARCH="+arch, "CGO_ENABLED=0")
-		if output, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("build %s: %v\n%s", provider, err, output)
-		}
-		raw, err := os.ReadFile(filepath.Join(root, provider, "manifest.json"))
-		if err != nil {
-			t.Fatal(err)
-		}
-		var m struct {
-			Icon string `json:"icon"`
-		}
-		if err := json.Unmarshal(raw, &m); err != nil {
-			t.Fatal(err)
-		}
-		for _, name := range []string{"manifest.json", m.Icon} {
-			data, err := os.ReadFile(filepath.Join(root, provider, name))
-			if err != nil {
-				t.Fatal(err)
-			}
-			if err := os.WriteFile(filepath.Join(out, name), data, 0o644); err != nil {
-				t.Fatal(err)
-			}
-		}
-	}
+	stageStandaloneProviders(t, dir, b3CloudProviders, "linux", arch)
 }
 
 func runB3CloudInLinux(t *testing.T) {

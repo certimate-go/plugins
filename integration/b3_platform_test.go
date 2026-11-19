@@ -498,35 +498,7 @@ func runB3PlatformLinux(t *testing.T) {
 	if arch == "x86_64" {
 		arch = "amd64"
 	}
-	for _, provider := range b3PlatformProviders {
-		out := filepath.Join(dir, provider)
-		if err := os.MkdirAll(out, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		cmd := exec.CommandContext(ctx, "go", "build", "-o", filepath.Join(out, provider), "./"+provider)
-		cmd.Dir = root
-		cmd.Env = append(os.Environ(), "GOOS=linux", "GOARCH="+arch, "CGO_ENABLED=0")
-		if data, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("build %s: %v %s", provider, err, data)
-		}
-		raw, err := os.ReadFile(filepath.Join(root, provider, "manifest.json"))
-		if err != nil {
-			t.Fatal(err)
-		}
-		manifest, err := plugin.ParseManifest(raw)
-		if err != nil {
-			t.Fatal(err)
-		}
-		for _, name := range []string{"manifest.json", manifest.Icon} {
-			data, err := os.ReadFile(filepath.Join(root, provider, name))
-			if err != nil {
-				t.Fatal(err)
-			}
-			if err := os.WriteFile(filepath.Join(out, name), data, 0o644); err != nil {
-				t.Fatal(err)
-			}
-		}
-	}
+	stageStandaloneProviders(t, dir, b3PlatformProviders, "linux", arch)
 	cmd := exec.CommandContext(ctx, "go", "test", "-c", "-o", filepath.Join(dir, "platform.test"), "./integration")
 	cmd.Dir = root
 	cmd.Env = append(os.Environ(), "GOOS=linux", "GOARCH="+arch, "CGO_ENABLED=0")

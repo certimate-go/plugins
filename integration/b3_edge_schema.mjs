@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { standaloneProvider } from "./standalone_provider.mjs";
 
 const pluginRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const uiRoot = process.env.CERTIMATE_CORE_UI || path.resolve(pluginRoot, "../certimate/ui");

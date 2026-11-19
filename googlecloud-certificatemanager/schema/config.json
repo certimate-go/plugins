@@ -1,8 +1,0 @@
-{
-  "schemaVersion": "form/v1",
-  "provider": "googlecloud-certificatemanager",
-  "category": "deploy",
-  "schema": {
-    "columns": []
-  }
-}

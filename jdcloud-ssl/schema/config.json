@@ -1,8 +1,0 @@
-{
-  "schemaVersion": "form/v1",
-  "provider": "jdcloud-ssl",
-  "category": "deploy",
-  "schema": {
-    "columns": []
-  }
-}

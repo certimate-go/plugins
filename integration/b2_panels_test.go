@@ -12,8 +12,7 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"os"
-	"os/exec"
-	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"testing"
@@ -501,29 +500,5 @@ func (f *b2PanelFixture) serve(w http.ResponseWriter, r *http.Request) {
 
 func buildB2Panels(t *testing.T, dir string) {
 	t.Helper()
-	root, err := filepath.Abs("..")
-	if err != nil {
-		t.Fatal(err)
-	}
-	for _, provider := range b2PanelProviders {
-		name := strings.Replace(provider, "1panel", "panel1", 1)
-		out := filepath.Join(dir, provider)
-		if err := os.MkdirAll(out, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		cmd := exec.Command("go", "build", "-o", filepath.Join(out, name), "./"+name)
-		cmd.Dir = root
-		if output, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("build %s: %v\n%s", name, err, output)
-		}
-		for _, file := range []string{"manifest.json", map[bool]string{true: "1panel.svg", false: "baota.svg"}[strings.HasPrefix(provider, "1panel")]} {
-			data, err := os.ReadFile(filepath.Join(root, name, file))
-			if err != nil {
-				t.Fatal(err)
-			}
-			if err := os.WriteFile(filepath.Join(out, file), data, 0o644); err != nil {
-				t.Fatal(err)
-			}
-		}
-	}
+	stageStandaloneProviders(t, dir, b2PanelProviders, runtime.GOOS, runtime.GOARCH)
 }

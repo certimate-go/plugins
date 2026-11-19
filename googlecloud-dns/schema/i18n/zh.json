@@ -1,4 +1,0 @@
-{
-  "plugin.googlecloud-dns.name": "Google Cloud - DNS",
-  "plugin.googlecloud-dns.description": "通过 Google Cloud DNS 完成 DNS-01 验证。"
-}

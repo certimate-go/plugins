@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { standaloneProvider } from "./standalone_provider.mjs";
 
 const pluginRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const uiRoot = process.env.CERTIMATE_CORE_UI || path.resolve(pluginRoot, "../certimate/ui");
@@ -32,7 +33,7 @@ function loadSource(file) {
 }
 
 const { deriveZodSchema } = loadSource(path.join(uiRoot, "src/components/workflow/designer/forms/schemaValidation.ts"));
-const envelope = JSON.parse(fs.readFileSync(path.join(pluginRoot, "ksyun-cdn/schema/config.json"), "utf8"));
+const envelope = JSON.parse(fs.readFileSync(path.join(standaloneProvider("ksyun-cdn"), "schema/config.json"), "utf8"));
 const schema = deriveZodSchema(envelope);
 const scenarios = [
   ["SAN matching permits an empty domain", { deployTarget: "domain", domainMatchPattern: "certsan", domain: "" }, true],
@@ -50,7 +51,7 @@ for (const [name, config, expected] of scenarios) {
   console.log(`PASS ${name}`);
 }
 
-const flexEnvelope = JSON.parse(fs.readFileSync(path.join(pluginRoot, "flexcdn/schema/config.json"), "utf8"));
+const flexEnvelope = JSON.parse(fs.readFileSync(path.join(standaloneProvider("flexcdn"), "schema/config.json"), "utf8"));
 const flexSchema = deriveZodSchema(flexEnvelope);
 const flexScenarios = [
   ["FlexCDN accepts a saved string ID", "42", true],
@@ -108,7 +109,7 @@ for (const authMethod of ["password", "apikey"]) {
   }
 }
 for (const [provider, category, config, expected] of b1Cases) {
-  const form = JSON.parse(fs.readFileSync(path.join(pluginRoot, provider, `schema/${category === "access" ? "access" : "config"}.json`), "utf8"));
+  const form = JSON.parse(fs.readFileSync(path.join(standaloneProvider(provider), `schema/${category === "access" ? "access" : "config"}.json`), "utf8"));
   const result = deriveZodSchema(form).safeParse(config);
   assert.equal(result.success, expected, `${provider}/${category} ${JSON.stringify(config)}: ${JSON.stringify(result.error?.issues)}`);
   if (result.success) {
@@ -120,7 +121,7 @@ for (const [provider, category, config, expected] of b1Cases) {
 console.log(`PASS ${b1Cases.length} B1 schema compatibility cases`);
 
 const loadDeployForm = (provider) =>
-  deriveZodSchema(JSON.parse(fs.readFileSync(path.join(pluginRoot, provider, "schema/config.json"), "utf8")));
+  deriveZodSchema(JSON.parse(fs.readFileSync(path.join(standaloneProvider(provider), "schema/config.json"), "utf8")));
 
 const rainyunRCDN = loadDeployForm("rainyun-rcdn");
 for (const instanceId of ["42", 42]) {
@@ -157,7 +158,7 @@ for (const provider of ["baiducloud-appblb", "baiducloud-blb"]) {
 assert.deepEqual(loadDeployForm("baiducloud-cert").parse({}), {});
 console.log("PASS B4 form defaults, saved ID/port types, and conditional validation");
 
-const vlbEnvelope = JSON.parse(fs.readFileSync(path.join(pluginRoot, "cmcccloud-vlb/schema/config.json"), "utf8"));
+const vlbEnvelope = JSON.parse(fs.readFileSync(path.join(standaloneProvider("cmcccloud-vlb"), "schema/config.json"), "utf8"));
 const vlbSchema = deriveZodSchema(vlbEnvelope);
 const loadbalancer = { poolId: "CIDC-CORE-00", loadbalancerId: "vlb-1" };
 const listener = { ...loadbalancer, deployTarget: "listener", listenerId: "listener-1" };
