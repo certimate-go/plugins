@@ -1,51 +1,46 @@
 package plugins
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
-	"strings"
 	"testing"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
 )
 
-func TestAllPluginManifestsSatisfyCoreContract(t *testing.T) {
-	entries, err := os.ReadDir(".")
+func TestPublishedPluginManifestsSatisfyCoreContract(t *testing.T) {
+	paths, err := filepath.Glob("registry/market/details/*.json")
 	if err != nil {
-		t.Fatalf("read repo root: %v", err)
+		t.Fatal(err)
 	}
-
-	checked := 0
-	for _, entry := range entries {
-		name := entry.Name()
-		if !entry.IsDir() || name == "_template" || strings.HasPrefix(name, ".") {
-			continue
-		}
-		path := filepath.Join(name, "manifest.json")
+	if len(paths) == 0 {
+		t.Fatal("no published plugin details found")
+	}
+	for _, path := range paths {
 		data, err := os.ReadFile(path)
 		if err != nil {
-			if os.IsNotExist(err) {
-				continue
-			}
-			t.Errorf("%s: read manifest: %v", name, err)
-			continue
+			t.Fatal(err)
 		}
-		m, err := plugin.ParseManifest(data)
+		var detail struct {
+			ProviderType string          `json:"provider_type"`
+			Manifest     json.RawMessage `json:"manifest"`
+		}
+		if err := json.Unmarshal(data, &detail); err != nil {
+			t.Fatalf("%s: parse published detail: %v", path, err)
+		}
+		manifest, err := plugin.ParseManifest(detail.Manifest)
 		if err != nil {
-			t.Errorf("%s: parse manifest: %v", name, err)
-			continue
+			t.Fatalf("%s: parse published manifest: %v", path, err)
 		}
-		if err := m.Validate(); err != nil {
-			t.Errorf("%s: %v", name, err)
-			continue
+		if err := manifest.Validate(); err != nil {
+			t.Errorf("%s: %v", path, err)
 		}
-		if m.ProtocolVersion != plugin.ProtocolVersion {
-			t.Errorf("%s: protocol_version %d does not match core protocol %d", name, m.ProtocolVersion, plugin.ProtocolVersion)
+		if manifest.ProviderType != detail.ProviderType {
+			t.Errorf("%s: detail provider %q differs from manifest provider %q", path, detail.ProviderType, manifest.ProviderType)
 		}
-		checked++
+		if manifest.ProtocolVersion != plugin.ProtocolVersion {
+			t.Errorf("%s: protocol_version %d does not match core protocol %d", path, manifest.ProtocolVersion, plugin.ProtocolVersion)
+		}
 	}
-	if checked == 0 {
-		t.Fatal("no plugin manifests found")
-	}
-	t.Logf("validated %d plugin manifests against core contract", checked)
 }

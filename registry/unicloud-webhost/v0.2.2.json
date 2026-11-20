@@ -1,0 +1,97 @@
+{
+  "provider_type": "unicloud-webhost",
+  "repository": "certimate-go/plugin-provider-unicloud-webhost-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "f8565f9ccb625a6e3fb93349e1e3578a73a295e8",
+  "build_run_id": "44513795409",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6106098,
+      "sha256": "caf74c330ec246266b15db0ca192b69aee35751f3921694913ef4c678c0fc4d9"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5739950,
+      "sha256": "ce69aa78e2cd38291f644920f5a16008315798242e45e94b8afb3264094eb418"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6090992,
+      "sha256": "e9712f47b8b9b630032fd75c9638d44b31d0b991ddb1bf38f7a1d8744380ec8e"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5761307,
+      "sha256": "c756e6743f1f76a01e2ee0ec6de0fd9382cf8619c11dadc6fa8662b2729d4fa7"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5506973,
+      "sha256": "911113584d3f30aa89e9bef2b8e458360034854b4d6b7a100d34e0cf7180e4ce"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5844999,
+      "sha256": "bbbe425a2eefc459ac7b9e89380c095ff74e6cac009b0eaf294bcf9922389c24"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6234603,
+      "sha256": "fba84a7024305c26b7587d7b0c002afe052f7f26a6387467816d2ffa5cff04fc"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5581477,
+      "sha256": "c1f008ec63138307aabdf091246456ffc1d35b742e48e9d6d0492f6491210f16"
+    }
+  ],
+  "release_commit": "924725191c49917227d63111c9301a59b269dfcb",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "unicloud-webhost",
+    "access_provider_type": "unicloud",
+    "capability": "deploy",
+    "display_name_key": "plugin.unicloud-webhost.name",
+    "category": "website",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "unicloud-webhost.exe",
+    "icon": "unicloud.png",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "uniCloud - Web Host"
+    },
+    "zh": {
+      "name": "uniCloud - 前端网页托管"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFZblzms6iHZozH4E0HHozZ5tyq9izxdnKSI9b3vDha6h4I5A3i8aVDGYmJZU4N5ZJIYo26fLrIo03VqRmBWwZW5ZqHJYxJJQ4tNi7vNnCw+HIJpg5O4dJ8/n0CHod2uvderqGibSVGYwttM66EZUo+fz6HY0xFHsrW7NqN31HGpQvrM20pMasGXMxkcubcqOCS6paUrBiEWwq/f79KHc9JJE3IIY1OKJKJJI34/Dl4e3jDHggFYArEXIpo9GrHnou1uja3effzOPQMJVDQ6lV8PbyecGF9/r3f66IEYcmhr6RLp1A1eTZF4os0ubWD5QmYKlvS6Bc5vHokbqbc66BQKVRhMWOm8CkFZcsHJgyJoY7BIEbKYA/F4UtEnYmg66N7fTvL4JAJos6H243bLl4Hpo0G5kxKJE8eKqDCJEg1OvYL4pDAFsMF5AtAGcQ+/z7E5YqJJM4I5E3E5IpJZc5I5k3HZszIZI1K4w/FZgsQYVVQJlSEI8l////Jpk5////eYJm6AAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAAKt0lEQVR42uzd/VfayBoH8FEQqAhiEClYLi2t4HstCGIXvIq1dqFYpVq63WJpdWu3u1sLy6336g7863cmASWBhIS8mOHke/rDFk6Fzz7PJMNMgqDBSnDjdCVX131yR7Nj/l3WOwdt/122gLU6McmtLH/tCgkMEaRoWk6/dkL8K3UCk1ue4UCW64RmttAOiT2vE5tnwTYIwY56/ejONWS5TnRWAk2Iv054njOQwDPSIXUfDRki3lFf2UWQnTXyIXULglgGwFF/EgOx2UGA1L+C4NpAQIbAxkA46gCcDgbkGVgZDMgayA0GJAfqAxIDYkAMiAExIAbEgBgQA2JADIgBMSAkQKZRSIagt1+roT+t4L+pJgIqGpxOp9dZuWimUvE6cVTS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"
+}

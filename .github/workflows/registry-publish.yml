@@ -9,8 +9,7 @@ on:
     - cron: '3,33 * * * *'
 
 permissions:
-  actions: write
-  contents: read
+  contents: write
 
 concurrency:
   group: registry-publish
@@ -18,31 +17,28 @@ concurrency:
 
 jobs:
   publish:
+    if: github.repository == 'certimate-go/plugins' && github.ref == 'refs/heads/main' && github.ref_protected
     runs-on: ubuntu-24.04
-    timeout-minutes: 55
+    timeout-minutes: 30
     environment: registry-publish
     env:
-      GOWORK: "off"
+      GOWORK: 'off'
       GOTOOLCHAIN: local
-      GIT_TERMINAL_PROMPT: "0"
+      GIT_TERMINAL_PROMPT: '0'
       PUBLIC_KEYS: ${{ vars.REGISTRY_INDEX_PUBLIC_KEYS_JSON }}
-      REGISTRY_ACTIONS_TOKEN: ${{ github.token }}
     steps:
-      - name: Require the registry protected branch
-        run: |
-          [[ "$GITHUB_REPOSITORY" == certimate-go/plugins && "$GITHUB_REF" == refs/heads/main && "$GITHUB_REF_PROTECTED" == true ]]
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
-          ref: ${{ github.sha }}
+          ref: main
           fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
         with:
           go-version-file: go.mod
           cache: false
-      - name: Prepare trusted registry tooling
+      - name: Build registry tools
         run: go build -mod=readonly -o "$RUNNER_TEMP/registryctl" ./cmd/registryctl
-      - name: Observe candidate ZIPs and stage a signed snapshot
+      - name: Generate and sign the catalog
         id: stage
         env:
           INDEX_KEY_ID: ${{ vars.REGISTRY_INDEX_KEY_ID }}
@@ -51,27 +47,13 @@ jobs:
           INDEX_RENEW_BEFORE: ${{ vars.REGISTRY_INDEX_RENEW_BEFORE }}
           INDEX_SEED: ${{ secrets.REGISTRY_INDEX_SEED }}
         run: bash .github/scripts/registry-publish.sh stage
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
-        id: publisher
-        if: steps.stage.outputs.changed == 'true'
-        with:
-          owner: certimate-go
-          repositories: plugins
-          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
-          permission-contents: write
-          permission-pull-requests: write
-      - name: Propose the signed snapshot on main
+      - name: Push the generated catalog to main
         if: steps.stage.outputs.changed == 'true'
         env:
-          INDEX_EPOCH: ${{ steps.stage.outputs.epoch }}
-          INDEX_GENERATION: ${{ steps.stage.outputs.generation }}
           MARKET_COMMIT: ${{ steps.stage.outputs.market_commit }}
-          GH_TOKEN: ${{ steps.publisher.outputs.token }}
-        run: bash .github/scripts/registry-publish.sh propose
-      - name: Confirm this snapshot and assets on the default CDN
-        if: steps.stage.outputs.changed == 'false'
-        id: cdn
+          GH_TOKEN: ${{ github.token }}
+        run: bash .github/scripts/registry-publish.sh push
+      - name: Confirm the catalog on the CDN
         env:
           MARKET_COMMIT: ${{ steps.stage.outputs.market_commit }}
         run: bash .github/scripts/registry-publish.sh observe

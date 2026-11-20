@@ -2,6 +2,16 @@
 
 A provider plugin is a standalone Go binary that Certimate's core loads at runtime over gRPC (via `hashicorp/go-plugin`). Every capability — `deploy`, `dns`, `notify`, `purge` — uses the same interface and the same wire contract. Adding a new provider requires **zero changes to the core** — you only write the plugin and drop it into the plugin directory.
 
+## Run a standalone plugin locally
+
+From the `plugins` checkout, build a neighboring provider repository into a local plugin directory. Initialize its submodules first if it uses any.
+
+```sh
+make dev PROVIDER_DIR=../plugin-provider-volcengine-dns-acmedns01challenger
+```
+
+The command prints the absolute `CERTIMATE_PLUGIN_DIR` to use when starting Core with a test data directory. Rerun the same command after editing the provider. To use another development plugin directory, set `PLUGIN_ROOT`. Run `go test ./...` in the provider repository when you need its tests. Provider CI checks the source PR.
+
 This guide walks through the full author flow using `_template/` as the reference.
 
 ## Prerequisites
@@ -23,7 +33,7 @@ Run `make init` to generate a complete plugin skeleton:
 make init PLUGIN=my-provider
 ```
 
-This creates `my-provider/` with:
+Copy the generated `my-provider/` scaffold into your standalone Go module.
 
 ```
 my-provider/
@@ -122,7 +132,7 @@ To add a new locale, create a new JSON file in `schema/i18n/` (e.g., `ja.json`) 
 
 The core injects these into the SPA's i18n store under the default namespace at the `plugin.<type>` path, so `t("plugin.<type>.foo")` resolves in pickers and dynamic forms. Missing locale/key falls back to the raw key (graceful degradation).
 
-For a market description, add `plugin.<providerType>.description` in each language file and keep the English text in `manifest.json` as the `description` fallback. Run `make index` to include the translated name and description in the market catalog. The generator reads the name through `display_name_key` and excludes form translations from the catalog. Users can read these translations and search by name before installing the plugin. The host selects the requested locale, its base language, then English, and falls back to the provider identifier or manifest description when a translation is absent.
+For a market description, add `plugin.<providerType>.description` in each language file and keep the English text in `manifest.json` as the `description` fallback. The official catalog includes the translated name and description when it publishes the receipt, using `display_name_key` for the name. Users can read these translations and search by name before installing the plugin. The host selects the requested locale, its base language, then English, and falls back to the provider identifier or manifest description when a translation is absent.
 
 ## 4. Write the manifest
 
@@ -172,37 +182,13 @@ githubplugin.Serve(&githubplugin.ServeConfig{
 
 ## 6. Build and install
 
-```bash
-make build PLUGIN=my-provider
-```
+Build from the standalone checkout with `make dev PROVIDER_DIR=/path/to/provider`. The output under `PLUGIN_ROOT` contains the manifest, the executable named by `binary`, and the declared icon. Launch Core with the printed `CERTIMATE_PLUGIN_DIR`. A manual installation uses the same per-provider directory layout.
 
-This writes an install directory:
+The Core reloader detects package changes. In-flight executions continue on their previous runtime, and a package that fails to start leaves the working runtime available.
 
-```
-dist/my-provider/
-  my-provider       # binary name from manifest.json
-  manifest.json
-  icon.svg          # copied when manifest.icon is set
-```
+Run the provider tests in its standalone module. Use a temporary Go workspace outside that repository when testing against a local Core checkout. Keep the published Core module pin in the provider's `go.mod`.
 
-`make build-all PLUGIN=my-provider` cross-compiles release ZIPs for `linux/amd64`, `linux/arm64`, `linux/arm` (ARMv7), `darwin/amd64`, `darwin/arm64`, `windows/amd64`, `windows/arm64`, and `windows/386`. Use a `binary` name ending in `.exe` in the manifest. Each ZIP uses that name on its target platform.
-
-Copy that directory into the core plugin root under a per-provider subdirectory:
-
-```
-<pluginDir>/my-provider/
-  manifest.json
-  my-provider
-  icon.svg          # optional
-```
-
-`<pluginDir>` comes from `CERTIMATE_PLUGIN_DIR`, or defaults to `./plugins` under the core process working directory. Directory and binary must not be group- or world-writable.
-
-The core watches the plugin directory and reloads on install, update, delete, or filesystem changes. In-flight executions keep the previous runtime; a bad package that fails to start does not replace a working one. Market install/update/delete goes through the same reloader. A full process restart is still fine for local bring-up.
-
-### Local checkout pairing
-
-During development this plugins module pins the workspace core checkout through a `replace` directive in `go.mod`. Real host verification should use a core binary built from the matching workspace checkout, with plugins built from this tree and loaded through `CERTIMATE_PLUGIN_DIR`.
+Official releases build eight platform ZIPs through the reusable release workflow. Use a `binary` name ending in `.exe` for the Windows targets. Follow the [release guide](releasing.md) for registration and the signed catalog.
 
 ## Verification
 

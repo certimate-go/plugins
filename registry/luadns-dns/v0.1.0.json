@@ -1,0 +1,99 @@
+{
+  "provider_type": "luadns-dns",
+  "repository": "certimate-go/plugin-provider-luadns-dns-acmedns01challenger",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "source_commit": "590a87b96f3f6351b9611496052d6d813a1c87da",
+  "build_run_id": "44538265123",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6204626,
+      "sha256": "74e21d74d146d5905cfcd1b514f80a8af62ecf9d9f9239e1fb4d0d5c9b25d99a"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5831611,
+      "sha256": "f7daeda047f30554b5c3ef3f0d97aea242c29eda2620c0cd7c74ad723d3f8bb3"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6189798,
+      "sha256": "07ae83c951f093f3f56be83d9ab931c4a7aa6a88a4265e71171ee419a81911d5"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5859860,
+      "sha256": "9cdcf58d7510b1c4c35f35b19edd696d99290ea990c1b7f0d41273738bcbe48a"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5595148,
+      "sha256": "137432754144180e3ac2761c3ad16ee581a6d1571fd21cceaea72cb7915e2032"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5967795,
+      "sha256": "48377ca02199a58f1385fbb1f3edc4366bf0df7bfc0af5a541c82647958783e8"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6329245,
+      "sha256": "59fc8a26fafd9df52ae16b907af85f31dad516b08e4511128585210d9a1214df"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5692261,
+      "sha256": "2e5584639449b1e207e7dce8c61285935dbb0c17659d53f247becf62b122acbf"
+    }
+  ],
+  "release_commit": "762db878b45833c51e75e299d763dfb430851326",
+  "manifest": {
+    "version": "0.1.0",
+    "provider_type": "luadns-dns",
+    "access_provider_type": "luadns",
+    "capability": "dns",
+    "display_name_key": "plugin.luadns-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "luadns-dns.exe",
+    "icon": "icon.png",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via LuaDNS."
+  },
+  "i18n": {
+    "en": {
+      "name": "LuaDNS",
+      "description": "ACME DNS-01 via LuaDNS."
+    },
+    "zh": {
+      "name": "LuaDNS",
+      "description": "通过 LuaDNS 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAMAAACahl6sAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFn8nN3AA3MT0+9fX1EEpQZsXP/OjtiYeHrNPX4QA47SlZDmtzMKq1EoqVQkJCwcTFmbKzr7Cw7ezsFqOw+/v73t7eQbG7T7rEFZypEXaAFJmlmpubAAEB8T1qxgAx26y4WQgc7vf4bAAb9ld/1NTUf31+5tjcuUFf4+PjzeDhE5ah/v7+L1BUhQAh+Pz8Z42RBiMmKpyn8fj5k77BQGRnKG506HiRxdDSsQEta2pqE5CbRoKJcq2y2eLjlDZNh5eY4k5kdWxu1enrruLnE4WP4OvsyllsZGRk58TNQau1FF5l++7x1NnZanR12hNCMgAM6OXl//r72urs80RwUZ6l1OTl8vLydg0mC5OgGJmllNfePaGqMYeOvZyk7U50sIqUIaGt4b7H/fz82AAvPhwl/vf56cnRbWJlYWlq7gA75I6gVzpBJSUlOLC730hZrt/kU1ZWf56hH5ah+0Bu4+fn9/f33D9mGzw/9g5I3vHz8d/j0Obo9fT02QA2FJej////FKB7mAAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAAGV0lEQVR42uza/UPaRhwGcBCoUkUkieU4rH3TzgbbStUi6MrasnZl2Lc5W/o2S/dSN93Qlrq+kPvXl/cXSKKDUnF7vvqDudzFfHxy8QIE2H+kAoAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCCAAAIIIIAAAggggAACCCD/B0jmwS9G1Vr3u+yzNWWsjlajvbQxmUuuZY7O+Ld5H8E2QoEc+/OVUVfvt0DOv2jb9+tJo+Xu7+tGvw9WP1tt3mooO7+OPHapjQsNffDQiNkWEPS2M2Zb8mGN3Rh57FWR+xbkm6ZWweaj6RbJ+XNNY+ej6zM6RG+JTj4a5LRux14Em+0VDF6saxDRpWh2TJcMbRtN4mJabztzQm/jU7MVduOE6F60UM6HXCBn8zNekObZ38ZbIaenOR+HAhnQIJJbidmxkA7RWyhJ1T8ZEL2NHx6YkiGSe9FC+PYnN8j1TiDfvYg2PSCjPhCJZMc+OSASie2NHx7k5RvXPPaHKJJ1B0S+UhKNHkOCHpDayzfNZocQkc+OvbVDJBqrzxxOIoK3Y3+IJBKywjkg4l78UBIJnT/Z7AIiX127O4Id8ricFg4jEeHUcbNDNLqpfkeD3hDCa0WoaEzvcGLIfpqF1+N+EEr08Z85EQsSnTx7T6+lqAeE0vKcVnspXoeUwoMBO4SEEz4Q2a2PJ71KRN6qF9NKPb8b9ISERwfVPjtZYp7ZtBMyPLjuAynt1ZXxxSztXSKn0/qgk01vyKr2D+/bpGgm4oTQ2MKUHyQ8qIx/m5R6mIi+YPn+uA9EmwHsQlLySETiy2lfyLRyM6gkezhHOoOU2iDDq40DQKhaROzfREhpIX4AiLZolPo4Ecovpr0hhbI6R4Tc6NzExJz8NVHv10TkU3/N2BV3CKWl5UvqESpxvSq1Pk1Etsn3rSte/xBpNZLzeNTtt0QoWZxuhWxTSyKdUFaaHUO+RCJUO10+NSo4IQ9XqoTa1jk7lf5ORBR13OyUc7Kz3FpVoralYvJjqI8ToaVUQeuWGmyBsKnlGLVfftl5oXeJFA+wRPFLhJSGU1T7YeC9sYbRITWumCJ2SnYt1JtEgs2la1+p9e5uh4mQWHlRnSayLveUOCCMrScWCW+b82Q515NEmsHoplbBZqeJxMqzVao+J6aKz/gWCGPxyyVCROvmlpznepDIQZ4Q90ukMFu/U9WeeBdKpA3CZorPRGLNE7qxkutBIh1C7IkUwq+fbKgdpbIbhLGx5QK13b3IWrzRl4mEVx9mtURSBeoGke9eu6JNQqt/rfdlItdra457UxuEcTspu0RMpTP9mEieBTa0rl4QxsUXrYkiQwa4fkwkz95vi76JyJW7HCMWZIv7zImYt9/NYDeJsJZrywXCKsVnpGPIfokEXy1d1Gsy2kUibH5kXwgLrZCeJRKdvLc1MKrUH0vRbhL5mBTbIFwuF9e+Ktrt9onYs0Q+x1pLhbBIeyJDI/orlPz2kCp5IvUwka5XvzrEeW3pEGMrNZCodQf5As8jOuTHiOgD2esW8uUSaazwXUNOrz7wTiSvvdr54YduIHnjJVPvRFh8xO/Sih9kjly89tNzq04J9kSMfVePdwEZXtgZU2p+2zsR57XlhJBS+bI8PBDxhchns2mvv5+v2xJpe9z49xDb+yOiTyKNAPWCiNQ53AvirKWf49w57xVIJ5D2d6xcEmG5DS9I2ztWfQSZa4e8jRw5CJ+am0gPtUIaN48YhKoOzngz1ISwyi49ShDFsZW23me3IFyyeoQglMiOInODNG5udASJupcKiXrWpgaxtkyI2cWAELeStDwUiNbAiwaENUaMXjqEeBS1Q25NupcKmfSuJRVibRmQd2YPA1KIuZQyP7RPB93RGgolEyKs7Oq9xLICeRrzqmELkhmvT7jXXIKN357wqWmultgyt4xPb4VGzSb1Y041r4OktfVKxjrGbWNt1MibvbammGD7La1lQVhGaHhURv7bNHxKyLCMY0v/e1pNrQ2OMj9dKLT0dx5DPmxN8DsHfMoUEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAABBBBAAAEEEEAAAQQQQAAB5AjVPwIMABcaDf6QDLLrAAAAAElFTkSuQmCC"
+}

@@ -1,0 +1,97 @@
+{
+  "provider_type": "wangsu-cdn",
+  "repository": "certimate-go/plugin-provider-wangsu-cdn-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "45e3b3c134d67df85c6b6d8e6dc853e032b6cbb7",
+  "build_run_id": "44512016384",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6220993,
+      "sha256": "1c7631dc242b19692fead7787ee18ebc900bf3796255ea68a5fdd5509059fa10"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5840890,
+      "sha256": "a06e68778f4dfa3e48288dc52237a5831e1893f28c2f52e999019466488cde94"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6174060,
+      "sha256": "0d570877169fb0f3e37b35a5a12bf4c82eb9fab71d1bb1e0506c43feb64de215"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5848968,
+      "sha256": "292bd3b50c4f72c46861a97ca1edc7fdf8a6aac04d1d7134ce1d450308e435ac"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5587662,
+      "sha256": "73216d0428941fb67aea73e2b395c5ff90b931c279347e4cf618db3a275c5b0b"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5954913,
+      "sha256": "c3190d5f888860790697fd466a0f485901eae6a1226455af4f92aa2329fe96c9"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6344601,
+      "sha256": "34d626594a35fc1930292e42333cbf1d96194bee1e8bb65f85ddc960a9281978"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5688822,
+      "sha256": "cf6ee20288c8082a662aa2a0b5328e8c4482e4d64ef7c1eed6eac6d29b090c96"
+    }
+  ],
+  "release_commit": "f650a15088e5596e8aa7634c93ec599878ebba6d",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "wangsu-cdn",
+    "access_provider_type": "wangsu",
+    "capability": "deploy",
+    "display_name_key": "plugin.wangsu-cdn.name",
+    "category": "cdn",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "wangsu-cdn.exe",
+    "icon": "wangsu.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Wangsu Cloud - CDN (Content Delivery Network)"
+    },
+    "zh": {
+      "name": "网宿云 - 内容分发网络 CDN"
+    }
+  },
+  "icon": "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"
+}

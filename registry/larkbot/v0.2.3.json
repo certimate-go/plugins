@@ -1,0 +1,99 @@
+{
+  "provider_type": "larkbot",
+  "repository": "certimate-go/plugin-provider-larkbot-notifier",
+  "version": "0.2.3",
+  "tag": "v0.2.3",
+  "source_commit": "b8a533d28a86bf7e6c3c43a181f66adb5f010f1b",
+  "build_run_id": "44508165573",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6127636,
+      "sha256": "da139fe588b7256ab7d6f9caf2c78f494a75e0cf110e455dd8d621749ffdb27a"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5795555,
+      "sha256": "862db0809d6e168850c7456cdd4032f8eded6d20dee701ee4d06e5f702acaf58"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6093028,
+      "sha256": "2b2e789641f8397d69504e2083001595f33bf525bd3529cf38aef1ee5a0b5f38"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5793675,
+      "sha256": "269ad90d4d73fa984b6d11d362f735ec3d1fb5bf6623404e6a5b5343d59733fc"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5524173,
+      "sha256": "3bb258f4198a09c746be6293a02bd54651da60d90fa87c3795f81b8f133070d5"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5886167,
+      "sha256": "8cbcf2ef4d65a41126a3f1e0f1d259c49b5a350624b3e4c577f0f48ebac41eeb"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6249549,
+      "sha256": "f7e50fa786f0ce68db4b461ca94b61cc20c2115c20782295d16e51570a5659a1"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5610358,
+      "sha256": "9b455b85d7fa822a94344d447f162259de05411aaf35969e1831ee75330c2636"
+    }
+  ],
+  "release_commit": "1f38d8e071d39892cf1ebe810e581a9d8331e256",
+  "manifest": {
+    "version": "0.2.3",
+    "provider_type": "larkbot",
+    "access_provider_type": "larkbot",
+    "capability": "notify",
+    "display_name_key": "plugin.larkbot.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "larkbot.exe",
+    "icon": "lark.svg",
+    "sha256": "",
+    "usages": [
+      "notification"
+    ],
+    "priority": 0,
+    "description": "Send notifications via a Feishu or Lark custom bot."
+  },
+  "i18n": {
+    "en": {
+      "name": "Lark Bot",
+      "description": "Send notifications via a Feishu or Lark custom bot."
+    },
+    "zh": {
+      "name": "飞书群机器人",
+      "description": "通过飞书或 Lark 自定义机器人发送通知。"
+    }
+  },
+  "icon": "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"
+}

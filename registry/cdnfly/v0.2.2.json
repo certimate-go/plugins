@@ -1,0 +1,97 @@
+{
+  "provider_type": "cdnfly",
+  "repository": "certimate-go/plugin-provider-cdnfly-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "3c0e22f482c78fe1e62ada1087792da2caf7f70f",
+  "build_run_id": "44513722782",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6197259,
+      "sha256": "3ab6c7cf81e3ebdfb25da5d1239fe5c3c320b7e23f35bd0c11bb48a34c78426a"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5831682,
+      "sha256": "b9b8182514200ecbec55f5ff6e92ee1a7383d9ad3d5fafb4f764233485e8b607"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6169669,
+      "sha256": "407af3d7611f8c42474a9d2581d642d84e5b1bd1b636fa4435a8aff4a7f9aba0"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5852166,
+      "sha256": "2c557f4135afbfc3500fc27e7d8bc05e82fbd5cb1e60f9287fd42eb1e8ab9b29"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5581060,
+      "sha256": "0bb84451e9995fe6fd506c6345ed936e0bd4f019471461818a24adebb83e8a82"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5930616,
+      "sha256": "39a838c8574a0cbbb7636faa3ccffc3971fc9c2aa674b2c6c0ca889e23944eac"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6326815,
+      "sha256": "57b3cf808dc41cfebbc9aa073cfa56861d7e3a60695133da0fb4f4b071a863d8"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5669630,
+      "sha256": "daf42efdd99ced3fd34e0b3fa64cec41e0fe56926f9bd1718f43481ba723a0cb"
+    }
+  ],
+  "release_commit": "85ee04e2e1548633ec4d1d37db76789742106c58",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "cdnfly",
+    "access_provider_type": "cdnfly",
+    "capability": "deploy",
+    "display_name_key": "plugin.cdnfly.name",
+    "category": "cdn",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "cdnfly.exe",
+    "icon": "cdnfly.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Cdnfly"
+    },
+    "zh": {
+      "name": "Cdnfly"
+    }
+  },
+  "icon": "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"
+}

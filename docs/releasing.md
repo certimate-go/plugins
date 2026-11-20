@@ -2,27 +2,33 @@
 
 ## Releasing an official provider
 
-1. Update `manifest.json` in the provider repository. Give every change to
-   the package or its metadata a new stable `major.minor.patch` version.
-2. Merge the release source into the protected `main` branch. Create and
-   push `vX.Y.Z-detach` at that source commit.
-3. In GitHub Actions, follow the **Release provider** run. The tag push
-   dispatches the build on protected `main`. The workflow builds eight
-   platform ZIPs and creates the immutable `vX.Y.Z` tag with the ZIPs and
-   release metadata under `build/`.
-4. The registry reconciliation workflow verifies the release and opens a PR
-   with the version metadata. After the PR merges, the publication workflow
-   generates the signed `index.json` and verifies it on the default CDN.
+1. Update `version` in the provider's `manifest.json` and merge the source PR
+   into the provider's protected `main`. Use a new stable `major.minor.patch` version.
+2. From an up-to-date `plugins` checkout, request the release by provider type
+   and version. Use Git credentials with permission to create the request tag.
 
-You can delete the `-detach` tag after the registration PR merges.
-Retry a pending release through the protected reconciliation workflow. To
-fix an already tagged version, release a new version. The market publication
-job verifies the exact signed generation on the default CDN and reports
-`published` when it can be read.
+   ```sh
+   make release-provider REPOSITORY=certimate-go/plugin-provider-volcengine-dns-acmedns01challenger VERSION=0.1.2
+   ```
+
+   The command reads the repository’s merged manifest
+   and pushes `v0.1.2-detach` at that commit. Add `DRY_RUN=1` to preview the
+   commit and tag without pushing.
+3. Follow **Release provider** until it creates the formal tag. **Register
+   provider releases** reads the tag on its next scheduled run and opens a
+   PR in `plugins`. Merge the registration PR.
+4. **Publish signed plugin market** generates `registry/index.json` and
+   pushes the generated files directly to `main`. Install the version once
+   the CDN serves the new index.
+
+You can delete the `-detach` tag after the formal tag is available. Rerun a
+failed build in the provider repository. To rebuild a published version, dispatch **Release provider** on `main` with the original request tag and `rebuild=true`. The workflow uploads the rebuilt ZIPs to the run and preserves the formal tag. To fix an already tagged version,
+release a new version. Run **Register provider releases** manually to skip the
+wait for the schedule.
 
 See the [migration inventory](provider-migration.md) for provider status and
-the [release contract](release-contract.md) for protected workflows, GitHub
-Apps, and the signature policy.
+the [release contract](release-contract.md) for repository settings and the
+signature policy.
 
 ## Distributing from your own market
 

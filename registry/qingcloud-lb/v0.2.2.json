@@ -1,0 +1,97 @@
+{
+  "provider_type": "qingcloud-lb",
+  "repository": "certimate-go/plugin-provider-qingcloud-lb-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "52f32a41056fa7f02af5adcd749c2af84a337fe5",
+  "build_run_id": "44513818878",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6169819,
+      "sha256": "a1dbfc824fb7525bc8b085bcc69003a7a1d0ec6f1fd5cf4ff8fd99b2477a7aec"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5820706,
+      "sha256": "2138ea46d904947299d61c52529710ff43a4f563a92a1f9b516745918509a593"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6166689,
+      "sha256": "46ff33c28521e2d47207efdc8469255610010d7ec0a99d145aa907ea61491d6c"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5804699,
+      "sha256": "f2018cc2176f4c5fac31283c8fbd1aca5bd275666fcd02759310349c9acc88d2"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5546952,
+      "sha256": "9f0770aeb1cba69b5a790444fe4bc99ad52fb6baeef97df576612996b271d5ab"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5926153,
+      "sha256": "4e71fb694320aa8f24d488a11e900208f6782f8402ee4352557bb1454592bd4f"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6290373,
+      "sha256": "aee0ca5e95e24cc4c97d4236eb2e328ab5a612a02992e1cc07feaa6052029af4"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5646784,
+      "sha256": "110379fe8abd27438a0708f0fdea2ea13bb62f89f75c5432e9ee70ba81d6373c"
+    }
+  ],
+  "release_commit": "54a5d453204a135d8f7d1315daea9170a65e1a90",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "qingcloud-lb",
+    "access_provider_type": "qingcloud",
+    "capability": "deploy",
+    "display_name_key": "plugin.qingcloud-lb.name",
+    "category": "loadbalance",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "qingcloud-lb.exe",
+    "icon": "qingcloud.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "QingCloud - LBC (Load Balancer Cluster)"
+    },
+    "zh": {
+      "name": "青云 - 负载均衡 LB"
+    }
+  },
+  "icon": "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"
+}

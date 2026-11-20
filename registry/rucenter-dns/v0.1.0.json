@@ -1,0 +1,99 @@
+{
+  "provider_type": "rucenter-dns",
+  "repository": "certimate-go/plugin-provider-rucenter-dns-acmedns01challenger",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "source_commit": "2924ecc9870550207752a13dab902ef9f339307c",
+  "build_run_id": "44539984433",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6336163,
+      "sha256": "3ec2d3b0df1cc8d36c8830022a2f83dfcfba4fbdf74c0cd114ba7779c0fce1e2"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5934352,
+      "sha256": "c94be1b4b7005c44cf5453e262ad4da1abc4ac690844030a208d65b2467e8ed6"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6298903,
+      "sha256": "c4f4112a8de226b0a20bca2e1a8ea1af618f59ed0da647a08f445dfcb6da01b4"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5940099,
+      "sha256": "9ae7cd451e5a689aaec59a59a90b648a5fffdd6f2d10f0ef7437dbc045f57799"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5675217,
+      "sha256": "cf3a9e5fa3c3f411c1b04b5babe85bf8af495c138f6ff6712c6841dff65366a1"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6079558,
+      "sha256": "e8ef2b7cc30c27e9be1b5438c07c2814dee4a9868a7131d2e12097855dd8417b"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6455535,
+      "sha256": "01cc3427a673aa382b28ddccb99846a2762a34498146006c0a7bd026b4d60b68"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5762375,
+      "sha256": "832aed2caaf5d0528c3240b1b8eb17356e32e0fd286e87e6ccba99aa6fdc7551"
+    }
+  ],
+  "release_commit": "5ee55cb2a44165d09009510ea282fc80a7d029a2",
+  "manifest": {
+    "version": "0.1.0",
+    "provider_type": "rucenter-dns",
+    "access_provider_type": "rucenter",
+    "capability": "dns",
+    "display_name_key": "plugin.rucenter-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "rucenter-dns.exe",
+    "icon": "icon.svg",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via Руцентр (Ru-Center)."
+  },
+  "i18n": {
+    "en": {
+      "name": "Руцентр (Ru-Center)",
+      "description": "ACME DNS-01 via Руцентр (Ru-Center)."
+    },
+    "zh": {
+      "name": "Руцентр（Ru-Center）",
+      "description": "通过 Руцентр（Ru-Center） 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "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"
+}

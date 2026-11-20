@@ -1,0 +1,97 @@
+{
+  "provider_type": "proxmoxbs",
+  "repository": "certimate-go/plugin-provider-proxmoxbs-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "004adf12150cd3abedcfd06ba40589c4675a1589",
+  "build_run_id": "44512371433",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6138857,
+      "sha256": "a85bc7cdefde84df3755c8548d008c9b74befa92f752cabd032db9a701588d91"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5772561,
+      "sha256": "a8b0d1e05f7389f51d3b7a095ca61130149ee6d14a6f0e5cb10ba5a5c73d1330"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6095588,
+      "sha256": "b3dcfbfa38d30d0dcfd38dd9f157098463484e2d5b32d7b06905a595459b78ab"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5775621,
+      "sha256": "6b7c1957b67a6bc61a9923e3463f4149fd8f8552bad179edce0ad1a99c85ae27"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5529863,
+      "sha256": "6f4ad10a04d3518a67c08ce6e40aa77b69279a718d0a6354b943db3bce2c3870"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5881492,
+      "sha256": "dc8aaedef59a32f9397fcdac833c3e6ff2de1156f7781e1b599e82adbfe12deb"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6243589,
+      "sha256": "e010b7276d69cb656a63ca45abe52f8b024403dca0893ace5226cbfd6c41c301"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5625406,
+      "sha256": "8d9b00683815585d8a62fc91eb50d295a65310d8df38178c60c198e97dc96dcb"
+    }
+  ],
+  "release_commit": "a5790638f3fc7de101add9c325b88c3b6f4dbcfa",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "proxmoxbs",
+    "access_provider_type": "proxmoxbs",
+    "capability": "deploy",
+    "display_name_key": "provider.proxmoxbs",
+    "category": "other",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "proxmoxbs.exe",
+    "icon": "proxmoxbs.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "PBS (Proxmox Backup Server)"
+    },
+    "zh": {
+      "name": "PBS（Proxmox Backup Server）"
+    }
+  },
+  "icon": "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"
+}

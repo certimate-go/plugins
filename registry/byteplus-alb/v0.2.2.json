@@ -1,0 +1,97 @@
+{
+  "provider_type": "byteplus-alb",
+  "repository": "certimate-go/plugin-provider-byteplus-alb-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "46906de9d6ae1b4dcb8b95b42672a430e9e38f25",
+  "build_run_id": "44509771024",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6580102,
+      "sha256": "167715994de652b5f3d597e48ab15c0a0f8e0c0eef5e6c33dc02b95ea8e5d121"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6181792,
+      "sha256": "3f564473c064a841a08aba5ab7ee700ae564f6d9185036c409a541db3b354fc2"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6543310,
+      "sha256": "f95969cdc0e80f2641c5c255e8d76d1dd19296224f259639897b3ad5a8347498"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6172135,
+      "sha256": "abb65fed294bb398b1e3e91eb06113e5aca7727fc41de8fa05ae0799882a26fc"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5922411,
+      "sha256": "68c6d881c24e3132a7321530e9759f055302e7bb50fc0e6885f85bd2497d8cd1"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6290825,
+      "sha256": "50c90abb800597018fb95690a930e6f3b89816cad6c90fbc403dc7d1bd7bf312"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6702004,
+      "sha256": "aa0299c39572df1765d38e1604518fd4141433a11d181cac3586dc0e716eb54c"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 6022775,
+      "sha256": "77e58810d71e64a5362e0e5538b8fadba2ccddc5be2f5071204c8b11be0f6d07"
+    }
+  ],
+  "release_commit": "723259dbeb9595116cf7d389925304a27992a22f",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "byteplus-alb",
+    "access_provider_type": "byteplus",
+    "capability": "deploy",
+    "display_name_key": "plugin.byteplus-alb.name",
+    "category": "loadbalance",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "byteplus-alb.exe",
+    "icon": "byteplus.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "BytePlus - ALB (Application Load Balancer)"
+    },
+    "zh": {
+      "name": "BytePlus - 应用型负载均衡 ALB"
+    }
+  },
+  "icon": "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"
+}

@@ -38,19 +38,17 @@ func run(ctx context.Context, arguments []string, output io.Writer) error {
 			return signIndex(arguments, output)
 		case "stage-publication", "observe-publication":
 			return publishMarket(ctx, arguments, output)
-		case "registration-changes", "verify-registrations":
-			return checkRegistrations(ctx, arguments, output)
 		case "plan-provider":
 			return planProvider(arguments, output)
 		}
 	}
-	return fmt.Errorf("usage: registryctl <inspect-release|stage-release|observe-release|audit-mirror|sign-index|stage-publication|observe-publication|registration-changes|verify-registrations|plan-provider> [flags]")
+	return fmt.Errorf("usage: registryctl <inspect-release|stage-release|observe-release|audit-mirror|sign-index|stage-publication|observe-publication|plan-provider> [flags]")
 }
 
 func planProvider(arguments []string, output io.Writer) error {
 	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
 	directory := flags.String("registry", "registry", "protected registry checkout")
-	repository := flags.String("repository", "", "admitted provider repository")
+	repository := flags.String("repository", "", "official provider repository")
 	refsPath := flags.String("refs", "", "complete git ls-remote --tags output for the provider")
 	if err := flags.Parse(arguments[1:]); err != nil {
 		return err
@@ -75,51 +73,6 @@ func planProvider(arguments []string, output io.Writer) error {
 	return json.NewEncoder(output).Encode(plan)
 }
 
-func checkRegistrations(ctx context.Context, arguments []string, output io.Writer) error {
-	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
-	options := registry.RegistrationOptions{}
-	flags.StringVar(&options.Checkout, "checkout", ".", "trusted registry checkout with fetched candidate Git objects")
-	flags.StringVar(&options.Base, "base", "", "protected registry base commit")
-	flags.StringVar(&options.Candidate, "candidate", "", "commit to verify without checking it out")
-	flags.BoolVar(&options.Queue, "queue", false, "accept independently verified registrations and publications in a merge group")
-	keys := flags.String("public-keys", "", "trusted index signing keys for market publications")
-	sources := flags.String("providers", "", "directory with a bare Git repository per provider")
-	proof := flags.String("evidence", "", "directory with GitHub workflow and branch API evidence")
-	if err := flags.Parse(arguments[1:]); err != nil {
-		return err
-	}
-	if flags.NArg() != 0 {
-		return fmt.Errorf("unexpected positional arguments")
-	}
-	if *keys != "" {
-		publicKeys, err := readPublicKeys(*keys)
-		if err != nil {
-			return err
-		}
-		options.PublicKeys = publicKeys
-	}
-	if arguments[0] == "registration-changes" {
-		changes, err := registry.RegistrationChanges(ctx, options)
-		if err != nil {
-			return err
-		}
-		return json.NewEncoder(output).Encode(changes)
-	}
-	if *sources == "" || *proof == "" {
-		return fmt.Errorf("-providers and -evidence are required")
-	}
-	root, err := os.OpenRoot(*proof)
-	if err != nil {
-		return err
-	}
-	defer root.Close()
-	changes, err := registry.VerifyRegistrations(ctx, options, *sources, root.FS())
-	if err != nil {
-		return err
-	}
-	return json.NewEncoder(output).Encode(changes)
-}
-
 func stageRelease(ctx context.Context, arguments []string, output io.Writer) error {
 	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
 	options := registry.StageReleaseOptions{}
@@ -129,6 +82,7 @@ func stageRelease(ctx context.Context, arguments []string, output io.Writer) err
 	flags.StringVar(&options.Tag, "tag", "", "formal release tag")
 	flags.StringVar(&options.SourceCommit, "source-sha", "", "source commit already checked for protected-branch ancestry")
 	flags.StringVar(&options.BuildRunID, "run-id", "", "current trusted build workflow run")
+	flags.StringVar(&options.BuildRepository, "build-repository", "", "protected registry repository for centrally built releases")
 	if err := flags.Parse(arguments[1:]); err != nil {
 		return err
 	}
@@ -145,7 +99,7 @@ func stageRelease(ctx context.Context, arguments []string, output io.Writer) err
 func inspectRelease(ctx context.Context, arguments []string, output io.Writer) error {
 	flags := flag.NewFlagSet(arguments[0], flag.ContinueOnError)
 	checkout := flags.String("checkout", ".", "checkout with the formal tag and its source history")
-	repository := flags.String("repository", "", "admitted provider repository from trusted policy")
+	repository := flags.String("repository", "", "official provider repository")
 	tag := flags.String("tag", "", "immutable formal release tag")
 	if err := flags.Parse(arguments[1:]); err != nil {
 		return err

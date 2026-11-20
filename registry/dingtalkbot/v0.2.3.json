@@ -1,0 +1,99 @@
+{
+  "provider_type": "dingtalkbot",
+  "repository": "certimate-go/plugin-provider-dingtalkbot-notifier",
+  "version": "0.2.3",
+  "tag": "v0.2.3",
+  "source_commit": "94006ea5baada26b3a957265c14ddfb2eb3e7a6e",
+  "build_run_id": "44508166874",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6119667,
+      "sha256": "9adfecf417bf8c11891169ec828aa6de7b2203932eda9876774f96bc64326d9f"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5755395,
+      "sha256": "4ab504daa4b8cb47b229e343b14083ce7631c7091fbb4378647be884d90eb3a5"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6088157,
+      "sha256": "3272edf1dfd604e92f5be327902aca90b1cb7d90242e20844fc2bf1ad0b9ce26"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5787369,
+      "sha256": "fcb63a4bb7edadbd63e4df9a036278ced9abe0e97550e43a55334e2593c51189"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5531621,
+      "sha256": "921a97f888aa3f88759f17637e633a71a6f64b1d82c6c376d4edccd6044a7a3c"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5877979,
+      "sha256": "925dd83fa66427d66315d4a98b7ff5f46ad271c21a899c3719f5f427c1f4ca58"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6244625,
+      "sha256": "3b8abce98172b9674bbadc2c987234e9c62959b95e845cec8b8b22a5b2f3eb48"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5601970,
+      "sha256": "51fef13cae78122e089128dc037900773b61142306bf628f8309dd97a54e4bc6"
+    }
+  ],
+  "release_commit": "41af0267b5e2a87512d2ed0fe26139a2b5a5783a",
+  "manifest": {
+    "version": "0.2.3",
+    "provider_type": "dingtalkbot",
+    "access_provider_type": "dingtalkbot",
+    "capability": "notify",
+    "display_name_key": "plugin.dingtalkbot.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "dingtalkbot.exe",
+    "icon": "dingtalk.svg",
+    "sha256": "",
+    "usages": [
+      "notification"
+    ],
+    "priority": 0,
+    "description": "Send notifications via a DingTalk custom robot."
+  },
+  "i18n": {
+    "en": {
+      "name": "DingTalk Bot",
+      "description": "Send notifications via a DingTalk custom robot."
+    },
+    "zh": {
+      "name": "钉钉群机器人",
+      "description": "通过钉钉自定义机器人发送通知。"
+    }
+  },
+  "icon": "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"
+}

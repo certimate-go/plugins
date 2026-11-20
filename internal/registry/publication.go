@@ -8,6 +8,7 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
+	"maps"
 	"math"
 	"os"
 	"path"
@@ -149,6 +150,24 @@ func sameCatalog(before, after Catalog) bool {
 	return bytes.Equal(oldBytes, newBytes)
 }
 
+func publishedSnapshot(version *Version, summary Summary) (Snapshot, error) {
+	encodings := []string{""}
+	if version.BuildRepository != "" {
+		encodings = append(encodings, version.BuildRepository)
+	}
+	expected := Catalog{Plugins: []Summary{summary}}
+	for _, buildRepository := range encodings {
+		snapshot := Snapshot{Files: make(map[string][]byte)}
+		if err := snapshot.add(version, buildRepository); err != nil {
+			return Snapshot{}, err
+		}
+		if sameCatalog(expected, snapshot.Catalog) {
+			return snapshot, nil
+		}
+	}
+	return Snapshot{}, fmt.Errorf("registered version %s %s differs from the published index", version.ProviderType, version.Version)
+}
+
 type publicationProvider struct {
 	versions []*Version
 	previous *Version
@@ -160,7 +179,7 @@ type observationResult struct {
 }
 
 func observeCatalog(ctx context.Context, records fs.FS, previous Catalog, renew bool, observe releaseObserver) ([]ReadyRelease, []string, error) {
-	admissions, withdrawals, err := loadPolicy(records)
+	registered, withdrawals, err := loadRegistry(records)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -168,29 +187,17 @@ func observeCatalog(ctx context.Context, records fs.FS, previous Catalog, renew 
 	for _, summary := range previous.Plugins {
 		previousByProvider[summary.ProviderType] = summary
 	}
-	names := make([]string, 0, len(admissions))
-	for name := range admissions {
-		names = append(names, name)
-	}
-	slices.Sort(names)
-	providers := make([]publicationProvider, 0, len(names))
-	for _, name := range names {
-		versions, err := loadProvider(records, name, admissions[name])
-		if err != nil && !errors.Is(err, fs.ErrNotExist) {
-			return nil, nil, err
-		}
+	providers := make([]publicationProvider, 0, len(registered))
+	for _, name := range slices.Sorted(maps.Keys(registered)) {
+		versions := registered[name]
 		var eligible publicationProvider
 		var legacyFound bool
 		legacy, hadLegacy := previousByProvider[name]
 		for _, version := range versions {
 			id := Identity{version.ProviderType, version.Version}
 			if hadLegacy && legacy.Identity == id {
-				reconstructed := Snapshot{Files: make(map[string][]byte)}
-				if err := reconstructed.add(version); err != nil {
+				if _, err := publishedSnapshot(version, legacy); err != nil {
 					return nil, nil, err
-				}
-				if !sameCatalog(Catalog{Plugins: []Summary{legacy}}, reconstructed.Catalog) {
-					return nil, nil, fmt.Errorf("registered version %s %s changed after publication", version.ProviderType, version.Version)
 				}
 				legacyFound = true
 				if !withdrawals[id] {
@@ -204,7 +211,11 @@ func observeCatalog(ctx context.Context, records fs.FS, previous Catalog, renew 
 		if hadLegacy && !legacyFound {
 			return nil, nil, fmt.Errorf("published provider %q is missing its immutable registration", name)
 		}
+		delete(previousByProvider, name)
 		providers = append(providers, eligible)
+	}
+	if len(previousByProvider) != 0 {
+		return nil, nil, errors.New("published provider is missing its immutable registration")
 	}
 	results := make([]observationResult, len(providers))
 	const workers = 6

@@ -1,0 +1,99 @@
+{
+  "provider_type": "vultr-dns",
+  "repository": "certimate-go/plugin-provider-vultr-dns-acmedns01challenger",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "source_commit": "ffde446a3cc5668fac9eb3a7c617087a5a5d0ace",
+  "build_run_id": "44539411734",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6383166,
+      "sha256": "dc311181d2e1a1661496b6549244f63d6d47d18f7de67ea3bd37690fc3b71faa"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6041045,
+      "sha256": "f9a553a46c4e305263b1f836fcfab78874954cd3fd744d23d450a8b71a8610ae"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6375769,
+      "sha256": "131e73fcc51e8f3840f592d8d24fc2a5517bec7d13e2a273c2e27ffccc35684c"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6041387,
+      "sha256": "013ef4a5417194d2b6f6d7665b1319e892278918ba3fda68a31cd367e7587495"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5772846,
+      "sha256": "804feb1b8278ff80a2b0e6e560b7d8822e4b32625389f3e98d83fa43993d219c"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6131452,
+      "sha256": "c00e5332ee502679290f7c8b09ad6f554fe433d9a08c87907edd6b202c1e255c"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6550210,
+      "sha256": "fc60e9ded289275b2491c8e5e7f03e95552e1c1938341f51786542a6a49c53ae"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5844782,
+      "sha256": "2c78e7fafd2e98faf1145ef18a43b716dea2526bb128e8f485bba5f9c4e041b1"
+    }
+  ],
+  "release_commit": "912312820f9227f3514d71fd4c6f25b0d18716e8",
+  "manifest": {
+    "version": "0.1.0",
+    "provider_type": "vultr-dns",
+    "access_provider_type": "vultr",
+    "capability": "dns",
+    "display_name_key": "plugin.vultr-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "vultr-dns.exe",
+    "icon": "icon.svg",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via Vultr."
+  },
+  "i18n": {
+    "en": {
+      "name": "Vultr",
+      "description": "ACME DNS-01 via Vultr."
+    },
+    "zh": {
+      "name": "Vultr",
+      "description": "通过 Vultr 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "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"
+}

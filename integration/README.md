@@ -1,5 +1,7 @@
 # Verify the cloud deployment plugins
 
+The integration fixtures build standalone provider modules from the workspace next to the registry checkout. Initialize the top-level Git submodules recursively, or set `CERTIMATE_PLUGIN_WORKSPACE` to a workspace with those checkouts. The optional Core workflows also require the Core executable described for each suite.
+
 Run the production-process tests from the repository root.
 
 ```sh
@@ -30,10 +32,4 @@ CERTIMATE_B1_CORE_BINARY=/path/to/certimate-linux go test ./integration -run '^T
 
 The `TestPurgeWorkflow*` suites cover all sixteen purge providers family by family (Aliyun, AWS, Azure, Baidu Cloud, Huawei Cloud, JDCloud, Tencent Cloud, UCloud, Volcengine): expiry-threshold selection, multi-page listing, partial delete failures and repair, vendor error codes, legacy and new provider ids, and purge schema endpoints. Each family stubs its vendor API behind a local TLS proxy, so no live accounts are touched.
 
-`TestPurgePackaging` verifies the market pipeline offline with the real `genindex` and `releaseinfo` tools: index entries carry the purge capability and details, market filtering selects them, all sixteen purgers install alongside deploy/dns/notify samples, a protocol mismatch is rejected without breaking the core, broken updates (checksum mismatch, corrupt archive) fail and recover, and a market-installed purger executes a real purge workflow.
-
-```sh
-CERTIMATE_B1_CORE_BINARY=/path/to/certimate-linux go test ./integration -run '^TestPurgePackaging$' -count=1 -v
-```
-
-Both suites skip unless `CERTIMATE_B1_CORE_BINARY` points at a Linux core binary. On other hosts they build Linux binaries and re-run themselves inside Docker with networking disabled; set `CERTIMATE_E2E_IMAGE` to override the default `golang:1.26-bookworm` image.
+The purge workflow suites skip unless `CERTIMATE_B1_CORE_BINARY` points at a Linux core binary. On other hosts they build Linux binaries and re-run themselves inside Docker with networking disabled; set `CERTIMATE_E2E_IMAGE` to override the default `golang:1.26-bookworm` image.

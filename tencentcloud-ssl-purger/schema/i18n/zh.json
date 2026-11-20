@@ -1,6 +1,0 @@
-{
-  "plugin.tencentcloud-ssl-purger.name": "腾讯云 - SSL 证书服务（过期清除）",
-  "plugin.tencentcloud-ssl-purger.purge.form.endpoint.label": "腾讯云接口端点（可选）",
-  "plugin.tencentcloud-ssl-purger.purge.form.endpoint.placeholder": "请输入腾讯云 SSL 接口端点（例如：ssl.tencentcloudapi.com）",
-  "plugin.tencentcloud-ssl-purger.purge.form.endpoint.tooltip": "这是什么？请参阅 <a href=\"https://cloud.tencent.com/document/product/400/41659\" target=\"_blank\">https://cloud.tencent.com/document/product/400/41659</a><br>国际站用户请填写 <em>ssl.intl.tencentcloudapi.com</em>。"
-}

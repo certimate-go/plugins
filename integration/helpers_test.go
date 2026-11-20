@@ -1,23 +1,89 @@
 package integration
 
 import (
+	"archive/zip"
+	"bytes"
 	"context"
 	"crypto/ecdsa"
 	"crypto/elliptic"
 	"crypto/rand"
+	"crypto/sha256"
 	"crypto/x509"
 	"crypto/x509/pkix"
 	"encoding/json"
 	"encoding/pem"
 	"fmt"
+	"io"
 	"log/slog"
 	"math/big"
+	"net/http"
+	"os"
+	"path"
+	"slices"
 	"strings"
 	"testing"
 	"time"
 
 	"github.com/certimate-go/certimate/pkg/plugin"
+
+	"github.com/certimate-go/plugins/internal/providerrelease"
+	"github.com/certimate-go/plugins/internal/registry"
 )
+
+func installPublishedFixture(t *testing.T, destination, provider, goos, arch string) {
+	t.Helper()
+	versions := map[string]string{
+		"gotify":                       "v0.2.2",
+		"ntfy":                         "v0.2.2",
+		"volcengine-cdn":               "v0.2.1",
+		"volcengine-certcenter-purger": "v0.1.1",
+	}
+	tag, ok := versions[provider]
+	if !ok {
+		t.Fatalf("no source or published fixture for %s", provider)
+	}
+	release, err := registry.ReadVersion(os.DirFS("../registry"), path.Join(provider, tag+".json"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	target := providerrelease.Target{OS: goos, Arch: arch}
+	index := slices.IndexFunc(release.Artifacts, func(artifact providerrelease.Artifact) bool {
+		return artifact.Target == target
+	})
+	if index == -1 {
+		t.Fatalf("%s %s has no published package for %s/%s", provider, tag, goos, arch)
+	}
+	artifact := release.Artifacts[index]
+	address := "https://cdn.jsdelivr.net/gh/" + release.Repository + "@" + release.ReleaseCommit + "/" + artifact.Path
+	ctx, cancel := context.WithTimeout(t.Context(), time.Minute)
+	defer cancel()
+	request, err := http.NewRequestWithContext(ctx, http.MethodGet, address, nil)
+	if err != nil {
+		t.Fatal(err)
+	}
+	response, err := http.DefaultClient.Do(request)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer response.Body.Close()
+	if response.StatusCode != http.StatusOK {
+		t.Fatalf("download %s: %s", address, response.Status)
+	}
+	payload, err := io.ReadAll(io.LimitReader(response.Body, artifact.Size+1))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if int64(len(payload)) != artifact.Size || fmt.Sprintf("%x", sha256.Sum256(payload)) != artifact.SHA256 {
+		t.Fatalf("published package does not match its registry record: %s", address)
+	}
+	archive, err := zip.NewReader(bytes.NewReader(payload), int64(len(payload)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.CopyFS(destination, archive); err != nil {
+		t.Fatal(err)
+	}
+}
 
 func validateSchema(t *testing.T, schema *plugin.ConfigSchema, provider, access string, meta *plugin.Metadata) {
 	t.Helper()

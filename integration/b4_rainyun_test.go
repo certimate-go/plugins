@@ -302,39 +302,7 @@ func newB4CloudProxy(t *testing.T, hosts []string, handler http.Handler) {
 
 func buildB4CloudPackages(t *testing.T, dir string, providers []string, goos, arch string) {
 	t.Helper()
-	for _, provider := range providers {
-		manifest, err := os.ReadFile(filepath.Join("..", provider, "manifest.json"))
-		if err != nil {
-			t.Fatal(err)
-		}
-		m, err := plugin.ParseManifest(manifest)
-		if err != nil {
-			t.Fatal(err)
-		}
-		out := filepath.Join(dir, provider)
-		if err := os.MkdirAll(out, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		cmd := exec.Command("go", "build", "-o", filepath.Join(out, m.Binary), "./"+provider)
-		cmd.Dir = ".."
-		cmd.Env = append(os.Environ(), "GOOS="+goos, "GOARCH="+arch, "CGO_ENABLED=0")
-		if output, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("build %s: %v\n%s", provider, err, output)
-		}
-		names := []string{"manifest.json"}
-		if m.Icon != "" {
-			names = append(names, m.Icon)
-		}
-		for _, name := range names {
-			raw, err := os.ReadFile(filepath.Join("..", provider, name))
-			if err != nil {
-				t.Fatal(err)
-			}
-			if err := os.WriteFile(filepath.Join(out, name), raw, 0o644); err != nil {
-				t.Fatal(err)
-			}
-		}
-	}
+	stageStandaloneProviders(t, dir, providers, goos, arch)
 }
 
 func runB4CloudInLinux(t *testing.T, providers []string) {

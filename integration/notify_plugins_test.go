@@ -9,6 +9,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -112,7 +113,7 @@ func TestExternalNotificationPlugins(t *testing.T) {
 
 func buildAndStartNotificationCore(t *testing.T, ctx context.Context, names ...string) *b1WorkflowAPI {
 	t.Helper()
-	core := filepath.Join("..", "..", "certimate")
+	core := filepath.Join(standaloneTestWorkspace(), "certimate")
 	if _, err := os.Stat(filepath.Join(core, "go.mod")); os.IsNotExist(err) {
 		t.Skip("requires the sibling certimate checkout")
 	} else if err != nil {
@@ -120,30 +121,12 @@ func buildAndStartNotificationCore(t *testing.T, ctx context.Context, names ...s
 	}
 	plugins := t.TempDir()
 	binary := filepath.Join(t.TempDir(), "certimate")
-	build := func(dir, output string) {
-		t.Helper()
-		cmd := exec.CommandContext(ctx, "go", "build", "-o", output, ".")
-		cmd.Dir = dir
-		if out, err := cmd.CombinedOutput(); err != nil {
-			t.Fatalf("build %s: %v\n%s", dir, err, out)
-		}
+	cmd := exec.CommandContext(ctx, "go", "build", "-o", binary, ".")
+	cmd.Dir = core
+	if out, err := cmd.CombinedOutput(); err != nil {
+		t.Fatalf("build %s: %v\n%s", core, err, out)
 	}
-	build(core, binary)
-	for _, name := range names {
-		source := filepath.Join("..", name)
-		stage := filepath.Join(plugins, name)
-		if err := os.Mkdir(stage, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		build(source, filepath.Join(stage, name))
-		manifest, err := os.ReadFile(filepath.Join(source, "manifest.json"))
-		if err != nil {
-			t.Fatal(err)
-		}
-		if err := os.WriteFile(filepath.Join(stage, "manifest.json"), manifest, 0o644); err != nil {
-			t.Fatal(err)
-		}
-	}
+	buildB4CloudPackages(t, plugins, names, runtime.GOOS, runtime.GOARCH)
 
 	return startNotificationCore(t, ctx, binary, plugins)
 }

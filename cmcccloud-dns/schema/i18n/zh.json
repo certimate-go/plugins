@@ -1,4 +1,0 @@
-{
-  "plugin.cmcccloud-dns.name": "移动云 - 云解析 DNS",
-  "plugin.cmcccloud-dns.description": "通过移动云 DNS 完成 DNS-01 验证。"
-}

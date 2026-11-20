@@ -1,6 +1,0 @@
-{
-  "plugin.tencentcloud-ssl-purger.name": "Tencent Cloud - SSL Certificate Service (Purge)",
-  "plugin.tencentcloud-ssl-purger.purge.form.endpoint.label": "Tencent Cloud API endpoint (Optional)",
-  "plugin.tencentcloud-ssl-purger.purge.form.endpoint.placeholder": "Please enter Tencent Cloud SSL API endpoint (e.g. ssl.intl.tencentcloudapi.com)",
-  "plugin.tencentcloud-ssl-purger.purge.form.endpoint.tooltip": "<ul style=\"list-style: disc;\"><li><strong>ssl.intl.tencentcloudapi.com</strong> for Tencent Cloud International</li><li><strong>ssl.tencentcloudapi.com</strong> for Tencent Cloud in China (<em>Default</em>)</li></ul>"
-}

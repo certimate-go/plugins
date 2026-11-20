@@ -4,15 +4,19 @@
 
 [certimate](https://github.com/certimate-go/certimate) 的外置 provider 插件集合。每个插件是一个独立二进制，certimate 通过 [hashicorp/go-plugin](https://github.com/hashicorp/go-plugin) 以 gRPC 子进程的方式启动它，完成证书的部署、DNS 解析、通知或清除。新增插件**无需改动 certimate 核心**。
 
-本仓库维护官方插件注册表。已准入的插件从各自的 provider 仓库发布 ZIP。Certimate 经 CDN 读取 `main` 上的签名索引 `registry/index.json`，再从各 provider 的正式产物提交下载 ZIP。 [签名索引](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json)
+本仓库维护官方插件索引。各 provider 仓库自行构建和发布。Certimate 从 CDN 读取 [签名索引](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json)。
 
-## 贡献插件
+## 仓库结构
 
-修改已有官方插件时，从准入清单找到对应仓库，将它 fork 到个人账号，再向官方仓库的 `main` 提交 PR。 [官方准入清单](https://github.com/certimate-go/plugins/blob/main/registry/_policy/admissions.json)
+官方 provider 源码在各自的 `certimate-go/plugin-provider-*` 仓库。通过版本回执的 `repository` 字段定位源码。
 
-申请收录新插件时，先在本仓库提 Issue，写明目标服务、插件能力、拟用的 `provider_type` 和验证方式。已有源码时，附上公开仓库、待审提交和许可证。维护者同意收录后会创建并配置官方仓库。收到仓库链接后，从个人 fork 提交源码 PR。维护者在合并源码后完成准入和首次发布。 [申请官方收录](https://github.com/certimate-go/plugins/issues/new)
-
-如果要在自己的仓库独立发布，请按[自定义市场指南](skills/certimate-plugin-dev/references/third-party-development.md)操作。
+| 路径 | 用途 |
+| --- | --- |
+| `registry/` | 版本回执、签名目录、详情和图标 |
+| `.github/workflows/` | 可复用的 provider CI、打包、登记和签名发布 |
+| `cmd/` | 插件和注册表工具 |
+| `_template/` | 插件脚手架 |
+| `integration/` | 使用独立 provider checkout 的 Core 集成测试 |
 
 ## 插件结构
 
@@ -23,21 +27,22 @@
 - `Process` —— 根据访问配置、provider 配置和该能力的 typed payload 执行工作。
 - `PostProcess` —— 同一次执行的收尾（能力无需清理时嵌入 `plugin.NoopFinalizer`）。
 
-源码中的 `manifest.json` 描述插件。
+`manifest.json` 携带市场元数据：
 
 | 字段 | 含义 |
 |---|---|
-| `provider_type` | 稳定的插件标识，使用 kebab-case |
+| `provider_type` | 插件唯一 id（kebab-case）；同时也是目录名和二进制名 |
 | `access_provider_type` | 本插件消费的访问凭据类型 |
-| `version` | SemVer 版本号，须与官方发布触发标签对应 |
+| `version` | semver 版本号；**bump 它才会触发新发版** |
 | `capability` | 四选一：`deploy`、`dns`、`notify`、`purge` |
 | `category` | 市场分组（如 `cdn`、`storage`、`other`） |
 | `binary` | 构建出的二进制名 |
 | `icon` | 随插件发布的图标文件名 |
 | `protocol_version` | 必须与 certimate 插件协议匹配 |
 | `usages` / `priority` | 市场展示提示 |
+| `release` | 生成的 GitHub Release 指针（repo/tag/assets/checksums） |
 
-## 开发插件
+## 新增插件
 
 仓库提供 [certimate-plugin-dev skill](skills/certimate-plugin-dev/SKILL.md)，指导 AI 编程助手开发 deploy、dns、notify、purge 插件，覆盖凭据复用、表单与中英文翻译、构建及真实宿主验证。在本仓库中使用时，可直接给助手以下指令：
 
@@ -55,35 +60,41 @@ cp -R skills/certimate-plugin-dev "${CODEX_HOME:-$HOME/.codex}/skills/"
 
 安装后，在你自己的项目中调用：“用 `$certimate-plugin-dev` 为我的服务开发 DNS 插件，并把本仓库配置成自定义市场。”其他支持 `SKILL.md` 的助手可将整个目录复制到各自的 skills 目录。参见[自定义市场发布指南](docs/releasing.md#distributing-from-your-own-market)。
 
-参考 `_template` 中的示例。官方 provider 的 `go.mod`、`manifest.json`、Go 入口和 `schema/` 放在各自仓库根目录。将图标一并放在根目录，并把文件名填入 `manifest.icon`。在 provider 仓库运行 `go test ./...`。
+```bash
+make init PLUGIN=my-deployer          # 从 _template 生成脚手架
+```
+
+将脚手架复制到独立 Go 模块，再编辑 `my-deployer/manifest.json`（设置 `provider_type`、`access_provider_type`、`category`、`icon` 等），在 `server.go` 实现 `Process()`，并编写 `schema/config.json`。把图标文件（svg/png）放进插件目录，并在 `manifest.icon` 指向它。
 
 插件可以**声明新的** access 类型（添加 `schema/access.json`），也可以复用已有的（内置或来自其它插件）。
 
-## 构建仍位于本仓库的插件
+## 构建与测试
 
-```bash
-make build PLUGIN=my-deployer         # 当前主机平台安装目录 -> dist/<plugin>/
-make build-all PLUGIN=my-deployer     # 跨平台编译出发布矩阵
-make test                             # go test ./...
+初始化 provider 自己的 Git 子模块，然后构建到本地 Core 插件目录。
+
+```sh
+make dev PROVIDER_DIR=../plugin-provider-volcengine-dns-acmedns01challenger
 ```
 
-## 发布官方插件
+在 provider 仓库运行 `go test ./...`。在注册表仓库运行 `make test` 前，先初始化 workspace 的独立 provider 子模块，或将 `CERTIMATE_PLUGIN_WORKSPACE` 指向这些 checkout。 [集成测试](integration/README.md)
 
-源码 PR 和首次准入 PR 合并后，维护者将 `vX.Y.Z-detach` 标签推到 provider 仓库，指向受保护的 `main` 中与 `manifest.json` 版本对应的源码提交。发布工作流构建 8 个平台的 ZIP，并将 `build/` 写入不可改的正式标签 `vX.Y.Z`。注册表先合并版本登记 PR，再单独合并签名索引发布 PR。CDN 提供通过验证的签名索引后，该版本可从官方市场获取。 [官方发布契约](https://github.com/certimate-go/plugins/blob/main/docs/release-contract.md)
+## 发版
+
+在 provider 仓库推送发版请求标签。正式标签出现后，本仓库为该版本开 PR。合并后，签名索引自动发布到 `main`。 [官方发布指南](docs/releasing.md)
 
 ## 从内置 purge provider 升级
 
-原先内置在 certimate 核心里的十六个证书清除 provider，已迁移为本仓库的 `purge` 能力插件：`aliyun-cas-purger`、`aliyun-clb-purger`、`aliyun-esa-purger`、`aws-acm-purger`、`aws-iam-purger`、`azure-keyvault-purger`、`baiducloud-cert-purger`、`huaweicloud-elb-purger`、`huaweicloud-scm-purger`、`huaweicloud-waf-purger`、`jdcloud-ssl-purger`、`tencentcloud-gaap-purger`、`tencentcloud-ssl-purger`、`tencentcloud-tse-purger`、`ucloud-ussl-purger`、`volcengine-certcenter-purger`。
+原先内置在 certimate 核心里的十六个证书清除 provider，已迁移为 `purge` 能力插件：`aliyun-cas-purger`、`aliyun-clb-purger`、`aliyun-esa-purger`、`aws-acm-purger`、`aws-iam-purger`、`azure-keyvault-purger`、`baiducloud-cert-purger`、`huaweicloud-elb-purger`、`huaweicloud-scm-purger`、`huaweicloud-waf-purger`、`jdcloud-ssl-purger`、`tencentcloud-gaap-purger`、`tencentcloud-ssl-purger`、`tencentcloud-tse-purger`、`ucloud-ussl-purger`、`volcengine-certcenter-purger`。
 
 引用旧清除 provider 的工作流节点，在安装映射插件后即可继续工作 —— certimate 会把旧 provider id 自动解析到这些插件；插件安装前该节点会报缺少 provider 的错误。certimate 不会未经请求就下载插件或改写工作流：请从插件市场（或自定义市场）显式安装对应插件；仅当希望节点改用新 provider id 时才需要重新保存工作流。
 
 ## 工具
 
-- `cmd/registryctl` 用于校验和登记官方版本，以及发布签名索引。
-- `cmd/releaseinfo` 为自定义市场生成 Release 附件元数据。
-- `make clean` 清除 `dist/`。
+- `make index` 使用注册表回执和 `READY` 指定的 CDN 工件观测结果暂存目录。
+- [第三方发布模板](docs/releasing.md#distributing-from-your-own-market)固定其使用的 `releaseinfo` 和 `genindex` 工具版本。
+- `make clean` 清除本地 `dist/` 输出。
 
 ## 环境要求
 
 - Go 1.25+（`GOTOOLCHAIN=auto` 会自动拉取所需工具链）。
-- 依赖 `github.com/certimate-go/certimate/pkg/plugin` 提供 `Plugin` 接口与握手协议。
+- 依赖 `github.com/certimate-go/certimate/pkg/plugin` 提供 `Deployer` 接口与握手协议。

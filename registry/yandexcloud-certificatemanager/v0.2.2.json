@@ -1,0 +1,97 @@
+{
+  "provider_type": "yandexcloud-certificatemanager",
+  "repository": "certimate-go/plugin-provider-yandexcloud-certificatemanager-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "4cb66db8b662897e4ed9ff72ee27a2be95107596",
+  "build_run_id": "44514059538",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6563349,
+      "sha256": "bb143dc0493f0deb01c73820629b12be4d88a2764b078261803e79456f0789e8"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 6191505,
+      "sha256": "c3a0fc94fcbc23c767f781ffb015b99819974350b0c9fa7f98f93be89a21add5"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6522424,
+      "sha256": "3c377e8cb750c854d4b9bae041b79c10f0750f995ec2a272f574ac21fd0a00ad"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 6167329,
+      "sha256": "a2c7b5350df8624d9f8a9bec70e5b0f1f3527c47d5de042c6598e15e2bda7f89"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5911326,
+      "sha256": "42c9b27c275ba0c20711e6400d85deff9c152c5e220428bb61c7eb53530b3c0d"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6263270,
+      "sha256": "9e41917648f2357c309b35367d5b5d8a08d58297b0d2f531f0973f2d63549085"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6682370,
+      "sha256": "fc2bae0f729ea3cabaec7874293bff3701ed9f6945e9f2740b54ea672fb0fe94"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 6007933,
+      "sha256": "d3d54324a6540497180449735b81475f38188fd09b61948dfd8a9f9fe6011cca"
+    }
+  ],
+  "release_commit": "b32bc09e5cdd2051f702d7c92b6727ad5378b47a",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "yandexcloud-certificatemanager",
+    "access_provider_type": "yandexcloud",
+    "capability": "deploy",
+    "display_name_key": "plugin.yandexcloud-certificatemanager.name",
+    "category": "ssl",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "yandexcloud-certificatemanager.exe",
+    "icon": "yandexcloud.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "Yandex Cloud - Certificate Manager"
+    },
+    "zh": {
+      "name": "Yandex Cloud - 证书管理器"
+    }
+  },
+  "icon": "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"
+}

@@ -1,0 +1,99 @@
+{
+  "provider_type": "ovhcloud-dns",
+  "repository": "certimate-go/plugin-provider-ovhcloud-dns-acmedns01challenger",
+  "version": "0.1.0",
+  "tag": "v0.1.0",
+  "source_commit": "c6fd1c27f39bf7d97bb900042c81de0b29331cae",
+  "build_run_id": "44539269737",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6261464,
+      "sha256": "47e2e7adb53d9636e22daa709e2ae54c74144feda6585cf897b787ea8ac1f29d"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5896492,
+      "sha256": "e12f33235da622cfc56807aeeae94703a5099daa0f57e11839e5630230ff1f22"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6258601,
+      "sha256": "b20ef0080abcd2e986a3773f2e2acdf9b4152f3505e70cd3bede33cc86c0abd1"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5893209,
+      "sha256": "7ff326a2eae531240976fc046217303b30cc4f194289794ea4dcc0c051dd91eb"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5661178,
+      "sha256": "1c11ccda135dfabb388e04f29432ef95c24c8dfb7e29ac9ec4ebf6fe8464aa8e"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 6041809,
+      "sha256": "d442d113084383e914bbd31aecac4f6013165dbec98a2c0954fcba6650eabc5b"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6409947,
+      "sha256": "bee3d3a2a926d7427735728200022b5f422d101c5ffcbde7dd08f03bc6e6b02c"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5728738,
+      "sha256": "6a032807982368a51021cd64d5b451a9163f54664bd5fcc3fe98f035c19133fc"
+    }
+  ],
+  "release_commit": "7389d8ae042913d9539173212e67e2492b04bdf2",
+  "manifest": {
+    "version": "0.1.0",
+    "provider_type": "ovhcloud-dns",
+    "access_provider_type": "ovhcloud",
+    "capability": "dns",
+    "display_name_key": "plugin.ovhcloud-dns.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "ovhcloud-dns.exe",
+    "icon": "icon.svg",
+    "sha256": "",
+    "usages": [
+      "dns"
+    ],
+    "priority": 0,
+    "description": "ACME DNS-01 via OVHcloud."
+  },
+  "i18n": {
+    "en": {
+      "name": "OVHcloud",
+      "description": "ACME DNS-01 via OVHcloud."
+    },
+    "zh": {
+      "name": "OVHcloud",
+      "description": "通过 OVHcloud 完成 ACME DNS-01 验证。"
+    }
+  },
+  "icon": "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"
+}

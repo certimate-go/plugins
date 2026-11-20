@@ -7,6 +7,10 @@ on:
         description: Release request tag, vX.Y.Z-detach
         required: true
         type: string
+      rebuild:
+        description: Rebuild an existing formal version without replacing it
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -55,7 +59,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 35
     needs: prepare
-    if: needs.prepare.outputs.present == 'false'
+    if: needs.prepare.outputs.present == 'false' || inputs.rebuild
     outputs:
       artifact: ${{ steps.transfer.outputs.artifact-id }}
     steps:
@@ -96,7 +100,8 @@ jobs:
     timeout-minutes: 15
     needs: [prepare, build]
     if: needs.build.result == 'success' && needs.prepare.outputs.present == 'false'
-    environment: provider-release
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
@@ -118,35 +123,10 @@ jobs:
         env:
           SOURCE_SHA: ${{ needs.prepare.outputs.source }}
         run: bash controller/.github/scripts/provider-release.sh stage
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
-        id: token
-        if: steps.stage.outputs.present == 'false'
-        with:
-          owner: ${{ github.repository_owner }}
-          repositories: ${{ github.event.repository.name }}
-          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
-          permission-contents: write
       - name: Create the immutable formal tag
         if: steps.stage.outputs.present == 'false'
         env:
           RELEASE_SHA: ${{ steps.stage.outputs.release }}
           SOURCE_SHA: ${{ needs.prepare.outputs.source }}
-          GH_TOKEN: ${{ steps.token.outputs.token }}
+          GH_TOKEN: ${{ github.token }}
         run: bash controller/.github/scripts/provider-release.sh push
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
-        id: registry
-        if: steps.stage.outputs.present == 'false'
-        continue-on-error: true
-        with:
-          owner: certimate-go
-          repositories: plugins
-          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
-          permission-actions: write
-      - name: Dispatch registry reconciliation
-        if: steps.registry.outcome == 'success'
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ steps.registry.outputs.token }}
-        run: gh workflow run registry-reconcile.yml --repo certimate-go/plugins --ref main

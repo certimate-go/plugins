@@ -1,6 +1,0 @@
-{
-  "plugin.aws-acm-purger.name": "AWS - ACM (Amazon Certificate Manager) (Purge)",
-  "plugin.aws-acm-purger.purge.form.region.label": "AWS Region",
-  "plugin.aws-acm-purger.purge.form.region.placeholder": "Please enter AWS ACM region (e.g. us-east-1)",
-  "plugin.aws-acm-purger.purge.form.region.tooltip": "For more information, see <a href=\"https://docs.aws.amazon.com/en_us/general/latest/gr/rande.html#regional-endpoints\" target=\"_blank\">https://docs.aws.amazon.com/en_us/general/latest/gr/rande.html#regional-endpoints</a>"
-}

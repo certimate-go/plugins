@@ -1,0 +1,99 @@
+{
+  "provider_type": "telegrambot",
+  "repository": "certimate-go/plugin-provider-telegrambot-notifier",
+  "version": "0.2.3",
+  "tag": "v0.2.3",
+  "source_commit": "3f9008a72ec4aa9eca8d38c7a4c896b0bbc861f5",
+  "build_run_id": "44508215793",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6127320,
+      "sha256": "66e1e394555504295c7696eaf4f88dbaf855e29be88e9529e1891eaaa65f21f6"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5756936,
+      "sha256": "427bdd8e6fc493550ee42f5ca037ecec5f213a7d053d90797a2960004fd6295d"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6093097,
+      "sha256": "5e8007df929054ece0637c86d289d337ebda434d1064ec4b236cf782d24e1aac"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5769535,
+      "sha256": "d4e6c0d87134f8cc3e309f1265b32bf5cf26266efad609c6ddaeb4b9de046488"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5516937,
+      "sha256": "8f4fa10e2ce0ed2792ebaf6e066cfbc49d09a8d3c3740a141f91596d59298e43"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5862203,
+      "sha256": "7184e768c316eb0cdd601f7583ada72fcc75d9513e6e68e7139814f9c393e374"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6256722,
+      "sha256": "c427b215aa2abbe4f0e90721fddf903333b5310342b55dd69d89ba821ef11967"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5615147,
+      "sha256": "976c4e136aaac7f5a1d8dc7248767d687b6b815b445e6a779ce0253d189b998d"
+    }
+  ],
+  "release_commit": "4cd0bc96a5844efce36c1b8c295f3f5a12fc83ea",
+  "manifest": {
+    "version": "0.2.3",
+    "provider_type": "telegrambot",
+    "access_provider_type": "telegrambot",
+    "capability": "notify",
+    "display_name_key": "plugin.telegrambot.name",
+    "category": "",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "telegrambot.exe",
+    "icon": "telegram.svg",
+    "sha256": "",
+    "usages": [
+      "notification"
+    ],
+    "priority": 0,
+    "description": "Send notifications to a Telegram chat."
+  },
+  "i18n": {
+    "en": {
+      "name": "Telegram Bot",
+      "description": "Send notifications to a Telegram chat."
+    },
+    "zh": {
+      "name": "Telegram 机器人",
+      "description": "向 Telegram 聊天发送通知。"
+    }
+  },
+  "icon": "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"
+}

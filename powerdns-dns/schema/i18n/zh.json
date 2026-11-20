@@ -1,8 +1,0 @@
-{
-  "plugin.powerdns-dns.name": "PowerDNS 权威服务器",
-  "plugin.powerdns-dns.access.serverUrl": "PowerDNS 服务地址",
-  "plugin.powerdns-dns.access.zone": "DNS 区域",
-  "plugin.powerdns-dns.access.apiKey": "PowerDNS API 密钥",
-  "plugin.powerdns-dns.config.ttl": "TXT 记录 TTL（秒）",
-  "plugin.powerdns-dns.description": "通过 PowerDNS Authoritative HTTP API 完成 DNS-01 验证，需要 4.9.12+ 或 5.0.2+ 版本。"
-}

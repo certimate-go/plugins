@@ -1,0 +1,97 @@
+{
+  "provider_type": "digitalocean-certificate",
+  "repository": "certimate-go/plugin-provider-digitalocean-certificate-deployer",
+  "version": "0.2.2",
+  "tag": "v0.2.2",
+  "source_commit": "6bbed597e1324c9a693021f8ac098c2c1b92e04a",
+  "build_run_id": "44513808532",
+  "artifacts": [
+    {
+      "os": "darwin",
+      "arch": "amd64",
+      "path": "build/darwin_amd64.zip",
+      "size": 6253602,
+      "sha256": "82554b8dda0dbac553e491f260e496872aa66f3a9b9f836dbb5fef10121151bb"
+    },
+    {
+      "os": "darwin",
+      "arch": "arm64",
+      "path": "build/darwin_arm64.zip",
+      "size": 5894363,
+      "sha256": "a870e269413cf91bf3d808bc46e38a6ac8103b9fbd2547de8c4a19b4cc69f246"
+    },
+    {
+      "os": "linux",
+      "arch": "amd64",
+      "path": "build/linux_amd64.zip",
+      "size": 6227413,
+      "sha256": "8ec9fb9748a081d67407d4e40afe48ff7f8ade440ccbbbaf057f283ba32a9a79"
+    },
+    {
+      "os": "linux",
+      "arch": "arm",
+      "path": "build/linux_arm.zip",
+      "size": 5900933,
+      "sha256": "87a2e13cb9d0171abc1614a278d11df45105da15a1c6120fd57a3a88b42f79f3"
+    },
+    {
+      "os": "linux",
+      "arch": "arm64",
+      "path": "build/linux_arm64.zip",
+      "size": 5653991,
+      "sha256": "ed82fd1131591e77fc2f31b6787aba2006d40ee9ebb74f45763b8c4932f10f45"
+    },
+    {
+      "os": "windows",
+      "arch": "386",
+      "path": "build/windows_386.zip",
+      "size": 5992762,
+      "sha256": "97788f2f9b9e7d3b32e67a21823a97e1496041ff29fd9ac03c54c9e090d87ea7"
+    },
+    {
+      "os": "windows",
+      "arch": "amd64",
+      "path": "build/windows_amd64.zip",
+      "size": 6375886,
+      "sha256": "8bf49fa0a8905ec236681a96469bae268f501ee82c62e6829c0182fb4e9aea6b"
+    },
+    {
+      "os": "windows",
+      "arch": "arm64",
+      "path": "build/windows_arm64.zip",
+      "size": 5719804,
+      "sha256": "289e3b6e4301a0f347a1eca9e124c59e0bbe6a76f058907774836c25bf7d56d6"
+    }
+  ],
+  "release_commit": "70ca42cf99970b6d8548008f47b3197931b6998e",
+  "manifest": {
+    "version": "0.2.2",
+    "provider_type": "digitalocean-certificate",
+    "access_provider_type": "digitalocean",
+    "capability": "deploy",
+    "display_name_key": "plugin.digitalocean-certificate.name",
+    "category": "ssl",
+    "protocol_version": 4,
+    "min_core_version": "",
+    "max_core_version": "",
+    "os": "",
+    "arch": "",
+    "binary": "digitalocean-certificate.exe",
+    "icon": "digitalocean.svg",
+    "sha256": "",
+    "usages": [
+      "hosting"
+    ],
+    "priority": 100,
+    "description": ""
+  },
+  "i18n": {
+    "en": {
+      "name": "DigitalOcean - Upload to Custom Certificate"
+    },
+    "zh": {
+      "name": "DigitalOcean - 上传到自定义证书"
+    }
+  },
+  "icon": "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"
+}

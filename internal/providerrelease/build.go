@@ -61,22 +61,40 @@ type Artifact struct {
 	SHA256 string `json:"sha256"`
 }
 
+const RegistryRepository = "certimate-go/plugins"
+
 type Record struct {
-	ProviderType string     `json:"provider_type"`
-	Repository   string     `json:"repository"`
-	Version      string     `json:"version"`
-	Tag          string     `json:"tag"`
-	SourceCommit string     `json:"source_commit"`
-	BuildRunID   string     `json:"build_run_id"`
-	Artifacts    []Artifact `json:"artifacts"`
+	ProviderType    string     `json:"provider_type"`
+	Repository      string     `json:"repository"`
+	Version         string     `json:"version"`
+	Tag             string     `json:"tag"`
+	SourceCommit    string     `json:"source_commit"`
+	BuildRunID      string     `json:"build_run_id"`
+	BuildRepository string     `json:"build_repository,omitempty"`
+	Artifacts       []Artifact `json:"artifacts"`
+}
+
+func (record Record) RunRepository() string {
+	if record.BuildRepository == "" {
+		return record.Repository
+	}
+	return record.BuildRepository
+}
+
+func ValidateBuildRepository(repository string) error {
+	if repository != "" && repository != RegistryRepository {
+		return errors.New("the build repository must be the protected registry")
+	}
+	return nil
 }
 
 type Options struct {
-	SourceDir  string
-	Repository string
-	Trigger    string
-	SourceSHA  string
-	BuildRunID string
+	SourceDir       string
+	Repository      string
+	Trigger         string
+	SourceSHA       string
+	BuildRunID      string
+	BuildRepository string
 }
 
 func Build(ctx context.Context, options Options) (*Record, error) {
@@ -87,6 +105,9 @@ func Build(ctx context.Context, options Options) (*Record, error) {
 		return nil, errors.New("build run ID must be a positive decimal GitHub Actions run ID")
 	}
 	if err := ValidateRepository(options.Repository); err != nil {
+		return nil, err
+	}
+	if err := ValidateBuildRepository(options.BuildRepository); err != nil {
 		return nil, err
 	}
 	commit, err := gitOutput(ctx, options.SourceDir, "rev-parse", "HEAD")
@@ -139,6 +160,7 @@ func Build(ctx context.Context, options Options) (*Record, error) {
 	record := &Record{
 		ProviderType: manifest.ProviderType, Repository: options.Repository, Version: manifest.Version,
 		Tag: "v" + manifest.Version, SourceCommit: options.SourceSHA, BuildRunID: options.BuildRunID,
+		BuildRepository: options.BuildRepository,
 	}
 	for _, target := range Targets() {
 		binaryPath := filepath.Join(tempDir, manifest.Binary)

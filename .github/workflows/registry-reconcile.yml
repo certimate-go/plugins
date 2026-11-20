@@ -1,4 +1,4 @@
-name: Reconcile provider registrations
+name: Register provider releases
 
 on:
   workflow_dispatch:
@@ -6,63 +6,30 @@ on:
     - cron: '7-57/10 * * * *'
 
 permissions:
-  contents: read
-  actions: write
-  checks: read
-  pull-requests: read
+  contents: write
+  pull-requests: write
 
 concurrency:
   group: registry-reconcile
   cancel-in-progress: false
 
 jobs:
-  reconcile:
+  register:
+    if: github.repository == 'certimate-go/plugins' && github.ref == 'refs/heads/main' && github.ref_protected
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
-    environment: registry-reconcile
+    timeout-minutes: 30
     steps:
-      - name: Require the registry protected branch
-        run: |
-          [[ "$GITHUB_REPOSITORY" == certimate-go/plugins && "$GITHUB_REF" == refs/heads/main && "$GITHUB_REF_PROTECTED" == true ]]
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
-          ref: ${{ github.sha }}
-          fetch-depth: 0
           persist-credentials: false
       - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16
         with:
           go-version-file: go.mod
           cache: false
-      - name: Resolve admitted provider repositories
-        id: providers
-        run: |
-          jq -er '.[] | if test("^certimate-go/plugin-provider-[a-z0-9][a-z0-9_.-]*$") then ltrimstr("certimate-go/") else error("Invalid admitted repository") end' \
-            registry/_policy/admissions.json > "$RUNNER_TEMP/admitted-providers"
-          printf 'names=%s\n' "$(paste -sd, "$RUNNER_TEMP/admitted-providers")" >>"$GITHUB_OUTPUT"
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
-        id: dispatcher
-        with:
-          owner: certimate-go
-          repositories: ${{ steps.providers.outputs.names }}
-          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
-          permission-actions: write
-          permission-contents: read
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510
-        id: registrar
-        with:
-          owner: certimate-go
-          repositories: plugins
-          client-id: ${{ vars.REGISTRY_RELEASE_APP_CLIENT_ID }}
-          private-key: ${{ secrets.REGISTRY_RELEASE_APP_PRIVATE_KEY }}
-          permission-contents: write
-          permission-pull-requests: write
-      - name: Reconcile release requests and registrations
+      - name: Open pull requests for new formal tags
         env:
-          DISPATCH_TOKEN: ${{ steps.dispatcher.outputs.token }}
-          REGISTRATION_TOKEN: ${{ steps.registrar.outputs.token }}
           GH_TOKEN: ${{ github.token }}
-          GOWORK: "off"
+          GOWORK: 'off'
           GOTOOLCHAIN: local
-          GIT_TERMINAL_PROMPT: "0"
+          GIT_TERMINAL_PROMPT: '0'
         run: bash .github/scripts/registry-reconcile.sh scan

@@ -1,8 +1,0 @@
-{
-  "schemaVersion": "form/v1",
-  "provider": "cmcccloud-dns",
-  "category": "apply",
-  "schema": {
-    "columns": []
-  }
-}

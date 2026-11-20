@@ -501,42 +501,7 @@ func newB1AppsFixture(t *testing.T) *b1AppsFixture {
 
 func buildB1AppsBatch(t *testing.T, dir, arch string) {
 	t.Helper()
-	root, err := filepath.Abs("..")
-	if err != nil {
-		t.Fatal(err)
-	}
-	for _, provider := range b1AppsProviders {
-		out := filepath.Join(dir, provider)
-		if err := os.MkdirAll(out, 0o755); err != nil {
-			t.Fatal(err)
-		}
-		ctx, cancel := context.WithTimeout(context.Background(), 3*time.Minute)
-		cmd := exec.CommandContext(ctx, "go", "build", "-o", filepath.Join(out, provider), "./"+provider)
-		cmd.Dir = root
-		cmd.Env = append(os.Environ(), "GOOS=linux", "GOARCH="+arch, "CGO_ENABLED=0")
-		output, err := cmd.CombinedOutput()
-		cancel()
-		if err != nil {
-			t.Fatalf("build %s: %v\n%s", provider, err, output)
-		}
-		manifestBytes, err := os.ReadFile(filepath.Join(root, provider, "manifest.json"))
-		if err != nil {
-			t.Fatal(err)
-		}
-		manifest, err := plugin.ParseManifest(manifestBytes)
-		if err != nil {
-			t.Fatal(err)
-		}
-		for _, name := range []string{"manifest.json", manifest.Icon} {
-			data, err := os.ReadFile(filepath.Join(root, provider, name))
-			if err != nil {
-				t.Fatal(err)
-			}
-			if err := os.WriteFile(filepath.Join(out, name), data, 0o644); err != nil {
-				t.Fatal(err)
-			}
-		}
-	}
+	stageStandaloneProviders(t, dir, b1AppsProviders, "linux", arch)
 }
 
 func runB1AppsBatchInLinux(t *testing.T) {

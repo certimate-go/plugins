@@ -11,6 +11,7 @@ import (
 	_ "image/png"
 	"io"
 	"io/fs"
+	"maps"
 	"path"
 	"regexp"
 	"slices"
@@ -107,14 +108,7 @@ type Snapshot struct {
 
 func Generate(records fs.FS, ready []ReadyRelease) (Snapshot, error) {
 	catalog := Snapshot{Catalog: Catalog{Plugins: []Summary{}}, Files: make(map[string][]byte)}
-	dirs, err := fs.ReadDir(records, ".")
-	if err != nil {
-		return Snapshot{}, err
-	}
-	if !slices.ContainsFunc(dirs, func(entry fs.DirEntry) bool { return entry.Name() == "_policy" && entry.IsDir() }) {
-		return Snapshot{}, errors.New("registry policy must be a directory")
-	}
-	admitted, withdrawn, err := loadPolicy(records)
+	providers, withdrawn, err := loadRegistry(records)
 	if err != nil {
 		return Snapshot{}, err
 	}
@@ -132,18 +126,8 @@ func Generate(records fs.FS, ready []ReadyRelease) (Snapshot, error) {
 		readyByID[release.Identity] = release.ReleaseCommit
 	}
 
-	for _, dir := range dirs {
-		if (dir.Name() == "_policy" || dir.Name() == "market") && dir.IsDir() ||
-			dir.Name() == "index.json" && dir.Type().IsRegular() {
-			continue
-		}
-		if !dir.IsDir() || admitted[dir.Name()] == "" {
-			return Snapshot{}, fmt.Errorf("unexpected or unadmitted registry path %q", dir.Name())
-		}
-		versions, err := loadProvider(records, dir.Name(), admitted[dir.Name()])
-		if err != nil {
-			return Snapshot{}, err
-		}
+	for _, provider := range slices.Sorted(maps.Keys(providers)) {
+		versions := providers[provider]
 		var current *Version
 		for _, version := range versions {
 			id := Identity{ProviderType: version.ProviderType, Version: version.Version}
@@ -160,7 +144,7 @@ func Generate(records fs.FS, ready []ReadyRelease) (Snapshot, error) {
 			}
 		}
 		if current != nil {
-			if err := catalog.add(current); err != nil {
+			if err := catalog.add(current, ""); err != nil {
 				return Snapshot{}, err
 			}
 		}
@@ -171,23 +155,7 @@ func Generate(records fs.FS, ready []ReadyRelease) (Snapshot, error) {
 	return catalog, nil
 }
 
-func loadPolicy(records fs.FS) (map[string]string, map[Identity]bool, error) {
-	policyEntries, err := fs.ReadDir(records, "_policy")
-	if err != nil {
-		return nil, nil, err
-	}
-	for _, entry := range policyEntries {
-		if !entry.Type().IsRegular() || (entry.Name() != "admissions.json" && entry.Name() != "withdrawals.json") {
-			return nil, nil, fmt.Errorf("unexpected policy path %q", entry.Name())
-		}
-	}
-	var admissions map[string]string
-	if err := readJSON(records, "_policy/admissions.json", maxPolicyBytes, &admissions); err != nil {
-		return nil, nil, err
-	}
-	if err := validateAdmissions(admissions); err != nil {
-		return nil, nil, err
-	}
+func loadRegistry(records fs.FS) (map[string][]*Version, map[Identity]bool, error) {
 	var withdrawals []Withdrawal
 	if err := readJSON(records, "_policy/withdrawals.json", maxPolicyBytes, &withdrawals); err != nil {
 		return nil, nil, err
@@ -196,7 +164,35 @@ func loadPolicy(records fs.FS) (map[string]string, map[Identity]bool, error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	return admissions, withdrawn, nil
+	dirs, err := fs.ReadDir(records, ".")
+	if err != nil {
+		return nil, nil, err
+	}
+	providers := make(map[string][]*Version)
+	repositories := make(map[string]string)
+	for _, entry := range dirs {
+		name := entry.Name()
+		if (name == "_policy" || name == "market") && entry.IsDir() || name == "index.json" && entry.Type().IsRegular() {
+			continue
+		}
+		if !entry.IsDir() || plugin.ValidateProviderType(name) != nil {
+			return nil, nil, fmt.Errorf("unexpected registry path %q", name)
+		}
+		versions, err := loadProvider(records, name)
+		if err != nil {
+			return nil, nil, err
+		}
+		if len(versions) == 0 {
+			continue
+		}
+		repository := versions[0].Repository
+		if owner := repositories[repository]; owner != "" {
+			return nil, nil, fmt.Errorf("repository %q is registered for both %q and %q", repository, owner, name)
+		}
+		repositories[repository] = name
+		providers[name] = versions
+	}
+	return providers, withdrawn, nil
 }
 
 func withdrawalSet(withdrawals []Withdrawal) (map[Identity]bool, error) {
@@ -216,12 +212,13 @@ func withdrawalSet(withdrawals []Withdrawal) (map[Identity]bool, error) {
 	return withdrawn, nil
 }
 
-func loadProvider(records fs.FS, provider, repository string) ([]*Version, error) {
+func loadProvider(records fs.FS, provider string) ([]*Version, error) {
 	paths, err := fs.ReadDir(records, provider)
 	if err != nil {
 		return nil, err
 	}
 	versions := make([]*Version, 0, len(paths))
+	var repository string
 	for _, entry := range paths {
 		tag, matched := strings.CutSuffix(entry.Name(), ".json")
 		if !entry.Type().IsRegular() || !matched || !strings.HasPrefix(tag, "v") || !versionPattern.MatchString(tag[1:]) {
@@ -232,9 +229,10 @@ func loadProvider(records fs.FS, provider, repository string) ([]*Version, error
 		if err := readJSON(records, filename, maxRecordBytes, &version); err != nil {
 			return nil, err
 		}
-		if version.ProviderType != provider || version.Repository != repository || version.Tag != tag {
-			return nil, fmt.Errorf("version record %q does not match path or admission policy", filename)
+		if version.ProviderType != provider || version.Tag != tag || (repository != "" && version.Repository != repository) {
+			return nil, fmt.Errorf("version record %q does not match its path or provider repository", filename)
 		}
+		repository = version.Repository
 		if err := version.Validate(); err != nil {
 			return nil, fmt.Errorf("version record %q: %w", filename, err)
 		}
@@ -254,6 +252,9 @@ func (version *Version) Validate() error {
 	if version.Tag != "v"+version.Version || !commitPattern.MatchString(version.SourceCommit) ||
 		!commitPattern.MatchString(version.ReleaseCommit) || version.SourceCommit == version.ReleaseCommit {
 		return errors.New("invalid tag, source commit or artifact commit")
+	}
+	if err := providerrelease.ValidateBuildRepository(version.BuildRepository); err != nil {
+		return err
 	}
 	if runID, err := strconv.ParseUint(version.BuildRunID, 10, 64); err != nil || runID == 0 || strconv.FormatUint(runID, 10) != version.BuildRunID {
 		return errors.New("invalid trusted build run ID")
@@ -308,7 +309,7 @@ func (version *Version) Validate() error {
 	return nil
 }
 
-func (snapshot *Snapshot) add(version *Version) error {
+func (snapshot *Snapshot) add(version *Version, buildRepository string) error {
 	assets := slices.Clone(version.Artifacts)
 	slices.SortFunc(assets, func(left, right providerrelease.Artifact) int {
 		return strings.Compare(left.OS+"/"+left.Arch, right.OS+"/"+right.Arch)
@@ -328,6 +329,7 @@ func (snapshot *Snapshot) add(version *Version) error {
 		snapshot.Files["market/icons/"+digest+"."+format] = version.Icon
 	}
 	record := version.Record
+	record.BuildRepository = buildRepository
 	record.Artifacts = assets
 	manifest := version.Manifest
 	manifest.MinCoreVersion = coreVersion(manifest.MinCoreVersion)
@@ -364,26 +366,6 @@ func checkIdentity(id Identity) error {
 	}
 	if !versionPattern.MatchString(id.Version) || len(id.Version) > 64 {
 		return fmt.Errorf("invalid stable version %q", id.Version)
-	}
-	return nil
-}
-
-func validateAdmissions(admissions map[string]string) error {
-	if admissions == nil {
-		return errors.New("admissions must be an object")
-	}
-	seen := make(map[string]bool, len(admissions))
-	for provider, repository := range admissions {
-		if err := plugin.ValidateProviderType(provider); err != nil {
-			return err
-		}
-		if err := providerrelease.ValidateRepository(repository); err != nil {
-			return err
-		}
-		if seen[repository] {
-			return fmt.Errorf("repository %q is admitted for multiple providers", repository)
-		}
-		seen[repository] = true
 	}
 	return nil
 }

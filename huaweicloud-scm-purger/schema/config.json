@@ -1,8 +1,0 @@
-{
-  "schemaVersion": "form/v1",
-  "provider": "huaweicloud-scm-purger",
-  "category": "purge",
-  "schema": {
-    "columns": []
-  }
-}
