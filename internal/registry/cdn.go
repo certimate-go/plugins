@@ -13,8 +13,9 @@ import (
 )
 
 const (
-	defaultCDN    = "https://cdn.jsdelivr.net"
-	marketCDNPath = "/gh/certimate-go/plugins@main/"
+	defaultCDN         = "https://cdn.jsdelivr.net"
+	defaultPurgeOrigin = "https://purge.jsdelivr.net"
+	marketCDNPath      = "/gh/certimate-go/plugins@latest/"
 )
 
 func ObserveDefaultCDN(ctx context.Context, version Version) (ReadyRelease, error) {
@@ -31,39 +32,63 @@ func cdnHTTPClient() *http.Client {
 }
 
 func ObservePublishedIndex(ctx context.Context, checkout, commit string, keys map[string]ed25519.PublicKey, now time.Time) (Publication, error) {
-	return observePublishedIndex(ctx, checkout, commit, keys, now, cdnHTTPClient(), defaultCDN)
+	publication, _, err := measurePublishedIndex(ctx, checkout, commit, keys, now, cdnHTTPClient(), defaultCDN)
+	return publication, err
 }
 
-func observePublishedIndex(ctx context.Context, checkout, commit string, keys map[string]ed25519.PublicKey, now time.Time, client *http.Client, origin string) (Publication, error) {
+func ConfirmPublishedIndex(ctx context.Context, checkout, commit string, keys map[string]ed25519.PublicKey, now time.Time) (Publication, error) {
+	return confirmPublishedIndex(ctx, checkout, commit, keys, now, cdnHTTPClient(), defaultCDN, defaultPurgeOrigin)
+}
+
+func confirmPublishedIndex(ctx context.Context, checkout, commit string, keys map[string]ed25519.PublicKey, now time.Time, client *http.Client, origin, purgeOrigin string) (Publication, error) {
+	measured, stale, err := measurePublishedIndex(ctx, checkout, commit, keys, now, client, origin)
+	if err != nil || len(stale) == 0 {
+		return measured, err
+	}
+	measured.Purges = purgeMarketPaths(ctx, client, purgeOrigin, stale)
+	if !slices.ContainsFunc(measured.Purges, func(purge CDNPurge) bool { return purge.Outcome == "finished" }) {
+		return measured, nil
+	}
+	again, _, err := measurePublishedIndex(ctx, checkout, commit, keys, now, client, origin)
+	if err != nil {
+		return Publication{}, err
+	}
+	again.Purges = measured.Purges
+	return again, nil
+}
+
+func measurePublishedIndex(ctx context.Context, checkout, commit string, keys map[string]ed25519.PublicKey, now time.Time, client *http.Client, origin string) (Publication, []string, error) {
 	git := releaseGit{ctx, checkout}
 	index, payload, keyID, err := readPublishedIndex(git, commit, keys, now)
 	if err != nil {
-		return Publication{}, err
+		return Publication{}, nil, err
 	}
 	result := Publication{Commit: commit, SourceCommit: payload.SourceCommit, KeyID: keyID, Epoch: payload.Epoch, Generation: payload.Generation, ExpiresAt: payload.ExpiresAt}
 	base := origin + marketCDNPath
+	var stale []string
 	if err := checkDownload(ctx, client, base+marketIndexPath, int64(len(index)), fmt.Sprintf("%x", sha256.Sum256(index))); err != nil {
 		result.Pending = append(result.Pending, fmt.Sprintf("signed index not observable: %v", err))
-		return result, nil
+		stale = append(stale, marketIndexPath)
 	}
 	assets, err := signedAssetDigests(payload)
 	if err != nil {
-		return Publication{}, err
+		return Publication{}, nil, err
 	}
 	for _, path := range slices.Sorted(maps.Keys(assets)) {
 		digest := assets[path]
 		body, err := git.blob(commit, path, maxRecordBytes)
 		if err != nil {
-			return Publication{}, err
+			return Publication{}, nil, err
 		}
 		if fmt.Sprintf("%x", sha256.Sum256(body)) != digest {
-			return Publication{}, fmt.Errorf("market tree has incorrect signed asset %s", path)
+			return Publication{}, nil, fmt.Errorf("market tree has incorrect signed asset %s", path)
 		}
 		if err := checkDownload(ctx, client, base+path, int64(len(body)), digest); err != nil {
 			result.Pending = append(result.Pending, fmt.Sprintf("%s: %v", path, err))
+			stale = append(stale, path)
 		}
 	}
-	return result, nil
+	return result, stale, nil
 }
 
 func signedAssetDigests(payload IndexPayload) (map[string]string, error) {

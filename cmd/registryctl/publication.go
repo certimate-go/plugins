@@ -46,7 +46,7 @@ func publishMarket(ctx context.Context, arguments []string, output io.Writer) er
 	options.Now = time.Now()
 	var publication registry.Publication
 	if arguments[0] == "observe-publication" {
-		publication, err = registry.ObservePublishedIndex(ctx, options.Checkout, options.MarketCommit, options.PublicKeys, options.Now)
+		publication, err = registry.ConfirmPublishedIndex(ctx, options.Checkout, options.MarketCommit, options.PublicKeys, options.Now)
 	} else {
 		if *epoch > math.MaxUint32 || *keyPath == "" {
 			return fmt.Errorf("-key-file is required and epoch must fit uint32")

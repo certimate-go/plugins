@@ -37,14 +37,16 @@ type PublishOptions struct {
 }
 
 type Publication struct {
-	Commit       string    `json:"commit"`
-	SourceCommit string    `json:"source_commit"`
-	KeyID        string    `json:"key_id"`
-	Epoch        uint32    `json:"epoch"`
-	Generation   uint64    `json:"generation"`
-	ExpiresAt    time.Time `json:"expires_at"`
-	Changed      bool      `json:"changed"`
-	Pending      []string  `json:"pending"`
+	Commit       string     `json:"commit"`
+	SourceCommit string     `json:"source_commit"`
+	KeyID        string     `json:"key_id"`
+	Epoch        uint32     `json:"epoch"`
+	Generation   uint64     `json:"generation"`
+	ExpiresAt    time.Time  `json:"expires_at"`
+	Changed      bool       `json:"changed"`
+	Pending      []string   `json:"pending"`
+	ReleaseTag   string     `json:"release_tag,omitempty"`
+	Purges       []CDNPurge `json:"purges,omitempty"`
 }
 
 type releaseObserver func(context.Context, Version) (ReadyRelease, error)
@@ -138,9 +140,14 @@ func stagePublication(ctx context.Context, options PublishOptions, observe relea
 	if err != nil {
 		return Publication{}, err
 	}
+	tag, err := MarketReleaseTag(options.Epoch, generation)
+	if err != nil {
+		return Publication{}, err
+	}
 	return Publication{
 		Commit: commit, SourceCommit: options.SourceCommit, KeyID: envelope.KeyID,
 		Epoch: options.Epoch, Generation: generation, ExpiresAt: metadata.ExpiresAt, Changed: true, Pending: pending,
+		ReleaseTag: tag,
 	}, nil
 }
 

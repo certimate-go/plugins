@@ -5,6 +5,8 @@ import (
 	"context"
 	"crypto/ed25519"
 	"crypto/sha256"
+	"crypto/tls"
+	"crypto/x509"
 	"encoding/json"
 	"fmt"
 	"image"
@@ -147,7 +149,7 @@ func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 		return body, payload
 	}
 	first, err := stagePublication(t.Context(), options, observe)
-	if err != nil || !first.Changed || first.KeyID != options.KeyID || first.Generation != 1 || len(first.Pending) != 0 {
+	if err != nil || !first.Changed || first.KeyID != options.KeyID || first.Generation != 1 || first.ReleaseTag != "v1.1.0" || len(first.Pending) != 0 {
 		t.Fatalf("bootstrap publication: %+v, %v", first, err)
 	}
 	firstEnvelope, firstPayload := index(first.Commit)
@@ -167,7 +169,7 @@ func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 	})
 	options.SourceCommit = save(firstSource)
 	second, err := stagePublication(t.Context(), options, observe)
-	if err != nil || !second.Changed || second.Generation != 2 || len(second.Pending) != 1 {
+	if err != nil || !second.Changed || second.Generation != 2 || second.ReleaseTag != "v1.2.0" || len(second.Pending) != 1 {
 		t.Fatalf("withdrawal while another provider propagates: %+v, %v", second, err)
 	}
 	_, secondPayload := index(second.Commit)
@@ -183,28 +185,33 @@ func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 	}
 	options.MarketCommit = second.Commit
 	noChange, err := stagePublication(t.Context(), options, observe)
-	if err != nil || noChange.Changed || noChange.Commit != second.Commit || noChange.KeyID != options.KeyID {
+	if err != nil || noChange.Changed || noChange.Commit != second.Commit || noChange.KeyID != options.KeyID || noChange.ReleaseTag != "" {
 		t.Fatalf("rerun before renewal replaced the same snapshot: %+v, %v", noChange, err)
 	}
 	options.Now = now.Add(26 * time.Hour)
 	renewed, err := stagePublication(t.Context(), options, observe)
-	if err != nil || !renewed.Changed || renewed.Generation != 3 || !renewed.ExpiresAt.After(second.ExpiresAt) {
+	if err != nil || !renewed.Changed || renewed.Generation != 3 || renewed.ReleaseTag != "v1.3.0" || !renewed.ExpiresAt.After(second.ExpiresAt) {
 		t.Fatalf("lease renewal: %+v, %v", renewed, err)
 	}
 	renewedEnvelope, renewedPayload := index(renewed.Commit)
-	const marketPath = "/gh/certimate-go/plugins@main/"
 	setCDN := func(path string, body []byte) {
 		mu.Lock()
 		defer mu.Unlock()
-		cdn[marketPath+path] = body
+		cdn[marketCDNPath+path] = body
 	}
 	verifyCDN := func(want string) {
 		t.Helper()
-		result, err := observePublishedIndex(t.Context(), dir, renewed.Commit, keys, options.Now, server.Client(), server.URL)
+		result, _, err := measurePublishedIndex(t.Context(), dir, renewed.Commit, keys, options.Now, server.Client(), server.URL)
 		if err != nil || result.KeyID != options.KeyID || result.Generation != renewed.Generation {
 			t.Fatalf("invalid publication observation: %+v, %v", result, err)
 		}
-		if want == "" && len(result.Pending) != 0 || want != "" && (len(result.Pending) != 1 || !strings.Contains(result.Pending[0], want)) {
+		matched := want == "" && len(result.Pending) == 0
+		if want != "" {
+			matched = slices.ContainsFunc(result.Pending, func(line string) bool {
+				return strings.Contains(line, want)
+			})
+		}
+		if !matched {
 			t.Fatalf("unexpected CDN propagation state %q: %+v", want, result)
 		}
 	}
@@ -264,6 +271,49 @@ func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 	}
 	setCDN(detail, body)
 	verifyCDN("")
+	t.Run("purge the stale latest index", func(t *testing.T) {
+		var hits []string
+		throttled := false
+		purgeServer := httptest.NewTLSServer(http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
+			mu.Lock()
+			hits = append(hits, request.URL.Path)
+			refuse := throttled
+			if !refuse && request.URL.Path == marketCDNPath+marketIndexPath {
+				cdn[marketCDNPath+marketIndexPath] = renewedEnvelope
+			}
+			mu.Unlock()
+			writer.Header().Set("Content-Type", "application/json")
+			if err := json.NewEncoder(writer).Encode(map[string]any{
+				"id": "purge-1", "status": "finished",
+				"paths": map[string]any{request.URL.Path: map[string]any{"throttled": refuse}},
+			}); err != nil {
+				t.Errorf("write purge response: %v", err)
+			}
+		}))
+		defer purgeServer.Close()
+		client := trustCDNServers(t, server, purgeServer)
+		fresh, err := confirmPublishedIndex(t.Context(), dir, renewed.Commit, keys, options.Now, client, server.URL, purgeServer.URL)
+		if err != nil || len(fresh.Pending) != 0 || len(fresh.Purges) != 0 {
+			t.Fatalf("fresh latest index sent a purge: %+v, %v", fresh, err)
+		}
+		setCDN(marketIndexPath, firstEnvelope)
+		purged, err := confirmPublishedIndex(t.Context(), dir, renewed.Commit, keys, options.Now, client, server.URL, purgeServer.URL)
+		if err != nil || len(purged.Pending) != 0 || len(purged.Purges) != 1 || purged.Purges[0].Path != marketIndexPath || purged.Purges[0].Outcome != "finished" {
+			t.Fatalf("stale latest index after purge: %+v, hits %v, %v", purged, hits, err)
+		}
+		if len(hits) != 1 || hits[0] != marketCDNPath+marketIndexPath {
+			t.Fatalf("purge request: %v", hits)
+		}
+		setCDN(marketIndexPath, firstEnvelope)
+		hits = nil
+		throttled = true
+		held, err := confirmPublishedIndex(t.Context(), dir, renewed.Commit, keys, options.Now, client, server.URL, purgeServer.URL)
+		if err != nil || len(held.Pending) == 0 || len(held.Purges) != 1 || held.Purges[0].Outcome != "throttled" {
+			t.Fatalf("throttled purge cleared the index: %+v, %v", held, err)
+		}
+		throttled = false
+		setCDN(marketIndexPath, renewedEnvelope)
+	})
 	report := audit(true, 11)
 	if !slices.Equal(report.Providers, []string{"beta"}) || !slices.Equal(report.Withdrawals, []WithdrawalAudit{
 		{Identity: withdrawAlpha, Confirmed: true},
@@ -347,6 +397,20 @@ func TestPublicationAdvancesWhileAnUnrelatedReleaseIsPending(t *testing.T) {
 	options.Checkout, options.SourceCommit, options.MarketCommit = older, firstSource, renewed.Commit
 	if _, err := stagePublication(t.Context(), options, observe); err == nil || !strings.Contains(err.Error(), "older source") {
 		t.Fatalf("old registry source could claim a new publication generation: %v", err)
+	}
+}
+
+func trustCDNServers(t *testing.T, servers ...*httptest.Server) *http.Client {
+	t.Helper()
+	pool := x509.NewCertPool()
+	for _, server := range servers {
+		pool.AddCert(server.Certificate())
+	}
+	return &http.Client{
+		Transport: &http.Transport{TLSClientConfig: &tls.Config{RootCAs: pool}},
+		CheckRedirect: func(*http.Request, []*http.Request) error {
+			return http.ErrUseLastResponse
+		},
 	}
 }
 

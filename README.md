@@ -4,7 +4,7 @@ English | [中文](README.zh.md)
 
 Out-of-process provider plugins for [certimate](https://github.com/certimate-go/certimate). Each plugin is a standalone binary that certimate launches as a gRPC subprocess ([hashicorp/go-plugin](https://github.com/hashicorp/go-plugin)) to deploy, resolve, notify, or purge certificates. Adding a plugin requires **no changes to the certimate core**.
 
-This repository indexes official plugins. Provider repositories build and publish their own releases. Certimate reads the [signed index](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json).
+This repository indexes official plugins. Provider repositories build and publish their own releases. Certimate reads the [signed index](https://cdn.jsdelivr.net/gh/certimate-go/plugins@latest/registry/index.json). Each publication pushes semver tag `v<epoch>.<generation>.0` and purges that `@latest` alias.
 
 ## Repository layout
 

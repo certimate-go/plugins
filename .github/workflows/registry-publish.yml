@@ -51,6 +51,7 @@ jobs:
         if: steps.stage.outputs.changed == 'true'
         env:
           MARKET_COMMIT: ${{ steps.stage.outputs.market_commit }}
+          MARKET_TAG: ${{ steps.stage.outputs.market_tag }}
           GH_TOKEN: ${{ github.token }}
         run: bash .github/scripts/registry-publish.sh push
       - name: Confirm the catalog on the CDN

@@ -50,8 +50,13 @@ PR into `main`. Keep existing version records and their formal tags immutable.
 **Publish signed plugin market** starts after a registry change lands on
 `main`. It builds and signs the index from merged records, then pushes a
 commit containing `registry/index.json` and its content-addressed files
-directly to `main`. If `main` advances during generation, Git rejects the
-push and the next run generates from the new tip. Scheduled runs retry CDN
+directly to `main`. The same push creates tag `v<epoch>.<generation>.0` at
+that commit. jsDelivr `@latest` follows the highest semver tag in this
+repository, so this tag has to stay the highest one. The job then asks
+`purge.jsdelivr.net` to refresh `@latest` for the index, details, and icons
+whose CDN body does not match the commit. A finished purge does not replace
+that byte check. If `main` advances during generation, Git rejects the push
+and the next run generates from the new tip. Scheduled runs retry CDN
 propagation and renew the index before it expires.
 
 Restrict the `registry-publish` environment to protected `main`. In that
@@ -61,7 +66,7 @@ environment, set `REGISTRY_INDEX_PUBLIC_KEYS_JSON`, `REGISTRY_INDEX_KEY_ID`,
 `REGISTRY_INDEX_SEED`. When rotating keys, keep the previous public key during
 the transition and ship the new key to Core before using it.
 
-[Signed index](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json)
+[Signed index](https://cdn.jsdelivr.net/gh/certimate-go/plugins@latest/registry/index.json)
 
 To withdraw a release, merge an entry for the provider and version in
 `registry/_policy/withdrawals.json`. The next index excludes the withdrawn

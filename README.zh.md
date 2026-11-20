@@ -4,7 +4,7 @@
 
 [certimate](https://github.com/certimate-go/certimate) 的外置 provider 插件集合。每个插件是一个独立二进制，certimate 通过 [hashicorp/go-plugin](https://github.com/hashicorp/go-plugin) 以 gRPC 子进程的方式启动它，完成证书的部署、DNS 解析、通知或清除。新增插件**无需改动 certimate 核心**。
 
-本仓库维护官方插件索引。各 provider 仓库自行构建和发布。Certimate 从 CDN 读取 [签名索引](https://cdn.jsdelivr.net/gh/certimate-go/plugins@main/registry/index.json)。
+本仓库维护官方插件索引。各 provider 仓库自行构建和发布。Certimate 读取 [签名索引](https://cdn.jsdelivr.net/gh/certimate-go/plugins@latest/registry/index.json)。每次发布推送 semver 标签 `v<epoch>.<generation>.0`，并清理这个 `@latest` 别名。
 
 ## 仓库结构
 
